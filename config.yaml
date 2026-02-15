@@ -1,0 +1,23 @@
+default_strategy: balanced
+
+weights:
+  fundamentals: 0.30
+  valuation: 0.20
+  technicals: 0.25
+  risk: 0.10
+  growth: 0.15
+
+thresholds:
+  min_market_cap: 2.0e9
+  min_volume: 500000
+
+# Enhanced filtering (all optional)
+filters:
+  sectors: []          # e.g. ["Technology", "Healthcare"]
+  industries: []       # e.g. ["Semiconductors"]
+  min_market_cap: null # override thresholds.min_market_cap for API
+  max_market_cap: null # e.g. 500.0e9
+  exclude_tickers: []  # e.g. ["TSLA", "MEME"]
+
+cache_hours: 24
+top_n: 20
