@@ -6,6 +6,8 @@ import time
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from .streak_tracker import get_all_streaks
+
 logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -180,3 +182,111 @@ def get_alert_history(limit: int = 50) -> List[dict]:
     """Return recent alert history."""
     history = _load_alerts_history()
     return history[-limit:]
+
+
+def generate_morning_briefing(current_results: Optional[dict] = None, top_n: int = 20) -> str:
+    """
+    Generate a morning briefing with streak indicators.
+    
+    Indicators:
+    - 📅 Established pick (7+ consecutive days)
+    - 🆕 New entry (1-3 days)
+    - 🔥 Hot streak (3-6 days)
+    
+    Args:
+        current_results: Current scan results dict. If None, loads from file.
+        top_n: Number of top stocks to include in briefing
+    
+    Returns:
+        Formatted briefing string
+    """
+    if current_results is None:
+        from .pipeline import RESULTS_FILE
+        current_results = _load_json(RESULTS_FILE)
+    
+    if current_results is None:
+        return "No scan results available. Run /scan first."
+    
+    top_stocks = current_results.get("top", [])[:top_n]
+    timestamp = current_results.get("timestamp", "Unknown")
+    strategy = current_results.get("strategy", "balanced")
+    
+    streaks = get_all_streaks()
+    
+    # Build briefing
+    lines = []
+    lines.append("=" * 60)
+    lines.append(f"📊 MORNING BRIEFING - {timestamp}")
+    lines.append(f"Strategy: {strategy.upper()}")
+    lines.append("=" * 60)
+    lines.append("")
+    
+    # Group by streak category
+    established = []  # 7+ days
+    hot_streak = []   # 3-6 days
+    new_entries = []  # 1-2 days
+    
+    for stock in top_stocks:
+        ticker = stock.get("ticker")
+        consecutive_days = stock.get("consecutive_days", 0)
+        
+        if consecutive_days >= 7:
+            established.append(stock)
+        elif consecutive_days >= 3:
+            hot_streak.append(stock)
+        else:
+            new_entries.append(stock)
+    
+    # Print sections
+    if established:
+        lines.append("📅 ESTABLISHED PICKS (7+ days in top 20)")
+        lines.append("-" * 60)
+        for stock in established:
+            ticker = stock.get("ticker")
+            name = stock.get("name", "")[:25]
+            score = stock.get("composite_score", 0)
+            signal = stock.get("entry_signal", "HOLD")
+            days = stock.get("consecutive_days", 0)
+            rank = stock.get("rank", 0)
+            
+            signal_emoji = "🟢" if signal == "STRONG_BUY" else "🔵" if signal == "BUY" else "⚪"
+            lines.append(f"  #{rank:>2} {signal_emoji} {ticker:<6} {name:<25} Score: {score:>6.2f} | {days} days")
+        lines.append("")
+    
+    if hot_streak:
+        lines.append("🔥 HOT STREAKS (3-6 days)")
+        lines.append("-" * 60)
+        for stock in hot_streak:
+            ticker = stock.get("ticker")
+            name = stock.get("name", "")[:25]
+            score = stock.get("composite_score", 0)
+            signal = stock.get("entry_signal", "HOLD")
+            days = stock.get("consecutive_days", 0)
+            rank = stock.get("rank", 0)
+            
+            signal_emoji = "🟢" if signal == "STRONG_BUY" else "🔵" if signal == "BUY" else "⚪"
+            lines.append(f"  #{rank:>2} {signal_emoji} {ticker:<6} {name:<25} Score: {score:>6.2f} | {days} days")
+        lines.append("")
+    
+    if new_entries:
+        lines.append("🆕 NEW ENTRIES (1-2 days)")
+        lines.append("-" * 60)
+        for stock in new_entries:
+            ticker = stock.get("ticker")
+            name = stock.get("name", "")[:25]
+            score = stock.get("composite_score", 0)
+            signal = stock.get("entry_signal", "HOLD")
+            days = stock.get("consecutive_days", 0)
+            rank = stock.get("rank", 0)
+            
+            signal_emoji = "🟢" if signal == "STRONG_BUY" else "🔵" if signal == "BUY" else "⚪"
+            lines.append(f"  #{rank:>2} {signal_emoji} {ticker:<6} {name:<25} Score: {score:>6.2f} | {days} days")
+        lines.append("")
+    
+    # Summary stats
+    lines.append("=" * 60)
+    lines.append(f"Total: {len(top_stocks)} stocks | ")
+    lines.append(f"Established: {len(established)} | Hot: {len(hot_streak)} | New: {len(new_entries)}")
+    lines.append("=" * 60)
+    
+    return "\n".join(lines)

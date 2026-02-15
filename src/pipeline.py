@@ -23,6 +23,7 @@ from .sell_signals import compute_sell_signals
 from .strategies import get_strategy
 from .earnings_guard import apply_earnings_guard
 from .freshness import check_freshness
+from .streak_tracker import update_streaks, add_streaks_to_results
 
 logger = logging.getLogger(__name__)
 
@@ -359,6 +360,14 @@ def run_scan(
 
     # --- Apply earnings guard ---
     ranked = apply_earnings_guard(ranked)
+
+    # --- Update streak tracking ---
+    top20_tickers = [stock["ticker"] for stock in ranked[:20]]
+    current_date = time.strftime("%Y-%m-%d")
+    update_streaks(top20_tickers, current_date)
+    
+    # --- Add consecutive_days to results ---
+    ranked = add_streaks_to_results(ranked)
 
     # --- Fix score/signal disconnect: upgrade top-10 to at least BUY unless red flags ---
     for stock in ranked:

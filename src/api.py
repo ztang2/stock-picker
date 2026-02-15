@@ -14,12 +14,13 @@ from .backtest import run_backtest, load_backtest_history, run_rolling_backtest,
 from .sentiment import analyze_sentiment
 from .earnings import get_earnings_info
 from .portfolio import build_portfolio
-from .alerts import check_alerts, get_alert_history
+from .alerts import check_alerts, get_alert_history, generate_morning_briefing
 from .momentum import compute_momentum
 from .strategies import list_strategies, get_strategy
 from .fmp import fetch_all_fundamentals, get_fetch_status, get_cached_fundamentals
 from .universe import get_sp500_tickers
 from .accuracy import get_accuracy, take_snapshot
+from .streak_tracker import get_all_streaks, get_streak
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
@@ -159,6 +160,16 @@ def get_alerts(limit: int = Query(50, ge=1, le=200)):
     return {"current": current, "history": history}
 
 
+@app.get("/briefing")
+def morning_briefing(top_n: int = Query(20, ge=5, le=50)):
+    """Get morning briefing with streak indicators."""
+    try:
+        briefing = generate_morning_briefing(top_n=top_n)
+        return {"briefing": briefing}
+    except Exception as e:
+        raise HTTPException(500, "Briefing generation failed: %s" % str(e))
+
+
 @app.get("/signals")
 def get_signals(strategy: str = Query("balanced", description="Strategy to use")):
     """Get stocks with STRONG_BUY or BUY entry signals."""
@@ -283,6 +294,30 @@ def accuracy_snapshot(strategy: str = Query("balanced")):
         return take_snapshot(strategy=strategy)
     except Exception as e:
         raise HTTPException(500, "Snapshot failed: %s" % str(e))
+
+
+@app.get("/streaks")
+def all_streaks():
+    """Get all current streak data."""
+    try:
+        return {"streaks": get_all_streaks()}
+    except Exception as e:
+        raise HTTPException(500, "Failed to get streaks: %s" % str(e))
+
+
+@app.get("/streaks/{ticker}")
+def ticker_streak(ticker: str):
+    """Get streak info for a specific ticker."""
+    try:
+        days, first_seen, last_seen = get_streak(ticker.upper())
+        return {
+            "ticker": ticker.upper(),
+            "consecutive_days": days,
+            "first_seen": first_seen,
+            "last_seen": last_seen,
+        }
+    except Exception as e:
+        raise HTTPException(500, "Failed to get streak: %s" % str(e))
 
 
 if __name__ == "__main__":
