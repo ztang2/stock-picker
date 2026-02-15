@@ -131,6 +131,8 @@ def compute_sell_signals(
     current_signal: Optional[str] = None,
     prev_signal: Optional[str] = None,
     resistance: Optional[float] = None,
+    valuation_score: Optional[float] = None,
+    risk_score: Optional[float] = None,
     entry_price: Optional[float] = None,
     stop_loss_pct: float = -15.0,
 ) -> dict:
@@ -204,7 +206,7 @@ def compute_sell_signals(
             reasons.append(f"Signal downgraded from {prev_signal} to {current_signal}")
             result["signal_downgrade"] = True
     
-    # 4. Fundamental deterioration (score drop > 15 points)
+    # 4a. Fundamental deterioration (score drop > 15 points)
     if fundamentals_score is not None and prev_fundamentals_score is not None:
         score_drop = prev_fundamentals_score - fundamentals_score
         if score_drop > 15:
@@ -215,6 +217,22 @@ def compute_sell_signals(
             sell_score += 10
             reasons.append(f"Fundamentals weakening ({score_drop:.1f} point drop)")
             result["fundamental_deterioration"] = True
+
+    # 4b. Fundamentals too weak (absolute floor check)
+    if fundamentals_score is not None and fundamentals_score < 40:
+        sell_score += 15
+        reasons.append(f"Weak fundamentals (score {fundamentals_score:.1f})")
+        result["fundamental_deterioration"] = True
+
+    # 4c. Valuation score at zero (unprofitable / extremely overvalued)
+    if valuation_score is not None and valuation_score <= 0:
+        sell_score += 12
+        reasons.append("Valuation score 0 (negative earnings or extreme overvaluation)")
+
+    # 4d. Risk score at zero (extreme volatility / drawdown)
+    if risk_score is not None and risk_score <= 0:
+        sell_score += 12
+        reasons.append("Risk score 0 (extreme volatility/drawdown)")
     
     # 5. Stop-loss threshold
     stop_loss_info = _check_stop_loss(current_price, entry_price, stop_loss_pct)

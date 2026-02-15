@@ -187,6 +187,8 @@ def analyze_single(
         current_signal=momentum.get("entry_signal"),
         prev_signal=prev_signal,
         resistance=momentum.get("resistance"),
+        valuation_score=val.get("score"),
+        risk_score=risk.get("score"),
         entry_price=None,  # Not tracking entry prices in screening mode
         stop_loss_pct=-15.0,
     )
