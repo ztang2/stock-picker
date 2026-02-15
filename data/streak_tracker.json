@@ -1,0 +1,192 @@
+{
+  "ALL": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "ACGL": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "TRV": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "MCK": {
+    "consecutive_days": 2,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "HIG": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "TXT": {
+    "consecutive_days": 2,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "CB": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "CAH": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "EQT": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "NEM": {
+    "consecutive_days": 2,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "CVS": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "LVS": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "CTRA": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "UHS": {
+    "consecutive_days": 2,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "CF": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "HCA": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "TEL": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "AMGN": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "CPAY": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "CBOE": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "RL": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "REG": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "ABBV": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "AVGO": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "MNST": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "HAS": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "ES": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "TPR": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "KEYS": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "SPG": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "FANG": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "TER": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "CINF": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "PGR": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "COR": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "GL": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "PNC": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  },
+  "BK": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-15"
+  }
+}
