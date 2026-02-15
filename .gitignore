@@ -1,5 +1,43 @@
-data/
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Environment
 .env
-.env
+.venv
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data caches (exclude from git)
+data/stock_data_cache.json
+data/fmp_cache/
+data/fmp_status.json
+data/openbb_comparison_results.txt
+
+# Keep these data files (small, useful for continuity)
+!data/scan_results.json
+!data/signal_history.json
+!data/streak_tracker.json
+
+# Node
+node_modules/
+package-lock.json
