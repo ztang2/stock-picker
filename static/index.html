@@ -248,6 +248,7 @@ tr.stock-row:hover{background:var(--surface2)}
           <th data-col="tech_score" onclick="sortBy('tech_score')">Tech <span class="sort-arrow">▲</span></th>
           <th data-col="risk_score" onclick="sortBy('risk_score')">Risk <span class="sort-arrow">▲</span></th>
           <th data-col="growth_score" onclick="sortBy('growth_score')" id="growthHeader" style="display:none">Growth <span class="sort-arrow">▲</span></th>
+          <th data-col="consecutive_days" onclick="sortBy('consecutive_days')">📅 Days <span class="sort-arrow">▲</span></th>
         </tr></thead>
         <tbody id="tableBody"></tbody>
       </table>
@@ -530,7 +531,8 @@ function renderTable(){
     const sig=signalBadge(s.entry_signal)+(s.signal_upgraded?'<span style="font-size:.6rem;color:var(--yellow);margin-left:2px" title="Upgraded: top-10 stock">⬆</span>':'')+(s.earnings_downgrade?'<span style="font-size:.6rem;color:var(--red);margin-left:2px" title="Downgraded: earnings soon">⬇</span>':'');
     const growthTd=showGrowth?'<td class="score '+scoreClass(s.growth_pct)+'">'+fmtScore(s.growth_pct)+'</td>':'';
     const fd=freshnessDot(s.data_freshness,s.data_age_days);
-    return '<tr class="stock-row" onclick="showDetail(\''+s.ticker+'\')"><td>'+s.rank+'</td><td class="ticker-cell">'+sd+(s.ticker||'—')+fd+eb+'</td><td>'+(s.name||'—')+'</td><td>'+sig+'</td><td>'+(s.sector||'—')+'</td><td>'+fmtCap(s.market_cap)+'</td><td class="score '+scoreClass(s.composite_score)+'">'+fmtScore(s.composite_score)+'</td><td class="score '+scoreClass(s.fundamentals_pct)+'">'+fmtScore(s.fundamentals_pct)+'</td><td class="score '+scoreClass(s.valuation_pct)+'">'+fmtScore(s.valuation_pct)+'</td><td class="score '+scoreClass(s.technicals_pct)+'">'+fmtScore(s.technicals_pct)+'</td><td class="score '+scoreClass(s.risk_pct)+'">'+fmtScore(s.risk_pct)+'</td>'+growthTd+'</tr>'
+    const streakDays=s.consecutive_days||0;const streakIcon=streakDays>=7?'📅 ':streakDays>=3?'🔥 ':streakDays>0?'🆕 ':'';const streakTd='<td style="text-align:center">'+(streakDays>0?streakIcon+streakDays:'—')+'</td>';
+    return '<tr class="stock-row" onclick="showDetail(\''+s.ticker+'\')"><td>'+s.rank+'</td><td class="ticker-cell">'+sd+(s.ticker||'—')+fd+eb+'</td><td>'+(s.name||'—')+'</td><td>'+sig+'</td><td>'+(s.sector||'—')+'</td><td>'+fmtCap(s.market_cap)+'</td><td class="score '+scoreClass(s.composite_score)+'">'+fmtScore(s.composite_score)+'</td><td class="score '+scoreClass(s.fundamentals_pct)+'">'+fmtScore(s.fundamentals_pct)+'</td><td class="score '+scoreClass(s.valuation_pct)+'">'+fmtScore(s.valuation_pct)+'</td><td class="score '+scoreClass(s.technicals_pct)+'">'+fmtScore(s.technicals_pct)+'</td><td class="score '+scoreClass(s.risk_pct)+'">'+fmtScore(s.risk_pct)+'</td>'+growthTd+streakTd+'</tr>'
   }).join('');
 }
 
