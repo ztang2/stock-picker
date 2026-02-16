@@ -136,6 +136,7 @@ def compute_sell_signals(
     entry_price: Optional[float] = None,
     stop_loss_pct: float = -15.0,
     adx: Optional[float] = None,
+    regime: Optional[str] = None,
 ) -> dict:
     """Compute sell/exit signals for a stock.
     
@@ -146,8 +147,12 @@ def compute_sell_signals(
         current_signal: Current entry signal (STRONG_BUY, BUY, HOLD, WAIT)
         prev_signal: Previous entry signal
         resistance: Resistance level from momentum analysis
+        valuation_score: Valuation score (0-100)
+        risk_score: Risk score (0-100)
         entry_price: Entry price for stop-loss calculation
         stop_loss_pct: Stop-loss threshold (default -15%)
+        adx: ADX value for trend strength detection
+        regime: Market regime ("bull", "bear", "sideways") for threshold adjustments
     
     Returns:
         dict with sell_signal, sell_reasons, urgency, and detailed metrics
@@ -177,6 +182,7 @@ def compute_sell_signals(
     
     # 1. RSI overbought (>70 = warning, >80 = strong sell)
     # Strong trends can sustain high RSI longer — adjust thresholds when ADX > 40
+    # Market regime also adjusts thresholds: bull +5, bear -5, sideways 0
     rsi = _rsi(close)
     if rsi is not None:
         # Calculate MA50 for trend context
@@ -190,9 +196,19 @@ def compute_sell_signals(
         if ma50 is not None and not pd.isna(ma50):
             above_ma50_pct = ((current_price - ma50) / ma50) * 100
         
-        # Strong trends can sustain high RSI longer
+        # Base thresholds
         rsi_threshold_warning = 80 if strong_trend else 70
         rsi_threshold_strong = 85 if strong_trend else 80
+        
+        # Adjust thresholds based on market regime
+        regime_offset = 0
+        if regime == "bull":
+            regime_offset = 5  # More lenient in bull markets
+        elif regime == "bear":
+            regime_offset = -5  # More strict in bear markets
+        
+        rsi_threshold_warning += regime_offset
+        rsi_threshold_strong += regime_offset
         
         rsi_sell_score = 0
         if rsi > rsi_threshold_strong:
@@ -287,6 +303,15 @@ def compute_sell_signals(
         sell_score += 12
         reasons.append(f"Price dropped below MA50 (${ma_breakdown.get('ma50', 0):.2f})")
         result["ma_breakdown"] = True
+    
+    # Apply regime-based sell score multiplier
+    regime_multiplier = 1.0
+    if regime == "bull":
+        regime_multiplier = 0.80  # Reduce sell score by 20% in bull markets
+    elif regime == "bear":
+        regime_multiplier = 1.30  # Increase sell score by 30% in bear markets
+    
+    sell_score = sell_score * regime_multiplier
     
     # Determine sell signal based on score
     # STRONG_SELL: 40+, SELL: 25+, HOLD: 15+, N/A: <15

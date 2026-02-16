@@ -191,6 +191,7 @@ tr.stock-row:hover{background:var(--surface2)}
     <button class="btn btn-secondary" onclick="showComparison()" style="margin-left:8px;font-size:.75rem">📊 Compare</button>
   </div>
   <div style="display:flex;align-items:center;gap:12px">
+    <div id="regimeBadge" style="display:none;font-size:.75rem;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--surface2);font-weight:600" title="Market regime detection"></div>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
     <div class="scan-status">
       <span class="status-dot" id="statusDot"></span>
@@ -483,6 +484,20 @@ function processResults(data){
   const stocks=data.results||data.top||data;
   if(!Array.isArray(stocks)||!stocks.length)return;
   allStocks=stocks.map((s,i)=>({...s,rank:s.rank||i+1}));
+  
+  // Update market regime badge
+  const regimeBadge=document.getElementById('regimeBadge');
+  if(data.market_regime){
+    const regime=data.market_regime.regime||'sideways';
+    const emoji=regime==='bull'?'🐂':regime==='bear'?'🐻':'➡️';
+    const confidence=data.market_regime.confidence||0;
+    regimeBadge.textContent=emoji+' '+regime.toUpperCase();
+    regimeBadge.title='Market regime: '+regime+' ('+Math.round(confidence*100)+'% confidence)\n'+(data.market_regime.description||'');
+    regimeBadge.style.display='block';
+  }else{
+    regimeBadge.style.display='none';
+  }
+  
   renderTable();loadSectors();
 }
 async function loadSectors(){

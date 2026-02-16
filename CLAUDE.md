@@ -71,6 +71,7 @@ data/
 3. **Relaxed Entry Thresholds:** BUY signal now triggered with 2+ conditions (was 3+) OR entry_score >= 50. Top-20 stocks with score >75 auto-upgraded to BUY unless red flags present.
 4. **Sector-Relative Scoring (10% weight):** Within-sector rank now contributes to composite score, promoting sector diversification.
 5. **Growth-Adjusted Valuation:** High-growth stocks (growth_score > 80) get valuation penalty dampened by 1.3x. Stocks with PEG < 1.5 receive +15 point valuation boost.
+6. **Market Regime Detection:** Detects bull/bear/sideways markets based on SPY 200MA position and slope. **Bull markets** (SPY > 200MA, trending up): RSI thresholds +5 (75→80), sell scores -20%, growth/technicals weights +5%, risk/valuation -5%. **Bear markets** (SPY < 200MA, trending down): RSI thresholds -5 (70→65), sell scores +30%, risk weight +10%, valuation +5%, growth/technicals -10%/-5%. **Sideways**: No adjustments. Regime displayed in dashboard header and morning briefing.
 
 ## Running
 ```bash
@@ -98,8 +99,8 @@ python3 -m pytest test_sell_signals.py -v
 5. ~~Relax entry signal thresholds~~ ✅
 6. ~~Sector-relative scoring into composite (10% weight)~~ ✅
 7. ~~Growth-adjusted valuation~~ ✅
-8. Cross-reference yfinance + FMP (after FMP fully cached)
-9. Market regime detection (bear/bull — adjust thresholds based on SPY 200MA)
+8. ~~Market regime detection (bear/bull — adjust thresholds based on SPY 200MA)~~ ✅
+9. Cross-reference yfinance + FMP (after FMP fully cached)
 10. Walk-forward optimization (auto-tune weights from accuracy data)
 11. Portfolio tracking / watchlist (Robinhood, manual entry)
 12. Correlation check (pairwise correlation on portfolio picks)

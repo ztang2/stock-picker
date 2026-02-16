@@ -21,6 +21,7 @@ def compute_composite(
     weights: dict,
     strategy: str = "balanced",
     sector_scores: Optional[dict] = None,
+    regime: Optional[str] = None,
 ) -> pd.DataFrame:
     """Take list of per-stock result dicts and produce ranked DataFrame.
 
@@ -79,6 +80,29 @@ def compute_composite(
     w_growth = strat_weights.get("growth", 0.15)
     w_sent = strat_weights.get("sentiment", 0.05)
     w_sector_rel = strat_weights.get("sector_relative", 0.10)
+    
+    # Apply regime-based weight adjustments
+    if regime:
+        from .market_regime import get_regime_weight_adjustments
+        regime_adjustments = get_regime_weight_adjustments(regime)
+        w_fund *= regime_adjustments.get("fundamentals", 1.0)
+        w_val *= regime_adjustments.get("valuation", 1.0)
+        w_tech *= regime_adjustments.get("technicals", 1.0)
+        w_risk *= regime_adjustments.get("risk", 1.0)
+        w_growth *= regime_adjustments.get("growth", 1.0)
+        w_sent *= regime_adjustments.get("sentiment", 1.0)
+        w_sector_rel *= regime_adjustments.get("sector_relative", 1.0)
+        
+        # Renormalize weights to sum to 1.0
+        total_weight = w_fund + w_val + w_tech + w_risk + w_growth + w_sent + w_sector_rel
+        if total_weight > 0:
+            w_fund /= total_weight
+            w_val /= total_weight
+            w_tech /= total_weight
+            w_risk /= total_weight
+            w_growth /= total_weight
+            w_sent /= total_weight
+            w_sector_rel /= total_weight
 
     # For each row, redistribute weights proportionally across available categories
     categories = [

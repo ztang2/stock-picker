@@ -210,14 +210,23 @@ def generate_morning_briefing(current_results: Optional[dict] = None, top_n: int
     top_stocks = current_results.get("top", [])[:top_n]
     timestamp = current_results.get("timestamp", "Unknown")
     strategy = current_results.get("strategy", "balanced")
+    market_regime = current_results.get("market_regime", {})
     
     streaks = get_all_streaks()
+    
+    # Determine regime emoji
+    regime = market_regime.get("regime", "sideways")
+    regime_emoji = "🐂" if regime == "bull" else "🐻" if regime == "bear" else "➡️"
+    regime_label = f"{regime_emoji} {regime.upper()} MARKET"
+    regime_desc = market_regime.get("description", "")
     
     # Build briefing
     lines = []
     lines.append("=" * 60)
     lines.append(f"📊 MORNING BRIEFING - {timestamp}")
-    lines.append(f"Strategy: {strategy.upper()}")
+    lines.append(f"Strategy: {strategy.upper()} | Market: {regime_label}")
+    if regime_desc:
+        lines.append(f"    {regime_desc}")
     lines.append("=" * 60)
     lines.append("")
     

@@ -25,6 +25,7 @@ from .earnings_guard import apply_earnings_guard
 from .freshness import check_freshness
 from .streak_tracker import update_streaks, add_streaks_to_results
 from .sentiment import analyze_sentiment
+from .market_regime import detect_market_regime
 
 logger = logging.getLogger(__name__)
 
@@ -154,7 +155,8 @@ def analyze_single(
     ticker: str,
     data: dict,
     spy_hist: Optional[pd.DataFrame] = None,
-    prev_data: Optional[dict] = None
+    prev_data: Optional[dict] = None,
+    regime: Optional[str] = None
 ) -> dict:
     """Run all scoring stages on a single stock.
     
@@ -197,6 +199,7 @@ def analyze_single(
         entry_price=None,  # Not tracking entry prices in screening mode
         stop_loss_pct=-15.0,
         adx=momentum.get("adx"),  # Pass ADX from momentum data
+        regime=regime,  # Pass market regime for threshold adjustments
     )
 
     return {
@@ -262,8 +265,13 @@ def run_scan(
                 stock_data[ticker_sym] = result
         _save_cache(stock_data)
 
-    # Fetch SPY for beta
+    # Fetch SPY for beta and regime detection
     spy_hist = _fetch_spy_hist(cache_hours, stock_data)
+    
+    # Detect market regime
+    regime_data = detect_market_regime(spy_hist) if spy_hist is not None else {}
+    regime = regime_data.get("regime", "sideways")
+    logger.info(f"Market regime detected: {regime.upper()} (confidence: {regime_data.get('confidence', 0):.0%})")
 
     # Load previous results for sell signal comparison
     prev_results_file = DATA_DIR / "prev_scan_results.json"
@@ -279,7 +287,7 @@ def run_scan(
                     if ticker_sym in prev_cached:
                         try:
                             prev_results_map[ticker_sym] = analyze_single(
-                                ticker_sym, prev_cached[ticker_sym], spy_hist
+                                ticker_sym, prev_cached[ticker_sym], spy_hist, regime=regime
                             )
                         except Exception:
                             pass
@@ -302,7 +310,7 @@ def run_scan(
 
         try:
             prev_data = prev_results_map.get(ticker_sym)
-            result = analyze_single(ticker_sym, data, spy_hist, prev_data)
+            result = analyze_single(ticker_sym, data, spy_hist, prev_data, regime=regime)
             results.append(result)
         except Exception:
             logger.warning("Analysis failed for %s", ticker_sym, exc_info=True)
@@ -325,7 +333,7 @@ def run_scan(
     sector_scores = compute_sector_relative_scores(results)
 
     # Score and rank (on filtered set), passing sector scores for sector-relative weighting
-    ranked_df = compute_composite(filtered, weights, strategy=strategy, sector_scores=sector_scores)
+    ranked_df = compute_composite(filtered, weights, strategy=strategy, sector_scores=sector_scores, regime=regime)
 
     # Merge details
     detail_map = {r["ticker"]: r for r in filtered}
@@ -402,6 +410,7 @@ def run_scan(
     output = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "strategy": strategy,
+        "market_regime": regime_data,
         "stocks_analyzed": len(results),
         "stocks_after_filter": len(filtered),
         "top": ranked,
@@ -432,7 +441,12 @@ def get_stock_detail(ticker: str, config: Optional[dict] = None) -> Optional[dic
             return None
 
     spy_hist = _fetch_spy_hist(cache_hours, stock_data)
-    return analyze_single(ticker, data, spy_hist)
+    
+    # Detect regime for single stock analysis
+    regime_data = detect_market_regime(spy_hist) if spy_hist is not None else {}
+    regime = regime_data.get("regime", "sideways")
+    
+    return analyze_single(ticker, data, spy_hist, regime=regime)
 
 
 def get_all_sectors(config: Optional[dict] = None) -> Dict[str, int]:

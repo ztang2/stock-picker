@@ -240,3 +240,14 @@ INFO:     127.0.0.1:64753 - "GET /scan/cached HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64752 - "GET /fmp/status HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64753 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64752 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65305 - "GET /stock/AAPL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65305 - "GET / HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65305 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:65307 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65305 - "GET /fmp/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65305 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65307 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65312 - "GET /scan?strategy=aggressive HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65312 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65316 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65319 - "GET /portfolio?stocks=10 HTTP/1.1" 200 OK
