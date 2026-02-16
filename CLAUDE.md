@@ -86,14 +86,18 @@ python3 -m pytest test_sell_signals.py -v
 ## Roadmap (in order)
 1. ~~Sell signals~~ ✅
 2. ~~Consecutive days tracking~~ ✅
-3. Cross-reference yfinance + FMP (after FMP fully cached)
-4. Wire sentiment into scoring
-5. Sector-relative entry signals
-6. Market regime detection (bear/bull)
-7. Walk-forward optimization
-8. Portfolio tracking / watchlist
-9. Correlation check
-10. Peer comparison
+3. ~~Wire sentiment into scoring (5% weight)~~ ✅
+4. ~~Sell signals trend context (ADX awareness)~~ ✅
+5. ~~Relax entry signal thresholds~~ ✅
+6. ~~Sector-relative scoring into composite (10% weight)~~ ✅
+7. ~~Growth-adjusted valuation~~ ✅
+8. Cross-reference yfinance + FMP (after FMP fully cached)
+9. Market regime detection (bear/bull — adjust thresholds based on SPY 200MA)
+10. Walk-forward optimization (auto-tune weights from accuracy data)
+11. Portfolio tracking / watchlist (Robinhood, manual entry)
+12. Correlation check (pairwise correlation on portfolio picks)
+13. Peer comparison (sub-sector ranking)
+14. Streak consistency bonus (consecutive days → composite boost)
 
 ## Owner
 Zhuoran Tang (@ztang2) — using Robinhood, planning $3000 balanced portfolio (ALL, ACGL, MCK, EQT, NEM)

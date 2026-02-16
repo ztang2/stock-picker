@@ -1,15 +1,21 @@
 """Valuation analysis: P/E, P/S, PEG ratio."""
 
 import logging
+from typing import Optional
+
 import numpy as np
 
 logger = logging.getLogger(__name__)
 
 
-def score_valuation(info: dict) -> dict:
+def score_valuation(info: dict, growth_score: Optional[float] = None) -> dict:
     """Compute valuation metrics and raw score (0-100).
 
     Lower valuation multiples → higher score (value investing bias).
+    
+    Args:
+        info: Stock info dict from yfinance
+        growth_score: Optional growth score (0-100). If > 80, dampens valuation penalty for high-growth stocks.
     """
     metrics: dict = {}
 
@@ -46,5 +52,16 @@ def score_valuation(info: dict) -> dict:
         metrics["score"] = sum(valid) / len(valid) * 3
     else:
         metrics["score"] = None
+    
+    # Growth-adjusted valuation: dampen penalty for high-growth stocks
+    if metrics["score"] is not None and growth_score is not None and growth_score > 80:
+        # High-growth stocks (score > 80) get less punished for high P/E
+        metrics["score"] = min(metrics["score"] * 1.3, 100.0)
+        metrics["growth_adjusted"] = True
+    
+    # PEG ratio boost: if PEG < 1.5, it's growth at a reasonable price
+    if peg is not None and peg > 0 and peg < 1.5 and metrics["score"] is not None:
+        metrics["score"] = min(metrics["score"] + 15, 100.0)
+        metrics["peg_boosted"] = True
 
     return metrics

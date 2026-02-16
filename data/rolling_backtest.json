@@ -1,0 +1,3816 @@
+{
+  "timestamp": "2026-02-15T00:37:01",
+  "years": 5,
+  "periods_evaluated": 60,
+  "tickers_used": 77,
+  "top_n": 20,
+  "strategies": {
+    "conservative": {
+      "periods": [
+        {
+          "date": "2021-03-01",
+          "top_picks": [
+            "AOS",
+            "CDNS",
+            "CMI",
+            "A",
+            "ACN"
+          ],
+          "num_scored": 76,
+          "1m_return": 0.0131,
+          "1m_spy": 0.0207,
+          "1m_alpha": -0.0076,
+          "3m_return": 0.0563,
+          "3m_spy": 0.0808,
+          "3m_alpha": -0.0244,
+          "6m_return": 0.1656,
+          "6m_spy": 0.1633,
+          "6m_alpha": 0.0023
+        },
+        {
+          "date": "2021-04-01",
+          "top_picks": [
+            "A",
+            "AJG",
+            "CL",
+            "ACN",
+            "AZO"
+          ],
+          "num_scored": 76,
+          "1m_return": 0.0345,
+          "1m_spy": 0.0417,
+          "1m_alpha": -0.0072,
+          "3m_return": 0.0613,
+          "3m_spy": 0.072,
+          "3m_alpha": -0.0107,
+          "6m_return": 0.1093,
+          "6m_spy": 0.0897,
+          "6m_alpha": 0.0196
+        },
+        {
+          "date": "2021-05-01",
+          "top_picks": [
+            "ADM",
+            "AON",
+            "AME",
+            "CMCSA",
+            "A"
+          ],
+          "num_scored": 76,
+          "1m_return": 0.011,
+          "1m_spy": 0.0057,
+          "1m_alpha": 0.0053,
+          "3m_return": 0.0688,
+          "3m_spy": 0.0543,
+          "3m_alpha": 0.0146,
+          "6m_return": 0.1276,
+          "6m_spy": 0.1054,
+          "6m_alpha": 0.0221
+        },
+        {
+          "date": "2021-06-01",
+          "top_picks": [
+            "ARES",
+            "CMI",
+            "A",
+            "AME",
+            "CMCSA"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0065,
+          "1m_spy": 0.029,
+          "1m_alpha": -0.0225,
+          "3m_return": 0.0634,
+          "3m_spy": 0.0811,
+          "3m_alpha": -0.0177,
+          "6m_return": 0.095,
+          "6m_spy": 0.1142,
+          "6m_alpha": -0.0192
+        },
+        {
+          "date": "2021-07-01",
+          "top_picks": [
+            "ALL",
+            "AOS",
+            "AES",
+            "BLK",
+            "ADP"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0153,
+          "1m_spy": 0.0188,
+          "1m_alpha": -0.0034,
+          "3m_return": 0.0245,
+          "3m_spy": 0.0126,
+          "3m_alpha": 0.0119,
+          "6m_return": 0.1267,
+          "6m_spy": 0.1153,
+          "6m_alpha": 0.0114
+        },
+        {
+          "date": "2021-08-01",
+          "top_picks": [
+            "AFL",
+            "AIZ",
+            "AVY",
+            "ADM",
+            "BK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0396,
+          "1m_spy": 0.0319,
+          "1m_alpha": 0.0077,
+          "3m_return": 0.0506,
+          "3m_spy": 0.0529,
+          "3m_alpha": -0.0023,
+          "6m_return": 0.0255,
+          "6m_spy": 0.0168,
+          "6m_alpha": 0.0087
+        },
+        {
+          "date": "2021-09-01",
+          "top_picks": [
+            "ALL",
+            "AIZ",
+            "AJG",
+            "ADM",
+            "ARES"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.049,
+          "1m_spy": -0.0358,
+          "1m_alpha": -0.0133,
+          "3m_return": -0.0151,
+          "3m_spy": 0.0116,
+          "3m_alpha": -0.0266,
+          "6m_return": -0.0237,
+          "6m_spy": -0.0271,
+          "6m_alpha": 0.0034
+        },
+        {
+          "date": "2021-10-01",
+          "top_picks": [
+            "AJG",
+            "AZO",
+            "ADP",
+            "BK",
+            "ARES"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0624,
+          "1m_spy": 0.0594,
+          "1m_alpha": 0.003,
+          "3m_return": 0.1169,
+          "3m_spy": 0.1004,
+          "3m_alpha": 0.0165,
+          "6m_return": 0.1709,
+          "6m_spy": 0.0633,
+          "6m_alpha": 0.1075
+        },
+        {
+          "date": "2021-11-01",
+          "top_picks": [
+            "AVB",
+            "AVY",
+            "ARES",
+            "ADP",
+            "AON"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0117,
+          "1m_spy": -0.0207,
+          "1m_alpha": 0.0091,
+          "3m_return": 0.009,
+          "3m_spy": -0.0186,
+          "3m_alpha": 0.0276,
+          "6m_return": -0.0699,
+          "6m_spy": -0.0985,
+          "6m_alpha": 0.0286
+        },
+        {
+          "date": "2021-12-01",
+          "top_picks": [
+            "AJG",
+            "ADP",
+            "ACN",
+            "AZO",
+            "ABT"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.1,
+          "1m_spy": 0.058,
+          "1m_alpha": 0.042,
+          "3m_return": 0.0002,
+          "3m_spy": -0.0422,
+          "3m_alpha": 0.0424,
+          "6m_return": -0.0088,
+          "6m_spy": -0.0773,
+          "6m_alpha": 0.0685
+        },
+        {
+          "date": "2022-01-01",
+          "top_picks": [
+            "ADP",
+            "AJG",
+            "AVB",
+            "AFL",
+            "ACN"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0391,
+          "1m_spy": -0.0527,
+          "1m_alpha": 0.0137,
+          "3m_return": -0.004,
+          "3m_spy": -0.0434,
+          "3m_alpha": 0.0395,
+          "6m_return": -0.1392,
+          "6m_spy": -0.1998,
+          "6m_alpha": 0.0607
+        },
+        {
+          "date": "2022-02-01",
+          "top_picks": [
+            "ADM",
+            "AZO",
+            "AVB",
+            "ACGL",
+            "AEE"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.009,
+          "1m_spy": -0.0381,
+          "1m_alpha": 0.0291,
+          "3m_return": -0.045,
+          "3m_spy": -0.0821,
+          "3m_alpha": 0.0371,
+          "6m_return": -0.0444,
+          "6m_spy": -0.0864,
+          "6m_alpha": 0.042
+        },
+        {
+          "date": "2022-03-01",
+          "top_picks": [
+            "AEP",
+            "AIZ",
+            "ATO",
+            "ADM",
+            "AON"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0805,
+          "1m_spy": 0.0536,
+          "1m_alpha": 0.0269,
+          "3m_return": 0.0291,
+          "3m_spy": -0.0367,
+          "3m_alpha": 0.0658,
+          "6m_return": 0.0224,
+          "6m_spy": -0.0566,
+          "6m_alpha": 0.0791
+        },
+        {
+          "date": "2022-04-01",
+          "top_picks": [
+            "AVB",
+            "AZO",
+            "AEE",
+            "ACGL",
+            "ADM"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0775,
+          "1m_spy": -0.0849,
+          "1m_alpha": 0.0074,
+          "3m_return": -0.1328,
+          "3m_spy": -0.1635,
+          "3m_alpha": 0.0307,
+          "6m_return": -0.1616,
+          "6m_spy": -0.175,
+          "6m_alpha": 0.0134
+        },
+        {
+          "date": "2022-05-01",
+          "top_picks": [
+            "ADM",
+            "AEP",
+            "AEE",
+            "AIZ",
+            "AJG"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0153,
+          "1m_spy": -0.0037,
+          "1m_alpha": 0.0191,
+          "3m_return": 0.0065,
+          "3m_spy": -0.0017,
+          "3m_alpha": 0.0082,
+          "6m_return": 0.0015,
+          "6m_spy": -0.0535,
+          "6m_alpha": 0.055
+        },
+        {
+          "date": "2022-06-01",
+          "top_picks": [
+            "AEE",
+            "AEP",
+            "ATO",
+            "AZO",
+            "ADM"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0343,
+          "1m_spy": -0.0652,
+          "1m_alpha": 0.0309,
+          "3m_return": -0.0119,
+          "3m_spy": -0.0236,
+          "3m_alpha": 0.0117,
+          "6m_return": 0.036,
+          "6m_spy": -0.0252,
+          "6m_alpha": 0.0612
+        },
+        {
+          "date": "2022-07-01",
+          "top_picks": [
+            "AEE",
+            "ATO",
+            "AEP",
+            "BDX",
+            "ACGL"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0146,
+          "1m_spy": 0.0775,
+          "1m_alpha": -0.0629,
+          "3m_return": -0.0403,
+          "3m_spy": -0.0445,
+          "3m_alpha": 0.0041,
+          "6m_return": 0.0491,
+          "6m_spy": -0.0034,
+          "6m_alpha": 0.0525
+        },
+        {
+          "date": "2022-08-01",
+          "top_picks": [
+            "AIZ",
+            "AEP",
+            "AJG",
+            "AMCR",
+            "ATO"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0105,
+          "1m_spy": -0.038,
+          "1m_alpha": 0.0484,
+          "3m_return": 0.0102,
+          "3m_spy": -0.0559,
+          "3m_alpha": 0.0661,
+          "6m_return": 0.0148,
+          "6m_spy": -0.0038,
+          "6m_alpha": 0.0186
+        },
+        {
+          "date": "2022-09-01",
+          "top_picks": [
+            "CAH",
+            "CI",
+            "ATO",
+            "AMGN",
+            "AJG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0777,
+          "1m_spy": -0.0953,
+          "1m_alpha": 0.0176,
+          "3m_return": 0.0925,
+          "3m_spy": 0.0326,
+          "3m_alpha": 0.0599,
+          "6m_return": 0.0145,
+          "6m_spy": 0.0083,
+          "6m_alpha": 0.0061
+        },
+        {
+          "date": "2022-10-01",
+          "top_picks": [
+            "CAH",
+            "CI",
+            "AZO",
+            "ACGL",
+            "AMGN"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.1034,
+          "1m_spy": 0.0813,
+          "1m_alpha": 0.0222,
+          "3m_return": 0.1326,
+          "3m_spy": 0.0756,
+          "3m_alpha": 0.057,
+          "6m_return": 0.0642,
+          "6m_spy": 0.1398,
+          "6m_alpha": -0.0755
+        },
+        {
+          "date": "2022-11-01",
+          "top_picks": [
+            "ACGL",
+            "AJG",
+            "CF",
+            "ADM",
+            "AMGN"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0556,
+          "1m_spy": 0.0595,
+          "1m_alpha": -0.0038,
+          "3m_return": 0.0147,
+          "3m_spy": 0.0466,
+          "3m_alpha": -0.0318,
+          "6m_return": 0.0217,
+          "6m_spy": 0.0897,
+          "6m_alpha": -0.068
+        },
+        {
+          "date": "2022-12-01",
+          "top_picks": [
+            "CI",
+            "ATO",
+            "AEP",
+            "CAH",
+            "AEE"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0274,
+          "1m_spy": -0.0569,
+          "1m_alpha": 0.0296,
+          "3m_return": -0.0827,
+          "3m_spy": -0.0266,
+          "3m_alpha": -0.0561,
+          "6m_return": -0.118,
+          "6m_spy": 0.0401,
+          "6m_alpha": -0.1581
+        },
+        {
+          "date": "2023-01-01",
+          "top_picks": [
+            "AZO",
+            "CI",
+            "AFL",
+            "AEE",
+            "CL"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.004,
+          "1m_spy": 0.0674,
+          "1m_alpha": -0.0634,
+          "3m_return": -0.0508,
+          "3m_spy": 0.0791,
+          "3m_alpha": -0.1299,
+          "6m_return": -0.0028,
+          "6m_spy": 0.1728,
+          "6m_alpha": -0.1755
+        },
+        {
+          "date": "2023-02-01",
+          "top_picks": [
+            "AZO",
+            "CMI",
+            "ATO",
+            "AJG",
+            "APD"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0252,
+          "1m_spy": -0.0161,
+          "1m_alpha": -0.0091,
+          "3m_return": -0.0067,
+          "3m_spy": 0.0039,
+          "3m_alpha": -0.0106,
+          "6m_return": 0.0344,
+          "6m_spy": 0.1228,
+          "6m_alpha": -0.0884
+        },
+        {
+          "date": "2023-03-01",
+          "top_picks": [
+            "ACGL",
+            "APD",
+            "CMI",
+            "AZO",
+            "CLX"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0231,
+          "1m_spy": 0.0411,
+          "1m_alpha": -0.0642,
+          "3m_return": -0.0542,
+          "3m_spy": 0.0685,
+          "3m_alpha": -0.1227,
+          "6m_return": 0.0256,
+          "6m_spy": 0.1301,
+          "6m_alpha": -0.1045
+        },
+        {
+          "date": "2023-04-01",
+          "top_picks": [
+            "ACGL",
+            "APD",
+            "AZO",
+            "AJG",
+            "CAH"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0259,
+          "1m_spy": 0.0149,
+          "1m_alpha": 0.011,
+          "3m_return": 0.0353,
+          "3m_spy": 0.0868,
+          "3m_alpha": -0.0515,
+          "6m_return": 0.0164,
+          "6m_spy": 0.0543,
+          "6m_alpha": -0.0379
+        },
+        {
+          "date": "2023-05-01",
+          "top_picks": [
+            "AFL",
+            "CL",
+            "ACGL",
+            "CAH",
+            "ATO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0547,
+          "1m_spy": 0.0056,
+          "1m_alpha": -0.0603,
+          "3m_return": 0.0203,
+          "3m_spy": 0.1058,
+          "3m_alpha": -0.0856,
+          "6m_return": -0.0487,
+          "6m_spy": -0.0045,
+          "6m_alpha": -0.0442
+        },
+        {
+          "date": "2023-06-01",
+          "top_picks": [
+            "CAH",
+            "AME",
+            "CME",
+            "CDNS",
+            "BDX"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0554,
+          "1m_spy": 0.0548,
+          "1m_alpha": 0.0006,
+          "3m_return": 0.0789,
+          "3m_spy": 0.0732,
+          "3m_alpha": 0.0057,
+          "6m_return": 0.1087,
+          "6m_spy": 0.0863,
+          "6m_alpha": 0.0224
+        },
+        {
+          "date": "2023-07-01",
+          "top_picks": [
+            "ACGL",
+            "AFL",
+            "CAH",
+            "CMI",
+            "CME"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0121,
+          "1m_spy": 0.0327,
+          "1m_alpha": -0.0206,
+          "3m_return": -0.0181,
+          "3m_spy": -0.0322,
+          "3m_alpha": 0.0141,
+          "6m_return": 0.07,
+          "6m_spy": 0.0835,
+          "6m_alpha": -0.0135
+        },
+        {
+          "date": "2023-07-01",
+          "top_picks": [
+            "ACGL",
+            "AFL",
+            "CAH",
+            "CMI",
+            "CME"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0121,
+          "1m_spy": 0.0327,
+          "1m_alpha": -0.0206,
+          "3m_return": -0.0181,
+          "3m_spy": -0.0322,
+          "3m_alpha": 0.0141,
+          "6m_return": 0.07,
+          "6m_spy": 0.0835,
+          "6m_alpha": -0.0135
+        },
+        {
+          "date": "2023-08-01",
+          "top_picks": [
+            "BDX",
+            "AJG",
+            "ACGL",
+            "CL",
+            "AME"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0128,
+          "1m_spy": -0.0134,
+          "1m_alpha": 0.0006,
+          "3m_return": -0.0591,
+          "3m_spy": -0.0864,
+          "3m_alpha": 0.0273,
+          "6m_return": 0.0274,
+          "6m_spy": 0.0844,
+          "6m_alpha": -0.057
+        },
+        {
+          "date": "2023-09-01",
+          "top_picks": [
+            "ACGL",
+            "AXON",
+            "AZO",
+            "AME",
+            "AOS"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0438,
+          "1m_spy": -0.0496,
+          "1m_alpha": 0.0058,
+          "3m_return": 0.028,
+          "3m_spy": 0.0151,
+          "3m_alpha": 0.0129,
+          "6m_return": 0.1109,
+          "6m_spy": 0.1306,
+          "6m_alpha": -0.0197
+        },
+        {
+          "date": "2023-10-01",
+          "top_picks": [
+            "ACGL",
+            "AJG",
+            "AFL",
+            "AZO",
+            "CAH"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0055,
+          "1m_spy": -0.0213,
+          "1m_alpha": 0.0158,
+          "3m_return": 0.0948,
+          "3m_spy": 0.1168,
+          "3m_alpha": -0.022,
+          "6m_return": 0.203,
+          "6m_spy": 0.2329,
+          "6m_alpha": -0.0299
+        },
+        {
+          "date": "2023-11-01",
+          "top_picks": [
+            "ACGL",
+            "AJG",
+            "CME",
+            "AFL",
+            "CAH"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.062,
+          "1m_spy": 0.0862,
+          "1m_alpha": -0.0243,
+          "3m_return": 0.1174,
+          "3m_spy": 0.1661,
+          "3m_alpha": -0.0487,
+          "6m_return": 0.1833,
+          "6m_spy": 0.2154,
+          "6m_alpha": -0.0322
+        },
+        {
+          "date": "2023-12-01",
+          "top_picks": [
+            "CME",
+            "AJG",
+            "AON",
+            "AFL",
+            "AIZ"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0166,
+          "1m_spy": 0.0337,
+          "1m_alpha": -0.0171,
+          "3m_return": 0.0744,
+          "3m_spy": 0.1112,
+          "3m_alpha": -0.0368,
+          "6m_return": 0.084,
+          "6m_spy": 0.1542,
+          "6m_alpha": -0.0702
+        },
+        {
+          "date": "2024-01-01",
+          "top_picks": [
+            "CME",
+            "AFL",
+            "AMGN",
+            "AIZ",
+            "BKR"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0157,
+          "1m_spy": 0.0216,
+          "1m_alpha": -0.0059,
+          "3m_return": 0.0656,
+          "3m_spy": 0.1082,
+          "3m_alpha": -0.0426,
+          "6m_return": 0.1048,
+          "6m_spy": 0.1587,
+          "6m_alpha": -0.054
+        },
+        {
+          "date": "2024-02-01",
+          "top_picks": [
+            "CAH",
+            "CL",
+            "CMG",
+            "AME",
+            "BKNG"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0264,
+          "1m_spy": 0.0483,
+          "1m_alpha": -0.022,
+          "3m_return": 0.0141,
+          "3m_spy": 0.026,
+          "3m_alpha": -0.0119,
+          "6m_return": 0.0598,
+          "6m_spy": 0.115,
+          "6m_alpha": -0.0552
+        },
+        {
+          "date": "2024-03-01",
+          "top_picks": [
+            "CAH",
+            "CMG",
+            "ACN",
+            "AJG",
+            "AIZ"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0099,
+          "1m_spy": 0.0213,
+          "1m_alpha": -0.0114,
+          "3m_return": -0.0246,
+          "3m_spy": 0.0222,
+          "3m_alpha": -0.0468,
+          "6m_return": 0.0487,
+          "6m_spy": 0.0955,
+          "6m_alpha": -0.0469
+        },
+        {
+          "date": "2024-04-01",
+          "top_picks": [
+            "CAH",
+            "ALL",
+            "AIZ",
+            "BK",
+            "AKAM"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0227,
+          "1m_spy": -0.0418,
+          "1m_alpha": 0.0191,
+          "3m_return": -0.0128,
+          "3m_spy": 0.0478,
+          "3m_alpha": -0.0606,
+          "6m_return": 0.0959,
+          "6m_spy": 0.1013,
+          "6m_alpha": -0.0054
+        },
+        {
+          "date": "2024-05-01",
+          "top_picks": [
+            "APH",
+            "CMG",
+            "AIG",
+            "AVY",
+            "BK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.028,
+          "1m_spy": 0.054,
+          "1m_alpha": -0.026,
+          "3m_return": 0.062,
+          "3m_spy": 0.0867,
+          "3m_alpha": -0.0247,
+          "6m_return": 0.143,
+          "6m_spy": 0.1682,
+          "6m_alpha": -0.0251
+        },
+        {
+          "date": "2024-06-01",
+          "top_picks": [
+            "AIG",
+            "AMP",
+            "BK",
+            "AVY",
+            "APO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0168,
+          "1m_spy": 0.0374,
+          "1m_alpha": -0.0542,
+          "3m_return": 0.0677,
+          "3m_spy": 0.0723,
+          "3m_alpha": -0.0046,
+          "6m_return": 0.1614,
+          "6m_spy": 0.1498,
+          "6m_alpha": 0.0117
+        },
+        {
+          "date": "2024-07-01",
+          "top_picks": [
+            "BK",
+            "CL",
+            "AFL",
+            "APO",
+            "AIG"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0484,
+          "1m_spy": 0.01,
+          "1m_alpha": 0.0384,
+          "3m_return": 0.101,
+          "3m_spy": 0.0553,
+          "3m_alpha": 0.0457,
+          "6m_return": 0.1629,
+          "6m_spy": 0.0981,
+          "6m_alpha": 0.0647
+        },
+        {
+          "date": "2024-08-01",
+          "top_picks": [
+            "BK",
+            "CL",
+            "AXP",
+            "ALL",
+            "AIZ"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0379,
+          "1m_spy": 0.0381,
+          "1m_alpha": -0.0001,
+          "3m_return": 0.0506,
+          "3m_spy": 0.0714,
+          "3m_alpha": -0.0208,
+          "6m_return": 0.0861,
+          "6m_spy": 0.1204,
+          "6m_alpha": -0.0344
+        },
+        {
+          "date": "2024-09-01",
+          "top_picks": [
+            "ALL",
+            "AXP",
+            "AIG",
+            "AMCR",
+            "CMG"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0157,
+          "1m_spy": 0.0331,
+          "1m_alpha": -0.0174,
+          "3m_return": 0.0766,
+          "3m_spy": 0.0948,
+          "3m_alpha": -0.0181,
+          "6m_return": 0.0594,
+          "6m_spy": 0.0832,
+          "6m_alpha": -0.0238
+        },
+        {
+          "date": "2024-10-01",
+          "top_picks": [
+            "CMI",
+            "AEP",
+            "AZO",
+            "AVY",
+            "AVB"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0226,
+          "1m_spy": 0.0,
+          "1m_alpha": -0.0226,
+          "3m_return": -0.0195,
+          "3m_spy": 0.038,
+          "3m_alpha": -0.0575,
+          "6m_return": 0.0202,
+          "6m_spy": -0.01,
+          "6m_alpha": 0.0301
+        },
+        {
+          "date": "2024-11-01",
+          "top_picks": [
+            "ADP",
+            "BK",
+            "BLK",
+            "AXP",
+            "CFG"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0932,
+          "1m_spy": 0.0571,
+          "1m_alpha": 0.0361,
+          "3m_return": 0.1096,
+          "3m_spy": 0.0631,
+          "3m_alpha": 0.0465,
+          "6m_return": 0.0385,
+          "6m_spy": -0.0227,
+          "6m_alpha": 0.0612
+        },
+        {
+          "date": "2024-12-01",
+          "top_picks": [
+            "AVB",
+            "ALL",
+            "ADP",
+            "AEP",
+            "ATO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0323,
+          "1m_spy": -0.0258,
+          "1m_alpha": -0.0065,
+          "3m_return": 0.0414,
+          "3m_spy": -0.0123,
+          "3m_alpha": 0.0537,
+          "6m_return": 0.0513,
+          "6m_spy": -0.0174,
+          "6m_alpha": 0.0687
+        },
+        {
+          "date": "2025-01-01",
+          "top_picks": [
+            "AJG",
+            "BLK",
+            "CME",
+            "AXP",
+            "ADP"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0471,
+          "1m_spy": 0.0294,
+          "1m_alpha": 0.0177,
+          "3m_return": 0.054,
+          "3m_spy": -0.0376,
+          "3m_alpha": 0.0916,
+          "6m_return": 0.0932,
+          "6m_spy": 0.0631,
+          "6m_alpha": 0.0301
+        },
+        {
+          "date": "2025-02-01",
+          "top_picks": [
+            "ATO",
+            "AFL",
+            "AJG",
+            "AEP",
+            "BK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0245,
+          "1m_spy": -0.03,
+          "1m_alpha": 0.0545,
+          "3m_return": -0.0139,
+          "3m_spy": -0.0554,
+          "3m_alpha": 0.0415,
+          "6m_return": 0.0287,
+          "6m_spy": 0.0566,
+          "6m_alpha": -0.0279
+        },
+        {
+          "date": "2025-03-01",
+          "top_picks": [
+            "AFL",
+            "AVB",
+            "ALL",
+            "AEE",
+            "ATO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0071,
+          "1m_spy": -0.0557,
+          "1m_alpha": 0.0486,
+          "3m_return": -0.0137,
+          "3m_spy": -0.0051,
+          "3m_alpha": -0.0086,
+          "6m_return": 0.0127,
+          "6m_spy": 0.0987,
+          "6m_alpha": -0.0859
+        },
+        {
+          "date": "2025-04-01",
+          "top_picks": [
+            "ADP",
+            "AEE",
+            "ABT",
+            "AJG",
+            "ATO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0344,
+          "1m_spy": -0.0045,
+          "1m_alpha": -0.03,
+          "3m_return": 0.0009,
+          "3m_spy": 0.1047,
+          "3m_alpha": -0.1037,
+          "6m_return": 0.0223,
+          "6m_spy": 0.1899,
+          "6m_alpha": -0.1676
+        },
+        {
+          "date": "2025-05-01",
+          "top_picks": [
+            "CME",
+            "AZO",
+            "CAH",
+            "ATO",
+            "AEP"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0306,
+          "1m_spy": 0.0554,
+          "1m_alpha": -0.0248,
+          "3m_return": 0.023,
+          "3m_spy": 0.1394,
+          "3m_alpha": -0.1165,
+          "6m_return": 0.0151,
+          "6m_spy": 0.2373,
+          "6m_alpha": -0.2222
+        },
+        {
+          "date": "2025-06-01",
+          "top_picks": [
+            "CME",
+            "ATO",
+            "AJG",
+            "ABT",
+            "AON"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0016,
+          "1m_spy": 0.0452,
+          "1m_alpha": -0.0435,
+          "3m_return": 0.0096,
+          "3m_spy": 0.0915,
+          "3m_alpha": -0.0819,
+          "6m_return": 0.0148,
+          "6m_spy": 0.1596,
+          "6m_alpha": -0.1448
+        },
+        {
+          "date": "2025-07-01",
+          "top_picks": [
+            "AEE",
+            "AZO",
+            "ABT",
+            "ADP",
+            "BKNG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0171,
+          "1m_spy": 0.0234,
+          "1m_alpha": -0.0405,
+          "3m_return": 0.0084,
+          "3m_spy": 0.0775,
+          "3m_alpha": -0.0691,
+          "6m_return": 0.0034,
+          "6m_spy": 0.12,
+          "6m_alpha": -0.1167
+        },
+        {
+          "date": "2025-08-01",
+          "top_picks": [
+            "CME",
+            "AZO",
+            "ALL",
+            "ATO",
+            "ALLE"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0179,
+          "1m_spy": 0.0298,
+          "1m_alpha": -0.0119,
+          "3m_return": 0.0236,
+          "3m_spy": 0.0965,
+          "3m_alpha": -0.0729,
+          "6m_return": 0.0532,
+          "6m_spy": 0.125,
+          "6m_alpha": -0.0718
+        },
+        {
+          "date": "2025-09-01",
+          "top_picks": [
+            "ATO",
+            "ABT",
+            "BK",
+            "CAH",
+            "AEE"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0069,
+          "1m_spy": 0.0469,
+          "1m_alpha": -0.04,
+          "3m_return": 0.0166,
+          "3m_spy": 0.0654,
+          "3m_alpha": -0.0488,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2025-10-01",
+          "top_picks": [
+            "CAH",
+            "ATO",
+            "AZO",
+            "AIG",
+            "AEE"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0088,
+          "1m_spy": 0.0204,
+          "1m_alpha": -0.0292,
+          "3m_return": 0.0205,
+          "3m_spy": 0.0308,
+          "3m_alpha": -0.0103,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2025-11-01",
+          "top_picks": [
+            "AEP",
+            "BK",
+            "CAH",
+            "AEE",
+            "AME"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0269,
+          "1m_spy": -0.0026,
+          "1m_alpha": 0.0295,
+          "3m_return": 0.0894,
+          "3m_spy": 0.0175,
+          "3m_alpha": 0.0719,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2025-12-01",
+          "top_picks": [
+            "BK",
+            "CME",
+            "ALLE",
+            "AEP",
+            "AZO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0142,
+          "1m_spy": 0.0054,
+          "1m_alpha": -0.0196,
+          "3m_return": null,
+          "3m_spy": null,
+          "3m_alpha": null,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2026-01-01",
+          "top_picks": [
+            "BK",
+            "CME",
+            "ALLE",
+            "AFL",
+            "AME"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0106,
+          "1m_spy": 0.0129,
+          "1m_alpha": -0.0023,
+          "3m_return": null,
+          "3m_spy": null,
+          "3m_alpha": null,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        }
+      ],
+      "horizons": {
+        "1m": {
+          "num_periods": 60,
+          "win_rate": 0.45,
+          "avg_alpha": -0.0036,
+          "avg_return": 0.0087,
+          "avg_spy_return": 0.0124,
+          "std_alpha": 0.0291,
+          "sharpe_ratio": -0.4339,
+          "t_stat": -0.9701,
+          "p_value": 0.3359,
+          "best_period": {
+            "date": "2025-02-01",
+            "alpha": 0.0545
+          },
+          "worst_period": {
+            "date": "2023-03-01",
+            "alpha": -0.0642
+          },
+          "consistency": 0.45,
+          "significant": false
+        },
+        "3m": {
+          "num_periods": 58,
+          "win_rate": 0.4483,
+          "avg_alpha": -0.0096,
+          "avg_return": 0.0241,
+          "avg_spy_return": 0.0337,
+          "std_alpha": 0.0512,
+          "sharpe_ratio": -0.6515,
+          "t_stat": -1.4323,
+          "p_value": 0.1575,
+          "best_period": {
+            "date": "2025-01-01",
+            "alpha": 0.0916
+          },
+          "worst_period": {
+            "date": "2023-01-01",
+            "alpha": -0.1299
+          },
+          "consistency": 0.4483,
+          "significant": false
+        },
+        "6m": {
+          "num_periods": 55,
+          "win_rate": 0.4545,
+          "avg_alpha": -0.0207,
+          "avg_return": 0.0479,
+          "avg_spy_return": 0.0687,
+          "std_alpha": 0.0703,
+          "sharpe_ratio": -1.0208,
+          "t_stat": -2.1855,
+          "p_value": 0.0332,
+          "best_period": {
+            "date": "2021-10-01",
+            "alpha": 0.1075
+          },
+          "worst_period": {
+            "date": "2025-05-01",
+            "alpha": -0.2222
+          },
+          "consistency": 0.4545,
+          "significant": true
+        }
+      }
+    },
+    "balanced": {
+      "periods": [
+        {
+          "date": "2021-03-01",
+          "top_picks": [
+            "ALL",
+            "AJG",
+            "AMCR",
+            "ACN",
+            "CDNS"
+          ],
+          "num_scored": 76,
+          "1m_return": 0.0245,
+          "1m_spy": 0.0207,
+          "1m_alpha": 0.0039,
+          "3m_return": 0.1216,
+          "3m_spy": 0.0808,
+          "3m_alpha": 0.0408,
+          "6m_return": 0.1345,
+          "6m_spy": 0.1633,
+          "6m_alpha": -0.0288
+        },
+        {
+          "date": "2021-04-01",
+          "top_picks": [
+            "AMCR",
+            "APH",
+            "CL",
+            "ADI",
+            "AVGO"
+          ],
+          "num_scored": 76,
+          "1m_return": 0.0316,
+          "1m_spy": 0.0417,
+          "1m_alpha": -0.0101,
+          "3m_return": 0.0641,
+          "3m_spy": 0.072,
+          "3m_alpha": -0.0079,
+          "6m_return": 0.0899,
+          "6m_spy": 0.0897,
+          "6m_alpha": 0.0002
+        },
+        {
+          "date": "2021-05-01",
+          "top_picks": [
+            "ADM",
+            "AON",
+            "BK",
+            "APH",
+            "AME"
+          ],
+          "num_scored": 76,
+          "1m_return": 0.0404,
+          "1m_spy": 0.0057,
+          "1m_alpha": 0.0347,
+          "3m_return": 0.0166,
+          "3m_spy": 0.0543,
+          "3m_alpha": -0.0376,
+          "6m_return": 0.1084,
+          "6m_spy": 0.1054,
+          "6m_alpha": 0.003
+        },
+        {
+          "date": "2021-06-01",
+          "top_picks": [
+            "CMCSA",
+            "ARES",
+            "AME",
+            "CMI",
+            "A"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.03,
+          "1m_spy": 0.029,
+          "1m_alpha": 0.001,
+          "3m_return": 0.1196,
+          "3m_spy": 0.0811,
+          "3m_alpha": 0.0385,
+          "6m_return": 0.1706,
+          "6m_spy": 0.1142,
+          "6m_alpha": 0.0564
+        },
+        {
+          "date": "2021-07-01",
+          "top_picks": [
+            "AES",
+            "AOS",
+            "ACGL",
+            "ALL",
+            "BK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0141,
+          "1m_spy": 0.0188,
+          "1m_alpha": -0.0046,
+          "3m_return": 0.0074,
+          "3m_spy": 0.0126,
+          "3m_alpha": -0.0052,
+          "6m_return": 0.1181,
+          "6m_spy": 0.1153,
+          "6m_alpha": 0.0027
+        },
+        {
+          "date": "2021-08-01",
+          "top_picks": [
+            "AFL",
+            "AIZ",
+            "BK",
+            "AMP",
+            "ADM"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0337,
+          "1m_spy": 0.0319,
+          "1m_alpha": 0.0017,
+          "3m_return": 0.052,
+          "3m_spy": 0.0529,
+          "3m_alpha": -0.0009,
+          "6m_return": 0.0486,
+          "6m_spy": 0.0168,
+          "6m_alpha": 0.0318
+        },
+        {
+          "date": "2021-09-01",
+          "top_picks": [
+            "ALL",
+            "ADM",
+            "AIZ",
+            "BK",
+            "AMP"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0132,
+          "1m_spy": -0.0358,
+          "1m_alpha": 0.0226,
+          "3m_return": 0.0243,
+          "3m_spy": 0.0116,
+          "3m_alpha": 0.0127,
+          "6m_return": 0.079,
+          "6m_spy": -0.0271,
+          "6m_alpha": 0.1061
+        },
+        {
+          "date": "2021-10-01",
+          "top_picks": [
+            "BK",
+            "AZO",
+            "ADM",
+            "AMP",
+            "AJG"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0767,
+          "1m_spy": 0.0594,
+          "1m_alpha": 0.0173,
+          "3m_return": 0.0978,
+          "3m_spy": 0.1004,
+          "3m_alpha": -0.0026,
+          "6m_return": 0.1849,
+          "6m_spy": 0.0633,
+          "6m_alpha": 0.1215
+        },
+        {
+          "date": "2021-11-01",
+          "top_picks": [
+            "AVY",
+            "ARES",
+            "ANET",
+            "AMT",
+            "APO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0084,
+          "1m_spy": -0.0207,
+          "1m_alpha": 0.0123,
+          "3m_return": -0.0104,
+          "3m_spy": -0.0186,
+          "3m_alpha": 0.0081,
+          "6m_return": -0.1039,
+          "6m_spy": -0.0985,
+          "6m_alpha": -0.0055
+        },
+        {
+          "date": "2021-12-01",
+          "top_picks": [
+            "AJG",
+            "ACN",
+            "ADP",
+            "ABT",
+            "AZO"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0916,
+          "1m_spy": 0.058,
+          "1m_alpha": 0.0336,
+          "3m_return": -0.0451,
+          "3m_spy": -0.0422,
+          "3m_alpha": -0.0029,
+          "6m_return": -0.0809,
+          "6m_spy": -0.0773,
+          "6m_alpha": -0.0036
+        },
+        {
+          "date": "2022-01-01",
+          "top_picks": [
+            "A",
+            "AVY",
+            "AJG",
+            "ADP",
+            "AFL"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0663,
+          "1m_spy": -0.0527,
+          "1m_alpha": -0.0136,
+          "3m_return": -0.0546,
+          "3m_spy": -0.0434,
+          "3m_alpha": -0.0112,
+          "6m_return": -0.2052,
+          "6m_spy": -0.1998,
+          "6m_alpha": -0.0053
+        },
+        {
+          "date": "2022-02-01",
+          "top_picks": [
+            "ADM",
+            "AXP",
+            "AZO",
+            "CME",
+            "AEE"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0016,
+          "1m_spy": -0.0381,
+          "1m_alpha": 0.0397,
+          "3m_return": -0.0169,
+          "3m_spy": -0.0821,
+          "3m_alpha": 0.0652,
+          "6m_return": -0.0379,
+          "6m_spy": -0.0864,
+          "6m_alpha": 0.0485
+        },
+        {
+          "date": "2022-03-01",
+          "top_picks": [
+            "AEP",
+            "AON",
+            "ATO",
+            "BDX",
+            "AIZ"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0909,
+          "1m_spy": 0.0536,
+          "1m_alpha": 0.0372,
+          "3m_return": 0.0349,
+          "3m_spy": -0.0367,
+          "3m_alpha": 0.0716,
+          "6m_return": 0.0543,
+          "6m_spy": -0.0566,
+          "6m_alpha": 0.111
+        },
+        {
+          "date": "2022-04-01",
+          "top_picks": [
+            "AZO",
+            "AVB",
+            "ACGL",
+            "AEE",
+            "ACN"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0785,
+          "1m_spy": -0.0849,
+          "1m_alpha": 0.0063,
+          "3m_return": -0.1559,
+          "3m_spy": -0.1635,
+          "3m_alpha": 0.0076,
+          "6m_return": -0.176,
+          "6m_spy": -0.175,
+          "6m_alpha": -0.001
+        },
+        {
+          "date": "2022-05-01",
+          "top_picks": [
+            "AJG",
+            "AEE",
+            "ADM",
+            "AMCR",
+            "ADP"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0106,
+          "1m_spy": -0.0037,
+          "1m_alpha": 0.0143,
+          "3m_return": 0.0098,
+          "3m_spy": -0.0017,
+          "3m_alpha": 0.0116,
+          "6m_return": 0.0232,
+          "6m_spy": -0.0535,
+          "6m_alpha": 0.0767
+        },
+        {
+          "date": "2022-06-01",
+          "top_picks": [
+            "AEE",
+            "ATO",
+            "AEP",
+            "CL",
+            "ALL"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0545,
+          "1m_spy": -0.0652,
+          "1m_alpha": 0.0107,
+          "3m_return": -0.0172,
+          "3m_spy": -0.0236,
+          "3m_alpha": 0.0064,
+          "6m_return": 0.0433,
+          "6m_spy": -0.0252,
+          "6m_alpha": 0.0686
+        },
+        {
+          "date": "2022-07-01",
+          "top_picks": [
+            "AEE",
+            "BDX",
+            "ACGL",
+            "ATO",
+            "AMCR"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0107,
+          "1m_spy": 0.0775,
+          "1m_alpha": -0.0668,
+          "3m_return": -0.0386,
+          "3m_spy": -0.0445,
+          "3m_alpha": 0.0059,
+          "6m_return": 0.0646,
+          "6m_spy": -0.0034,
+          "6m_alpha": 0.068
+        },
+        {
+          "date": "2022-08-01",
+          "top_picks": [
+            "AIZ",
+            "AJG",
+            "CI",
+            "AMCR",
+            "AEP"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0099,
+          "1m_spy": -0.038,
+          "1m_alpha": 0.0479,
+          "3m_return": 0.0073,
+          "3m_spy": -0.0559,
+          "3m_alpha": 0.0633,
+          "6m_return": 0.0191,
+          "6m_spy": -0.0038,
+          "6m_alpha": 0.0229
+        },
+        {
+          "date": "2022-09-01",
+          "top_picks": [
+            "CI",
+            "AMGN",
+            "ATO",
+            "CAH",
+            "AJG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0751,
+          "1m_spy": -0.0953,
+          "1m_alpha": 0.0202,
+          "3m_return": 0.1068,
+          "3m_spy": 0.0326,
+          "3m_alpha": 0.0742,
+          "6m_return": 0.0155,
+          "6m_spy": 0.0083,
+          "6m_alpha": 0.0072
+        },
+        {
+          "date": "2022-10-01",
+          "top_picks": [
+            "CAH",
+            "AZO",
+            "ACGL",
+            "ADP",
+            "AMGN"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.1068,
+          "1m_spy": 0.0813,
+          "1m_alpha": 0.0256,
+          "3m_return": 0.1373,
+          "3m_spy": 0.0756,
+          "3m_alpha": 0.0617,
+          "6m_return": 0.1361,
+          "6m_spy": 0.1398,
+          "6m_alpha": -0.0037
+        },
+        {
+          "date": "2022-11-01",
+          "top_picks": [
+            "ACGL",
+            "CF",
+            "AJG",
+            "ADP",
+            "APD"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0543,
+          "1m_spy": 0.0595,
+          "1m_alpha": -0.0052,
+          "3m_return": 0.0077,
+          "3m_spy": 0.0466,
+          "3m_alpha": -0.0389,
+          "6m_return": -0.0062,
+          "6m_spy": 0.0897,
+          "6m_alpha": -0.0959
+        },
+        {
+          "date": "2022-12-01",
+          "top_picks": [
+            "CI",
+            "ATO",
+            "AEE",
+            "AEP",
+            "CF"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0338,
+          "1m_spy": -0.0569,
+          "1m_alpha": 0.0232,
+          "3m_return": -0.0513,
+          "3m_spy": -0.0266,
+          "3m_alpha": -0.0247,
+          "6m_return": -0.0881,
+          "6m_spy": 0.0401,
+          "6m_alpha": -0.1282
+        },
+        {
+          "date": "2023-01-01",
+          "top_picks": [
+            "AZO",
+            "AEE",
+            "CMI",
+            "CL",
+            "CI"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0217,
+          "1m_spy": 0.0674,
+          "1m_alpha": -0.0457,
+          "3m_return": -0.0374,
+          "3m_spy": 0.0791,
+          "3m_alpha": -0.1165,
+          "6m_return": -0.0287,
+          "6m_spy": 0.1728,
+          "6m_alpha": -0.2015
+        },
+        {
+          "date": "2023-02-01",
+          "top_picks": [
+            "AZO",
+            "CMI",
+            "ATO",
+            "APD",
+            "AJG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0254,
+          "1m_spy": -0.0161,
+          "1m_alpha": -0.0093,
+          "3m_return": -0.0441,
+          "3m_spy": 0.0039,
+          "3m_alpha": -0.048,
+          "6m_return": 0.0219,
+          "6m_spy": 0.1228,
+          "6m_alpha": -0.1009
+        },
+        {
+          "date": "2023-03-01",
+          "top_picks": [
+            "APD",
+            "ACGL",
+            "CMI",
+            "CLX",
+            "CME"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0091,
+          "1m_spy": 0.0411,
+          "1m_alpha": -0.0501,
+          "3m_return": -0.0287,
+          "3m_spy": 0.0685,
+          "3m_alpha": -0.0973,
+          "6m_return": 0.0769,
+          "6m_spy": 0.1301,
+          "6m_alpha": -0.0532
+        },
+        {
+          "date": "2023-04-01",
+          "top_picks": [
+            "AZO",
+            "APD",
+            "AJG",
+            "ACGL",
+            "AEE"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0139,
+          "1m_spy": 0.0149,
+          "1m_alpha": -0.0011,
+          "3m_return": 0.0402,
+          "3m_spy": 0.0868,
+          "3m_alpha": -0.0466,
+          "6m_return": 0.0364,
+          "6m_spy": 0.0543,
+          "6m_alpha": -0.0179
+        },
+        {
+          "date": "2023-05-01",
+          "top_picks": [
+            "ATO",
+            "CL",
+            "AME",
+            "AFL",
+            "CMCSA"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.056,
+          "1m_spy": 0.0056,
+          "1m_alpha": -0.0616,
+          "3m_return": 0.0361,
+          "3m_spy": 0.1058,
+          "3m_alpha": -0.0697,
+          "6m_return": -0.0614,
+          "6m_spy": -0.0045,
+          "6m_alpha": -0.0569
+        },
+        {
+          "date": "2023-06-01",
+          "top_picks": [
+            "AMP",
+            "AVGO",
+            "CDNS",
+            "AME",
+            "ANET"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.059,
+          "1m_spy": 0.0548,
+          "1m_alpha": 0.0042,
+          "3m_return": 0.0894,
+          "3m_spy": 0.0732,
+          "3m_alpha": 0.0162,
+          "6m_return": 0.1277,
+          "6m_spy": 0.0863,
+          "6m_alpha": 0.0414
+        },
+        {
+          "date": "2023-07-01",
+          "top_picks": [
+            "ACGL",
+            "AFL",
+            "CME",
+            "CMI",
+            "BK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0303,
+          "1m_spy": 0.0327,
+          "1m_alpha": -0.0025,
+          "3m_return": 0.0018,
+          "3m_spy": -0.0322,
+          "3m_alpha": 0.034,
+          "6m_return": 0.0828,
+          "6m_spy": 0.0835,
+          "6m_alpha": -0.0008
+        },
+        {
+          "date": "2023-07-01",
+          "top_picks": [
+            "ACGL",
+            "AFL",
+            "CME",
+            "CMI",
+            "BK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0303,
+          "1m_spy": 0.0327,
+          "1m_alpha": -0.0025,
+          "3m_return": 0.0018,
+          "3m_spy": -0.0322,
+          "3m_alpha": 0.034,
+          "6m_return": 0.0828,
+          "6m_spy": 0.0835,
+          "6m_alpha": -0.0008
+        },
+        {
+          "date": "2023-08-01",
+          "top_picks": [
+            "BDX",
+            "BK",
+            "AEE",
+            "APH",
+            "CMCSA"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0029,
+          "1m_spy": -0.0134,
+          "1m_alpha": 0.0106,
+          "3m_return": -0.0909,
+          "3m_spy": -0.0864,
+          "3m_alpha": -0.0046,
+          "6m_return": 0.015,
+          "6m_spy": 0.0844,
+          "6m_alpha": -0.0694
+        },
+        {
+          "date": "2023-09-01",
+          "top_picks": [
+            "AXON",
+            "ACGL",
+            "AZO",
+            "AME",
+            "AOS"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0466,
+          "1m_spy": -0.0496,
+          "1m_alpha": 0.003,
+          "3m_return": 0.0155,
+          "3m_spy": 0.0151,
+          "3m_alpha": 0.0004,
+          "6m_return": 0.1215,
+          "6m_spy": 0.1306,
+          "6m_alpha": -0.0091
+        },
+        {
+          "date": "2023-10-01",
+          "top_picks": [
+            "ACGL",
+            "AZO",
+            "AFL",
+            "AJG",
+            "AMGN"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0038,
+          "1m_spy": -0.0213,
+          "1m_alpha": 0.0175,
+          "3m_return": 0.0966,
+          "3m_spy": 0.1168,
+          "3m_alpha": -0.0203,
+          "6m_return": 0.226,
+          "6m_spy": 0.2329,
+          "6m_alpha": -0.0068
+        },
+        {
+          "date": "2023-11-01",
+          "top_picks": [
+            "AOS",
+            "AJG",
+            "ACGL",
+            "CL",
+            "CME"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0734,
+          "1m_spy": 0.0862,
+          "1m_alpha": -0.0128,
+          "3m_return": 0.123,
+          "3m_spy": 0.1661,
+          "3m_alpha": -0.0432,
+          "6m_return": 0.1642,
+          "6m_spy": 0.2154,
+          "6m_alpha": -0.0512
+        },
+        {
+          "date": "2023-12-01",
+          "top_picks": [
+            "CME",
+            "AON",
+            "AJG",
+            "ATO",
+            "AVB"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0221,
+          "1m_spy": 0.0337,
+          "1m_alpha": -0.0115,
+          "3m_return": 0.0917,
+          "3m_spy": 0.1112,
+          "3m_alpha": -0.0195,
+          "6m_return": 0.0617,
+          "6m_spy": 0.1542,
+          "6m_alpha": -0.0925
+        },
+        {
+          "date": "2024-01-01",
+          "top_picks": [
+            "CME",
+            "AFL",
+            "AMGN",
+            "AIZ",
+            "BKR"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0089,
+          "1m_spy": 0.0216,
+          "1m_alpha": -0.0128,
+          "3m_return": 0.0843,
+          "3m_spy": 0.1082,
+          "3m_alpha": -0.0239,
+          "6m_return": 0.1146,
+          "6m_spy": 0.1587,
+          "6m_alpha": -0.0441
+        },
+        {
+          "date": "2024-02-01",
+          "top_picks": [
+            "CAH",
+            "AME",
+            "CL",
+            "CMG",
+            "ATO"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0491,
+          "1m_spy": 0.0483,
+          "1m_alpha": 0.0007,
+          "3m_return": 0.0509,
+          "3m_spy": 0.026,
+          "3m_alpha": 0.0249,
+          "6m_return": 0.0786,
+          "6m_spy": 0.115,
+          "6m_alpha": -0.0364
+        },
+        {
+          "date": "2024-03-01",
+          "top_picks": [
+            "CDNS",
+            "AOS",
+            "AMT",
+            "CAH",
+            "AMAT"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0117,
+          "1m_spy": 0.0213,
+          "1m_alpha": -0.0096,
+          "3m_return": -0.0189,
+          "3m_spy": 0.0222,
+          "3m_alpha": -0.0411,
+          "6m_return": 0.048,
+          "6m_spy": 0.0955,
+          "6m_alpha": -0.0476
+        },
+        {
+          "date": "2024-04-01",
+          "top_picks": [
+            "ATO",
+            "CMI",
+            "BK",
+            "ALL",
+            "CAH"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0406,
+          "1m_spy": -0.0418,
+          "1m_alpha": 0.0011,
+          "3m_return": -0.0277,
+          "3m_spy": 0.0478,
+          "3m_alpha": -0.0754,
+          "6m_return": 0.1036,
+          "6m_spy": 0.1013,
+          "6m_alpha": 0.0022
+        },
+        {
+          "date": "2024-05-01",
+          "top_picks": [
+            "APH",
+            "CMG",
+            "AVY",
+            "AMGN",
+            "BK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0378,
+          "1m_spy": 0.054,
+          "1m_alpha": -0.0162,
+          "3m_return": 0.072,
+          "3m_spy": 0.0867,
+          "3m_alpha": -0.0147,
+          "6m_return": 0.149,
+          "6m_spy": 0.1682,
+          "6m_alpha": -0.0191
+        },
+        {
+          "date": "2024-06-01",
+          "top_picks": [
+            "APO",
+            "AMP",
+            "AIG",
+            "AME",
+            "CF"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0106,
+          "1m_spy": 0.0374,
+          "1m_alpha": -0.048,
+          "3m_return": 0.0545,
+          "3m_spy": 0.0723,
+          "3m_alpha": -0.0178,
+          "6m_return": 0.1471,
+          "6m_spy": 0.1498,
+          "6m_alpha": -0.0027
+        },
+        {
+          "date": "2024-07-01",
+          "top_picks": [
+            "BK",
+            "APO",
+            "ACGL",
+            "AFL",
+            "CL"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0492,
+          "1m_spy": 0.01,
+          "1m_alpha": 0.0391,
+          "3m_return": 0.1159,
+          "3m_spy": 0.0553,
+          "3m_alpha": 0.0606,
+          "6m_return": 0.2797,
+          "6m_spy": 0.0981,
+          "6m_alpha": 0.1816
+        },
+        {
+          "date": "2024-08-01",
+          "top_picks": [
+            "BK",
+            "ABT",
+            "AIZ",
+            "AMCR",
+            "AXP"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0411,
+          "1m_spy": 0.0381,
+          "1m_alpha": 0.003,
+          "3m_return": 0.0766,
+          "3m_spy": 0.0714,
+          "3m_alpha": 0.0052,
+          "6m_return": 0.1348,
+          "6m_spy": 0.1204,
+          "6m_alpha": 0.0143
+        },
+        {
+          "date": "2024-09-01",
+          "top_picks": [
+            "ALL",
+            "CMG",
+            "AXP",
+            "AMT",
+            "BKR"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.055,
+          "1m_spy": 0.0331,
+          "1m_alpha": 0.0218,
+          "3m_return": 0.2183,
+          "3m_spy": 0.0948,
+          "3m_alpha": 0.1236,
+          "6m_return": 0.1794,
+          "6m_spy": 0.0832,
+          "6m_alpha": 0.0962
+        },
+        {
+          "date": "2024-10-01",
+          "top_picks": [
+            "AZO",
+            "AVY",
+            "CMI",
+            "ACN",
+            "A"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0283,
+          "1m_spy": 0.0,
+          "1m_alpha": -0.0284,
+          "3m_return": -0.0095,
+          "3m_spy": 0.038,
+          "3m_alpha": -0.0474,
+          "6m_return": -0.0124,
+          "6m_spy": -0.01,
+          "6m_alpha": -0.0025
+        },
+        {
+          "date": "2024-11-01",
+          "top_picks": [
+            "CFG",
+            "AME",
+            "ADP",
+            "BK",
+            "ABT"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0742,
+          "1m_spy": 0.0571,
+          "1m_alpha": 0.0171,
+          "3m_return": 0.0794,
+          "3m_spy": 0.0631,
+          "3m_alpha": 0.0162,
+          "6m_return": 0.0013,
+          "6m_spy": -0.0227,
+          "6m_alpha": 0.024
+        },
+        {
+          "date": "2024-12-01",
+          "top_picks": [
+            "AVB",
+            "AEP",
+            "ALL",
+            "AZO",
+            "AIG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0277,
+          "1m_spy": -0.0258,
+          "1m_alpha": -0.0019,
+          "3m_return": 0.0023,
+          "3m_spy": -0.0123,
+          "3m_alpha": 0.0147,
+          "6m_return": 0.0257,
+          "6m_spy": -0.0174,
+          "6m_alpha": 0.0431
+        },
+        {
+          "date": "2025-01-01",
+          "top_picks": [
+            "CME",
+            "AJG",
+            "BLK",
+            "CAH",
+            "AXP"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0488,
+          "1m_spy": 0.0294,
+          "1m_alpha": 0.0194,
+          "3m_return": 0.0292,
+          "3m_spy": -0.0376,
+          "3m_alpha": 0.0668,
+          "6m_return": 0.0963,
+          "6m_spy": 0.0631,
+          "6m_alpha": 0.0331
+        },
+        {
+          "date": "2025-02-01",
+          "top_picks": [
+            "AEP",
+            "ATO",
+            "AJG",
+            "AFL",
+            "AON"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0112,
+          "1m_spy": -0.03,
+          "1m_alpha": 0.0412,
+          "3m_return": -0.0313,
+          "3m_spy": -0.0554,
+          "3m_alpha": 0.0241,
+          "6m_return": 0.0098,
+          "6m_spy": 0.0566,
+          "6m_alpha": -0.0467
+        },
+        {
+          "date": "2025-03-01",
+          "top_picks": [
+            "AFL",
+            "ALL",
+            "AVB",
+            "CMI",
+            "ACGL"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0109,
+          "1m_spy": -0.0557,
+          "1m_alpha": 0.0448,
+          "3m_return": -0.0198,
+          "3m_spy": -0.0051,
+          "3m_alpha": -0.0147,
+          "6m_return": -0.0106,
+          "6m_spy": 0.0987,
+          "6m_alpha": -0.1092
+        },
+        {
+          "date": "2025-04-01",
+          "top_picks": [
+            "ABT",
+            "AON",
+            "ADP",
+            "BKR",
+            "AEP"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0258,
+          "1m_spy": -0.0045,
+          "1m_alpha": -0.0214,
+          "3m_return": 0.0138,
+          "3m_spy": 0.1047,
+          "3m_alpha": -0.0908,
+          "6m_return": 0.0328,
+          "6m_spy": 0.1899,
+          "6m_alpha": -0.1571
+        },
+        {
+          "date": "2025-05-01",
+          "top_picks": [
+            "AZO",
+            "CME",
+            "CHTR",
+            "CAH",
+            "ALLE"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0274,
+          "1m_spy": 0.0554,
+          "1m_alpha": -0.028,
+          "3m_return": 0.057,
+          "3m_spy": 0.1394,
+          "3m_alpha": -0.0824,
+          "6m_return": 0.054,
+          "6m_spy": 0.2373,
+          "6m_alpha": -0.1833
+        },
+        {
+          "date": "2025-06-01",
+          "top_picks": [
+            "AIZ",
+            "CME",
+            "ABT",
+            "AON",
+            "AJG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.001,
+          "1m_spy": 0.0452,
+          "1m_alpha": -0.0462,
+          "3m_return": 0.0019,
+          "3m_spy": 0.0915,
+          "3m_alpha": -0.0896,
+          "6m_return": -0.0093,
+          "6m_spy": 0.1596,
+          "6m_alpha": -0.1689
+        },
+        {
+          "date": "2025-07-01",
+          "top_picks": [
+            "AZO",
+            "AEE",
+            "CHTR",
+            "BKNG",
+            "ABT"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0384,
+          "1m_spy": 0.0234,
+          "1m_alpha": 0.015,
+          "3m_return": 0.0944,
+          "3m_spy": 0.0775,
+          "3m_alpha": 0.0169,
+          "6m_return": 0.1429,
+          "6m_spy": 0.12,
+          "6m_alpha": 0.0229
+        },
+        {
+          "date": "2025-08-01",
+          "top_picks": [
+            "ALL",
+            "AZO",
+            "AME",
+            "ALLE",
+            "AWK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0265,
+          "1m_spy": 0.0298,
+          "1m_alpha": -0.0034,
+          "3m_return": 0.0507,
+          "3m_spy": 0.0965,
+          "3m_alpha": -0.0458,
+          "6m_return": 0.0774,
+          "6m_spy": 0.125,
+          "6m_alpha": -0.0475
+        },
+        {
+          "date": "2025-09-01",
+          "top_picks": [
+            "ABT",
+            "ATO",
+            "AWK",
+            "AME",
+            "BK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0729,
+          "1m_spy": 0.0469,
+          "1m_alpha": 0.026,
+          "3m_return": 0.1437,
+          "3m_spy": 0.0654,
+          "3m_alpha": 0.0783,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2025-10-01",
+          "top_picks": [
+            "AIG",
+            "CAH",
+            "AEP",
+            "AZO",
+            "AEE"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0091,
+          "1m_spy": 0.0204,
+          "1m_alpha": -0.0294,
+          "3m_return": 0.0236,
+          "3m_spy": 0.0308,
+          "3m_alpha": -0.0072,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2025-11-01",
+          "top_picks": [
+            "BK",
+            "AEP",
+            "AME",
+            "AVY",
+            "APH"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.003,
+          "1m_spy": -0.0026,
+          "1m_alpha": 0.0056,
+          "3m_return": 0.0337,
+          "3m_spy": 0.0175,
+          "3m_alpha": 0.0162,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2025-12-01",
+          "top_picks": [
+            "BK",
+            "CMI",
+            "CME",
+            "AME",
+            "ALLE"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0104,
+          "1m_spy": 0.0054,
+          "1m_alpha": -0.0158,
+          "3m_return": null,
+          "3m_spy": null,
+          "3m_alpha": null,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2026-01-01",
+          "top_picks": [
+            "BK",
+            "CME",
+            "AME",
+            "AFL",
+            "ALLE"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0108,
+          "1m_spy": 0.0129,
+          "1m_alpha": -0.0021,
+          "3m_return": null,
+          "3m_spy": null,
+          "3m_alpha": null,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        }
+      ],
+      "horizons": {
+        "1m": {
+          "num_periods": 60,
+          "win_rate": 0.55,
+          "avg_alpha": 0.001,
+          "avg_return": 0.0134,
+          "avg_spy_return": 0.0124,
+          "std_alpha": 0.026,
+          "sharpe_ratio": 0.1369,
+          "t_stat": 0.3061,
+          "p_value": 0.7606,
+          "best_period": {
+            "date": "2022-08-01",
+            "alpha": 0.0479
+          },
+          "worst_period": {
+            "date": "2022-07-01",
+            "alpha": -0.0668
+          },
+          "consistency": 0.55,
+          "significant": false
+        },
+        "3m": {
+          "num_periods": 58,
+          "win_rate": 0.4828,
+          "avg_alpha": -0.0026,
+          "avg_return": 0.0312,
+          "avg_spy_return": 0.0337,
+          "std_alpha": 0.0487,
+          "sharpe_ratio": -0.1823,
+          "t_stat": -0.4008,
+          "p_value": 0.6901,
+          "best_period": {
+            "date": "2024-09-01",
+            "alpha": 0.1236
+          },
+          "worst_period": {
+            "date": "2023-01-01",
+            "alpha": -0.1165
+          },
+          "consistency": 0.4828,
+          "significant": false
+        },
+        "6m": {
+          "num_periods": 55,
+          "win_rate": 0.4182,
+          "avg_alpha": -0.0112,
+          "avg_return": 0.0575,
+          "avg_spy_return": 0.0687,
+          "std_alpha": 0.0759,
+          "sharpe_ratio": -0.5102,
+          "t_stat": -1.0923,
+          "p_value": 0.2796,
+          "best_period": {
+            "date": "2024-07-01",
+            "alpha": 0.1816
+          },
+          "worst_period": {
+            "date": "2023-01-01",
+            "alpha": -0.2015
+          },
+          "consistency": 0.4182,
+          "significant": false
+        }
+      }
+    },
+    "aggressive": {
+      "periods": [
+        {
+          "date": "2021-03-01",
+          "top_picks": [
+            "ALL",
+            "APA",
+            "CFG",
+            "AMCR",
+            "BXP"
+          ],
+          "num_scored": 76,
+          "1m_return": 0.0183,
+          "1m_spy": 0.0207,
+          "1m_alpha": -0.0024,
+          "3m_return": 0.1184,
+          "3m_spy": 0.0808,
+          "3m_alpha": 0.0377,
+          "6m_return": 0.1198,
+          "6m_spy": 0.1633,
+          "6m_alpha": -0.0435
+        },
+        {
+          "date": "2021-04-01",
+          "top_picks": [
+            "AMCR",
+            "ADI",
+            "APH",
+            "ADSK",
+            "AVGO"
+          ],
+          "num_scored": 76,
+          "1m_return": 0.0269,
+          "1m_spy": 0.0417,
+          "1m_alpha": -0.0148,
+          "3m_return": 0.0607,
+          "3m_spy": 0.072,
+          "3m_alpha": -0.0113,
+          "6m_return": 0.0881,
+          "6m_spy": 0.0897,
+          "6m_alpha": -0.0016
+        },
+        {
+          "date": "2021-05-01",
+          "top_picks": [
+            "BK",
+            "BKR",
+            "CFG",
+            "AXON",
+            "AON"
+          ],
+          "num_scored": 76,
+          "1m_return": 0.0467,
+          "1m_spy": 0.0057,
+          "1m_alpha": 0.041,
+          "3m_return": 0.0278,
+          "3m_spy": 0.0543,
+          "3m_alpha": -0.0265,
+          "6m_return": 0.1386,
+          "6m_spy": 0.1054,
+          "6m_alpha": 0.0331
+        },
+        {
+          "date": "2021-06-01",
+          "top_picks": [
+            "CMCSA",
+            "ARES",
+            "AME",
+            "CMI",
+            "ALB"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0362,
+          "1m_spy": 0.029,
+          "1m_alpha": 0.0072,
+          "3m_return": 0.126,
+          "3m_spy": 0.0811,
+          "3m_alpha": 0.0449,
+          "6m_return": 0.1896,
+          "6m_spy": 0.1142,
+          "6m_alpha": 0.0754
+        },
+        {
+          "date": "2021-07-01",
+          "top_picks": [
+            "ACGL",
+            "AES",
+            "BK",
+            "CAH",
+            "AOS"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0196,
+          "1m_spy": 0.0188,
+          "1m_alpha": 0.0009,
+          "3m_return": 0.0035,
+          "3m_spy": 0.0126,
+          "3m_alpha": -0.0091,
+          "6m_return": 0.1032,
+          "6m_spy": 0.1153,
+          "6m_alpha": -0.0122
+        },
+        {
+          "date": "2021-08-01",
+          "top_picks": [
+            "AFL",
+            "BK",
+            "AIZ",
+            "AMP",
+            "ACGL"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0324,
+          "1m_spy": 0.0319,
+          "1m_alpha": 0.0005,
+          "3m_return": 0.0524,
+          "3m_spy": 0.0529,
+          "3m_alpha": -0.0004,
+          "6m_return": 0.0388,
+          "6m_spy": 0.0168,
+          "6m_alpha": 0.022
+        },
+        {
+          "date": "2021-09-01",
+          "top_picks": [
+            "ALL",
+            "BEN",
+            "APA",
+            "CIEN",
+            "ADM"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0033,
+          "1m_spy": -0.0358,
+          "1m_alpha": 0.0325,
+          "3m_return": 0.0504,
+          "3m_spy": 0.0116,
+          "3m_alpha": 0.0389,
+          "6m_return": 0.0934,
+          "6m_spy": -0.0271,
+          "6m_alpha": 0.1205
+        },
+        {
+          "date": "2021-10-01",
+          "top_picks": [
+            "BK",
+            "APO",
+            "AZO",
+            "AMP",
+            "BKR"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0796,
+          "1m_spy": 0.0594,
+          "1m_alpha": 0.0202,
+          "3m_return": 0.1171,
+          "3m_spy": 0.1004,
+          "3m_alpha": 0.0167,
+          "6m_return": 0.2073,
+          "6m_spy": 0.0633,
+          "6m_alpha": 0.144
+        },
+        {
+          "date": "2021-11-01",
+          "top_picks": [
+            "AVY",
+            "ARES",
+            "ANET",
+            "APO",
+            "AES"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.007,
+          "1m_spy": -0.0207,
+          "1m_alpha": 0.0137,
+          "3m_return": -0.0277,
+          "3m_spy": -0.0186,
+          "3m_alpha": -0.0091,
+          "6m_return": -0.1613,
+          "6m_spy": -0.0985,
+          "6m_alpha": -0.0628
+        },
+        {
+          "date": "2021-12-01",
+          "top_picks": [
+            "AJG",
+            "ABT",
+            "ACN",
+            "ADP",
+            "AKAM"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0857,
+          "1m_spy": 0.058,
+          "1m_alpha": 0.0277,
+          "3m_return": -0.0525,
+          "3m_spy": -0.0422,
+          "3m_alpha": -0.0103,
+          "6m_return": -0.0658,
+          "6m_spy": -0.0773,
+          "6m_alpha": 0.0115
+        },
+        {
+          "date": "2022-01-01",
+          "top_picks": [
+            "A",
+            "CDW",
+            "AVY",
+            "ALGN",
+            "CMG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0737,
+          "1m_spy": -0.0527,
+          "1m_alpha": -0.0209,
+          "3m_return": -0.0765,
+          "3m_spy": -0.0434,
+          "3m_alpha": -0.033,
+          "6m_return": -0.2258,
+          "6m_spy": -0.1998,
+          "6m_alpha": -0.026
+        },
+        {
+          "date": "2022-02-01",
+          "top_picks": [
+            "ADM",
+            "AXP",
+            "APO",
+            "CF",
+            "ARES"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0019,
+          "1m_spy": -0.0381,
+          "1m_alpha": 0.0399,
+          "3m_return": -0.0167,
+          "3m_spy": -0.0821,
+          "3m_alpha": 0.0653,
+          "6m_return": -0.0503,
+          "6m_spy": -0.0864,
+          "6m_alpha": 0.0361
+        },
+        {
+          "date": "2022-03-01",
+          "top_picks": [
+            "AEP",
+            "AON",
+            "ARES",
+            "CI",
+            "AMGN"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0783,
+          "1m_spy": 0.0536,
+          "1m_alpha": 0.0247,
+          "3m_return": 0.0269,
+          "3m_spy": -0.0367,
+          "3m_alpha": 0.0635,
+          "6m_return": 0.0287,
+          "6m_spy": -0.0566,
+          "6m_alpha": 0.0853
+        },
+        {
+          "date": "2022-04-01",
+          "top_picks": [
+            "AZO",
+            "ACGL",
+            "AVB",
+            "AEE",
+            "ACN"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0849,
+          "1m_spy": -0.0849,
+          "1m_alpha": -0.0,
+          "3m_return": -0.1862,
+          "3m_spy": -0.1635,
+          "3m_alpha": -0.0227,
+          "6m_return": -0.1794,
+          "6m_spy": -0.175,
+          "6m_alpha": -0.0044
+        },
+        {
+          "date": "2022-05-01",
+          "top_picks": [
+            "AJG",
+            "AEE",
+            "AMCR",
+            "ADM",
+            "ADP"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0201,
+          "1m_spy": -0.0037,
+          "1m_alpha": 0.0238,
+          "3m_return": 0.0101,
+          "3m_spy": -0.0017,
+          "3m_alpha": 0.0118,
+          "6m_return": 0.0263,
+          "6m_spy": -0.0535,
+          "6m_alpha": 0.0798
+        },
+        {
+          "date": "2022-06-01",
+          "top_picks": [
+            "AEE",
+            "ATO",
+            "ALL",
+            "CL",
+            "ALB"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.065,
+          "1m_spy": -0.0652,
+          "1m_alpha": 0.0002,
+          "3m_return": -0.0308,
+          "3m_spy": -0.0236,
+          "3m_alpha": -0.0072,
+          "6m_return": 0.0226,
+          "6m_spy": -0.0252,
+          "6m_alpha": 0.0478
+        },
+        {
+          "date": "2022-07-01",
+          "top_picks": [
+            "BDX",
+            "AEE",
+            "ACGL",
+            "ATO",
+            "AMGN"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0071,
+          "1m_spy": 0.0775,
+          "1m_alpha": -0.0703,
+          "3m_return": -0.0501,
+          "3m_spy": -0.0445,
+          "3m_alpha": -0.0056,
+          "6m_return": 0.0565,
+          "6m_spy": -0.0034,
+          "6m_alpha": 0.0599
+        },
+        {
+          "date": "2022-08-01",
+          "top_picks": [
+            "AIZ",
+            "AJG",
+            "CI",
+            "AMT",
+            "AES"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.002,
+          "1m_spy": -0.038,
+          "1m_alpha": 0.0359,
+          "3m_return": -0.0247,
+          "3m_spy": -0.0559,
+          "3m_alpha": 0.0312,
+          "6m_return": 0.0021,
+          "6m_spy": -0.0038,
+          "6m_alpha": 0.0059
+        },
+        {
+          "date": "2022-09-01",
+          "top_picks": [
+            "AJG",
+            "CI",
+            "AMGN",
+            "ATO",
+            "CAH"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0834,
+          "1m_spy": -0.0953,
+          "1m_alpha": 0.0119,
+          "3m_return": 0.1005,
+          "3m_spy": 0.0326,
+          "3m_alpha": 0.0679,
+          "6m_return": 0.0154,
+          "6m_spy": 0.0083,
+          "6m_alpha": 0.0071
+        },
+        {
+          "date": "2022-10-01",
+          "top_picks": [
+            "ADP",
+            "AZO",
+            "CAH",
+            "CDNS",
+            "ACGL"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.1102,
+          "1m_spy": 0.0813,
+          "1m_alpha": 0.0289,
+          "3m_return": 0.1251,
+          "3m_spy": 0.0756,
+          "3m_alpha": 0.0495,
+          "6m_return": 0.134,
+          "6m_spy": 0.1398,
+          "6m_alpha": -0.0058
+        },
+        {
+          "date": "2022-11-01",
+          "top_picks": [
+            "CF",
+            "ACGL",
+            "AJG",
+            "APD",
+            "ADP"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0529,
+          "1m_spy": 0.0595,
+          "1m_alpha": -0.0066,
+          "3m_return": 0.0086,
+          "3m_spy": 0.0466,
+          "3m_alpha": -0.0379,
+          "6m_return": 0.0002,
+          "6m_spy": 0.0897,
+          "6m_alpha": -0.0895
+        },
+        {
+          "date": "2022-12-01",
+          "top_picks": [
+            "CI",
+            "AEE",
+            "ATO",
+            "AEP",
+            "CF"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0315,
+          "1m_spy": -0.0569,
+          "1m_alpha": 0.0255,
+          "3m_return": -0.0276,
+          "3m_spy": -0.0266,
+          "3m_alpha": -0.001,
+          "6m_return": -0.0424,
+          "6m_spy": 0.0401,
+          "6m_alpha": -0.0825
+        },
+        {
+          "date": "2023-01-01",
+          "top_picks": [
+            "AZO",
+            "AEE",
+            "AON",
+            "CMI",
+            "CL"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0348,
+          "1m_spy": 0.0674,
+          "1m_alpha": -0.0326,
+          "3m_return": -0.0284,
+          "3m_spy": 0.0791,
+          "3m_alpha": -0.1075,
+          "6m_return": -0.0164,
+          "6m_spy": 0.1728,
+          "6m_alpha": -0.1891
+        },
+        {
+          "date": "2023-02-01",
+          "top_picks": [
+            "AZO",
+            "CMI",
+            "APH",
+            "ACN",
+            "ATO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0233,
+          "1m_spy": -0.0161,
+          "1m_alpha": -0.0072,
+          "3m_return": -0.0545,
+          "3m_spy": 0.0039,
+          "3m_alpha": -0.0584,
+          "6m_return": 0.0163,
+          "6m_spy": 0.1228,
+          "6m_alpha": -0.1065
+        },
+        {
+          "date": "2023-03-01",
+          "top_picks": [
+            "APD",
+            "ACGL",
+            "AXON",
+            "CME",
+            "CDW"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.007,
+          "1m_spy": 0.0411,
+          "1m_alpha": -0.0481,
+          "3m_return": -0.0168,
+          "3m_spy": 0.0685,
+          "3m_alpha": -0.0853,
+          "6m_return": 0.0766,
+          "6m_spy": 0.1301,
+          "6m_alpha": -0.0535
+        },
+        {
+          "date": "2023-04-01",
+          "top_picks": [
+            "AZO",
+            "APD",
+            "AJG",
+            "ACGL",
+            "AEE"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0088,
+          "1m_spy": 0.0149,
+          "1m_alpha": -0.0061,
+          "3m_return": 0.0501,
+          "3m_spy": 0.0868,
+          "3m_alpha": -0.0367,
+          "6m_return": 0.0485,
+          "6m_spy": 0.0543,
+          "6m_alpha": -0.0058
+        },
+        {
+          "date": "2023-05-01",
+          "top_picks": [
+            "ATO",
+            "CL",
+            "CMCSA",
+            "AME",
+            "AVB"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0437,
+          "1m_spy": 0.0056,
+          "1m_alpha": -0.0493,
+          "3m_return": 0.044,
+          "3m_spy": 0.1058,
+          "3m_alpha": -0.0618,
+          "6m_return": -0.0504,
+          "6m_spy": -0.0045,
+          "6m_alpha": -0.046
+        },
+        {
+          "date": "2023-06-01",
+          "top_picks": [
+            "AMP",
+            "APO",
+            "AVGO",
+            "ANET",
+            "ABNB"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0785,
+          "1m_spy": 0.0548,
+          "1m_alpha": 0.0237,
+          "3m_return": 0.1191,
+          "3m_spy": 0.0732,
+          "3m_alpha": 0.0459,
+          "6m_return": 0.1427,
+          "6m_spy": 0.0863,
+          "6m_alpha": 0.0564
+        },
+        {
+          "date": "2023-07-01",
+          "top_picks": [
+            "AFL",
+            "CME",
+            "ACGL",
+            "BK",
+            "CMI"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0486,
+          "1m_spy": 0.0327,
+          "1m_alpha": 0.0159,
+          "3m_return": 0.0355,
+          "3m_spy": -0.0322,
+          "3m_alpha": 0.0677,
+          "6m_return": 0.1107,
+          "6m_spy": 0.0835,
+          "6m_alpha": 0.0272
+        },
+        {
+          "date": "2023-07-01",
+          "top_picks": [
+            "AFL",
+            "CME",
+            "ACGL",
+            "BK",
+            "CMI"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0486,
+          "1m_spy": 0.0327,
+          "1m_alpha": 0.0159,
+          "3m_return": 0.0355,
+          "3m_spy": -0.0322,
+          "3m_alpha": 0.0677,
+          "6m_return": 0.1107,
+          "6m_spy": 0.0835,
+          "6m_alpha": 0.0272
+        },
+        {
+          "date": "2023-08-01",
+          "top_picks": [
+            "BK",
+            "BDX",
+            "ALGN",
+            "ADI",
+            "AMAT"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0141,
+          "1m_spy": -0.0134,
+          "1m_alpha": 0.0276,
+          "3m_return": -0.087,
+          "3m_spy": -0.0864,
+          "3m_alpha": -0.0006,
+          "6m_return": 0.0356,
+          "6m_spy": 0.0844,
+          "6m_alpha": -0.0488
+        },
+        {
+          "date": "2023-09-01",
+          "top_picks": [
+            "AXON",
+            "AZO",
+            "ACGL",
+            "BLK",
+            "AOS"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0564,
+          "1m_spy": -0.0496,
+          "1m_alpha": -0.0068,
+          "3m_return": -0.0067,
+          "3m_spy": 0.0151,
+          "3m_alpha": -0.0218,
+          "6m_return": 0.1236,
+          "6m_spy": 0.1306,
+          "6m_alpha": -0.007
+        },
+        {
+          "date": "2023-10-01",
+          "top_picks": [
+            "ACGL",
+            "AZO",
+            "CI",
+            "AFL",
+            "AJG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0045,
+          "1m_spy": -0.0213,
+          "1m_alpha": 0.0168,
+          "3m_return": 0.0993,
+          "3m_spy": 0.1168,
+          "3m_alpha": -0.0176,
+          "6m_return": 0.2109,
+          "6m_spy": 0.2329,
+          "6m_alpha": -0.022
+        },
+        {
+          "date": "2023-11-01",
+          "top_picks": [
+            "AOS",
+            "CL",
+            "AJG",
+            "ACGL",
+            "AIG"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0624,
+          "1m_spy": 0.0862,
+          "1m_alpha": -0.0238,
+          "3m_return": 0.1098,
+          "3m_spy": 0.1661,
+          "3m_alpha": -0.0563,
+          "6m_return": 0.1565,
+          "6m_spy": 0.2154,
+          "6m_alpha": -0.059
+        },
+        {
+          "date": "2023-12-01",
+          "top_picks": [
+            "AON",
+            "CME",
+            "ATO",
+            "ARES",
+            "AVB"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0329,
+          "1m_spy": 0.0337,
+          "1m_alpha": -0.0008,
+          "3m_return": 0.0939,
+          "3m_spy": 0.1112,
+          "3m_alpha": -0.0173,
+          "6m_return": 0.0761,
+          "6m_spy": 0.1542,
+          "6m_alpha": -0.078
+        },
+        {
+          "date": "2024-01-01",
+          "top_picks": [
+            "CME",
+            "AFL",
+            "AMGN",
+            "CIEN",
+            "AIZ"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0142,
+          "1m_spy": 0.0216,
+          "1m_alpha": -0.0075,
+          "3m_return": 0.1003,
+          "3m_spy": 0.1082,
+          "3m_alpha": -0.0079,
+          "6m_return": 0.1229,
+          "6m_spy": 0.1587,
+          "6m_alpha": -0.0358
+        },
+        {
+          "date": "2024-02-01",
+          "top_picks": [
+            "CAH",
+            "AME",
+            "CL",
+            "CMI",
+            "ABNB"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0339,
+          "1m_spy": 0.0483,
+          "1m_alpha": -0.0145,
+          "3m_return": 0.0269,
+          "3m_spy": 0.026,
+          "3m_alpha": 0.0009,
+          "6m_return": 0.0742,
+          "6m_spy": 0.115,
+          "6m_alpha": -0.0407
+        },
+        {
+          "date": "2024-03-01",
+          "top_picks": [
+            "AMT",
+            "ANET",
+            "CDNS",
+            "ADI",
+            "AMAT"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0193,
+          "1m_spy": 0.0213,
+          "1m_alpha": -0.002,
+          "3m_return": -0.0136,
+          "3m_spy": 0.0222,
+          "3m_alpha": -0.0358,
+          "6m_return": 0.0474,
+          "6m_spy": 0.0955,
+          "6m_alpha": -0.0481
+        },
+        {
+          "date": "2024-04-01",
+          "top_picks": [
+            "ATO",
+            "CMI",
+            "BEN",
+            "AMCR",
+            "AES"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0463,
+          "1m_spy": -0.0418,
+          "1m_alpha": -0.0046,
+          "3m_return": -0.0378,
+          "3m_spy": 0.0478,
+          "3m_alpha": -0.0855,
+          "6m_return": 0.0894,
+          "6m_spy": 0.1013,
+          "6m_alpha": -0.012
+        },
+        {
+          "date": "2024-05-01",
+          "top_picks": [
+            "APH",
+            "CMG",
+            "AMGN",
+            "AVY",
+            "ADI"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0354,
+          "1m_spy": 0.054,
+          "1m_alpha": -0.0187,
+          "3m_return": 0.0722,
+          "3m_spy": 0.0867,
+          "3m_alpha": -0.0146,
+          "6m_return": 0.1289,
+          "6m_spy": 0.1682,
+          "6m_alpha": -0.0392
+        },
+        {
+          "date": "2024-06-01",
+          "top_picks": [
+            "APO",
+            "AMP",
+            "BKNG",
+            "CF",
+            "AME"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0025,
+          "1m_spy": 0.0374,
+          "1m_alpha": -0.0399,
+          "3m_return": 0.0381,
+          "3m_spy": 0.0723,
+          "3m_alpha": -0.0342,
+          "6m_return": 0.1272,
+          "6m_spy": 0.1498,
+          "6m_alpha": -0.0226
+        },
+        {
+          "date": "2024-07-01",
+          "top_picks": [
+            "APO",
+            "BK",
+            "APP",
+            "ACGL",
+            "CFG"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0507,
+          "1m_spy": 0.01,
+          "1m_alpha": 0.0406,
+          "3m_return": 0.1215,
+          "3m_spy": 0.0553,
+          "3m_alpha": 0.0662,
+          "6m_return": 0.2768,
+          "6m_spy": 0.0981,
+          "6m_alpha": 0.1787
+        },
+        {
+          "date": "2024-08-01",
+          "top_picks": [
+            "BK",
+            "ABT",
+            "ALLE",
+            "AMCR",
+            "AIZ"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0304,
+          "1m_spy": 0.0381,
+          "1m_alpha": -0.0077,
+          "3m_return": 0.0612,
+          "3m_spy": 0.0714,
+          "3m_alpha": -0.0102,
+          "6m_return": 0.1209,
+          "6m_spy": 0.1204,
+          "6m_alpha": 0.0004
+        },
+        {
+          "date": "2024-09-01",
+          "top_picks": [
+            "CMG",
+            "BKR",
+            "AMT",
+            "BAX",
+            "ALL"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0518,
+          "1m_spy": 0.0331,
+          "1m_alpha": 0.0187,
+          "3m_return": 0.2109,
+          "3m_spy": 0.0948,
+          "3m_alpha": 0.1161,
+          "6m_return": 0.158,
+          "6m_spy": 0.0832,
+          "6m_alpha": 0.0748
+        },
+        {
+          "date": "2024-10-01",
+          "top_picks": [
+            "AZO",
+            "AVY",
+            "ACN",
+            "A",
+            "ADI"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.035,
+          "1m_spy": 0.0,
+          "1m_alpha": -0.035,
+          "3m_return": -0.0143,
+          "3m_spy": 0.038,
+          "3m_alpha": -0.0523,
+          "6m_return": -0.0415,
+          "6m_spy": -0.01,
+          "6m_alpha": -0.0316
+        },
+        {
+          "date": "2024-11-01",
+          "top_picks": [
+            "AME",
+            "CFG",
+            "ADP",
+            "BKR",
+            "AON"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0682,
+          "1m_spy": 0.0571,
+          "1m_alpha": 0.0111,
+          "3m_return": 0.0685,
+          "3m_spy": 0.0631,
+          "3m_alpha": 0.0054,
+          "6m_return": 0.0057,
+          "6m_spy": -0.0227,
+          "6m_alpha": 0.0284
+        },
+        {
+          "date": "2024-12-01",
+          "top_picks": [
+            "AVB",
+            "AEP",
+            "ANET",
+            "AZO",
+            "CMG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.029,
+          "1m_spy": -0.0258,
+          "1m_alpha": -0.0032,
+          "3m_return": 0.0042,
+          "3m_spy": -0.0123,
+          "3m_alpha": 0.0165,
+          "6m_return": 0.0251,
+          "6m_spy": -0.0174,
+          "6m_alpha": 0.0425
+        },
+        {
+          "date": "2025-01-01",
+          "top_picks": [
+            "CME",
+            "AJG",
+            "CAH",
+            "APO",
+            "BLK"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.049,
+          "1m_spy": 0.0294,
+          "1m_alpha": 0.0197,
+          "3m_return": 0.0219,
+          "3m_spy": -0.0376,
+          "3m_alpha": 0.0595,
+          "6m_return": 0.0965,
+          "6m_spy": 0.0631,
+          "6m_alpha": 0.0333
+        },
+        {
+          "date": "2025-02-01",
+          "top_picks": [
+            "AEP",
+            "AJG",
+            "ABT",
+            "AON",
+            "ATO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0066,
+          "1m_spy": -0.03,
+          "1m_alpha": 0.0234,
+          "3m_return": -0.0413,
+          "3m_spy": -0.0554,
+          "3m_alpha": 0.0141,
+          "6m_return": 0.021,
+          "6m_spy": 0.0566,
+          "6m_alpha": -0.0355
+        },
+        {
+          "date": "2025-03-01",
+          "top_picks": [
+            "ALL",
+            "AFL",
+            "AVB",
+            "ACGL",
+            "AWK"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0042,
+          "1m_spy": -0.0557,
+          "1m_alpha": 0.0515,
+          "3m_return": -0.016,
+          "3m_spy": -0.0051,
+          "3m_alpha": -0.0109,
+          "6m_return": -0.0126,
+          "6m_spy": 0.0987,
+          "6m_alpha": -0.1113
+        },
+        {
+          "date": "2025-04-01",
+          "top_picks": [
+            "AON",
+            "ABT",
+            "BKR",
+            "ADP",
+            "AZO"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0242,
+          "1m_spy": -0.0045,
+          "1m_alpha": -0.0197,
+          "3m_return": 0.0256,
+          "3m_spy": 0.1047,
+          "3m_alpha": -0.0791,
+          "6m_return": 0.0345,
+          "6m_spy": 0.1899,
+          "6m_alpha": -0.1553
+        },
+        {
+          "date": "2025-05-01",
+          "top_picks": [
+            "AZO",
+            "CHTR",
+            "ALLE",
+            "CMG",
+            "BKNG"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0575,
+          "1m_spy": 0.0554,
+          "1m_alpha": 0.0022,
+          "3m_return": 0.0774,
+          "3m_spy": 0.1394,
+          "3m_alpha": -0.062,
+          "6m_return": 0.1399,
+          "6m_spy": 0.2373,
+          "6m_alpha": -0.0974
+        },
+        {
+          "date": "2025-06-01",
+          "top_picks": [
+            "AIZ",
+            "ABT",
+            "CME",
+            "AON",
+            "AJG"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0051,
+          "1m_spy": 0.0452,
+          "1m_alpha": -0.0502,
+          "3m_return": 0.0185,
+          "3m_spy": 0.0915,
+          "3m_alpha": -0.073,
+          "6m_return": 0.0134,
+          "6m_spy": 0.1596,
+          "6m_alpha": -0.1462
+        },
+        {
+          "date": "2025-07-01",
+          "top_picks": [
+            "AZO",
+            "CHTR",
+            "AEE",
+            "BKNG",
+            "ANET"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0313,
+          "1m_spy": 0.0234,
+          "1m_alpha": 0.0079,
+          "3m_return": 0.1144,
+          "3m_spy": 0.0775,
+          "3m_alpha": 0.0369,
+          "6m_return": 0.2202,
+          "6m_spy": 0.12,
+          "6m_alpha": 0.1002
+        },
+        {
+          "date": "2025-08-01",
+          "top_picks": [
+            "ALL",
+            "AZO",
+            "AME",
+            "AWK",
+            "ALLE"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0305,
+          "1m_spy": 0.0298,
+          "1m_alpha": 0.0007,
+          "3m_return": 0.0721,
+          "3m_spy": 0.0965,
+          "3m_alpha": -0.0244,
+          "6m_return": 0.0929,
+          "6m_spy": 0.125,
+          "6m_alpha": -0.032
+        },
+        {
+          "date": "2025-09-01",
+          "top_picks": [
+            "ABT",
+            "AWK",
+            "AME",
+            "ADSK",
+            "ATO"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.072,
+          "1m_spy": 0.0469,
+          "1m_alpha": 0.0251,
+          "3m_return": 0.1645,
+          "3m_spy": 0.0654,
+          "3m_alpha": 0.0991,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2025-10-01",
+          "top_picks": [
+            "AIG",
+            "CAH",
+            "AMGN",
+            "BLK",
+            "ALL"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.0158,
+          "1m_spy": 0.0204,
+          "1m_alpha": -0.0361,
+          "3m_return": 0.0201,
+          "3m_spy": 0.0308,
+          "3m_alpha": -0.0107,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2025-11-01",
+          "top_picks": [
+            "BK",
+            "AXON",
+            "AVY",
+            "BKR",
+            "AEP"
+          ],
+          "num_scored": 77,
+          "1m_return": -0.006,
+          "1m_spy": -0.0026,
+          "1m_alpha": -0.0034,
+          "3m_return": 0.042,
+          "3m_spy": 0.0175,
+          "3m_alpha": 0.0245,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2025-12-01",
+          "top_picks": [
+            "CMI",
+            "BK",
+            "AKAM",
+            "APP",
+            "AVGO"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0017,
+          "1m_spy": 0.0054,
+          "1m_alpha": -0.0037,
+          "3m_return": null,
+          "3m_spy": null,
+          "3m_alpha": null,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        },
+        {
+          "date": "2026-01-01",
+          "top_picks": [
+            "BLK",
+            "BK",
+            "CME",
+            "AES",
+            "BIIB"
+          ],
+          "num_scored": 77,
+          "1m_return": 0.0086,
+          "1m_spy": 0.0129,
+          "1m_alpha": -0.0043,
+          "3m_return": null,
+          "3m_spy": null,
+          "3m_alpha": null,
+          "6m_return": null,
+          "6m_spy": null,
+          "6m_alpha": null
+        }
+      ],
+      "horizons": {
+        "1m": {
+          "num_periods": 60,
+          "win_rate": 0.5167,
+          "avg_alpha": 0.0016,
+          "avg_return": 0.014,
+          "avg_spy_return": 0.0124,
+          "std_alpha": 0.0254,
+          "sharpe_ratio": 0.2159,
+          "t_stat": 0.4829,
+          "p_value": 0.631,
+          "best_period": {
+            "date": "2025-03-01",
+            "alpha": 0.0515
+          },
+          "worst_period": {
+            "date": "2022-07-01",
+            "alpha": -0.0703
+          },
+          "consistency": 0.5167,
+          "significant": false
+        },
+        "3m": {
+          "num_periods": 58,
+          "win_rate": 0.3966,
+          "avg_alpha": -0.0016,
+          "avg_return": 0.0322,
+          "avg_spy_return": 0.0337,
+          "std_alpha": 0.048,
+          "sharpe_ratio": -0.112,
+          "t_stat": -0.2463,
+          "p_value": 0.8064,
+          "best_period": {
+            "date": "2024-09-01",
+            "alpha": 0.1161
+          },
+          "worst_period": {
+            "date": "2023-01-01",
+            "alpha": -0.1075
+          },
+          "consistency": 0.3966,
+          "significant": false
+        },
+        "6m": {
+          "num_periods": 55,
+          "win_rate": 0.4182,
+          "avg_alpha": -0.0083,
+          "avg_return": 0.0604,
+          "avg_spy_return": 0.0687,
+          "std_alpha": 0.072,
+          "sharpe_ratio": -0.3973,
+          "t_stat": -0.8506,
+          "p_value": 0.3988,
+          "best_period": {
+            "date": "2024-07-01",
+            "alpha": 0.1787
+          },
+          "worst_period": {
+            "date": "2023-01-01",
+            "alpha": -0.1891
+          },
+          "consistency": 0.4182,
+          "significant": false
+        }
+      }
+    }
+  }
+}

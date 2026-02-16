@@ -135,6 +135,7 @@ def compute_sell_signals(
     risk_score: Optional[float] = None,
     entry_price: Optional[float] = None,
     stop_loss_pct: float = -15.0,
+    adx: Optional[float] = None,
 ) -> dict:
     """Compute sell/exit signals for a stock.
     
@@ -175,16 +176,41 @@ def compute_sell_signals(
     sell_score = 0  # Accumulate negative signals (higher = stronger sell)
     
     # 1. RSI overbought (>70 = warning, >80 = strong sell)
+    # Strong trends can sustain high RSI longer — adjust thresholds when ADX > 40
     rsi = _rsi(close)
     if rsi is not None:
-        if rsi > 80:
-            sell_score += 25
+        # Calculate MA50 for trend context
+        ma50 = None
+        if len(close) >= 50:
+            ma50 = close.rolling(50).mean().iloc[-1]
+        
+        # Determine if we're in a strong uptrend
+        strong_trend = adx is not None and adx > 40
+        above_ma50_pct = None
+        if ma50 is not None and not pd.isna(ma50):
+            above_ma50_pct = ((current_price - ma50) / ma50) * 100
+        
+        # Strong trends can sustain high RSI longer
+        rsi_threshold_warning = 80 if strong_trend else 70
+        rsi_threshold_strong = 85 if strong_trend else 80
+        
+        rsi_sell_score = 0
+        if rsi > rsi_threshold_strong:
+            rsi_sell_score = 25
             reasons.append(f"RSI extremely overbought ({rsi:.1f})")
             result["rsi_overbought"] = True
-        elif rsi > 70:
-            sell_score += 15
+        elif rsi > rsi_threshold_warning:
+            rsi_sell_score = 15
             reasons.append(f"RSI overbought ({rsi:.1f})")
             result["rsi_overbought"] = True
+        
+        # In strong uptrend (ADX > 40) with price >10% above MA50, discount RSI sell score by 50%
+        if strong_trend and above_ma50_pct is not None and above_ma50_pct > 10:
+            rsi_sell_score = rsi_sell_score * 0.5
+            if rsi_sell_score > 0:
+                reasons.append("(RSI discounted: strong uptrend)")
+        
+        sell_score += rsi_sell_score
     
     # 2. Price at/near resistance
     if resistance is not None and resistance > 0:

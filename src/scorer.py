@@ -20,6 +20,7 @@ def compute_composite(
     results: List[dict],
     weights: dict,
     strategy: str = "balanced",
+    sector_scores: Optional[dict] = None,
 ) -> pd.DataFrame:
     """Take list of per-stock result dicts and produce ranked DataFrame.
 
@@ -32,6 +33,21 @@ def compute_composite(
 
     rows = []
     for r in results:
+        # Map sentiment score from -1 to +1 scale to 0-100
+        sent_raw = (r.get("sentiment") or {}).get("score")
+        if sent_raw is not None:
+            sent_raw = (sent_raw + 1) * 50  # Map -1..+1 to 0..100
+        
+        # Convert sector_rank to 0-100 score (rank 1 = 100, last = 0)
+        sector_rel_raw = None
+        if sector_scores:
+            sector_data = sector_scores.get(r["ticker"], {})
+            sector_rank = sector_data.get("sector_rank")
+            sector_size = sector_data.get("sector_size")
+            if sector_rank is not None and sector_size is not None and sector_size > 1:
+                # Invert rank: rank 1 (best) = 100, rank N (worst) = 0
+                sector_rel_raw = ((sector_size - sector_rank) / (sector_size - 1)) * 100
+        
         row = {
             "ticker": r["ticker"],
             "fund_raw": (r.get("fundamentals") or {}).get("score"),
@@ -39,6 +55,8 @@ def compute_composite(
             "tech_raw": (r.get("technicals") or {}).get("score"),
             "risk_raw": (r.get("risk") or {}).get("score"),
             "growth_raw": (r.get("growth") or {}).get("score"),
+            "sent_raw": sent_raw,
+            "sector_rel_raw": sector_rel_raw,
         }
         rows.append(row)
 
@@ -50,6 +68,8 @@ def compute_composite(
     df["tech_pct"] = percentile_rank(df["tech_raw"])
     df["risk_pct"] = percentile_rank(df["risk_raw"])
     df["growth_pct"] = percentile_rank(df["growth_raw"])
+    df["sent_pct"] = percentile_rank(df["sent_raw"])
+    df["sector_rel_pct"] = percentile_rank(df["sector_rel_raw"])
 
     # Use strategy weights
     w_fund = strat_weights.get("fundamentals", 0.30)
@@ -57,6 +77,8 @@ def compute_composite(
     w_tech = strat_weights.get("technicals", 0.25)
     w_risk = strat_weights.get("risk", 0.10)
     w_growth = strat_weights.get("growth", 0.15)
+    w_sent = strat_weights.get("sentiment", 0.05)
+    w_sector_rel = strat_weights.get("sector_relative", 0.10)
 
     # For each row, redistribute weights proportionally across available categories
     categories = [
@@ -65,6 +87,8 @@ def compute_composite(
         ("tech_pct", w_tech),
         ("risk_pct", w_risk),
         ("growth_pct", w_growth),
+        ("sent_pct", w_sent),
+        ("sector_rel_pct", w_sector_rel),
     ]
 
     def _weighted_composite(row):

@@ -235,7 +235,7 @@ def compute_momentum(hist: pd.DataFrame) -> dict:
     result["entry_score"] = score
     result["rsi"] = round(rsi, 2) if rsi is not None else None
 
-    # --- Tiered condition-counting signal logic ---
+    # --- Tiered condition-counting signal logic (RELAXED) ---
     # 4 key conditions:
     #   1. RSI < 40 (was 35 — loosened)
     #   2. Near support (bottom 25% of range)
@@ -264,16 +264,16 @@ def compute_momentum(hist: pd.DataFrame) -> dict:
 
     result["conditions_met"] = conditions_met
 
-    # Determine signal from conditions + score
+    # Determine signal from conditions + score (RELAXED THRESHOLDS)
     # STRONG_BUY: 3+ of 4 conditions
-    # BUY: 2 of 4 conditions
-    # HOLD: 1 condition OR composite entry_score > 60
-    # WAIT: none met and score < 60
+    # BUY: 2+ of 4 conditions (was 2), OR entry_score >= 50
+    # HOLD: 1 condition OR score >= 40
+    # WAIT: none met and score < 40
     if conditions_met >= 3:
         result["entry_signal"] = "STRONG_BUY"
-    elif conditions_met >= 2:
+    elif conditions_met >= 2 or score >= 50:
         result["entry_signal"] = "BUY"
-    elif conditions_met >= 1 or score > 60:
+    elif conditions_met >= 1 or score >= 40:
         result["entry_signal"] = "HOLD"
     else:
         result["entry_signal"] = "WAIT"

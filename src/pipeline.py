@@ -24,6 +24,7 @@ from .strategies import get_strategy
 from .earnings_guard import apply_earnings_guard
 from .freshness import check_freshness
 from .streak_tracker import update_streaks, add_streaks_to_results
+from .sentiment import analyze_sentiment
 
 logger = logging.getLogger(__name__)
 
@@ -167,10 +168,13 @@ def analyze_single(
     hist = _reconstruct_hist(data)
 
     fund = score_fundamentals(info)
-    val = score_valuation(info)
+    growth = score_growth(info)  # Compute growth first
+    val = score_valuation(info, growth_score=growth.get("score"))  # Pass growth score to valuation
     tech = score_technicals(hist)
     risk = score_risk(hist, spy_hist)
-    growth = score_growth(info)
+    
+    # Sentiment analysis
+    sentiment = analyze_sentiment(ticker)
 
     momentum = compute_momentum(hist)
 
@@ -192,6 +196,7 @@ def analyze_single(
         risk_score=risk.get("score"),
         entry_price=None,  # Not tracking entry prices in screening mode
         stop_loss_pct=-15.0,
+        adx=momentum.get("adx"),  # Pass ADX from momentum data
     )
 
     return {
@@ -206,6 +211,7 @@ def analyze_single(
         "technicals": tech,
         "risk": risk,
         "growth": growth,
+        "sentiment": sentiment,
         "momentum": momentum,
         "sell_signals": sell_signals,
     }
@@ -318,8 +324,8 @@ def run_scan(
     # Compute sector-relative scores
     sector_scores = compute_sector_relative_scores(results)
 
-    # Score and rank (on filtered set)
-    ranked_df = compute_composite(filtered, weights, strategy=strategy)
+    # Score and rank (on filtered set), passing sector scores for sector-relative weighting
+    ranked_df = compute_composite(filtered, weights, strategy=strategy, sector_scores=sector_scores)
 
     # Merge details
     detail_map = {r["ticker"]: r for r in filtered}
@@ -342,6 +348,8 @@ def run_scan(
             "technicals_pct": round(float(row["tech_pct"]), 2) if pd.notna(row["tech_pct"]) else None,
             "risk_pct": round(float(row["risk_pct"]), 2) if pd.notna(row["risk_pct"]) else None,
             "growth_pct": round(float(row["growth_pct"]), 2) if pd.notna(row["growth_pct"]) else None,
+            "sentiment_score": (detail.get("sentiment") or {}).get("score"),
+            "sentiment_pct": round(float(row["sent_pct"]), 2) if pd.notna(row["sent_pct"]) else None,
             "sector_rank": sr.get("sector_rank"),
             "sector_size": sr.get("sector_size"),
             "sector_composite": sr.get("sector_composite"),
@@ -369,9 +377,10 @@ def run_scan(
     # --- Add consecutive_days to results ---
     ranked = add_streaks_to_results(ranked)
 
-    # --- Fix score/signal disconnect: upgrade top-10 to at least BUY unless red flags ---
+    # --- Fix score/signal disconnect: upgrade top-20 with score >75 to at least BUY unless red flags ---
     for stock in ranked:
-        if stock["rank"] <= 10 and stock.get("entry_signal") in ("HOLD", "WAIT"):
+        # Upgrade top-20 stocks with composite score > 75
+        if stock["rank"] <= 20 and stock.get("composite_score", 0) > 75 and stock.get("entry_signal") in ("HOLD", "WAIT"):
             # Check red flags
             red_flags = []
             if stock.get("earnings_warning"):
