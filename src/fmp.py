@@ -122,8 +122,14 @@ def fetch_fundamentals(ticker: str) -> Optional[Dict[str, Any]]:
     ]
 
     for key, endpoint, params in endpoints:
+        # Check limit before each call
+        if status["calls_today"] >= DAILY_LIMIT:
+            logger.info("Daily limit reached (%d), stopping", status["calls_today"])
+            _save_status(status)
+            return None
         data, ok = _api_get(endpoint, params)
         status["calls_today"] += 1
+        time.sleep(1)  # Rate limit: 1 second between calls
         if not ok or data is None or (isinstance(data, dict) and "Error" in str(data)):
             # Rate limit — do NOT blacklist, just bail for now
             if isinstance(data, dict) and data.get("Error") == "RateLimit":
@@ -335,13 +341,20 @@ def fetch_all_fundamentals(tickers: List[str], limit: Optional[int] = None) -> D
     to_fetch = to_fetch[:max_tickers]
     fetched = 0
     errors = 0
+    consecutive_errors = 0
 
     for ticker in to_fetch:
         result = fetch_fundamentals(ticker)
         if result is not None:
             fetched += 1
+            consecutive_errors = 0
         else:
             errors += 1
+            consecutive_errors += 1
+            # Stop after 3 consecutive failures (likely rate limited / over quota)
+            if consecutive_errors >= 3:
+                logger.warning("3 consecutive failures, stopping batch to preserve quota")
+                break
             # Check if we hit rate limit
             status = _load_status()
             if status["calls_today"] >= DAILY_LIMIT:
