@@ -30,7 +30,7 @@ src/
   accuracy.py      — Prediction accuracy tracking
   fmp.py           — FMP API data fetcher
   api.py           — FastAPI endpoints
-  sentiment.py     — Sentiment analysis (exists, not yet wired in)
+  sentiment.py     — Sentiment analysis (wired into composite scoring, 3-7% weight)
 
 static/
   index.html       — Single-file dashboard (dark/light theme)
@@ -43,10 +43,10 @@ data/
   fmp_cache/              — Per-ticker FMP data (.gitignored)
 ```
 
-## Strategies & Weights
-- **Conservative:** fundamentals 45%, valuation 30%, risk 15%, technicals 10%, growth 0%
-- **Balanced:** fundamentals 30%, technicals 25%, valuation 20%, growth 15%, risk 10%
-- **Aggressive:** technicals 35%, growth 35%, fundamentals 15%, valuation 10%, risk 5%
+## Strategies & Weights (updated with sentiment + sector-relative)
+- **Conservative:** fundamentals 40%, valuation 26%, risk 13%, sector-relative 10%, technicals 8%, sentiment 3%, growth 0%
+- **Balanced:** fundamentals 26%, technicals 22%, valuation 17%, growth 12%, sector-relative 10%, risk 8%, sentiment 5%
+- **Aggressive:** technicals 31%, growth 27%, fundamentals 13%, sector-relative 10%, valuation 8%, sentiment 7%, risk 4%
 
 ## Cron Jobs (automated)
 - **6:00 AM PT daily** — FMP cache fill
@@ -54,7 +54,7 @@ data/
 - **4:00 PM ET weekdays** — Accuracy snapshot + streak update
 
 ## Sell Signal Triggers
-- RSI overbought (>70 warning, >80 strong sell)
+- RSI overbought (>70 warning, >80 strong sell) — **ADX-aware:** thresholds raised to 80/85 when ADX > 40 (strong trend)
 - Price near resistance (within 2%)
 - Signal downgrade (e.g., BUY → WAIT)
 - Fundamental deterioration (score drop >15 points)
@@ -64,6 +64,13 @@ data/
 - Stop-loss threshold (default -15%)
 - MACD bearish crossover
 - MA50/MA200 breakdown
+
+## Recent Improvements (Feb 2026)
+1. **Sentiment Analysis (5% weight):** News headline sentiment analysis now integrated into composite scoring (3% conservative, 5% balanced, 7% aggressive)
+2. **ADX-Aware Sell Signals:** Strong trends (ADX > 40) allow higher RSI thresholds before triggering sell signals. RSI sell scores discounted by 50% when price is >10% above MA50 in strong uptrend.
+3. **Relaxed Entry Thresholds:** BUY signal now triggered with 2+ conditions (was 3+) OR entry_score >= 50. Top-20 stocks with score >75 auto-upgraded to BUY unless red flags present.
+4. **Sector-Relative Scoring (10% weight):** Within-sector rank now contributes to composite score, promoting sector diversification.
+5. **Growth-Adjusted Valuation:** High-growth stocks (growth_score > 80) get valuation penalty dampened by 1.3x. Stocks with PEG < 1.5 receive +15 point valuation boost.
 
 ## Running
 ```bash
