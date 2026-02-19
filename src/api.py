@@ -21,6 +21,9 @@ from .fmp import fetch_all_fundamentals, get_fetch_status, get_cached_fundamenta
 from .universe import get_sp500_tickers
 from .accuracy import get_accuracy, take_snapshot
 from .streak_tracker import get_all_streaks, get_streak
+from .optimizer import run_optimization, get_optimization_status, load_optimization_results, apply_optimization
+from .model_report import generate_factor_report, format_report_discord
+from .auto_optimize import run_monthly_optimization, get_optimization_history
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
@@ -318,6 +321,111 @@ def ticker_streak(ticker: str):
         }
     except Exception as e:
         raise HTTPException(500, "Failed to get streak: %s" % str(e))
+
+
+@app.get("/optimize/monthly")
+def optimize_monthly(
+    strategy: str = Query("balanced", description="Strategy to optimize"),
+    months_back: int = Query(6, ge=1, le=12),
+):
+    """Run monthly weight optimization."""
+    try:
+        result = run_monthly_optimization(strategy=strategy, months_back=months_back)
+        return result
+    except Exception as e:
+        raise HTTPException(500, "Optimization failed: %s" % str(e))
+
+
+@app.get("/optimize/history")
+def optimize_history():
+    """Return optimization changelog."""
+    return {"history": get_optimization_history()}
+
+
+## ML Model endpoints
+
+from .ml_model import train_model as _ml_train, predict_scores as _ml_predict, get_model_metrics as _ml_metrics, compare_with_rules as _ml_compare
+
+
+@app.get("/ml/train")
+def ml_train(months_history: int = Query(12, ge=1, le=36)):
+    """Train ML model."""
+    try:
+        return _ml_train(months_history=months_history)
+    except Exception as e:
+        logger.error("ML training failed", exc_info=True)
+        raise HTTPException(500, f"ML training failed: {e}")
+
+
+@app.get("/ml/predict")
+def ml_predict(tickers: Optional[str] = Query(None, description="Comma-separated tickers")):
+    """Get ML predictions for stocks."""
+    try:
+        ticker_list = [t.strip().upper() for t in tickers.split(",")] if tickers else None
+        return {"predictions": _ml_predict(ticker_list)}
+    except Exception as e:
+        raise HTTPException(500, f"ML prediction failed: {e}")
+
+
+@app.get("/ml/metrics")
+def ml_metrics():
+    """Get ML model metrics."""
+    return _ml_metrics()
+
+
+@app.get("/ml/compare")
+def ml_compare():
+    """Compare ML vs rule-based picks."""
+    try:
+        return _ml_compare()
+    except Exception as e:
+        raise HTTPException(500, f"ML comparison failed: {e}")
+
+
+@app.get("/optimize/run")
+def optimize_run(strategy: str = Query("balanced")):
+    """Run weight optimization."""
+    try:
+        result = run_optimization(strategy=strategy)
+        return result
+    except Exception as e:
+        raise HTTPException(500, "Optimization failed: %s" % str(e))
+
+
+@app.get("/optimize/status")
+def optimize_status():
+    """Check optimization progress."""
+    return get_optimization_status()
+
+
+@app.get("/optimize/results")
+def optimize_results():
+    """Get cached optimization results."""
+    results = load_optimization_results()
+    if not results:
+        raise HTTPException(404, "No optimization results. Run /optimize/run first.")
+    return results
+
+
+@app.get("/optimize/apply")
+def optimize_apply(dry_run: bool = Query(True)):
+    """Apply optimization results to config."""
+    try:
+        return apply_optimization(dry_run=dry_run)
+    except Exception as e:
+        raise HTTPException(500, "Apply failed: %s" % str(e))
+
+
+@app.get("/report/factors")
+def report_factors(months: int = Query(3, ge=1, le=12), format: str = Query("json")):
+    """Get factor attribution report."""
+    try:
+        report = generate_factor_report(months=months)
+        if format == "discord":
+            return {"text": format_report_discord(report)}
+        return report
+    except Exception as e:
+        raise HTTPException(500, "Report failed: %s" % str(e))
 
 
 if __name__ == "__main__":

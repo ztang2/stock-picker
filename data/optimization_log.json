@@ -1,0 +1,53 @@
+[
+  {
+    "date": "2026-02-17T22:52:01.115841",
+    "strategy": "balanced",
+    "decision": "no_change",
+    "reason": "Current weights are already optimal",
+    "old_weights": {
+      "fundamentals": 0.26,
+      "valuation": 0.17,
+      "technicals": 0.22,
+      "risk": 0.08,
+      "growth": 0.12,
+      "sentiment": 0.05,
+      "sector_relative": 0.1
+    },
+    "new_weights": null,
+    "old_backtest": {
+      "period": "6m",
+      "alpha": -0.0251,
+      "win_rate": 0.55,
+      "portfolio_return": 0.0555,
+      "spy_return": 0.0806,
+      "max_drawdown": -0.1828,
+      "weights_used": {
+        "fundamentals": 0.26,
+        "valuation": 0.17,
+        "technicals": 0.22,
+        "risk": 0.08,
+        "growth": 0.12,
+        "sentiment": 0.05,
+        "sector_relative": 0.1
+      }
+    },
+    "new_backtest": {
+      "period": "6m",
+      "alpha": -0.0251,
+      "win_rate": 0.55,
+      "portfolio_return": 0.0555,
+      "spy_return": 0.0806,
+      "max_drawdown": -0.1828,
+      "weights_used": {
+        "fundamentals": 0.26,
+        "valuation": 0.17,
+        "technicals": 0.22,
+        "risk": 0.08,
+        "growth": 0.12,
+        "sentiment": 0.05,
+        "sector_relative": 0.1
+      }
+    },
+    "combos_tested": 44
+  }
+]

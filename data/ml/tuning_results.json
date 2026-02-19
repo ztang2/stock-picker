@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-02-18T21:26:00",
+  "before": {
+    "accuracy": 0.52,
+    "precision": 0.6786,
+    "recall": 0.3276,
+    "f1": 0.4419,
+    "issues": [
+      "sentiment_pct=constant(50)",
+      "sector_composite=constant(50)",
+      "market_regime_bear=constant(0)",
+      "only 900 samples (10 dates)",
+      "no class balancing",
+      "no feature engineering"
+    ]
+  },
+  "after": {
+    "accuracy": 0.5815,
+    "precision": 0.5559,
+    "recall": 0.449,
+    "f1": 0.4968,
+    "regression_mae": 0.0672,
+    "regression_corr": 0.2683,
+    "samples": 3800,
+    "walk_forward_samples": 2600
+  },
+  "changes_made": [
+    "Increased sampling frequency: every 5 trading days instead of 21 (900\u21923800 samples)",
+    "Fixed sentiment_pct: now uses momentum-based proxy with noise instead of constant 50",
+    "Fixed sector_composite: now uses relative performance proxy with noise instead of constant 50",
+    "Removed constant features from active set (above_ma200 also dropped - always 1 in bull)",
+    "Added 8 engineered features: rsi_x_regime_bull, momentum_proxy, value_momentum, tech_x_growth, rsi_oversold, rsi_overbought, above_ma200, score_rank",
+    "Tuned XGBoost: n_estimators=200, max_depth=5, lr=0.05, min_child_weight=3",
+    "Added scale_pos_weight for class imbalance (1.42x)",
+    "Walk-forward window auto-adjusts to n_dates-2"
+  ],
+  "improvements": {
+    "accuracy": "+6.15pp (0.52 \u2192 0.5815)",
+    "recall": "+12.14pp (0.3276 \u2192 0.449)",
+    "f1": "+5.49pp (0.4419 \u2192 0.4968)",
+    "regression_corr": "+0.1031 (0.1652 \u2192 0.2683)"
+  },
+  "remaining_notes": [
+    "market_regime_bear is inherently 0 during bull markets - expected",
+    "above_ma200 dropped to 0 importance - most stocks above MA200 in bull market",
+    "Precision decreased (0.68\u21920.56) as trade-off for much better recall",
+    "With real snapshot data (30+ days), model should improve further",
+    "LightGBM not tested (not installed) - potential further improvement"
+  ]
+}

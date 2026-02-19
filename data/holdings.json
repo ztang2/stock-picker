@@ -1,0 +1,10 @@
+{
+  "holdings": {
+    "MCK": {"shares": 0.741, "entry_price": 944.72, "entry_date": "2026-02-17", "entry_score": 85.0},
+    "ACGL": {"shares": 7.045, "entry_price": 99.36, "entry_date": "2026-02-17", "entry_score": 87.3},
+    "ALL": {"shares": 3.324, "entry_price": 210.62, "entry_date": "2026-02-17", "entry_score": 88.1},
+    "NEM": {"shares": 5.777, "entry_price": 121.18, "entry_date": "2026-02-17", "entry_score": 83.5},
+    "EQT": {"shares": 12.255, "entry_price": 57.12, "entry_date": "2026-02-17", "entry_score": 82.7}
+  },
+  "updated": "2026-02-17T10:00:00"
+}

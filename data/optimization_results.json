@@ -1,0 +1,211 @@
+{
+  "timestamp": "2026-02-17T22:52:01",
+  "data_periods": 60,
+  "data_years": 5,
+  "current_strategy": "balanced",
+  "current_performance": {
+    "conservative": {
+      "1m": {
+        "avg_alpha": 0.0012,
+        "win_rate": 0.6167,
+        "sharpe": 0.2062,
+        "significant": false
+      },
+      "3m": {
+        "avg_alpha": 0.002,
+        "win_rate": 0.5,
+        "sharpe": 0.202,
+        "significant": false
+      },
+      "6m": {
+        "avg_alpha": 0.0056,
+        "win_rate": 0.6182,
+        "sharpe": 0.4249,
+        "significant": false
+      }
+    },
+    "balanced": {
+      "1m": {
+        "avg_alpha": 0.0049,
+        "win_rate": 0.6167,
+        "sharpe": 0.7478,
+        "significant": false
+      },
+      "3m": {
+        "avg_alpha": 0.0069,
+        "win_rate": 0.6207,
+        "sharpe": 0.5821,
+        "significant": false
+      },
+      "6m": {
+        "avg_alpha": 0.0162,
+        "win_rate": 0.6364,
+        "sharpe": 0.8573,
+        "significant": false
+      }
+    },
+    "aggressive": {
+      "1m": {
+        "avg_alpha": 0.0042,
+        "win_rate": 0.5833,
+        "sharpe": 0.6407,
+        "significant": false
+      },
+      "3m": {
+        "avg_alpha": 0.006,
+        "win_rate": 0.5517,
+        "sharpe": 0.5041,
+        "significant": false
+      },
+      "6m": {
+        "avg_alpha": 0.012,
+        "win_rate": 0.6182,
+        "sharpe": 0.6225,
+        "significant": false
+      }
+    }
+  },
+  "walk_forward_results": {
+    "conservative": {
+      "1m": {
+        "alpha": 0.00126,
+        "win_rate": 0.614,
+        "sharpe": 0.2132,
+        "n_test": 57,
+        "avg_return": 0.01216
+      },
+      "3m": {
+        "alpha": 0.00159,
+        "win_rate": 0.4909,
+        "sharpe": 0.1544,
+        "n_test": 55,
+        "avg_return": 0.03611
+      },
+      "6m": {
+        "alpha": 0.00387,
+        "win_rate": 0.5962,
+        "sharpe": 0.2905,
+        "n_test": 52,
+        "avg_return": 0.07247
+      }
+    },
+    "balanced": {
+      "1m": {
+        "alpha": 0.00445,
+        "win_rate": 0.6316,
+        "sharpe": 0.6851,
+        "n_test": 57,
+        "avg_return": 0.01536
+      },
+      "3m": {
+        "alpha": 0.00635,
+        "win_rate": 0.6182,
+        "sharpe": 0.5216,
+        "n_test": 55,
+        "avg_return": 0.04086
+      },
+      "6m": {
+        "alpha": 0.01505,
+        "win_rate": 0.6154,
+        "sharpe": 0.7756,
+        "n_test": 52,
+        "avg_return": 0.08364
+      }
+    },
+    "aggressive": {
+      "1m": {
+        "alpha": 0.00402,
+        "win_rate": 0.5965,
+        "sharpe": 0.6199,
+        "n_test": 57,
+        "avg_return": 0.01492
+      },
+      "3m": {
+        "alpha": 0.00548,
+        "win_rate": 0.5455,
+        "sharpe": 0.4503,
+        "n_test": 55,
+        "avg_return": 0.03999
+      },
+      "6m": {
+        "alpha": 0.0117,
+        "win_rate": 0.6154,
+        "sharpe": 0.5942,
+        "n_test": 52,
+        "avg_return": 0.08029
+      }
+    }
+  },
+  "best_strategy": "balanced",
+  "best_strategy_1m_alpha": 0.0044,
+  "recommended_weights": {
+    "fundamentals": 0.26,
+    "valuation": 0.17,
+    "technicals": 0.22,
+    "risk": 0.08,
+    "growth": 0.12,
+    "sentiment": 0.05,
+    "sector_relative": 0.1
+  },
+  "current_weights": {
+    "fundamentals": 0.26,
+    "valuation": 0.17,
+    "technicals": 0.22,
+    "risk": 0.08,
+    "growth": 0.12,
+    "sentiment": 0.05,
+    "sector_relative": 0.1
+  },
+  "weight_changes": {},
+  "top_n_analysis": {
+    "current_top_n": 20,
+    "recommended_top_n": 20,
+    "candidates": [
+      5,
+      10,
+      15,
+      20,
+      25
+    ],
+    "horizon_analysis": {
+      "1m": {
+        "avg_alpha": 0.0049,
+        "win_rate": 0.6167,
+        "n_periods": 60
+      },
+      "3m": {
+        "avg_alpha": 0.0069,
+        "win_rate": 0.6207,
+        "n_periods": 58
+      },
+      "6m": {
+        "avg_alpha": 0.0162,
+        "win_rate": 0.6364,
+        "n_periods": 55
+      }
+    },
+    "note": "Full top_n optimization requires re-running backtest with different top_n values. Use /backtest/rolling?top_n=N to test specific values."
+  },
+  "threshold_analysis": {
+    "return_distribution": {
+      "p25_return": -0.0096,
+      "p50_return": 0.0175,
+      "p75_return": 0.0485
+    },
+    "avg_1m_alpha": 0.0049,
+    "current_thresholds": {
+      "min_market_cap": "2.0e9",
+      "min_volume": 500000
+    },
+    "recommendations": {
+      "buy_threshold": "Composite score > 65 (top ~30% of scored stocks)",
+      "strong_buy_threshold": "Composite score > 80 (top ~15% of scored stocks)",
+      "sell_threshold": "Composite score < 40 or score drop > 15 points",
+      "note": "Based on alpha distribution, model generates positive alpha in 61.7% of months"
+    }
+  },
+  "summary": {
+    "recommendation": "Current 'balanced' strategy is optimal among tested strategies",
+    "has_significant_alpha": false
+  }
+}
