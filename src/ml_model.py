@@ -112,7 +112,18 @@ def _compute_spy_return(spy_prices: pd.DataFrame, date: str, days: int = 21) -> 
 
 
 def _extract_features_from_stock(stock: dict, regime: str = "sideways") -> dict:
-    """Extract feature dict from a single stock entry in scan results."""
+    """Extract feature dict from a single stock entry in scan results.
+    
+    Fields come from pipeline.py's ranked output. Computes derived features
+    (ma50_ratio, ma200_ratio) from raw values when not directly available.
+    """
+    # Compute MA ratios from price and MA values
+    price = stock.get("current_price")
+    ma50 = stock.get("ma50")
+    ma200 = stock.get("ma200")
+    ma50_ratio = (price / ma50) if (price and ma50 and ma50 > 0) else None
+    ma200_ratio = (price / ma200) if (price and ma200 and ma200 > 0) else None
+    
     feats = {
         "fundamentals_pct": stock.get("fundamentals_pct"),
         "valuation_pct": stock.get("valuation_pct"),
@@ -125,9 +136,13 @@ def _extract_features_from_stock(stock: dict, regime: str = "sideways") -> dict:
         "composite_score": stock.get("composite_score"),
         "rsi": stock.get("rsi"),
         "macd_histogram": stock.get("macd_histogram"),
-        "ma50_ratio": stock.get("ma50_ratio"),
-        "ma200_ratio": stock.get("ma200_ratio"),
+        "ma50_ratio": ma50_ratio,
+        "ma200_ratio": ma200_ratio,
         "volume_trend": stock.get("volume_trend"),
+        "adx": stock.get("adx"),
+        "volatility": stock.get("volatility"),
+        "beta": stock.get("beta"),
+        "smart_money_score": stock.get("smart_money_score"),
         "market_regime_bull": 1.0 if regime == "bull" else 0.0,
         "market_regime_bear": 1.0 if regime == "bear" else 0.0,
     }
@@ -218,32 +233,56 @@ def _generate_synthetic_data(months: int = 18) -> pd.DataFrame:
             # Compute synthetic scores based on technicals (simplified)
             tech_data = score_technicals(hist_slice)
 
-            # Simple synthetic fundamental/valuation proxies from price behavior
-            # (In reality these come from financial data, but for synthetic training
-            # we use price-derived proxies)
+            # Compute real features from price history (no data leakage)
+            # These are computed AT sample_date, predicting FUTURE returns
             volatility = float(close.pct_change().tail(60).std() * np.sqrt(252) * 100)
-            returns_6m = float((current_price / close.iloc[-126] - 1) * 100) if len(close) >= 126 else 0
-            returns_1m = float((current_price / close.iloc[-21] - 1) * 100) if len(close) >= 21 else 0
+            
+            # Use REAL scoring functions where possible
+            from .risk import score_risk
+            risk_data = score_risk(hist_slice, spy_prices.loc[:sample_date] if spy_prices is not None else None)
+            
+            # ADX for trend strength
+            adx_val = None
+            if len(hist_slice) >= 20:
+                try:
+                    high = hist_slice["High"]
+                    low = hist_slice["Low"]
+                    tr = pd.concat([high - low, (high - close.shift()).abs(), (low - close.shift()).abs()], axis=1).max(axis=1)
+                    atr14 = tr.rolling(14).mean()
+                    plus_dm = (high.diff()).clip(lower=0)
+                    minus_dm = (-low.diff()).clip(lower=0)
+                    plus_di = 100 * (plus_dm.rolling(14).mean() / atr14)
+                    minus_di = 100 * (minus_dm.rolling(14).mean() / atr14)
+                    dx = 100 * ((plus_di - minus_di).abs() / (plus_di + minus_di))
+                    adx_val = float(dx.rolling(14).mean().iloc[-1])
+                    if pd.isna(adx_val):
+                        adx_val = None
+                except Exception:
+                    pass
 
             row = {
                 "date": date_str,
                 "ticker": ticker,
-                "fundamentals_pct": np.clip(50 + returns_6m * 0.5, 0, 100),  # proxy
-                "valuation_pct": np.clip(70 - volatility * 0.5, 0, 100),  # proxy
+                # Percentile scores set to None — model learns from technicals + regime
+                # (fundamentals/valuation/growth not available historically without financial data)
+                "fundamentals_pct": None,
+                "valuation_pct": None,
                 "technicals_pct": tech_data.get("score") or 50,
-                "risk_pct": np.clip(80 - volatility, 0, 100),  # proxy
-                "growth_pct": np.clip(50 + returns_6m * 0.8, 0, 100),  # proxy
-                # Synthetic sentiment: momentum-based proxy with noise
-                "sentiment_pct": np.clip(50 + returns_1m * 1.5 + np.random.normal(0, 10), 0, 100),
-                # Synthetic sector composite: relative performance proxy with noise
-                "sector_composite": np.clip(50 + returns_6m * 0.3 + np.random.normal(0, 12), 0, 100),
-                "entry_score": np.clip(returns_1m * 2 + 50, 0, 100),  # proxy
+                "risk_pct": risk_data.get("score") if risk_data else None,
+                "growth_pct": None,
+                "sentiment_pct": None,
+                "sector_composite": None,
+                "entry_score": None,
                 "composite_score": tech_data.get("score") or 50,
-                "rsi": rsi_val or 50,
-                "macd_histogram": macd_val or 0,
-                "ma50_ratio": current_price / ma50 if ma50 > 0 else 1.0,
-                "ma200_ratio": current_price / ma200 if ma200 > 0 else 1.0,
-                "volume_trend": vol_20 / vol_50 if vol_50 > 0 else 1.0,
+                "rsi": rsi_val,
+                "macd_histogram": macd_val,
+                "ma50_ratio": current_price / ma50 if ma50 > 0 else None,
+                "ma200_ratio": current_price / ma200 if ma200 > 0 else None,
+                "volume_trend": vol_20 / vol_50 if vol_50 > 0 else None,
+                "adx": adx_val,
+                "volatility": volatility,
+                "beta": risk_data.get("beta") if risk_data else None,
+                "smart_money_score": None,  # Not available historically
                 "market_regime_bull": 1.0 if regime == "bull" else 0.0,
                 "market_regime_bear": 1.0 if regime == "bear" else 0.0,
                 "forward_return": stock_ret,

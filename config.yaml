@@ -1,23 +1,27 @@
 default_strategy: balanced
 
+# These weights are OVERRIDDEN by strategy weights in src/strategies.py
+# Actual balanced weights: fund=0.26, val=0.17, tech=0.22, risk=0.08, growth=0.12, sent=0.05, sector_rel=0.10
+# This config is kept for reference; auto_optimize writes overrides to data/weight_overrides.json
 weights:
-  fundamentals: 0.30
-  valuation: 0.20
-  technicals: 0.25
-  risk: 0.10
-  growth: 0.15
+  fundamentals: 0.26
+  valuation: 0.17
+  technicals: 0.22
+  risk: 0.08
+  growth: 0.12
+  sentiment: 0.05
+  sector_relative: 0.10
 
 thresholds:
   min_market_cap: 2.0e9
   min_volume: 500000
 
-# Enhanced filtering (all optional)
 filters:
-  sectors: []          # e.g. ["Technology", "Healthcare"]
-  industries: []       # e.g. ["Semiconductors"]
-  min_market_cap: null # override thresholds.min_market_cap for API
-  max_market_cap: null # e.g. 500.0e9
-  exclude_tickers: []  # e.g. ["TSLA", "MEME"]
+  sectors: []
+  industries: []
+  min_market_cap: null
+  max_market_cap: null
+  exclude_tickers: []
 
 cache_hours: 24
 top_n: 20

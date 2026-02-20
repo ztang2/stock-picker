@@ -1,68 +1,5 @@
 [
   {
-    "type": "new_entry",
-    "ticker": "TPR",
-    "message": "TPR entered top 20 (score: 73.0)",
-    "severity": "info",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "KEYS",
-    "message": "KEYS entered top 20 (score: 72.9)",
-    "severity": "info",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "SPG",
-    "message": "SPG entered top 20 (score: 72.3)",
-    "severity": "info",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "FANG",
-    "message": "FANG entered top 20 (score: 71.7)",
-    "severity": "info",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "TER",
-    "message": "TER entered top 20 (score: 70.7)",
-    "severity": "info",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "ALL",
-    "message": "ALL dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "ACGL",
-    "message": "ACGL dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "TRV",
-    "message": "TRV dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "HIG",
-    "message": "HIG dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
     "type": "dropped",
     "ticker": "CB",
     "message": "CB dropped out of top rankings",
@@ -1398,5 +1335,68 @@
     "message": "MCK score moved up by 12.0 (74.3 \u2192 86.4)",
     "severity": "info",
     "timestamp": "2026-02-15T21:59:12"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "HII",
+    "message": "HII entered top 20 (score: 79.9)",
+    "severity": "info",
+    "timestamp": "2026-02-19T21:09:55"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "ABBV",
+    "message": "ABBV entered top 20 (score: 76.3)",
+    "severity": "info",
+    "timestamp": "2026-02-19T21:09:55"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "INCY",
+    "message": "INCY entered top 20 (score: 76.2)",
+    "severity": "info",
+    "timestamp": "2026-02-19T21:09:55"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "RL",
+    "message": "RL entered top 20 (score: 75.3)",
+    "severity": "info",
+    "timestamp": "2026-02-19T21:09:55"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CVS",
+    "message": "CVS dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-02-19T21:09:55"
+  },
+  {
+    "type": "dropped",
+    "ticker": "LVS",
+    "message": "LVS dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-02-19T21:09:55"
+  },
+  {
+    "type": "dropped",
+    "ticker": "AMGN",
+    "message": "AMGN dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-02-19T21:09:55"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CBOE",
+    "message": "CBOE dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-02-19T21:09:55"
+  },
+  {
+    "type": "score_change",
+    "ticker": "ALL",
+    "message": "ALL score moved down by 10.3 (88.2 \u2192 77.9)",
+    "severity": "warning",
+    "timestamp": "2026-02-19T21:09:55"
   }
 ]

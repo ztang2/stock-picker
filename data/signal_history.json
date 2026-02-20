@@ -638,5 +638,165 @@
     "price_at_signal": 378.23,
     "date": "2026-02-18",
     "strategy": "balanced"
+  },
+  {
+    "ticker": "MCK",
+    "signal": "BUY",
+    "score": 87.3,
+    "price_at_signal": 937.2,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "NEM",
+    "signal": "BUY",
+    "score": 85.82,
+    "price_at_signal": 125.45,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "ACGL",
+    "signal": "BUY",
+    "score": 83.37,
+    "price_at_signal": 98.32,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "CF",
+    "signal": "BUY",
+    "score": 83.32,
+    "price_at_signal": 99.71,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "EQT",
+    "signal": "BUY",
+    "score": 82.78,
+    "price_at_signal": 59.76,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "HIG",
+    "signal": "BUY",
+    "score": 80.04,
+    "price_at_signal": 140.295,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "HII",
+    "signal": "BUY",
+    "score": 79.94,
+    "price_at_signal": 442.7699,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "TEL",
+    "signal": "BUY",
+    "score": 79.85,
+    "price_at_signal": 231.965,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "HCA",
+    "signal": "BUY",
+    "score": 79.28,
+    "price_at_signal": 528.33,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "CPAY",
+    "signal": "BUY",
+    "score": 79.1,
+    "price_at_signal": 346.875,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "CAH",
+    "signal": "BUY",
+    "score": 78.74,
+    "price_at_signal": 222.73,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "ALL",
+    "signal": "BUY",
+    "score": 77.91,
+    "price_at_signal": 203.21,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "TXT",
+    "signal": "HOLD",
+    "score": 77.77,
+    "price_at_signal": 98.96,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "UHS",
+    "signal": "HOLD",
+    "score": 77.53,
+    "price_at_signal": 229.98,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "TRV",
+    "signal": "BUY",
+    "score": 77.44,
+    "price_at_signal": 299.825,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "ABBV",
+    "signal": "BUY",
+    "score": 76.35,
+    "price_at_signal": 224.19,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "INCY",
+    "signal": "BUY",
+    "score": 76.21,
+    "price_at_signal": 101.73,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "CB",
+    "signal": "BUY",
+    "score": 75.9,
+    "price_at_signal": 329.18,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "CTRA",
+    "signal": "HOLD",
+    "score": 75.68,
+    "price_at_signal": 31.7199,
+    "date": "2026-02-19",
+    "strategy": "balanced"
+  },
+  {
+    "ticker": "RL",
+    "signal": "BUY",
+    "score": 75.3,
+    "price_at_signal": 377.08,
+    "date": "2026-02-19",
+    "strategy": "balanced"
   }
 ]

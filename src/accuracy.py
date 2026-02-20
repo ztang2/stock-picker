@@ -26,7 +26,8 @@ def _load_history() -> List[Dict[str, Any]]:
 
 def _save_history(history: List[Dict[str, Any]]):
     DATA_DIR.mkdir(exist_ok=True)
-    HISTORY_FILE.write_text(json.dumps(history, indent=2, default=str))
+    # Keep last 2000 entries (~100 days × 20 stocks)
+    HISTORY_FILE.write_text(json.dumps(history[-2000:], indent=2, default=str))
 
 
 def take_snapshot(strategy: str = "balanced") -> Dict[str, Any]:

@@ -367,6 +367,19 @@ def run_scan(
             "sell_signal": sell_sig.get("sell_signal", "N/A"),
             "sell_urgency": sell_sig.get("urgency", "none"),
             "sell_reasons": sell_sig.get("sell_reasons", []),
+            # Price data (needed for validation + rebalance)
+            "current_price": sell_sig.get("current_price"),
+            # Technical features (needed for ML predictions)
+            "rsi": sell_sig.get("rsi"),
+            "macd_histogram": (detail.get("technicals") or {}).get("macd_histogram"),
+            "adx": (detail.get("momentum") or {}).get("adx"),
+            "volatility": (detail.get("risk") or {}).get("volatility"),
+            "beta": (detail.get("risk") or {}).get("beta"),
+            "volume_trend": (detail.get("technicals") or {}).get("volume_trend"),
+            "ma50": (detail.get("technicals") or {}).get("ma50"),
+            "ma200": (detail.get("technicals") or {}).get("ma200"),
+            "above_ma50": (detail.get("technicals") or {}).get("above_ma50"),
+            "above_ma200": (detail.get("technicals") or {}).get("above_ma200"),
         })
 
     # --- Smart money signals (analyst revisions + insider trading) for top N only ---
@@ -446,9 +459,28 @@ def run_scan(
         "top": ranked,
     }
 
+    # Rotate: current → previous (BEFORE saving new results)
+    PREV_RESULTS_FILE = DATA_DIR / "prev_scan_results.json"
+    if RESULTS_FILE.exists():
+        try:
+            import shutil
+            shutil.copy2(RESULTS_FILE, PREV_RESULTS_FILE)
+            logger.info("Rotated scan results → prev_scan_results.json")
+        except Exception as e:
+            logger.warning("Failed to rotate scan results: %s", e)
+
     # Save results
     DATA_DIR.mkdir(exist_ok=True)
     RESULTS_FILE.write_text(json.dumps(output, indent=2, default=str))
+    
+    # Also save daily snapshot
+    snapshot_dir = DATA_DIR / "daily_snapshots"
+    snapshot_dir.mkdir(exist_ok=True)
+    today = time.strftime("%Y-%m-%d")
+    snapshot_file = snapshot_dir / f"{today}.json"
+    if not snapshot_file.exists():
+        snapshot_file.write_text(json.dumps(output, indent=2, default=str))
+        logger.info("Saved daily snapshot: %s", snapshot_file)
 
     return output
 

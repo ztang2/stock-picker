@@ -26,6 +26,7 @@ from .model_report import generate_factor_report, format_report_discord
 from .auto_optimize import run_monthly_optimization, get_optimization_history
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Stock Picker", version="4.0.0")
 
@@ -426,6 +427,86 @@ def report_factors(months: int = Query(3, ge=1, le=12), format: str = Query("jso
         return report
     except Exception as e:
         raise HTTPException(500, "Report failed: %s" % str(e))
+
+
+# --- Rebalance endpoints ---
+
+@app.get("/rebalance/status")
+def rebalance_status():
+    """Get current rebalance state and holdings."""
+    from .rebalance import load_holdings, load_rebalance_state
+    return {
+        "holdings": load_holdings(),
+        "state": load_rebalance_state(),
+    }
+
+
+@app.get("/rebalance/check")
+def rebalance_check():
+    """Run rebalance evaluation against latest scan results."""
+    from .rebalance import (
+        load_holdings, load_rebalance_state, save_rebalance_state,
+        update_signal_streaks, evaluate_swaps, format_rebalance_report
+    )
+    
+    scan_data = None
+    if RESULTS_FILE.exists():
+        scan_data = json.loads(RESULTS_FILE.read_text())
+    if not scan_data:
+        raise HTTPException(400, "No scan results. Run /scan first.")
+    
+    top = {s["ticker"]: s for s in scan_data.get("top", [])}
+    holdings = load_holdings()
+    state = load_rebalance_state()
+    
+    held_signals = {t: top[t] for t in holdings if t in top}
+    candidate_signals = {t: s for t, s in top.items() if t not in holdings}
+    
+    state = update_signal_streaks(state, held_signals, candidate_signals)
+    save_rebalance_state(state)
+    
+    suggestions = evaluate_swaps(holdings, state, held_signals, candidate_signals)
+    report = format_rebalance_report(suggestions, holdings)
+    
+    return {
+        "suggestions": suggestions,
+        "report": report,
+        "holdings_count": len(holdings),
+    }
+
+
+# --- Validation endpoints ---
+
+@app.get("/validation/run")
+def validation_run():
+    """Run prediction validation (compare yesterday's predictions with today's reality)."""
+    from .validation import validate_predictions, format_validation_report
+    report = validate_predictions()
+    return {
+        "report": report,
+        "formatted": format_validation_report(report),
+    }
+
+
+@app.get("/validation/summary")
+def validation_summary(days: int = Query(7, ge=1, le=90)):
+    """Get validation summary over recent days."""
+    from .validation import get_validation_summary
+    return get_validation_summary(days=days)
+
+
+# --- Smart money endpoints ---
+
+@app.get("/insider/{ticker}")
+def insider_analysis(ticker: str):
+    """Get analyst revision + insider trading analysis for a ticker."""
+    import yfinance as yf
+    from .insider import get_combined_smart_money_score
+    try:
+        t = yf.Ticker(ticker.upper())
+        return get_combined_smart_money_score(t)
+    except Exception as e:
+        raise HTTPException(500, f"Analysis failed: {e}")
 
 
 if __name__ == "__main__":
