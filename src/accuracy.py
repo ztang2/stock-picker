@@ -30,7 +30,9 @@ def _save_history(history: List[Dict[str, Any]]):
 
 
 def take_snapshot(strategy: str = "balanced") -> Dict[str, Any]:
-    """Log current scan signals to history. Called via /accuracy/snapshot."""
+    """Log current scan signals to history AND save full daily snapshot.
+    Called via /accuracy/snapshot (daily cron at 4pm ET).
+    """
     from .pipeline import RESULTS_FILE
     
     if not RESULTS_FILE.exists():
@@ -39,6 +41,14 @@ def take_snapshot(strategy: str = "balanced") -> Dict[str, Any]:
     data = json.loads(RESULTS_FILE.read_text())
     top = data.get("top", [])
     today = datetime.now().strftime("%Y-%m-%d")
+    
+    # Save full daily snapshot (for ML training and historical analysis)
+    snapshot_dir = DATA_DIR / "daily_snapshots"
+    snapshot_dir.mkdir(exist_ok=True)
+    snapshot_file = snapshot_dir / f"{today}.json"
+    if not snapshot_file.exists():
+        snapshot_file.write_text(json.dumps(data, indent=2, default=str))
+        logger.info("Saved daily snapshot: %s", snapshot_file)
     scan_strategy = data.get("strategy", strategy)
     
     history = _load_history()
