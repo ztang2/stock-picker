@@ -26,6 +26,7 @@ from .freshness import check_freshness
 from .streak_tracker import update_streaks, add_streaks_to_results
 from .sentiment import analyze_sentiment
 from .market_regime import detect_market_regime
+from .insider import get_combined_smart_money_score
 
 logger = logging.getLogger(__name__)
 
@@ -367,6 +368,23 @@ def run_scan(
             "sell_urgency": sell_sig.get("urgency", "none"),
             "sell_reasons": sell_sig.get("sell_reasons", []),
         })
+
+    # --- Smart money signals (analyst revisions + insider trading) for top N only ---
+    # Only fetch for top_n to avoid 500 yfinance API calls
+    logger.info("Fetching smart money data for top %d stocks...", len(ranked))
+    for stock in ranked:
+        try:
+            ticker_obj = yf.Ticker(stock["ticker"])
+            sm = get_combined_smart_money_score(ticker_obj)
+            stock["smart_money_score"] = sm["score"]
+            stock["analyst_score"] = sm["analyst_score"]
+            stock["insider_score"] = sm["insider_score"]
+            stock["smart_money_signals"] = sm.get("signals", [])
+        except Exception:
+            stock["smart_money_score"] = 50
+            stock["analyst_score"] = 50
+            stock["insider_score"] = 50
+            stock["smart_money_signals"] = []
 
     # --- Add data freshness ---
     for stock in ranked:
