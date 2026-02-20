@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-20T00:04:41",
+  "timestamp": "2026-02-19T23:27:25",
   "strategy": "balanced",
   "market_regime": {
     "regime": "bull",
@@ -35,7 +35,7 @@
       "sector": "Healthcare",
       "industry": "Medical Distribution",
       "market_cap": 115626082304,
-      "composite_score": 89.3,
+      "composite_score": 87.3,
       "fundamentals_pct": 91.34,
       "valuation_pct": 95.16,
       "technicals_pct": 94.65,
@@ -51,14 +51,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (16.3 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 936.8,
       "rsi": 66.84,
       "macd_histogram": 4.30977481152761,
       "adx": 38.53,
       "volatility": 0.2864,
-      "beta": 0.10407477133966712,
+      "beta": 0.10407426902035861,
       "volume_trend": 1.1781449246813618,
       "ma50": 847.2303979492187,
       "ma200": 767.3059661865234,
@@ -70,13 +70,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+5 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-05-06",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 7,
+      "consecutive_days": 6,
       "first_seen": "2026-02-15"
     },
     {
@@ -86,7 +85,7 @@
       "sector": "Basic Materials",
       "industry": "Gold",
       "market_cap": 136669102080,
-      "composite_score": 87.82,
+      "composite_score": 85.82,
       "fundamentals_pct": 100.0,
       "valuation_pct": 60.29,
       "technicals_pct": 92.39,
@@ -109,7 +108,7 @@
       "macd_histogram": -0.072625192825154,
       "adx": 8.54,
       "volatility": 0.448,
-      "beta": 0.5679723241738436,
+      "beta": 0.5679707003238599,
       "volume_trend": 1.070281932313145,
       "ma50": 111.27619964599609,
       "ma200": 80.92524768829345,
@@ -121,13 +120,12 @@
       "smart_money_signals": [
         "Positive revisions (+1 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-02-19",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 7,
+      "consecutive_days": 6,
       "first_seen": "2026-02-15"
     },
     {
@@ -137,7 +135,7 @@
       "sector": "Financial Services",
       "industry": "Insurance - Diversified",
       "market_cap": 35566354432,
-      "composite_score": 85.37,
+      "composite_score": 83.37,
       "fundamentals_pct": 98.97,
       "valuation_pct": 95.16,
       "technicals_pct": 66.87,
@@ -150,10 +148,9 @@
       "sector_composite": 69.28,
       "entry_signal": "BUY",
       "entry_score": 58,
-      "sell_signal": "HOLD",
-      "sell_urgency": "low",
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (13.3 point drop)",
         "MACD bearish crossover"
       ],
       "current_price": 98.08,
@@ -161,7 +158,7 @@
       "macd_histogram": -0.031596077218017715,
       "adx": 41.65,
       "volatility": 0.2436,
-      "beta": 0.39089385366155416,
+      "beta": 0.39089314507191963,
       "volume_trend": 0.8794178345198775,
       "ma50": 95.36359970092774,
       "ma200": 91.7938500213623,
@@ -173,13 +170,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+7 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-04-29",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -189,7 +185,7 @@
       "sector": "Basic Materials",
       "industry": "Agricultural Inputs",
       "market_cap": 16349550592,
-      "composite_score": 81.32,
+      "composite_score": 83.32,
       "fundamentals_pct": 98.76,
       "valuation_pct": 95.16,
       "technicals_pct": 67.9,
@@ -205,14 +201,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (13.9 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 100.94,
       "rsi": 62.47,
       "macd_histogram": 0.15135218827549357,
       "adx": 32.54,
       "volatility": 0.3217,
-      "beta": 0.38704724695344156,
+      "beta": 0.3870469372223457,
       "volume_trend": 0.9065337665935672,
       "ma50": 85.19213333129883,
       "ma200": 86.30875129699707,
@@ -224,13 +220,12 @@
       "smart_money_signals": [
         "Negative revisions (-1 net)"
       ],
-      "smart_money_bonus": -2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-05-06",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -256,14 +251,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (16.8 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 59.6,
       "rsi": 62.01,
       "macd_histogram": 0.3796355893058836,
       "adx": 32.65,
       "volatility": 0.3751,
-      "beta": 0.7187953815702409,
+      "beta": 0.7187950294417652,
       "volume_trend": 0.9882451587400981,
       "ma50": 54.719676132202146,
       "ma200": 54.59364501953125,
@@ -280,7 +275,7 @@
       "earnings_date": "2026-04-21",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -290,7 +285,7 @@
       "sector": "Financial Services",
       "industry": "Insurance - Diversified",
       "market_cap": 39140864000,
-      "composite_score": 82.04,
+      "composite_score": 80.04,
       "fundamentals_pct": 88.87,
       "valuation_pct": 95.16,
       "technicals_pct": 65.23,
@@ -306,14 +301,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (15.1 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 140.34,
       "rsi": 67.91,
       "macd_histogram": 0.29619823406715096,
       "adx": 51.0,
       "volatility": 0.2128,
-      "beta": 0.48329779741695417,
+      "beta": 0.48329720924553776,
       "volume_trend": 1.0473175148114162,
       "ma50": 136.3161993408203,
       "ma200": 129.95034286499023,
@@ -325,13 +320,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+6 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-04-23",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -341,7 +335,7 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "market_cap": 16978741248,
-      "composite_score": 81.94,
+      "composite_score": 79.94,
       "fundamentals_pct": 70.1,
       "valuation_pct": 95.16,
       "technicals_pct": 84.36,
@@ -364,7 +358,7 @@
       "macd_histogram": -0.26576421648822723,
       "adx": 29.77,
       "volatility": 0.3534,
-      "beta": 0.6920244770920881,
+      "beta": 0.6920232723290273,
       "volume_trend": 0.9840911391021344,
       "ma50": 381.58860290527343,
       "ma200": 294.83399688720704,
@@ -376,13 +370,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+3 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-04-30",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 2,
+      "consecutive_days": 1,
       "first_seen": "2026-02-19"
     },
     {
@@ -392,7 +385,7 @@
       "sector": "Technology",
       "industry": "Electronic Components",
       "market_cap": 68029784064,
-      "composite_score": 81.85,
+      "composite_score": 79.85,
       "fundamentals_pct": 77.73,
       "valuation_pct": 73.46,
       "technicals_pct": 100.0,
@@ -415,7 +408,7 @@
       "macd_histogram": 1.626852637940702,
       "adx": 28.92,
       "volatility": 0.3203,
-      "beta": 1.206730683267449,
+      "beta": 1.2067303133523966,
       "volume_trend": 1.153078229413503,
       "ma50": 230.1750003051758,
       "ma200": 207.21283950805665,
@@ -427,13 +420,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+5 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-04-22",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -443,7 +435,7 @@
       "sector": "Healthcare",
       "industry": "Medical Care Facilities",
       "market_cap": 117674475520,
-      "composite_score": 81.28,
+      "composite_score": 79.28,
       "fundamentals_pct": 71.34,
       "valuation_pct": 95.16,
       "technicals_pct": 90.12,
@@ -466,7 +458,7 @@
       "macd_histogram": 3.0254381624636135,
       "adx": 55.34,
       "volatility": 0.2761,
-      "beta": 0.265432488792106,
+      "beta": 0.26543249796630697,
       "volume_trend": 1.0389603695610194,
       "ma50": 486.5928271484375,
       "ma200": 425.98475646972656,
@@ -478,13 +470,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+11 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-04-24",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -494,7 +485,7 @@
       "sector": "Technology",
       "industry": "Software - Infrastructure",
       "market_cap": 23989118976,
-      "composite_score": 81.08,
+      "composite_score": 79.08,
       "fundamentals_pct": 93.4,
       "valuation_pct": 78.81,
       "technicals_pct": 98.56,
@@ -510,14 +501,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (16.9 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 339.72,
       "rsi": 55.21,
       "macd_histogram": 1.0626164525466857,
       "adx": 26.78,
       "volatility": 0.4113,
-      "beta": 1.4358693456766238,
+      "beta": 1.4358694554589244,
       "volume_trend": 1.1891520803974478,
       "ma50": 320.20619995117187,
       "ma200": 313.595400390625,
@@ -529,13 +520,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+8 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-05-06",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -545,7 +535,7 @@
       "sector": "Healthcare",
       "industry": "Medical Distribution",
       "market_cap": 52143673344,
-      "composite_score": 80.74,
+      "composite_score": 78.74,
       "fundamentals_pct": 93.2,
       "valuation_pct": 66.87,
       "technicals_pct": 75.31,
@@ -561,14 +551,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (16.8 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 221.59,
       "rsi": 56.93,
       "macd_histogram": 0.02475587416638625,
       "adx": 15.29,
       "volatility": 0.297,
-      "beta": 0.3317889131789367,
+      "beta": 0.3317885109707936,
       "volume_trend": 1.0054489511401596,
       "ma50": 209.63319763183594,
       "ma200": 174.6713215637207,
@@ -580,13 +570,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+4 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-05-07",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -596,7 +585,7 @@
       "sector": "Financial Services",
       "industry": "Insurance - Property & Casualty",
       "market_cap": 53296713728,
-      "composite_score": 79.91,
+      "composite_score": 77.91,
       "fundamentals_pct": 96.29,
       "valuation_pct": 84.77,
       "technicals_pct": 62.55,
@@ -609,10 +598,9 @@
       "sector_composite": 77.57,
       "entry_signal": "BUY",
       "entry_score": 58,
-      "sell_signal": "HOLD",
-      "sell_urgency": "low",
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (16.6 point drop)",
         "Price dropped below MA50 ($203.91)"
       ],
       "current_price": 203.67,
@@ -620,7 +608,7 @@
       "macd_histogram": 0.662925205271156,
       "adx": 36.76,
       "volatility": 0.2634,
-      "beta": 0.4156266372101054,
+      "beta": 0.4156260076458693,
       "volume_trend": 0.9796470435008822,
       "ma50": 203.90940063476563,
       "ma200": 201.7285206604004,
@@ -632,13 +620,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+5 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-04-29",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -671,7 +658,7 @@
       "macd_histogram": 0.6495327265163604,
       "adx": 34.04,
       "volatility": 0.2909,
-      "beta": 0.9583462511980768,
+      "beta": 0.9583455885658799,
       "volume_trend": 1.1902886294188566,
       "ma50": 91.48263320922851,
       "ma200": 82.95463104248047,
@@ -686,7 +673,7 @@
       "earnings_date": "2026-04-23",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -719,7 +706,7 @@
       "macd_histogram": 3.1718024323388367,
       "adx": 46.49,
       "volatility": 0.3417,
-      "beta": 0.6255413181993675,
+      "beta": 0.6255411873716148,
       "volume_trend": 0.9082411552061669,
       "ma50": 216.60880096435548,
       "ma200": 198.92049125671386,
@@ -736,7 +723,7 @@
       "earnings_date": "2026-02-25",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 7,
+      "consecutive_days": 6,
       "first_seen": "2026-02-15"
     },
     {
@@ -746,7 +733,7 @@
       "sector": "Financial Services",
       "industry": "Insurance - Property & Casualty",
       "market_cap": 66523090944,
-      "composite_score": 79.44,
+      "composite_score": 77.44,
       "fundamentals_pct": 95.05,
       "valuation_pct": 77.37,
       "technicals_pct": 70.78,
@@ -762,14 +749,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (15.9 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 298.23,
       "rsi": 66.23,
       "macd_histogram": 0.6670717966631301,
       "adx": 42.81,
       "volatility": 0.2185,
-      "beta": 0.41471494202483866,
+      "beta": 0.41471410260473823,
       "volume_trend": 1.0496849466159899,
       "ma50": 286.79344299316404,
       "ma200": 273.92386665344236,
@@ -781,13 +768,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+3 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-04-16",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -820,7 +806,7 @@
       "macd_histogram": 0.6828588785060209,
       "adx": 12.65,
       "volatility": 0.2664,
-      "beta": 0.42626504073692656,
+      "beta": 0.4262644005420287,
       "volume_trend": 1.0604938230453809,
       "ma50": 222.82437896728516,
       "ma200": 208.45170906066895,
@@ -837,7 +823,7 @@
       "earnings_date": "2026-05-01",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 4,
+      "consecutive_days": 3,
       "first_seen": "2026-02-16"
     },
     {
@@ -860,10 +846,9 @@
       "sector_composite": 74.99,
       "entry_signal": "BUY",
       "entry_score": 50,
-      "sell_signal": "HOLD",
-      "sell_urgency": "low",
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (16.7 point drop)",
         "Price dropped below MA50 ($101.72)"
       ],
       "current_price": 100.7,
@@ -871,7 +856,7 @@
       "macd_histogram": -0.2572725158762853,
       "adx": 16.82,
       "volatility": 0.3536,
-      "beta": 0.608524951259109,
+      "beta": 0.6085241914713353,
       "volume_trend": 0.9165580789734219,
       "ma50": 101.72099990844727,
       "ma200": 86.14294990539551,
@@ -888,7 +873,7 @@
       "earnings_date": "2026-04-28",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 2,
+      "consecutive_days": 1,
       "first_seen": "2026-02-19"
     },
     {
@@ -898,7 +883,7 @@
       "sector": "Financial Services",
       "industry": "Insurance - Property & Casualty",
       "market_cap": 129094516736,
-      "composite_score": 77.9,
+      "composite_score": 75.9,
       "fundamentals_pct": 84.54,
       "valuation_pct": 95.16,
       "technicals_pct": 56.38,
@@ -914,14 +899,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (12.9 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 328.02,
       "rsi": 69.9,
       "macd_histogram": 0.6513544527477668,
       "adx": 51.29,
       "volatility": 0.2043,
-      "beta": 0.22402965137733263,
+      "beta": 0.2240287950999278,
       "volume_trend": 0.9900815379257112,
       "ma50": 312.0447027587891,
       "ma200": 289.5787646484375,
@@ -933,13 +918,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+9 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-04-28",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -949,7 +933,7 @@
       "sector": "Energy",
       "industry": "Oil & Gas E&P",
       "market_cap": 24169930752,
-      "composite_score": 73.69,
+      "composite_score": 75.69,
       "fundamentals_pct": 85.77,
       "valuation_pct": 87.24,
       "technicals_pct": 79.63,
@@ -965,14 +949,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (13.6 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 31.75,
       "rsi": 71.02,
       "macd_histogram": 0.1225328356814992,
       "adx": 72.03,
       "volatility": 0.311,
-      "beta": 0.645276889684247,
+      "beta": 0.6452764925983603,
       "volume_trend": 1.1628526773615628,
       "ma50": 27.363100051879883,
       "ma200": 25.087861604690552,
@@ -985,13 +969,12 @@
         "Consensus turning bearish",
         "Negative revisions (-1 net)"
       ],
-      "smart_money_bonus": -2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-02-26",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     },
     {
@@ -1001,7 +984,7 @@
       "sector": "Consumer Cyclical",
       "industry": "Apparel Manufacturing",
       "market_cap": 22658867200,
-      "composite_score": 77.3,
+      "composite_score": 75.3,
       "fundamentals_pct": 67.42,
       "valuation_pct": 79.01,
       "technicals_pct": 96.71,
@@ -1024,7 +1007,7 @@
       "macd_histogram": 2.7394242073137978,
       "adx": 19.49,
       "volatility": 0.3859,
-      "beta": 1.3915429827564976,
+      "beta": 1.391543674963887,
       "volume_trend": 1.0911075381021649,
       "ma50": 361.2784265136719,
       "ma200": 315.2196240234375,
@@ -1036,13 +1019,12 @@
       "smart_money_signals": [
         "Strong positive revisions (+4 net)"
       ],
-      "smart_money_bonus": 2,
       "data_freshness": "recent",
       "data_age_days": 2,
       "earnings_date": "2026-02-05",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 5,
+      "consecutive_days": 4,
       "first_seen": "2026-02-15"
     }
   ]

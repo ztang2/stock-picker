@@ -696,11 +696,15 @@ def train_model(months_history: int = 12) -> dict:
     df["date"] = pd.to_datetime(df["date"])
     df = df.sort_values("date").reset_index(drop=True)
 
-    # Fill NaN features with median
+    # Fill NaN features with median and SAVE medians for prediction-time consistency
+    feature_medians = {}
     for col in BASE_FEATURE_COLS:
         if col in df.columns:
-            df[col] = df[col].fillna(df[col].median())
+            med = df[col].median()
+            feature_medians[col] = float(med) if pd.notna(med) else 0.0
+            df[col] = df[col].fillna(feature_medians[col])
         else:
+            feature_medians[col] = 0.0
             df[col] = 0.0
 
     # Remove constant features
@@ -895,6 +899,7 @@ def train_model(months_history: int = 12) -> dict:
         "spec_xgb_classifier": xgb_clf_final,
         "spec_lgb_regressor": lgb_reg_final,
         "feature_cols": all_features,
+        "feature_medians": feature_medians,
         "metrics": selected_metrics,
         "active_model": selected,
         "trained_at": datetime.now().isoformat(),
@@ -941,26 +946,44 @@ def predict_scores(tickers: Optional[List[str]] = None) -> List[dict]:
         stocks = [s for s in stocks if s["ticker"] in tickers]
 
     feature_cols = model.get("feature_cols", BASE_FEATURE_COLS)
+    feature_medians = model.get("feature_medians", {})
 
     predictions = []
     for stock in stocks:
         feats = _extract_features_from_stock(stock, regime)
-        # Add engineered features
-        feats["rsi_x_regime_bull"] = (feats.get("rsi") or 50) * (feats.get("market_regime_bull") or 0)
-        feats["momentum_proxy"] = (feats.get("ma50_ratio") or 1) * (feats.get("technicals_pct") or 50)
-        feats["value_momentum"] = (feats.get("valuation_pct") or 50) * (feats.get("ma50_ratio") or 1)
-        feats["tech_x_growth"] = (feats.get("technicals_pct") or 50) * (feats.get("growth_pct") or 50) / 100
-        feats["rsi_oversold"] = 1.0 if (feats.get("rsi") or 50) < 30 else 0.0
-        feats["rsi_overbought"] = 1.0 if (feats.get("rsi") or 50) > 70 else 0.0
-        feats["above_ma200"] = 1.0 if (feats.get("ma200_ratio") or 1) > 1.0 else 0.0
-        # Compute score_rank from actual rank in scan (rank 1 of 20 = 0.95, rank 20 = 0.05)
+        # Add engineered features (use median fallback instead of hardcoded values)
+        rsi_med = feature_medians.get("rsi", 50)
+        ma50r_med = feature_medians.get("ma50_ratio", 1.0)
+        tech_med = feature_medians.get("technicals_pct", 50)
+        val_med = feature_medians.get("valuation_pct", 50)
+        growth_med = feature_medians.get("growth_pct", 50)
+        
+        rsi_val = feats.get("rsi") if feats.get("rsi") is not None else rsi_med
+        ma50r_val = feats.get("ma50_ratio") if feats.get("ma50_ratio") is not None else ma50r_med
+        tech_val = feats.get("technicals_pct") if feats.get("technicals_pct") is not None else tech_med
+        val_val = feats.get("valuation_pct") if feats.get("valuation_pct") is not None else val_med
+        growth_val = feats.get("growth_pct") if feats.get("growth_pct") is not None else growth_med
+        ma200r_val = feats.get("ma200_ratio") if feats.get("ma200_ratio") is not None else feature_medians.get("ma200_ratio", 1.0)
+        
+        feats["rsi_x_regime_bull"] = rsi_val * (feats.get("market_regime_bull") or 0)
+        feats["momentum_proxy"] = ma50r_val * tech_val
+        feats["value_momentum"] = val_val * ma50r_val
+        feats["tech_x_growth"] = tech_val * growth_val / 100
+        feats["rsi_oversold"] = 1.0 if rsi_val < 30 else 0.0
+        feats["rsi_overbought"] = 1.0 if rsi_val > 70 else 0.0
+        feats["above_ma200"] = 1.0 if ma200r_val > 1.0 else 0.0
+        # Compute score_rank as percentile (consistent with training: pct=True across group)
         rank = stock.get("rank", 10)
         total = len(stocks) if stocks else 20
         feats["score_rank"] = 1.0 - (rank / (total + 1))
+        
+        # Build feature vector using training medians for None values
         feat_values = []
         for col in feature_cols:
-            val = feats.get(col, 0)
-            feat_values.append(val if val is not None else 0)
+            val = feats.get(col)
+            if val is None:
+                val = feature_medians.get(col, 0)
+            feat_values.append(val)
 
         X = np.array([feat_values])
 

@@ -99,10 +99,11 @@ def save_rebalance_state(state: dict) -> None:
 def _days_held(entry_date_str: str) -> int:
     """Calculate days since entry."""
     try:
-        entry = datetime.strptime(entry_date_str, "%Y-%m-%d")
+        # Handle both "YYYY-MM-DD" and "YYYY-MM-DDTHH:MM:SS" formats
+        entry = datetime.fromisoformat(entry_date_str.split("T")[0])
         return (datetime.now() - entry).days
     except Exception:
-        return 999  # If we can't parse, assume long hold
+        return 0  # If we can't parse, assume just bought (conservative — don't allow premature swaps)
 
 
 def _swaps_in_last_30_days(swap_history: List[dict]) -> int:

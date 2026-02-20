@@ -28,6 +28,13 @@ STRATEGIES: Dict[str, dict] = {
             "moderate": 0,
             "weak": 0,
         },
+        "smart_money_bonus": {
+            "enabled": True,
+            "strong_positive": 3,
+            "moderate_positive": 1,
+            "strong_negative": -3,
+            "moderate_negative": -1,
+        },
     },
     "balanced": {
         "name": "Balanced",
@@ -81,6 +88,13 @@ STRATEGIES: Dict[str, dict] = {
             "strong": 8,
             "moderate": 4,
             "weak": -5,
+        },
+        "smart_money_bonus": {
+            "enabled": True,
+            "strong_positive": 5,
+            "moderate_positive": 2,
+            "strong_negative": -5,
+            "moderate_negative": -2,
         },
     },
 }
