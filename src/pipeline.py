@@ -385,27 +385,8 @@ def run_scan(
     # --- Add consecutive_days to results ---
     ranked = add_streaks_to_results(ranked)
 
-    # --- Fix score/signal disconnect: upgrade top-20 with score >75 to at least BUY unless red flags ---
-    for stock in ranked:
-        # Upgrade top-20 stocks with composite score > 75
-        if stock["rank"] <= 20 and stock.get("composite_score", 0) > 75 and stock.get("entry_signal") in ("HOLD", "WAIT"):
-            # Check red flags
-            red_flags = []
-            if stock.get("earnings_warning"):
-                red_flags.append("earnings_warning")
-            # RSI overbought
-            momentum_data = detail_map.get(stock["ticker"], {}).get("momentum") or {}
-            rsi_val = momentum_data.get("rsi")
-            if rsi_val is not None and rsi_val > 80:
-                red_flags.append("overbought_rsi")
-            # Negative momentum (entry_score very low)
-            entry_score = momentum_data.get("entry_score")
-            if entry_score is not None and entry_score < 30:
-                red_flags.append("negative_momentum")
-
-            if not red_flags:
-                stock["entry_signal"] = "BUY"
-                stock["signal_upgraded"] = True
+    # --- Removed auto-upgrade logic (was upgrading all top-20 >75 to BUY, killing signal diversity) ---
+    # Entry signals now come purely from momentum analysis; composite score is a separate dimension.
 
     output = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
