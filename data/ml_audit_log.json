@@ -1,0 +1,72 @@
+[
+  {
+    "audit_date": "2026-02-20T00:57:10.376266",
+    "verdict": "WARNING",
+    "issues": [],
+    "warnings": [
+      "ML scores are None in scan results - model may not be predicting"
+    ],
+    "checks": [
+      {
+        "check": "ML model exists",
+        "status": "\u2705 PASS",
+        "details": "Model file: /Users/zhuorantang/clawd/stock-picker/data/ml/model.pkl"
+      },
+      {
+        "check": "Recent snapshots",
+        "status": "\u2705 PASS",
+        "details": "2 snapshots, last: 2026-02-20 (0 days ago)"
+      },
+      {
+        "check": "ML scores in scan results",
+        "status": "\u26a0\ufe0f WARNING",
+        "details": "No ml_score values found in latest scan results"
+      },
+      {
+        "check": "ML weight",
+        "status": "\u2139\ufe0f INFO",
+        "details": "ML weight is 0 (ML not active yet)"
+      },
+      {
+        "check": "ML validation log",
+        "status": "\u2139\ufe0f INFO",
+        "details": "No ML validation data yet"
+      }
+    ]
+  },
+  {
+    "audit_date": "2026-02-20T00:59:16.359577",
+    "verdict": "WARNING",
+    "issues": [],
+    "warnings": [
+      "ML scores are None in scan results - model may not be predicting"
+    ],
+    "checks": [
+      {
+        "check": "ML model exists",
+        "status": "\u2705 PASS",
+        "details": "Model file: /Users/zhuorantang/clawd/stock-picker/data/ml/model.pkl"
+      },
+      {
+        "check": "Recent snapshots",
+        "status": "\u2705 PASS",
+        "details": "2 snapshots, last: 2026-02-20 (0 days ago)"
+      },
+      {
+        "check": "ML scores in scan results",
+        "status": "\u26a0\ufe0f WARNING",
+        "details": "No ml_score values found in latest scan results"
+      },
+      {
+        "check": "ML weight",
+        "status": "\u2139\ufe0f INFO",
+        "details": "ML weight is 0 (ML not active yet)"
+      },
+      {
+        "check": "ML validation log",
+        "status": "\u2139\ufe0f INFO",
+        "details": "No ML validation data yet"
+      }
+    ]
+  }
+]

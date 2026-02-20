@@ -27,6 +27,7 @@ from .streak_tracker import update_streaks, add_streaks_to_results
 from .sentiment import analyze_sentiment
 from .market_regime import detect_market_regime
 from .insider import get_combined_smart_money_score
+from .ml_model import predict_scores
 
 logger = logging.getLogger(__name__)
 
@@ -332,6 +333,53 @@ def run_scan(
 
     # Score and rank (on filtered set), passing sector scores for sector-relative weighting
     ranked_df = compute_composite(filtered, weights, strategy=strategy, sector_scores=sector_scores, regime=regime)
+    
+    # --- ML Integration with Adaptive Weighting ---
+    # Count daily snapshots to determine ML weight
+    snapshot_dir = DATA_DIR / "daily_snapshots"
+    snapshot_count = len(list(snapshot_dir.glob("*.json"))) if snapshot_dir.exists() else 0
+    
+    # Check if ML has been auto-disabled due to poor performance
+    ml_weight_state_file = DATA_DIR / "ml_weight_state.json"
+    ml_disabled = False
+    if ml_weight_state_file.exists():
+        try:
+            ml_state = json.loads(ml_weight_state_file.read_text())
+            if ml_state.get("ml_disabled"):
+                ml_disabled = True
+                logger.warning(f"⚠️ ML disabled: {ml_state.get('reason', 'Unknown reason')}")
+        except Exception:
+            pass
+    
+    # Adaptive ML weight based on training data availability
+    if ml_disabled:
+        ml_weight = 0.0
+        logger.info("ML weight = 0% (auto-disabled due to poor performance)")
+    elif snapshot_count < 10:
+        ml_weight = 0.0  # Not enough data, don't use ML
+        logger.info(f"ML integration: {snapshot_count} snapshots available, ML weight = 0% (insufficient data)")
+    elif snapshot_count < 30:
+        ml_weight = 0.10  # 10-30 days: 10% ML
+        logger.info(f"ML integration: {snapshot_count} snapshots available, ML weight = 10%")
+    elif snapshot_count < 60:
+        ml_weight = 0.20  # 30-60 days: 20% ML
+        logger.info(f"ML integration: {snapshot_count} snapshots available, ML weight = 20%")
+    else:
+        ml_weight = 0.30  # 60+ days: 30% ML
+        logger.info(f"ML integration: {snapshot_count} snapshots available, ML weight = 30%")
+    
+    # Apply ML scoring if model exists and weight > 0
+    ml_scores_map = {}
+    if ml_weight > 0:
+        try:
+            # Get ML predictions for top stocks
+            ml_predictions = predict_scores()
+            if ml_predictions and not ml_predictions[0].get("error"):
+                ml_scores_map = {p["ticker"]: p for p in ml_predictions}
+                logger.info(f"ML predictions obtained for {len(ml_scores_map)} stocks")
+        except Exception as e:
+            logger.warning(f"ML prediction failed: {e}")
+            ml_weight = 0.0  # Fall back to no ML if prediction fails
 
     # Merge details
     detail_map = {r["ticker"]: r for r in filtered}
@@ -341,6 +389,22 @@ def run_scan(
         detail = detail_map[tkr]
         sr = sector_scores.get(tkr, {})
         sell_sig = detail.get("sell_signals") or {}
+        
+        # Get base composite score
+        base_composite = float(row["composite"])
+        
+        # Blend with ML score if available
+        ml_data = ml_scores_map.get(tkr)
+        if ml_data and ml_weight > 0:
+            ml_score = ml_data.get("ml_score", 50)  # ML score is 0-100
+            # Final score = base * (1 - weight) + ml * weight
+            final_composite = base_composite * (1 - ml_weight) + ml_score * ml_weight
+            ml_signal = ml_data.get("consensus_signal", "N/A")
+        else:
+            final_composite = base_composite
+            ml_score = None
+            ml_signal = None
+        
         ranked.append({
             "rank": int(row["rank"]),
             "ticker": tkr,
@@ -348,7 +412,11 @@ def run_scan(
             "sector": detail["sector"],
             "industry": detail.get("industry", "Unknown"),
             "market_cap": detail.get("market_cap"),
-            "composite_score": round(float(row["composite"]), 2),
+            "composite_score": round(final_composite, 2),
+            "base_score": round(base_composite, 2),
+            "ml_score": round(ml_score, 2) if ml_score is not None else None,
+            "ml_signal": ml_signal,
+            "ml_weight": round(ml_weight, 2),
             "fundamentals_pct": round(float(row["fund_pct"]), 2) if pd.notna(row["fund_pct"]) else None,
             "valuation_pct": round(float(row["val_pct"]), 2) if pd.notna(row["val_pct"]) else None,
             "technicals_pct": round(float(row["tech_pct"]), 2) if pd.notna(row["tech_pct"]) else None,

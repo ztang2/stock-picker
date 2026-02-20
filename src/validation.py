@@ -22,6 +22,8 @@ logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 VALIDATION_LOG = DATA_DIR / "validation_log.json"
+ML_VALIDATION_LOG = DATA_DIR / "ml_validation_log.json"
+ML_WEIGHT_STATE = DATA_DIR / "ml_weight_state.json"
 RESULTS_FILE = DATA_DIR / "scan_results.json"
 PREV_RESULTS_FILE = DATA_DIR / "prev_scan_results.json"
 
@@ -86,8 +88,9 @@ def validate_predictions(
     if spy_price_prev and spy_price_now:
         spy_return = (spy_price_now - spy_price_prev) / spy_price_prev * 100
     
-    # Validate each prediction
+    # Validate each prediction (including ML predictions)
     results_by_signal = {"BUY": [], "STRONG_BUY": [], "HOLD": [], "WAIT": []}
+    ml_predictions = []
     all_results = []
     
     for stock in prev_top:
@@ -105,11 +108,15 @@ def validate_predictions(
         
         signal = stock.get("entry_signal", "HOLD")
         score = stock.get("composite_score", 0)
+        ml_score = stock.get("ml_score")
+        ml_signal = stock.get("ml_signal")
         
         result = {
             "ticker": ticker,
             "signal": signal,
             "score": score,
+            "ml_score": ml_score,
+            "ml_signal": ml_signal,
             "prev_price": round(prev_price, 2),
             "curr_price": round(curr_price, 2),
             "return_pct": round(daily_return, 3),
@@ -120,6 +127,16 @@ def validate_predictions(
         all_results.append(result)
         if signal in results_by_signal:
             results_by_signal[signal].append(result)
+        
+        # Track ML predictions separately
+        if ml_score is not None and ml_signal is not None:
+            ml_predictions.append({
+                "ticker": ticker,
+                "ml_score": ml_score,
+                "ml_signal": ml_signal,
+                "return_pct": round(daily_return, 3),
+                "beat_spy": daily_return > spy_return if spy_return is not None else None,
+            })
     
     # Compute signal group stats
     signal_stats = {}
@@ -155,6 +172,32 @@ def validate_predictions(
         except Exception:
             pass
     
+    # ML-specific validation
+    ml_accuracy = None
+    ml_avg_return = None
+    if ml_predictions:
+        ml_correct = sum(1 for p in ml_predictions if p["beat_spy"])
+        ml_accuracy = round(ml_correct / len(ml_predictions) * 100, 1)
+        ml_avg_return = round(sum(p["return_pct"] for p in ml_predictions) / len(ml_predictions), 3)
+        
+        # Track ML predictions in separate log
+        ml_report = {
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "prev_scan_timestamp": prev_timestamp,
+            "spy_return": round(spy_return, 3) if spy_return is not None else None,
+            "ml_accuracy": ml_accuracy,
+            "ml_avg_return": ml_avg_return,
+            "ml_predictions_count": len(ml_predictions),
+            "predictions": ml_predictions,
+        }
+        
+        ml_log = _load_json(ML_VALIDATION_LOG) or []
+        ml_log.append(ml_report)
+        _save_json(ML_VALIDATION_LOG, ml_log[-90:])
+        
+        # Check for consecutive weeks of poor ML performance
+        _check_ml_performance_and_adjust(ml_log)
+    
     report = {
         "date": datetime.now().strftime("%Y-%m-%d"),
         "prev_scan_timestamp": prev_timestamp,
@@ -163,6 +206,8 @@ def validate_predictions(
         "signal_stats": signal_stats,
         "signal_useful": signal_useful,
         "score_return_correlation": score_return_corr,
+        "ml_accuracy": ml_accuracy,
+        "ml_avg_return": ml_avg_return,
         "details": all_results,
     }
     
@@ -199,19 +244,20 @@ def _fetch_current_prices(tickers: List[str]) -> Dict[str, float]:
 
 
 def get_validation_summary(days: int = 7) -> dict:
-    """Get summary of recent validation results."""
+    """Get summary of recent validation results (including ML accuracy)."""
     log = _load_json(VALIDATION_LOG) or []
     recent = log[-days:]
     
     if not recent:
         return {"error": "No validation data yet", "days_available": 0}
     
-    # Aggregate
+    # Aggregate rule-based signals
     total_buy_correct = 0
     total_buy_count = 0
     total_signal_useful = 0
     total_signal_checks = 0
     correlations = []
+    ml_accuracies = []
     
     for day in recent:
         buy_stats = day.get("signal_stats", {}).get("BUY", {})
@@ -225,14 +271,56 @@ def get_validation_summary(days: int = 7) -> dict:
         
         if day.get("score_return_correlation") is not None:
             correlations.append(day["score_return_correlation"])
+        
+        if day.get("ml_accuracy") is not None:
+            ml_accuracies.append(day["ml_accuracy"])
+    
+    # Compute ML accuracy over the period
+    ml_avg_accuracy = round(sum(ml_accuracies) / len(ml_accuracies), 1) if ml_accuracies else None
     
     return {
         "days_analyzed": len(recent),
         "buy_beat_spy_rate": round(total_buy_correct / total_buy_count * 100, 1) if total_buy_count > 0 else None,
         "signal_useful_rate": round(total_signal_useful / total_signal_checks * 100, 1) if total_signal_checks > 0 else None,
         "avg_score_correlation": round(sum(correlations) / len(correlations), 3) if correlations else None,
+        "ml_avg_accuracy": ml_avg_accuracy,
+        "ml_days_tracked": len(ml_accuracies),
         "verdict": _verdict(total_buy_correct, total_buy_count, total_signal_useful, total_signal_checks),
     }
+
+
+def _check_ml_performance_and_adjust(ml_log: List[dict]):
+    """Check ML accuracy over recent weeks and auto-disable if underperforming."""
+    if len(ml_log) < 14:  # Need at least 2 weeks of data
+        return
+    
+    # Get last 2 weeks (14 days) of ML accuracy
+    recent = ml_log[-14:]
+    recent_accuracies = [r["ml_accuracy"] for r in recent if r.get("ml_accuracy") is not None]
+    
+    if len(recent_accuracies) < 10:  # Need at least 10 days of data
+        return
+    
+    # Check if ML accuracy has been below 50% for multiple consecutive days
+    consecutive_poor = 0
+    for acc in reversed(recent_accuracies):
+        if acc < 50:
+            consecutive_poor += 1
+        else:
+            break
+    
+    # If ML has been underperforming for 10+ consecutive days, disable it
+    if consecutive_poor >= 10:
+        logger.warning(f"⚠️ ML ACCURACY ALERT: Below 50% for {consecutive_poor} consecutive days. Auto-disabling ML.")
+        
+        # Save state to force ML weight to 0
+        state = {
+            "ml_disabled": True,
+            "disabled_at": datetime.now().isoformat(),
+            "reason": f"ML accuracy below 50% for {consecutive_poor} consecutive days",
+            "recent_accuracies": recent_accuracies[-10:],
+        }
+        _save_json(ML_WEIGHT_STATE, state)
 
 
 def _verdict(buy_correct, buy_total, signal_useful, signal_checks) -> str:
