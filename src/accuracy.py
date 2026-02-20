@@ -140,6 +140,42 @@ def get_accuracy() -> Dict[str, Any]:
     if spy_prices:
         spy_current = list(spy_prices.values())[-1]
     
+    # Batch download current prices (single API call instead of N)
+    unique_tickers = list(set(
+        sig.get("ticker", "") for sig in buy_signals
+        if sig.get("price_at_signal") and sig.get("date")
+    ))
+    current_prices = {}  # type: Dict[str, float]
+    if unique_tickers:
+        try:
+            import pandas as pd
+            batch = yf.download(unique_tickers, period="1d", progress=False)
+            if not batch.empty:
+                close_col = batch.get("Close", batch)
+                if isinstance(close_col, pd.DataFrame):
+                    for t in unique_tickers:
+                        if t in close_col.columns:
+                            val = close_col[t].dropna()
+                            if not val.empty:
+                                current_prices[t] = float(val.iloc[-1])
+                else:
+                    # Single ticker returns Series
+                    val = close_col.dropna()
+                    if not val.empty and len(unique_tickers) == 1:
+                        current_prices[unique_tickers[0]] = float(val.iloc[-1])
+        except Exception:
+            logger.warning("Batch price download failed, falling back to individual", exc_info=True)
+            for t in unique_tickers:
+                try:
+                    info = yf.Ticker(t).fast_info
+                    p = info.get("lastPrice") or info.get("regularMarketPrice")
+                    if p:
+                        current_prices[t] = float(p)
+                except Exception:
+                    pass
+    
+    logger.info("Accuracy: batch fetched %d/%d ticker prices", len(current_prices), len(unique_tickers))
+    
     for sig in buy_signals:
         ticker = sig.get("ticker", "")
         signal_date_str = sig.get("date", "")
@@ -155,15 +191,7 @@ def get_accuracy() -> Dict[str, Any]:
         
         days_elapsed = (now - signal_date).days
         
-        # Fetch current price
-        current_price = None
-        try:
-            t = yf.Ticker(ticker)
-            info = t.info or {}
-            current_price = info.get("currentPrice") or info.get("regularMarketPrice")
-        except Exception:
-            continue
-        
+        current_price = current_prices.get(ticker)
         if not current_price:
             continue
         
