@@ -388,12 +388,43 @@ def run_scan(
     # --- Removed auto-upgrade logic (was upgrading all top-20 >75 to BUY, killing signal diversity) ---
     # Entry signals now come purely from momentum analysis; composite score is a separate dimension.
 
+    # --- Sanity checks on output ---
+    sanity_warnings = []
+    if ranked:
+        signal_counts = {}
+        for s in ranked:
+            sig = s.get("entry_signal", "N/A")
+            signal_counts[sig] = signal_counts.get(sig, 0) + 1
+        total = len(ranked)
+        for sig, count in signal_counts.items():
+            if count / total > 0.80:
+                sanity_warnings.append(f"Signal imbalance: {count}/{total} ({count/total*100:.0f}%) are {sig}")
+        
+        scores = [s.get("composite_score", 0) for s in ranked if s.get("composite_score")]
+        if scores:
+            score_range = max(scores) - min(scores)
+            if score_range < 5:
+                sanity_warnings.append(f"Score clustering: range only {score_range:.1f} (all scores too similar)")
+            avg_score = sum(scores) / len(scores)
+            if avg_score > 90:
+                sanity_warnings.append(f"Score inflation: avg {avg_score:.1f} (too high, scoring may be broken)")
+        
+        # Check for duplicate tickers
+        tickers = [s.get("ticker") for s in ranked]
+        if len(tickers) != len(set(tickers)):
+            sanity_warnings.append("Duplicate tickers in results!")
+    
+    if sanity_warnings:
+        for w in sanity_warnings:
+            logger.warning("SANITY CHECK: %s", w)
+
     output = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "strategy": strategy,
         "market_regime": regime_data,
         "stocks_analyzed": len(results),
         "stocks_after_filter": len(filtered),
+        "sanity_warnings": sanity_warnings,
         "top": ranked,
     }
 
