@@ -175,18 +175,24 @@ def validate_predictions(
 
 
 def _fetch_current_prices(tickers: List[str]) -> Dict[str, float]:
-    """Fetch current prices for a list of tickers."""
+    """Fetch current prices for a list of tickers (batch download)."""
     prices = {}
     try:
         import yfinance as yf
-        for ticker in tickers:
-            try:
-                t = yf.Ticker(ticker)
-                hist = t.history(period="2d")
-                if len(hist) >= 1:
-                    prices[ticker] = float(hist["Close"].iloc[-1])
-            except Exception:
-                continue
+        # Batch download instead of N+1 individual requests
+        data = yf.download(tickers, period="2d", progress=False, threads=True)
+        if data is not None and not data.empty:
+            close = data["Close"]
+            if isinstance(close, pd.Series):
+                # Single ticker
+                if len(close) >= 1:
+                    prices[tickers[0]] = float(close.iloc[-1])
+            else:
+                for ticker in tickers:
+                    if ticker in close.columns:
+                        val = close[ticker].iloc[-1]
+                        if pd.notna(val):
+                            prices[ticker] = float(val)
     except Exception:
         pass
     return prices

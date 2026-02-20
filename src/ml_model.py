@@ -734,7 +734,7 @@ def train_model(months_history: int = 12) -> dict:
             n_estimators=200, max_depth=5, learning_rate=0.05,
             subsample=0.8, colsample_bytree=0.8,
             min_child_weight=3, scale_pos_weight=scale_pos_weight,
-            use_label_encoder=False, eval_metric="logloss", verbosity=0,
+            eval_metric="logloss", verbosity=0,
         )
 
     def xgb_reg_builder():
@@ -953,7 +953,10 @@ def predict_scores(tickers: Optional[List[str]] = None) -> List[dict]:
         feats["rsi_oversold"] = 1.0 if (feats.get("rsi") or 50) < 30 else 0.0
         feats["rsi_overbought"] = 1.0 if (feats.get("rsi") or 50) > 70 else 0.0
         feats["above_ma200"] = 1.0 if (feats.get("ma200_ratio") or 1) > 1.0 else 0.0
-        feats["score_rank"] = 0.5  # placeholder; real rank computed across all stocks
+        # Compute score_rank from actual rank in scan (rank 1 of 20 = 0.95, rank 20 = 0.05)
+        rank = stock.get("rank", 10)
+        total = len(stocks) if stocks else 20
+        feats["score_rank"] = 1.0 - (rank / (total + 1))
         feat_values = []
         for col in feature_cols:
             val = feats.get(col, 0)

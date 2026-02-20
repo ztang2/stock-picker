@@ -8,5 +8,229 @@
     "signal_useful": null,
     "score_return_correlation": null,
     "details": []
+  },
+  {
+    "date": "2026-02-19",
+    "prev_scan_timestamp": "2026-02-19T23:26:29",
+    "spy_return": -0.264,
+    "stocks_validated": 20,
+    "signal_stats": {
+      "BUY": {
+        "count": 7,
+        "avg_return": 0.623,
+        "avg_alpha": 0.887,
+        "beat_spy_rate": 100.0
+      },
+      "HOLD": {
+        "count": 13,
+        "avg_return": 0.275,
+        "avg_alpha": 0.539,
+        "beat_spy_rate": 84.6
+      }
+    },
+    "signal_useful": true,
+    "score_return_correlation": -0.128,
+    "details": [
+      {
+        "ticker": "MCK",
+        "signal": "HOLD",
+        "score": 87.3,
+        "prev_price": 936.8,
+        "curr_price": 937.14,
+        "return_pct": 0.036,
+        "alpha": 0.3,
+        "beat_spy": true
+      },
+      {
+        "ticker": "NEM",
+        "signal": "HOLD",
+        "score": 85.82,
+        "prev_price": 124.42,
+        "curr_price": 125.4,
+        "return_pct": 0.788,
+        "alpha": 1.051,
+        "beat_spy": true
+      },
+      {
+        "ticker": "ACGL",
+        "signal": "BUY",
+        "score": 83.37,
+        "prev_price": 98.08,
+        "curr_price": 98.34,
+        "return_pct": 0.265,
+        "alpha": 0.529,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CF",
+        "signal": "HOLD",
+        "score": 83.32,
+        "prev_price": 100.94,
+        "curr_price": 99.46,
+        "return_pct": -1.466,
+        "alpha": -1.202,
+        "beat_spy": false
+      },
+      {
+        "ticker": "EQT",
+        "signal": "BUY",
+        "score": 82.79,
+        "prev_price": 59.6,
+        "curr_price": 59.77,
+        "return_pct": 0.285,
+        "alpha": 0.549,
+        "beat_spy": true
+      },
+      {
+        "ticker": "HIG",
+        "signal": "HOLD",
+        "score": 80.04,
+        "prev_price": 140.34,
+        "curr_price": 140.31,
+        "return_pct": -0.021,
+        "alpha": 0.242,
+        "beat_spy": true
+      },
+      {
+        "ticker": "HII",
+        "signal": "HOLD",
+        "score": 79.94,
+        "prev_price": 432.66,
+        "curr_price": 443.14,
+        "return_pct": 2.422,
+        "alpha": 2.686,
+        "beat_spy": true
+      },
+      {
+        "ticker": "TEL",
+        "signal": "BUY",
+        "score": 79.85,
+        "prev_price": 231.76,
+        "curr_price": 232.4,
+        "return_pct": 0.276,
+        "alpha": 0.54,
+        "beat_spy": true
+      },
+      {
+        "ticker": "HCA",
+        "signal": "HOLD",
+        "score": 79.28,
+        "prev_price": 526.22,
+        "curr_price": 528.66,
+        "return_pct": 0.464,
+        "alpha": 0.727,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CPAY",
+        "signal": "BUY",
+        "score": 79.08,
+        "prev_price": 339.72,
+        "curr_price": 347.2,
+        "return_pct": 2.202,
+        "alpha": 2.466,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CAH",
+        "signal": "BUY",
+        "score": 78.74,
+        "prev_price": 221.59,
+        "curr_price": 222.76,
+        "return_pct": 0.528,
+        "alpha": 0.792,
+        "beat_spy": true
+      },
+      {
+        "ticker": "ALL",
+        "signal": "BUY",
+        "score": 77.91,
+        "prev_price": 203.67,
+        "curr_price": 203.22,
+        "return_pct": -0.221,
+        "alpha": 0.043,
+        "beat_spy": true
+      },
+      {
+        "ticker": "TXT",
+        "signal": "HOLD",
+        "score": 77.77,
+        "prev_price": 99.28,
+        "curr_price": 99.03,
+        "return_pct": -0.252,
+        "alpha": 0.012,
+        "beat_spy": true
+      },
+      {
+        "ticker": "UHS",
+        "signal": "HOLD",
+        "score": 77.52,
+        "prev_price": 231.25,
+        "curr_price": 230.0,
+        "return_pct": -0.541,
+        "alpha": -0.277,
+        "beat_spy": false
+      },
+      {
+        "ticker": "TRV",
+        "signal": "HOLD",
+        "score": 77.44,
+        "prev_price": 298.23,
+        "curr_price": 299.9,
+        "return_pct": 0.56,
+        "alpha": 0.824,
+        "beat_spy": true
+      },
+      {
+        "ticker": "ABBV",
+        "signal": "HOLD",
+        "score": 76.35,
+        "prev_price": 223.21,
+        "curr_price": 224.35,
+        "return_pct": 0.511,
+        "alpha": 0.774,
+        "beat_spy": true
+      },
+      {
+        "ticker": "INCY",
+        "signal": "BUY",
+        "score": 76.21,
+        "prev_price": 100.7,
+        "curr_price": 101.73,
+        "return_pct": 1.023,
+        "alpha": 1.287,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CB",
+        "signal": "HOLD",
+        "score": 75.9,
+        "prev_price": 328.02,
+        "curr_price": 329.16,
+        "return_pct": 0.348,
+        "alpha": 0.611,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CTRA",
+        "signal": "HOLD",
+        "score": 75.69,
+        "prev_price": 31.75,
+        "curr_price": 31.71,
+        "return_pct": -0.126,
+        "alpha": 0.138,
+        "beat_spy": true
+      },
+      {
+        "ticker": "RL",
+        "signal": "HOLD",
+        "score": 75.3,
+        "prev_price": 373.66,
+        "curr_price": 376.84,
+        "return_pct": 0.851,
+        "alpha": 1.115,
+        "beat_spy": true
+      }
+    ]
   }
 ]

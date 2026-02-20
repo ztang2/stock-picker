@@ -42,6 +42,13 @@ STRATEGIES: Dict[str, dict] = {
             "sentiment": 0.05,
             "sector_relative": 0.10,
         },
+        "smart_money_bonus": {
+            "enabled": True,
+            "strong_positive": 5,   # score > 70
+            "moderate_positive": 2, # score > 60
+            "strong_negative": -5,  # score < 30
+            "moderate_negative": -2, # score < 40
+        },
         "filters": {
             "min_market_cap": 2e9,
         },

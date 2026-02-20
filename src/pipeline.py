@@ -274,24 +274,21 @@ def run_scan(
     regime = regime_data.get("regime", "sideways")
     logger.info(f"Market regime detected: {regime.upper()} (confidence: {regime_data.get('confidence', 0):.0%})")
 
-    # Load previous results for sell signal comparison
+    # Load previous scan results for sell signal comparison
+    # Uses the actual previous scan output (scores/signals) rather than re-analyzing
     prev_results_file = DATA_DIR / "prev_scan_results.json"
     prev_results_map = {}  # type: Dict[str, dict]
     if prev_results_file.exists():
         try:
             prev_scan = json.loads(prev_results_file.read_text())
-            # Build a map of ticker -> full detail for comparison
-            # We'll need to reconstruct this from cached data
-            prev_cached = _load_cache(cache_hours * 2)  # Look back further
-            if prev_cached:
-                for ticker_sym in tickers:
-                    if ticker_sym in prev_cached:
-                        try:
-                            prev_results_map[ticker_sym] = analyze_single(
-                                ticker_sym, prev_cached[ticker_sym], spy_hist, regime=regime
-                            )
-                        except Exception:
-                            pass
+            for stock in prev_scan.get("top", []):
+                ticker_sym = stock.get("ticker")
+                if ticker_sym:
+                    # Map prev scan output fields to the format sell_signals expects
+                    prev_results_map[ticker_sym] = {
+                        "fundamentals": {"score": stock.get("fundamentals_pct")},
+                        "momentum": {"entry_signal": stock.get("entry_signal")},
+                    }
         except Exception:
             logger.warning("Could not load previous results for sell signal comparison")
 
@@ -398,6 +395,24 @@ def run_scan(
             stock["analyst_score"] = 50
             stock["insider_score"] = 50
             stock["smart_money_signals"] = []
+
+    # --- Apply smart money bonus to composite score ---
+    sm_cfg = strat.get("smart_money_bonus", {})
+    if sm_cfg.get("enabled", False):
+        for stock in ranked:
+            sm_score = stock.get("smart_money_score", 50)
+            bonus = 0
+            if sm_score > 70:
+                bonus = sm_cfg.get("strong_positive", 5)
+            elif sm_score > 60:
+                bonus = sm_cfg.get("moderate_positive", 2)
+            elif sm_score < 30:
+                bonus = sm_cfg.get("strong_negative", -5)
+            elif sm_score < 40:
+                bonus = sm_cfg.get("moderate_negative", -2)
+            if bonus != 0:
+                stock["composite_score"] = max(0, stock.get("composite_score", 0) + bonus)
+                stock["smart_money_bonus"] = bonus
 
     # --- Add data freshness ---
     for stock in ranked:

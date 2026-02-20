@@ -3,3 +3,9 @@ INFO:     127.0.0.1:65515 - "GET /rebalance/status HTTP/1.1" 200 OK
 INFO:     127.0.0.1:65517 - "GET /validation/summary HTTP/1.1" 200 OK
 INFO:     127.0.0.1:65519 - "GET /insider/MCK HTTP/1.1" 200 OK
 INFO:     127.0.0.1:65526 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49181 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49188 - "GET /rebalance/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49190 - "GET /rebalance/check HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49192 - "GET /validation/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49194 - "GET /insider/MCK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49199 - "GET /validation/run HTTP/1.1" 200 OK
