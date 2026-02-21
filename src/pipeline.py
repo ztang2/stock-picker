@@ -500,6 +500,12 @@ def run_scan(
     # --- Apply earnings guard ---
     ranked = apply_earnings_guard(ranked)
 
+    # --- Re-sort by final composite_score after all bonuses ---
+    # Smart money bonus and earnings guard modify scores after initial ranking
+    ranked.sort(key=lambda s: s.get("composite_score", 0), reverse=True)
+    for i, stock in enumerate(ranked):
+        stock["rank"] = i + 1
+
     # --- Update streak tracking ---
     top20_tickers = [stock["ticker"] for stock in ranked[:20]]
     current_date = time.strftime("%Y-%m-%d")
