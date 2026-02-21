@@ -117,9 +117,9 @@ def score_risk(hist: pd.DataFrame, spy_hist: Optional[pd.DataFrame] = None) -> d
     if vol is not None:
         components.append(np.clip(25 - (vol - 0.15) * 55.6, 0, 25))
 
-    if components:
-        metrics["score"] = sum(components) / len(components) * 4
-    else:
-        metrics["score"] = None
+    # Fix scoring inflation: use TOTAL component count (4), not just available count
+    # Components: beta, max_drawdown, sharpe, volatility
+    TOTAL_COMPONENTS = 4
+    metrics["score"] = sum(components) / TOTAL_COMPONENTS * 4
 
     return metrics
