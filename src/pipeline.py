@@ -282,13 +282,20 @@ def run_scan(
     if prev_results_file.exists():
         try:
             prev_scan = json.loads(prev_results_file.read_text())
+            # Load from top (detailed) AND all_scores (lightweight, covers all 500+)
             for stock in prev_scan.get("top", []):
                 ticker_sym = stock.get("ticker")
                 if ticker_sym:
-                    # Map prev scan output fields to the format sell_signals expects
                     prev_results_map[ticker_sym] = {
                         "fundamentals": {"score": stock.get("fundamentals_pct")},
                         "momentum": {"entry_signal": stock.get("entry_signal")},
+                    }
+            for stock in prev_scan.get("all_scores", []):
+                ticker_sym = stock.get("ticker")
+                if ticker_sym and ticker_sym not in prev_results_map:
+                    prev_results_map[ticker_sym] = {
+                        "fundamentals": {"score": stock.get("fund_score")},
+                        "momentum": {"entry_signal": stock.get("signal")},
                     }
         except Exception:
             logger.warning("Could not load previous results for sell signal comparison")
@@ -532,6 +539,20 @@ def run_scan(
         for w in sanity_warnings:
             logger.warning("SANITY CHECK: %s", w)
 
+    # Build lightweight all_scores for full-universe prev comparison (covers all 500+ stocks)
+    # This lets next scan detect signal changes for stocks outside top-N
+    results_by_ticker = {r["ticker"]: r for r in filtered if "ticker" in r}
+    all_scores = []
+    for _, row in ranked_df.iterrows():
+        tkr = row.get("ticker")
+        detail = results_by_ticker.get(tkr, {})
+        all_scores.append({
+            "ticker": tkr,
+            "composite": round(float(row.get("composite", 0)), 2),
+            "fund_score": round(float(row.get("fund_pct", 0)), 2) if pd.notna(row.get("fund_pct")) else None,
+            "signal": (detail.get("momentum") or {}).get("entry_signal", "HOLD"),
+        })
+
     output = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "strategy": strategy,
@@ -540,6 +561,7 @@ def run_scan(
         "stocks_after_filter": len(filtered),
         "sanity_warnings": sanity_warnings,
         "top": ranked,
+        "all_scores": all_scores,
     }
 
     # Rotate: current → previous (BEFORE saving new results)

@@ -9,13 +9,14 @@ STRATEGIES: Dict[str, dict] = {
         "emoji": "🛡️",
         "description": "Defensive, capital preservation. Prefers low volatility, high margins, strong balance sheets.",
         "weights": {
-            "fundamentals": 0.40,
-            "valuation": 0.26,
+            "fundamentals": 0.42,    # was 0.40, absorbed sentiment weight
+            "valuation": 0.27,       # was 0.26
             "technicals": 0.08,
             "risk": 0.13,
             "growth": 0.00,
-            "sentiment": 0.00,  # Disabled: yfinance news API rate-limits at scale + too naive to be useful
+            "sentiment": 0.00,       # Disabled: rate-limited + too naive
             "sector_relative": 0.10,
+            # sum = 1.00
         },
         "filters": {
             "min_market_cap": 10e9,
@@ -41,13 +42,14 @@ STRATEGIES: Dict[str, dict] = {
         "emoji": "⚖️",
         "description": "All-around strategy mixing value and growth. Default for most users.",
         "weights": {
-            "fundamentals": 0.26,
-            "valuation": 0.17,
+            "fundamentals": 0.28,    # was 0.26, absorbed sentiment weight
+            "valuation": 0.18,       # was 0.17
             "technicals": 0.22,
-            "risk": 0.08,
-            "growth": 0.12,
-            "sentiment": 0.00,  # Disabled: yfinance news API rate-limits at scale + too naive to be useful
+            "risk": 0.09,            # was 0.08
+            "growth": 0.13,          # was 0.12
+            "sentiment": 0.00,       # Disabled: rate-limited + too naive
             "sector_relative": 0.10,
+            # sum = 1.00
         },
         "smart_money_bonus": {
             "enabled": True,
@@ -71,13 +73,14 @@ STRATEGIES: Dict[str, dict] = {
         "emoji": "🚀",
         "description": "Growth + momentum hunting. High growth, strong momentum, ignores valuation.",
         "weights": {
-            "fundamentals": 0.13,
+            "fundamentals": 0.15,    # was 0.13, absorbed sentiment weight
             "valuation": 0.08,
-            "technicals": 0.31,
+            "technicals": 0.33,      # was 0.31
             "risk": 0.04,
-            "growth": 0.27,
-            "sentiment": 0.00,  # Disabled: yfinance news API rate-limits at scale + too naive to be useful
+            "growth": 0.30,          # was 0.27
+            "sentiment": 0.00,       # Disabled: rate-limited + too naive
             "sector_relative": 0.10,
+            # sum = 1.00
         },
         "filters": {
             "min_market_cap": 1e9,

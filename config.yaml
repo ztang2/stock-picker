@@ -1,17 +1,7 @@
 default_strategy: balanced
 risk_free_rate: 0.045  # 4.5% annualized (used for Sharpe ratio calculation)
 
-# ⚠️ IMPORTANT: Weights are defined in src/strategies.py (single source of truth)
-# These values below are for reference only and are NOT used during scans
-# Each strategy (conservative/balanced/aggressive) has its own weights
-weights:
-  fundamentals: 0.26
-  valuation: 0.17
-  technicals: 0.22
-  risk: 0.08
-  growth: 0.12
-  sentiment: 0.00  # Disabled (see strategies.py)
-  sector_relative: 0.10
+# Weights are defined ONLY in src/strategies.py — do not duplicate here
 
 thresholds:
   min_market_cap: 2.0e9
