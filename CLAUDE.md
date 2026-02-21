@@ -4,11 +4,13 @@
 A quantitative stock screening model that scans S&P 500 daily, scores stocks across multiple dimensions, and generates buy/sell signals. Built for personal use, not production trading.
 
 ## Architecture
-- **Language:** Python 3
+- **Language:** Python 3.9
 - **Web:** FastAPI backend + single-page HTML dashboard (`static/index.html`)
 - **Data sources:** yfinance (primary, free, unlimited) + FMP (supplementary, 250 calls/day free tier)
 - **Storage:** JSON files in `data/` (no database yet — migrate to SQLite when data grows)
-- **Hosting:** Runs on Mac mini (Apple Silicon), always-on
+- **Hosting:** Runs on Mac mini (Apple Silicon), always-on via LaunchAgent (`com.stockpicker.server`)
+- **Server:** uvicorn with `--reload --reload-dir src` (requires `watchfiles` package)
+- **Auth:** API key via `X-API-Key` header (set `API_KEY` in `.env`); required for mutating endpoints
 
 ## Key Files
 ```
@@ -29,8 +31,10 @@ src/
   alerts.py        — Morning briefing generation
   accuracy.py      — Prediction accuracy tracking
   fmp.py           — FMP API data fetcher
-  api.py           — FastAPI endpoints
-  sentiment.py     — Sentiment analysis (wired into composite scoring, 3-7% weight)
+  api.py           — FastAPI endpoints (async /scan, /scan/status polling)
+  indicators.py    — Shared RSI implementation (used by technicals, momentum, sell_signals, market_regime)
+  insider.py       — Smart money analysis (analyst revisions + insider trading)
+  sentiment.py     — Sentiment analysis (DISABLED: rate-limited + too naive, weight=0 in all strategies)
 
 static/
   index.html       — Single-file dashboard (dark/light theme)
@@ -43,10 +47,11 @@ data/
   fmp_cache/              — Per-ticker FMP data (.gitignored)
 ```
 
-## Strategies & Weights (updated with sentiment + sector-relative)
-- **Conservative:** fundamentals 40%, valuation 26%, risk 13%, sector-relative 10%, technicals 8%, sentiment 3%, growth 0%
-- **Balanced:** fundamentals 26%, technicals 22%, valuation 17%, growth 12%, sector-relative 10%, risk 8%, sentiment 5%
-- **Aggressive:** technicals 31%, growth 27%, fundamentals 13%, sector-relative 10%, valuation 8%, sentiment 7%, risk 4%
+## Strategies & Weights
+Defined in `src/strategies.py` (single source of truth). Sentiment disabled across all strategies.
+- **Conservative:** fundamentals 42%, valuation 27%, risk 13%, sector-relative 10%, technicals 8%, growth 0%, sentiment 0%
+- **Balanced:** fundamentals 28%, technicals 22%, valuation 18%, growth 13%, sector-relative 10%, risk 9%, sentiment 0%
+- **Aggressive:** technicals 33%, growth 30%, fundamentals 15%, sector-relative 10%, valuation 8%, risk 4%, sentiment 0%
 
 ## Cron Jobs (automated)
 - **6:00 AM PT daily** — FMP cache fill
@@ -66,20 +71,36 @@ data/
 - MA50/MA200 breakdown
 
 ## Recent Improvements (Feb 2026)
-1. **Sentiment Analysis (5% weight):** News headline sentiment analysis now integrated into composite scoring (3% conservative, 5% balanced, 7% aggressive)
+1. **Sentiment Disabled:** Sentiment analysis removed from scoring (weight=0 in all strategies). Was rate-limited and too naive (word counting). Calls completely bypassed in pipeline.
 2. **ADX-Aware Sell Signals:** Strong trends (ADX > 40) allow higher RSI thresholds before triggering sell signals. RSI sell scores discounted by 50% when price is >10% above MA50 in strong uptrend.
-3. **Relaxed Entry Thresholds:** BUY signal now triggered with 2+ conditions (was 3+) OR entry_score >= 50. Top-20 stocks with score >75 auto-upgraded to BUY unless red flags present.
+3. **Relaxed Entry Thresholds:** BUY signal now triggered with 2+ conditions (was 3+) OR entry_score >= 50.
 4. **Sector-Relative Scoring (10% weight):** Within-sector rank now contributes to composite score, promoting sector diversification.
-5. **Growth-Adjusted Valuation:** High-growth stocks (growth_score > 80) get valuation penalty dampened by 1.3x. Stocks with PEG < 1.5 receive +15 point valuation boost.
-6. **Market Regime Detection:** Detects bull/bear/sideways markets based on SPY 200MA position and slope. **Bull markets** (SPY > 200MA, trending up): RSI thresholds +5 (75→80), sell scores -20%, growth/technicals weights +5%, risk/valuation -5%. **Bear markets** (SPY < 200MA, trending down): RSI thresholds -5 (70→65), sell scores +30%, risk weight +10%, valuation +5%, growth/technicals -10%/-5%. **Sideways**: No adjustments. Regime displayed in dashboard header and morning briefing.
+5. **Growth-Adjusted Valuation:** Gradual scaling: `multiplier = 1.0 + max(0, (growth_score - 50)) / 100 * 0.5`. Stocks with PEG < 1.5 receive +15 point valuation boost.
+6. **Market Regime Detection:** Detects bull/bear/sideways markets based on SPY 200MA position and slope. Bull/bear adjustments to RSI thresholds, sell scores, and category weights.
+7. **Scoring Inflation Fix:** All scoring modules (fundamentals, valuation, technicals, risk, growth) use fixed `TOTAL_COMPONENTS` denominator instead of `len(valid)`, so missing metrics contribute 0 instead of inflating scores.
+8. **RSI Deduplication:** Single `_rsi()` in `src/indicators.py`, imported by technicals, momentum, sell_signals, market_regime.
+9. **Rank Ordering Fix:** Rankings re-sorted after smart money bonus + earnings guard applied (was assigning ranks before score adjustments).
+10. **Parallel Smart Money:** Analyst revision + insider trading fetch parallelized with ThreadPoolExecutor (5 workers). ~1.6s for 20 stocks (was ~8s sequential).
+11. **Async /scan:** `/scan` returns immediately, runs in background thread. Poll `/scan/status` for progress. Use `?sync=true` for blocking mode. Duplicate scan prevention built in.
+12. **API Authentication:** `X-API-Key` header required for mutating endpoints (`/scan`, `/optimize/apply`, `/rebalance/*`).
+13. **Full Universe Coverage:** `all_scores` in scan results covers all 486 filtered stocks (was only top 20).
 
 ## Running
 ```bash
-# Start API server
-python3 -m uvicorn src.api:app --host 0.0.0.0 --port 8000
+# Start API server (with auto-reload)
+python3 -m uvicorn src.api:app --host 0.0.0.0 --port 8000 --reload --reload-dir src
 
-# Run scan from CLI
-python3 -c "from src.pipeline import run_scan; run_scan()"
+# Server managed by LaunchAgent (auto-starts on boot)
+launchctl stop com.stockpicker.server   # stop
+launchctl start com.stockpicker.server  # start
+
+# Run scan (async — returns immediately)
+curl -H "X-API-Key: $API_KEY" http://localhost:8000/scan
+curl http://localhost:8000/scan/status   # poll until finished
+curl http://localhost:8000/scan/cached   # get results
+
+# Run scan (sync — blocks until done)
+curl -H "X-API-Key: $API_KEY" "http://localhost:8000/scan?sync=true"
 
 # Run tests
 python3 -m pytest test_sell_signals.py -v
@@ -94,18 +115,23 @@ python3 -m pytest test_sell_signals.py -v
 ## Roadmap (in order)
 1. ~~Sell signals~~ ✅
 2. ~~Consecutive days tracking~~ ✅
-3. ~~Wire sentiment into scoring (5% weight)~~ ✅
+3. ~~Sentiment analysis~~ ✅ (built, then disabled — too naive/rate-limited)
 4. ~~Sell signals trend context (ADX awareness)~~ ✅
 5. ~~Relax entry signal thresholds~~ ✅
 6. ~~Sector-relative scoring into composite (10% weight)~~ ✅
 7. ~~Growth-adjusted valuation~~ ✅
-8. ~~Market regime detection (bear/bull — adjust thresholds based on SPY 200MA)~~ ✅
-9. Cross-reference yfinance + FMP (after FMP fully cached)
-10. Walk-forward optimization (auto-tune weights from accuracy data)
-11. Portfolio tracking / watchlist (Robinhood, manual entry)
-12. Correlation check (pairwise correlation on portfolio picks)
-13. Peer comparison (sub-sector ranking)
-14. Streak consistency bonus (consecutive days → composite boost)
+8. ~~Market regime detection~~ ✅
+9. ~~Scoring inflation fix~~ ✅
+10. ~~Parallel smart money + async scan~~ ✅
+11. ~~API authentication~~ ✅
+12. Better sentiment replacement (proper NLP or expand smart money signals)
+13. Cross-reference yfinance + FMP (after FMP fully cached)
+14. Walk-forward optimization (auto-tune weights from accuracy data)
+15. SQLite migration (replace JSON files)
+16. Sector concentration cap (max N per sector in top 20)
+17. Portfolio tracking / watchlist (Robinhood, manual entry)
+18. Correlation check (pairwise correlation on portfolio picks)
+19. Log rotation
 
 ## Owner
 Zhuoran Tang (@ztang2) — using Robinhood, planning $3000 balanced portfolio (ALL, ACGL, MCK, EQT, NEM)
