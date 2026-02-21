@@ -24,7 +24,7 @@ from .strategies import get_strategy
 from .earnings_guard import apply_earnings_guard
 from .freshness import check_freshness
 from .streak_tracker import update_streaks, add_streaks_to_results
-from .sentiment import analyze_sentiment
+# from .sentiment import analyze_sentiment  # Disabled: rate-limited + too naive
 from .market_regime import detect_market_regime
 from .insider import get_combined_smart_money_score
 from .ml_model import predict_scores
