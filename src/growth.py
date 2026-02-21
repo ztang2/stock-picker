@@ -89,14 +89,13 @@ def score_growth(info: dict) -> dict:
         cg_score = float(np.clip(cap_growth_score * 100 + 5, 0, 15))
         components.append(("cap_growth", cg_score, 15))
 
+    # Fix scoring inflation: component weights already sum to 100 max
+    # Missing components contribute 0, not rescaled
+    # Total possible: revenue(30) + earnings(25) + accel(15) + margins(15) + cap(15) = 100
     if components:
-        total_weight = sum(c[2] for c in components)
-        max_possible = 100
         raw = sum(c[1] for c in components)
-        # Scale to 0-100 based on what we actually measured
-        score = raw / total_weight * max_possible if total_weight > 0 else None
-        metrics["score"] = float(np.clip(score, 0, 100)) if score is not None else None
+        metrics["score"] = float(np.clip(raw, 0, 100))
     else:
-        metrics["score"] = None
+        metrics["score"] = 0.0  # No data = 0 score
 
     return metrics

@@ -79,7 +79,7 @@ def fetch_stock_data(ticker: str, period: str = "1y") -> Optional[dict]:
 def _reconstruct_hist(data: dict) -> pd.DataFrame:
     """Reconstruct history DataFrame from cached data."""
     hist = pd.DataFrame(data["history"])
-    hist.index = pd.to_datetime(data["history_index"])
+    hist.index = pd.to_datetime(data["history_index"], utc=True)
     return hist
 
 

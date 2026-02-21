@@ -6,19 +6,9 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
+from .indicators import _rsi
+
 logger = logging.getLogger(__name__)
-
-
-def _rsi(series: pd.Series, period: int = 14) -> Optional[float]:
-    delta = series.diff()
-    gain = delta.clip(lower=0)
-    loss = -delta.clip(upper=0)
-    avg_gain = gain.rolling(period).mean()
-    avg_loss = loss.rolling(period).mean()
-    rs = avg_gain / avg_loss
-    rsi = 100 - (100 / (1 + rs))
-    val = rsi.iloc[-1]
-    return None if pd.isna(val) else float(val)
 
 
 def _macd_signal(series: pd.Series) -> Optional[float]:
@@ -114,10 +104,10 @@ def score_technicals(hist: pd.DataFrame) -> dict:
     else:
         components.append(None)
 
-    valid = [c for c in components if c is not None]
-    if valid:
-        metrics["score"] = sum(valid) / len(valid) * 4
-    else:
-        metrics["score"] = None
+    # Fix scoring inflation: use TOTAL component count (4), not just available count
+    # Missing metrics contribute 0, not skipped
+    TOTAL_COMPONENTS = 4
+    score_sum = sum(c for c in components if c is not None)
+    metrics["score"] = (score_sum / TOTAL_COMPONENTS) * 4
 
     return metrics

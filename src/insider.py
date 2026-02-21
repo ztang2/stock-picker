@@ -55,7 +55,7 @@ def analyze_analyst_signals(ticker_obj) -> dict:
             cutoff_90d = now - timedelta(days=90)
             
             # Filter recent
-            ud.index = pd.to_datetime(ud.index)
+            ud.index = pd.to_datetime(ud.index, utc=True)
             recent_30d = ud[ud.index >= cutoff_30d]
             recent_90d = ud[ud.index >= cutoff_90d]
             
@@ -227,7 +227,7 @@ def analyze_insider_signals(ticker_obj) -> dict:
                 date_str = row.get("Start Date")
                 if date_str:
                     try:
-                        txn_date = pd.to_datetime(date_str)
+                        txn_date = pd.to_datetime(date_str, utc=True)
                         if txn_date < cutoff:
                             continue
                     except Exception:

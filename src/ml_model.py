@@ -693,7 +693,7 @@ def train_model(months_history: int = 12) -> dict:
     if df.empty or len(df) < 50:
         return {"error": "Insufficient training data", "samples": len(df)}
 
-    df["date"] = pd.to_datetime(df["date"])
+    df["date"] = pd.to_datetime(df["date"], utc=True)
     df = df.sort_values("date").reset_index(drop=True)
 
     # Fill NaN features with median and SAVE medians for prediction-time consistency

@@ -14,7 +14,7 @@ STRATEGIES: Dict[str, dict] = {
             "technicals": 0.08,
             "risk": 0.13,
             "growth": 0.00,
-            "sentiment": 0.03,
+            "sentiment": 0.00,  # Disabled: yfinance news API rate-limits at scale + too naive to be useful
             "sector_relative": 0.10,
         },
         "filters": {
@@ -46,7 +46,7 @@ STRATEGIES: Dict[str, dict] = {
             "technicals": 0.22,
             "risk": 0.08,
             "growth": 0.12,
-            "sentiment": 0.05,
+            "sentiment": 0.00,  # Disabled: yfinance news API rate-limits at scale + too naive to be useful
             "sector_relative": 0.10,
         },
         "smart_money_bonus": {
@@ -76,7 +76,7 @@ STRATEGIES: Dict[str, dict] = {
             "technicals": 0.31,
             "risk": 0.04,
             "growth": 0.27,
-            "sentiment": 0.07,
+            "sentiment": 0.00,  # Disabled: yfinance news API rate-limits at scale + too naive to be useful
             "sector_relative": 0.10,
         },
         "filters": {

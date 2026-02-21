@@ -93,11 +93,10 @@ def score_fundamentals(info: dict) -> dict:
     else:
         components.append(None)
 
-    valid = [c for c in components if c is not None]
-    if valid:
-        # Scale to 0-100 proportionally
-        metrics["score"] = sum(valid) / len(valid) * (100 / 25)
-    else:
-        metrics["score"] = None
+    # Fix scoring inflation: use TOTAL component count (7), not just available count
+    # Missing metrics contribute 0, not skipped
+    TOTAL_COMPONENTS = 7
+    score_sum = sum(c for c in components if c is not None)
+    metrics["score"] = (score_sum / TOTAL_COMPONENTS) * (100 / 25)
 
     return metrics

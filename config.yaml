@@ -1,15 +1,16 @@
 default_strategy: balanced
+risk_free_rate: 0.045  # 4.5% annualized (used for Sharpe ratio calculation)
 
-# These weights are OVERRIDDEN by strategy weights in src/strategies.py
-# Actual balanced weights: fund=0.26, val=0.17, tech=0.22, risk=0.08, growth=0.12, sent=0.05, sector_rel=0.10
-# This config is kept for reference; auto_optimize writes overrides to data/weight_overrides.json
+# ⚠️ IMPORTANT: Weights are defined in src/strategies.py (single source of truth)
+# These values below are for reference only and are NOT used during scans
+# Each strategy (conservative/balanced/aggressive) has its own weights
 weights:
   fundamentals: 0.26
   valuation: 0.17
   technicals: 0.22
   risk: 0.08
   growth: 0.12
-  sentiment: 0.05
+  sentiment: 0.00  # Disabled (see strategies.py)
   sector_relative: 0.10
 
 thresholds:

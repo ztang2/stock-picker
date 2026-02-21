@@ -47,16 +47,17 @@ def score_valuation(info: dict, growth_score: Optional[float] = None) -> dict:
     else:
         components.append(None)
 
-    valid = [c for c in components if c is not None]
-    if valid:
-        metrics["score"] = sum(valid) / len(valid) * 3
-    else:
-        metrics["score"] = None
+    # Fix scoring inflation: use TOTAL component count (3), not just available count
+    # Missing metrics contribute 0, not skipped
+    TOTAL_COMPONENTS = 3
+    score_sum = sum(c for c in components if c is not None)
+    metrics["score"] = (score_sum / TOTAL_COMPONENTS) * 3
     
-    # Growth-adjusted valuation: dampen penalty for high-growth stocks
-    if metrics["score"] is not None and growth_score is not None and growth_score > 80:
-        # High-growth stocks (score > 80) get less punished for high P/E
-        metrics["score"] = min(metrics["score"] * 1.3, 100.0)
+    # Growth-adjusted valuation: gradual scaling instead of binary threshold
+    # Scales from 1.0 at score 50 to 1.25 at score 100
+    if growth_score is not None and growth_score > 50:
+        multiplier = 1.0 + max(0, (growth_score - 50)) / 100 * 0.5
+        metrics["score"] = min(metrics["score"] * multiplier, 100.0)
         metrics["growth_adjusted"] = True
     
     # PEG ratio boost: if PEG < 1.5, it's growth at a reasonable price

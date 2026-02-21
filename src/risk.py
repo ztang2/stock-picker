@@ -1,14 +1,26 @@
 """Risk metrics: beta, max drawdown, Sharpe ratio, volatility."""
 
 import logging
+from pathlib import Path
 from typing import Optional
 
 import numpy as np
 import pandas as pd
+import yaml
 
 logger = logging.getLogger(__name__)
 
-RISK_FREE_RATE = 0.045  # 4.5% annualized
+# Read risk_free_rate from config.yaml, fall back to 0.045
+def _get_risk_free_rate() -> float:
+    try:
+        config_file = Path(__file__).resolve().parent.parent / "config.yaml"
+        with open(config_file) as f:
+            config = yaml.safe_load(f)
+            return config.get("risk_free_rate", 0.045)
+    except Exception:
+        return 0.045
+
+RISK_FREE_RATE = _get_risk_free_rate()
 
 
 def _compute_beta(stock_returns: pd.Series, benchmark_returns: pd.Series) -> Optional[float]:

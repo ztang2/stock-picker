@@ -76,7 +76,7 @@ data/
 ## Running
 ```bash
 # Start API server
-python3 -m uvicorn src.api:app --host 0.0.0.0 --port 8080
+python3 -m uvicorn src.api:app --host 0.0.0.0 --port 8000
 
 # Run scan from CLI
 python3 -c "from src.pipeline import run_scan; run_scan()"

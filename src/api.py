@@ -2,12 +2,17 @@
 
 import logging
 import json
+import os
 from pathlib import Path
 from typing import Optional, List
 
-from fastapi import FastAPI, HTTPException, Query
+from dotenv import load_dotenv
+from fastapi import FastAPI, HTTPException, Query, Header, Depends
 from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
+
+# Load .env file for API_KEY
+load_dotenv()
 
 from .pipeline import run_scan, get_stock_detail, get_all_sectors, load_config, RESULTS_FILE, DATA_DIR
 from .backtest import run_backtest, load_backtest_history, run_rolling_backtest, get_rolling_backtest_status, load_rolling_backtest_cache
@@ -27,6 +32,17 @@ from .auto_optimize import run_monthly_optimization, get_optimization_history
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
+
+
+def verify_api_key(x_api_key: Optional[str] = Header(None)):
+    """Check API key for mutating endpoints. If no API_KEY in .env, skip auth (backward compatible)."""
+    required_key = os.getenv("API_KEY")
+    if required_key is None:
+        # No API key configured, skip auth
+        return
+    if x_api_key != required_key:
+        raise HTTPException(status_code=401, detail="Invalid or missing API key")
+
 
 app = FastAPI(title="Stock Picker", version="4.0.0")
 
@@ -57,6 +73,7 @@ def scan(
     max_cap: Optional[float] = Query(None, description="Maximum market cap"),
     exclude: Optional[str] = Query(None, description="Comma-separated tickers to exclude"),
     strategy: str = Query("balanced", description="Strategy: conservative, balanced, aggressive"),
+    _: None = Depends(verify_api_key),
 ):
     """Run full scan with optional filters and strategy. Returns top ranked stocks."""
     config = load_config()
@@ -409,7 +426,7 @@ def optimize_results():
 
 
 @app.get("/optimize/apply")
-def optimize_apply(dry_run: bool = Query(True)):
+def optimize_apply(dry_run: bool = Query(True), _: None = Depends(verify_api_key)):
     """Apply optimization results to config."""
     try:
         return apply_optimization(dry_run=dry_run)
@@ -432,7 +449,7 @@ def report_factors(months: int = Query(3, ge=1, le=12), format: str = Query("jso
 # --- Rebalance endpoints ---
 
 @app.get("/rebalance/status")
-def rebalance_status():
+def rebalance_status(_: None = Depends(verify_api_key)):
     """Get current rebalance state and holdings."""
     from .rebalance import load_holdings, load_rebalance_state
     return {
@@ -442,7 +459,7 @@ def rebalance_status():
 
 
 @app.get("/rebalance/check")
-def rebalance_check():
+def rebalance_check(_: None = Depends(verify_api_key)):
     """Run rebalance evaluation against latest scan results."""
     from .rebalance import (
         load_holdings, load_rebalance_state, save_rebalance_state,

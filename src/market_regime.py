@@ -6,22 +6,9 @@ from typing import Optional, Dict
 import numpy as np
 import pandas as pd
 
+from .indicators import _rsi
+
 logger = logging.getLogger(__name__)
-
-
-def _rsi(series: pd.Series, period: int = 14) -> Optional[float]:
-    """Calculate RSI."""
-    if series is None or len(series) < period + 1:
-        return None
-    delta = series.diff()
-    gain = delta.clip(lower=0)
-    loss = -delta.clip(upper=0)
-    avg_gain = gain.rolling(period).mean()
-    avg_loss = loss.rolling(period).mean()
-    rs = avg_gain / avg_loss
-    rsi = 100 - (100 / (1 + rs))
-    val = rsi.iloc[-1]
-    return None if pd.isna(val) else float(val)
 
 
 def _ma_slope(series: pd.Series, period: int, lookback: int = 20) -> Optional[float]:
