@@ -3,6 +3,8 @@
 import logging
 import json
 import os
+import threading
+import time
 from pathlib import Path
 from typing import Optional, List
 
@@ -66,6 +68,34 @@ def strategies_list():
     return {"strategies": list_strategies()}
 
 
+_scan_status = {"running": False, "started_at": None, "finished_at": None, "error": None, "strategy": None}
+
+
+def _run_scan_background(config, sector, min_cap, max_cap, exclude_tickers, strategy):
+    """Run scan in background thread."""
+    global _scan_status
+    try:
+        _scan_status["running"] = True
+        _scan_status["started_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
+        _scan_status["finished_at"] = None
+        _scan_status["error"] = None
+        _scan_status["strategy"] = strategy
+        run_scan(
+            config,
+            sector=sector,
+            min_cap=min_cap,
+            max_cap=max_cap,
+            exclude_tickers=exclude_tickers,
+            strategy=strategy,
+        )
+        _scan_status["finished_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
+    except Exception as e:
+        _scan_status["error"] = str(e)
+        logger.error("Background scan failed: %s", e, exc_info=True)
+    finally:
+        _scan_status["running"] = False
+
+
 @app.get("/scan")
 def scan(
     sector: Optional[str] = Query(None, description="Filter by sector (e.g. Technology)"),
@@ -73,20 +103,40 @@ def scan(
     max_cap: Optional[float] = Query(None, description="Maximum market cap"),
     exclude: Optional[str] = Query(None, description="Comma-separated tickers to exclude"),
     strategy: str = Query("balanced", description="Strategy: conservative, balanced, aggressive"),
+    sync: bool = Query(False, description="If true, block until scan completes and return results"),
     _: None = Depends(verify_api_key),
 ):
-    """Run full scan with optional filters and strategy. Returns top ranked stocks."""
+    """Run full scan. Default: async (returns immediately, poll /scan/status). Use sync=true to block."""
     config = load_config()
     exclude_list = [t.strip().upper() for t in exclude.split(",")] if exclude else None
-    result = run_scan(
-        config,
-        sector=sector,
-        min_cap=min_cap,
-        max_cap=max_cap,
-        exclude_tickers=exclude_list,
-        strategy=strategy,
+
+    if sync:
+        result = run_scan(
+            config,
+            sector=sector,
+            min_cap=min_cap,
+            max_cap=max_cap,
+            exclude_tickers=exclude_list,
+            strategy=strategy,
+        )
+        return result
+
+    if _scan_status["running"]:
+        return {"status": "already_running", "started_at": _scan_status["started_at"], "strategy": _scan_status["strategy"]}
+
+    t = threading.Thread(
+        target=_run_scan_background,
+        args=(config, sector, min_cap, max_cap, exclude_list, strategy),
+        daemon=True,
     )
-    return result
+    t.start()
+    return {"status": "started", "strategy": strategy}
+
+
+@app.get("/scan/status")
+def scan_status():
+    """Check if a scan is in progress."""
+    return dict(_scan_status)
 
 
 @app.get("/scan/cached")

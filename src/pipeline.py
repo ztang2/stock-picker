@@ -3,6 +3,7 @@
 import json
 import logging
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Optional, List, Dict
 
@@ -458,20 +459,39 @@ def run_scan(
 
     # --- Smart money signals (analyst revisions + insider trading) for top N only ---
     # Only fetch for top_n to avoid 500 yfinance API calls
-    logger.info("Fetching smart money data for top %d stocks...", len(ranked))
-    for stock in ranked:
+    # Parallelized: each stock's 4 yfinance calls are I/O-bound and independent
+    logger.info("Fetching smart money data for top %d stocks (parallel)...", len(ranked))
+    sm_start = time.time()
+
+    def _fetch_smart_money(ticker: str):
         try:
-            ticker_obj = yf.Ticker(stock["ticker"])
+            ticker_obj = yf.Ticker(ticker)
             sm = get_combined_smart_money_score(ticker_obj)
+            return ticker, sm
+        except Exception:
+            return ticker, None
+
+    sm_results = {}
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = {executor.submit(_fetch_smart_money, s["ticker"]): s["ticker"] for s in ranked}
+        for future in as_completed(futures):
+            ticker, sm = future.result()
+            sm_results[ticker] = sm
+
+    for stock in ranked:
+        sm = sm_results.get(stock["ticker"])
+        if sm:
             stock["smart_money_score"] = sm["score"]
             stock["analyst_score"] = sm["analyst_score"]
             stock["insider_score"] = sm["insider_score"]
             stock["smart_money_signals"] = sm.get("signals", [])
-        except Exception:
+        else:
             stock["smart_money_score"] = 50
             stock["analyst_score"] = 50
             stock["insider_score"] = 50
             stock["smart_money_signals"] = []
+
+    logger.info("Smart money fetch completed in %.1fs", time.time() - sm_start)
 
     # --- Apply smart money bonus to composite score ---
     sm_cfg = strat.get("smart_money_bonus", {})
