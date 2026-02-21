@@ -30,3 +30,11 @@ INFO:     127.0.0.1:59549 - "GET /accuracy HTTP/1.1" 200 OK
 INFO:     127.0.0.1:59601 - "GET /ml/train?months_history=12 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:59672 - "GET /ml/compare HTTP/1.1" 200 OK
 INFO:     127.0.0.1:59674 - "GET /ml/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60428 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60438 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60445 - "GET /stock/CF HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60450 - "GET /stock/PYPL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60535 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60538 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60544 - "GET /stock/TXT HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60716 - "GET /health HTTP/1.1" 200 OK

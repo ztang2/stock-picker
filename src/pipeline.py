@@ -177,13 +177,10 @@ def analyze_single(
     tech = score_technicals(hist)
     risk = score_risk(hist, spy_hist)
     
-    # Sentiment analysis — skip entirely when not used (avoids rate limits + log spam)
-    from .strategies import get_strategy
-    _strat_weights = get_strategy("balanced").get("weights", {})
-    if _strat_weights.get("sentiment", 0) > 0:
-        sentiment = analyze_sentiment(ticker)
-    else:
-        sentiment = {"score": 0, "details": "skipped (weight=0)"}
+    # Sentiment analysis — disabled across all strategies (rate-limited + too naive)
+    # To re-enable: set sentiment weight > 0 in strategies.py and uncomment below
+    # sentiment = analyze_sentiment(ticker)
+    sentiment = {"score": 0, "details": "disabled"}
 
     momentum = compute_momentum(hist)
 

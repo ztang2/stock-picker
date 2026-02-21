@@ -11974,3 +11974,23 @@ yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after
 2026-02-21 10:02:14,917 INFO src.streak_tracker: Updated streaks for 20 tickers
 2026-02-21 10:02:14,940 INFO src.pipeline: Saved daily snapshot: /Users/zhuorantang/clawd/stock-picker/data/daily_snapshots/2026-02-21.json
 2026-02-21 10:02:14,950 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [93040]
+INFO:     Started server process [8623]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-02-21 12:53:27,052 INFO src.pipeline: Using cached stock data (18.8h old)
+2026-02-21 12:53:28,132 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-21 12:53:37,654 INFO src.pipeline: Using cached stock data (18.8h old)
+2026-02-21 12:53:37,984 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-21 12:57:36,025 INFO src.pipeline: Using cached stock data (18.9h old)
+2026-02-21 12:57:36,747 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
