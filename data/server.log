@@ -20,3 +20,10 @@ INFO:     127.0.0.1:63402 - "GET /scan/cached HTTP/1.1" 200 OK
 INFO:     127.0.0.1:63404 - "GET /favicon.ico HTTP/1.1" 404 Not Found
 INFO:     127.0.0.1:63402 - "GET /sectors HTTP/1.1" 404 Not Found
 INFO:     127.0.0.1:63400 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63410 - "GET /scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63421 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63423 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63425 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63427 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63429 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63431 - "GET /scan/status HTTP/1.1" 200 OK

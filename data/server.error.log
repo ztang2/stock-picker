@@ -190,3 +190,9 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 2026-02-21 13:37:38,579 INFO src.pipeline: Smart money fetch completed in 1.6s
 2026-02-21 13:37:38,583 INFO src.streak_tracker: Updated streaks for 20 tickers
 2026-02-21 13:37:38,601 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-21 19:06:48,451 INFO src.universe: Fetching S&P 500 tickers from Wikipedia...
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-02-21 19:06:48,975 INFO src.universe: Fetched 503 tickers
+2026-02-21 19:06:48,976 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-21 19:06:48,976 INFO src.pipeline: Fetching data for 503 stocks...
