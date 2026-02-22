@@ -145,3 +145,8 @@ INFO:     127.0.0.1:63848 - "GET /stock/PYPL HTTP/1.1" 200 OK
 INFO:     127.0.0.1:63866 - "GET /stock/PYPL HTTP/1.1" 200 OK
 INFO:     127.0.0.1:63883 - "GET /accuracy HTTP/1.1" 200 OK
 INFO:     127.0.0.1:63918 - "GET /stock/CF HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50612 - "GET /scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50640 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50653 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50657 - "GET /stock/TEL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50671 - "GET /stock/ACGL HTTP/1.1" 200 OK

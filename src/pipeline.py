@@ -429,6 +429,7 @@ def run_scan(
             "technicals_pct": round(float(row["tech_pct"]), 2) if pd.notna(row["tech_pct"]) else None,
             "risk_pct": round(float(row["risk_pct"]), 2) if pd.notna(row["risk_pct"]) else None,
             "growth_pct": round(float(row["growth_pct"]), 2) if pd.notna(row["growth_pct"]) else None,
+            "sentiment": detail.get("sentiment"),
             "sentiment_score": (detail.get("sentiment") or {}).get("score"),
             "sentiment_pct": round(float(row["sent_pct"]), 2) if pd.notna(row["sent_pct"]) else None,
             "sector_rank": sr.get("sector_rank"),

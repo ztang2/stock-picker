@@ -225,12 +225,22 @@
     "last_seen": "2026-02-21"
   },
   "MSFT": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"
   },
   "AAPL": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "ADBE": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "GDDY": {
+    "consecutive_days": 0,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"
   }
