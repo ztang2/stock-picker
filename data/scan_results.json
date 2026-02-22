@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-21T19:17:04",
+  "timestamp": "2026-02-21T19:40:27",
   "strategy": "balanced",
   "market_regime": {
     "regime": "bull",
@@ -55,14 +55,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (14.2 point drop)"
+        "Fundamentals weakening (13.5 point drop)"
       ],
       "current_price": 97.18,
       "rsi": 57.48,
       "macd_histogram": 0.028588524741491206,
       "adx": 31.4,
       "volatility": 0.3167,
-      "beta": 0.37233224702419043,
+      "beta": 0.3723327345748693,
       "volume_trend": 0.9689990193248702,
       "ma50": 85.56913848876952,
       "ma200": 86.39184490203857,
@@ -107,14 +107,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (13.7 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 98.49,
       "rsi": 56.49,
       "macd_histogram": -0.05847092623086314,
       "adx": 41.24,
       "volatility": 0.2438,
-      "beta": 0.38850023481091916,
+      "beta": 0.3884996670662354,
       "volume_trend": 0.8971869736644832,
       "ma50": 95.51979949951172,
       "ma200": 91.82469997406005,
@@ -129,7 +129,7 @@
       "earnings_date": "2026-04-29",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 6,
+      "consecutive_days": 0,
       "first_seen": "2026-02-15"
     },
     {
@@ -159,14 +159,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (19.6 point drop)"
+        "Fundamentals deteriorated (15.4 point drop)"
       ],
       "current_price": 60.5,
       "rsi": 60.64,
       "macd_histogram": 0.4515576150795394,
       "adx": 31.14,
       "volatility": 0.3721,
-      "beta": 0.7042594055352922,
+      "beta": 0.7042580565564815,
       "volume_trend": 0.9849714289360334,
       "ma50": 54.76317390441895,
       "ma200": 54.632532920837406,
@@ -211,14 +211,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (14.2 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 437.57,
       "rsi": 54.81,
       "macd_histogram": 1.105548271201549,
       "adx": 28.61,
       "volatility": 0.3527,
-      "beta": 0.6696469971813146,
+      "beta": 0.6696456243384058,
       "volume_trend": 1.0165841867865884,
       "ma50": 384.2320031738281,
       "ma200": 295.92613037109373,
@@ -263,14 +263,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (14.6 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 230.49,
       "rsi": 77.89,
       "macd_histogram": 2.5001572949418,
       "adx": 50.01,
       "volatility": 0.3418,
-      "beta": 0.6194321101760296,
+      "beta": 0.6194310536926663,
       "volume_trend": 0.9331340075504974,
       "ma50": 216.6710009765625,
       "ma200": 199.1783876800537,
@@ -312,18 +312,17 @@
       "sector_composite": 59.59,
       "entry_signal": "HOLD",
       "entry_score": 28,
-      "sell_signal": "HOLD",
-      "sell_urgency": "low",
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
       "sell_reasons": [
-        "Price near resistance ($304.94, +0.0%)",
-        "Fundamentals deteriorated (18.0 point drop)"
+        "Price near resistance ($304.94, +0.0%)"
       ],
       "current_price": 304.93,
       "rsi": 70.86,
       "macd_histogram": 0.9504764935830297,
       "adx": 45.07,
       "volatility": 0.2194,
-      "beta": 0.41713582472753474,
+      "beta": 0.41713503264124735,
       "volume_trend": 1.0537432206950654,
       "ma50": 287.3501989746094,
       "ma200": 274.13527221679686,
@@ -338,7 +337,7 @@
       "earnings_date": "2026-04-16",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-15"
     },
     {
@@ -369,15 +368,14 @@
       "sell_urgency": "medium",
       "sell_reasons": [
         "RSI extremely overbought (86.4)",
-        "Price near resistance ($101.57, +0.8%)",
-        "Fundamentals weakening (13.9 point drop)"
+        "Price near resistance ($101.57, +0.8%)"
       ],
       "current_price": 100.77,
       "rsi": 86.38,
       "macd_histogram": 0.6248751920995959,
       "adx": 36.01,
       "volatility": 0.292,
-      "beta": 0.9671202373330889,
+      "beta": 0.9671195330259262,
       "volume_trend": 1.219423574927627,
       "ma50": 91.80522171020507,
       "ma200": 83.10503833770753,
@@ -429,7 +427,7 @@
       "macd_histogram": 0.4754476735245975,
       "adx": 34.3,
       "volatility": 0.2636,
-      "beta": 0.4123426910516472,
+      "beta": 0.41234116121116493,
       "volume_trend": 0.9990510803129066,
       "ma50": 204.01040069580077,
       "ma200": 201.7712289428711,
@@ -444,7 +442,7 @@
       "earnings_date": "2026-04-29",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 6,
+      "consecutive_days": 0,
       "first_seen": "2026-02-15"
     },
     {
@@ -474,14 +472,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (16.0 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 234.73,
       "rsi": 59.82,
       "macd_histogram": 1.6697780022716806,
       "adx": 28.29,
       "volatility": 0.321,
-      "beta": 1.2144823960255642,
+      "beta": 1.2144810834250555,
       "volume_trend": 1.140091619703443,
       "ma50": 229.51385040283202,
       "ma200": 207.01555572509767,
@@ -496,7 +494,7 @@
       "earnings_date": "2026-04-22",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-15"
     },
     {
@@ -533,7 +531,7 @@
       "macd_histogram": 0.12659389270699561,
       "adx": 28.77,
       "volatility": 0.2497,
-      "beta": -0.010169979197945192,
+      "beta": -0.010171339499183142,
       "volume_trend": 1.0786822551246769,
       "ma50": 348.27681640625,
       "ma200": 317.2809701538086,
@@ -548,7 +546,7 @@
       "earnings_date": "2026-05-06",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-21"
     },
     {
@@ -585,7 +583,7 @@
       "macd_histogram": 0.4757359917389721,
       "adx": 28.06,
       "volatility": 0.2676,
-      "beta": 0.376745186951258,
+      "beta": 0.3767438240273754,
       "volume_trend": 1.1466077814687647,
       "ma50": 68.76544281005859,
       "ma200": 66.43308488845825,
@@ -602,7 +600,7 @@
       "earnings_date": "2026-04-30",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-18"
     },
     {
@@ -639,7 +637,7 @@
       "macd_histogram": 0.8641243922472421,
       "adx": 50.43,
       "volatility": 0.2963,
-      "beta": 0.5743834477074314,
+      "beta": 0.5743826625942643,
       "volume_trend": 1.0388698922840427,
       "ma50": 61.79715530395508,
       "ma200": 55.35565185546875,
@@ -656,7 +654,7 @@
       "earnings_date": "2026-04-28",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-21"
     },
     {
@@ -693,7 +691,7 @@
       "macd_histogram": 3.3134980815462214,
       "adx": 39.67,
       "volatility": 0.2869,
-      "beta": 0.10088132142892416,
+      "beta": 0.10087997695681307,
       "volume_trend": 1.2204227772205443,
       "ma50": 850.2281982421875,
       "ma200": 768.5210543823242,
@@ -738,14 +736,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (18.3 point drop)"
+        "Fundamentals weakening (12.0 point drop)"
       ],
       "current_price": 31.28,
       "rsi": 64.52,
       "macd_histogram": 0.06148556445448028,
       "adx": 68.98,
       "volatility": 0.311,
-      "beta": 0.6365687662055712,
+      "beta": 0.6365675280822991,
       "volume_trend": 1.1818939301306417,
       "ma50": 27.456600036621094,
       "ma200": 25.121031713485717,
@@ -762,7 +760,7 @@
       "earnings_date": "2026-02-26",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-15"
     },
     {
@@ -792,14 +790,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (19.5 point drop)"
+        "Fundamentals weakening (14.9 point drop)"
       ],
       "current_price": 352.7,
       "rsi": 62.13,
       "macd_histogram": 1.6928940201570173,
       "adx": 23.9,
       "volatility": 0.4106,
-      "beta": 1.440539394233405,
+      "beta": 1.4405386819466592,
       "volume_trend": 1.2245094726911112,
       "ma50": 321.33580017089844,
       "ma200": 313.75550048828126,
@@ -814,7 +812,7 @@
       "earnings_date": "2026-05-06",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-15"
     },
     {
@@ -851,7 +849,7 @@
       "macd_histogram": 0.05656394930978781,
       "adx": 13.25,
       "volatility": 0.2973,
-      "beta": 0.3322755599374097,
+      "beta": 0.3322748630659887,
       "volume_trend": 1.0097635601268657,
       "ma50": 210.17768829345704,
       "ma200": 175.04607788085937,
@@ -866,7 +864,7 @@
       "earnings_date": "2026-05-07",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-15"
     },
     {
@@ -896,14 +894,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (19.1 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 41.65,
       "rsi": 21.72,
       "macd_histogram": 0.21196041506522167,
       "adx": 70.1,
       "volatility": 0.4063,
-      "beta": 1.3085494383321674,
+      "beta": 1.3085486844741325,
       "volume_trend": 1.4080282383936762,
       "ma50": 53.601600341796875,
       "ma200": 65.463580493927,
@@ -921,7 +919,7 @@
       "earnings_date": "2026-05-05",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-21"
     },
     {
@@ -958,7 +956,7 @@
       "macd_histogram": 1.181000952876218,
       "adx": 47.69,
       "volatility": 0.3956,
-      "beta": 0.17495802110168218,
+      "beta": 0.1749559352524232,
       "volume_trend": 1.1995394895999447,
       "ma50": 351.92799865722657,
       "ma200": 339.07750747680666,
@@ -973,7 +971,7 @@
       "earnings_date": "2026-04-21",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-21"
     },
     {
@@ -1003,14 +1001,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (18.4 point drop)"
+        "Fundamentals deteriorated (16.4 point drop)"
       ],
       "current_price": 101.32,
       "rsi": 52.2,
       "macd_histogram": -0.1929748290046848,
       "adx": 14.29,
       "volatility": 0.3534,
-      "beta": 0.6151888993656329,
+      "beta": 0.615188257398573,
       "volume_trend": 0.9587424851442723,
       "ma50": 101.83400009155274,
       "ma200": 86.34414993286133,
@@ -1025,7 +1023,7 @@
       "earnings_date": "2026-04-28",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-19"
     },
     {
@@ -1055,14 +1053,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (12.8 point drop)"
+        "No significant sell signals"
       ],
       "current_price": 271.09,
       "rsi": 69.51,
       "macd_histogram": 1.0718617576074774,
       "adx": 23.61,
       "volatility": 0.42,
-      "beta": 1.4510386241946611,
+      "beta": 1.4510369246982997,
       "volume_trend": 0.8466408256103443,
       "ma50": 239.50092651367189,
       "ma200": 213.35537872314453,
@@ -1077,7 +1075,7 @@
       "earnings_date": "2026-03-19",
       "earnings_warning": false,
       "days_until_earnings": null,
-      "consecutive_days": 1,
+      "consecutive_days": 0,
       "first_seen": "2026-02-21"
     }
   ],

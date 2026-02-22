@@ -1,16 +1,16 @@
 {
   "ALL": {
-    "consecutive_days": 6,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
   "ACGL": {
-    "consecutive_days": 6,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
   "TRV": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
@@ -30,7 +30,7 @@
     "last_seen": "2026-02-20"
   },
   "CAH": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
@@ -45,7 +45,7 @@
     "last_seen": "2026-02-21"
   },
   "CTRA": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
@@ -65,22 +65,22 @@
     "last_seen": "2026-02-20"
   },
   "TEL": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
   "CPAY": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
   "RL": {
     "consecutive_days": 0,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-20"
+    "last_seen": "2026-02-21"
   },
   "ES": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-18",
     "last_seen": "2026-02-21"
   },
@@ -100,7 +100,7 @@
     "last_seen": "2026-02-20"
   },
   "INCY": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-19",
     "last_seen": "2026-02-21"
   },
@@ -115,27 +115,112 @@
     "last_seen": "2026-02-20"
   },
   "COR": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"
   },
   "PYPL": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"
   },
   "EIX": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"
   },
   "ELV": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"
   },
   "JBL": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "SYK": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "FANG": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "NVDA": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "APH": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "SPG": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "TPR": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "ADI": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "RMD": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "GRMN": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "GEN": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "DGX": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "LMT": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "BMY": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "CVS": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-21"
+  },
+  "DUK": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "BR": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "LH": {
+    "consecutive_days": 0,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"
   }
