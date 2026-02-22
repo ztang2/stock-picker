@@ -24,7 +24,7 @@ from .portfolio import build_portfolio
 from .alerts import check_alerts, get_alert_history, generate_morning_briefing
 from .momentum import compute_momentum
 from .strategies import list_strategies, get_strategy
-from .fmp import fetch_all_fundamentals, get_fetch_status, get_cached_fundamentals
+# FMP removed — yfinance is sole data source. SEC EDGAR planned for future.
 from .universe import get_sp500_tickers
 from .accuracy import get_accuracy, take_snapshot
 from .streak_tracker import get_all_streaks, get_streak
@@ -326,27 +326,7 @@ def portfolio(
     return result
 
 
-@app.get("/fmp/status")
-def fmp_status():
-    """Show FMP data fetch progress."""
-    return get_fetch_status()
-
-
-@app.get("/fmp/fetch")
-def fmp_fetch(limit: int = Query(50, ge=1, le=200)):
-    """Trigger fetching FMP data for up to N tickers."""
-    tickers = get_sp500_tickers(cache_hours=168)
-    result = fetch_all_fundamentals(tickers, limit=limit)
-    return result
-
-
-@app.get("/fmp/stock/{ticker}")
-def fmp_stock(ticker: str):
-    """Show cached FMP data for one ticker."""
-    data = get_cached_fundamentals(ticker.upper())
-    if not data:
-        raise HTTPException(404, "No FMP data cached for %s" % ticker.upper())
-    return data
+# FMP endpoints removed — data source deprecated
 
 
 @app.get("/accuracy")

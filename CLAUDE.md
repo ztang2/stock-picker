@@ -6,7 +6,7 @@ A quantitative stock screening model that scans S&P 500 daily, scores stocks acr
 ## Architecture
 - **Language:** Python 3.9
 - **Web:** FastAPI backend + single-page HTML dashboard (`static/index.html`)
-- **Data sources:** yfinance (primary, free, unlimited) + FMP (supplementary, 250 calls/day free tier)
+
 - **Storage:** JSON files in `data/` (no database yet — migrate to SQLite when data grows)
 - **Hosting:** Runs on Mac mini (Apple Silicon), always-on via LaunchAgent (`com.stockpicker.server`)
 - **Server:** uvicorn with `--reload --reload-dir src` (requires `watchfiles` package)
@@ -30,7 +30,7 @@ src/
   sector.py        — Sector-relative scoring
   alerts.py        — Morning briefing generation
   accuracy.py      — Prediction accuracy tracking
-  fmp.py           — FMP API data fetcher
+
   api.py           — FastAPI endpoints (async /scan, /scan/status polling)
   indicators.py    — Shared RSI implementation (used by technicals, momentum, sell_signals, market_regime)
   insider.py       — Smart money analysis (analyst revisions + insider trading)
@@ -44,7 +44,7 @@ data/
   scan_results.json       — Latest scan output
   signal_history.json     — Historical signal snapshots
   streak_tracker.json     — Consecutive days tracking
-  fmp_cache/              — Per-ticker FMP data (.gitignored)
+
 ```
 
 ## Strategies & Weights
@@ -54,7 +54,7 @@ Defined in `src/strategies.py` (single source of truth). Sentiment disabled acro
 - **Aggressive:** technicals 33%, growth 30%, fundamentals 15%, sector-relative 10%, valuation 8%, risk 4%, sentiment 0%
 
 ## Cron Jobs (automated)
-- **6:00 AM PT daily** — FMP cache fill
+
 - **Morning** — Briefing to Discord #stock-picker
 - **4:00 PM ET weekdays** — Accuracy snapshot + streak update
 
@@ -108,7 +108,7 @@ python3 -m pytest test_sell_signals.py -v
 
 ## Rules
 - Don't tune the model for individual stocks — rules must apply universally
-- yfinance is primary data source; FMP supplements fundamentals
+
 - OpenBB was evaluated and rejected (no advantage over direct yfinance)
 - All changes must be committed and pushed to GitHub (private repo)
 
@@ -125,7 +125,7 @@ python3 -m pytest test_sell_signals.py -v
 10. ~~Parallel smart money + async scan~~ ✅
 11. ~~API authentication~~ ✅
 12. Better sentiment replacement (proper NLP or expand smart money signals)
-13. Cross-reference yfinance + FMP (after FMP fully cached)
+
 14. Walk-forward optimization (auto-tune weights from accuracy data)
 15. SQLite migration (replace JSON files)
 16. Sector concentration cap (max N per sector in top 20)

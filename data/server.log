@@ -1,40 +1,22 @@
-INFO:     127.0.0.1:49715 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49722 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49732 - "GET /rebalance/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49734 - "GET /rebalance/check HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49736 - "GET /validation/run HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49761 - "GET /validation/summary HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49763 - "GET /ml/metrics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49765 - "GET /ml/predict HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49767 - "GET /insider/MCK HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49769 - "GET /insider/NFLX HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49774 - "GET /accuracy/snapshot HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49776 - "GET /signals?strategy=balanced HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49778 - "GET /optimize/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49782 - "GET /accuracy HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49867 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49871 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49881 - "GET /validation/run HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49904 - "GET /rebalance/check HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51278 - "GET /fmp/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51280 - "GET /fmp/fetch?limit=100 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51398 - "GET /signals?strategy=balanced HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52072 - "GET /signals?strategy=balanced HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53005 - "GET /accuracy/snapshot HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54216 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54928 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55247 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58575 - "GET /fmp/fetch?limit=100 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58577 - "GET /fmp/status HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59549 - "GET /accuracy HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59601 - "GET /ml/train?months_history=12 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59672 - "GET /ml/compare HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59674 - "GET /ml/metrics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60428 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60438 - "GET /scan/cached HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60445 - "GET /stock/CF HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60450 - "GET /stock/PYPL HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60535 - "GET /scan/cached HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60538 - "GET /scan/cached HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60544 - "GET /stock/TXT HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60716 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61285 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61449 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61454 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61460 - "GET /scan/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61466 - "GET /scan/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61482 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61484 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61490 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61492 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61502 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61507 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61514 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61519 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61521 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61533 - "GET /scan?strategy=balanced&sync=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63400 - "GET / HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:63400 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63400 - "GET /fmp/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63402 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63404 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63402 - "GET /sectors HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63400 - "GET /alerts?limit=20 HTTP/1.1" 200 OK

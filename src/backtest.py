@@ -16,7 +16,6 @@ from scipy import stats
 from .pipeline import load_config, analyze_single, _reconstruct_hist, DATA_DIR
 from .universe import get_sp500_tickers
 from .scorer import compute_composite
-from .fmp import get_historical_info
 
 logger = logging.getLogger(__name__)
 
@@ -378,14 +377,6 @@ def _build_stock_data_at(ticker: str, hist_full: pd.DataFrame, as_of: str) -> Op
         "industry": "Unknown",
         "shortName": ticker,
     }
-
-    # Enrich with FMP historical fundamentals if available
-    try:
-        fmp_info = get_historical_info(ticker, as_of)
-        if fmp_info:
-            info.update(fmp_info)
-    except Exception:
-        pass
 
     return {
         "info": info,

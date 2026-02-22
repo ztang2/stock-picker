@@ -1,13 +1,6 @@
 [
   {
     "type": "dropped",
-    "ticker": "CB",
-    "message": "CB dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
     "ticker": "CAH",
     "message": "CAH dropped out of top rankings",
     "severity": "warning",
@@ -1398,5 +1391,12 @@
     "message": "ALL score moved down by 10.3 (88.2 \u2192 77.9)",
     "severity": "warning",
     "timestamp": "2026-02-19T21:09:55"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:06:00"
   }
 ]
