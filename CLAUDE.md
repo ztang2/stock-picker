@@ -125,7 +125,7 @@ python3 -m pytest test_sell_signals.py -v
 10. ~~Parallel smart money + async scan~~ ✅
 11. ~~API authentication~~ ✅
 12. Better sentiment replacement (proper NLP or expand smart money signals)
-
+13. SEC EDGAR integration for fundamental data gaps
 14. Walk-forward optimization (auto-tune weights from accuracy data)
 15. SQLite migration (replace JSON files)
 16. Sector concentration cap (max N per sector in top 20)
