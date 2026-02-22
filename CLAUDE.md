@@ -31,10 +31,11 @@ src/
   alerts.py        — Morning briefing generation
   accuracy.py      — Prediction accuracy tracking
 
-  api.py           — FastAPI endpoints (async /scan, /scan/status polling)
+  api.py           — FastAPI endpoints (async /scan, /scan/status polling, /snapshots/verify)
   indicators.py    — Shared RSI implementation (used by technicals, momentum, sell_signals, market_regime)
   insider.py       — Smart money analysis (analyst revisions + insider trading)
   sentiment.py     — Analyst consensus sentiment (recommendationMean + price target upside → 0-100 score)
+  snapshot_verify.py — Daily snapshot integrity verification (missing days, corruption, completeness %)
 
 static/
   index.html       — Single-file dashboard (dark/light theme)
@@ -42,6 +43,8 @@ static/
 data/
   stock_data_cache.json   — Main cache (~19MB, .gitignored)
   scan_results.json       — Latest scan output
+  snapshot_verification.json — Latest integrity check report
+  daily_snapshots/        — One JSON per trading day (full 486-stock scan, critical for ML training)
   signal_history.json     — Historical signal snapshots
   streak_tracker.json     — Consecutive days tracking
 
@@ -84,6 +87,7 @@ Defined in `src/strategies.py` (single source of truth). Sentiment re-enabled wi
 11. **Async /scan:** `/scan` returns immediately, runs in background thread. Poll `/scan/status` for progress. Use `?sync=true` for blocking mode. Duplicate scan prevention built in.
 12. **API Authentication:** `X-API-Key` header required for mutating endpoints (`/scan`, `/optimize/apply`, `/rebalance/*`).
 13. **Full Universe Coverage:** `all_scores` in scan results covers all 486 filtered stocks (was only top 20).
+14. **Snapshot Integrity Verification:** `src/snapshot_verify.py` checks daily snapshot completeness — missing trading days, corrupt files, low stock counts. Runs automatically in post-market cron. API: `GET /snapshots/verify`. Alerts with 🚨 if any gaps found.
 
 ## Running
 ```bash
