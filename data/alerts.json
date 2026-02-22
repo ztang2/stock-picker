@@ -1,96 +1,5 @@
 [
   {
-    "type": "dropped",
-    "ticker": "CAH",
-    "message": "CAH dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CVS",
-    "message": "CVS dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CTRA",
-    "message": "CTRA dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CF",
-    "message": "CF dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "HCA",
-    "message": "HCA dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "AMGN",
-    "message": "AMGN dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CBOE",
-    "message": "CBOE dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "score_change",
-    "ticker": "MCK",
-    "message": "MCK score moved down by 11.8 (86.4 \u2192 74.6)",
-    "severity": "warning",
-    "timestamp": "2026-02-15T12:43:45"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "ALL",
-    "message": "ALL entered top 20 (score: 88.1)",
-    "severity": "info",
-    "timestamp": "2026-02-15T14:09:18"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "ACGL",
-    "message": "ACGL entered top 20 (score: 87.3)",
-    "severity": "info",
-    "timestamp": "2026-02-15T14:09:18"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "TRV",
-    "message": "TRV entered top 20 (score: 86.5)",
-    "severity": "info",
-    "timestamp": "2026-02-15T14:09:18"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "HIG",
-    "message": "HIG entered top 20 (score: 82.3)",
-    "severity": "info",
-    "timestamp": "2026-02-15T14:09:18"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "CB",
-    "message": "CB entered top 20 (score: 80.4)",
-    "severity": "info",
-    "timestamp": "2026-02-15T14:09:18"
-  },
-  {
     "type": "new_entry",
     "ticker": "CAH",
     "message": "CAH entered top 20 (score: 79.4)",
@@ -1398,5 +1307,96 @@
     "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
     "severity": "warning",
     "timestamp": "2026-02-21T19:06:00"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:09:50"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:09:52"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:09:52"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "JBL",
+    "message": "JBL entered top 20 (score: 75.5)",
+    "severity": "info",
+    "timestamp": "2026-02-21T19:12:20"
+  },
+  {
+    "type": "dropped",
+    "ticker": "NEM",
+    "message": "NEM dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:12:20"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:12:20"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:12:21"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:12:21"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:12:43"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:12:50"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:16:41"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:16:41"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-21T19:16:49"
   }
 ]

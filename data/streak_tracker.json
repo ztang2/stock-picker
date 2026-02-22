@@ -40,7 +40,7 @@
     "last_seen": "2026-02-21"
   },
   "NEM": {
-    "consecutive_days": 8,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
@@ -130,6 +130,11 @@
     "last_seen": "2026-02-21"
   },
   "ELV": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "JBL": {
     "consecutive_days": 1,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"

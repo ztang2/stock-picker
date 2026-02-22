@@ -134,4 +134,4 @@ python3 -m pytest test_sell_signals.py -v
 19. Log rotation
 
 ## Owner
-Zhuoran Tang (@ztang2) — using Robinhood, planning $3000 balanced portfolio (ALL, ACGL, MCK, EQT, NEM)
+Zhuoran Tang (@ztang2) — using Robinhood, ~$3,500 invested in balanced portfolio (MCK, ACGL, ALL, NEM, EQT — ~$700 each, bought 2/17). Also holds 40 shares NFLX (~$3,080) as long-term hold. Total portfolio ~$6,580.
