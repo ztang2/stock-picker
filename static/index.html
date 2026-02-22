@@ -747,7 +747,30 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 async function runScan(){
   const btn=document.getElementById('scanBtn');btn.classList.add('loading');btn.disabled=true;setStatus('Scanning...','scanning');
   const params=new URLSearchParams();const mc=document.getElementById('minCapFilter').value;if(parseFloat(mc))params.set('min_cap',mc);if(currentSector)params.set('sector',currentSector);params.set('strategy',currentStrategy);
-  try{const r=await fetch('/scan?'+params);if(r.ok){processResults(await r.json());setStatus('Scan complete','');loadAlertsBanner()}else setStatus('Scan failed','error')}catch(e){setStatus('Scan error','error')}
+  try{
+    const r=await fetch('/scan?'+params);
+    if(!r.ok){setStatus('Scan failed','error');btn.classList.remove('loading');btn.disabled=false;return}
+    const d=await r.json();
+    if(d.status==='started'||d.status==='already_running'){
+      // Async scan — poll status until done
+      while(true){
+        await new Promise(res=>setTimeout(res,2000));
+        const sr=await fetch('/scan/status');
+        if(!sr.ok)break;
+        const st=await sr.json();
+        if(!st.running){
+          if(st.error){setStatus('Scan failed: '+st.error,'error');break}
+          const cr=await fetch('/scan/cached');
+          if(cr.ok){processResults(await cr.json());setStatus('Scan complete','');loadAlertsBanner()}
+          else setStatus('Scan finished but no results','error');
+          break;
+        }
+      }
+    }else{
+      // Sync response (direct results)
+      processResults(d);setStatus('Scan complete','');loadAlertsBanner();
+    }
+  }catch(e){setStatus('Scan error','error')}
   btn.classList.remove('loading');btn.disabled=false;
 }
 
