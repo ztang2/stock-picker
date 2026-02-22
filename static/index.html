@@ -439,7 +439,7 @@ function fmtCap(v){if(!v&&v!==0)return'—';if(v>=1e12)return'$'+(v/1e12).toFixe
 function fmtScore(v){if(v==null)return'—';return Number(v).toFixed(1)}
 function fmtPct(v){if(v==null)return'—';return(v>=0?'+':'')+( v*100).toFixed(1)+'%'}
 function scoreClass(v){if(v==null)return'';if(v>70)return'green';if(v>=40)return'yellow';return'red'}
-function sentimentDot(score){if(score==null)return'';if(score>0.1)return'<span class="sentiment-dot" style="background:var(--green)"></span>';if(score<-0.1)return'<span class="sentiment-dot" style="background:var(--red)"></span>';return'<span class="sentiment-dot" style="background:var(--yellow)"></span>'}
+function sentimentDot(score){if(score==null)return'';if(score>60)return'<span class="sentiment-dot" style="background:var(--green)"></span>';if(score<40)return'<span class="sentiment-dot" style="background:var(--red)"></span>';return'<span class="sentiment-dot" style="background:var(--yellow)"></span>'}
 function freshnessDot(f,days){if(!f||f==='unknown')return'';const titles={fresh:'Fresh (<24h)',recent:'Recent (<7d)',stale:'Stale (<30d)',very_stale:'Very stale (>30d)'};return'<span class="freshness-dot freshness-'+f+'" title="'+(titles[f]||f)+(days!=null?' — '+days+'d old':'')+'"></span>'}
 function signalBadge(sig){if(!sig)return'';const icon=SIGNAL_ICONS[sig]||'⚪';return'<span class="signal-badge signal-'+sig+'">'+icon+' '+sig+'</span>'}
 
@@ -700,14 +700,27 @@ async function showDetail(ticker){
       sec.innerHTML=html;
     }
 
-    // Sentiment section
+    // Analyst Sentiment section
     if(d.sentiment){
       const s=d.sentiment;
       const sec=document.getElementById('modalSentiment');
       sec.style.display='block';
-      const color=s.score>0.1?'var(--green)':s.score<-0.1?'var(--red)':'var(--yellow)';
-      const label=s.score>0.1?'Positive':s.score<-0.1?'Negative':'Neutral';
-      sec.innerHTML='<h3>News Sentiment</h3><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:2rem;color:'+color+'">'+(s.score>0.1?'🟢':s.score<-0.1?'🔴':'🟡')+'</span><div><div style="font-size:1.1rem;font-weight:700;color:'+color+'">'+label+' ('+s.score.toFixed(2)+')</div><div style="font-size:.8rem;color:var(--text2)">'+s.headline_count+' headlines · '+s.positive_count+' positive · '+s.negative_count+' negative</div></div></div>';
+      const rec=(s.recommendation||'hold').toLowerCase();
+      const recColor=rec==='buy'||rec==='strong_buy'?'var(--green)':rec==='sell'||rec==='strong_sell'?'var(--red)':'var(--yellow)';
+      const recIcon=rec==='buy'||rec==='strong_buy'?'🟢':rec==='sell'||rec==='strong_sell'?'🔴':'🟡';
+      const recLabel=(s.recommendation||'hold').replace(/_/g,' ').toUpperCase();
+      let html='<h3>Analyst Sentiment</h3>';
+      html+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">';
+      html+='<span style="font-size:2rem">'+recIcon+'</span>';
+      html+='<div><div style="font-size:1.1rem;font-weight:700;color:'+recColor+'">'+recLabel+'</div>';
+      html+='<div style="font-size:.8rem;color:var(--text2)">Score: '+fmtScore(s.score)+'/100 · '+s.analyst_count+' analysts</div></div></div>';
+      html+='<div class="momentum-grid">';
+      if(s.consensus_score!=null)html+='<div class="momentum-card"><div class="label">Consensus Score</div><div class="value"><span class="score '+scoreClass(s.consensus_score)+'">'+fmtScore(s.consensus_score)+'</span></div></div>';
+      if(s.pt_upside_score!=null)html+='<div class="momentum-card"><div class="label">PT Upside Score</div><div class="value"><span class="score '+scoreClass(s.pt_upside_score)+'">'+fmtScore(s.pt_upside_score)+'</span></div></div>';
+      if(s.pt_upside_pct!=null)html+='<div class="momentum-card"><div class="label">Price Target Upside</div><div class="value">'+(s.pt_upside_pct>=0?'+':'')+(s.pt_upside_pct*100).toFixed(1)+'%</div></div>';
+      html+='</div>';
+      if(s.details)html+='<div class="reasoning-text">'+s.details+'</div>';
+      sec.innerHTML=html;
     }
 
     // Earnings section
@@ -732,12 +745,7 @@ async function showDetail(ticker){
       sec.innerHTML=html;
     }
 
-    // Headlines
-    if(d.sentiment&&d.sentiment.headlines&&d.sentiment.headlines.length){
-      const sec=document.getElementById('modalHeadlines');
-      sec.style.display='block';
-      sec.innerHTML='<h3>Recent Headlines</h3><ul class="headline-list">'+d.sentiment.headlines.map(h=>'<li>'+h+'</li>').join('')+'</ul>';
-    }
+    // Headlines (no longer populated by analyst sentiment)
   }catch(e){document.getElementById('modalSubtitle').textContent='Error: '+e.message}
 }
 

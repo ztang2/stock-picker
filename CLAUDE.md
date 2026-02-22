@@ -34,7 +34,7 @@ src/
   api.py           — FastAPI endpoints (async /scan, /scan/status polling)
   indicators.py    — Shared RSI implementation (used by technicals, momentum, sell_signals, market_regime)
   insider.py       — Smart money analysis (analyst revisions + insider trading)
-  sentiment.py     — Sentiment analysis (DISABLED: rate-limited + too naive, weight=0 in all strategies)
+  sentiment.py     — Analyst consensus sentiment (recommendationMean + price target upside → 0-100 score)
 
 static/
   index.html       — Single-file dashboard (dark/light theme)
@@ -48,10 +48,10 @@ data/
 ```
 
 ## Strategies & Weights
-Defined in `src/strategies.py` (single source of truth). Sentiment disabled across all strategies.
-- **Conservative:** fundamentals 42%, valuation 27%, risk 13%, sector-relative 10%, technicals 8%, growth 0%, sentiment 0%
-- **Balanced:** fundamentals 28%, technicals 22%, valuation 18%, growth 13%, sector-relative 10%, risk 9%, sentiment 0%
-- **Aggressive:** technicals 33%, growth 30%, fundamentals 15%, sector-relative 10%, valuation 8%, risk 4%, sentiment 0%
+Defined in `src/strategies.py` (single source of truth). Sentiment re-enabled with analyst consensus scoring.
+- **Conservative:** fundamentals 40%, valuation 25%, risk 13%, sector-relative 10%, technicals 8%, sentiment 4%, growth 0%
+- **Balanced:** fundamentals 26%, technicals 22%, valuation 17%, growth 12%, sector-relative 10%, risk 8%, sentiment 5%
+- **Aggressive:** technicals 32%, growth 30%, fundamentals 14%, sector-relative 10%, valuation 8%, risk 4%, sentiment 2%
 
 ## Cron Jobs (automated)
 
@@ -71,7 +71,7 @@ Defined in `src/strategies.py` (single source of truth). Sentiment disabled acro
 - MA50/MA200 breakdown
 
 ## Recent Improvements (Feb 2026)
-1. **Sentiment Disabled:** Sentiment analysis removed from scoring (weight=0 in all strategies). Was rate-limited and too naive (word counting). Calls completely bypassed in pipeline.
+1. **Analyst Consensus Sentiment:** Replaced naive keyword-matching sentiment with analyst consensus scoring from yfinance (recommendationMean + price target upside → 0-100). Weights: conservative 4%, balanced 5%, aggressive 2%.
 2. **ADX-Aware Sell Signals:** Strong trends (ADX > 40) allow higher RSI thresholds before triggering sell signals. RSI sell scores discounted by 50% when price is >10% above MA50 in strong uptrend.
 3. **Relaxed Entry Thresholds:** BUY signal now triggered with 2+ conditions (was 3+) OR entry_score >= 50.
 4. **Sector-Relative Scoring (10% weight):** Within-sector rank now contributes to composite score, promoting sector diversification.
@@ -124,7 +124,7 @@ python3 -m pytest test_sell_signals.py -v
 9. ~~Scoring inflation fix~~ ✅
 10. ~~Parallel smart money + async scan~~ ✅
 11. ~~API authentication~~ ✅
-12. Better sentiment replacement (proper NLP or expand smart money signals)
+12. ~~Better sentiment replacement (analyst consensus from yfinance)~~ ✅
 13. SEC EDGAR integration for fundamental data gaps
 14. Walk-forward optimization (auto-tune weights from accuracy data)
 15. SQLite migration (replace JSON files)
