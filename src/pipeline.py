@@ -25,7 +25,7 @@ from .strategies import get_strategy
 from .earnings_guard import apply_earnings_guard
 from .freshness import check_freshness
 from .streak_tracker import update_streaks, add_streaks_to_results
-# from .sentiment import analyze_sentiment  # Disabled: rate-limited + too naive
+from .sentiment import score_analyst_sentiment
 from .market_regime import detect_market_regime
 from .insider import get_combined_smart_money_score
 from .ml_model import predict_scores
@@ -178,10 +178,7 @@ def analyze_single(
     tech = score_technicals(hist)
     risk = score_risk(hist, spy_hist)
     
-    # Sentiment analysis — disabled across all strategies (rate-limited + too naive)
-    # To re-enable: set sentiment weight > 0 in strategies.py and uncomment below
-    # sentiment = analyze_sentiment(ticker)
-    sentiment = {"score": 0, "details": "disabled"}
+    sentiment = score_analyst_sentiment(info)
 
     momentum = compute_momentum(hist)
 

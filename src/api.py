@@ -18,7 +18,6 @@ load_dotenv()
 
 from .pipeline import run_scan, get_stock_detail, get_all_sectors, load_config, RESULTS_FILE, DATA_DIR
 from .backtest import run_backtest, load_backtest_history, run_rolling_backtest, get_rolling_backtest_status, load_rolling_backtest_cache
-from .sentiment import analyze_sentiment
 from .earnings import get_earnings_info
 from .portfolio import build_portfolio
 from .alerts import check_alerts, get_alert_history, generate_morning_briefing
@@ -199,17 +198,11 @@ def top_in_sector(sector: str, top_n: int = Query(10, ge=1, le=50)):
 
 @app.get("/stock/{ticker}")
 def stock_detail(ticker: str):
-    """Detailed breakdown for one stock with sentiment and earnings."""
+    """Detailed breakdown for one stock with earnings."""
     config = load_config()
     result = get_stock_detail(ticker, config)
     if not result:
         raise HTTPException(404, "No data for %s" % ticker.upper())
-
-    # Enrich with sentiment
-    try:
-        result["sentiment"] = analyze_sentiment(ticker.upper())
-    except Exception:
-        result["sentiment"] = None
 
     # Enrich with earnings
     try:

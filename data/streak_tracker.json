@@ -50,12 +50,12 @@
     "last_seen": "2026-02-21"
   },
   "UHS": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
   "CF": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
@@ -85,12 +85,12 @@
     "last_seen": "2026-02-21"
   },
   "HII": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-19",
     "last_seen": "2026-02-21"
   },
   "TXT": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-21"
   },
@@ -221,6 +221,16 @@
   },
   "LH": {
     "consecutive_days": 0,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "MSFT": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-21"
+  },
+  "AAPL": {
+    "consecutive_days": 1,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"
   }

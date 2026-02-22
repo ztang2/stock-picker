@@ -34,10 +34,8 @@ def compute_composite(
 
     rows = []
     for r in results:
-        # Map sentiment score from -1 to +1 scale to 0-100
+        # Sentiment score is already 0-100 from analyst consensus scoring
         sent_raw = (r.get("sentiment") or {}).get("score")
-        if sent_raw is not None:
-            sent_raw = (sent_raw + 1) * 50  # Map -1..+1 to 0..100
         
         # Convert sector_rank to 0-100 score (rank 1 = 100, last = 0)
         sector_rel_raw = None
