@@ -150,3 +150,40 @@ INFO:     127.0.0.1:50640 - "GET /scan/status HTTP/1.1" 200 OK
 INFO:     127.0.0.1:50653 - "GET /scan/cached HTTP/1.1" 200 OK
 INFO:     127.0.0.1:50657 - "GET /stock/TEL HTTP/1.1" 200 OK
 INFO:     127.0.0.1:50671 - "GET /stock/ACGL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50705 - "GET /stock/ACGL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50713 - "GET /stock/CF HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50715 - "GET /stock/TEL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET / HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50843 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50845 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50845 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50847 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50843 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50869 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50880 - "GET /stock/ACGL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51057 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51057 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51059 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51059 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51057 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51102 - "GET /compare?strategies=conservative,balanced,aggressive HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51497 - "GET / HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51497 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51497 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51499 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51499 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51497 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51534 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53659 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53662 - "GET /scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53664 - "GET /rebalance/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53666 - "GET /validation/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53668 - "GET /insider/MCK HTTP/1.1" 200 OK

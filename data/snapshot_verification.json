@@ -1,0 +1,32 @@
+{
+  "verified_at": "2026-02-22T11:29:35.215817",
+  "collection_start": "2026-02-19",
+  "expected_trading_days": 2,
+  "snapshots_found": 4,
+  "valid_snapshots": 2,
+  "missing_days": [],
+  "file_issues": {
+    "2026-02-19": {
+      "valid": false,
+      "issues": [
+        "Low stock count: 0 (expected ~486)"
+      ],
+      "stocks": 0,
+      "top": 20
+    },
+    "2026-02-20": {
+      "valid": false,
+      "issues": [
+        "Low stock count: 0 (expected ~486)"
+      ],
+      "stocks": 0,
+      "top": 20
+    }
+  },
+  "extra_days": [
+    "2026-02-21",
+    "2026-02-22"
+  ],
+  "status": "ISSUES_FOUND",
+  "completeness_pct": 100.0
+}

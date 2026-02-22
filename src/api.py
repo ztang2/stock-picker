@@ -340,6 +340,18 @@ def accuracy_snapshot(strategy: str = Query("balanced")):
         raise HTTPException(500, "Snapshot failed: %s" % str(e))
 
 
+@app.get("/snapshots/verify")
+def verify_snapshots():
+    """Verify daily snapshot completeness and integrity."""
+    try:
+        from .snapshot_verify import run_verification, format_verification_report
+        report = run_verification()
+        report["formatted"] = format_verification_report(report)
+        return report
+    except Exception as e:
+        raise HTTPException(500, "Verification failed: %s" % str(e))
+
+
 @app.get("/streaks")
 def all_streaks():
     """Get all current streak data."""

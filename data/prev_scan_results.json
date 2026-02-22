@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-02-21T22:07:57",
-  "strategy": "balanced",
+  "timestamp": "2026-02-21T22:24:22",
+  "strategy": "aggressive",
   "market_regime": {
     "regime": "bull",
     "spy_price": 689.43,
@@ -25,132 +25,37 @@
     }
   },
   "stocks_analyzed": 486,
-  "stocks_after_filter": 486,
+  "stocks_after_filter": 191,
   "sanity_warnings": [],
   "top": [
     {
       "rank": 1,
-      "ticker": "CF",
-      "name": "CF Industries Holdings, Inc.",
-      "sector": "Basic Materials",
-      "industry": "Agricultural Inputs",
-      "market_cap": 15740532736,
-      "composite_score": 85.29,
-      "base_score": 85.29,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 99.18,
-      "valuation_pct": 92.8,
-      "technicals_pct": 77.57,
-      "risk_pct": 69.14,
-      "growth_pct": 80.25,
-      "sentiment_score": 49.91,
-      "sentiment_pct": 4.94,
-      "sector_rank": 2,
-      "sector_size": 19,
-      "sector_composite": 78.8,
-      "entry_signal": "BUY",
-      "entry_score": 63,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "Fundamentals weakening (14.2 point drop)"
-      ],
-      "current_price": 97.18,
-      "rsi": 57.48,
-      "macd_histogram": 0.028588524741491206,
-      "adx": 31.4,
-      "volatility": 0.3167,
-      "beta": 0.3723331599352515,
-      "volume_trend": 0.9689990193248702,
-      "ma50": 85.56913848876952,
-      "ma200": 86.39184490203857,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 44.0,
-      "analyst_score": 40,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-05-06",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 2,
-      "ticker": "ACGL",
-      "name": "Arch Capital Group Ltd.",
-      "sector": "Financial Services",
-      "industry": "Insurance - Diversified",
-      "market_cap": 35715031040,
-      "composite_score": 83.82,
-      "base_score": 83.82,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 99.38,
-      "valuation_pct": 98.56,
-      "technicals_pct": 66.26,
-      "risk_pct": 79.01,
-      "growth_pct": 81.28,
-      "sentiment_score": 68.53,
-      "sentiment_pct": 43.62,
-      "sector_rank": 9,
-      "sector_size": 67,
-      "sector_composite": 69.65,
-      "entry_signal": "BUY",
-      "entry_score": 58,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "Fundamentals weakening (13.7 point drop)"
-      ],
-      "current_price": 98.49,
-      "rsi": 56.49,
-      "macd_histogram": -0.05847092623086314,
-      "adx": 41.24,
-      "volatility": 0.2438,
-      "beta": 0.38849962088151113,
-      "volume_trend": 0.8971869736644832,
-      "ma50": 95.51979949951172,
-      "ma200": 91.82469997406005,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 50.0,
-      "analyst_score": 50,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-04-29",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 3,
       "ticker": "EQT",
       "name": "EQT Corporation",
       "sector": "Energy",
       "industry": "Oil & Gas E&P",
       "market_cap": 37756284928,
-      "composite_score": 83.63,
-      "base_score": 83.63,
+      "composite_score": 84.73,
+      "base_score": 84.73,
       "ml_score": null,
       "ml_signal": null,
       "ml_weight": 0.0,
-      "fundamentals_pct": 95.88,
-      "valuation_pct": 77.16,
-      "technicals_pct": 97.33,
-      "risk_pct": 65.23,
-      "growth_pct": 97.63,
+      "fundamentals_pct": 91.62,
+      "valuation_pct": 76.96,
+      "technicals_pct": 95.29,
+      "risk_pct": 68.06,
+      "growth_pct": 93.98,
+      "sentiment": {
+        "score": 72.71,
+        "consensus_score": 83.33,
+        "pt_upside_score": 62.09,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.0725,
+        "analyst_count": 27,
+        "details": "buy (27 analysts), PT upside 7.3%"
+      },
       "sentiment_score": 72.71,
-      "sentiment_pct": 56.38,
+      "sentiment_pct": 44.5,
       "sector_rank": 13,
       "sector_size": 21,
       "sector_composite": 42.86,
@@ -159,14 +64,14 @@
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (19.6 point drop)"
+        "Fundamentals deteriorated (21.4 point drop)"
       ],
       "current_price": 60.5,
       "rsi": 60.64,
       "macd_histogram": 0.4515576150795394,
       "adx": 31.14,
       "volatility": 0.3721,
-      "beta": 0.7042587997078584,
+      "beta": 0.7042580565564815,
       "volume_trend": 0.9849714289360334,
       "ma50": 54.76317390441895,
       "ma200": 54.632532920837406,
@@ -185,99 +90,57 @@
       "first_seen": "2026-02-15"
     },
     {
-      "rank": 4,
-      "ticker": "UHS",
-      "name": "Universal Health Services, Inc.",
+      "rank": 2,
+      "ticker": "SYK",
+      "name": "Stryker Corporation",
       "sector": "Healthcare",
-      "industry": "Medical Care Facilities",
-      "market_cap": 14668082176,
-      "composite_score": 81.84,
-      "base_score": 81.84,
+      "industry": "Medical Devices",
+      "market_cap": 145509711872,
+      "composite_score": 79.88,
+      "base_score": 79.88,
       "ml_score": null,
       "ml_signal": null,
       "ml_weight": 0.0,
-      "fundamentals_pct": 80.04,
-      "valuation_pct": 100.0,
-      "technicals_pct": 74.69,
-      "risk_pct": 69.34,
-      "growth_pct": 88.48,
-      "sentiment_score": 66.03,
-      "sentiment_pct": 37.24,
-      "sector_rank": 2,
+      "fundamentals_pct": 72.25,
+      "valuation_pct": 44.5,
+      "technicals_pct": 97.38,
+      "risk_pct": 73.82,
+      "growth_pct": 93.98,
+      "sentiment": {
+        "score": 73.39,
+        "consensus_score": 77.42,
+        "pt_upside_score": 69.36,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.1162,
+        "analyst_count": 28,
+        "details": "buy (28 analysts), PT upside 11.6%"
+      },
+      "sentiment_score": 73.39,
+      "sentiment_pct": 46.6,
+      "sector_rank": 40,
       "sector_size": 59,
-      "sector_composite": 79.01,
-      "entry_signal": "HOLD",
-      "entry_score": 38,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
+      "sector_composite": 43.69,
+      "entry_signal": "WAIT",
+      "entry_score": 35,
+      "sell_signal": "HOLD",
+      "sell_urgency": "low",
       "sell_reasons": [
-        "Fundamentals weakening (14.6 point drop)"
+        "Price near resistance ($381.39, +0.3%)",
+        "Fundamentals deteriorated (19.7 point drop)"
       ],
-      "current_price": 230.49,
-      "rsi": 77.89,
-      "macd_histogram": 2.5001572949418,
-      "adx": 50.01,
-      "volatility": 0.3418,
-      "beta": 0.619431170201861,
-      "volume_trend": 0.9331340075504974,
-      "ma50": 216.6710009765625,
-      "ma200": 199.1783876800537,
+      "current_price": 380.23,
+      "rsi": 60.57,
+      "macd_histogram": 1.8396388764444103,
+      "adx": 18.81,
+      "volatility": 0.2223,
+      "beta": 0.6685231869844618,
+      "volume_trend": 1.142673368494475,
+      "ma50": 359.2771435546875,
+      "ma200": 373.3402531433105,
       "above_ma50": true,
       "above_ma200": true,
-      "smart_money_score": 50.0,
-      "analyst_score": 50,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-02-25",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 5,
-      "ticker": "HII",
-      "name": "Huntington Ingalls Industries, ",
-      "sector": "Industrials",
-      "industry": "Aerospace & Defense",
-      "market_cap": 17171423232,
-      "composite_score": 81.26,
-      "base_score": 81.26,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 79.01,
-      "valuation_pct": 82.3,
-      "technicals_pct": 96.09,
-      "risk_pct": 95.88,
-      "growth_pct": 78.19,
-      "sentiment_score": 50.99,
-      "sentiment_pct": 6.79,
-      "sector_rank": 13,
-      "sector_size": 67,
-      "sector_composite": 62.74,
-      "entry_signal": "HOLD",
-      "entry_score": 45,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "Fundamentals weakening (14.2 point drop)"
-      ],
-      "current_price": 437.57,
-      "rsi": 54.81,
-      "macd_histogram": 1.105548271201549,
-      "adx": 28.61,
-      "volatility": 0.3527,
-      "beta": 0.6696464370325499,
-      "volume_trend": 1.0165841867865884,
-      "ma50": 384.2320031738281,
-      "ma200": 295.92613037109373,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 47.0,
-      "analyst_score": 45,
+      "smart_money_score": 53.0,
+      "analyst_score": 55,
       "insider_score": 50,
       "smart_money_signals": [],
       "data_freshness": "fresh",
@@ -286,607 +149,36 @@
       "earnings_warning": false,
       "days_until_earnings": null,
       "consecutive_days": 0,
-      "first_seen": "2026-02-19"
-    },
-    {
-      "rank": 6,
-      "ticker": "TEL",
-      "name": "TE Connectivity plc",
-      "sector": "Technology",
-      "industry": "Electronic Components",
-      "market_cap": 68901584896,
-      "composite_score": 81.19,
-      "base_score": 81.19,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 84.36,
-      "valuation_pct": 63.58,
-      "technicals_pct": 98.35,
-      "risk_pct": 63.37,
-      "growth_pct": 85.6,
-      "sentiment_score": 81.53,
-      "sentiment_pct": 77.57,
-      "sector_rank": 23,
-      "sector_size": 80,
-      "sector_composite": 58.01,
-      "entry_signal": "BUY",
-      "entry_score": 55,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "Fundamentals deteriorated (16.0 point drop)"
-      ],
-      "current_price": 234.73,
-      "rsi": 59.82,
-      "macd_histogram": 1.6697780022716806,
-      "adx": 28.29,
-      "volatility": 0.321,
-      "beta": 1.2144813762411286,
-      "volume_trend": 1.140091619703443,
-      "ma50": 229.51385040283202,
-      "ma200": 207.01555572509767,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 53.0,
-      "analyst_score": 55,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-04-22",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 7,
-      "ticker": "ALL",
-      "name": "Allstate Corporation (The)",
-      "sector": "Financial Services",
-      "industry": "Insurance - Property & Casualty",
-      "market_cap": 54003253248,
-      "composite_score": 80.92,
-      "base_score": 80.92,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 64.2,
-      "valuation_pct": 98.77,
-      "technicals_pct": 94.03,
-      "risk_pct": 76.75,
-      "growth_pct": 64.81,
-      "sentiment_score": 75.54,
-      "sentiment_pct": 66.05,
-      "sector_rank": 3,
-      "sector_size": 67,
-      "sector_composite": 77.57,
-      "entry_signal": "BUY",
-      "entry_score": 58,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "No significant sell signals"
-      ],
-      "current_price": 206.37,
-      "rsi": 56.58,
-      "macd_histogram": 0.4754476735245975,
-      "adx": 34.3,
-      "volatility": 0.2636,
-      "beta": 0.41234140662380514,
-      "volume_trend": 0.9990510803129066,
-      "ma50": 204.01040069580077,
-      "ma200": 201.7712289428711,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 50.0,
-      "analyst_score": 50,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-04-29",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 8,
-      "ticker": "COR",
-      "name": "Cencora, Inc.",
-      "sector": "Healthcare",
-      "industry": "Medical Distribution",
-      "market_cap": 70241140736,
-      "composite_score": 80.53,
-      "base_score": 80.53,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 68.52,
-      "valuation_pct": 89.92,
-      "technicals_pct": 94.44,
-      "risk_pct": 97.12,
-      "growth_pct": 60.08,
-      "sentiment_score": 77.82,
-      "sentiment_pct": 72.12,
-      "sector_rank": 11,
-      "sector_size": 59,
-      "sector_composite": 64.77,
-      "entry_signal": "BUY",
-      "entry_score": 55,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "No significant sell signals"
-      ],
-      "current_price": 361.08,
-      "rsi": 51.13,
-      "macd_histogram": 0.12659389270699561,
-      "adx": 28.77,
-      "volatility": 0.2497,
-      "beta": -0.010170381607145873,
-      "volume_trend": 1.0786822551246769,
-      "ma50": 348.27681640625,
-      "ma200": 317.2809701538086,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 56.0,
-      "analyst_score": 60,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-05-06",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
       "first_seen": "2026-02-21"
     },
     {
-      "rank": 9,
-      "ticker": "TXT",
-      "name": "Textron Inc.",
-      "sector": "Industrials",
-      "industry": "Aerospace & Defense",
-      "market_cap": 17550348288,
-      "composite_score": 79.86,
-      "base_score": 79.86,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 78.6,
-      "valuation_pct": 96.71,
-      "technicals_pct": 77.98,
-      "risk_pct": 76.13,
-      "growth_pct": 79.42,
-      "sentiment_score": 56.36,
-      "sentiment_pct": 14.81,
-      "sector_rank": 3,
-      "sector_size": 67,
-      "sector_composite": 73.17,
-      "entry_signal": "HOLD",
-      "entry_score": 28,
-      "sell_signal": "SELL",
-      "sell_urgency": "medium",
-      "sell_reasons": [
-        "RSI extremely overbought (86.4)",
-        "Price near resistance ($101.57, +0.8%)",
-        "Fundamentals weakening (13.9 point drop)"
-      ],
-      "current_price": 100.77,
-      "rsi": 86.38,
-      "macd_histogram": 0.6248751920995959,
-      "adx": 36.01,
-      "volatility": 0.292,
-      "beta": 0.9671201190683817,
-      "volume_trend": 1.219423574927627,
-      "ma50": 91.80522171020507,
-      "ma200": 83.10503833770753,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 47.0,
-      "analyst_score": 45,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-04-23",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 10,
-      "ticker": "TRV",
-      "name": "The Travelers Companies, Inc.",
-      "sector": "Financial Services",
-      "industry": "Insurance - Property & Casualty",
-      "market_cap": 68018728960,
-      "composite_score": 79.56,
-      "base_score": 79.56,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 97.12,
-      "valuation_pct": 93.62,
-      "technicals_pct": 70.78,
-      "risk_pct": 94.24,
-      "growth_pct": 60.7,
-      "sentiment_score": 54.5,
-      "sentiment_pct": 11.32,
-      "sector_rank": 15,
-      "sector_size": 67,
-      "sector_composite": 59.59,
-      "entry_signal": "HOLD",
-      "entry_score": 28,
-      "sell_signal": "HOLD",
-      "sell_urgency": "low",
-      "sell_reasons": [
-        "Price near resistance ($304.94, +0.0%)",
-        "Fundamentals deteriorated (18.0 point drop)"
-      ],
-      "current_price": 304.93,
-      "rsi": 70.86,
-      "macd_histogram": 0.9504764935830297,
-      "adx": 45.07,
-      "volatility": 0.2194,
-      "beta": 0.41713512318394197,
-      "volume_trend": 1.0537432206950654,
-      "ma50": 287.3501989746094,
-      "ma200": 274.13527221679686,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 47.0,
-      "analyst_score": 45,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-04-16",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 11,
-      "ticker": "CPAY",
-      "name": "Corpay, Inc.",
-      "sector": "Technology",
-      "industry": "Software - Infrastructure",
-      "market_cap": 24905693184,
-      "composite_score": 76.93,
-      "base_score": 76.93,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 95.68,
-      "valuation_pct": 54.94,
-      "technicals_pct": 97.74,
-      "risk_pct": 12.14,
-      "growth_pct": 67.8,
-      "sentiment_score": 74.23,
-      "sentiment_pct": 61.93,
-      "sector_rank": 13,
-      "sector_size": 80,
-      "sector_composite": 65.26,
-      "entry_signal": "HOLD",
-      "entry_score": 40,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "Fundamentals deteriorated (19.5 point drop)"
-      ],
-      "current_price": 352.7,
-      "rsi": 62.13,
-      "macd_histogram": 1.6928940201570173,
-      "adx": 23.9,
-      "volatility": 0.4106,
-      "beta": 1.4405390682356043,
-      "volume_trend": 1.2245094726911112,
-      "ma50": 321.33580017089844,
-      "ma200": 313.75550048828126,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 53.0,
-      "analyst_score": 55,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-05-06",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 12,
-      "ticker": "CAH",
-      "name": "Cardinal Health, Inc.",
-      "sector": "Healthcare",
-      "industry": "Medical Distribution",
-      "market_cap": 52814327808,
-      "composite_score": 76.73,
-      "base_score": 76.73,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 57.61,
-      "valuation_pct": 92.39,
-      "technicals_pct": 81.89,
-      "risk_pct": 98.56,
-      "growth_pct": 65.64,
-      "sentiment_score": 76.32,
-      "sentiment_pct": 68.42,
-      "sector_rank": 6,
-      "sector_size": 59,
-      "sector_composite": 70.06,
-      "entry_signal": "HOLD",
-      "entry_score": 47,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "No significant sell signals"
-      ],
-      "current_price": 224.44,
-      "rsi": 56.68,
-      "macd_histogram": 0.05656394930978781,
-      "adx": 13.25,
-      "volatility": 0.2973,
-      "beta": 0.332275482433299,
-      "volume_trend": 1.0097635601268657,
-      "ma50": 210.17768829345704,
-      "ma200": 175.04607788085937,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 53.0,
-      "analyst_score": 55,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-05-07",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 13,
-      "ticker": "MCK",
-      "name": "McKesson Corporation",
-      "sector": "Healthcare",
-      "industry": "Medical Distribution",
-      "market_cap": 116944281600,
-      "composite_score": 76.72,
-      "base_score": 76.72,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 54.53,
-      "valuation_pct": 91.98,
-      "technicals_pct": 90.53,
-      "risk_pct": 96.5,
-      "growth_pct": 75.51,
-      "sentiment_score": 69.81,
-      "sentiment_pct": 48.35,
-      "sector_rank": 13,
-      "sector_size": 59,
-      "sector_composite": 62.15,
-      "entry_signal": "HOLD",
-      "entry_score": 38,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "No significant sell signals"
-      ],
-      "current_price": 947.48,
-      "rsi": 67.05,
-      "macd_histogram": 3.3134980815462214,
-      "adx": 39.67,
-      "volatility": 0.2869,
-      "beta": 0.10088088144651335,
-      "volume_trend": 1.2204227772205443,
-      "ma50": 850.2281982421875,
-      "ma200": 768.5210543823242,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 53.0,
-      "analyst_score": 55,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-05-06",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 8,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 14,
-      "ticker": "ELV",
-      "name": "Elevance Health, Inc.",
-      "sector": "Healthcare",
-      "industry": "Healthcare Plans",
-      "market_cap": 75686248448,
-      "composite_score": 76.63,
-      "base_score": 76.63,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 61.52,
-      "valuation_pct": 99.59,
-      "technicals_pct": 90.12,
-      "risk_pct": 26.75,
-      "growth_pct": 79.84,
-      "sentiment_score": 75.12,
-      "sentiment_pct": 64.81,
-      "sector_rank": 8,
-      "sector_size": 59,
-      "sector_composite": 68.6,
-      "entry_signal": "BUY",
-      "entry_score": 58,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "No significant sell signals"
-      ],
-      "current_price": 342.93,
-      "rsi": 47.97,
-      "macd_histogram": 1.181000952876218,
-      "adx": 47.69,
-      "volatility": 0.3956,
-      "beta": 0.17495605473442588,
-      "volume_trend": 1.1995394895999447,
-      "ma50": 351.92799865722657,
-      "ma200": 339.07750747680666,
-      "above_ma50": false,
-      "above_ma200": true,
-      "smart_money_score": 53.0,
-      "analyst_score": 55,
-      "insider_score": 50,
-      "smart_money_signals": [],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-04-21",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-21"
-    },
-    {
-      "rank": 15,
-      "ticker": "CTRA",
-      "name": "Coterra Energy Inc.",
-      "sector": "Energy",
-      "industry": "Oil & Gas E&P",
-      "market_cap": 23815888896,
-      "composite_score": 76.61,
-      "base_score": 76.61,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 90.53,
-      "valuation_pct": 73.25,
-      "technicals_pct": 83.95,
-      "risk_pct": 63.79,
-      "growth_pct": 77.57,
-      "sentiment_score": 70.71,
-      "sentiment_pct": 51.23,
-      "sector_rank": 11,
-      "sector_size": 21,
-      "sector_composite": 47.62,
-      "entry_signal": "BUY",
-      "entry_score": 58,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "Fundamentals deteriorated (18.3 point drop)"
-      ],
-      "current_price": 31.28,
-      "rsi": 64.52,
-      "macd_histogram": 0.06148556445448028,
-      "adx": 68.98,
-      "volatility": 0.311,
-      "beta": 0.6365688259460475,
-      "volume_trend": 1.1818939301306417,
-      "ma50": 27.456600036621094,
-      "ma200": 25.121031713485717,
-      "above_ma50": true,
-      "above_ma200": true,
-      "smart_money_score": 44.0,
-      "analyst_score": 40,
-      "insider_score": 50,
-      "smart_money_signals": [
-        "Consensus turning bearish"
-      ],
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-02-26",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-15"
-    },
-    {
-      "rank": 16,
-      "ticker": "PYPL",
-      "name": "PayPal Holdings, Inc.",
-      "sector": "Financial Services",
-      "industry": "Credit Services",
-      "market_cap": 38969905152,
-      "composite_score": 76.18,
-      "base_score": 78.18,
-      "ml_score": null,
-      "ml_signal": null,
-      "ml_weight": 0.0,
-      "fundamentals_pct": 93.0,
-      "valuation_pct": 97.12,
-      "technicals_pct": 56.17,
-      "risk_pct": 7.61,
-      "growth_pct": 63.37,
-      "sentiment_score": 73.24,
-      "sentiment_pct": 58.85,
-      "sector_rank": 6,
-      "sector_size": 67,
-      "sector_composite": 73.07,
-      "entry_signal": "STRONG_BUY",
-      "entry_score": 85,
-      "sell_signal": "N/A",
-      "sell_urgency": "none",
-      "sell_reasons": [
-        "Fundamentals deteriorated (19.1 point drop)"
-      ],
-      "current_price": 41.65,
-      "rsi": 21.72,
-      "macd_histogram": 0.21196041506522167,
-      "adx": 70.1,
-      "volatility": 0.4063,
-      "beta": 1.3085487963453903,
-      "volume_trend": 1.4080282383936762,
-      "ma50": 53.601600341796875,
-      "ma200": 65.463580493927,
-      "above_ma50": false,
-      "above_ma200": false,
-      "smart_money_score": 39.2,
-      "analyst_score": 32,
-      "insider_score": 50,
-      "smart_money_signals": [
-        "Consensus turning bearish"
-      ],
-      "smart_money_bonus": -2,
-      "data_freshness": "fresh",
-      "data_age_days": 0,
-      "earnings_date": "2026-05-05",
-      "earnings_warning": false,
-      "days_until_earnings": null,
-      "consecutive_days": 0,
-      "first_seen": "2026-02-21"
-    },
-    {
-      "rank": 17,
+      "rank": 3,
       "ticker": "ES",
       "name": "Eversource Energy (D/B/A)",
       "sector": "Utilities",
       "industry": "Utilities - Regulated Electric",
       "market_cap": 27598913536,
-      "composite_score": 75.91,
-      "base_score": 75.91,
+      "composite_score": 79.87,
+      "base_score": 79.87,
       "ml_score": null,
       "ml_signal": null,
       "ml_weight": 0.0,
-      "fundamentals_pct": 41.56,
-      "valuation_pct": 95.47,
-      "technicals_pct": 94.86,
-      "risk_pct": 81.69,
-      "growth_pct": 93.21,
+      "fundamentals_pct": 38.74,
+      "valuation_pct": 94.76,
+      "technicals_pct": 92.67,
+      "risk_pct": 80.63,
+      "growth_pct": 82.72,
+      "sentiment": {
+        "score": 58.58,
+        "consensus_score": 64.06,
+        "pt_upside_score": 53.09,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.0185,
+        "analyst_count": 13,
+        "details": "buy (13 analysts), PT upside 1.9%"
+      },
       "sentiment_score": 58.58,
-      "sentiment_pct": 18.72,
+      "sentiment_pct": 12.04,
       "sector_rank": 3,
       "sector_size": 31,
       "sector_composite": 71.77,
@@ -902,7 +194,7 @@
       "macd_histogram": 0.4757359917389721,
       "adx": 28.06,
       "volatility": 0.2676,
-      "beta": 0.37674410000125447,
+      "beta": 0.3767438240273754,
       "volume_trend": 1.1466077814687647,
       "ma50": 68.76544281005859,
       "ma200": 66.43308488845825,
@@ -923,128 +215,338 @@
       "first_seen": "2026-02-18"
     },
     {
-      "rank": 18,
-      "ticker": "ADBE",
-      "name": "Adobe Inc.",
-      "sector": "Technology",
-      "industry": "Software - Application",
-      "market_cap": 108254142464,
-      "composite_score": 75.09,
-      "base_score": 75.09,
+      "rank": 4,
+      "ticker": "FANG",
+      "name": "Diamondback Energy, Inc.",
+      "sector": "Energy",
+      "industry": "Oil & Gas E&P",
+      "market_cap": 50431369216,
+      "composite_score": 78.9,
+      "base_score": 78.9,
       "ml_score": null,
       "ml_signal": null,
       "ml_weight": 0.0,
-      "fundamentals_pct": 99.79,
-      "valuation_pct": 84.57,
-      "technicals_pct": 19.75,
-      "risk_pct": 28.4,
-      "growth_pct": 87.24,
-      "sentiment_score": 84.29,
-      "sentiment_pct": 81.07,
-      "sector_rank": 8,
-      "sector_size": 80,
-      "sector_composite": 69.57,
-      "entry_signal": "STRONG_BUY",
-      "entry_score": 85,
+      "fundamentals_pct": 61.26,
+      "valuation_pct": 75.92,
+      "technicals_pct": 92.15,
+      "risk_pct": 37.7,
+      "growth_pct": 93.98,
+      "sentiment": {
+        "score": 72.79,
+        "consensus_score": 89.52,
+        "pt_upside_score": 56.07,
+        "recommendation": "strong_buy",
+        "pt_upside_pct": 0.0364,
+        "analyst_count": 31,
+        "details": "strong_buy (31 analysts), PT upside 3.6%"
+      },
+      "sentiment_score": 72.79,
+      "sentiment_pct": 45.03,
+      "sector_rank": 12,
+      "sector_size": 21,
+      "sector_composite": 42.86,
+      "entry_signal": "BUY",
+      "entry_score": 38,
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals weakening (11.5 point drop)"
+        "Price near resistance ($177.02, +0.6%)"
       ],
-      "current_price": 258.61,
-      "rsi": 25.09,
-      "macd_histogram": 0.3823276597820797,
-      "adx": 58.26,
-      "volatility": 0.324,
-      "beta": 0.8318349393209649,
-      "volume_trend": 1.154195140617511,
-      "ma50": 311.9538006591797,
-      "ma200": 349.64449935913086,
-      "above_ma50": false,
-      "above_ma200": false,
-      "smart_money_score": 50.0,
-      "analyst_score": 50,
+      "current_price": 176.01,
+      "rsi": 65.28,
+      "macd_histogram": 0.7765329337676281,
+      "adx": 40.91,
+      "volatility": 0.3947,
+      "beta": 1.1338209282525704,
+      "volume_trend": 1.0439091265964742,
+      "ma50": 156.3574005126953,
+      "ma200": 145.495482711792,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 56.0,
+      "analyst_score": 60,
       "insider_score": 50,
       "smart_money_signals": [],
       "data_freshness": "fresh",
       "data_age_days": 0,
-      "earnings_date": "2026-03-12",
+      "earnings_date": "2026-02-23",
       "earnings_warning": false,
       "days_until_earnings": null,
       "consecutive_days": 0,
       "first_seen": "2026-02-21"
     },
     {
-      "rank": 19,
-      "ticker": "GDDY",
-      "name": "GoDaddy Inc.",
+      "rank": 5,
+      "ticker": "TEL",
+      "name": "TE Connectivity plc",
       "sector": "Technology",
-      "industry": "Software - Infrastructure",
-      "market_cap": 12549019648,
-      "composite_score": 74.87,
-      "base_score": 74.87,
+      "industry": "Electronic Components",
+      "market_cap": 68901584896,
+      "composite_score": 78.74,
+      "base_score": 78.74,
       "ml_score": null,
       "ml_signal": null,
       "ml_weight": 0.0,
-      "fundamentals_pct": 89.3,
-      "valuation_pct": 97.33,
-      "technicals_pct": 30.86,
-      "risk_pct": 26.54,
-      "growth_pct": 87.86,
-      "sentiment_score": 86.72,
-      "sentiment_pct": 85.39,
+      "fundamentals_pct": 75.39,
+      "valuation_pct": 65.45,
+      "technicals_pct": 97.91,
+      "risk_pct": 65.45,
+      "growth_pct": 69.63,
+      "sentiment": {
+        "score": 81.53,
+        "consensus_score": 84.21,
+        "pt_upside_score": 78.85,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.1731,
+        "analyst_count": 19,
+        "details": "buy (19 analysts), PT upside 17.3%"
+      },
+      "sentiment_score": 81.53,
+      "sentiment_pct": 67.02,
+      "sector_rank": 23,
+      "sector_size": 80,
+      "sector_composite": 58.01,
+      "entry_signal": "BUY",
+      "entry_score": 55,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "No significant sell signals"
+      ],
+      "current_price": 234.73,
+      "rsi": 59.82,
+      "macd_histogram": 1.6697780022716806,
+      "adx": 28.29,
+      "volatility": 0.321,
+      "beta": 1.2144810834250555,
+      "volume_trend": 1.140091619703443,
+      "ma50": 229.51385040283202,
+      "ma200": 207.01555572509767,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 53.0,
+      "analyst_score": 55,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-04-22",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-15"
+    },
+    {
+      "rank": 6,
+      "ticker": "NVDA",
+      "name": "NVIDIA Corporation",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "market_cap": 4621547864064,
+      "composite_score": 78.45,
+      "base_score": 78.45,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 94.76,
+      "valuation_pct": 17.28,
+      "technicals_pct": 96.86,
+      "risk_pct": 19.9,
+      "growth_pct": 79.58,
+      "sentiment": {
+        "score": 95.7,
+        "consensus_score": 91.39,
+        "pt_upside_score": 100,
+        "recommendation": "strong_buy",
+        "pt_upside_pct": 0.3375,
+        "analyst_count": 56,
+        "details": "strong_buy (56 analysts), PT upside 33.8%"
+      },
+      "sentiment_score": 95.7,
+      "sentiment_pct": 96.86,
+      "sector_rank": 31,
+      "sector_size": 80,
+      "sector_composite": 55.51,
+      "entry_signal": "BUY",
+      "entry_score": 50,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "No significant sell signals"
+      ],
+      "current_price": 189.82,
+      "rsi": 48.81,
+      "macd_histogram": 0.43499998279001506,
+      "adx": 16.21,
+      "volatility": 0.4444,
+      "beta": 1.7625344042160642,
+      "volume_trend": 1.0144293510668274,
+      "ma50": 184.8000003051758,
+      "ma200": 173.1733098602295,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 56.0,
+      "analyst_score": 60,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-02-25",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-21"
+    },
+    {
+      "rank": 7,
+      "ticker": "CF",
+      "name": "CF Industries Holdings, Inc.",
+      "sector": "Basic Materials",
+      "industry": "Agricultural Inputs",
+      "market_cap": 15740532736,
+      "composite_score": 77.43,
+      "base_score": 77.43,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 98.43,
+      "valuation_pct": 92.67,
+      "technicals_pct": 71.2,
+      "risk_pct": 71.73,
+      "growth_pct": 60.21,
+      "sentiment": {
+        "score": 49.91,
+        "consensus_score": 52.38,
+        "pt_upside_score": 47.43,
+        "recommendation": "hold",
+        "pt_upside_pct": -0.0154,
+        "analyst_count": 19,
+        "details": "hold (19 analysts), PT upside -1.5%"
+      },
+      "sentiment_score": 49.91,
+      "sentiment_pct": 2.09,
       "sector_rank": 2,
-      "sector_size": 80,
-      "sector_composite": 77.91,
-      "entry_signal": "STRONG_BUY",
-      "entry_score": 80,
+      "sector_size": 19,
+      "sector_composite": 78.8,
+      "entry_signal": "BUY",
+      "entry_score": 63,
       "sell_signal": "N/A",
       "sell_urgency": "none",
       "sell_reasons": [
-        "Fundamentals deteriorated (17.4 point drop)"
+        "Fundamentals deteriorated (15.0 point drop)"
       ],
-      "current_price": 90.64,
-      "rsi": 32.23,
-      "macd_histogram": 0.1746779687651019,
-      "adx": 69.89,
-      "volatility": 0.307,
-      "beta": 0.7506737307286577,
-      "volume_trend": 1.182344410876133,
-      "ma50": 109.97739959716797,
-      "ma200": 142.58274993896484,
-      "above_ma50": false,
-      "above_ma200": false,
-      "smart_money_score": 50.0,
-      "analyst_score": 50,
+      "current_price": 97.18,
+      "rsi": 57.48,
+      "macd_histogram": 0.028588524741491206,
+      "adx": 31.4,
+      "volatility": 0.3167,
+      "beta": 0.3723327345748693,
+      "volume_trend": 0.9689990193248702,
+      "ma50": 85.56913848876952,
+      "ma200": 86.39184490203857,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 44.0,
+      "analyst_score": 40,
       "insider_score": 50,
       "smart_money_signals": [],
       "data_freshness": "fresh",
       "data_age_days": 0,
-      "earnings_date": "2026-02-24",
+      "earnings_date": "2026-05-06",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-15"
+    },
+    {
+      "rank": 8,
+      "ticker": "APH",
+      "name": "Amphenol Corporation",
+      "sector": "Technology",
+      "industry": "Electronic Components",
+      "market_cap": 185660620800,
+      "composite_score": 75.64,
+      "base_score": 75.64,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 79.06,
+      "valuation_pct": 23.04,
+      "technicals_pct": 99.48,
+      "risk_pct": 66.49,
+      "growth_pct": 70.68,
+      "sentiment": {
+        "score": 74.75,
+        "consensus_score": 80.56,
+        "pt_upside_score": 68.94,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.1137,
+        "analyst_count": 18,
+        "details": "buy (18 analysts), PT upside 11.4%"
+      },
+      "sentiment_score": 74.75,
+      "sentiment_pct": 51.31,
+      "sector_rank": 32,
+      "sector_size": 80,
+      "sector_composite": 54.53,
+      "entry_signal": "BUY",
+      "entry_score": 50,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "No significant sell signals"
+      ],
+      "current_price": 151.04,
+      "rsi": 57.14,
+      "macd_histogram": 0.7400938448116099,
+      "adx": 16.15,
+      "volatility": 0.3965,
+      "beta": 1.2867694121559974,
+      "volume_trend": 1.288021771737324,
+      "ma50": 142.30799896240234,
+      "ma200": 119.56385009765626,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 53.0,
+      "analyst_score": 55,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-04-29",
       "earnings_warning": false,
       "days_until_earnings": null,
       "consecutive_days": 0,
       "first_seen": "2026-02-21"
     },
     {
-      "rank": 20,
+      "rank": 9,
       "ticker": "EIX",
       "name": "Edison International",
       "sector": "Utilities",
       "industry": "Utilities - Regulated Electric",
       "market_cap": 28377659392,
-      "composite_score": 74.86,
-      "base_score": 74.86,
+      "composite_score": 75.1,
+      "base_score": 75.1,
       "ml_score": null,
       "ml_signal": null,
       "ml_weight": 0.0,
-      "fundamentals_pct": 47.94,
-      "valuation_pct": 99.18,
-      "technicals_pct": 75.93,
-      "risk_pct": 89.71,
-      "growth_pct": 94.24,
+      "fundamentals_pct": 41.88,
+      "valuation_pct": 98.95,
+      "technicals_pct": 69.63,
+      "risk_pct": 89.01,
+      "growth_pct": 85.34,
+      "sentiment": {
+        "score": 54.57,
+        "consensus_score": 63.33,
+        "pt_upside_score": 45.81,
+        "recommendation": "buy",
+        "pt_upside_pct": -0.0252,
+        "analyst_count": 13,
+        "details": "buy (13 analysts), PT upside -2.5%"
+      },
       "sentiment_score": 54.57,
-      "sentiment_pct": 11.73,
+      "sentiment_pct": 5.76,
       "sector_rank": 1,
       "sector_size": 31,
       "sector_composite": 94.35,
@@ -1060,7 +562,7 @@
       "macd_histogram": 0.8641243922472421,
       "adx": 50.43,
       "volatility": 0.2963,
-      "beta": 0.5743829368192727,
+      "beta": 0.5743826625942643,
       "volume_trend": 1.0388698922840427,
       "ma50": 61.79715530395508,
       "ma200": 55.35565185546875,
@@ -1079,2923 +581,1828 @@
       "days_until_earnings": null,
       "consecutive_days": 0,
       "first_seen": "2026-02-21"
+    },
+    {
+      "rank": 10,
+      "ticker": "SPG",
+      "name": "Simon Property Group, Inc.",
+      "sector": "Real Estate",
+      "industry": "REIT - Retail",
+      "market_cap": 76077842432,
+      "composite_score": 74.97,
+      "base_score": 74.97,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 49.74,
+      "valuation_pct": 13.61,
+      "technicals_pct": 83.25,
+      "risk_pct": 69.11,
+      "growth_pct": 93.98,
+      "sentiment": {
+        "score": 60.14,
+        "consensus_score": 70.24,
+        "pt_upside_score": 50.04,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.0002,
+        "analyst_count": 20,
+        "details": "buy (20 analysts), PT upside 0.0%"
+      },
+      "sentiment_score": 60.14,
+      "sentiment_pct": 15.18,
+      "sector_rank": 4,
+      "sector_size": 31,
+      "sector_composite": 65.24,
+      "entry_signal": "HOLD",
+      "entry_score": 48,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "Price near resistance ($203.00, +0.6%)"
+      ],
+      "current_price": 201.7,
+      "rsi": 64.73,
+      "macd_histogram": 0.5641602783182877,
+      "adx": 36.1,
+      "volatility": 0.2586,
+      "beta": 0.8536927164915792,
+      "volume_trend": 1.079689690448225,
+      "ma50": 188.20800048828124,
+      "ma200": 173.5657857513428,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 50.0,
+      "analyst_score": 50,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-05-11",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-21"
+    },
+    {
+      "rank": 11,
+      "ticker": "UHS",
+      "name": "Universal Health Services, Inc.",
+      "sector": "Healthcare",
+      "industry": "Medical Care Facilities",
+      "market_cap": 14668082176,
+      "composite_score": 74.71,
+      "base_score": 74.71,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 69.63,
+      "valuation_pct": 100.0,
+      "technicals_pct": 68.59,
+      "risk_pct": 72.25,
+      "growth_pct": 74.35,
+      "sentiment": {
+        "score": 66.03,
+        "consensus_score": 67.11,
+        "pt_upside_score": 64.96,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.0897,
+        "analyst_count": 17,
+        "details": "buy (17 analysts), PT upside 9.0%"
+      },
+      "sentiment_score": 66.03,
+      "sentiment_pct": 27.23,
+      "sector_rank": 2,
+      "sector_size": 59,
+      "sector_composite": 79.01,
+      "entry_signal": "HOLD",
+      "entry_score": 38,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "Fundamentals deteriorated (19.2 point drop)"
+      ],
+      "current_price": 230.49,
+      "rsi": 77.89,
+      "macd_histogram": 2.5001572949418,
+      "adx": 50.01,
+      "volatility": 0.3418,
+      "beta": 0.6194310536926663,
+      "volume_trend": 0.9331340075504974,
+      "ma50": 216.6710009765625,
+      "ma200": 199.1783876800537,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 50.0,
+      "analyst_score": 50,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-02-25",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-15"
+    },
+    {
+      "rank": 12,
+      "ticker": "HII",
+      "name": "Huntington Ingalls Industries, ",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "market_cap": 17171423232,
+      "composite_score": 74.19,
+      "base_score": 74.19,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 68.06,
+      "valuation_pct": 79.58,
+      "technicals_pct": 93.72,
+      "risk_pct": 95.29,
+      "growth_pct": 56.54,
+      "sentiment": {
+        "score": 50.99,
+        "consensus_score": 65.91,
+        "pt_upside_score": 36.07,
+        "recommendation": "buy",
+        "pt_upside_pct": -0.0836,
+        "analyst_count": 10,
+        "details": "buy (10 analysts), PT upside -8.4%"
+      },
+      "sentiment_score": 50.99,
+      "sentiment_pct": 3.66,
+      "sector_rank": 13,
+      "sector_size": 67,
+      "sector_composite": 62.74,
+      "entry_signal": "HOLD",
+      "entry_score": 45,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "Fundamentals deteriorated (19.0 point drop)"
+      ],
+      "current_price": 437.57,
+      "rsi": 54.81,
+      "macd_histogram": 1.105548271201549,
+      "adx": 28.61,
+      "volatility": 0.3527,
+      "beta": 0.6696456243384058,
+      "volume_trend": 1.0165841867865884,
+      "ma50": 384.2320031738281,
+      "ma200": 295.92613037109373,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 47.0,
+      "analyst_score": 45,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-04-30",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-19"
+    },
+    {
+      "rank": 13,
+      "ticker": "RL",
+      "name": "Ralph Lauren Corporation",
+      "sector": "Consumer Cyclical",
+      "industry": "Apparel Manufacturing",
+      "market_cap": 23348473856,
+      "composite_score": 74.02,
+      "base_score": 74.02,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 66.49,
+      "valuation_pct": 72.25,
+      "technicals_pct": 86.39,
+      "risk_pct": 32.98,
+      "growth_pct": 93.98,
+      "sentiment": {
+        "score": 70.06,
+        "consensus_score": 81.58,
+        "pt_upside_score": 58.54,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.0512,
+        "analyst_count": 16,
+        "details": "buy (16 analysts), PT upside 5.1%"
+      },
+      "sentiment_score": 70.06,
+      "sentiment_pct": 36.65,
+      "sector_rank": 19,
+      "sector_size": 50,
+      "sector_composite": 53.91,
+      "entry_signal": "HOLD",
+      "entry_score": 15,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "Price near resistance ($389.15, +1.1%)"
+      ],
+      "current_price": 385.03,
+      "rsi": 72.21,
+      "macd_histogram": 3.4674156599428585,
+      "adx": 20.42,
+      "volatility": 0.3856,
+      "beta": 1.389110914253805,
+      "volume_trend": 1.123162415457137,
+      "ma50": 361.9318701171875,
+      "ma200": 315.9821600341797,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 53.0,
+      "analyst_score": 55,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-02-05",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-15"
+    },
+    {
+      "rank": 14,
+      "ticker": "TPR",
+      "name": "Tapestry, Inc.",
+      "sector": "Consumer Cyclical",
+      "industry": "Luxury Goods",
+      "market_cap": 32148430848,
+      "composite_score": 73.39,
+      "base_score": 73.39,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 68.59,
+      "valuation_pct": 58.12,
+      "technicals_pct": 69.11,
+      "risk_pct": 49.21,
+      "growth_pct": 93.98,
+      "sentiment": {
+        "score": 63.88,
+        "consensus_score": 75.0,
+        "pt_upside_score": 52.75,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.0165,
+        "analyst_count": 19,
+        "details": "buy (19 analysts), PT upside 1.7%"
+      },
+      "sentiment_score": 63.88,
+      "sentiment_pct": 23.04,
+      "sector_rank": 16,
+      "sector_size": 50,
+      "sector_composite": 57.34,
+      "entry_signal": "HOLD",
+      "entry_score": 28,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "Price near resistance ($158.28, +0.8%)"
+      ],
+      "current_price": 157.09,
+      "rsi": 81.56,
+      "macd_histogram": 1.0466295618856796,
+      "adx": 57.57,
+      "volatility": 0.4281,
+      "beta": 1.2878025631764773,
+      "volume_trend": 1.032541292196362,
+      "ma50": 133.770400390625,
+      "ma200": 108.4560298538208,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 53.0,
+      "analyst_score": 55,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-05-07",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-21"
+    },
+    {
+      "rank": 15,
+      "ticker": "CPAY",
+      "name": "Corpay, Inc.",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "market_cap": 24905693184,
+      "composite_score": 71.77,
+      "base_score": 71.77,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 91.1,
+      "valuation_pct": 59.69,
+      "technicals_pct": 96.34,
+      "risk_pct": 17.28,
+      "growth_pct": 46.07,
+      "sentiment": {
+        "score": 74.23,
+        "consensus_score": 83.33,
+        "pt_upside_score": 65.13,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.0908,
+        "analyst_count": 14,
+        "details": "buy (14 analysts), PT upside 9.1%"
+      },
+      "sentiment_score": 74.23,
+      "sentiment_pct": 49.74,
+      "sector_rank": 13,
+      "sector_size": 80,
+      "sector_composite": 65.26,
+      "entry_signal": "HOLD",
+      "entry_score": 40,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "No significant sell signals"
+      ],
+      "current_price": 352.7,
+      "rsi": 62.13,
+      "macd_histogram": 1.6928940201570173,
+      "adx": 23.9,
+      "volatility": 0.4106,
+      "beta": 1.4405386819466592,
+      "volume_trend": 1.2245094726911112,
+      "ma50": 321.33580017089844,
+      "ma200": 313.75550048828126,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 53.0,
+      "analyst_score": 55,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-05-06",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-15"
+    },
+    {
+      "rank": 16,
+      "ticker": "RMD",
+      "name": "ResMed Inc.",
+      "sector": "Healthcare",
+      "industry": "Medical Instruments & Supplies",
+      "market_cap": 37822783488,
+      "composite_score": 71.37,
+      "base_score": 71.37,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 93.72,
+      "valuation_pct": 39.27,
+      "technicals_pct": 74.35,
+      "risk_pct": 75.92,
+      "growth_pct": 80.1,
+      "sentiment": {
+        "score": 73.52,
+        "consensus_score": 72.37,
+        "pt_upside_score": 74.66,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.148,
+        "analyst_count": 15,
+        "details": "buy (15 analysts), PT upside 14.8%"
+      },
+      "sentiment_score": 73.52,
+      "sentiment_pct": 47.64,
+      "sector_rank": 36,
+      "sector_size": 59,
+      "sector_composite": 45.69,
+      "entry_signal": "HOLD",
+      "entry_score": 47,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "Fundamentals deteriorated (19.3 point drop)"
+      ],
+      "current_price": 259.12,
+      "rsi": 50.88,
+      "macd_histogram": -0.7141257003580381,
+      "adx": 12.62,
+      "volatility": 0.2606,
+      "beta": 0.6371063851895605,
+      "volume_trend": 1.2254969458963754,
+      "ma50": 252.79044647216796,
+      "ma200": 259.0490097045898,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 50.0,
+      "analyst_score": 50,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-04-30",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-21"
+    },
+    {
+      "rank": 17,
+      "ticker": "ADI",
+      "name": "Analog Devices, Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "market_cap": 173841891328,
+      "composite_score": 71.35,
+      "base_score": 71.35,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 89.01,
+      "valuation_pct": 14.66,
+      "technicals_pct": 79.58,
+      "risk_pct": 31.94,
+      "growth_pct": 93.98,
+      "sentiment": {
+        "score": 72.1,
+        "consensus_score": 82.64,
+        "pt_upside_score": 61.55,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.0693,
+        "analyst_count": 33,
+        "details": "buy (33 analysts), PT upside 6.9%"
+      },
+      "sentiment_score": 72.1,
+      "sentiment_pct": 42.41,
+      "sector_rank": 65,
+      "sector_size": 80,
+      "sector_composite": 35.27,
+      "entry_signal": "HOLD",
+      "entry_score": 23,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "Price near resistance ($355.45, +0.1%)"
+      ],
+      "current_price": 355.03,
+      "rsi": 80.64,
+      "macd_histogram": 1.886805097204455,
+      "adx": 60.05,
+      "volatility": 0.3842,
+      "beta": 1.5602896887051894,
+      "volume_trend": 1.1572586469496973,
+      "ma50": 301.08980163574216,
+      "ma200": 251.7099523162842,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 57.8,
+      "analyst_score": 63,
+      "insider_score": 50,
+      "smart_money_signals": [
+        "Consensus turning bullish"
+      ],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-05-21",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-21"
+    },
+    {
+      "rank": 18,
+      "ticker": "TXT",
+      "name": "Textron Inc.",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "market_cap": 17550348288,
+      "composite_score": 70.01,
+      "base_score": 70.01,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 67.54,
+      "valuation_pct": 96.34,
+      "technicals_pct": 71.73,
+      "risk_pct": 76.96,
+      "growth_pct": 58.64,
+      "sentiment": {
+        "score": 56.36,
+        "consensus_score": 65.62,
+        "pt_upside_score": 47.09,
+        "recommendation": "buy",
+        "pt_upside_pct": -0.0175,
+        "analyst_count": 15,
+        "details": "buy (15 analysts), PT upside -1.7%"
+      },
+      "sentiment_score": 56.36,
+      "sentiment_pct": 8.38,
+      "sector_rank": 3,
+      "sector_size": 67,
+      "sector_composite": 73.17,
+      "entry_signal": "HOLD",
+      "entry_score": 28,
+      "sell_signal": "STRONG_SELL",
+      "sell_urgency": "high",
+      "sell_reasons": [
+        "RSI extremely overbought (86.4)",
+        "Price near resistance ($101.57, +0.8%)",
+        "Fundamentals deteriorated (18.7 point drop)"
+      ],
+      "current_price": 100.77,
+      "rsi": 86.38,
+      "macd_histogram": 0.6248751920995959,
+      "adx": 36.01,
+      "volatility": 0.292,
+      "beta": 0.9671195330259262,
+      "volume_trend": 1.219423574927627,
+      "ma50": 91.80522171020507,
+      "ma200": 83.10503833770753,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 47.0,
+      "analyst_score": 45,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-04-23",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 0,
+      "first_seen": "2026-02-15"
+    },
+    {
+      "rank": 19,
+      "ticker": "MCK",
+      "name": "McKesson Corporation",
+      "sector": "Healthcare",
+      "industry": "Medical Distribution",
+      "market_cap": 116944281600,
+      "composite_score": 69.94,
+      "base_score": 69.94,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 48.69,
+      "valuation_pct": 91.62,
+      "technicals_pct": 87.96,
+      "risk_pct": 96.34,
+      "growth_pct": 53.4,
+      "sentiment": {
+        "score": 69.81,
+        "consensus_score": 83.82,
+        "pt_upside_score": 55.79,
+        "recommendation": "buy",
+        "pt_upside_pct": 0.0347,
+        "analyst_count": 15,
+        "details": "buy (15 analysts), PT upside 3.5%"
+      },
+      "sentiment_score": 69.81,
+      "sentiment_pct": 35.6,
+      "sector_rank": 13,
+      "sector_size": 59,
+      "sector_composite": 62.15,
+      "entry_signal": "HOLD",
+      "entry_score": 38,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "No significant sell signals"
+      ],
+      "current_price": 947.48,
+      "rsi": 67.05,
+      "macd_histogram": 3.3134980815462214,
+      "adx": 39.67,
+      "volatility": 0.2869,
+      "beta": 0.10087997695681307,
+      "volume_trend": 1.2204227772205443,
+      "ma50": 850.2281982421875,
+      "ma200": 768.5210543823242,
+      "above_ma50": true,
+      "above_ma200": true,
+      "smart_money_score": 53.0,
+      "analyst_score": 55,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-05-06",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 8,
+      "first_seen": "2026-02-15"
+    },
+    {
+      "rank": 20,
+      "ticker": "AVGO",
+      "name": "Broadcom Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "market_cap": 1577184657408,
+      "composite_score": 69.68,
+      "base_score": 69.68,
+      "ml_score": null,
+      "ml_signal": null,
+      "ml_weight": 0.0,
+      "fundamentals_pct": 85.86,
+      "valuation_pct": 20.42,
+      "technicals_pct": 70.16,
+      "risk_pct": 16.23,
+      "growth_pct": 93.98,
+      "sentiment": {
+        "score": 97.0,
+        "consensus_score": 94.0,
+        "pt_upside_score": 100,
+        "recommendation": "strong_buy",
+        "pt_upside_pct": 0.3711,
+        "analyst_count": 45,
+        "details": "strong_buy (45 analysts), PT upside 37.1%"
+      },
+      "sentiment_score": 97.0,
+      "sentiment_pct": 100.0,
+      "sector_rank": 57,
+      "sector_size": 80,
+      "sector_composite": 40.92,
+      "entry_signal": "BUY",
+      "entry_score": 50,
+      "sell_signal": "N/A",
+      "sell_urgency": "none",
+      "sell_reasons": [
+        "No significant sell signals"
+      ],
+      "current_price": 332.65,
+      "rsi": 50.73,
+      "macd_histogram": 1.3552082654667776,
+      "adx": 21.18,
+      "volatility": 0.5073,
+      "beta": 1.7765877779958439,
+      "volume_trend": 0.7804287807190554,
+      "ma50": 341.4259729003906,
+      "ma200": 314.6976856994629,
+      "above_ma50": false,
+      "above_ma200": true,
+      "smart_money_score": 56.0,
+      "analyst_score": 60,
+      "insider_score": 50,
+      "smart_money_signals": [],
+      "data_freshness": "fresh",
+      "data_age_days": 0,
+      "earnings_date": "2026-03-04",
+      "earnings_warning": false,
+      "days_until_earnings": null,
+      "consecutive_days": 1,
+      "first_seen": "2026-02-21"
     }
   ],
   "all_scores": [
     {
-      "ticker": "CF",
-      "composite": 85.29,
-      "fund_score": 99.18,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ACGL",
-      "composite": 83.82,
-      "fund_score": 99.38,
-      "signal": "BUY"
-    },
-    {
       "ticker": "EQT",
-      "composite": 83.63,
-      "fund_score": 95.88,
+      "composite": 84.73,
+      "fund_score": 91.62,
       "signal": "HOLD"
     },
     {
-      "ticker": "UHS",
-      "composite": 81.84,
-      "fund_score": 80.04,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "HII",
-      "composite": 81.26,
-      "fund_score": 79.01,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "TEL",
-      "composite": 81.19,
-      "fund_score": 84.36,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ALL",
-      "composite": 80.92,
-      "fund_score": 64.2,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "COR",
-      "composite": 80.53,
-      "fund_score": 68.52,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "TXT",
-      "composite": 79.86,
-      "fund_score": 78.6,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "TRV",
-      "composite": 79.56,
-      "fund_score": 97.12,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PYPL",
-      "composite": 78.18,
-      "fund_score": 93.0,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "CPAY",
-      "composite": 76.93,
-      "fund_score": 95.68,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CAH",
-      "composite": 76.73,
-      "fund_score": 57.61,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "MCK",
-      "composite": 76.72,
-      "fund_score": 54.53,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "ELV",
-      "composite": 76.63,
-      "fund_score": 61.52,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CTRA",
-      "composite": 76.61,
-      "fund_score": 90.53,
-      "signal": "BUY"
+      "ticker": "SYK",
+      "composite": 79.88,
+      "fund_score": 72.25,
+      "signal": "WAIT"
     },
     {
       "ticker": "ES",
-      "composite": 75.91,
-      "fund_score": 41.56,
+      "composite": 79.87,
+      "fund_score": 38.74,
       "signal": "BUY"
-    },
-    {
-      "ticker": "ADBE",
-      "composite": 75.09,
-      "fund_score": 99.79,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "GDDY",
-      "composite": 74.87,
-      "fund_score": 89.3,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "EIX",
-      "composite": 74.86,
-      "fund_score": 47.94,
-      "signal": "HOLD"
     },
     {
       "ticker": "FANG",
-      "composite": 73.77,
-      "fund_score": 69.75,
+      "composite": 78.9,
+      "fund_score": 61.26,
       "signal": "BUY"
     },
     {
-      "ticker": "INCY",
-      "composite": 73.73,
-      "fund_score": 98.35,
+      "ticker": "TEL",
+      "composite": 78.74,
+      "fund_score": 75.39,
       "signal": "BUY"
     },
     {
       "ticker": "NVDA",
-      "composite": 73.43,
-      "fund_score": 97.53,
+      "composite": 78.45,
+      "fund_score": 94.76,
       "signal": "BUY"
     },
     {
-      "ticker": "SYK",
-      "composite": 73.4,
-      "fund_score": 81.89,
-      "signal": "WAIT"
-    },
-    {
-      "ticker": "DGX",
-      "composite": 72.99,
-      "fund_score": 76.34,
-      "signal": "HOLD"
+      "ticker": "CF",
+      "composite": 77.43,
+      "fund_score": 98.43,
+      "signal": "BUY"
     },
     {
       "ticker": "APH",
-      "composite": 72.74,
-      "fund_score": 86.63,
+      "composite": 75.64,
+      "fund_score": 79.06,
       "signal": "BUY"
     },
     {
-      "ticker": "MGM",
-      "composite": 72.59,
-      "fund_score": 54.94,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DUK",
-      "composite": 72.53,
-      "fund_score": 72.02,
+      "ticker": "EIX",
+      "composite": 75.1,
+      "fund_score": 41.88,
       "signal": "HOLD"
     },
     {
-      "ticker": "BR",
-      "composite": 72.31,
-      "fund_score": 94.44,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "RMD",
-      "composite": 72.25,
-      "fund_score": 96.91,
+      "ticker": "SPG",
+      "composite": 74.97,
+      "fund_score": 49.74,
       "signal": "HOLD"
     },
     {
-      "ticker": "DECK",
-      "composite": 72.16,
-      "fund_score": 88.48,
+      "ticker": "UHS",
+      "composite": 74.71,
+      "fund_score": 69.63,
       "signal": "HOLD"
     },
     {
-      "ticker": "JBL",
-      "composite": 72.08,
-      "fund_score": 76.54,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CVS",
-      "composite": 71.62,
-      "fund_score": 64.4,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "LVS",
-      "composite": 71.6,
-      "fund_score": 90.12,
-      "signal": "WAIT"
-    },
-    {
-      "ticker": "GEN",
-      "composite": 71.51,
-      "fund_score": 95.47,
-      "signal": "BUY"
+      "ticker": "HII",
+      "composite": 74.19,
+      "fund_score": 68.06,
+      "signal": "HOLD"
     },
     {
       "ticker": "RL",
-      "composite": 71.5,
-      "fund_score": 76.75,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "LH",
-      "composite": 71.23,
-      "fund_score": 68.31,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "HIG",
-      "composite": 71.13,
-      "fund_score": 51.23,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "OKE",
-      "composite": 71.02,
-      "fund_score": 59.88,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "DVA",
-      "composite": 71.0,
-      "fund_score": 69.55,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "FSLR",
-      "composite": 70.86,
-      "fund_score": 80.86,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "LMT",
-      "composite": 70.46,
-      "fund_score": 71.6,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NOC",
-      "composite": 70.45,
-      "fund_score": 68.72,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NEM",
-      "composite": 70.08,
-      "fund_score": 98.77,
+      "composite": 74.02,
+      "fund_score": 66.49,
       "signal": "HOLD"
     },
     {
       "ticker": "TPR",
-      "composite": 70.05,
-      "fund_score": 79.42,
+      "composite": 73.39,
+      "fund_score": 68.59,
       "signal": "HOLD"
     },
     {
-      "ticker": "EXE",
-      "composite": 69.56,
-      "fund_score": 58.23,
+      "ticker": "CPAY",
+      "composite": 71.77,
+      "fund_score": 91.1,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "RMD",
+      "composite": 71.37,
+      "fund_score": 93.72,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "ADI",
+      "composite": 71.35,
+      "fund_score": 89.01,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "TXT",
+      "composite": 70.01,
+      "fund_score": 67.54,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "MCK",
+      "composite": 69.94,
+      "fund_score": 48.69,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "AVGO",
+      "composite": 69.68,
+      "fund_score": 85.86,
       "signal": "BUY"
-    },
-    {
-      "ticker": "HCA",
-      "composite": 69.47,
-      "fund_score": 39.3,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "AMGN",
-      "composite": 69.3,
-      "fund_score": 81.48,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "IQV",
-      "composite": 69.2,
-      "fund_score": 81.07,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "CRM",
-      "composite": 69.19,
-      "fund_score": 97.94,
-      "signal": "STRONG_BUY"
     },
     {
       "ticker": "PTC",
-      "composite": 69.05,
-      "fund_score": 98.97,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CSCO",
-      "composite": 68.53,
-      "fund_score": 87.86,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AMCR",
-      "composite": 68.49,
-      "fund_score": 38.27,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "MTCH",
-      "composite": 68.29,
-      "fund_score": 69.34,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "VRTX",
-      "composite": 67.51,
-      "fund_score": 93.62,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "TTD",
-      "composite": 67.21,
-      "fund_score": 96.5,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "ALGN",
-      "composite": 66.93,
-      "fund_score": 77.37,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "IBM",
-      "composite": 66.76,
-      "fund_score": 88.07,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "KDP",
-      "composite": 66.46,
-      "fund_score": 53.7,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "FIS",
-      "composite": 66.23,
-      "fund_score": 70.99,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "GD",
-      "composite": 66.12,
-      "fund_score": 61.73,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "BMY",
-      "composite": 66.09,
-      "fund_score": 88.89,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "WDAY",
-      "composite": 66.08,
-      "fund_score": 87.65,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "DLTR",
-      "composite": 65.95,
-      "fund_score": 53.09,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "DTE",
-      "composite": 65.92,
-      "fund_score": 21.4,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CINF",
-      "composite": 65.91,
-      "fund_score": 66.87,
+      "composite": 69.42,
+      "fund_score": 97.91,
       "signal": "BUY"
     },
     {
       "ticker": "DXCM",
-      "composite": 65.9,
-      "fund_score": 91.98,
+      "composite": 69.25,
+      "fund_score": 86.39,
       "signal": "BUY"
-    },
-    {
-      "ticker": "PEG",
-      "composite": 65.86,
-      "fund_score": 38.68,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "RTX",
-      "composite": 65.45,
-      "fund_score": 60.49,
-      "signal": "WAIT"
-    },
-    {
-      "ticker": "REG",
-      "composite": 65.39,
-      "fund_score": 92.8,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CB",
-      "composite": 65.17,
-      "fund_score": 48.77,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CCL",
-      "composite": 65.09,
-      "fund_score": 53.91,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CTSH",
-      "composite": 64.99,
-      "fund_score": 85.8,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "TJX",
-      "composite": 64.85,
-      "fund_score": 57.41,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "BDX",
-      "composite": 64.81,
-      "fund_score": 71.81,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "GL",
-      "composite": 64.76,
-      "fund_score": 38.89,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "FRT",
-      "composite": 64.72,
-      "fund_score": 87.45,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "UAL",
-      "composite": 64.55,
-      "fund_score": 26.13,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AVGO",
-      "composite": 64.5,
-      "fund_score": 91.36,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "HST",
-      "composite": 64.27,
-      "fund_score": 33.95,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MNST",
-      "composite": 64.09,
-      "fund_score": 96.3,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "FIX",
-      "composite": 63.98,
-      "fund_score": 91.15,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "GE",
-      "composite": 63.93,
-      "fund_score": 80.45,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "FDS",
-      "composite": 63.84,
-      "fund_score": 95.27,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "ADI",
-      "composite": 63.83,
-      "fund_score": 93.83,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "HUBB",
-      "composite": 63.69,
-      "fund_score": 78.19,
-      "signal": "HOLD"
     },
     {
       "ticker": "GRMN",
-      "composite": 63.41,
-      "fund_score": 84.98,
+      "composite": 69.15,
+      "fund_score": 76.96,
       "signal": "HOLD"
     },
     {
-      "ticker": "DELL",
-      "composite": 63.37,
-      "fund_score": 25.1,
+      "ticker": "TER",
+      "composite": 68.09,
+      "fund_score": 72.77,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "CTRA",
+      "composite": 68.07,
+      "fund_score": 84.29,
       "signal": "BUY"
     },
     {
-      "ticker": "SPG",
-      "composite": 63.12,
-      "fund_score": 56.17,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "DG",
-      "composite": 63.02,
-      "fund_score": 63.99,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "JNJ",
-      "composite": 62.83,
-      "fund_score": 94.03,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "STE",
-      "composite": 62.69,
-      "fund_score": 78.4,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "APA",
-      "composite": 62.65,
-      "fund_score": 73.25,
-      "signal": "WAIT"
-    },
-    {
-      "ticker": "HWM",
-      "composite": 62.58,
-      "fund_score": 82.72,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PGR",
-      "composite": 62.43,
-      "fund_score": 66.26,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "ADSK",
-      "composite": 62.32,
-      "fund_score": 98.15,
+      "ticker": "ADBE",
+      "composite": 67.77,
+      "fund_score": 99.48,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "OTIS",
-      "composite": 62.21,
-      "fund_score": 35.19,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NOW",
-      "composite": 62.01,
-      "fund_score": 88.27,
+      "ticker": "GDDY",
+      "composite": 67.45,
+      "fund_score": 82.72,
       "signal": "STRONG_BUY"
     },
     {
       "ticker": "APP",
-      "composite": 61.98,
-      "fund_score": 89.09,
+      "composite": 67.11,
+      "fund_score": 82.2,
       "signal": "BUY"
     },
     {
-      "ticker": "JCI",
-      "composite": 61.89,
-      "fund_score": 79.22,
-      "signal": "HOLD"
+      "ticker": "PEG",
+      "composite": 66.75,
+      "fund_score": 35.08,
+      "signal": "BUY"
     },
     {
-      "ticker": "PAYC",
-      "composite": 61.74,
-      "fund_score": 84.77,
+      "ticker": "INCY",
+      "composite": 65.93,
+      "fund_score": 96.34,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "ORCL",
+      "composite": 65.87,
+      "fund_score": 45.03,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "PEP",
-      "composite": 61.7,
-      "fund_score": 71.4,
+      "ticker": "CAH",
+      "composite": 65.63,
+      "fund_score": 50.79,
       "signal": "HOLD"
     },
     {
-      "ticker": "XEL",
-      "composite": 61.68,
-      "fund_score": 22.43,
+      "ticker": "OKE",
+      "composite": 65.18,
+      "fund_score": 53.4,
       "signal": "HOLD"
     },
     {
-      "ticker": "BSX",
-      "composite": 61.56,
-      "fund_score": 83.95,
+      "ticker": "TTD",
+      "composite": 65.11,
+      "fund_score": 93.19,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "GILD",
-      "composite": 61.43,
-      "fund_score": 89.92,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CMS",
-      "composite": 61.29,
-      "fund_score": 13.79,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NFLX",
-      "composite": 61.13,
-      "fund_score": 100.0,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "VZ",
-      "composite": 61.11,
-      "fund_score": 45.68,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "ZBH",
-      "composite": 61.05,
-      "fund_score": 59.47,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "LRCX",
-      "composite": 60.91,
-      "fund_score": 97.74,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CMI",
-      "composite": 60.84,
-      "fund_score": 61.11,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CI",
-      "composite": 60.79,
-      "fund_score": 67.28,
+      "ticker": "HST",
+      "composite": 64.97,
+      "fund_score": 29.32,
       "signal": "BUY"
     },
     {
-      "ticker": "BEN",
-      "composite": 60.74,
-      "fund_score": 48.97,
+      "ticker": "DUK",
+      "composite": 64.94,
+      "fund_score": 62.83,
       "signal": "HOLD"
     },
     {
-      "ticker": "T",
-      "composite": 60.6,
-      "fund_score": 55.14,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "BRO",
-      "composite": 60.54,
-      "fund_score": 96.09,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AMP",
-      "composite": 60.44,
-      "fund_score": 94.24,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MSFT",
-      "composite": 60.42,
-      "fund_score": 94.86,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "MU",
-      "composite": 60.36,
-      "fund_score": 81.28,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DAL",
-      "composite": 60.21,
-      "fund_score": 78.81,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "EOG",
-      "composite": 60.09,
-      "fund_score": 62.14,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CBOE",
-      "composite": 59.97,
-      "fund_score": 67.49,
-      "signal": "WAIT"
-    },
-    {
-      "ticker": "A",
-      "composite": 59.96,
-      "fund_score": 83.74,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "SOLV",
-      "composite": 59.92,
-      "fund_score": 77.98,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "ADP",
-      "composite": 59.81,
-      "fund_score": 86.21,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "TROW",
-      "composite": 59.77,
-      "fund_score": 96.71,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "VTR",
-      "composite": 59.63,
-      "fund_score": 65.02,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "HUM",
-      "composite": 59.33,
-      "fund_score": 39.51,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ROST",
-      "composite": 59.15,
-      "fund_score": 67.7,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "MSI",
-      "composite": 59.09,
-      "fund_score": 68.93,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "MOS",
-      "composite": 58.9,
-      "fund_score": 58.85,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "WM",
-      "composite": 58.89,
-      "fund_score": 55.35,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "VLTO",
-      "composite": 58.86,
-      "fund_score": 84.16,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "TER",
-      "composite": 58.84,
-      "fund_score": 82.3,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "GOOG",
-      "composite": 58.83,
-      "fund_score": 92.39,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "KIM",
-      "composite": 58.8,
-      "fund_score": 77.16,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "RCL",
-      "composite": 58.46,
-      "fund_score": 47.74,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "PRU",
-      "composite": 58.38,
-      "fund_score": 62.76,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "GOOGL",
-      "composite": 58.36,
-      "fund_score": 92.18,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "GEV",
-      "composite": 58.36,
-      "fund_score": 92.59,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "AOS",
-      "composite": 58.28,
-      "fund_score": 87.24,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "GEHC",
-      "composite": 58.21,
-      "fund_score": 46.91,
-      "signal": "WAIT"
-    },
-    {
-      "ticker": "BRK-B",
-      "composite": 58.12,
-      "fund_score": 77.57,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "EXPE",
-      "composite": 58.11,
-      "fund_score": 65.23,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "AMT",
-      "composite": 57.87,
-      "fund_score": 70.37,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MET",
-      "composite": 57.7,
-      "fund_score": 3.29,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AIG",
-      "composite": 57.28,
-      "fund_score": 61.32,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "ALLE",
-      "composite": 57.17,
-      "fund_score": 74.49,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "UNH",
-      "composite": 57.05,
-      "fund_score": 50.0,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AMAT",
-      "composite": 56.99,
-      "fund_score": 85.39,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "JKHY",
-      "composite": 56.97,
-      "fund_score": 90.33,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "OMC",
-      "composite": 56.95,
-      "fund_score": 2.67,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MRSH",
-      "composite": 56.9,
-      "fund_score": 83.13,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AKAM",
-      "composite": 56.83,
-      "fund_score": 35.8,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "PAYX",
-      "composite": 56.67,
-      "fund_score": 94.65,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "ATO",
-      "composite": 56.63,
-      "fund_score": 45.27,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "TRMB",
-      "composite": 56.58,
-      "fund_score": 75.72,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CNC",
-      "composite": 56.57,
-      "fund_score": 18.31,
+      "ticker": "MNST",
+      "composite": 64.51,
+      "fund_score": 92.67,
       "signal": "BUY"
     },
     {
       "ticker": "GLW",
-      "composite": 56.57,
-      "fund_score": 56.38,
+      "composite": 63.96,
+      "fund_score": 50.26,
       "signal": "HOLD"
     },
     {
-      "ticker": "SMCI",
-      "composite": 56.55,
-      "fund_score": 41.36,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PPL",
-      "composite": 56.46,
-      "fund_score": 20.16,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NI",
-      "composite": 56.35,
-      "fund_score": 25.31,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NUE",
-      "composite": 56.34,
-      "fund_score": 29.22,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "KLAC",
-      "composite": 56.27,
-      "fund_score": 86.42,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CRH",
-      "composite": 56.24,
-      "fund_score": 56.58,
+      "ticker": "MU",
+      "composite": 63.9,
+      "fund_score": 71.73,
       "signal": "BUY"
     },
     {
-      "ticker": "ACN",
-      "composite": 56.19,
-      "fund_score": 91.77,
+      "ticker": "JBL",
+      "composite": 63.69,
+      "fund_score": 65.97,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "DTE",
+      "composite": 63.39,
+      "fund_score": 17.8,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "ADSK",
+      "composite": 63.21,
+      "fund_score": 95.81,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "MSFT",
+      "composite": 63.03,
+      "fund_score": 90.05,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "CMS",
+      "composite": 62.92,
+      "fund_score": 13.09,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "AMCR",
+      "composite": 62.82,
+      "fund_score": 34.55,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "WDAY",
+      "composite": 62.44,
+      "fund_score": 80.1,
       "signal": "STRONG_BUY"
     },
     {
       "ticker": "PLTR",
-      "composite": 56.0,
-      "fund_score": 97.33,
+      "composite": 62.2,
+      "fund_score": 94.24,
       "signal": "BUY"
     },
     {
-      "ticker": "SCHW",
-      "composite": 56.0,
-      "fund_score": 63.79,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "STLD",
-      "composite": 55.99,
-      "fund_score": 37.04,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "FFIV",
-      "composite": 55.99,
-      "fund_score": 91.56,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "V",
-      "composite": 55.88,
-      "fund_score": 98.56,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DRI",
-      "composite": 55.86,
-      "fund_score": 45.47,
+      "ticker": "GE",
+      "composite": 62.18,
+      "fund_score": 70.16,
       "signal": "HOLD"
     },
     {
-      "ticker": "MA",
-      "composite": 55.83,
-      "fund_score": 93.21,
+      "ticker": "RTX",
+      "composite": 61.98,
+      "fund_score": 54.45,
+      "signal": "WAIT"
+    },
+    {
+      "ticker": "XEL",
+      "composite": 61.48,
+      "fund_score": 18.32,
       "signal": "HOLD"
     },
     {
-      "ticker": "ORCL",
-      "composite": 55.78,
-      "fund_score": 50.21,
+      "ticker": "DELL",
+      "composite": 61.41,
+      "fund_score": 20.42,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "IBM",
+      "composite": 61.26,
+      "fund_score": 80.63,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "ZBRA",
-      "composite": 55.74,
-      "fund_score": 49.59,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "IDXX",
-      "composite": 55.64,
-      "fund_score": 85.19,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "EVRG",
-      "composite": 55.64,
-      "fund_score": 15.02,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "NRG",
-      "composite": 55.63,
-      "fund_score": 42.18,
+      "ticker": "LRCX",
+      "composite": 61.22,
+      "fund_score": 95.29,
       "signal": "HOLD"
     },
     {
-      "ticker": "ULTA",
-      "composite": 55.54,
-      "fund_score": 66.46,
+      "ticker": "FIX",
+      "composite": 61.07,
+      "fund_score": 85.34,
       "signal": "BUY"
     },
     {
-      "ticker": "EFX",
-      "composite": 55.5,
-      "fund_score": 64.61,
+      "ticker": "FSLR",
+      "composite": 60.94,
+      "fund_score": 70.68,
       "signal": "BUY"
     },
     {
-      "ticker": "PWR",
-      "composite": 55.47,
-      "fund_score": 44.65,
+      "ticker": "HWM",
+      "composite": 60.75,
+      "fund_score": 73.3,
       "signal": "HOLD"
     },
     {
-      "ticker": "CDNS",
-      "composite": 55.35,
-      "fund_score": 86.83,
-      "signal": "BUY"
+      "ticker": "LVS",
+      "composite": 60.74,
+      "fund_score": 83.77,
+      "signal": "WAIT"
     },
     {
-      "ticker": "MKC",
-      "composite": 55.3,
-      "fund_score": 50.82,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "WAB",
-      "composite": 55.22,
-      "fund_score": 59.05,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "KMI",
-      "composite": 55.12,
-      "fund_score": 43.0,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "AON",
-      "composite": 55.11,
-      "fund_score": 82.92,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "REGN",
-      "composite": 54.94,
-      "fund_score": 75.31,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "FE",
-      "composite": 54.89,
-      "fund_score": 2.88,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NTAP",
-      "composite": 54.82,
-      "fund_score": 75.1,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "SYY",
-      "composite": 54.82,
-      "fund_score": 41.77,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "GS",
-      "composite": 54.63,
-      "fund_score": 30.66,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "URI",
-      "composite": 54.46,
-      "fund_score": 48.15,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "L",
-      "composite": 54.4,
-      "fund_score": 79.63,
+      "ticker": "ATO",
+      "composite": 60.71,
+      "fund_score": 40.84,
       "signal": "HOLD"
     },
     {
       "ticker": "O",
-      "composite": 54.31,
-      "fund_score": 73.87,
+      "composite": 59.57,
+      "fund_score": 63.87,
       "signal": "HOLD"
     },
     {
-      "ticker": "QCOM",
-      "composite": 54.24,
-      "fund_score": 80.66,
+      "ticker": "NFLX",
+      "composite": 59.5,
+      "fund_score": 100.0,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "DVN",
-      "composite": 54.18,
-      "fund_score": 62.35,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NCLH",
-      "composite": 54.16,
-      "fund_score": 9.88,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "ISRG",
-      "composite": 54.15,
-      "fund_score": 90.95,
+      "ticker": "RCL",
+      "composite": 59.32,
+      "fund_score": 41.36,
       "signal": "BUY"
     },
     {
-      "ticker": "HSIC",
-      "composite": 54.13,
-      "fund_score": 34.57,
+      "ticker": "HUBB",
+      "composite": 59.14,
+      "fund_score": 67.02,
       "signal": "HOLD"
     },
     {
-      "ticker": "NXPI",
-      "composite": 54.0,
-      "fund_score": 55.97,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "SYF",
-      "composite": 53.9,
-      "fund_score": 22.63,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "UBER",
-      "composite": 53.84,
-      "fund_score": 74.69,
+      "ticker": "BSX",
+      "composite": 59.14,
+      "fund_score": 74.87,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "SW",
-      "composite": 53.77,
-      "fund_score": 38.48,
+      "ticker": "IQV",
+      "composite": 59.04,
+      "fund_score": 71.2,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "VTR",
+      "composite": 58.98,
+      "fund_score": 57.07,
       "signal": "HOLD"
     },
     {
-      "ticker": "UNP",
-      "composite": 53.73,
-      "fund_score": 62.96,
+      "ticker": "EXE",
+      "composite": 58.91,
+      "fund_score": 51.31,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "GEN",
+      "composite": 58.83,
+      "fund_score": 90.58,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "KMI",
+      "composite": 58.33,
+      "fund_score": 39.27,
       "signal": "HOLD"
-    },
-    {
-      "ticker": "MCO",
-      "composite": 53.7,
-      "fund_score": 87.04,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CNP",
-      "composite": 53.62,
-      "fund_score": 10.29,
-      "signal": "BUY"
     },
     {
       "ticker": "LLY",
-      "composite": 53.41,
-      "fund_score": 72.84,
+      "composite": 58.27,
+      "fund_score": 63.35,
       "signal": "HOLD"
     },
     {
-      "ticker": "FDX",
-      "composite": 53.39,
-      "fund_score": 37.86,
+      "ticker": "KDP",
+      "composite": 57.94,
+      "fund_score": 47.64,
       "signal": "HOLD"
     },
     {
-      "ticker": "SPGI",
-      "composite": 53.38,
-      "fund_score": 95.06,
+      "ticker": "GOOG",
+      "composite": 57.69,
+      "fund_score": 87.43,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "NEE",
+      "composite": 57.51,
+      "fund_score": 36.13,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "GOOGL",
+      "composite": 57.31,
+      "fund_score": 86.91,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "NOW",
+      "composite": 57.18,
+      "fund_score": 81.15,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "IT",
-      "composite": 53.07,
-      "fund_score": 61.93,
-      "signal": "STRONG_BUY"
+      "ticker": "MCO",
+      "composite": 56.86,
+      "fund_score": 79.58,
+      "signal": "BUY"
     },
     {
-      "ticker": "WMB",
-      "composite": 53.04,
-      "fund_score": 31.28,
+      "ticker": "GS",
+      "composite": 56.13,
+      "fund_score": 26.7,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "CINF",
+      "composite": 56.03,
+      "fund_score": 59.16,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "SCHW",
+      "composite": 56.01,
+      "fund_score": 56.54,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "NEM",
+      "composite": 55.65,
+      "fund_score": 97.38,
       "signal": "HOLD"
     },
     {
-      "ticker": "ETN",
-      "composite": 52.97,
-      "fund_score": 49.38,
+      "ticker": "CNP",
+      "composite": 55.28,
+      "fund_score": 9.42,
       "signal": "BUY"
     },
     {
-      "ticker": "TSN",
-      "composite": 52.82,
-      "fund_score": 32.1,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "KVUE",
-      "composite": 52.77,
-      "fund_score": 23.46,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "AAPL",
-      "composite": 52.69,
-      "fund_score": 93.42,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DOC",
-      "composite": 52.69,
-      "fund_score": 67.08,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "LDOS",
-      "composite": 52.56,
-      "fund_score": 73.46,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "HAL",
-      "composite": 52.45,
-      "fund_score": 65.43,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "ROP",
-      "composite": 52.38,
-      "fund_score": 75.93,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "CHTR",
-      "composite": 52.15,
-      "fund_score": 44.03,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PLD",
-      "composite": 52.14,
-      "fund_score": 82.51,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "VICI",
-      "composite": 51.92,
-      "fund_score": 67.9,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "INTU",
-      "composite": 51.87,
-      "fund_score": 70.58,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "DASH",
-      "composite": 51.84,
-      "fund_score": 84.57,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "PNR",
-      "composite": 51.83,
-      "fund_score": 69.14,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MAS",
-      "composite": 51.75,
-      "fund_score": 40.33,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "AMD",
-      "composite": 51.72,
-      "fund_score": 83.33,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "FAST",
-      "composite": 51.71,
-      "fund_score": 83.54,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "PHM",
-      "composite": 51.64,
-      "fund_score": 47.33,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CHRW",
-      "composite": 51.59,
-      "fund_score": 57.2,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ED",
-      "composite": 51.51,
-      "fund_score": 12.55,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "COST",
-      "composite": 51.49,
-      "fund_score": 73.66,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "IR",
-      "composite": 51.44,
-      "fund_score": 69.96,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "AEP",
-      "composite": 51.27,
-      "fund_score": 11.73,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "OXY",
-      "composite": 51.26,
-      "fund_score": 54.32,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "ABBV",
-      "composite": 51.25,
-      "fund_score": 7.82,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "BIIB",
-      "composite": 51.18,
-      "fund_score": 54.12,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "RF",
-      "composite": 51.16,
-      "fund_score": 36.21,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "AXP",
-      "composite": 51.05,
-      "fund_score": 33.74,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "PODD",
-      "composite": 50.97,
-      "fund_score": 53.5,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "BX",
-      "composite": 50.97,
-      "fund_score": 74.9,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "EXPD",
-      "composite": 50.93,
-      "fund_score": 70.16,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "INVH",
-      "composite": 50.89,
-      "fund_score": 76.95,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "EXR",
-      "composite": 50.88,
-      "fund_score": 33.13,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AVY",
-      "composite": 50.76,
-      "fund_score": 50.41,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CDW",
-      "composite": 50.61,
-      "fund_score": 45.88,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ROK",
-      "composite": 50.51,
-      "fund_score": 79.84,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "TT",
-      "composite": 50.44,
-      "fund_score": 63.58,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "META",
-      "composite": 50.43,
-      "fund_score": 88.68,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ICE",
-      "composite": 50.42,
-      "fund_score": 90.74,
+      "ticker": "IBKR",
+      "composite": 55.12,
+      "fund_score": 42.41,
       "signal": "BUY"
     },
     {
       "ticker": "PANW",
-      "composite": 50.41,
-      "fund_score": 89.71,
+      "composite": 54.72,
+      "fund_score": 83.25,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "GPN",
-      "composite": 50.3,
-      "fund_score": 37.24,
+      "ticker": "FE",
+      "composite": 54.71,
+      "fund_score": 2.62,
       "signal": "HOLD"
     },
     {
-      "ticker": "ABNB",
-      "composite": 49.95,
-      "fund_score": 85.6,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "F",
-      "composite": 49.86,
-      "fund_score": 0.82,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CTVA",
-      "composite": 49.78,
-      "fund_score": 46.3,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PCG",
-      "composite": 49.78,
-      "fund_score": 5.35,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "UPS",
-      "composite": 49.76,
-      "fund_score": 57.0,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "EPAM",
-      "composite": 49.73,
-      "fund_score": 27.78,
+      "ticker": "IDXX",
+      "composite": 54.58,
+      "fund_score": 77.49,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "PFG",
-      "composite": 49.7,
-      "fund_score": 36.42,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "EMR",
-      "composite": 49.64,
-      "fund_score": 64.81,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "D",
-      "composite": 49.63,
-      "fund_score": 19.55,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "PSX",
-      "composite": 49.56,
-      "fund_score": 24.28,
+      "ticker": "NI",
+      "composite": 54.44,
+      "fund_score": 20.94,
       "signal": "HOLD"
+    },
+    {
+      "ticker": "PWR",
+      "composite": 54.4,
+      "fund_score": 40.31,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "ETN",
+      "composite": 54.26,
+      "fund_score": 43.46,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "MET",
+      "composite": 54.02,
+      "fund_score": 3.14,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "MSI",
+      "composite": 53.13,
+      "fund_score": 60.73,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "ABBV",
+      "composite": 53.01,
+      "fund_score": 7.33,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "AXP",
+      "composite": 52.66,
+      "fund_score": 28.8,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "OMC",
+      "composite": 52.45,
+      "fund_score": 2.09,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "MA",
+      "composite": 52.19,
+      "fund_score": 87.96,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "CNC",
+      "composite": 52.16,
+      "fund_score": 15.18,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "AMD",
+      "composite": 51.96,
+      "fund_score": 73.82,
+      "signal": "STRONG_BUY"
     },
     {
       "ticker": "MS",
-      "composite": 49.52,
-      "fund_score": 29.42,
+      "composite": 51.91,
+      "fund_score": 25.13,
       "signal": "BUY"
-    },
-    {
-      "ticker": "YUM",
-      "composite": 49.52,
-      "fund_score": 43.62,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "TKO",
-      "composite": 49.41,
-      "fund_score": 54.73,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AME",
-      "composite": 49.36,
-      "fund_score": 76.13,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "KMB",
-      "composite": 49.33,
-      "fund_score": 45.06,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "BAC",
-      "composite": 49.32,
-      "fund_score": 26.75,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "BBY",
-      "composite": 49.32,
-      "fund_score": 48.35,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ANET",
-      "composite": 49.3,
-      "fund_score": 99.59,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "PSA",
-      "composite": 49.05,
-      "fund_score": 72.63,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NDAQ",
-      "composite": 49.0,
-      "fund_score": 82.1,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "NEE",
-      "composite": 49.0,
-      "fund_score": 39.92,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "J",
-      "composite": 48.86,
-      "fund_score": 51.85,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "EXC",
-      "composite": 48.77,
-      "fund_score": 4.53,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "FOXA",
-      "composite": 48.74,
-      "fund_score": 58.44,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "LUV",
-      "composite": 48.68,
-      "fund_score": 17.9,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "BLK",
-      "composite": 48.6,
-      "fund_score": 27.98,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "IEX",
-      "composite": 48.51,
-      "fund_score": 71.19,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "FITB",
-      "composite": 48.47,
-      "fund_score": 32.72,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "LIN",
-      "composite": 48.47,
-      "fund_score": 49.79,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "LNT",
-      "composite": 48.43,
-      "fund_score": 13.17,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "TMO",
-      "composite": 48.4,
-      "fund_score": 52.47,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "HOLX",
-      "composite": 48.15,
-      "fund_score": 63.37,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "BALL",
-      "composite": 48.07,
-      "fund_score": 40.95,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "WRB",
-      "composite": 48.03,
-      "fund_score": 16.46,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CME",
-      "composite": 47.91,
-      "fund_score": 68.11,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "SO",
-      "composite": 47.76,
-      "fund_score": 4.32,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "COP",
-      "composite": 47.53,
-      "fund_score": 46.71,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "SHW",
-      "composite": 47.5,
-      "fund_score": 41.98,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ZTS",
-      "composite": 47.44,
-      "fund_score": 65.84,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MPC",
-      "composite": 47.26,
-      "fund_score": 20.78,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "VLO",
-      "composite": 47.26,
-      "fund_score": 22.22,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "ROL",
-      "composite": 47.23,
-      "fund_score": 81.69,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DLR",
-      "composite": 47.17,
-      "fund_score": 53.29,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "XYL",
-      "composite": 46.99,
-      "fund_score": 65.64,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "CTAS",
-      "composite": 46.93,
-      "fund_score": 80.25,
-      "signal": "WAIT"
-    },
-    {
-      "ticker": "ITW",
-      "composite": 46.88,
-      "fund_score": 55.76,
-      "signal": "HOLD"
     },
     {
       "ticker": "STX",
-      "composite": 46.82,
-      "fund_score": 36.01,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CAT",
-      "composite": 46.71,
-      "fund_score": 36.63,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "WELL",
-      "composite": 46.67,
-      "fund_score": 41.15,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NWSA",
-      "composite": 46.61,
-      "fund_score": 74.18,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "USB",
-      "composite": 46.61,
-      "fund_score": 28.4,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "KEYS",
-      "composite": 46.35,
-      "fund_score": 60.91,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PNC",
-      "composite": 46.32,
-      "fund_score": 32.92,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "FCX",
-      "composite": 46.25,
-      "fund_score": 59.67,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DOV",
-      "composite": 46.23,
-      "fund_score": 42.59,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "AES",
-      "composite": 46.05,
-      "fund_score": 9.05,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "FOX",
-      "composite": 46.04,
-      "fund_score": 58.02,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "DE",
-      "composite": 45.96,
-      "fund_score": 30.25,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "DHR",
-      "composite": 45.93,
-      "fund_score": 72.43,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "WST",
-      "composite": 45.82,
-      "fund_score": 60.7,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ADM",
-      "composite": 45.79,
-      "fund_score": 31.07,
+      "composite": 51.61,
+      "fund_score": 30.89,
       "signal": "BUY"
     },
     {
       "ticker": "Q",
-      "composite": 45.7,
-      "fund_score": 25.51,
+      "composite": 51.52,
+      "fund_score": 21.47,
       "signal": "HOLD"
     },
     {
-      "ticker": "CFG",
-      "composite": 45.52,
-      "fund_score": 23.25,
+      "ticker": "IR",
+      "composite": 51.43,
+      "fund_score": 61.78,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "ISRG",
+      "composite": 51.34,
+      "fund_score": 84.82,
       "signal": "BUY"
     },
     {
-      "ticker": "AEE",
-      "composite": 45.44,
-      "fund_score": 19.34,
+      "ticker": "ZBH",
+      "composite": 51.31,
+      "fund_score": 52.88,
       "signal": "HOLD"
     },
     {
-      "ticker": "KKR",
-      "composite": 45.36,
-      "fund_score": 23.87,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "IBKR",
-      "composite": 45.29,
-      "fund_score": 48.56,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "LULU",
-      "composite": 45.24,
-      "fund_score": 66.67,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "WEC",
-      "composite": 45.21,
-      "fund_score": 6.17,
+      "ticker": "OXY",
+      "composite": 51.27,
+      "fund_score": 48.17,
       "signal": "HOLD"
     },
     {
-      "ticker": "BG",
-      "composite": 45.02,
-      "fund_score": 5.56,
+      "ticker": "ROST",
+      "composite": 50.91,
+      "fund_score": 60.21,
       "signal": "HOLD"
     },
     {
-      "ticker": "EBAY",
-      "composite": 44.97,
-      "fund_score": 34.98,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CMCSA",
-      "composite": 44.97,
-      "fund_score": 32.51,
+      "ticker": "PGR",
+      "composite": 50.54,
+      "fund_score": 58.12,
       "signal": "HOLD"
     },
     {
-      "ticker": "TMUS",
-      "composite": 44.89,
-      "fund_score": 23.66,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CVNA",
-      "composite": 44.68,
-      "fund_score": 55.56,
+      "ticker": "DASH",
+      "composite": 50.3,
+      "fund_score": 75.92,
       "signal": "STRONG_BUY"
     },
     {
       "ticker": "SNDK",
-      "composite": 44.66,
-      "fund_score": 33.54,
+      "composite": 49.69,
+      "fund_score": 28.27,
       "signal": "HOLD"
     },
     {
-      "ticker": "MRK",
-      "composite": 44.53,
-      "fund_score": 34.16,
+      "ticker": "V",
+      "composite": 49.22,
+      "fund_score": 96.86,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "MOS",
+      "composite": 49.1,
+      "fund_score": 51.83,
       "signal": "HOLD"
     },
     {
-      "ticker": "APTV",
-      "composite": 44.45,
-      "fund_score": 37.45,
+      "ticker": "BRO",
+      "composite": 48.9,
+      "fund_score": 92.15,
       "signal": "BUY"
     },
     {
-      "ticker": "COF",
-      "composite": 44.3,
-      "fund_score": 14.81,
+      "ticker": "ROK",
+      "composite": 48.8,
+      "fund_score": 69.11,
       "signal": "BUY"
     },
     {
-      "ticker": "LYV",
-      "composite": 44.27,
-      "fund_score": 11.93,
+      "ticker": "AAPL",
+      "composite": 48.78,
+      "fund_score": 88.48,
       "signal": "BUY"
     },
     {
-      "ticker": "EQIX",
-      "composite": 44.16,
-      "fund_score": 31.69,
+      "ticker": "SO",
+      "composite": 48.7,
+      "fund_score": 3.66,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "STLD",
+      "composite": 48.65,
+      "fund_score": 32.98,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "AEP",
+      "composite": 48.61,
+      "fund_score": 10.99,
       "signal": "HOLD"
     },
     {
-      "ticker": "MCD",
-      "composite": 44.16,
-      "fund_score": 43.21,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "LW",
-      "composite": 44.11,
-      "fund_score": 46.5,
+      "ticker": "FAST",
+      "composite": 48.33,
+      "fund_score": 74.35,
       "signal": "BUY"
     },
     {
-      "ticker": "EQR",
-      "composite": 44.07,
-      "fund_score": 77.78,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "XYZ",
-      "composite": 43.99,
-      "fund_score": 44.44,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "AWK",
-      "composite": 43.86,
-      "fund_score": 16.87,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "WSM",
-      "composite": 43.71,
-      "fund_score": 75.51,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "SRE",
-      "composite": 43.7,
-      "fund_score": 11.11,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PG",
-      "composite": 43.61,
-      "fund_score": 73.05,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "KO",
-      "composite": 43.58,
-      "fund_score": 42.8,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "TGT",
-      "composite": 43.39,
-      "fund_score": 28.19,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "EW",
-      "composite": 43.36,
-      "fund_score": 20.58,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "COO",
-      "composite": 43.28,
-      "fund_score": 29.01,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NTRS",
-      "composite": 43.18,
-      "fund_score": 15.84,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CPT",
-      "composite": 43.18,
-      "fund_score": 89.51,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AMZN",
-      "composite": 43.18,
-      "fund_score": 51.65,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "KR",
-      "composite": 43.07,
-      "fund_score": 18.93,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "HPQ",
-      "composite": 43.04,
-      "fund_score": 21.6,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "APO",
-      "composite": 42.89,
-      "fund_score": 20.99,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "WTW",
-      "composite": 42.78,
-      "fund_score": 66.05,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "SWK",
-      "composite": 42.76,
-      "fund_score": 38.07,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "BK",
-      "composite": 42.4,
-      "fund_score": 29.84,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DD",
-      "composite": 42.3,
-      "fund_score": 26.34,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "MMM",
-      "composite": 42.2,
-      "fund_score": 17.7,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "HAS",
-      "composite": 42.16,
-      "fund_score": 2.47,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "RVTY",
-      "composite": 42.09,
-      "fund_score": 63.17,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "TRGP",
-      "composite": 42.07,
-      "fund_score": 22.02,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CLX",
-      "composite": 41.93,
-      "fund_score": 52.67,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "IP",
-      "composite": 41.89,
-      "fund_score": 5.14,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PH",
-      "composite": 41.74,
-      "fund_score": 57.82,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "FTNT",
-      "composite": 41.74,
-      "fund_score": 86.01,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "GM",
-      "composite": 41.66,
-      "fund_score": 19.75,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "VTRS",
-      "composite": 41.37,
-      "fund_score": 9.47,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PNW",
-      "composite": 41.29,
-      "fund_score": 6.38,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "IRM",
-      "composite": 41.18,
-      "fund_score": 1.23,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "HBAN",
-      "composite": 41.11,
-      "fund_score": 17.08,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MDLZ",
-      "composite": 41.11,
-      "fund_score": 42.39,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ETR",
-      "composite": 41.01,
-      "fund_score": 4.73,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PFE",
-      "composite": 40.95,
-      "fund_score": 5.97,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "PSKY",
-      "composite": 40.66,
-      "fund_score": 8.64,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "EA",
-      "composite": 40.64,
-      "fund_score": 47.53,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "SLB",
-      "composite": 40.58,
-      "fund_score": 34.36,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DPZ",
-      "composite": 40.54,
-      "fund_score": 33.33,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "TYL",
-      "composite": 40.53,
-      "fund_score": 72.22,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "ECL",
-      "composite": 40.37,
-      "fund_score": 18.52,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "RSG",
-      "composite": 40.34,
-      "fund_score": 51.03,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "SBAC",
-      "composite": 40.23,
-      "fund_score": 14.2,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CPB",
-      "composite": 40.02,
-      "fund_score": 40.53,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DHI",
-      "composite": 39.91,
-      "fund_score": 8.44,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "LHX",
-      "composite": 39.77,
-      "fund_score": 39.71,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "SJM",
-      "composite": 39.69,
-      "fund_score": 1.85,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "IFF",
-      "composite": 39.69,
-      "fund_score": 12.14,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "BA",
-      "composite": 39.54,
-      "fund_score": 28.81,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CHD",
-      "composite": 39.4,
-      "fund_score": 58.64,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "MDT",
-      "composite": 39.3,
-      "fund_score": 9.26,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "NWS",
-      "composite": 39.15,
-      "fund_score": 74.18,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "GIS",
-      "composite": 38.97,
-      "fund_score": 56.79,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "GPC",
-      "composite": 38.92,
-      "fund_score": 19.96,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "CL",
-      "composite": 38.81,
-      "fund_score": 46.09,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "SWKS",
-      "composite": 38.7,
-      "fund_score": 60.29,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "LEN",
-      "composite": 38.57,
-      "fund_score": 52.88,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "HD",
-      "composite": 38.42,
-      "fund_score": 35.39,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "IVZ",
-      "composite": 38.39,
-      "fund_score": 3.7,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "WYNN",
-      "composite": 38.27,
-      "fund_score": 0.41,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "BF-B",
-      "composite": 38.18,
-      "fund_score": 52.26,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "DDOG",
-      "composite": 38.07,
-      "fund_score": 60.08,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "BAX",
-      "composite": 38.03,
-      "fund_score": 6.58,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CBRE",
-      "composite": 38.01,
-      "fund_score": 7.0,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "APD",
-      "composite": 37.94,
-      "fund_score": 25.72,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "HSY",
-      "composite": 37.87,
-      "fund_score": 40.12,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "STZ",
-      "composite": 37.75,
-      "fund_score": 44.86,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "XOM",
-      "composite": 37.64,
-      "fund_score": 24.07,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MTB",
-      "composite": 37.55,
-      "fund_score": 21.19,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "KEY",
-      "composite": 37.22,
-      "fund_score": 12.96,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "TECH",
-      "composite": 37.1,
-      "fund_score": 59.26,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CSX",
-      "composite": 36.93,
-      "fund_score": 31.89,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "C",
-      "composite": 36.91,
-      "fund_score": 4.12,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "FTV",
-      "composite": 36.84,
-      "fund_score": 39.09,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CAG",
-      "composite": 36.41,
-      "fund_score": 7.2,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "VRSN",
-      "composite": 36.02,
-      "fund_score": 51.44,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "TFC",
-      "composite": 35.96,
-      "fund_score": 17.28,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "SNPS",
-      "composite": 35.92,
-      "fund_score": 62.55,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "BKR",
-      "composite": 35.74,
-      "fund_score": 21.81,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PKG",
-      "composite": 35.71,
-      "fund_score": 10.7,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "WFC",
-      "composite": 35.7,
-      "fund_score": 18.72,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "TXN",
-      "composite": 35.68,
-      "fund_score": 49.18,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "RJF",
-      "composite": 35.58,
-      "fund_score": 24.49,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "NKE",
-      "composite": 35.45,
-      "fund_score": 32.3,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CIEN",
-      "composite": 35.36,
-      "fund_score": 30.45,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "NSC",
-      "composite": 35.21,
-      "fund_score": 35.6,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "TAP",
-      "composite": 35.07,
-      "fund_score": 10.49,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "STT",
-      "composite": 35.05,
-      "fund_score": 10.91,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MAR",
-      "composite": 34.72,
-      "fund_score": 11.32,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "PM",
-      "composite": 34.71,
-      "fund_score": 20.37,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CPRT",
-      "composite": 34.67,
-      "fund_score": 70.78,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "PPG",
-      "composite": 34.59,
-      "fund_score": 11.52,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "POOL",
-      "composite": 34.55,
-      "fund_score": 26.95,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "AFL",
-      "composite": 34.51,
-      "fund_score": 14.4,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "HPE",
-      "composite": 34.37,
-      "fund_score": 14.61,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DIS",
-      "composite": 34.05,
-      "fund_score": 29.63,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AXON",
-      "composite": 33.75,
-      "fund_score": 37.65,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "VRSK",
-      "composite": 33.47,
-      "fund_score": 43.42,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "JBHT",
-      "composite": 33.19,
-      "fund_score": 24.69,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CEG",
-      "composite": 33.1,
+      "ticker": "PODD",
+      "composite": 48.1,
       "fund_score": 47.12,
       "signal": "BUY"
     },
     {
-      "ticker": "AJG",
-      "composite": 33.0,
-      "fund_score": 34.77,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "HRL",
-      "composite": 32.99,
-      "fund_score": 16.67,
+      "ticker": "SMCI",
+      "composite": 47.86,
+      "fund_score": 38.22,
       "signal": "HOLD"
     },
     {
-      "ticker": "PCAR",
-      "composite": 32.9,
-      "fund_score": 30.86,
+      "ticker": "D",
+      "composite": 47.79,
+      "fund_score": 16.23,
       "signal": "BUY"
     },
     {
-      "ticker": "WMT",
-      "composite": 32.88,
-      "fund_score": 19.14,
+      "ticker": "BLK",
+      "composite": 47.69,
+      "fund_score": 24.08,
       "signal": "BUY"
     },
     {
-      "ticker": "WBD",
-      "composite": 32.63,
-      "fund_score": 30.04,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "VST",
-      "composite": 32.57,
-      "fund_score": 13.99,
+      "ticker": "HUM",
+      "composite": 47.63,
+      "fund_score": 35.6,
       "signal": "BUY"
     },
     {
-      "ticker": "EL",
-      "composite": 32.48,
-      "fund_score": 1.65,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CCI",
-      "composite": 32.47,
-      "fund_score": 5.76,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ORLY",
-      "composite": 32.4,
-      "fund_score": 15.64,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "VMC",
-      "composite": 32.21,
-      "fund_score": 23.05,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "TSCO",
-      "composite": 31.72,
-      "fund_score": 24.9,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "UDR",
-      "composite": 31.52,
-      "fund_score": 50.62,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "KHC",
-      "composite": 31.51,
-      "fund_score": 12.35,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CSGP",
-      "composite": 31.27,
-      "fund_score": 27.16,
+      "ticker": "PAYC",
+      "composite": 47.33,
+      "fund_score": 76.44,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "CVX",
-      "composite": 31.25,
-      "fund_score": 6.79,
-      "signal": "HOLD"
+      "ticker": "BX",
+      "composite": 46.34,
+      "fund_score": 64.92,
+      "signal": "STRONG_BUY"
     },
     {
-      "ticker": "MAA",
-      "composite": 31.21,
-      "fund_score": 52.06,
+      "ticker": "PAYX",
+      "composite": 45.25,
+      "fund_score": 89.53,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "EXPE",
+      "composite": 44.87,
+      "fund_score": 57.59,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "ZBRA",
+      "composite": 44.53,
+      "fund_score": 43.98,
       "signal": "BUY"
     },
     {
-      "ticker": "ON",
-      "composite": 31.15,
-      "fund_score": 25.93,
+      "ticker": "IRM",
+      "composite": 44.24,
+      "fund_score": 1.05,
       "signal": "HOLD"
     },
     {
-      "ticker": "GNRC",
-      "composite": 30.75,
-      "fund_score": 7.41,
+      "ticker": "WAB",
+      "composite": 44.23,
+      "fund_score": 52.36,
       "signal": "HOLD"
     },
     {
-      "ticker": "WAT",
-      "composite": 30.55,
-      "fund_score": 44.24,
+      "ticker": "RF",
+      "composite": 43.92,
+      "fund_score": 31.41,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "LYV",
+      "composite": 43.91,
+      "fund_score": 11.52,
       "signal": "BUY"
     },
     {
-      "ticker": "COIN",
-      "composite": 30.46,
-      "fund_score": 27.37,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MO",
-      "composite": 30.45,
-      "fund_score": 3.09,
+      "ticker": "FITB",
+      "composite": 43.88,
+      "fund_score": 27.75,
       "signal": "HOLD"
     },
     {
-      "ticker": "MOH",
-      "composite": 30.29,
-      "fund_score": 3.5,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "LOW",
-      "composite": 30.25,
-      "fund_score": 12.76,
+      "ticker": "SRE",
+      "composite": 43.13,
+      "fund_score": 10.47,
       "signal": "HOLD"
     },
     {
-      "ticker": "ABT",
-      "composite": 30.16,
-      "fund_score": 16.05,
+      "ticker": "KEYS",
+      "composite": 43.03,
+      "fund_score": 54.97,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "EW",
+      "composite": 43.03,
+      "fund_score": 16.75,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "ULTA",
+      "composite": 42.85,
+      "fund_score": 58.64,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "KKR",
+      "composite": 42.55,
+      "fund_score": 19.9,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "WEC",
+      "composite": 42.54,
+      "fund_score": 5.76,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "PRU",
+      "composite": 42.33,
+      "fund_score": 56.02,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "INTU",
+      "composite": 42.23,
+      "fund_score": 62.3,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "UNH",
+      "composite": 41.87,
+      "fund_score": 44.5,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "CVNA",
+      "composite": 41.81,
+      "fund_score": 49.21,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "FDX",
+      "composite": 41.58,
+      "fund_score": 34.03,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "ABNB",
+      "composite": 41.55,
+      "fund_score": 78.01,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "EPAM",
+      "composite": 41.52,
+      "fund_score": 23.56,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "BAC",
+      "composite": 41.41,
+      "fund_score": 22.51,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "META",
+      "composite": 41.39,
+      "fund_score": 81.68,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "ANET",
+      "composite": 41.25,
+      "fund_score": 98.95,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "WELL",
+      "composite": 41.1,
+      "fund_score": 37.7,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "DLR",
+      "composite": 40.41,
+      "fund_score": 46.6,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "CAT",
+      "composite": 40.25,
+      "fund_score": 31.94,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "DE",
+      "composite": 40.22,
+      "fund_score": 25.65,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "CI",
+      "composite": 40.21,
+      "fund_score": 59.69,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "COF",
+      "composite": 40.13,
+      "fund_score": 14.14,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "AME",
+      "composite": 39.6,
+      "fund_score": 65.45,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "HAS",
+      "composite": 39.29,
+      "fund_score": 1.57,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "UBER",
+      "composite": 38.65,
+      "fund_score": 64.4,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "DD",
+      "composite": 38.36,
+      "fund_score": 21.99,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "CIEN",
+      "composite": 38.14,
+      "fund_score": 26.18,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "CFG",
+      "composite": 37.87,
+      "fund_score": 18.85,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "TMUS",
+      "composite": 37.36,
+      "fund_score": 19.37,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "EBAY",
+      "composite": 37.08,
+      "fund_score": 30.37,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "IP",
+      "composite": 36.84,
+      "fund_score": 4.71,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "ECL",
+      "composite": 35.69,
+      "fund_score": 15.71,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "AMZN",
+      "composite": 34.67,
+      "fund_score": 45.55,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "DDOG",
+      "composite": 34.51,
+      "fund_score": 53.93,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "TXN",
+      "composite": 34.34,
+      "fund_score": 42.93,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "AXON",
+      "composite": 34.26,
+      "fund_score": 33.51,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "APO",
+      "composite": 33.35,
+      "fund_score": 17.28,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "J",
+      "composite": 33.13,
+      "fund_score": 46.07,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "HBAN",
+      "composite": 32.85,
+      "fund_score": 14.66,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "FTNT",
+      "composite": 32.2,
+      "fund_score": 78.53,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "BALL",
+      "composite": 31.93,
+      "fund_score": 37.17,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "BA",
+      "composite": 31.83,
+      "fund_score": 24.61,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "BG",
+      "composite": 31.69,
+      "fund_score": 5.24,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "CSGP",
+      "composite": 29.28,
+      "fund_score": 23.04,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "SNPS",
+      "composite": 28.89,
+      "fund_score": 55.5,
       "signal": "BUY"
     },
     {
       "ticker": "HOOD",
-      "composite": 29.67,
-      "fund_score": 31.48,
+      "composite": 28.45,
+      "fund_score": 27.23,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "JPM",
-      "composite": 29.56,
-      "fund_score": 16.26,
+      "ticker": "PKG",
+      "composite": 28.36,
+      "fund_score": 9.95,
       "signal": "HOLD"
     },
     {
-      "ticker": "WDC",
-      "composite": 29.51,
-      "fund_score": 40.74,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "BLDR",
-      "composite": 29.42,
-      "fund_score": 22.84,
+      "ticker": "CBRE",
+      "composite": 28.3,
+      "fund_score": 6.28,
       "signal": "BUY"
     },
     {
-      "ticker": "BXP",
-      "composite": 29.42,
-      "fund_score": 1.44,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ALB",
-      "composite": 29.36,
-      "fund_score": 8.02,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "HLT",
-      "composite": 28.78,
-      "fund_score": 26.54,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "CMG",
-      "composite": 28.58,
-      "fund_score": 43.83,
+      "ticker": "KEY",
+      "composite": 26.88,
+      "fund_score": 12.04,
       "signal": "BUY"
     },
     {
       "ticker": "TTWO",
-      "composite": 28.52,
-      "fund_score": 8.85,
+      "composite": 26.66,
+      "fund_score": 8.38,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "HON",
-      "composite": 28.43,
-      "fund_score": 27.57,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "MSCI",
-      "composite": 28.37,
-      "fund_score": 36.83,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "WY",
-      "composite": 26.77,
-      "fund_score": 3.91,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "CARR",
-      "composite": 26.59,
-      "fund_score": 15.23,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "AVB",
-      "composite": 26.23,
-      "fund_score": 17.49,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ARES",
-      "composite": 25.75,
-      "fund_score": 7.61,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "LYB",
-      "composite": 25.56,
-      "fund_score": 2.06,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "MRNA",
-      "composite": 23.25,
-      "fund_score": 2.26,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "MPWR",
-      "composite": 22.75,
-      "fund_score": 13.58,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "MCHP",
-      "composite": 22.34,
-      "fund_score": 4.94,
+      "ticker": "VRSK",
+      "composite": 26.38,
+      "fund_score": 39.79,
       "signal": "BUY"
     },
     {
       "ticker": "CRWD",
-      "composite": 21.88,
-      "fund_score": 9.67,
+      "composite": 25.43,
+      "fund_score": 8.9,
       "signal": "STRONG_BUY"
     },
     {
-      "ticker": "CRL",
-      "composite": 21.5,
-      "fund_score": 8.23,
+      "ticker": "ALB",
+      "composite": 24.87,
+      "fund_score": 7.85,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "MPWR",
+      "composite": 24.19,
+      "fund_score": 12.57,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "MCHP",
+      "composite": 23.88,
+      "fund_score": 4.19,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "WDC",
+      "composite": 22.7,
+      "fund_score": 36.65,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "ARES",
+      "composite": 22.65,
+      "fund_score": 6.81,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "AJG",
+      "composite": 22.46,
+      "fund_score": 29.84,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "MSCI",
+      "composite": 22.44,
+      "fund_score": 32.46,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "HPE",
+      "composite": 20.96,
+      "fund_score": 13.61,
       "signal": "BUY"
     },
     {
       "ticker": "FISV",
-      "composite": 20.28,
-      "fund_score": 0.21,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "INTC",
-      "composite": 20.16,
-      "fund_score": 13.37,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ESS",
-      "composite": 20.15,
-      "fund_score": 15.43,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "ODFL",
-      "composite": 19.98,
-      "fund_score": 28.6,
-      "signal": "HOLD"
-    },
-    {
-      "ticker": "TSLA",
-      "composite": 19.65,
-      "fund_score": 18.11,
-      "signal": "STRONG_BUY"
-    },
-    {
-      "ticker": "SBUX",
-      "composite": 18.92,
-      "fund_score": 0.62,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "ARE",
-      "composite": 17.24,
-      "fund_score": 10.08,
-      "signal": "BUY"
-    },
-    {
-      "ticker": "DOW",
-      "composite": 10.48,
-      "fund_score": 1.03,
+      "composite": 20.78,
+      "fund_score": 0.52,
       "signal": "BUY"
     }
   ]

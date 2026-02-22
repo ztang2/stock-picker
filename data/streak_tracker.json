@@ -1,43 +1,33 @@
 {
   "ALL": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "ACGL": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "TRV": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "MCK": {
-    "consecutive_days": 8,
+    "consecutive_days": 9,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
-  },
-  "HIG": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-20"
-  },
-  "CB": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-20"
+    "last_seen": "2026-02-22"
   },
   "CAH": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "EQT": {
-    "consecutive_days": 6,
+    "consecutive_days": 7,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "NEM": {
     "consecutive_days": 0,
@@ -45,34 +35,29 @@
     "last_seen": "2026-02-21"
   },
   "CTRA": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "UHS": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "CF": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
-  },
-  "HCA": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-20"
+    "last_seen": "2026-02-22"
   },
   "TEL": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "CPAY": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "RL": {
     "consecutive_days": 0,
@@ -80,59 +65,44 @@
     "last_seen": "2026-02-21"
   },
   "ES": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-18",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "HII": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-19",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "TXT": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-21"
-  },
-  "ABBV": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-16",
-    "last_seen": "2026-02-20"
+    "last_seen": "2026-02-22"
   },
   "INCY": {
     "consecutive_days": 0,
     "first_seen": "2026-02-19",
     "last_seen": "2026-02-21"
   },
-  "EXE": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-20",
-    "last_seen": "2026-02-20"
-  },
-  "HST": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-20",
-    "last_seen": "2026-02-20"
-  },
   "COR": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-21",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "PYPL": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-21",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "EIX": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-21",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "ELV": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-21",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "JBL": {
     "consecutive_days": 0,
@@ -235,11 +205,16 @@
     "last_seen": "2026-02-21"
   },
   "ADBE": {
-    "consecutive_days": 0,
+    "consecutive_days": 1,
     "first_seen": "2026-02-21",
-    "last_seen": "2026-02-21"
+    "last_seen": "2026-02-22"
   },
   "GDDY": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-22"
+  },
+  "AVGO": {
     "consecutive_days": 0,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-21"

@@ -446,3 +446,90 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 2026-02-21 22:08:33,179 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
 /Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
   warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10188]
+INFO:     Started server process [19377]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-02-21 22:10:01,123 INFO src.pipeline: Using cached stock data (3.0h old)
+2026-02-21 22:10:02,049 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-21 22:10:10,995 INFO src.pipeline: Using cached stock data (3.0h old)
+2026-02-21 22:10:11,386 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-21 22:10:11,520 INFO src.pipeline: Using cached stock data (3.0h old)
+2026-02-21 22:10:11,790 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-21 22:15:41,489 INFO src.pipeline: Using cached stock data (3.1h old)
+2026-02-21 22:15:44,435 INFO src.universe: Loaded 503 tickers from cache
+2026-02-21 22:15:44,436 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-21 22:15:44,436 INFO src.pipeline: Using cached stock data (3.1h old)
+2026-02-21 22:15:45,114 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+2026-02-21 22:15:45,114 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-21 22:15:47,300 INFO src.pipeline: Analyzed 486 stocks
+2026-02-21 22:15:47,300 INFO src.pipeline: After filtering: 486 stocks
+2026-02-21 22:15:47,317 INFO src.pipeline: ML integration: 3 snapshots available, ML weight = 0% (insufficient data)
+2026-02-21 22:15:47,318 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-21 22:15:48,839 INFO src.pipeline: Smart money fetch completed in 1.5s
+2026-02-21 22:15:50,521 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-21 22:15:50,549 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-21 22:15:52,505 INFO src.pipeline: Using cached stock data (3.1h old)
+2026-02-21 22:16:07,287 INFO src.pipeline: Using cached stock data (3.1h old)
+2026-02-21 22:16:07,896 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+2026-02-21 22:20:51,036 INFO src.pipeline: Using cached stock data (3.2h old)
+2026-02-21 22:24:08,605 INFO src.universe: Loaded 503 tickers from cache
+2026-02-21 22:24:08,605 INFO src.pipeline: Scanning 503 tickers with strategy 'conservative'...
+2026-02-21 22:24:08,606 INFO src.pipeline: Using cached stock data (3.2h old)
+2026-02-21 22:24:09,277 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+2026-02-21 22:24:09,277 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-21 22:24:11,342 INFO src.pipeline: Analyzed 469 stocks
+2026-02-21 22:24:11,342 INFO src.pipeline: After filtering: 253 stocks
+2026-02-21 22:24:11,353 INFO src.pipeline: ML integration: 3 snapshots available, ML weight = 0% (insufficient data)
+2026-02-21 22:24:11,354 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-21 22:24:12,676 INFO src.pipeline: Smart money fetch completed in 1.3s
+2026-02-21 22:24:13,477 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-21 22:24:13,494 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-21 22:24:13,514 INFO src.universe: Loaded 503 tickers from cache
+2026-02-21 22:24:13,515 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-21 22:24:13,515 INFO src.pipeline: Using cached stock data (3.2h old)
+2026-02-21 22:24:13,886 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+2026-02-21 22:24:13,886 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-21 22:24:16,017 INFO src.pipeline: Analyzed 486 stocks
+2026-02-21 22:24:16,017 INFO src.pipeline: After filtering: 486 stocks
+2026-02-21 22:24:16,033 INFO src.pipeline: ML integration: 3 snapshots available, ML weight = 0% (insufficient data)
+2026-02-21 22:24:16,033 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-21 22:24:17,321 INFO src.pipeline: Smart money fetch completed in 1.3s
+2026-02-21 22:24:17,323 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-21 22:24:17,337 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-21 22:24:17,347 INFO src.universe: Loaded 503 tickers from cache
+2026-02-21 22:24:17,347 INFO src.pipeline: Scanning 503 tickers with strategy 'aggressive'...
+2026-02-21 22:24:17,347 INFO src.pipeline: Using cached stock data (3.2h old)
+2026-02-21 22:24:17,735 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+2026-02-21 22:24:17,735 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-21 22:24:19,880 INFO src.pipeline: Analyzed 486 stocks
+2026-02-21 22:24:19,880 INFO src.pipeline: After filtering: 191 stocks
+2026-02-21 22:24:19,892 INFO src.pipeline: ML integration: 3 snapshots available, ML weight = 0% (insufficient data)
+2026-02-21 22:24:19,892 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-21 22:24:21,278 INFO src.pipeline: Smart money fetch completed in 1.4s
+2026-02-21 22:24:22,236 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-21 22:24:22,251 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-21 22:46:01,492 INFO src.pipeline: Using cached stock data (3.6h old)
+2026-02-22 08:00:27,110 INFO src.universe: Loaded 503 tickers from cache
+2026-02-22 08:00:27,111 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-22 08:00:27,111 INFO src.pipeline: Using cached stock data (12.8h old)
+2026-02-22 08:00:27,834 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $689.43 is 6.3% above 200MA ($648.59), trending up. Bull market detected.
+2026-02-22 08:00:27,834 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-22 08:00:29,971 INFO src.pipeline: Analyzed 486 stocks
+2026-02-22 08:00:29,971 INFO src.pipeline: After filtering: 486 stocks
+2026-02-22 08:00:29,987 INFO src.pipeline: ML integration: 3 snapshots available, ML weight = 0% (insufficient data)
+2026-02-22 08:00:29,987 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-22 08:00:31,313 INFO src.pipeline: Smart money fetch completed in 1.3s
+2026-02-22 08:00:33,112 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-22 08:00:33,139 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-22 08:00:33,147 INFO src.pipeline: Saved daily snapshot: /Users/zhuorantang/clawd/stock-picker/data/daily_snapshots/2026-02-22.json
