@@ -1,11 +1,29 @@
 {
-  "verified_at": "2026-02-22T11:29:35.215817",
+  "verified_at": "2026-02-23T13:30:09.009112",
   "collection_start": "2026-02-19",
-  "expected_trading_days": 2,
-  "snapshots_found": 4,
-  "valid_snapshots": 2,
+  "expected_trading_days": 3,
+  "snapshots_found": 7,
+  "valid_snapshots": 1,
   "missing_days": [],
   "file_issues": {
+    "2026-02-17": {
+      "valid": false,
+      "issues": [
+        "Low stock count: 0 (expected ~486)",
+        "Incomplete top list: 0 (expected 20)"
+      ],
+      "stocks": 0,
+      "top": 0
+    },
+    "2026-02-18": {
+      "valid": false,
+      "issues": [
+        "Low stock count: 0 (expected ~486)",
+        "Incomplete top list: 0 (expected 20)"
+      ],
+      "stocks": 0,
+      "top": 0
+    },
     "2026-02-19": {
       "valid": false,
       "issues": [
@@ -21,6 +39,22 @@
       ],
       "stocks": 0,
       "top": 20
+    },
+    "2026-02-22": {
+      "valid": false,
+      "issues": [
+        "Incomplete top list: 0 (expected 20)"
+      ],
+      "stocks": 486,
+      "top": 0
+    },
+    "2026-02-23": {
+      "valid": false,
+      "issues": [
+        "Incomplete top list: 0 (expected 20)"
+      ],
+      "stocks": 486,
+      "top": 0
     }
   },
   "extra_days": [
@@ -28,5 +62,5 @@
     "2026-02-22"
   ],
   "status": "ISSUES_FOUND",
-  "completeness_pct": 100.0
+  "completeness_pct": 33.3
 }

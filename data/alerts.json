@@ -1,209 +1,6 @@
 [
   {
     "type": "new_entry",
-    "ticker": "KEYS",
-    "message": "KEYS entered top 20 (score: 72.9)",
-    "severity": "info",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "SPG",
-    "message": "SPG entered top 20 (score: 72.3)",
-    "severity": "info",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "FANG",
-    "message": "FANG entered top 20 (score: 71.7)",
-    "severity": "info",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "TER",
-    "message": "TER entered top 20 (score: 70.7)",
-    "severity": "info",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "ACGL",
-    "message": "ACGL dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "ALL",
-    "message": "ALL dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "TRV",
-    "message": "TRV dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "HIG",
-    "message": "HIG dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CF",
-    "message": "CF dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CB",
-    "message": "CB dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CTRA",
-    "message": "CTRA dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "HCA",
-    "message": "HCA dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CAH",
-    "message": "CAH dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "AMGN",
-    "message": "AMGN dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CINF",
-    "message": "CINF dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "score_change",
-    "ticker": "MCK",
-    "message": "MCK score moved down by 12.9 (87.5 \u2192 74.6)",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "score_change",
-    "ticker": "LVS",
-    "message": "LVS score moved down by 10.6 (83.8 \u2192 73.2)",
-    "severity": "warning",
-    "timestamp": "2026-02-15T17:27:26"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "CF",
-    "message": "CF entered top 20 (score: 71.1)",
-    "severity": "info",
-    "timestamp": "2026-02-15T21:53:16"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "STLD",
-    "message": "STLD entered top 20 (score: 69.6)",
-    "severity": "info",
-    "timestamp": "2026-02-15T21:53:16"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "JBL",
-    "message": "JBL entered top 20 (score: 68.9)",
-    "severity": "info",
-    "timestamp": "2026-02-15T21:53:16"
-  },
-  {
-    "type": "dropped",
-    "ticker": "KEYS",
-    "message": "KEYS dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T21:53:16"
-  },
-  {
-    "type": "dropped",
-    "ticker": "FANG",
-    "message": "FANG dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T21:53:16"
-  },
-  {
-    "type": "dropped",
-    "ticker": "TER",
-    "message": "TER dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-02-15T21:53:16"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "ALL",
-    "message": "ALL entered top 20 (score: 88.2)",
-    "severity": "info",
-    "timestamp": "2026-02-15T21:59:12"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "ACGL",
-    "message": "ACGL entered top 20 (score: 87.4)",
-    "severity": "info",
-    "timestamp": "2026-02-15T21:59:12"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "TRV",
-    "message": "TRV entered top 20 (score: 86.5)",
-    "severity": "info",
-    "timestamp": "2026-02-15T21:59:12"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "HIG",
-    "message": "HIG entered top 20 (score: 82.3)",
-    "severity": "info",
-    "timestamp": "2026-02-15T21:59:12"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "CB",
-    "message": "CB entered top 20 (score: 80.3)",
-    "severity": "info",
-    "timestamp": "2026-02-15T21:59:12"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "CAH",
-    "message": "CAH entered top 20 (score: 79.4)",
-    "severity": "info",
-    "timestamp": "2026-02-15T21:59:12"
-  },
-  {
-    "type": "new_entry",
     "ticker": "CVS",
     "message": "CVS entered top 20 (score: 77.6)",
     "severity": "info",
@@ -1398,5 +1195,208 @@
     "message": "TXT has STRONG SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
     "severity": "critical",
     "timestamp": "2026-02-21T22:46:01"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-22T19:14:40"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "HIG",
+    "message": "HIG entered top 20 (score: 83.6)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:18:35"
+  },
+  {
+    "type": "dropped",
+    "ticker": "EIX",
+    "message": "EIX dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-02-22T19:18:35"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-22T19:18:35"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "ALL",
+    "message": "ALL entered top 20 (score: 89.8)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "CF",
+    "message": "CF entered top 20 (score: 85.3)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "ACGL",
+    "message": "ACGL entered top 20 (score: 83.8)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "HIG",
+    "message": "HIG entered top 20 (score: 83.6)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "EQT",
+    "message": "EQT entered top 20 (score: 83.5)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "UHS",
+    "message": "UHS entered top 20 (score: 81.7)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "HII",
+    "message": "HII entered top 20 (score: 81.1)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "TEL",
+    "message": "TEL entered top 20 (score: 81.0)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "COR",
+    "message": "COR entered top 20 (score: 80.3)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "TXT",
+    "message": "TXT entered top 20 (score: 79.7)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "TRV",
+    "message": "TRV entered top 20 (score: 79.4)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "CPAY",
+    "message": "CPAY entered top 20 (score: 76.8)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "CAH",
+    "message": "CAH entered top 20 (score: 76.5)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "CTRA",
+    "message": "CTRA entered top 20 (score: 76.5)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "ELV",
+    "message": "ELV entered top 20 (score: 76.4)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "MCK",
+    "message": "MCK entered top 20 (score: 76.4)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "PYPL",
+    "message": "PYPL entered top 20 (score: 76.0)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "ES",
+    "message": "ES entered top 20 (score: 75.6)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "ADBE",
+    "message": "ADBE entered top 20 (score: 75.1)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "GDDY",
+    "message": "GDDY entered top 20 (score: 74.7)",
+    "severity": "info",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "PYPL",
+    "message": "PYPL entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "ADBE",
+    "message": "ADBE entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "GDDY",
+    "message": "GDDY entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-22T19:32:37"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TXT",
+    "message": "TXT has SELL signal: RSI extremely overbought (86.4); Price near resistance ($101.57, +0.8%)",
+    "severity": "warning",
+    "timestamp": "2026-02-22T19:36:07"
   }
 ]

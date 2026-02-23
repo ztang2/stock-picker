@@ -481,7 +481,7 @@ async function loadCached(){
   loadAlertsBanner();
 }
 function processResults(data){
-  const stocks=data.results||data.top||data;
+  const stocks=data.results||data.stocks||data.top||data;
   if(!Array.isArray(stocks)||!stocks.length)return;
   allStocks=stocks.map((s,i)=>({...s,rank:s.rank||i+1}));
   
@@ -548,7 +548,7 @@ async function showComparison(){
       html+='<div class="compare-col"><h3>'+emojis[s]+' '+s.charAt(0).toUpperCase()+s.slice(1)+'</h3>';
       html+='<div style="font-size:.75rem;color:var(--text2);margin-bottom:8px">'+data.stocks_after_filter+' stocks passed filters</div>';
       html+='<table><thead><tr><th>#</th><th>Ticker</th><th>Score</th></tr></thead><tbody>';
-      (data.top||[]).forEach(t=>{
+      (data.stocks||data.top||[]).forEach(t=>{
         html+='<tr><td>'+t.rank+'</td><td class="ticker-cell">'+t.ticker+'</td><td class="score '+scoreClass(t.composite_score)+'">'+fmtScore(t.composite_score)+'</td></tr>';
       });
       html+='</tbody></table></div>';
