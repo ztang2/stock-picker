@@ -1,0 +1,82 @@
+**POST-MARKET CHECK — Run Daily After Market Close (4:30 PM EST)**
+
+Call the consolidated API endpoint and format the response for Discord:
+
+```bash
+curl -s 'http://localhost:8000/portfolio/check'
+```
+
+Parse the JSON response and create a Discord message with these sections:
+
+## 1. Validation Report
+- Display the `validation.report` field (already formatted)
+- If `validation.error` exists, note it but **don't panic**
+- Check if data actually exists before reporting "data loss"
+
+## 2. Holdings Performance
+```
+📊 **Portfolio Holdings** ({{holdings_count}} positions)
+{{#each holdings}}
+• {{ticker}}: {{score}} ({{signal}}) — {{entry_price}} → {{current_price}} ({{total_return_pct}}%)
+{{/each}}
+
+Portfolio avg return: {{portfolio_summary.avg_return}}%
+Best: {{portfolio_summary.best}}
+Worst: {{portfolio_summary.worst}}
+```
+
+## 3. Rebalance Suggestions
+- Display the `rebalance.report` field (already formatted)
+- If `rebalance.error` exists, note it
+- Don't treat rebalance errors as critical
+
+## 4. Snapshot Verification
+- Display the `snapshots.report` field (already formatted)
+- Status: {{snapshots.status}}
+- **IMPORTANT**: If snapshots report shows issues, verify the directory exists first:
+  ```bash
+  ls -la ~/clawd/stock-picker/data/daily_snapshots/
+  ```
+- Only report "SEVERE DATA LOSS" if files are actually missing AND should exist
+- If the data structure changed (e.g., `all_scores` count is 0 but files exist), that's a **structure issue**, not data loss
+
+## 5. Sanity Warnings
+- If `sanity_warnings` array is not empty, list them
+- Otherwise, skip this section
+
+## Critical Guidelines:
+1. **If any section returns an error, note it but don't panic**
+2. **Verify claims before alarming** — if snapshots look empty, check the directory
+3. **Data structure changes ≠ data loss** — if scan results use a different key, that's a code issue
+4. **One failure doesn't invalidate the whole check** — each section is independent
+5. **Check the HTTP response code** — 500 errors mean code issues, not data loss
+
+## Example Discord Message Format:
+```
+🔔 **Post-Market Check** — 2026-02-23 16:30 EST
+
+[Validation Report Section]
+
+📊 **Portfolio Holdings** (2 positions)
+• EQT: 83.5 (HOLD) — $57.12 → $59.03 (+3.34%)
+• ACGL: 83.9 (BUY) — $99.36 → $98.70 (-0.66%)
+
+Avg return: +1.34% | Best: EQT +3.34% | Worst: ACGL -0.66%
+
+[Rebalance Report Section]
+
+[Snapshots Report Section]
+```
+
+## Error Handling Example:
+If validation fails:
+```
+⚠️ **Validation**: Failed to load previous scan results (not critical)
+```
+
+If snapshots show issues but files exist:
+```
+⚠️ **Snapshots**: Data structure warning — `all_scores` field empty but files exist. This is a parsing issue, not data loss.
+```
+
+**Remember**: Robin should be helpful and informative, not alarmist. Verify issues before reporting catastrophes.

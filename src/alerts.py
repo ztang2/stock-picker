@@ -66,7 +66,7 @@ def check_alerts(
     if current_results is None:
         return alerts
 
-    current_top = current_results.get("top", [])
+    current_top = current_results.get("top", current_results.get("stocks", []))
     current_tickers = {s["ticker"]: s for s in current_top}
 
     # Load previous
@@ -75,7 +75,7 @@ def check_alerts(
 
     prev_tickers = {}  # type: Dict[str, dict]
     if previous_results:
-        for s in previous_results.get("top", []):
+        for s in previous_results.get("top", previous_results.get("stocks", [])):
             prev_tickers[s["ticker"]] = s
 
     # 1. New stocks entering top N
@@ -207,7 +207,7 @@ def generate_morning_briefing(current_results: Optional[dict] = None, top_n: int
     if current_results is None:
         return "No scan results available. Run /scan first."
     
-    top_stocks = current_results.get("top", [])[:top_n]
+    top_stocks = current_results.get("top", current_results.get("stocks", []))[:top_n]
     timestamp = current_results.get("timestamp", "Unknown")
     strategy = current_results.get("strategy", "balanced")
     market_regime = current_results.get("market_regime", {})

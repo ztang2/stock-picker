@@ -283,7 +283,7 @@ def run_scan(
         try:
             prev_scan = json.loads(prev_results_file.read_text())
             # Load from top (detailed) AND all_scores (lightweight, covers all 500+)
-            for stock in prev_scan.get("top", []):
+            for stock in prev_scan.get("top", prev_scan.get("stocks", [])):
                 ticker_sym = stock.get("ticker")
                 if ticker_sym:
                     prev_results_map[ticker_sym] = {

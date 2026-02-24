@@ -107,7 +107,7 @@ def audit_ml_health() -> dict:
     # Check 3: Is ML producing non-None scores in latest scan?
     scan_results = _load_json(RESULTS_FILE)
     if scan_results:
-        top_stocks = scan_results.get("top", [])
+        top_stocks = scan_results.get("top", scan_results.get("stocks", []))
         ml_scores = [s.get("ml_score") for s in top_stocks if s.get("ml_score") is not None]
         ml_weight = top_stocks[0].get("ml_weight", 0) if top_stocks else 0
         

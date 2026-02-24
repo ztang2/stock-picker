@@ -308,7 +308,7 @@ def _build_dataset() -> pd.DataFrame:
 
         all_tickers = set()
         for snap in snapshots:
-            for stock in snap.get("top", []):
+            for stock in snap.get("top", snap.get("stocks", [])):
                 all_tickers.add(stock["ticker"])
 
         dates = [s["date"] for s in snapshots]
@@ -329,7 +329,7 @@ def _build_dataset() -> pd.DataFrame:
             regime = regime_info.get("regime", "sideways") if isinstance(regime_info, dict) else "sideways"
             spy_ret = _compute_spy_return(spy_prices, date_str) if spy_prices is not None else None
 
-            for stock in snap.get("top", []):
+            for stock in snap.get("top", snap.get("stocks", [])):
                 ticker = stock["ticker"]
                 if ticker not in price_data or spy_ret is None:
                     continue
@@ -938,7 +938,7 @@ def predict_scores(tickers: Optional[List[str]] = None) -> List[dict]:
         return [{"error": "No scan results found"}]
 
     scan = json.loads(results_file.read_text())
-    stocks = scan.get("top", [])
+    stocks = scan.get("top", scan.get("stocks", []))
     regime_info = scan.get("market_regime", {})
     regime = regime_info.get("regime", "sideways") if isinstance(regime_info, dict) else "sideways"
 
@@ -1085,7 +1085,7 @@ def compare_with_rules() -> dict:
         return {"error": "No scan results found"}
 
     scan = json.loads(results_file.read_text())
-    stocks = scan.get("top", [])
+    stocks = scan.get("top", scan.get("stocks", []))
 
     # Get ML predictions
     ml_preds = predict_scores()

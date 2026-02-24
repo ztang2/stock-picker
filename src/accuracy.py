@@ -40,7 +40,7 @@ def take_snapshot(strategy: str = "balanced") -> Dict[str, Any]:
         return {"error": "No scan results. Run /scan first.", "logged": 0}
     
     data = json.loads(RESULTS_FILE.read_text())
-    top = data.get("top", [])
+    top = data.get("top", data.get("stocks", []))
     today = datetime.now().strftime("%Y-%m-%d")
     
     # Save full daily snapshot (for ML training and historical analysis)

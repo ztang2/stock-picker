@@ -58,10 +58,10 @@ def validate_predictions(
     if prev_results is None:
         prev_results = _load_json(PREV_RESULTS_FILE)
     
-    if not prev_results or not prev_results.get("top"):
+    if not prev_results or not prev_results.get("top", prev_results.get("stocks")):
         return {"error": "No previous results to validate"}
     
-    prev_top = prev_results["top"]
+    prev_top = prev_results.get("top", prev_results.get("stocks", []))
     prev_timestamp = prev_results.get("timestamp", "unknown")
     
     # Get current prices

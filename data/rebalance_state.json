@@ -1,6 +1,28 @@
 {
   "signal_streaks": {},
   "swap_history": [],
-  "candidate_streaks": {},
-  "updated": "2026-02-23T13:30:09.005218"
+  "candidate_streaks": {
+    "PYPL": {
+      "signal": "STRONG_BUY",
+      "days": 17,
+      "since": "2026-02-23",
+      "score": 76.01,
+      "ml_score": null
+    },
+    "ADBE": {
+      "signal": "STRONG_BUY",
+      "days": 17,
+      "since": "2026-02-23",
+      "score": 75.09,
+      "ml_score": null
+    },
+    "GDDY": {
+      "signal": "STRONG_BUY",
+      "days": 17,
+      "since": "2026-02-23",
+      "score": 74.69,
+      "ml_score": null
+    }
+  },
+  "updated": "2026-02-23T17:47:04.100040"
 }

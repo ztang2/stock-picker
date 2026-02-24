@@ -5,9 +5,11 @@ import json
 import os
 import threading
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import Optional, List
 
+import pandas as pd
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Query, Header, Depends
 from fastapi.responses import JSONResponse, RedirectResponse
@@ -168,7 +170,7 @@ def compare_strategies(
             )
             results[name] = {
                 "strategy": get_strategy(name),
-                "top": result.get("top", [])[:20],
+                "top": result.get("top", result.get("stocks", []))[:20],
                 "stocks_analyzed": result.get("stocks_analyzed", 0),
                 "stocks_after_filter": result.get("stocks_after_filter", 0),
             }
@@ -240,7 +242,7 @@ def get_signals(strategy: str = Query("balanced", description="Strategy to use")
     if not RESULTS_FILE.exists():
         raise HTTPException(404, "No scan results. Run /scan first.")
     data = json.loads(RESULTS_FILE.read_text())
-    top = data.get("top", [])
+    top = data.get("top", data.get("stocks", []))
     signals = [s for s in top if s.get("entry_signal") in ("STRONG_BUY", "BUY")]
     return {"signals": signals, "count": len(signals)}
 
@@ -294,12 +296,12 @@ def portfolio(
     """Build a diversified portfolio from top scored stocks."""
     if RESULTS_FILE.exists():
         data = json.loads(RESULTS_FILE.read_text())
-        ranked = data.get("top", [])
+        ranked = data.get("top", data.get("stocks", []))
     else:
         config = load_config()
         config["top_n"] = 50
         data = run_scan(config)
-        ranked = data.get("top", [])
+        ranked = data.get("top", data.get("stocks", []))
 
     if not ranked:
         raise HTTPException(404, "No scan results. Run /scan first.")
@@ -507,7 +509,7 @@ def rebalance_check(_: None = Depends(verify_api_key)):
     if not scan_data:
         raise HTTPException(400, "No scan results. Run /scan first.")
     
-    top = {s["ticker"]: s for s in scan_data.get("top", [])}
+    top = {s["ticker"]: s for s in scan_data.get("top", scan_data.get("stocks", []))}
     holdings = load_holdings()
     state = load_rebalance_state()
     
@@ -559,6 +561,254 @@ def insider_analysis(ticker: str):
         return get_combined_smart_money_score(t)
     except Exception as e:
         raise HTTPException(500, f"Analysis failed: {e}")
+
+
+@app.get("/portfolio/check")
+def portfolio_check():
+    """Comprehensive post-market check: validation, holdings, rebalance, snapshots.
+    
+    Consolidates all post-market logic into a single defensive endpoint.
+    Each section is wrapped in try/except so one failure doesn't kill the whole check.
+    """
+    from pathlib import Path
+    import yfinance as yf
+    from .validation import validate_predictions, format_validation_report
+    from .snapshot_verify import run_verification, format_verification_report
+    from .rebalance import (
+        load_holdings, load_rebalance_state, save_rebalance_state,
+        update_signal_streaks, evaluate_swaps, format_rebalance_report
+    )
+    
+    response = {}
+    
+    # --- Validation Section ---
+    try:
+        validation_report = validate_predictions()
+        response["validation"] = {
+            "report": format_validation_report(validation_report),
+            "raw": validation_report,
+        }
+    except Exception as e:
+        logger.error("Validation check failed", exc_info=True)
+        response["validation"] = {
+            "error": f"Validation failed: {e}",
+            "report": "⚠️ Validation check failed — see error field"
+        }
+    
+    # --- Load scan results with defensive key access ---
+    scan_data = None
+    if RESULTS_FILE.exists():
+        try:
+            scan_data = json.loads(RESULTS_FILE.read_text())
+        except Exception as e:
+            logger.error("Failed to load scan results", exc_info=True)
+            response["scan_data_error"] = f"Failed to load scan results: {e}"
+    
+    # Defensive key access: check both 'top' and 'stocks' keys
+    top_stocks = []
+    if scan_data:
+        top_stocks = scan_data.get('top', scan_data.get('stocks', []))
+    
+    sanity_warnings = scan_data.get("sanity_warnings", []) if scan_data else []
+    
+    # --- Holdings Section ---
+    holdings_list = []
+    holdings_dict = {}
+    try:
+        # Load holdings from trades.md
+        trades_file = Path.home() / "clawd" / "memory" / "trades.md"
+        holdings_dict = {}
+        
+        if trades_file.exists():
+            content = trades_file.read_text()
+            # Parse markdown table for "Active Positions (Stock Picker)"
+            in_picker_section = False
+            for line in content.split("\n"):
+                line = line.strip()
+                if "Active Positions (Stock Picker)" in line:
+                    in_picker_section = True
+                    continue
+                elif line.startswith("## ") and in_picker_section:
+                    # End of section
+                    break
+                
+                if in_picker_section and line.startswith("- **"):
+                    # Parse: - **EQT** 12.255 shares @ $57.12 — bought 2/17
+                    try:
+                        parts = line.split("**")
+                        if len(parts) >= 3:
+                            ticker = parts[1].strip()
+                            rest = parts[2].strip()
+                            # Extract shares and price
+                            if " shares @ $" in rest or " shares @ ~$" in rest:
+                                shares_part = rest.split(" shares")[0].strip()
+                                price_part = rest.split("@ ")[1].split(" ")[0].replace("$", "").replace("~", "")
+                                try:
+                                    shares = float(shares_part)
+                                    entry_price = float(price_part)
+                                    holdings_dict[ticker] = {
+                                        "shares": shares,
+                                        "entry_price": entry_price,
+                                    }
+                                except ValueError:
+                                    pass
+                    except Exception:
+                        pass
+        
+        # Enrich with current prices and scores
+        if holdings_dict:
+            tickers = list(holdings_dict.keys())
+            # Batch fetch prices
+            prices = {}
+            try:
+                data = yf.download(tickers, period="2d", progress=False, threads=True)
+                if data is not None and not data.empty:
+                    close = data["Close"]
+                    if isinstance(close, pd.Series):
+                        if len(close) >= 1:
+                            prices[tickers[0]] = float(close.iloc[-1])
+                    else:
+                        for ticker in tickers:
+                            if ticker in close.columns:
+                                val = close[ticker].iloc[-1]
+                                if pd.notna(val):
+                                    prices[ticker] = float(val)
+                    
+                    # Get today's change
+                    if len(data) >= 2:
+                        prev_close = data["Close"].iloc[-2] if isinstance(data["Close"], pd.Series) else data["Close"].iloc[-2]
+                        curr_close = data["Close"].iloc[-1] if isinstance(data["Close"], pd.Series) else data["Close"].iloc[-1]
+                        for ticker in tickers:
+                            if ticker in holdings_dict:
+                                if isinstance(prev_close, pd.Series):
+                                    prev = prev_close
+                                    curr = curr_close
+                                else:
+                                    prev = prev_close[ticker] if ticker in prev_close else None
+                                    curr = curr_close[ticker] if ticker in curr_close else None
+                                
+                                if prev is not None and curr is not None and pd.notna(prev) and pd.notna(curr):
+                                    holdings_dict[ticker]["today_change_pct"] = round(((float(curr) - float(prev)) / float(prev)) * 100, 2)
+            except Exception as e:
+                logger.warning("Failed to fetch prices: %s", e)
+            
+            # Build holdings list with scores from scan (check all_scores too)
+            top_dict = {s.get("ticker"): s for s in top_stocks}
+            all_scores_dict = {}
+            if scan_data and scan_data.get("all_scores"):
+                all_scores_dict = {s.get("ticker"): s for s in scan_data.get("all_scores", [])}
+            
+            for ticker, h in holdings_dict.items():
+                entry_price = h.get("entry_price", 0)
+                current_price = prices.get(ticker, entry_price)
+                total_return_pct = ((current_price - entry_price) / entry_price * 100) if entry_price > 0 else 0
+                
+                # Try top list first, then all_scores
+                score_data = top_dict.get(ticker, all_scores_dict.get(ticker, {}))
+                
+                # Handle both 'composite_score' (from top) and 'composite' (from all_scores)
+                score = score_data.get("composite_score", score_data.get("composite", 0))
+                signal = score_data.get("entry_signal", score_data.get("signal", "N/A"))
+                
+                holdings_list.append({
+                    "ticker": ticker,
+                    "entry_price": round(entry_price, 2),
+                    "current_price": round(current_price, 2),
+                    "today_change_pct": h.get("today_change_pct", 0),
+                    "total_return_pct": round(total_return_pct, 2),
+                    "score": score,
+                    "signal": signal,
+                })
+        
+        response["holdings"] = holdings_list
+    except Exception as e:
+        logger.error("Holdings check failed", exc_info=True)
+        response["holdings"] = []
+        response["holdings_error"] = f"Holdings check failed: {e}"
+    
+    # --- Rebalance Section ---
+    try:
+        if scan_data and top_stocks:
+            top_dict = {s.get("ticker"): s for s in top_stocks}
+            holdings = {h["ticker"]: {"shares": holdings_dict.get(h["ticker"], {}).get("shares", 0), 
+                                      "entry_price": h["entry_price"], 
+                                      "entry_date": "2026-02-17"} 
+                       for h in holdings_list}
+            state = load_rebalance_state()
+            
+            held_signals = {t: top_dict.get(t, {}) for t in holdings}
+            candidate_signals = {t: s for t, s in top_dict.items() if t not in holdings}
+            
+            state = update_signal_streaks(state, held_signals, candidate_signals)
+            save_rebalance_state(state)
+            
+            suggestions = evaluate_swaps(holdings, state, held_signals, candidate_signals)
+            report = format_rebalance_report(suggestions, holdings)
+            
+            response["rebalance"] = {
+                "report": report,
+                "suggestions": suggestions,
+            }
+        else:
+            response["rebalance"] = {
+                "report": "⚠️ No scan data available for rebalance check",
+                "suggestions": [],
+            }
+    except Exception as e:
+        logger.error("Rebalance check failed", exc_info=True)
+        response["rebalance"] = {
+            "error": f"Rebalance check failed: {e}",
+            "report": "⚠️ Rebalance check failed — see error field",
+            "suggestions": [],
+        }
+    
+    # --- Snapshots Section ---
+    try:
+        snapshot_report = run_verification()
+        response["snapshots"] = {
+            "report": format_verification_report(snapshot_report),
+            "status": snapshot_report.get("status", "unknown").lower(),
+            "details": snapshot_report,
+        }
+    except Exception as e:
+        logger.error("Snapshot verification failed", exc_info=True)
+        response["snapshots"] = {
+            "error": f"Snapshot verification failed: {e}",
+            "report": "⚠️ Snapshot verification failed — see error field",
+            "status": "error",
+        }
+    
+    # --- Portfolio Summary ---
+    try:
+        if holdings_list:
+            returns = [h["total_return_pct"] for h in holdings_list]
+            avg_return = sum(returns) / len(returns)
+            best = max(holdings_list, key=lambda x: x["total_return_pct"])
+            worst = min(holdings_list, key=lambda x: x["total_return_pct"])
+            
+            response["portfolio_summary"] = {
+                "avg_return": round(avg_return, 2),
+                "best": f"{best['ticker']} {best['total_return_pct']:+.2f}%",
+                "worst": f"{worst['ticker']} {worst['total_return_pct']:+.2f}%",
+                "holdings_count": len(holdings_list),
+            }
+        else:
+            response["portfolio_summary"] = {
+                "avg_return": 0,
+                "best": "N/A",
+                "worst": "N/A",
+                "holdings_count": 0,
+            }
+    except Exception as e:
+        logger.error("Portfolio summary failed", exc_info=True)
+        response["portfolio_summary"] = {
+            "error": f"Portfolio summary failed: {e}",
+        }
+    
+    response["sanity_warnings"] = sanity_warnings
+    response["timestamp"] = datetime.now().isoformat()
+    
+    return response
 
 
 if __name__ == "__main__":

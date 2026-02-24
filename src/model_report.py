@@ -91,7 +91,7 @@ def _analyze_factor_scores_from_scan() -> Optional[dict]:
     if not scan:
         return None
 
-    top_stocks = scan.get("top", [])
+    top_stocks = scan.get("top", scan.get("stocks", []))
     if not top_stocks:
         return None
 

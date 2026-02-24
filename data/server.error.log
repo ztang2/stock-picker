@@ -881,3 +881,408 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 2026-02-23 09:01:30,694 INFO src.pipeline: Smart money fetch completed in 1.6s
 2026-02-23 09:01:32,824 INFO src.streak_tracker: Updated streaks for 20 tickers
 2026-02-23 09:01:32,857 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 15:44:10,281 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+2026-02-23 15:44:10,318 INFO src.rebalance: MCK: held 6 days (< 30 min), skipping
+2026-02-23 15:44:10,318 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 15:44:10,318 INFO src.rebalance: ALL: held 6 days (< 30 min), skipping
+2026-02-23 15:44:10,318 INFO src.rebalance: NEM: held 6 days (< 30 min), skipping
+2026-02-23 15:44:10,318 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [47819]
+INFO:     Started server process [68077]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:662: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:42:32,815 WARNING src.api: Failed to fetch prices: name 'pd' is not defined
+2026-02-23 17:42:32,818 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:42:32,819 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:42:32,832 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/zhuorantang/clawd/stock-picker/src/api.py", line 799, in portfolio_check
+    response["timestamp"] = datetime.now().isoformat()
+NameError: name 'datetime' is not defined
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:662: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:42:39,925 WARNING src.api: Failed to fetch prices: name 'pd' is not defined
+2026-02-23 17:42:39,927 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:42:39,927 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:42:39,936 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/zhuorantang/clawd/stock-picker/src/api.py", line 799, in portfolio_check
+    response["timestamp"] = datetime.now().isoformat()
+NameError: name 'datetime' is not defined
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68077]
+INFO:     Started server process [68101]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:662: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:42:54,483 WARNING src.api: Failed to fetch prices: name 'pd' is not defined
+2026-02-23 17:42:54,485 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:42:54,485 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:42:54,490 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/zhuorantang/clawd/stock-picker/src/api.py", line 799, in portfolio_check
+    response["timestamp"] = datetime.now().isoformat()
+NameError: name 'datetime' is not defined
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:662: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:43:22,963 WARNING src.api: Failed to fetch prices: name 'pd' is not defined
+2026-02-23 17:43:22,965 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:43:22,965 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:43:22,973 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/zhuorantang/clawd/stock-picker/src/api.py", line 799, in portfolio_check
+    response["timestamp"] = datetime.now().isoformat()
+NameError: name 'datetime' is not defined
+INFO:     Started server process [68151]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [68166]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:662: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:43:59,256 WARNING src.api: Failed to fetch prices: name 'pd' is not defined
+2026-02-23 17:43:59,258 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:43:59,258 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:43:59,266 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/zhuorantang/clawd/stock-picker/src/api.py", line 799, in portfolio_check
+    response["timestamp"] = datetime.now().isoformat()
+NameError: name 'datetime' is not defined
+INFO:     Started server process [68201]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:44:28,388 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-23 17:44:28,390 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:44:28,391 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:44:28,400 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:44:33,713 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-23 17:44:33,715 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:44:33,715 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:44:33,721 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+INFO:     Started server process [68234]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:45:02,550 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-23 17:45:02,552 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:45:02,552 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:45:02,558 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+INFO:     Started server process [68267]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:45:26,288 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-23 17:45:26,291 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:45:26,291 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:45:26,299 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:45:40,869 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-23 17:45:40,871 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:45:40,872 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:45:40,878 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+INFO:     Started server process [68296]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:45:57,580 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-23 17:45:57,582 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:45:57,582 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:45:57,590 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+INFO:     Started server process [68314]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [68337]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:46:54,068 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-23 17:46:54,070 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:46:54,070 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:46:54,076 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:47:04,098 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-23 17:47:04,100 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:47:04,100 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:47:04,107 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)

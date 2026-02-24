@@ -61,7 +61,7 @@ def verify_snapshot(filepath: Path) -> Dict:
         return {"valid": False, "issues": [f"Corrupt/unreadable: {e}"], "stocks": 0}
     
     stocks = len(data.get("all_scores", []))
-    top = len(data.get("top", []))
+    top = len(data.get("top", data.get("stocks", [])))
     
     if stocks < 400:
         issues.append(f"Low stock count: {stocks} (expected ~486)")
@@ -74,7 +74,7 @@ def verify_snapshot(filepath: Path) -> Dict:
     
     # Check top stocks have critical fields
     required_fields = ["composite_score", "entry_signal", "sector", "ticker"]
-    for stock in data.get("top", [])[:5]:
+    for stock in data.get("top", data.get("stocks", []))[:5]:
         missing = [f for f in required_fields if f not in stock]
         if missing:
             issues.append(f"{stock.get('ticker','?')} missing: {missing}")
