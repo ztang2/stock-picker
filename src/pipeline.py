@@ -455,6 +455,75 @@ def run_scan(
             "above_ma200": (detail.get("technicals") or {}).get("above_ma200"),
         })
 
+    # --- DCF & Comps bonus for top N (avoid running on all 500+) ---
+    logger.info("Running DCF & comps analysis for top %d stocks...", len(ranked))
+    dcf_comps_start = time.time()
+    
+    from .dcf_valuation import run_dcf
+    from .comps_analysis import run_comps
+    
+    def _fetch_dcf_comps(ticker: str):
+        dcf_result = None
+        comps_result = None
+        try:
+            dcf_result = run_dcf(ticker)
+        except Exception:
+            pass
+        try:
+            comps_result = run_comps(ticker, max_peers=10)
+        except Exception:
+            pass
+        return ticker, dcf_result, comps_result
+    
+    dcf_comps_map = {}
+    with ThreadPoolExecutor(max_workers=3) as executor:
+        futures = {executor.submit(_fetch_dcf_comps, s["ticker"]): s["ticker"] for s in ranked}
+        for future in as_completed(futures):
+            ticker_sym, dcf_r, comps_r = future.result()
+            dcf_comps_map[ticker_sym] = (dcf_r, comps_r)
+    
+    for stock in ranked:
+        tkr = stock["ticker"]
+        dcf_r, comps_r = dcf_comps_map.get(tkr, (None, None))
+        
+        dcf_bonus = 0
+        if dcf_r and "error" not in dcf_r:
+            mos = dcf_r.get("margin_of_safety", 0)
+            stock["dcf_intrinsic"] = dcf_r.get("intrinsic_value")
+            stock["dcf_margin_of_safety"] = round(mos, 2)
+            stock["dcf_verdict"] = dcf_r.get("verdict")
+            # Bonus: undervalued stocks get a boost
+            if mos > 30:
+                dcf_bonus = 4
+            elif mos > 15:
+                dcf_bonus = 2
+            elif mos < -50:
+                dcf_bonus = -3
+            elif mos < -30:
+                dcf_bonus = -1
+        
+        comps_bonus = 0
+        if comps_r and "error" not in comps_r:
+            cs = comps_r.get("comps_score", 50)
+            stock["comps_score"] = round(cs, 1)
+            stock["comps_verdict"] = comps_r.get("verdict")
+            # Bonus based on relative valuation
+            if cs > 70:
+                comps_bonus = 3
+            elif cs > 55:
+                comps_bonus = 1
+            elif cs < 30:
+                comps_bonus = -3
+            elif cs < 40:
+                comps_bonus = -1
+        
+        total_val_bonus = dcf_bonus + comps_bonus
+        if total_val_bonus != 0:
+            stock["composite_score"] = max(0, stock.get("composite_score", 0) + total_val_bonus)
+            stock["valuation_bonus"] = total_val_bonus
+    
+    logger.info("DCF & comps analysis completed in %.1fs", time.time() - dcf_comps_start)
+
     # --- Smart money signals (analyst revisions + insider trading) for top N only ---
     # Only fetch for top_n to avoid 500 yfinance API calls
     # Parallelized: each stock's 4 yfinance calls are I/O-bound and independent

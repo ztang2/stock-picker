@@ -1,0 +1,86 @@
+{
+  "ticker": "AAPL",
+  "source": "sec_edgar",
+  "company_name": "Apple Inc.",
+  "revenue_annual": 265595000000,
+  "revenue_period": "2018-09-29",
+  "revenue_history": [
+    {
+      "period": "2018-09-29",
+      "value": 265595000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2018-09-29",
+      "value": 62900000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2018-06-30",
+      "value": 53265000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2018-03-31",
+      "value": 61137000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2017-12-30",
+      "value": 88293000000,
+      "form": "10-K"
+    }
+  ],
+  "net_income_annual": 112010000000,
+  "net_income_period": "2025-09-27",
+  "net_income_history": [
+    {
+      "period": "2025-09-27",
+      "value": 112010000000
+    },
+    {
+      "period": "2024-09-28",
+      "value": 93736000000
+    },
+    {
+      "period": "2024-09-28",
+      "value": 93736000000
+    },
+    {
+      "period": "2023-09-30",
+      "value": 96995000000
+    },
+    {
+      "period": "2023-09-30",
+      "value": 96995000000
+    }
+  ],
+  "eps_annual": 7.46,
+  "eps_history": [
+    {
+      "period": "2025-09-27",
+      "value": 7.46
+    },
+    {
+      "period": "2024-09-28",
+      "value": 6.08
+    },
+    {
+      "period": "2024-09-28",
+      "value": 6.08
+    },
+    {
+      "period": "2023-09-30",
+      "value": 6.13
+    },
+    {
+      "period": "2023-09-30",
+      "value": 6.13
+    }
+  ],
+  "total_assets": 359241000000,
+  "total_debt": 90678000000,
+  "cash": 35934000000,
+  "latest_10q_date": "2026-01-30",
+  "latest_10k_date": "2025-10-31"
+}

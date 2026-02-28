@@ -1286,3 +1286,1562 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 2026-02-23 17:47:04,100 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
 2026-02-23 17:47:04,100 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
 2026-02-23 17:47:04,107 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-23 17:47:52,504 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-23 17:47:52,506 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+2026-02-23 17:47:52,506 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 17:47:52,513 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (3/3 days, 100.0%)
+2026-02-23 20:29:50,071 INFO src.universe: Fetching S&P 500 tickers from Wikipedia...
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-02-23 20:29:50,682 INFO src.universe: Fetched 503 tickers
+2026-02-23 20:29:50,682 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-23 20:29:50,682 INFO src.pipeline: Fetching data for 503 stocks...
+2026-02-23 20:30:00,075 INFO src.rebalance: MCK: held 6 days (< 30 min), skipping
+2026-02-23 20:30:00,075 INFO src.rebalance: ACGL: held 6 days (< 30 min), skipping
+2026-02-23 20:30:00,075 INFO src.rebalance: ALL: held 6 days (< 30 min), skipping
+2026-02-23 20:30:00,075 INFO src.rebalance: NEM: held 6 days (< 30 min), skipping
+2026-02-23 20:30:00,075 INFO src.rebalance: EQT: held 6 days (< 30 min), skipping
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-23 20:30:01,173 INFO src.accuracy: Accuracy: batch fetched 31/31 ticker prices
+2026-02-23 20:30:13,564 INFO src.pipeline: Progress: 50/503
+2026-02-23 20:30:35,507 INFO src.pipeline: Progress: 100/503
+2026-02-23 20:31:02,608 INFO src.pipeline: Progress: 150/503
+2026-02-23 20:31:28,124 INFO src.pipeline: Progress: 200/503
+2026-02-23 20:31:53,252 INFO src.pipeline: Progress: 250/503
+2026-02-23 20:32:14,671 INFO src.pipeline: Progress: 300/503
+2026-02-23 20:32:36,230 INFO src.pipeline: Progress: 350/503
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-23 20:32:42,843 INFO src.accuracy: Accuracy: batch fetched 31/31 ticker prices
+2026-02-23 20:32:58,689 INFO src.pipeline: Progress: 400/503
+2026-02-23 20:33:21,199 INFO src.pipeline: Progress: 450/503
+2026-02-23 20:33:44,014 INFO src.pipeline: Progress: 500/503
+2026-02-23 20:33:45,747 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $682.39 is 5.1% above 200MA ($649.23), trending up. Bull market detected.
+2026-02-23 20:33:45,747 INFO src.pipeline: Market regime detected: BULL (confidence: 90%)
+2026-02-23 20:33:47,882 INFO src.pipeline: Analyzed 486 stocks
+2026-02-23 20:33:47,883 INFO src.pipeline: After filtering: 486 stocks
+2026-02-23 20:33:47,899 INFO src.pipeline: ML integration: 7 snapshots available, ML weight = 0% (insufficient data)
+2026-02-23 20:33:47,899 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-23 20:33:49,303 INFO src.pipeline: Smart money fetch completed in 1.4s
+2026-02-23 20:33:51,017 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-23 20:33:51,046 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-23 22:52:03,242 INFO src.accuracy: Accuracy: batch fetched 31/31 ticker prices
+2026-02-24 00:11:38,408 INFO src.accuracy: Saved daily snapshot: /Users/zhuorantang/clawd/stock-picker/data/daily_snapshots/2026-02-24.json
+2026-02-24 00:38:53,552 INFO src.pipeline: Using cached stock data (4.1h old)
+2026-02-24 00:42:07,375 INFO src.pipeline: Using cached stock data (4.1h old)
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-24 00:42:39,546 INFO src.accuracy: Accuracy: batch fetched 33/33 ticker prices
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-24 00:42:50,633 INFO src.accuracy: Accuracy: batch fetched 33/33 ticker prices
+2026-02-24 06:30:05,476 INFO src.universe: Loaded 503 tickers from cache
+2026-02-24 06:30:05,477 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-24 06:30:05,477 INFO src.pipeline: Using cached stock data (9.9h old)
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-24 06:30:06,182 ERROR yfinance: HTTP Error 401: {"finance":{"result":null,"error":{"code":"Unauthorized","description":"Invalid Crumb"}}}
+2026-02-24 06:30:06,554 INFO src.market_regime: Market regime: BULL (confidence: 80%) - SPY $681.86 is 4.9% above 200MA ($649.86), trending up. Bull market detected.
+2026-02-24 06:30:06,559 INFO src.pipeline: Market regime detected: BULL (confidence: 80%)
+2026-02-24 06:30:07,462 INFO src.accuracy: Accuracy: batch fetched 33/33 ticker prices
+2026-02-24 06:30:08,901 INFO src.pipeline: Analyzed 486 stocks
+2026-02-24 06:30:08,901 INFO src.pipeline: After filtering: 486 stocks
+2026-02-24 06:30:08,917 INFO src.pipeline: ML integration: 8 snapshots available, ML weight = 0% (insufficient data)
+2026-02-24 06:30:08,918 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-24 06:30:10,397 INFO src.pipeline: Smart money fetch completed in 1.5s
+2026-02-24 06:30:12,065 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-24 06:30:12,097 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-24 09:01:54,613 INFO src.universe: Loaded 503 tickers from cache
+2026-02-24 09:01:54,614 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-24 09:01:54,614 INFO src.pipeline: Using cached stock data (12.5h old)
+2026-02-24 09:01:55,443 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $686.61 is 5.7% above 200MA ($649.88), trending up. Bull market detected.
+2026-02-24 09:01:55,443 INFO src.pipeline: Market regime detected: BULL (confidence: 90%)
+2026-02-24 09:01:57,655 INFO src.pipeline: Analyzed 486 stocks
+2026-02-24 09:01:57,655 INFO src.pipeline: After filtering: 486 stocks
+2026-02-24 09:01:57,671 INFO src.pipeline: ML integration: 8 snapshots available, ML weight = 0% (insufficient data)
+2026-02-24 09:01:57,671 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-24 09:01:59,103 INFO src.pipeline: Smart money fetch completed in 1.4s
+2026-02-24 09:02:01,498 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-24 09:02:01,530 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-24 09:02:25,204 INFO src.pipeline: Using cached stock data (12.5h old)
+2026-02-24 09:02:25,856 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $686.60 is 5.6% above 200MA ($649.88), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-24 13:30:06,233 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-24 13:30:06,236 INFO src.rebalance: EQT: held 7 days (< 30 min), skipping
+2026-02-24 13:30:06,236 INFO src.rebalance: ACGL: held 7 days (< 30 min), skipping
+2026-02-24 13:30:06,246 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (4/4 days, 100.0%)
+2026-02-24 18:40:19,761 INFO src.universe: Loaded 503 tickers from cache
+2026-02-24 18:40:19,762 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-24 18:40:19,762 INFO src.pipeline: Using cached stock data (22.1h old)
+2026-02-24 18:40:20,761 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $687.35 is 5.8% above 200MA ($649.89), trending up. Bull market detected.
+2026-02-24 18:40:20,762 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-24 18:40:22,993 INFO src.pipeline: Analyzed 486 stocks
+2026-02-24 18:40:22,993 INFO src.pipeline: After filtering: 486 stocks
+2026-02-24 18:40:23,009 INFO src.pipeline: ML integration: 8 snapshots available, ML weight = 0% (insufficient data)
+2026-02-24 18:40:23,010 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-24 18:40:24,460 INFO src.pipeline: Smart money fetch completed in 1.5s
+2026-02-24 18:40:26,371 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-24 18:40:26,403 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-24 18:40:27,826 INFO src.pipeline: Using cached stock data (22.1h old)
+2026-02-24 18:40:49,106 INFO src.universe: Loaded 503 tickers from cache
+2026-02-24 18:40:49,106 INFO src.pipeline: Scanning 503 tickers with strategy 'aggressive'...
+2026-02-24 18:40:49,107 INFO src.pipeline: Using cached stock data (22.1h old)
+2026-02-24 18:40:49,735 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $687.35 is 5.8% above 200MA ($649.89), trending up. Bull market detected.
+2026-02-24 18:40:49,735 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-24 18:40:51,975 INFO src.pipeline: Analyzed 486 stocks
+2026-02-24 18:40:51,975 INFO src.pipeline: After filtering: 191 stocks
+2026-02-24 18:40:51,986 INFO src.pipeline: ML integration: 8 snapshots available, ML weight = 0% (insufficient data)
+2026-02-24 18:40:51,987 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-24 18:40:53,345 INFO src.pipeline: Smart money fetch completed in 1.4s
+2026-02-24 18:40:54,541 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-24 18:40:54,559 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-24 18:40:55,163 INFO src.pipeline: Using cached stock data (22.1h old)
+2026-02-24 18:45:12,916 INFO src.universe: Loaded 503 tickers from cache
+2026-02-24 18:45:12,916 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-24 18:45:12,916 INFO src.pipeline: Using cached stock data (22.2h old)
+2026-02-24 18:45:13,579 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $687.35 is 5.8% above 200MA ($649.89), trending up. Bull market detected.
+2026-02-24 18:45:13,579 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-24 18:45:13,938 INFO src.universe: Loaded 503 tickers from cache
+2026-02-24 18:45:13,938 INFO src.pipeline: Scanning 503 tickers with strategy 'conservative'...
+2026-02-24 18:45:13,939 INFO src.pipeline: Using cached stock data (22.2h old)
+2026-02-24 18:45:14,627 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $687.35 is 5.8% above 200MA ($649.89), trending up. Bull market detected.
+2026-02-24 18:45:14,629 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-24 18:45:15,957 INFO src.pipeline: Using cached stock data (22.2h old)
+2026-02-24 18:45:16,643 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $687.35 is 5.8% above 200MA ($649.89), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-24 18:45:17,542 INFO src.pipeline: Analyzed 486 stocks
+2026-02-24 18:45:17,542 INFO src.pipeline: After filtering: 486 stocks
+2026-02-24 18:45:17,567 INFO src.pipeline: ML integration: 8 snapshots available, ML weight = 0% (insufficient data)
+2026-02-24 18:45:17,568 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-24 18:45:18,406 INFO src.pipeline: Analyzed 468 stocks
+2026-02-24 18:45:18,406 INFO src.pipeline: After filtering: 253 stocks
+2026-02-24 18:45:18,418 INFO src.pipeline: ML integration: 8 snapshots available, ML weight = 0% (insufficient data)
+2026-02-24 18:45:18,418 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-24 18:45:19,371 INFO src.pipeline: Smart money fetch completed in 1.8s
+2026-02-24 18:45:19,373 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-24 18:45:19,391 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-24 18:45:19,867 INFO src.pipeline: Smart money fetch completed in 1.4s
+2026-02-24 18:45:20,525 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-24 18:45:20,543 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-24 18:45:20,568 INFO src.universe: Loaded 503 tickers from cache
+2026-02-24 18:45:20,568 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-24 18:45:20,568 INFO src.pipeline: Using cached stock data (22.2h old)
+2026-02-24 18:45:20,927 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $687.35 is 5.8% above 200MA ($649.89), trending up. Bull market detected.
+2026-02-24 18:45:20,927 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-24 18:45:21,011 INFO src.pipeline: Using cached stock data (22.2h old)
+2026-02-24 18:45:23,284 INFO src.pipeline: Analyzed 486 stocks
+2026-02-24 18:45:23,284 INFO src.pipeline: After filtering: 486 stocks
+2026-02-24 18:45:23,300 INFO src.pipeline: ML integration: 8 snapshots available, ML weight = 0% (insufficient data)
+2026-02-24 18:45:23,300 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-24 18:45:24,586 INFO src.pipeline: Smart money fetch completed in 1.3s
+2026-02-24 18:45:24,588 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-24 18:45:24,604 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-24 18:45:24,615 INFO src.universe: Loaded 503 tickers from cache
+2026-02-24 18:45:24,615 INFO src.pipeline: Scanning 503 tickers with strategy 'aggressive'...
+2026-02-24 18:45:24,615 INFO src.pipeline: Using cached stock data (22.2h old)
+2026-02-24 18:45:24,938 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $687.35 is 5.8% above 200MA ($649.89), trending up. Bull market detected.
+2026-02-24 18:45:24,939 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-24 18:45:27,278 INFO src.pipeline: Analyzed 486 stocks
+2026-02-24 18:45:27,278 INFO src.pipeline: After filtering: 191 stocks
+2026-02-24 18:45:27,289 INFO src.pipeline: ML integration: 8 snapshots available, ML weight = 0% (insufficient data)
+2026-02-24 18:45:27,289 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-24 18:45:28,602 ERROR yfinance: HTTP Error 401: {"finance":{"result":null,"error":{"code":"Unauthorized","description":"Invalid Crumb"}}}
+2026-02-24 18:45:28,608 ERROR yfinance: HTTP Error 401: {"finance":{"result":null,"error":{"code":"Unauthorized","description":"Invalid Crumb"}}}
+2026-02-24 18:45:28,610 ERROR yfinance: HTTP Error 401: {"finance":{"result":null,"error":{"code":"Unauthorized","description":"Invalid Crumb"}}}
+2026-02-24 18:45:29,409 INFO src.accuracy: Accuracy: batch fetched 33/33 ticker prices
+2026-02-24 18:45:29,528 INFO src.pipeline: Smart money fetch completed in 2.2s
+2026-02-24 18:45:29,529 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-24 18:45:29,532 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-25 06:30:08,248 INFO src.accuracy: Accuracy: batch fetched 33/33 ticker prices
+2026-02-25 09:00:51,352 INFO src.universe: Fetching S&P 500 tickers from Wikipedia...
+2026-02-25 09:00:51,954 INFO src.universe: Fetched 503 tickers
+2026-02-25 09:00:51,955 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-25 09:00:51,955 INFO src.pipeline: Fetching data for 503 stocks...
+2026-02-25 09:01:20,842 INFO src.pipeline: Progress: 50/503
+2026-02-25 09:01:52,150 INFO src.pipeline: Progress: 100/503
+2026-02-25 09:02:20,685 INFO src.pipeline: Progress: 150/503
+2026-02-25 09:02:50,643 INFO src.pipeline: Progress: 200/503
+2026-02-25 09:03:20,200 INFO src.pipeline: Progress: 250/503
+2026-02-25 09:03:50,341 INFO src.pipeline: Progress: 300/503
+2026-02-25 09:04:19,318 INFO src.pipeline: Progress: 350/503
+2026-02-25 09:04:48,172 INFO src.pipeline: Progress: 400/503
+2026-02-25 09:05:16,972 INFO src.pipeline: Progress: 450/503
+2026-02-25 09:05:47,274 INFO src.pipeline: Progress: 500/503
+2026-02-25 09:05:49,468 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $692.22 is 6.4% above 200MA ($650.55), trending up. Bull market detected.
+2026-02-25 09:05:49,468 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-25 09:05:51,603 INFO src.pipeline: Analyzed 486 stocks
+2026-02-25 09:05:51,603 INFO src.pipeline: After filtering: 486 stocks
+2026-02-25 09:05:51,620 INFO src.pipeline: ML integration: 8 snapshots available, ML weight = 0% (insufficient data)
+2026-02-25 09:05:51,620 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-25 09:05:53,439 INFO src.pipeline: Smart money fetch completed in 1.8s
+2026-02-25 09:05:55,477 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-25 09:05:55,509 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-25 09:05:55,517 INFO src.pipeline: Saved daily snapshot: /Users/zhuorantang/clawd/stock-picker/data/daily_snapshots/2026-02-25.json
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-25 13:30:06,380 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-25 13:30:06,383 INFO src.rebalance: EQT: held 8 days (< 30 min), skipping
+2026-02-25 13:30:06,383 INFO src.rebalance: ACGL: held 8 days (< 30 min), skipping
+2026-02-25 13:30:06,396 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (5/5 days, 100.0%)
+2026-02-25 19:11:13,494 INFO src.pipeline: Using cached stock data (10.1h old)
+2026-02-25 19:11:14,554 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $693.15 is 6.5% above 200MA ($650.55), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-26 06:30:05,057 INFO src.universe: Loaded 503 tickers from cache
+2026-02-26 06:30:05,057 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-26 06:30:05,057 INFO src.pipeline: Using cached stock data (21.4h old)
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-26 06:30:05,859 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $693.17 is 6.4% above 200MA ($651.22), trending up. Bull market detected.
+2026-02-26 06:30:05,859 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-26 06:30:06,455 INFO src.accuracy: Accuracy: batch fetched 37/37 ticker prices
+2026-02-26 06:30:08,284 INFO src.pipeline: Analyzed 486 stocks
+2026-02-26 06:30:08,284 INFO src.pipeline: After filtering: 486 stocks
+2026-02-26 06:30:08,301 INFO src.pipeline: ML integration: 9 snapshots available, ML weight = 0% (insufficient data)
+2026-02-26 06:30:08,302 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-26 06:30:10,009 INFO src.pipeline: Smart money fetch completed in 1.7s
+2026-02-26 06:30:11,709 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-26 06:30:11,740 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-26 06:30:11,749 INFO src.pipeline: Saved daily snapshot: /Users/zhuorantang/clawd/stock-picker/data/daily_snapshots/2026-02-26.json
+2026-02-26 09:00:57,565 INFO src.universe: Fetching S&P 500 tickers from Wikipedia...
+2026-02-26 09:00:58,148 INFO src.universe: Fetched 503 tickers
+2026-02-26 09:00:58,148 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-26 09:00:58,148 INFO src.pipeline: Using cached stock data (23.9h old)
+2026-02-26 09:00:58,789 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $686.50 is 5.4% above 200MA ($651.19), trending up. Bull market detected.
+2026-02-26 09:00:58,789 INFO src.pipeline: Market regime detected: BULL (confidence: 95%)
+2026-02-26 09:01:01,025 INFO src.pipeline: Analyzed 486 stocks
+2026-02-26 09:01:01,025 INFO src.pipeline: After filtering: 486 stocks
+2026-02-26 09:01:01,041 INFO src.pipeline: ML integration: 10 snapshots available, ML weight = 10%
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/joblib/externals/loky/backend/context.py:131: UserWarning: Could not find the number of physical cores for the following reason:
+[Errno 2] No such file or directory: 'sysctl'
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/joblib/externals/loky/backend/context.py", line 249, in _count_physical_cores
+    cpu_count_physical = _count_physical_cores_darwin()
+  File "/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/joblib/externals/loky/backend/context.py", line 312, in _count_physical_cores_darwin
+    cpu_info = subprocess.run(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 505, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1821, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2026-02-26 09:01:02,129 INFO src.pipeline: ML predictions obtained for 20 stocks
+2026-02-26 09:01:02,130 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-26 09:01:03,713 INFO src.pipeline: Smart money fetch completed in 1.6s
+2026-02-26 09:01:05,734 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-26 09:01:05,763 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-26 09:44:29,718 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $685.68 is 5.3% above 200MA ($651.18), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-26 09:44:31,573 INFO src.accuracy: Accuracy: batch fetched 37/37 ticker prices
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-26 13:30:05,872 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-26 13:30:05,874 INFO src.rebalance: EQT: held 9 days (< 30 min), skipping
+2026-02-26 13:30:05,874 INFO src.rebalance: ACGL: held 9 days (< 30 min), skipping
+2026-02-26 13:30:05,889 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (6/6 days, 100.0%)
+2026-02-27 06:30:05,368 INFO src.universe: Loaded 503 tickers from cache
+2026-02-27 06:30:05,368 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-27 06:30:05,369 INFO src.pipeline: Fetching data for 503 stocks...
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-27 06:30:06,582 INFO src.accuracy: Accuracy: batch fetched 37/37 ticker prices
+2026-02-27 06:30:27,341 INFO src.pipeline: Progress: 50/503
+2026-02-27 06:30:48,618 INFO src.pipeline: Progress: 100/503
+2026-02-27 06:31:10,616 INFO src.pipeline: Progress: 150/503
+2026-02-27 06:31:31,758 INFO src.pipeline: Progress: 200/503
+2026-02-27 06:31:55,053 INFO src.pipeline: Progress: 250/503
+2026-02-27 06:32:16,996 INFO src.pipeline: Progress: 300/503
+2026-02-27 06:32:37,986 INFO src.pipeline: Progress: 350/503
+2026-02-27 06:32:59,613 INFO src.pipeline: Progress: 400/503
+2026-02-27 06:33:20,971 INFO src.pipeline: Progress: 450/503
+2026-02-27 06:33:43,236 INFO src.pipeline: Progress: 500/503
+2026-02-27 06:33:45,391 INFO src.market_regime: Market regime: BULL (confidence: 80%) - SPY $683.90 is 4.9% above 200MA ($651.73), trending up. Bull market detected.
+2026-02-27 06:33:45,391 INFO src.pipeline: Market regime detected: BULL (confidence: 80%)
+2026-02-27 06:33:47,527 INFO src.pipeline: Analyzed 485 stocks
+2026-02-27 06:33:47,527 INFO src.pipeline: After filtering: 485 stocks
+2026-02-27 06:33:47,544 INFO src.pipeline: ML integration: 10 snapshots available, ML weight = 10%
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2026-02-27 06:33:47,575 INFO src.pipeline: ML predictions obtained for 20 stocks
+2026-02-27 06:33:47,576 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-27 06:33:48,854 INFO src.pipeline: Smart money fetch completed in 1.3s
+2026-02-27 06:33:50,601 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-27 06:33:50,630 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-27 06:33:50,638 INFO src.pipeline: Saved daily snapshot: /Users/zhuorantang/clawd/stock-picker/data/daily_snapshots/2026-02-27.json
+2026-02-27 09:01:05,889 INFO src.universe: Fetching S&P 500 tickers from Wikipedia...
+2026-02-27 09:01:06,491 INFO src.universe: Fetched 503 tickers
+2026-02-27 09:01:06,492 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-27 09:01:06,492 INFO src.pipeline: Using cached stock data (2.5h old)
+2026-02-27 09:01:07,160 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $685.34 is 5.2% above 200MA ($651.74), trending up. Bull market detected.
+2026-02-27 09:01:07,160 INFO src.pipeline: Market regime detected: BULL (confidence: 90%)
+2026-02-27 09:01:09,299 INFO src.pipeline: Analyzed 485 stocks
+2026-02-27 09:01:09,299 INFO src.pipeline: After filtering: 485 stocks
+2026-02-27 09:01:09,314 INFO src.pipeline: ML integration: 11 snapshots available, ML weight = 10%
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2026-02-27 09:01:09,345 INFO src.pipeline: ML predictions obtained for 20 stocks
+2026-02-27 09:01:09,345 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-27 09:01:10,740 INFO src.pipeline: Smart money fetch completed in 1.4s
+2026-02-27 09:01:12,702 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-27 09:01:12,732 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-27 09:01:51,441 INFO src.universe: Loaded 503 tickers from cache
+2026-02-27 09:01:51,442 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-27 09:01:51,442 INFO src.pipeline: Using cached stock data (2.5h old)
+2026-02-27 09:01:52,124 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $685.37 is 5.2% above 200MA ($651.74), trending up. Bull market detected.
+2026-02-27 09:01:52,124 INFO src.pipeline: Market regime detected: BULL (confidence: 90%)
+2026-02-27 09:01:54,306 INFO src.pipeline: Analyzed 485 stocks
+2026-02-27 09:01:54,306 INFO src.pipeline: After filtering: 485 stocks
+2026-02-27 09:01:54,321 INFO src.pipeline: ML integration: 11 snapshots available, ML weight = 10%
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2026-02-27 09:01:54,351 INFO src.pipeline: ML predictions obtained for 20 stocks
+2026-02-27 09:01:54,352 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-27 09:01:55,698 INFO src.pipeline: Smart money fetch completed in 1.3s
+2026-02-27 09:01:55,700 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-27 09:01:55,715 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-27 09:02:19,517 INFO src.pipeline: Using cached stock data (2.5h old)
+2026-02-27 09:02:20,213 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $685.47 is 5.2% above 200MA ($651.74), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-27 09:02:20,333 INFO src.pipeline: Using cached stock data (2.5h old)
+2026-02-27 09:02:20,612 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $685.47 is 5.2% above 200MA ($651.74), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-27 09:02:20,729 INFO src.pipeline: Using cached stock data (2.5h old)
+2026-02-27 09:02:20,989 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $685.47 is 5.2% above 200MA ($651.74), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-27 09:02:21,112 INFO src.pipeline: Using cached stock data (2.5h old)
+2026-02-27 09:02:21,478 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $685.47 is 5.2% above 200MA ($651.74), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-27 09:02:21,672 INFO src.pipeline: Using cached stock data (2.5h old)
+2026-02-27 09:02:21,978 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $685.47 is 5.2% above 200MA ($651.74), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-27 09:02:22,092 INFO src.pipeline: Using cached stock data (2.5h old)
+2026-02-27 09:02:22,401 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $685.47 is 5.2% above 200MA ($651.74), trending up. Bull market detected.
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-27 09:08:50,086 INFO src.pipeline: Using cached stock data (2.6h old)
+2026-02-27 09:08:50,793 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $686.17 is 5.3% above 200MA ($651.74), trending up. Bull market detected.
+/Users/zhuorantang/clawd/stock-picker/src/validation.py:228: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+/Users/zhuorantang/clawd/stock-picker/src/api.py:664: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, period="2d", progress=False, threads=True)
+2026-02-27 13:30:05,272 WARNING src.api: Failed to fetch prices: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-02-27 13:30:05,275 INFO src.rebalance: EQT: held 10 days (< 30 min), skipping
+2026-02-27 13:30:05,275 INFO src.rebalance: ACGL: held 10 days (< 30 min), skipping
+2026-02-27 13:30:05,290 INFO src.snapshot_verify: Snapshot verification: ISSUES_FOUND (7/7 days, 100.0%)
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+2026-02-28 10:00:06,661 INFO src.accuracy: Accuracy: batch fetched 39/39 ticker prices
+2026-02-28 10:00:06,784 INFO src.universe: Fetching S&P 500 tickers from Wikipedia...
+2026-02-28 10:00:06,811 INFO src.ml_model: Insufficient snapshot data, generating synthetic training data...
+2026-02-28 10:00:06,811 INFO src.ml_model: Generating synthetic training data for 18 months...
+2026-02-28 10:00:06,811 INFO src.ml_model: Downloading price data for 100 tickers...
+/Users/zhuorantang/clawd/stock-picker/src/ml_model.py:76: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers, start=start, end=end, progress=False, group_by="ticker", threads=True)
+2026-02-28 10:00:07,216 INFO src.universe: Fetched 503 tickers
+2026-02-28 10:00:07,217 INFO src.pipeline: Scanning 503 tickers with strategy 'balanced'...
+2026-02-28 10:00:07,217 INFO src.pipeline: Fetching data for 503 stocks...
+2026-02-28 10:00:08,753 ERROR yfinance: 
+34 Failed downloads:
+2026-02-28 10:00:08,753 ERROR yfinance: ['ACGL', 'AWK', 'AOS', 'BA', 'AMD', 'AVB', 'ALGN']: DNSError('Failed to perform, curl: (6) Could not resolve host: query2.finance.yahoo.com. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-28 10:00:08,753 ERROR yfinance: ['ALB', 'AVY', 'ALL', 'CMI', 'ADI', 'BAC', 'C', 'CMG', 'AJG', 'ADM', 'BRK-B', 'APD', 'BLK', 'CCI', 'BF-B', 'CINF', 'CCL', 'AVGO', 'AMP', 'CME', 'BLDR', 'AZO']: DNSError('Failed to perform, curl: (6) getaddrinfo() thread failed to start. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-28 10:00:08,753 ERROR yfinance: ['BALL', 'AMGN', 'BDX', 'CAT', 'APP']: OperationalError('unable to open database file')
+2026-02-28 10:00:08,819 INFO src.market_regime: Market regime: SIDEWAYS (confidence: 50%) - SPY $541.97 200MA slope is flat. Sideways market detected.
+2026-02-28 10:00:09,025 INFO src.market_regime: Market regime: SIDEWAYS (confidence: 70%) - SPY $553.65 is near 200MA ($565.17, -2.0%). Sideways market detected.
+2026-02-28 10:00:09,232 INFO src.market_regime: Market regime: SIDEWAYS (confidence: 70%) - SPY $560.18 is near 200MA ($565.49, -0.9%). Sideways market detected.
+2026-02-28 10:00:09,442 INFO src.market_regime: Market regime: SIDEWAYS (confidence: 50%) - SPY $585.36 200MA slope is flat. Sideways market detected.
+2026-02-28 10:00:09,649 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $578.06 is 1.8% above 200MA ($567.97), trending up. Bull market detected.
+2026-02-28 10:00:09,856 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $584.30 is 2.6% above 200MA ($569.58), trending up. Bull market detected.
+2026-02-28 10:00:10,064 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $593.97 is 4.1% above 200MA ($570.82), trending up. Bull market detected.
+2026-02-28 10:00:10,270 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $591.85 is 3.5% above 200MA ($571.98), trending up. Bull market detected.
+2026-02-28 10:00:10,479 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $596.73 is 4.1% above 200MA ($573.10), trending up. Bull market detected.
+2026-02-28 10:00:10,686 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $614.33 is 6.9% above 200MA ($574.87), trending up. Bull market detected.
+2026-02-28 10:00:10,893 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $616.80 is 7.0% above 200MA ($576.55), trending up. Bull market detected.
+2026-02-28 10:00:11,097 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $618.59 is 7.0% above 200MA ($578.09), trending up. Bull market detected.
+2026-02-28 10:00:11,307 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $625.27 is 7.9% above 200MA ($579.62), trending up. Bull market detected.
+2026-02-28 10:00:11,513 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $631.64 is 8.6% above 200MA ($581.38), trending up. Bull market detected.
+2026-02-28 10:00:11,723 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $624.39 is 7.1% above 200MA ($582.75), trending up. Bull market detected.
+2026-02-28 10:00:11,929 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $639.02 is 9.4% above 200MA ($584.20), trending up. Bull market detected.
+2026-02-28 10:00:12,140 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $636.16 is 8.6% above 200MA ($585.92), trending up. Bull market detected.
+2026-02-28 10:00:12,348 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $641.48 is 9.1% above 200MA ($587.74), trending up. Bull market detected.
+2026-02-28 10:00:12,557 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $640.07 is 8.7% above 200MA ($589.09), trending up. Bull market detected.
+2026-02-28 10:00:12,769 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $648.49 is 9.8% above 200MA ($590.68), trending up. Bull market detected.
+2026-02-28 10:00:12,974 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $655.42 is 10.6% above 200MA ($592.40), trending up. Bull market detected.
+2026-02-28 10:00:13,184 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $659.15 is 11.0% above 200MA ($594.07), trending up. Bull market detected.
+2026-02-28 10:00:13,393 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $666.48 is 11.9% above 200MA ($595.69), trending up. Bull market detected.
+2026-02-28 10:00:13,605 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $671.13 is 12.3% above 200MA ($597.60), trending up. Bull market detected.
+2026-02-28 10:00:13,811 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $663.21 is 10.6% above 200MA ($599.43), trending up. Bull market detected.
+2026-02-28 10:00:14,024 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $665.83 is 10.7% above 200MA ($601.50), trending up. Bull market detected.
+2026-02-28 10:00:14,253 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $685.36 is 13.5% above 200MA ($603.99), trending up. Bull market detected.
+2026-02-28 10:00:14,461 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $675.58 is 11.4% above 200MA ($606.26), trending up. Bull market detected.
+2026-02-28 10:00:14,671 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $681.37 is 12.0% above 200MA ($608.19), trending up. Bull market detected.
+2026-02-28 10:00:14,880 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $660.68 is 8.3% above 200MA ($609.94), trending up. Bull market detected.
+2026-02-28 10:00:15,094 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $677.68 is 10.8% above 200MA ($611.63), trending up. Bull market detected.
+2026-02-28 10:00:15,303 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $682.37 is 11.2% above 200MA ($613.59), trending up. Bull market detected.
+2026-02-28 10:00:15,515 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $687.14 is 11.6% above 200MA ($615.88), trending up. Bull market detected.
+2026-02-28 10:00:15,727 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $674.48 is 9.1% above 200MA ($618.33), trending up. Bull market detected.
+2026-02-28 10:00:15,941 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $690.31 is 11.1% above 200MA ($621.54), trending up. Bull market detected.
+2026-02-28 10:00:16,147 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $687.72 is 10.1% above 200MA ($624.80), trending up. Bull market detected.
+2026-02-28 10:00:16,363 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $695.16 is 10.7% above 200MA ($627.99), trending up. Bull market detected.
+2026-02-28 10:00:16,568 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $677.58 is 7.3% above 200MA ($631.30), trending up. Bull market detected.
+2026-02-28 10:00:16,777 INFO src.market_regime: Market regime: BULL (confidence: 95%) - SPY $695.49 is 9.4% above 200MA ($635.72), trending up. Bull market detected.
+2026-02-28 10:00:16,988 INFO src.ml_model: Generated 2574 synthetic training samples across 43 dates
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/numpy/lib/_nanfunctions_impl.py:1231: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/zhuorantang/clawd/stock-picker/src/ml_model.py:705: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  df[col] = df[col].fillna(feature_medians[col])
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/numpy/lib/_nanfunctions_impl.py:1231: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/zhuorantang/clawd/stock-picker/src/ml_model.py:705: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  df[col] = df[col].fillna(feature_medians[col])
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/numpy/lib/_nanfunctions_impl.py:1231: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/zhuorantang/clawd/stock-picker/src/ml_model.py:705: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  df[col] = df[col].fillna(feature_medians[col])
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/numpy/lib/_nanfunctions_impl.py:1231: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/zhuorantang/clawd/stock-picker/src/ml_model.py:705: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  df[col] = df[col].fillna(feature_medians[col])
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/numpy/lib/_nanfunctions_impl.py:1231: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/zhuorantang/clawd/stock-picker/src/ml_model.py:705: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  df[col] = df[col].fillna(feature_medians[col])
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/numpy/lib/_nanfunctions_impl.py:1231: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/zhuorantang/clawd/stock-picker/src/ml_model.py:705: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  df[col] = df[col].fillna(feature_medians[col])
+2026-02-28 10:00:16,997 INFO src.ml_model: Walk-forward validation: all 5 approaches...
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2026-02-28 10:00:29,420 INFO src.pipeline: Progress: 50/503
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/clawd/stock-picker/src/accuracy.py:152: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  batch = yf.download(unique_tickers, period="1d", progress=False)
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+2026-02-28 10:00:42,749 INFO src.accuracy: Accuracy: batch fetched 39/39 ticker prices
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+2026-02-28 10:00:50,331 INFO src.pipeline: Progress: 100/503
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+2026-02-28 10:01:00,319 INFO src.ml_model: Walk-forward validation: specialized ensemble (XGB clf + LGB reg)...
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2026-02-28 10:01:11,751 INFO src.pipeline: Progress: 150/503
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2026-02-28 10:01:21,283 INFO src.ml_model: Composite scores: simple_avg=0.5261, weighted_avg=0.5261, xgboost=0.5184, lightgbm=0.5151, specialized_ensemble=0.4595, meta_learner=0.4474
+2026-02-28 10:01:21,283 INFO src.ml_model: Selected approach: simple_avg
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: divide by zero encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: overflow encountered in matmul
+  raw_prediction = X @ weights + intercept
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_linear_loss.py:200: RuntimeWarning: invalid value encountered in matmul
+  raw_prediction = X @ weights + intercept
+2026-02-28 10:01:23,025 INFO src.ml_model: Model trained (simple_avg). Accuracy: 0.61, samples: 2574
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2026-02-28 10:01:33,560 INFO src.pipeline: Progress: 200/503
+2026-02-28 10:01:56,493 INFO src.pipeline: Progress: 250/503
+2026-02-28 10:02:19,282 INFO src.pipeline: Progress: 300/503
+2026-02-28 10:02:41,850 INFO src.pipeline: Progress: 350/503
+2026-02-28 10:03:03,418 INFO src.pipeline: Progress: 400/503
+2026-02-28 10:03:25,506 INFO src.pipeline: Progress: 450/503
+2026-02-28 10:03:47,615 INFO src.pipeline: Progress: 500/503
+2026-02-28 10:03:49,707 INFO src.market_regime: Market regime: BULL (confidence: 90%) - SPY $685.99 is 5.3% above 200MA ($651.74), trending up. Bull market detected.
+2026-02-28 10:03:49,708 INFO src.pipeline: Market regime detected: BULL (confidence: 90%)
+2026-02-28 10:03:51,846 INFO src.pipeline: Analyzed 485 stocks
+2026-02-28 10:03:51,846 INFO src.pipeline: After filtering: 485 stocks
+2026-02-28 10:03:51,862 INFO src.pipeline: ML integration: 11 snapshots available, ML weight = 10%
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2026-02-28 10:03:51,892 INFO src.pipeline: ML predictions obtained for 20 stocks
+2026-02-28 10:03:51,893 INFO src.pipeline: Fetching smart money data for top 20 stocks (parallel)...
+2026-02-28 10:03:53,222 INFO src.pipeline: Smart money fetch completed in 1.3s
+2026-02-28 10:03:55,127 INFO src.streak_tracker: Updated streaks for 20 tickers
+2026-02-28 10:03:55,161 INFO src.pipeline: Rotated scan results → prev_scan_results.json
+2026-02-28 10:03:55,171 INFO src.pipeline: Saved daily snapshot: /Users/zhuorantang/clawd/stock-picker/data/daily_snapshots/2026-02-28.json
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68337]
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [87983]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-02-28 10:42:51,673 WARNING src.sec_edgar: Failed to fetch CIK mapping: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)
+2026-02-28 10:43:04,315 WARNING src.sec_edgar: Failed to fetch CIK mapping: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json
+2026-02-28 10:43:24,917 WARNING src.sec_edgar: Failed to fetch CIK mapping: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [88046]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/yfinance/scrapers/fundamentals.py:36: DeprecationWarning: 'Ticker.earnings' is deprecated as not available via API. Look for "Net Income" in Ticker.income_stmt.
+  warnings.warn("'Ticker.earnings' is deprecated as not available via API. Look for \"Net Income\" in Ticker.income_stmt.", DeprecationWarning)

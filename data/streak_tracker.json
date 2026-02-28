@@ -1,157 +1,112 @@
 {
   "ALL": {
-    "consecutive_days": 1,
+    "consecutive_days": 4,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
+    "last_seen": "2026-02-28"
   },
   "ACGL": {
-    "consecutive_days": 1,
+    "consecutive_days": 4,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
+    "last_seen": "2026-02-28"
   },
   "TRV": {
+    "consecutive_days": 4,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-28"
+  },
+  "EQT": {
+    "consecutive_days": 13,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-28"
+  },
+  "TEL": {
+    "consecutive_days": 4,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-28"
+  },
+  "TXT": {
+    "consecutive_days": 7,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-28"
+  },
+  "ADBE": {
+    "consecutive_days": 4,
+    "first_seen": "2026-02-21",
+    "last_seen": "2026-02-28"
+  },
+  "HIG": {
+    "consecutive_days": 4,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-28"
+  },
+  "LVS": {
     "consecutive_days": 1,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
+    "last_seen": "2026-02-28"
+  },
+  "BR": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-23",
+    "last_seen": "2026-02-27"
+  },
+  "CRM": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-25",
+    "last_seen": "2026-02-27"
+  },
+  "CINF": {
+    "consecutive_days": 2,
+    "first_seen": "2026-02-18",
+    "last_seen": "2026-02-28"
+  },
+  "CVS": {
+    "consecutive_days": 2,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-28"
+  },
+  "HST": {
+    "consecutive_days": 2,
+    "first_seen": "2026-02-27",
+    "last_seen": "2026-02-28"
+  },
+  "COR": {
+    "consecutive_days": 4,
+    "first_seen": "2026-02-23",
+    "last_seen": "2026-02-28"
+  },
+  "CAH": {
+    "consecutive_days": 10,
+    "first_seen": "2026-02-15",
+    "last_seen": "2026-02-28"
+  },
+  "IQV": {
+    "consecutive_days": 2,
+    "first_seen": "2026-02-27",
+    "last_seen": "2026-02-28"
+  },
+  "JBL": {
+    "consecutive_days": 3,
+    "first_seen": "2026-02-24",
+    "last_seen": "2026-02-28"
   },
   "MCK": {
     "consecutive_days": 10,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
+    "last_seen": "2026-02-28"
   },
-  "CAH": {
-    "consecutive_days": 1,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
-  },
-  "EQT": {
-    "consecutive_days": 8,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
+  "BMY": {
+    "consecutive_days": 2,
+    "first_seen": "2026-02-27",
+    "last_seen": "2026-02-28"
   },
   "CTRA": {
-    "consecutive_days": 1,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
-  },
-  "UHS": {
     "consecutive_days": 2,
     "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
+    "last_seen": "2026-02-28"
   },
-  "CF": {
-    "consecutive_days": 2,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
-  },
-  "TEL": {
-    "consecutive_days": 2,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
-  },
-  "CPAY": {
-    "consecutive_days": 2,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
-  },
-  "RL": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-22"
-  },
-  "ES": {
-    "consecutive_days": 2,
-    "first_seen": "2026-02-18",
-    "last_seen": "2026-02-23"
-  },
-  "HII": {
-    "consecutive_days": 2,
-    "first_seen": "2026-02-19",
-    "last_seen": "2026-02-23"
-  },
-  "TXT": {
-    "consecutive_days": 2,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
-  },
-  "COR": {
+  "WDAY": {
     "consecutive_days": 1,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-23"
-  },
-  "PYPL": {
-    "consecutive_days": 1,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-23"
-  },
-  "EIX": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "ELV": {
-    "consecutive_days": 1,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-23"
-  },
-  "SYK": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "FANG": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "NVDA": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "APH": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "SPG": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "TPR": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "ADI": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "RMD": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "ADBE": {
-    "consecutive_days": 1,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-23"
-  },
-  "GDDY": {
-    "consecutive_days": 1,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-23"
-  },
-  "AVGO": {
-    "consecutive_days": 0,
-    "first_seen": "2026-02-21",
-    "last_seen": "2026-02-22"
-  },
-  "HIG": {
-    "consecutive_days": 1,
-    "first_seen": "2026-02-15",
-    "last_seen": "2026-02-23"
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
   }
 }

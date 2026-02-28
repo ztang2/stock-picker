@@ -32,6 +32,11 @@ from .streak_tracker import get_all_streaks, get_streak
 from .optimizer import run_optimization, get_optimization_status, load_optimization_results, apply_optimization
 from .model_report import generate_factor_report, format_report_discord
 from .auto_optimize import run_monthly_optimization, get_optimization_history
+from .sec_edgar import get_sec_financials
+from .dcf_valuation import run_dcf, get_dcf_summary
+from .comps_analysis import run_comps
+from .thesis_tracker import record_thesis, get_thesis, check_all_theses, close_thesis
+from .earnings_analysis import analyze_earnings
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -809,6 +814,107 @@ def portfolio_check():
     response["timestamp"] = datetime.now().isoformat()
     
     return response
+
+
+# --- SEC EDGAR endpoints ---
+
+@app.get("/sec/{ticker}")
+def sec_data(ticker: str):
+    """Get structured financial data from SEC EDGAR filings."""
+    try:
+        return get_sec_financials(ticker.upper())
+    except Exception as e:
+        raise HTTPException(500, f"SEC data fetch failed: {e}")
+
+
+# --- DCF Valuation endpoints ---
+
+@app.get("/dcf/{ticker}")
+def dcf_full(ticker: str):
+    """Full DCF valuation analysis."""
+    try:
+        return run_dcf(ticker.upper())
+    except Exception as e:
+        raise HTTPException(500, f"DCF analysis failed: {e}")
+
+
+@app.get("/dcf/{ticker}/summary")
+def dcf_summary(ticker: str):
+    """Quick DCF summary: intrinsic value + margin of safety."""
+    try:
+        return get_dcf_summary(ticker.upper())
+    except Exception as e:
+        raise HTTPException(500, f"DCF summary failed: {e}")
+
+
+# --- Comps Analysis endpoints ---
+
+@app.get("/comps/{ticker}")
+def comps(ticker: str, max_peers: int = Query(15, ge=3, le=30)):
+    """Comparable company analysis vs sector peers."""
+    try:
+        return run_comps(ticker.upper(), max_peers=max_peers)
+    except Exception as e:
+        raise HTTPException(500, f"Comps analysis failed: {e}")
+
+
+# --- Thesis Tracker endpoints ---
+
+from pydantic import BaseModel
+
+class ThesisCreate(BaseModel):
+    thesis: str
+    entry_price: Optional[float] = None
+    target_price: Optional[float] = None
+    stop_loss: Optional[float] = None
+    conditions: Optional[List[str]] = None
+    time_horizon: Optional[str] = None
+
+
+@app.post("/thesis/{ticker}")
+def create_thesis(ticker: str, body: ThesisCreate, _: None = Depends(verify_api_key)):
+    """Record an investment thesis."""
+    try:
+        return record_thesis(
+            ticker.upper(),
+            thesis=body.thesis,
+            entry_price=body.entry_price,
+            target_price=body.target_price,
+            stop_loss=body.stop_loss,
+            conditions=body.conditions,
+            time_horizon=body.time_horizon,
+        )
+    except Exception as e:
+        raise HTTPException(500, f"Failed to record thesis: {e}")
+
+
+@app.get("/thesis/check")
+def thesis_check():
+    """Check all active investment theses."""
+    try:
+        return {"results": check_all_theses()}
+    except Exception as e:
+        raise HTTPException(500, f"Thesis check failed: {e}")
+
+
+@app.get("/thesis/{ticker}")
+def thesis_get(ticker: str):
+    """Get current thesis and status for a ticker."""
+    result = get_thesis(ticker.upper())
+    if not result:
+        raise HTTPException(404, f"No thesis found for {ticker.upper()}")
+    return result
+
+
+# --- Earnings Analysis endpoint ---
+
+@app.get("/earnings/{ticker}/analysis")
+def earnings_deep_analysis(ticker: str):
+    """Deep earnings analysis: trends, beat/miss history, quality score."""
+    try:
+        return analyze_earnings(ticker.upper())
+    except Exception as e:
+        raise HTTPException(500, f"Earnings analysis failed: {e}")
 
 
 if __name__ == "__main__":

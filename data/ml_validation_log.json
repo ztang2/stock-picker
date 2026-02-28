@@ -1,0 +1,152 @@
+[
+  {
+    "date": "2026-02-27",
+    "prev_scan_timestamp": "2026-02-27T09:01:12",
+    "spy_return": -0.48,
+    "ml_accuracy": 75.0,
+    "ml_avg_return": 0.784,
+    "ml_predictions_count": 20,
+    "predictions": [
+      {
+        "ticker": "HIG",
+        "ml_score": 56.5,
+        "ml_signal": "HOLD",
+        "return_pct": -0.684,
+        "beat_spy": false
+      },
+      {
+        "ticker": "ALL",
+        "ml_score": 59.7,
+        "ml_signal": "HOLD",
+        "return_pct": 0.563,
+        "beat_spy": true
+      },
+      {
+        "ticker": "ACGL",
+        "ml_score": 35.4,
+        "ml_signal": "AVOID",
+        "return_pct": 0.502,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CINF",
+        "ml_score": 38.3,
+        "ml_signal": "AVOID",
+        "return_pct": -0.787,
+        "beat_spy": false
+      },
+      {
+        "ticker": "TRV",
+        "ml_score": 68.3,
+        "ml_signal": "BUY",
+        "return_pct": 0.263,
+        "beat_spy": true
+      },
+      {
+        "ticker": "EQT",
+        "ml_score": 65.5,
+        "ml_signal": "AVOID",
+        "return_pct": 1.942,
+        "beat_spy": true
+      },
+      {
+        "ticker": "ADBE",
+        "ml_score": 50.6,
+        "ml_signal": "AVOID",
+        "return_pct": 1.301,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CVS",
+        "ml_score": 36.9,
+        "ml_signal": "HOLD",
+        "return_pct": 2.357,
+        "beat_spy": true
+      },
+      {
+        "ticker": "HST",
+        "ml_score": 46.2,
+        "ml_signal": "AVOID",
+        "return_pct": -1.755,
+        "beat_spy": false
+      },
+      {
+        "ticker": "TEL",
+        "ml_score": 38.4,
+        "ml_signal": "AVOID",
+        "return_pct": -1.223,
+        "beat_spy": false
+      },
+      {
+        "ticker": "COR",
+        "ml_score": 42.6,
+        "ml_signal": "AVOID",
+        "return_pct": 1.081,
+        "beat_spy": true
+      },
+      {
+        "ticker": "IQV",
+        "ml_score": 46.6,
+        "ml_signal": "HOLD",
+        "return_pct": 6.188,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CTRA",
+        "ml_score": 58.5,
+        "ml_signal": "HOLD",
+        "return_pct": -0.033,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CAH",
+        "ml_score": 41.6,
+        "ml_signal": "AVOID",
+        "return_pct": 0.192,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CRM",
+        "ml_score": 47.3,
+        "ml_signal": "AVOID",
+        "return_pct": 1.697,
+        "beat_spy": true
+      },
+      {
+        "ticker": "TXT",
+        "ml_score": 38.9,
+        "ml_signal": "AVOID",
+        "return_pct": 1.076,
+        "beat_spy": true
+      },
+      {
+        "ticker": "JBL",
+        "ml_score": 42.1,
+        "ml_signal": "AVOID",
+        "return_pct": -1.337,
+        "beat_spy": false
+      },
+      {
+        "ticker": "BMY",
+        "ml_score": 48.7,
+        "ml_signal": "BUY",
+        "return_pct": 1.646,
+        "beat_spy": true
+      },
+      {
+        "ticker": "MCK",
+        "ml_score": 33.6,
+        "ml_signal": "AVOID",
+        "return_pct": 0.64,
+        "beat_spy": true
+      },
+      {
+        "ticker": "BR",
+        "ml_score": 18.7,
+        "ml_signal": "AVOID",
+        "return_pct": 2.042,
+        "beat_spy": true
+      }
+    ]
+  }
+]
