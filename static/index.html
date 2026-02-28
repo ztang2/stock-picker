@@ -95,6 +95,28 @@ tr.stock-row:hover{background:var(--surface2)}
 .freshness-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:4px;vertical-align:middle;cursor:help}
 .freshness-fresh{background:var(--green)}.freshness-recent{background:var(--yellow)}.freshness-stale{background:var(--orange)}.freshness-very_stale{background:var(--red)}.freshness-unknown{background:var(--text2)}
 
+/* Valuation badges */
+.dcf-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:600}
+.dcf-undervalued{background:rgba(34,197,94,.15);color:var(--green)}
+.dcf-overvalued{background:rgba(239,68,68,.15);color:var(--red)}
+.dcf-fair{background:rgba(100,116,139,.15);color:var(--text2)}
+.conf-HIGH{background:rgba(34,197,94,.15);color:var(--green)}
+.conf-MEDIUM{background:rgba(234,179,8,.15);color:var(--yellow)}
+.conf-LOW{background:rgba(100,116,139,.15);color:var(--text2)}
+.conf-badge{display:inline-block;padding:1px 6px;border-radius:8px;font-size:.65rem;font-weight:700;margin-left:4px}
+
+/* Deep dive */
+.deepdive-container{padding:20px 24px}
+.deepdive-search{display:flex;gap:12px;align-items:center;margin-bottom:20px}
+.deepdive-search input{flex:1;max-width:300px}
+.deepdive-panels{display:grid;grid-template-columns:1fr;gap:16px}
+.deepdive-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px}
+.deepdive-card h3{font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--accent2)}
+.peer-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:.85rem}
+.peer-row:last-child{border-bottom:none}
+.peer-bar{flex:1;height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.peer-fill{height:100%;border-radius:4px}
+
 /* Modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 :root.light-theme .modal-overlay{background:rgba(0,0,0,.4)}
@@ -206,6 +228,7 @@ tr.stock-row:hover{background:var(--surface2)}
   <div class="tab" onclick="switchTab('backtest')">Backtest</div>
   <div class="tab" onclick="switchTab('alerts')">Alerts</div>
   <div class="tab" onclick="switchTab('accuracy')">Accuracy</div>
+  <div class="tab" onclick="switchTab('deepdive')">Deep Dive</div>
   <div class="tab" onclick="switchTab('fmp')">FMP Data</div>
 </div>
 
@@ -261,6 +284,10 @@ tr.stock-row:hover{background:var(--surface2)}
           <th data-col="tech_score" onclick="sortBy('tech_score')">Tech <span class="sort-arrow">▲</span></th>
           <th data-col="risk_score" onclick="sortBy('risk_score')">Risk <span class="sort-arrow">▲</span></th>
           <th data-col="growth_score" onclick="sortBy('growth_score')" id="growthHeader" style="display:none">Growth <span class="sort-arrow">▲</span></th>
+          <th data-col="dcf_margin_of_safety" onclick="sortBy('dcf_margin_of_safety')">DCF MoS <span class="sort-arrow">▲</span></th>
+          <th data-col="dcf_confidence" onclick="sortBy('dcf_confidence')">DCF Conf <span class="sort-arrow">▲</span></th>
+          <th data-col="comps_score" onclick="sortBy('comps_score')">Comps <span class="sort-arrow">▲</span></th>
+          <th data-col="fcf_yield" onclick="sortBy('fcf_yield')">FCF Yield <span class="sort-arrow">▲</span></th>
           <th data-col="consecutive_days" onclick="sortBy('consecutive_days')">📅 Days <span class="sort-arrow">▲</span></th>
         </tr></thead>
         <tbody id="tableBody"></tbody>
@@ -330,6 +357,19 @@ tr.stock-row:hover{background:var(--surface2)}
   </div>
   <div id="alertsTabContent">
     <div class="empty-state"><div class="icon">🔔</div><div>Loading alerts...</div></div>
+  </div>
+</div>
+
+<!-- DEEP DIVE TAB -->
+<div class="tab-content" id="tab-deepdive">
+  <div class="deepdive-container">
+    <div class="deepdive-search">
+      <input type="text" id="deepdiveInput" placeholder="Enter ticker (e.g. AAPL)..." onkeydown="if(event.key==='Enter')loadDeepDive()">
+      <button class="btn btn-primary" onclick="loadDeepDive()">Analyze</button>
+    </div>
+    <div id="deepdiveContent">
+      <div class="empty-state"><div class="icon">🔬</div><div>Enter a ticker to see DCF valuation, comparable analysis, and earnings deep-dive.</div></div>
+    </div>
   </div>
 </div>
 
@@ -574,7 +614,23 @@ function renderTable(){
     const growthTd=showGrowth?'<td class="score '+scoreClass(s.growth_pct)+'">'+fmtScore(s.growth_pct)+'</td>':'';
     const fd=freshnessDot(s.data_freshness,s.data_age_days);
     const streakDays=s.consecutive_days||0;const streakIcon=streakDays>=7?'📅 ':streakDays>=3?'🔥 ':streakDays>0?'🆕 ':'';const streakTd='<td style="text-align:center">'+(streakDays>0?streakIcon+streakDays:'—')+'</td>';
-    return '<tr class="stock-row" onclick="showDetail(\''+s.ticker+'\')"><td>'+s.rank+'</td><td class="ticker-cell">'+sd+(s.ticker||'—')+fd+eb+'</td><td>'+(s.name||'—')+'</td><td>'+sig+'</td><td>'+(s.sector||'—')+'</td><td>'+fmtCap(s.market_cap)+'</td><td class="score '+scoreClass(s.composite_score)+'">'+fmtScore(s.composite_score)+'</td><td class="score '+scoreClass(s.fundamentals_pct)+'">'+fmtScore(s.fundamentals_pct)+'</td><td class="score '+scoreClass(s.valuation_pct)+'">'+fmtScore(s.valuation_pct)+'</td><td class="score '+scoreClass(s.technicals_pct)+'">'+fmtScore(s.technicals_pct)+'</td><td class="score '+scoreClass(s.risk_pct)+'">'+fmtScore(s.risk_pct)+'</td>'+growthTd+streakTd+'</tr>'
+    // DCF margin of safety
+    const dcfMos=s.dcf_margin_of_safety;
+    const dcfVerd=s.dcf_verdict||'';
+    const dcfMosVal=dcfMos!=null?(dcfMos>=0?'+':'')+(dcfMos*100).toFixed(1)+'%':'—';
+    const dcfMosClass=dcfMos!=null?(dcfMos>0?'dcf-undervalued':'dcf-overvalued'):'dcf-fair';
+    const dcfMosTd='<td><span class="dcf-badge '+dcfMosClass+'">'+dcfMosVal+'</span></td>';
+    // DCF confidence
+    const dcfConf=s.dcf_confidence||'';
+    const confTd='<td>'+(dcfConf?'<span class="conf-badge conf-'+dcfConf+'">'+dcfConf+'</span>':'—')+'</td>';
+    // Comps
+    const compsSc=s.comps_score;
+    const compsV=s.comps_verdict||'';
+    const compsTd='<td>'+(compsSc!=null?'<span class="score '+scoreClass(compsSc)+'">'+fmtScore(compsSc)+'</span>'+(compsV?' <span style="font-size:.65rem;color:var(--text2)">'+compsV+'</span>':''):'—')+'</td>';
+    // FCF Yield
+    const fcfY=s.fcf_yield;
+    const fcfTd='<td>'+(fcfY!=null?(fcfY*100).toFixed(1)+'%':'—')+'</td>';
+    return '<tr class="stock-row" onclick="showDetail(\''+s.ticker+'\')"><td>'+s.rank+'</td><td class="ticker-cell">'+sd+(s.ticker||'—')+fd+eb+'</td><td>'+(s.name||'—')+'</td><td>'+sig+'</td><td>'+(s.sector||'—')+'</td><td>'+fmtCap(s.market_cap)+'</td><td class="score '+scoreClass(s.composite_score)+'">'+fmtScore(s.composite_score)+'</td><td class="score '+scoreClass(s.fundamentals_pct)+'">'+fmtScore(s.fundamentals_pct)+'</td><td class="score '+scoreClass(s.valuation_pct)+'">'+fmtScore(s.valuation_pct)+'</td><td class="score '+scoreClass(s.technicals_pct)+'">'+fmtScore(s.technicals_pct)+'</td><td class="score '+scoreClass(s.risk_pct)+'">'+fmtScore(s.risk_pct)+'</td>'+growthTd+dcfMosTd+confTd+compsTd+fcfTd+streakTd+'</tr>'
   }).join('');
 }
 
@@ -1097,6 +1153,141 @@ async function takeAccuracySnapshot(){
     else alert('Failed to take snapshot');
   }catch(e){alert('Error: '+e.message)}
 }
+
+// Deep Dive
+async function loadDeepDive(){
+  const ticker=document.getElementById('deepdiveInput').value.trim().toUpperCase();
+  if(!ticker)return;
+  const cont=document.getElementById('deepdiveContent');
+  cont.innerHTML='<div class="empty-state"><div class="icon">⏳</div><div>Loading deep dive for '+ticker+'...</div></div>';
+  
+  const [dcfR,compsR,earningsR]=await Promise.allSettled([
+    fetch('/dcf/'+ticker).then(r=>r.ok?r.json():null),
+    fetch('/comps/'+ticker).then(r=>r.ok?r.json():null),
+    fetch('/earnings/'+ticker+'/analysis').then(r=>r.ok?r.json():null)
+  ]);
+  const dcf=dcfR.status==='fulfilled'?dcfR.value:null;
+  const comps=compsR.status==='fulfilled'?compsR.value:null;
+  const earnings=earningsR.status==='fulfilled'?earningsR.value:null;
+
+  if(!dcf&&!comps&&!earnings){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>No data available for '+ticker+'. Make sure the API endpoints are running.</div></div>';return}
+
+  let html='<div class="deepdive-panels">';
+
+  // DCF Card
+  html+='<div class="deepdive-card"><h3>💎 DCF Valuation</h3>';
+  if(dcf){
+    const mosColor=(dcf.margin_of_safety||0)>0?'var(--green)':'var(--red)';
+    const verdictClass=(dcf.verdict||'').toLowerCase().includes('under')?'dcf-undervalued':'dcf-overvalued';
+    html+='<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px">';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Intrinsic Value</div><div style="font-size:1.8rem;font-weight:700">$'+(dcf.intrinsic_value||dcf.dcf_intrinsic||0).toFixed(2)+'</div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Current Price</div><div style="font-size:1.8rem;font-weight:700">$'+(dcf.current_price||0).toFixed(2)+'</div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Margin of Safety</div><div style="font-size:1.8rem;font-weight:700;color:'+mosColor+'">'+(((dcf.margin_of_safety||0)*100).toFixed(1))+'%</div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Verdict</div><div style="font-size:1.2rem;font-weight:700"><span class="dcf-badge '+verdictClass+'">'+(dcf.verdict||dcf.dcf_verdict||'—')+'</span></div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Confidence</div><div><span class="conf-badge conf-'+(dcf.confidence||dcf.dcf_confidence||'LOW')+'">'+(dcf.confidence||dcf.dcf_confidence||'—')+'</span></div></div>';
+    html+='</div>';
+    // Assumptions breakdown
+    if(dcf.assumptions||dcf.wacc||dcf.growth_rate||dcf.terminal_growth){
+      html+='<div style="font-size:.85rem;color:var(--text2);border-top:1px solid var(--border);padding-top:12px"><strong>Assumptions:</strong><br>';
+      const a=dcf.assumptions||dcf;
+      if(a.wacc!=null)html+='WACC: '+(a.wacc*100).toFixed(1)+'% · ';
+      if(a.growth_rate!=null)html+='Growth: '+(a.growth_rate*100).toFixed(1)+'% · ';
+      if(a.terminal_growth!=null)html+='Terminal: '+(a.terminal_growth*100).toFixed(1)+'% · ';
+      if(a.projection_years)html+='Horizon: '+a.projection_years+'yr';
+      html+='</div>';
+    }
+    if(dcf.fcf_projections&&dcf.fcf_projections.length){
+      html+='<div style="margin-top:12px"><div style="font-size:.8rem;font-weight:600;margin-bottom:6px">Projected FCF</div>';
+      html+='<div style="display:flex;align-items:flex-end;gap:4px;height:80px">';
+      const maxFcf=Math.max(...dcf.fcf_projections.map(f=>Math.abs(f.value||f)));
+      dcf.fcf_projections.forEach((f,i)=>{
+        const val=f.value||f;
+        const pct=Math.abs(val)/maxFcf*100;
+        html+='<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%"><div style="width:100%;height:'+pct+'%;background:'+(val>=0?'var(--green)':'var(--red)');border-radius:3px 3px 0 0;min-height:2px"></div><div style="font-size:.6rem;color:var(--text2);margin-top:2px">'+(f.year||'Y'+(i+1))+'</div></div>';
+      });
+      html+='</div></div>';
+    }
+  }else{html+='<div style="color:var(--text2)">DCF data not available for this ticker.</div>'}
+  html+='</div>';
+
+  // Comps Card
+  html+='<div class="deepdive-card"><h3>📊 Comparable Analysis</h3>';
+  if(comps){
+    if(comps.score!=null||comps.comps_score!=null){
+      const cs=comps.score||comps.comps_score;
+      html+='<div style="display:flex;gap:24px;margin-bottom:16px">';
+      html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Comps Score</div><div class="score '+scoreClass(cs)+'" style="font-size:1.8rem;font-weight:700">'+fmtScore(cs)+'</div></div>';
+      html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Verdict</div><div style="font-size:1.2rem;font-weight:700">'+(comps.verdict||comps.comps_verdict||'—')+'</div></div>';
+      html+='</div>';
+    }
+    const peers=comps.peers||comps.comparables||[];
+    if(peers.length){
+      html+='<div style="font-size:.8rem;font-weight:600;margin-bottom:8px">Peer Comparison</div>';
+      html+='<table style="font-size:.8rem"><thead><tr><th>Ticker</th><th>P/E</th><th>EV/EBITDA</th><th>P/S</th><th>Mkt Cap</th></tr></thead><tbody>';
+      peers.forEach(p=>{
+        const isSelf=(p.ticker||'')===ticker;
+        html+='<tr style="'+(isSelf?'background:rgba(99,102,241,.08);font-weight:600':'')+'">';
+        html+='<td class="ticker-cell">'+(p.ticker||'—')+(isSelf?' ⬅':'')+'</td>';
+        html+='<td>'+(p.pe!=null?p.pe.toFixed(1):(p.pe_ratio!=null?p.pe_ratio.toFixed(1):'—'))+'</td>';
+        html+='<td>'+(p.ev_ebitda!=null?p.ev_ebitda.toFixed(1):'—')+'</td>';
+        html+='<td>'+(p.ps!=null?p.ps.toFixed(1):(p.ps_ratio!=null?p.ps_ratio.toFixed(1):'—'))+'</td>';
+        html+='<td>'+fmtCap(p.market_cap)+'</td></tr>';
+      });
+      html+='</tbody></table>';
+    }
+  }else{html+='<div style="color:var(--text2)">Comparable analysis not available for this ticker.</div>'}
+  html+='</div>';
+
+  // Earnings Card
+  html+='<div class="deepdive-card"><h3>📈 Earnings Analysis</h3>';
+  if(earnings){
+    if(earnings.summary)html+='<div style="font-size:.9rem;margin-bottom:12px">'+earnings.summary+'</div>';
+    if(earnings.next_date)html+='<div style="margin-bottom:8px;font-size:.85rem">📅 Next earnings: <strong>'+earnings.next_date+'</strong></div>';
+    const quarters=earnings.quarters||earnings.history||[];
+    if(quarters.length){
+      html+='<table style="font-size:.8rem"><thead><tr><th>Quarter</th><th>EPS Est</th><th>EPS Actual</th><th>Surprise</th><th>Revenue</th></tr></thead><tbody>';
+      quarters.forEach(q=>{
+        const surp=q.surprise_pct!=null?((q.surprise_pct>=0?'+':'')+q.surprise_pct.toFixed(1)+'%'):'—';
+        const surpColor=q.surprise_pct!=null?(q.surprise_pct>=0?'var(--green)':'var(--red)'):'';
+        html+='<tr><td>'+(q.quarter||q.date||'—')+'</td><td>'+(q.eps_estimate!=null?'$'+q.eps_estimate.toFixed(2):'—')+'</td><td>'+(q.eps_actual!=null?'$'+q.eps_actual.toFixed(2):'—')+'</td><td style="color:'+surpColor+'">'+surp+'</td><td>'+fmtCap(q.revenue)+'</td></tr>';
+      });
+      html+='</tbody></table>';
+    }
+    if(earnings.trend){
+      html+='<div style="margin-top:12px;font-size:.85rem"><strong>Trend:</strong> '+earnings.trend+'</div>';
+    }
+    if(earnings.risks&&earnings.risks.length){
+      html+='<div style="margin-top:8px;font-size:.85rem"><strong>Risks:</strong> '+earnings.risks.join(', ')+'</div>';
+    }
+  }else{html+='<div style="color:var(--text2)">Earnings analysis not available for this ticker.</div>'}
+  html+='</div>';
+
+  html+='</div>';
+  cont.innerHTML=html;
+}
+
+// Add DCF/Comps to stock detail modal
+const _origShowDetail=showDetail;
+showDetail=async function(ticker){
+  await _origShowDetail(ticker);
+  // Append valuation data from scan results
+  const s=allStocks.find(x=>x.ticker===ticker);
+  if(s){
+    const grid=document.getElementById('modalGrid');
+    let extra='';
+    if(s.dcf_intrinsic!=null)extra+='<div class="metric-card"><div class="label">DCF Intrinsic</div><div class="value">$'+Number(s.dcf_intrinsic).toFixed(2)+'</div></div>';
+    if(s.dcf_margin_of_safety!=null){
+      const mc=s.dcf_margin_of_safety>0?'var(--green)':'var(--red)';
+      extra+='<div class="metric-card"><div class="label">Margin of Safety</div><div class="value" style="color:'+mc+'">'+(s.dcf_margin_of_safety>=0?'+':'')+(s.dcf_margin_of_safety*100).toFixed(1)+'%</div></div>';
+    }
+    if(s.dcf_verdict)extra+='<div class="metric-card"><div class="label">DCF Verdict</div><div class="value"><span class="dcf-badge '+(s.dcf_verdict.toLowerCase().includes('under')?'dcf-undervalued':'dcf-overvalued')+'">'+s.dcf_verdict+'</span></div></div>';
+    if(s.dcf_confidence)extra+='<div class="metric-card"><div class="label">DCF Confidence</div><div class="value"><span class="conf-badge conf-'+s.dcf_confidence+'">'+s.dcf_confidence+'</span></div></div>';
+    if(s.comps_score!=null)extra+='<div class="metric-card"><div class="label">Comps Score</div><div class="value"><span class="score '+scoreClass(s.comps_score)+'">'+fmtScore(s.comps_score)+'</span></div></div>';
+    if(s.comps_verdict)extra+='<div class="metric-card"><div class="label">Comps Verdict</div><div class="value">'+s.comps_verdict+'</div></div>';
+    if(s.fcf_yield!=null)extra+='<div class="metric-card"><div class="label">FCF Yield</div><div class="value">'+(s.fcf_yield*100).toFixed(1)+'%</div></div>';
+    if(extra)grid.innerHTML='<div style="grid-column:1/-1;margin-top:12px"><h3 style="font-size:.9rem;color:var(--accent2);margin-bottom:8px">Valuation</h3><div class="modal-grid">'+extra+'</div></div>'+grid.innerHTML;
+  }
+};
 
 loadCached();
 </script>

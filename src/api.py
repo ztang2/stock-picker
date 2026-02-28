@@ -26,7 +26,7 @@ from .alerts import check_alerts, get_alert_history, generate_morning_briefing
 from .momentum import compute_momentum
 from .strategies import list_strategies, get_strategy
 # FMP removed — yfinance is sole data source. SEC EDGAR planned for future.
-from .universe import get_sp500_tickers
+from .universe import get_sp500_tickers, get_universe_tickers
 from .accuracy import get_accuracy, take_snapshot
 from .streak_tracker import get_all_streaks, get_streak
 from .optimizer import run_optimization, get_optimization_status, load_optimization_results, apply_optimization
@@ -915,6 +915,61 @@ def earnings_deep_analysis(ticker: str):
         return analyze_earnings(ticker.upper())
     except Exception as e:
         raise HTTPException(500, f"Earnings analysis failed: {e}")
+
+
+# ── Alpaca Paper Trading ─────────────────────────────────────────────
+from .alpaca_trader import (
+    get_account as alpaca_get_account,
+    get_positions as alpaca_get_positions,
+    get_orders as alpaca_get_orders,
+    sync_with_holdings as alpaca_sync,
+    get_performance as alpaca_performance,
+)
+
+
+@app.get("/alpaca/account")
+def alpaca_account():
+    """Paper trading account info."""
+    try:
+        return alpaca_get_account()
+    except Exception as e:
+        raise HTTPException(500, f"Alpaca error: {e}")
+
+
+@app.get("/alpaca/positions")
+def alpaca_positions():
+    """Paper trading positions."""
+    try:
+        return alpaca_get_positions()
+    except Exception as e:
+        raise HTTPException(500, f"Alpaca error: {e}")
+
+
+@app.get("/alpaca/orders")
+def alpaca_orders(status: str = "all", limit: int = 50):
+    """Paper trading orders."""
+    try:
+        return alpaca_get_orders(status, limit)
+    except Exception as e:
+        raise HTTPException(500, f"Alpaca error: {e}")
+
+
+@app.post("/alpaca/sync")
+def alpaca_sync_holdings(_=Depends(verify_api_key)):
+    """Sync paper portfolio with holdings.json."""
+    try:
+        return alpaca_sync()
+    except Exception as e:
+        raise HTTPException(500, f"Alpaca sync error: {e}")
+
+
+@app.get("/alpaca/performance")
+def alpaca_perf():
+    """Paper trading performance."""
+    try:
+        return alpaca_performance()
+    except Exception as e:
+        raise HTTPException(500, f"Alpaca error: {e}")
 
 
 if __name__ == "__main__":

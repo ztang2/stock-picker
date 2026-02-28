@@ -206,6 +206,23 @@ def run_dcf(
     
     margin_of_safety = ((intrinsic_value - current_price) / intrinsic_value * 100) if intrinsic_value > 0 else 0
     
+    # Confidence check
+    fcf_yield = fcf / (current_price * shares) * 100 if (current_price and shares) else 0
+    sector = info.get("sector", "")
+    confidence = "HIGH"
+    
+    # DCF unreliable for: low-FCF-yield growth stocks, financials/insurance
+    if abs(margin_of_safety) > 50 and fcf_yield < 1.5:
+        confidence = "LOW"  # High-growth, low FCF yield
+    elif sector in ("Financial Services", "Insurance"):
+        confidence = "LOW"  # FCF distorted by premiums/float
+    elif fcf_yield > 12:
+        confidence = "LOW"  # Abnormally high FCF yield, likely sector distortion
+    elif abs(margin_of_safety) > 50:
+        confidence = "MEDIUM"
+    elif abs(margin_of_safety) > 30:
+        confidence = "MEDIUM"
+    
     # Sensitivity table: vary growth rate and WACC
     sensitivity = []
     growth_range = [growth_rate - 0.04, growth_rate - 0.02, growth_rate, growth_rate + 0.02, growth_rate + 0.04]
@@ -238,6 +255,8 @@ def run_dcf(
         "margin_of_safety": round(margin_of_safety, 2),
         "upside_pct": round((intrinsic_value / current_price - 1) * 100, 2) if current_price > 0 else None,
         "verdict": "UNDERVALUED" if margin_of_safety > 15 else "FAIRLY_VALUED" if margin_of_safety > -10 else "OVERVALUED",
+        "confidence": confidence,
+        "fcf_yield_pct": round(fcf_yield, 2),
         "assumptions": {
             "fcf_ttm": round(fcf, 0),
             "growth_rate": round(growth_rate, 4),
@@ -273,4 +292,6 @@ def get_dcf_summary(ticker: str) -> dict:
         "verdict": result["verdict"],
         "wacc": result["wacc"]["wacc"],
         "growth_rate": result["assumptions"]["growth_rate"],
+        "confidence": result.get("confidence", "HIGH"),
+        "fcf_yield_pct": result.get("fcf_yield_pct"),
     }

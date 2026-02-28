@@ -11,7 +11,7 @@ import pandas as pd
 import yaml
 import yfinance as yf
 
-from .universe import get_sp500_tickers
+from .universe import get_sp500_tickers, get_universe_tickers
 from .fundamentals import score_fundamentals
 from .valuation import score_valuation
 from .technicals import score_technicals
@@ -248,7 +248,7 @@ def run_scan(
     min_cap_threshold = float(strat_filters.get("min_market_cap", thresholds.get("min_market_cap", 2e9)))
     min_vol = float(thresholds.get("min_volume", 500000))
 
-    tickers = get_sp500_tickers(cache_hours)
+    tickers = get_universe_tickers(cache_hours)
     logger.info("Scanning %d tickers with strategy '%s'...", len(tickers), strategy)
 
     # Try cache
@@ -489,18 +489,21 @@ def run_scan(
         dcf_bonus = 0
         if dcf_r and "error" not in dcf_r:
             mos = dcf_r.get("margin_of_safety", 0)
+            confidence = dcf_r.get("confidence", "HIGH")
             stock["dcf_intrinsic"] = dcf_r.get("intrinsic_value")
             stock["dcf_margin_of_safety"] = round(mos, 2)
             stock["dcf_verdict"] = dcf_r.get("verdict")
-            # Bonus: undervalued stocks get a boost
-            if mos > 30:
-                dcf_bonus = 4
-            elif mos > 15:
-                dcf_bonus = 2
-            elif mos < -50:
-                dcf_bonus = -3
-            elif mos < -30:
-                dcf_bonus = -1
+            stock["dcf_confidence"] = confidence
+            # Only apply bonus if confidence is HIGH or MEDIUM
+            if confidence != "LOW":
+                if mos > 30:
+                    dcf_bonus = 4
+                elif mos > 15:
+                    dcf_bonus = 2
+                elif mos < -50:
+                    dcf_bonus = -3
+                elif mos < -30:
+                    dcf_bonus = -1
         
         comps_bonus = 0
         if comps_r and "error" not in comps_r:

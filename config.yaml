@@ -14,5 +14,7 @@ filters:
   max_market_cap: null
   exclude_tickers: []
 
+include_midcap: true   # Include S&P 400 MidCap stocks in universe
+
 cache_hours: 24
 top_n: 20
