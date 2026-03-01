@@ -522,7 +522,13 @@ async function loadCached(){
   loadAlertsBanner();
 }
 function processResults(data){
-  const stocks=data.results||data.stocks||data.top||data;
+  // Merge top (detailed) + all_scores (full universe) — top takes priority
+  let stocks=data.results||data.stocks||data.top||data;
+  if(data.all_scores&&data.all_scores.length&&data.top){
+    const topTickers=new Set((data.top||[]).map(s=>s.ticker));
+    const extra=(data.all_scores||[]).filter(s=>!topTickers.has(s.ticker)&&s.composite_score>0);
+    stocks=[...(data.top||[]),...extra];
+  }
   if(!Array.isArray(stocks)||!stocks.length)return;
   allStocks=stocks.map((s,i)=>({...s,rank:s.rank||i+1}));
   

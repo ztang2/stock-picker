@@ -294,8 +294,8 @@ def run_scan(
                 ticker_sym = stock.get("ticker")
                 if ticker_sym and ticker_sym not in prev_results_map:
                     prev_results_map[ticker_sym] = {
-                        "fundamentals": {"score": stock.get("fund_score")},
-                        "momentum": {"entry_signal": stock.get("signal")},
+                        "fundamentals": {"score": stock.get("fundamentals_pct") or stock.get("fund_score")},
+                        "momentum": {"entry_signal": stock.get("entry_signal") or stock.get("signal")},
                     }
         except Exception:
             logger.warning("Could not load previous results for sell signal comparison")
@@ -662,18 +662,46 @@ def run_scan(
         for w in sanity_warnings:
             logger.warning("SANITY CHECK: %s", w)
 
-    # Build lightweight all_scores for full-universe prev comparison (covers all 500+ stocks)
-    # This lets next scan detect signal changes for stocks outside top-N
+    # Build full all_scores for complete universe data (covers all 800+ stocks)
+    # Stores complete scores for every analyzed stock — enables full Scanner view
     results_by_ticker = {r["ticker"]: r for r in filtered if "ticker" in r}
     all_scores = []
-    for _, row in ranked_df.iterrows():
+    for idx, row in ranked_df.iterrows():
         tkr = row.get("ticker")
         detail = results_by_ticker.get(tkr, {})
+        momentum = detail.get("momentum") or {}
+        technicals = detail.get("technicals") or {}
+        sell = detail.get("sell_signals") or {}
+        fund = detail.get("fundamentals") or {}
+        val = detail.get("valuation") or {}
+        risk_d = detail.get("risk") or {}
+        growth_d = detail.get("growth") or {}
+        sent = detail.get("sentiment") or {}
         all_scores.append({
             "ticker": tkr,
-            "composite": round(float(row.get("composite", 0)), 2),
-            "fund_score": round(float(row.get("fund_pct", 0)), 2) if pd.notna(row.get("fund_pct")) else None,
-            "signal": (detail.get("momentum") or {}).get("entry_signal", "HOLD"),
+            "name": detail.get("name", ""),
+            "sector": detail.get("sector", ""),
+            "industry": detail.get("industry", ""),
+            "composite_score": round(float(row.get("composite", 0)), 2),
+            "rank": int(idx + 1) if isinstance(idx, (int, float)) else 0,
+            "fundamentals_pct": round(float(row.get("fund_pct", 0)), 2) if pd.notna(row.get("fund_pct")) else 0,
+            "valuation_pct": round(float(row.get("val_pct", 0)), 2) if pd.notna(row.get("val_pct")) else 0,
+            "technicals_pct": round(float(row.get("tech_pct", 0)), 2) if pd.notna(row.get("tech_pct")) else 0,
+            "risk_pct": round(float(row.get("risk_pct", 0)), 2) if pd.notna(row.get("risk_pct")) else 0,
+            "growth_pct": round(float(row.get("growth_pct", 0)), 2) if pd.notna(row.get("growth_pct")) else 0,
+            "entry_signal": momentum.get("entry_signal", "HOLD"),
+            "current_price": technicals.get("price") or detail.get("current_price"),
+            "rsi": technicals.get("rsi"),
+            "ma50": technicals.get("ma50"),
+            "ma200": technicals.get("ma200"),
+            "market_cap": detail.get("market_cap"),
+            "pe_ratio": (val.get("pe_ratio")),
+            "dividend_yield": detail.get("dividend_yield"),
+            "beta": (risk_d.get("beta")),
+            "volatility": (risk_d.get("volatility")),
+            "revenue_growth": (fund.get("revenue_growth")),
+            "profit_margin": (fund.get("profit_margin")),
+            "sentiment_score": sent.get("score"),
         })
 
     output = {
