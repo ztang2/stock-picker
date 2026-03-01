@@ -27,10 +27,20 @@
         "checked_at": "2026-02-28T14:53:00.472244",
         "status": "VALID",
         "warnings": []
+      },
+      {
+        "checked_at": "2026-02-28T18:03:28.505709",
+        "status": "VALID",
+        "warnings": []
+      },
+      {
+        "checked_at": "2026-02-28T18:04:42.766885",
+        "status": "VALID",
+        "warnings": []
       }
     ],
     "last_check": {
-      "checked_at": "2026-02-28T14:53:00.472244",
+      "checked_at": "2026-02-28T18:04:42.766885",
       "status": "VALID",
       "warnings": []
     }
@@ -55,10 +65,20 @@
         "checked_at": "2026-02-28T14:53:00.706756",
         "status": "VALID",
         "warnings": []
+      },
+      {
+        "checked_at": "2026-02-28T18:03:28.573994",
+        "status": "VALID",
+        "warnings": []
+      },
+      {
+        "checked_at": "2026-02-28T18:04:42.836805",
+        "status": "VALID",
+        "warnings": []
       }
     ],
     "last_check": {
-      "checked_at": "2026-02-28T14:53:00.706756",
+      "checked_at": "2026-02-28T18:04:42.836805",
       "status": "VALID",
       "warnings": []
     }

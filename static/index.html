@@ -486,7 +486,8 @@ function signalBadge(sig){if(!sig)return'';const icon=SIGNAL_ICONS[sig]||'⚪';r
 function setStatus(text,state){document.getElementById('statusText').textContent=text;document.getElementById('statusDot').className='status-dot'+(state?' '+state:'')}
 
 function switchTab(name){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.textContent.toLowerCase().trim()===name));
+  const tabMap={'deep dive':'deepdive'};
+  document.querySelectorAll('.tab').forEach(t=>{const tn=t.textContent.toLowerCase().trim();t.classList.toggle('active',(tabMap[tn]||tn)===name)});
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.toggle('active',c.id==='tab-'+name));
   if(name==='alerts')loadFullAlerts();
   if(name==='accuracy')loadAccuracy();
@@ -1203,7 +1204,7 @@ async function loadDeepDive(){
       dcf.fcf_projections.forEach((f,i)=>{
         const val=f.value||f;
         const pct=Math.abs(val)/maxFcf*100;
-        html+='<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%"><div style="width:100%;height:'+pct+'%;background:'+(val>=0?'var(--green)':'var(--red)');border-radius:3px 3px 0 0;min-height:2px"></div><div style="font-size:.6rem;color:var(--text2);margin-top:2px">'+(f.year||'Y'+(i+1))+'</div></div>';
+        html+='<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%"><div style="width:100%;height:'+pct+'%;background:'+(val>=0?'var(--green)':'var(--red)')+';border-radius:3px 3px 0 0;min-height:2px"></div><div style="font-size:.6rem;color:var(--text2);margin-top:2px">'+(f.year||'Y'+(i+1))+'</div></div>';
       });
       html+='</div></div>';
     }
