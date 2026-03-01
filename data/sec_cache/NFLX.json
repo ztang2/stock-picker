@@ -1,0 +1,123 @@
+{
+  "ticker": "NFLX",
+  "source": "sec_edgar",
+  "company_name": "NETFLIX INC",
+  "revenue_annual": 45183036000,
+  "revenue_period": "2025-12-31",
+  "revenue_quarterly": 33132274000,
+  "revenue_quarterly_period": "2025-09-30",
+  "revenue_history": [
+    {
+      "period": "2025-12-31",
+      "value": 45183036000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 39000966000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 39000966000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 33723297000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 33723297000,
+      "form": "10-K"
+    }
+  ],
+  "net_income_annual": 10981201000,
+  "net_income_period": "2025-12-31",
+  "net_income_history": [
+    {
+      "period": "2025-12-31",
+      "value": 10981201000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 8711631000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 8711631000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 5407990000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 5407990000
+    }
+  ],
+  "eps_annual": 2.53,
+  "eps_history": [
+    {
+      "period": "2025-12-31",
+      "value": 2.53
+    },
+    {
+      "period": "2024-12-31",
+      "value": 19.83
+    },
+    {
+      "period": "2024-12-31",
+      "value": 1.98
+    },
+    {
+      "period": "2023-12-31",
+      "value": 12.03
+    },
+    {
+      "period": "2023-12-31",
+      "value": 12.03
+    }
+  ],
+  "total_assets": 55596993000,
+  "total_debt": 22855952000,
+  "cash": 9033681000,
+  "operating_cash_flow": 10149273000,
+  "capital_expenditures": 688220000,
+  "free_cash_flow": 9461053000,
+  "fcf_history": [
+    {
+      "period": "2025-12-31",
+      "ocf": 10149273000,
+      "capex": 688220000,
+      "fcf": 9461053000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 7361364000,
+      "capex": 439538000,
+      "fcf": 6921826000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 7361364000,
+      "capex": 439538000,
+      "fcf": 6921826000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 7274301000,
+      "capex": 348552000,
+      "fcf": 6925749000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 7274301000,
+      "capex": 348552000,
+      "fcf": 6925749000
+    }
+  ],
+  "latest_10k_date": "2026-01-23",
+  "latest_10q_date": "2025-10-22"
+}

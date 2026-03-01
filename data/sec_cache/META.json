@@ -1,0 +1,123 @@
+{
+  "ticker": "META",
+  "source": "sec_edgar",
+  "company_name": "Meta Platforms, Inc.",
+  "revenue_annual": 200966000000,
+  "revenue_period": "2025-12-31",
+  "revenue_quarterly": 141073000000,
+  "revenue_quarterly_period": "2025-09-30",
+  "revenue_history": [
+    {
+      "period": "2025-12-31",
+      "value": 200966000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 164501000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 164501000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 134902000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 134902000000,
+      "form": "10-K"
+    }
+  ],
+  "net_income_annual": 60458000000,
+  "net_income_period": "2025-12-31",
+  "net_income_history": [
+    {
+      "period": "2025-12-31",
+      "value": 60458000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 62360000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 62360000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 39098000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 39098000000
+    }
+  ],
+  "eps_annual": 23.49,
+  "eps_history": [
+    {
+      "period": "2025-12-31",
+      "value": 23.49
+    },
+    {
+      "period": "2024-12-31",
+      "value": 23.86
+    },
+    {
+      "period": "2024-12-31",
+      "value": 23.86
+    },
+    {
+      "period": "2023-12-31",
+      "value": 14.87
+    },
+    {
+      "period": "2023-12-31",
+      "value": 14.87
+    }
+  ],
+  "total_assets": 366021000000,
+  "total_debt": 58744000000,
+  "cash": 35873000000,
+  "operating_cash_flow": 115800000000,
+  "capital_expenditures": 69691000000,
+  "free_cash_flow": 46109000000,
+  "fcf_history": [
+    {
+      "period": "2025-12-31",
+      "ocf": 115800000000,
+      "capex": 69691000000,
+      "fcf": 46109000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 91328000000,
+      "capex": 37256000000,
+      "fcf": 54072000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 91328000000,
+      "capex": 37256000000,
+      "fcf": 54072000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 71113000000,
+      "capex": 27045000000,
+      "fcf": 44068000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 71113000000,
+      "capex": 27045000000,
+      "fcf": 44068000000
+    }
+  ],
+  "latest_10k_date": "2026-01-29",
+  "latest_10q_date": "2025-10-30"
+}

@@ -1,0 +1,99 @@
+{
+  "ticker": "BRK-B",
+  "source": "sec_edgar",
+  "company_name": "BERKSHIRE HATHAWAY INC",
+  "revenue_annual": 371433000000,
+  "revenue_period": "2024-12-31",
+  "revenue_quarterly": 277212000000,
+  "revenue_quarterly_period": "2025-09-30",
+  "revenue_history": [
+    {
+      "period": "2024-12-31",
+      "value": 371433000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 364482000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 364482000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2022-12-31",
+      "value": 302089000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2022-12-31",
+      "value": 302020000000,
+      "form": "10-K"
+    }
+  ],
+  "net_income_annual": 88995000000,
+  "net_income_period": "2024-12-31",
+  "net_income_history": [
+    {
+      "period": "2024-12-31",
+      "value": 88995000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 96223000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 96223000000
+    },
+    {
+      "period": "2022-12-31",
+      "value": -22819000000
+    },
+    {
+      "period": "2022-12-31",
+      "value": -22759000000
+    }
+  ],
+  "total_assets": 1153881000000,
+  "cash": 31583000000,
+  "operating_cash_flow": 30592000000,
+  "capital_expenditures": 18976000000,
+  "free_cash_flow": 11616000000,
+  "fcf_history": [
+    {
+      "period": "2024-12-31",
+      "ocf": 30592000000,
+      "capex": 18976000000,
+      "fcf": 11616000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 49196000000,
+      "capex": 19409000000,
+      "fcf": 29787000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 49196000000,
+      "capex": 19409000000,
+      "fcf": 29787000000
+    },
+    {
+      "period": "2022-12-31",
+      "ocf": 37224000000,
+      "capex": 15464000000,
+      "fcf": 21760000000
+    },
+    {
+      "period": "2022-12-31",
+      "ocf": 37350000000,
+      "capex": 15464000000,
+      "fcf": 21886000000
+    }
+  ],
+  "latest_10q_date": "2025-11-03",
+  "latest_10k_date": "2025-02-24"
+}

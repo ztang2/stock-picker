@@ -1,0 +1,123 @@
+{
+  "ticker": "GOOGL",
+  "source": "sec_edgar",
+  "company_name": "ALPHABET INC.",
+  "revenue_annual": 402836000000,
+  "revenue_period": "2025-12-31",
+  "revenue_quarterly": 289007000000,
+  "revenue_quarterly_period": "2025-09-30",
+  "revenue_history": [
+    {
+      "period": "2025-12-31",
+      "value": 402836000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 350018000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 307394000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2021-12-31",
+      "value": 257637000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2020-12-31",
+      "value": 182527000000,
+      "form": "10-K"
+    }
+  ],
+  "net_income_annual": 132170000000,
+  "net_income_period": "2025-12-31",
+  "net_income_history": [
+    {
+      "period": "2025-12-31",
+      "value": 132170000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 100118000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 100118000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 73795000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 73795000000
+    }
+  ],
+  "eps_annual": 10.81,
+  "eps_history": [
+    {
+      "period": "2025-12-31",
+      "value": 10.81
+    },
+    {
+      "period": "2024-12-31",
+      "value": 8.04
+    },
+    {
+      "period": "2024-12-31",
+      "value": 8.04
+    },
+    {
+      "period": "2023-12-31",
+      "value": 5.8
+    },
+    {
+      "period": "2023-12-31",
+      "value": 5.8
+    }
+  ],
+  "total_assets": 595281000000,
+  "total_debt": 49085000000,
+  "cash": 30708000000,
+  "operating_cash_flow": 164713000000,
+  "capital_expenditures": 91447000000,
+  "free_cash_flow": 73266000000,
+  "fcf_history": [
+    {
+      "period": "2025-12-31",
+      "ocf": 164713000000,
+      "capex": 91447000000,
+      "fcf": 73266000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 125299000000,
+      "capex": 52535000000,
+      "fcf": 72764000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 125299000000,
+      "capex": 52535000000,
+      "fcf": 72764000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 101746000000,
+      "capex": 32251000000,
+      "fcf": 69495000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 101746000000,
+      "capex": 32251000000,
+      "fcf": 69495000000
+    }
+  ],
+  "latest_10k_date": "2026-02-05",
+  "latest_10q_date": "2025-10-30"
+}

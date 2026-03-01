@@ -1,0 +1,147 @@
+{
+  "date": "2026-02-28",
+  "model_version": "v2_dcf_comps_midcap",
+  "review_date": "2026-03-30",
+  "stocks": [
+    {
+      "ticker": "PCTY",
+      "score": 88.48,
+      "signal": "STRONG_BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "MEDIUM"
+    },
+    {
+      "ticker": "HIG",
+      "score": 88.11,
+      "signal": "BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    },
+    {
+      "ticker": "ALL",
+      "score": 87.73,
+      "signal": "HOLD",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    },
+    {
+      "ticker": "FAF",
+      "score": 87.69,
+      "signal": "WAIT",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    },
+    {
+      "ticker": "EXLS",
+      "score": 86.54,
+      "signal": "BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "HIGH"
+    },
+    {
+      "ticker": "THC",
+      "score": 85.03,
+      "signal": "HOLD",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    },
+    {
+      "ticker": "DUOL",
+      "score": 84.88,
+      "signal": "STRONG_BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "MEDIUM"
+    },
+    {
+      "ticker": "DOCU",
+      "score": 84.63,
+      "signal": "STRONG_BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "MEDIUM"
+    },
+    {
+      "ticker": "TEL",
+      "score": 84.33,
+      "signal": "BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "MEDIUM"
+    },
+    {
+      "ticker": "JBL",
+      "score": 83.41,
+      "signal": "BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "MEDIUM"
+    },
+    {
+      "ticker": "HST",
+      "score": 83.0,
+      "signal": "BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "MEDIUM"
+    },
+    {
+      "ticker": "IQV",
+      "score": 82.94,
+      "signal": "STRONG_BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "HIGH"
+    },
+    {
+      "ticker": "ACGL",
+      "score": 82.65,
+      "signal": "BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    },
+    {
+      "ticker": "EXEL",
+      "score": 81.93,
+      "signal": "BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "MEDIUM"
+    },
+    {
+      "ticker": "CVS",
+      "score": 81.92,
+      "signal": "BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "MEDIUM"
+    },
+    {
+      "ticker": "FHI",
+      "score": 81.25,
+      "signal": "HOLD",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    },
+    {
+      "ticker": "CINF",
+      "score": 81.07,
+      "signal": "HOLD",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    },
+    {
+      "ticker": "JHG",
+      "score": 79.49,
+      "signal": "HOLD",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    },
+    {
+      "ticker": "TRV",
+      "score": 79.09,
+      "signal": "HOLD",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    },
+    {
+      "ticker": "ORI",
+      "score": 78.27,
+      "signal": "BUY",
+      "dcf_verdict": "UNDERVALUED",
+      "dcf_confidence": "LOW"
+    }
+  ]
+}

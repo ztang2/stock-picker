@@ -15,7 +15,7 @@
     "last_seen": "2026-02-28"
   },
   "EQT": {
-    "consecutive_days": 13,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-28"
   },
@@ -25,12 +25,12 @@
     "last_seen": "2026-02-28"
   },
   "TXT": {
-    "consecutive_days": 7,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-28"
   },
   "ADBE": {
-    "consecutive_days": 4,
+    "consecutive_days": 0,
     "first_seen": "2026-02-21",
     "last_seen": "2026-02-28"
   },
@@ -40,7 +40,7 @@
     "last_seen": "2026-02-28"
   },
   "LVS": {
-    "consecutive_days": 1,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-28"
   },
@@ -70,12 +70,12 @@
     "last_seen": "2026-02-28"
   },
   "COR": {
-    "consecutive_days": 4,
+    "consecutive_days": 0,
     "first_seen": "2026-02-23",
     "last_seen": "2026-02-28"
   },
   "CAH": {
-    "consecutive_days": 10,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-28"
   },
@@ -90,21 +90,71 @@
     "last_seen": "2026-02-28"
   },
   "MCK": {
-    "consecutive_days": 10,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-28"
   },
   "BMY": {
-    "consecutive_days": 2,
+    "consecutive_days": 0,
     "first_seen": "2026-02-27",
     "last_seen": "2026-02-28"
   },
   "CTRA": {
-    "consecutive_days": 2,
+    "consecutive_days": 0,
     "first_seen": "2026-02-15",
     "last_seen": "2026-02-28"
   },
   "WDAY": {
+    "consecutive_days": 0,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "PCTY": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "FAF": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "THC": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "EXLS": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "DUOL": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "FHI": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "EXEL": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "DOCU": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "JHG": {
+    "consecutive_days": 1,
+    "first_seen": "2026-02-28",
+    "last_seen": "2026-02-28"
+  },
+  "ORI": {
     "consecutive_days": 1,
     "first_seen": "2026-02-28",
     "last_seen": "2026-02-28"

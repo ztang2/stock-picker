@@ -1,0 +1,123 @@
+{
+  "ticker": "JPM",
+  "source": "sec_edgar",
+  "company_name": "JPMorgan Chase & Co",
+  "revenue_annual": 182447000000,
+  "revenue_period": "2025-12-31",
+  "revenue_quarterly": 71693000000,
+  "revenue_quarterly_period": "2014-09-30",
+  "revenue_history": [
+    {
+      "period": "2025-12-31",
+      "value": 182447000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 177556000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 177556000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 158104000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 158104000000,
+      "form": "10-K"
+    }
+  ],
+  "net_income_annual": 57048000000,
+  "net_income_period": "2025-12-31",
+  "net_income_history": [
+    {
+      "period": "2025-12-31",
+      "value": 57048000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 58471000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 58471000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 49552000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 49552000000
+    }
+  ],
+  "eps_annual": 20.02,
+  "eps_history": [
+    {
+      "period": "2025-12-31",
+      "value": 20.02
+    },
+    {
+      "period": "2024-12-31",
+      "value": 19.75
+    },
+    {
+      "period": "2024-12-31",
+      "value": 19.75
+    },
+    {
+      "period": "2023-12-31",
+      "value": 16.23
+    },
+    {
+      "period": "2023-12-31",
+      "value": 16.23
+    }
+  ],
+  "total_assets": 4424900000000,
+  "total_debt": 332665000000,
+  "cash": 278793000000,
+  "operating_cash_flow": -147782000000,
+  "capital_expenditures": 0,
+  "free_cash_flow": -147782000000,
+  "fcf_history": [
+    {
+      "period": "2025-12-31",
+      "ocf": -147782000000,
+      "capex": 0,
+      "fcf": -147782000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": -42012000000,
+      "capex": 0,
+      "fcf": -42012000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": -42012000000,
+      "capex": 0,
+      "fcf": -42012000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 12974000000,
+      "capex": 0,
+      "fcf": 12974000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 12974000000,
+      "capex": 0,
+      "fcf": 12974000000
+    }
+  ],
+  "latest_10k_date": "2026-02-13",
+  "latest_10q_date": "2025-11-04"
+}

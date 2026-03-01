@@ -1,0 +1,123 @@
+{
+  "ticker": "NVDA",
+  "source": "sec_edgar",
+  "company_name": "NVIDIA CORP",
+  "revenue_annual": 215938000000,
+  "revenue_period": "2026-01-25",
+  "revenue_quarterly": 147811000000,
+  "revenue_quarterly_period": "2025-10-26",
+  "revenue_history": [
+    {
+      "period": "2026-01-25",
+      "value": 215938000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2025-01-26",
+      "value": 130497000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2025-01-26",
+      "value": 130497000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-01-28",
+      "value": 60922000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-01-28",
+      "value": 60922000000,
+      "form": "10-K"
+    }
+  ],
+  "net_income_annual": 120067000000,
+  "net_income_period": "2026-01-25",
+  "net_income_history": [
+    {
+      "period": "2026-01-25",
+      "value": 120067000000
+    },
+    {
+      "period": "2025-01-26",
+      "value": 72880000000
+    },
+    {
+      "period": "2025-01-26",
+      "value": 72880000000
+    },
+    {
+      "period": "2024-01-28",
+      "value": 29760000000
+    },
+    {
+      "period": "2024-01-28",
+      "value": 29760000000
+    }
+  ],
+  "eps_annual": 4.9,
+  "eps_history": [
+    {
+      "period": "2026-01-25",
+      "value": 4.9
+    },
+    {
+      "period": "2025-01-26",
+      "value": 2.94
+    },
+    {
+      "period": "2025-01-26",
+      "value": 2.94
+    },
+    {
+      "period": "2024-01-28",
+      "value": 11.93
+    },
+    {
+      "period": "2024-01-28",
+      "value": 1.19
+    }
+  ],
+  "total_assets": 206803000000,
+  "total_debt": 8468000000,
+  "cash": 10605000000,
+  "operating_cash_flow": 102718000000,
+  "capital_expenditures": 138735000,
+  "free_cash_flow": 102579265000,
+  "fcf_history": [
+    {
+      "period": "2026-01-25",
+      "ocf": 102718000000,
+      "capex": 0,
+      "fcf": 102718000000
+    },
+    {
+      "period": "2025-01-26",
+      "ocf": 64089000000,
+      "capex": 0,
+      "fcf": 64089000000
+    },
+    {
+      "period": "2025-01-26",
+      "ocf": 64089000000,
+      "capex": 0,
+      "fcf": 64089000000
+    },
+    {
+      "period": "2024-01-28",
+      "ocf": 28090000000,
+      "capex": 0,
+      "fcf": 28090000000
+    },
+    {
+      "period": "2024-01-28",
+      "ocf": 28090000000,
+      "capex": 0,
+      "fcf": 28090000000
+    }
+  ],
+  "latest_10k_date": "2026-02-25",
+  "latest_10q_date": "2025-11-19"
+}

@@ -1,0 +1,123 @@
+{
+  "ticker": "TSLA",
+  "source": "sec_edgar",
+  "company_name": "Tesla, Inc.",
+  "revenue_annual": 94827000000,
+  "revenue_period": "2025-12-31",
+  "revenue_quarterly": 69926000000,
+  "revenue_quarterly_period": "2025-09-30",
+  "revenue_history": [
+    {
+      "period": "2025-12-31",
+      "value": 94827000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 97690000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 97690000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 96773000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 96773000000,
+      "form": "10-K"
+    }
+  ],
+  "net_income_annual": 3794000000,
+  "net_income_period": "2025-12-31",
+  "net_income_history": [
+    {
+      "period": "2025-12-31",
+      "value": 3794000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 7091000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 7091000000
+    },
+    {
+      "period": "2024-09-30",
+      "value": 2167000000
+    },
+    {
+      "period": "2024-06-30",
+      "value": 1478000000
+    }
+  ],
+  "eps_annual": 1.08,
+  "eps_history": [
+    {
+      "period": "2025-12-31",
+      "value": 1.08
+    },
+    {
+      "period": "2024-12-31",
+      "value": 2.04
+    },
+    {
+      "period": "2024-12-31",
+      "value": 2.04
+    },
+    {
+      "period": "2024-09-30",
+      "value": 0.62
+    },
+    {
+      "period": "2024-06-30",
+      "value": 0.42
+    }
+  ],
+  "total_assets": 137806000000,
+  "total_debt": 6584000000,
+  "cash": 16513000000,
+  "operating_cash_flow": 14747000000,
+  "capital_expenditures": 8527000000,
+  "free_cash_flow": 6220000000,
+  "fcf_history": [
+    {
+      "period": "2025-12-31",
+      "ocf": 14747000000,
+      "capex": 8527000000,
+      "fcf": 6220000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 14923000000,
+      "capex": 11342000000,
+      "fcf": 3581000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 14923000000,
+      "capex": 11342000000,
+      "fcf": 3581000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 13256000000,
+      "capex": 8898000000,
+      "fcf": 4358000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 13256000000,
+      "capex": 8898000000,
+      "fcf": 4358000000
+    }
+  ],
+  "latest_10k_date": "2026-01-29",
+  "latest_10q_date": "2025-10-23"
+}

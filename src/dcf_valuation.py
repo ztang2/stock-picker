@@ -209,6 +209,7 @@ def run_dcf(
     # Confidence check
     fcf_yield = fcf / (current_price * shares) * 100 if (current_price and shares) else 0
     sector = info.get("sector", "")
+    iv_to_price_ratio = intrinsic_value / current_price if current_price > 0 else 1
     confidence = "HIGH"
     
     # DCF unreliable for: low-FCF-yield growth stocks, financials/insurance
@@ -218,6 +219,8 @@ def run_dcf(
         confidence = "LOW"  # FCF distorted by premiums/float
     elif fcf_yield > 12:
         confidence = "LOW"  # Abnormally high FCF yield, likely sector distortion
+    elif iv_to_price_ratio > 3 or iv_to_price_ratio < 0.2:
+        confidence = "LOW"  # IV wildly divergent from price — model unreliable
     elif abs(margin_of_safety) > 50:
         confidence = "MEDIUM"
     elif abs(margin_of_safety) > 30:

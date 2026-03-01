@@ -456,6 +456,9 @@ def run_scan(
         })
 
     # --- DCF & Comps bonus for top N (avoid running on all 500+) ---
+    # Cache S&P 500 tickers for midcap penalty check
+    from .universe import get_sp500_tickers
+    _sp500_set = set(get_sp500_tickers())
     logger.info("Running DCF & comps analysis for top %d stocks...", len(ranked))
     dcf_comps_start = time.time()
     
@@ -524,7 +527,29 @@ def run_scan(
         if total_val_bonus != 0:
             stock["composite_score"] = max(0, stock.get("composite_score", 0) + total_val_bonus)
             stock["valuation_bonus"] = total_val_bonus
-    
+
+        # --- Risk adjustments ---
+
+        # 1. MidCap volatility discount: S&P 400 stocks get -2 penalty (higher risk)
+        if tkr not in _sp500_set:
+            stock["composite_score"] = max(0, stock.get("composite_score", 0) - 2)
+            stock["midcap_penalty"] = -2
+
+        # 2. Momentum crash filter: use price vs MA50 as proxy for recent drawdown
+        price = stock.get("current_price", 0)
+        ma50 = stock.get("ma50", 0)
+        if price and ma50 and ma50 > 0:
+            drawdown_from_ma50 = (price / ma50 - 1) * 100
+            stock["drawdown_from_ma50"] = round(drawdown_from_ma50, 1)
+            if drawdown_from_ma50 < -20:
+                stock["entry_signal"] = "WATCH"
+                stock["momentum_warning"] = f"Price {drawdown_from_ma50:.1f}% below MA50 — possible falling knife"
+
+        # 3. LOW confidence DCF penalty: slight -1 instead of neutral 0
+        if dcf_r and "error" not in dcf_r and dcf_r.get("confidence") == "LOW":
+            stock["composite_score"] = max(0, stock.get("composite_score", 0) - 1)
+            stock["dcf_low_penalty"] = -1
+
     logger.info("DCF & comps analysis completed in %.1fs", time.time() - dcf_comps_start)
 
     # --- Smart money signals (analyst revisions + insider trading) for top N only ---

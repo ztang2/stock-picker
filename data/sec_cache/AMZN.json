@@ -1,0 +1,123 @@
+{
+  "ticker": "AMZN",
+  "source": "sec_edgar",
+  "company_name": "AMAZON COM INC",
+  "revenue_annual": 716924000000,
+  "revenue_period": "2025-12-31",
+  "revenue_quarterly": 503538000000,
+  "revenue_quarterly_period": "2025-09-30",
+  "revenue_history": [
+    {
+      "period": "2025-12-31",
+      "value": 716924000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 637959000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2024-12-31",
+      "value": 637959000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 574785000000,
+      "form": "10-K"
+    },
+    {
+      "period": "2023-12-31",
+      "value": 574785000000,
+      "form": "10-K"
+    }
+  ],
+  "net_income_annual": 77670000000,
+  "net_income_period": "2025-12-31",
+  "net_income_history": [
+    {
+      "period": "2025-12-31",
+      "value": 77670000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 59248000000
+    },
+    {
+      "period": "2024-12-31",
+      "value": 59248000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 30425000000
+    },
+    {
+      "period": "2023-12-31",
+      "value": 30425000000
+    }
+  ],
+  "eps_annual": 7.17,
+  "eps_history": [
+    {
+      "period": "2025-12-31",
+      "value": 7.17
+    },
+    {
+      "period": "2024-12-31",
+      "value": 5.53
+    },
+    {
+      "period": "2024-12-31",
+      "value": 5.53
+    },
+    {
+      "period": "2023-12-31",
+      "value": 2.9
+    },
+    {
+      "period": "2023-12-31",
+      "value": 2.9
+    }
+  ],
+  "total_assets": 818042000000,
+  "total_debt": 69291000000,
+  "cash": 86810000000,
+  "operating_cash_flow": 139514000000,
+  "capital_expenditures": 6737000000,
+  "free_cash_flow": 132777000000,
+  "fcf_history": [
+    {
+      "period": "2025-12-31",
+      "ocf": 139514000000,
+      "capex": 0,
+      "fcf": 139514000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 115877000000,
+      "capex": 0,
+      "fcf": 115877000000
+    },
+    {
+      "period": "2024-12-31",
+      "ocf": 115877000000,
+      "capex": 0,
+      "fcf": 115877000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 84946000000,
+      "capex": 0,
+      "fcf": 84946000000
+    },
+    {
+      "period": "2023-12-31",
+      "ocf": 84946000000,
+      "capex": 0,
+      "fcf": 84946000000
+    }
+  ],
+  "latest_10k_date": "2026-02-06",
+  "latest_10q_date": "2025-10-31"
+}
