@@ -972,6 +972,51 @@ def alpaca_perf():
         raise HTTPException(500, f"Alpaca error: {e}")
 
 
+# === Risk Management ===
+
+@app.get("/risk/summary")
+def risk_summary():
+    """Full portfolio risk summary: stop-losses, position limits, P&L."""
+    from .risk_manager import get_portfolio_summary
+    from .rebalance import load_holdings
+    
+    holdings = load_holdings()
+    
+    # Add NFLX as extra holding (non-picker)
+    extra = {
+        "NFLX": {"shares": 40, "entry_price": 80.51, "entry_date": "2025-01-01"},
+    }
+    
+    return get_portfolio_summary(holdings, extra_holdings=extra)
+
+
+@app.get("/risk/stop-losses")
+def risk_stop_losses():
+    """Check stop-loss status for all positions."""
+    from .risk_manager import check_stop_losses
+    from .rebalance import load_holdings
+    
+    holdings = load_holdings()
+    # Include NFLX
+    holdings["NFLX"] = {"shares": 40, "entry_price": 80.51, "entry_date": "2025-01-01"}
+    
+    return {"alerts": check_stop_losses(holdings)}
+
+
+@app.get("/risk/positions")
+def risk_positions():
+    """Check position size limits."""
+    from .risk_manager import check_position_limits
+    from .rebalance import load_holdings
+    
+    holdings = load_holdings()
+    extra = {
+        "NFLX": {"shares": 40, "entry_price": 80.51, "entry_date": "2025-01-01"},
+    }
+    
+    return {"positions": check_position_limits(holdings, extra_holdings=extra)}
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("src.api:app", host="0.0.0.0", port=8000, reload=True)

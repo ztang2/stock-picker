@@ -848,6 +848,33 @@ async function runScan(){
 // Alerts
 async function loadAlertsBanner(){
   try{const r=await fetch('/alerts?limit=20');if(!r.ok)return;const d=await r.json();currentAlerts=d.current||[];renderAlertsBanner(currentAlerts.length?currentAlerts:d.history||[])}catch(e){}
+  // Also load risk alerts
+  try{
+    const r=await fetch('/risk/summary');
+    if(!r.ok)return;
+    const risk=await r.json();
+    const warns=risk.warnings||{};
+    const banner=document.getElementById('alertsBanner');
+    if(!banner)return;
+    if(warns.stop_losses_triggered>0){
+      const div=document.createElement('div');
+      div.className='alert-banner-item';
+      div.style.cssText='background:var(--red);color:white;padding:8px 16px;border-radius:6px;margin-top:4px;cursor:pointer;font-weight:600';
+      div.textContent='🔴 '+warns.stop_losses_triggered+' position(s) hit stop-loss! Click to view.';
+      div.onclick=()=>switchTab('portfolio');
+      banner.appendChild(div);
+    }
+    if(warns.over_position_limit>0){
+      const div=document.createElement('div');
+      div.className='alert-banner-item';
+      div.style.cssText='background:orange;color:white;padding:8px 16px;border-radius:6px;margin-top:4px;cursor:pointer;font-weight:600';
+      div.textContent='⚠️ '+warns.over_position_limit+' position(s) exceed size limit! Click to view.';
+      div.onclick=()=>switchTab('portfolio');
+      banner.appendChild(div);
+    }
+    // Store for portfolio tab
+    window._riskData=risk;
+  }catch(e){}
 }
 
 async function loadFullAlerts(){
@@ -872,7 +899,9 @@ async function loadPortfolio(){
   const btn=document.getElementById('portfolioBtn');btn.disabled=true;btn.textContent='Building...';
   const size=document.getElementById('portfolioSize').value;
   const cont=document.getElementById('portfolioContent');
-  cont.innerHTML='<div class="empty-state"><div class="icon">⏳</div><div>Building portfolio...</div></div>';
+  cont.innerHTML='<div class="empty-state"><div class="icon">⏳</div><div>Loading risk data & building portfolio...</div></div>';
+  // Load risk data first
+  try{const rr=await fetch('/risk/summary');if(rr.ok)window._riskData=await rr.json();}catch(e){}
   try{
     const r=await fetch('/portfolio?stocks='+size);
     if(!r.ok){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>Failed. Run a scan first.</div></div>';return}
@@ -883,7 +912,43 @@ async function loadPortfolio(){
 
 function renderPortfolio(data){
   const cont=document.getElementById('portfolioContent');
-  if(!data.stocks||!data.stocks.length){cont.innerHTML='<div class="empty-state"><div class="icon">📭</div><div>No stocks selected.</div></div>';return}
+  // Prepend risk summary if available
+  let riskHtml='';
+  const risk=window._riskData;
+  if(risk){
+    const rc=risk.risk_score>=70?'var(--green)':risk.risk_score>=40?'orange':'var(--red)';
+    riskHtml+='<div style="margin-bottom:20px;padding:20px;background:var(--card);border-radius:12px;border:1px solid var(--border)">';
+    riskHtml+='<h3 style="margin:0 0 16px">🛡️ Risk Management</h3>';
+    riskHtml+='<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px">';
+    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Portfolio Value</div><div style="font-size:1.5rem;font-weight:700">$'+risk.portfolio_value.toLocaleString()+'</div></div>';
+    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Total P&L</div><div style="font-size:1.5rem;font-weight:700;color:'+(risk.total_pnl>=0?'var(--green)':'var(--red)')+'">$'+risk.total_pnl.toFixed(2)+' ('+risk.total_pnl_pct.toFixed(1)+'%)</div></div>';
+    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Win Rate</div><div style="font-size:1.5rem;font-weight:700">'+risk.win_rate+'%</div></div>';
+    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Risk Score</div><div style="font-size:1.5rem;font-weight:700;color:'+rc+'">'+risk.risk_score+'/100</div></div>';
+    riskHtml+='</div>';
+    // Stop loss table
+    if(risk.stop_loss_alerts&&risk.stop_loss_alerts.length){
+      riskHtml+='<h4 style="font-size:.9rem;margin:12px 0 8px">Stop-Loss Monitor (threshold: -15%)</h4>';
+      riskHtml+='<table style="font-size:.8rem;width:100%"><thead><tr><th>Ticker</th><th>Entry</th><th>Current</th><th>P&L %</th><th>P&L $</th><th>Status</th></tr></thead><tbody>';
+      risk.stop_loss_alerts.forEach(a=>{
+        const color=a.status==='STOP_LOSS_TRIGGERED'?'var(--red)':a.status==='APPROACHING_STOP_LOSS'?'orange':a.pnl_pct>=0?'var(--green)':'var(--text)';
+        const icon=a.status==='STOP_LOSS_TRIGGERED'?'🔴':a.status==='APPROACHING_STOP_LOSS'?'🟡':'🟢';
+        riskHtml+='<tr><td><strong>'+a.ticker+'</strong></td><td>$'+a.entry_price.toFixed(2)+'</td><td>$'+a.current_price.toFixed(2)+'</td><td style="color:'+color+';font-weight:600">'+(a.pnl_pct>=0?'+':'')+a.pnl_pct.toFixed(1)+'%</td><td style="color:'+color+'">$'+a.pnl_dollar.toFixed(2)+'</td><td>'+icon+' '+a.status.replace(/_/g,' ')+'</td></tr>';
+      });
+      riskHtml+='</tbody></table>';
+    }
+    // Position limits
+    if(risk.position_alerts&&risk.position_alerts.length){
+      riskHtml+='<h4 style="font-size:.9rem;margin:16px 0 8px">Position Size Limits (max: 20%)</h4>';
+      riskHtml+='<table style="font-size:.8rem;width:100%"><thead><tr><th>Ticker</th><th>Value</th><th>% of Portfolio</th><th>Status</th></tr></thead><tbody>';
+      risk.position_alerts.forEach(p=>{
+        const bar='<div style="width:100%;background:var(--bg2);border-radius:3px;height:16px;position:relative"><div style="width:'+Math.min(p.portfolio_pct,100)+'%;background:'+(p.status==='OVER_LIMIT'?'var(--red)':'var(--green)')+';height:100%;border-radius:3px"></div><span style="position:absolute;left:4px;top:0;font-size:.7rem;line-height:16px">'+p.portfolio_pct+'%</span></div>';
+        riskHtml+='<tr><td><strong>'+p.ticker+'</strong></td><td>$'+p.value.toLocaleString()+'</td><td>'+bar+'</td><td>'+(p.status==='OVER_LIMIT'?'⚠️ OVER':'✅ OK')+'</td></tr>';
+      });
+      riskHtml+='</tbody></table>';
+    }
+    riskHtml+='</div>';
+  }
+  if(!data.stocks||!data.stocks.length){cont.innerHTML=riskHtml+'<div class="empty-state"><div class="icon">📭</div><div>No stocks selected.</div></div>';return}
   const m=data.metrics||{};
   let gradParts=[],cumPct=0;
   data.stocks.forEach((s,i)=>{const start=cumPct;cumPct+=s.allocation_pct;gradParts.push(PIE_COLORS[i%PIE_COLORS.length]+' '+start+'% '+cumPct+'%')});
@@ -904,7 +969,7 @@ function renderPortfolio(data){
     html+='<tr class="stock-row" onclick="showDetail(\''+s.ticker+'\')"><td class="ticker-cell">'+s.ticker+'</td><td>'+s.name+'</td><td>'+s.sector+'</td><td><strong>'+s.allocation_pct.toFixed(1)+'%</strong></td><td>'+(s.volatility*100).toFixed(1)+'%</td><td>'+s.beta.toFixed(2)+'</td></tr>';
   });
   html+='</tbody></table></div>';
-  cont.innerHTML=html;
+  cont.innerHTML=riskHtml+html;
 }
 
 // Backtest
