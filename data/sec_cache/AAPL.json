@@ -2,32 +2,34 @@
   "ticker": "AAPL",
   "source": "sec_edgar",
   "company_name": "Apple Inc.",
-  "revenue_annual": 265595000000,
-  "revenue_period": "2018-09-29",
+  "revenue_annual": 416161000000,
+  "revenue_period": "2025-09-27",
+  "revenue_quarterly": 143756000000,
+  "revenue_quarterly_period": "2025-12-27",
   "revenue_history": [
     {
-      "period": "2018-09-29",
-      "value": 265595000000,
+      "period": "2025-09-27",
+      "value": 416161000000,
       "form": "10-K"
     },
     {
-      "period": "2018-09-29",
-      "value": 62900000000,
+      "period": "2024-09-28",
+      "value": 391035000000,
       "form": "10-K"
     },
     {
-      "period": "2018-06-30",
-      "value": 53265000000,
+      "period": "2024-09-28",
+      "value": 391035000000,
       "form": "10-K"
     },
     {
-      "period": "2018-03-31",
-      "value": 61137000000,
+      "period": "2023-09-30",
+      "value": 383285000000,
       "form": "10-K"
     },
     {
-      "period": "2017-12-30",
-      "value": 88293000000,
+      "period": "2023-09-30",
+      "value": 383285000000,
       "form": "10-K"
     }
   ],
@@ -81,6 +83,41 @@
   "total_assets": 359241000000,
   "total_debt": 90678000000,
   "cash": 35934000000,
+  "operating_cash_flow": 111482000000,
+  "capital_expenditures": 12715000000,
+  "free_cash_flow": 98767000000,
+  "fcf_history": [
+    {
+      "period": "2025-09-27",
+      "ocf": 111482000000,
+      "capex": 12715000000,
+      "fcf": 98767000000
+    },
+    {
+      "period": "2024-09-28",
+      "ocf": 118254000000,
+      "capex": 9447000000,
+      "fcf": 108807000000
+    },
+    {
+      "period": "2024-09-28",
+      "ocf": 118254000000,
+      "capex": 9447000000,
+      "fcf": 108807000000
+    },
+    {
+      "period": "2023-09-30",
+      "ocf": 110543000000,
+      "capex": 10959000000,
+      "fcf": 99584000000
+    },
+    {
+      "period": "2023-09-30",
+      "ocf": 110543000000,
+      "capex": 10959000000,
+      "fcf": 99584000000
+    }
+  ],
   "latest_10q_date": "2026-01-30",
   "latest_10k_date": "2025-10-31"
 }

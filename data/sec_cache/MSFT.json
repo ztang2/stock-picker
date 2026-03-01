@@ -2,34 +2,34 @@
   "ticker": "MSFT",
   "source": "sec_edgar",
   "company_name": "MICROSOFT CORPORATION",
-  "revenue_annual": 62484000000,
-  "revenue_period": "2010-06-30",
-  "revenue_quarterly": 36148000000,
-  "revenue_quarterly_period": "2010-12-31",
+  "revenue_annual": 281724000000,
+  "revenue_period": "2025-06-30",
+  "revenue_quarterly": 158946000000,
+  "revenue_quarterly_period": "2025-12-31",
   "revenue_history": [
     {
-      "period": "2010-06-30",
-      "value": 62484000000,
+      "period": "2025-06-30",
+      "value": 281724000000,
       "form": "10-K"
     },
     {
-      "period": "2010-06-30",
-      "value": 16039000000,
+      "period": "2024-06-30",
+      "value": 245122000000,
       "form": "10-K"
     },
     {
-      "period": "2010-03-31",
-      "value": 14503000000,
+      "period": "2024-06-30",
+      "value": 245122000000,
       "form": "10-K"
     },
     {
-      "period": "2009-12-31",
-      "value": 19022000000,
+      "period": "2023-06-30",
+      "value": 211915000000,
       "form": "10-K"
     },
     {
-      "period": "2009-09-30",
-      "value": 12920000000,
+      "period": "2023-06-30",
+      "value": 211915000000,
       "form": "10-K"
     }
   ],
@@ -83,6 +83,41 @@
   "total_assets": 619003000000,
   "total_debt": 43151000000,
   "cash": 30242000000,
+  "operating_cash_flow": 136162000000,
+  "capital_expenditures": 64551000000,
+  "free_cash_flow": 71611000000,
+  "fcf_history": [
+    {
+      "period": "2025-06-30",
+      "ocf": 136162000000,
+      "capex": 64551000000,
+      "fcf": 71611000000
+    },
+    {
+      "period": "2024-06-30",
+      "ocf": 118548000000,
+      "capex": 44477000000,
+      "fcf": 74071000000
+    },
+    {
+      "period": "2024-06-30",
+      "ocf": 118548000000,
+      "capex": 44477000000,
+      "fcf": 74071000000
+    },
+    {
+      "period": "2023-06-30",
+      "ocf": 87582000000,
+      "capex": 28107000000,
+      "fcf": 59475000000
+    },
+    {
+      "period": "2023-06-30",
+      "ocf": 87582000000,
+      "capex": 28107000000,
+      "fcf": 59475000000
+    }
+  ],
   "latest_10q_date": "2026-01-28",
   "latest_10k_date": "2025-07-30"
 }

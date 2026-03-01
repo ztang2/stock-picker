@@ -165,10 +165,28 @@ def get_sec_financials(ticker: str) -> dict:
         "company_name": facts.get("entityName", ticker),
     }
 
-    # Revenue (Revenues or RevenueFromContractWithCustomerExcludingAssessedTax)
-    revenue_entries = (_extract_fact(facts, "us-gaap", "Revenues") or
-                       _extract_fact(facts, "us-gaap", "RevenueFromContractWithCustomerExcludingAssessedTax") or
-                       _extract_fact(facts, "us-gaap", "SalesRevenueNet"))
+    # Revenue — try multiple concepts, pick the one with the most recent data
+    def _best_revenue_entries(facts):
+        candidates = []
+        for concept in [
+            "Revenues",
+            "RevenueFromContractWithCustomerExcludingAssessedTax",
+            "RevenueFromContractWithCustomerIncludingAssessedTax",
+            "SalesRevenueNet",
+        ]:
+            entries = _extract_fact(facts, "us-gaap", concept)
+            if entries:
+                annual = [e for e in entries if e.get("form") == "10-K"]
+                if annual:
+                    latest_date = max(e.get("end", "") for e in annual)
+                    candidates.append((latest_date, entries))
+        if not candidates:
+            return []
+        # Return the concept with the most recent annual filing
+        candidates.sort(key=lambda x: x[0], reverse=True)
+        return candidates[0][1]
+
+    revenue_entries = _best_revenue_entries(facts)
 
     if revenue_entries:
         latest = _get_latest_annual(revenue_entries)
@@ -240,8 +258,10 @@ def get_sec_financials(ticker: str) -> dict:
             result["cash"] = latest.get("val")
 
     # Free Cash Flow (Operating CF - CapEx)
-    ocf_entries = _extract_fact(facts, "us-gaap", "NetCashProvidedByOperatingActivities")
-    capex_entries = _extract_fact(facts, "us-gaap", "PaymentsToAcquirePropertyPlantAndEquipment")
+    ocf_entries = (_extract_fact(facts, "us-gaap", "NetCashProvidedByOperatingActivities") or
+                   _extract_fact(facts, "us-gaap", "NetCashProvidedByUsedInOperatingActivities"))
+    capex_entries = (_extract_fact(facts, "us-gaap", "PaymentsToAcquirePropertyPlantAndEquipment") or
+                     _extract_fact(facts, "us-gaap", "PaymentsForCapitalImprovements"))
     if ocf_entries:
         ocf_latest = _get_latest_annual(ocf_entries)
         capex_latest = _get_latest_annual(capex_entries) if capex_entries else None
