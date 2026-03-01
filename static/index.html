@@ -1269,6 +1269,46 @@ async function loadDeepDive(){
       if(a.projection_years)html+='Horizon: '+a.projection_years+'yr';
       html+='</div>';
     }
+    // Sensitivity matrix
+    if(dcf.sensitivity&&dcf.sensitivity.length){
+      const baseWacc=dcf.wacc?(dcf.wacc.wacc||dcf.wacc):null;
+      const baseGrowth=dcf.assumptions?dcf.assumptions.growth_rate:null;
+      const cp=dcf.current_price||0;
+      html+='<div style="margin-top:16px;border-top:1px solid var(--border);padding-top:12px">';
+      html+='<div style="font-size:.85rem;font-weight:600;margin-bottom:8px">📊 Sensitivity Analysis <span style="font-weight:400;color:var(--text2)">(Intrinsic Value at different WACC × Growth Rate)</span></div>';
+      // Get WACC columns from first row
+      const waccKeys=Object.keys(dcf.sensitivity[0].values);
+      html+='<table style="font-size:.75rem;width:100%;border-collapse:collapse">';
+      html+='<thead><tr><th style="padding:6px;border:1px solid var(--border);background:var(--bg2)">Growth \\ WACC</th>';
+      waccKeys.forEach(w=>{
+        const wPct=(parseFloat(w)*100).toFixed(1)+'%';
+        const isBase=baseWacc&&Math.abs(parseFloat(w)-baseWacc)<0.001;
+        html+='<th style="padding:6px;border:1px solid var(--border);background:'+(isBase?'rgba(99,102,241,.15)':'var(--bg2)')+'">'+wPct+'</th>';
+      });
+      html+='</tr></thead><tbody>';
+      dcf.sensitivity.forEach(row=>{
+        const gr=row.growth_rate;
+        const grPct=(gr*100).toFixed(1)+'%';
+        const isBaseRow=baseGrowth&&Math.abs(gr-baseGrowth)<0.001;
+        html+='<tr><td style="padding:6px;border:1px solid var(--border);font-weight:600;background:'+(isBaseRow?'rgba(99,102,241,.15)':'var(--bg2)')+'">'+grPct+'</td>';
+        waccKeys.forEach(w=>{
+          const iv=row.values[w];
+          const isBase=isBaseRow&&baseWacc&&Math.abs(parseFloat(w)-baseWacc)<0.001;
+          let bg='';let color='';
+          if(iv!=null&&cp>0){
+            if(iv>cp*1.15)color='var(--green)';
+            else if(iv<cp*0.85)color='var(--red)';
+            else color='var(--text)';
+          }
+          if(isBase)bg='background:rgba(99,102,241,.2);font-weight:700;';
+          html+='<td style="padding:6px;border:1px solid var(--border);text-align:right;color:'+color+';'+bg+'">'+(iv!=null?'$'+iv.toFixed(0):'—')+'</td>';
+        });
+        html+='</tr>';
+      });
+      html+='</tbody></table>';
+      html+='<div style="font-size:.7rem;color:var(--text2);margin-top:6px">🟢 Green = undervalued (IV > price+15%) · 🔴 Red = overvalued (IV < price-15%) · 🟪 Purple highlight = base case</div>';
+      html+='</div>';
+    }
     if(dcf.fcf_projections&&dcf.fcf_projections.length){
       html+='<div style="margin-top:12px"><div style="font-size:.8rem;font-weight:600;margin-bottom:6px">Projected FCF</div>';
       html+='<div style="display:flex;align-items:flex-end;gap:4px;height:80px">';
