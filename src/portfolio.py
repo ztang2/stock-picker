@@ -27,11 +27,15 @@ def build_portfolio(ranked_stocks: List[dict], target_size: int = 10) -> dict:
     sector_counts: Dict[str, int] = {}
     sectors_seen: set = set()
 
+    # Dynamic max per sector: if target is large, allow more per sector
+    unique_sectors = len(set(s.get("sector", "Unknown") for s in ranked_stocks[:target_size * 2]))
+    max_per_sector = max(3, (target_size + unique_sectors - 1) // max(unique_sectors, 1))
+
     for s in ranked_stocks:
         if len(selected) >= target_size:
             break
         sector = s.get("sector", "Unknown")
-        if sector_counts.get(sector, 0) >= 3:
+        if sector_counts.get(sector, 0) >= max_per_sector:
             continue
         selected.append(s)
         sector_counts[sector] = sector_counts.get(sector, 0) + 1
