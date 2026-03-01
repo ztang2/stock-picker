@@ -108,7 +108,7 @@ tr.stock-row:hover{background:var(--surface2)}
 /* Deep dive */
 .deepdive-container{padding:20px 24px}
 .deepdive-search{display:flex;gap:12px;align-items:center;margin-bottom:20px}
-.deepdive-search input{flex:1;max-width:300px}
+.deepdive-search input{flex:1;max-width:500px;padding:12px 16px;font-size:1.1rem;border-radius:8px}
 .deepdive-panels{display:grid;grid-template-columns:1fr;gap:16px}
 .deepdive-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px}
 .deepdive-card h3{font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--accent2)}
@@ -618,7 +618,7 @@ function renderTable(){
     // DCF margin of safety
     const dcfMos=s.dcf_margin_of_safety;
     const dcfVerd=s.dcf_verdict||'';
-    const dcfMosVal=dcfMos!=null?(dcfMos>=0?'+':'')+(dcfMos*100).toFixed(1)+'%':'—';
+    const dcfMosVal=dcfMos!=null?(dcfMos>=0?'+':'')+dcfMos.toFixed(1)+'%':'—';
     const dcfMosClass=dcfMos!=null?(dcfMos>0?'dcf-undervalued':'dcf-overvalued'):'dcf-fair';
     const dcfMosTd='<td><span class="dcf-badge '+dcfMosClass+'">'+dcfMosVal+'</span></td>';
     // DCF confidence
@@ -1173,7 +1173,79 @@ async function loadDeepDive(){
 
   if(!dcf&&!comps&&!earnings){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>No data available for '+ticker+'. Make sure the API endpoints are running.</div></div>';return}
 
-  let html='<div class="deepdive-panels">';
+  let html='';
+
+  // Company Header
+  const companyName = (dcf && dcf.company_name) || (comps && comps.company_name) || ticker;
+  const sector = (comps && comps.sector) || '';
+  const industry = (comps && comps.industry) || '';
+  const price = (dcf && dcf.current_price) || '';
+  html+='<div style="margin-bottom:20px;padding:20px;background:var(--card);border-radius:12px;border:1px solid var(--border)">';
+  html+='<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">';
+  html+='<div><div style="font-size:1.8rem;font-weight:700">'+ticker+'</div><div style="font-size:1.1rem;color:var(--text2)">'+companyName+'</div>';
+  if(sector) html+='<div style="font-size:.85rem;color:var(--text2);margin-top:4px">'+sector+(industry?' · '+industry:'')+'</div>';
+  html+='</div>';
+  if(price) html+='<div style="text-align:right"><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Current Price</div><div style="font-size:2rem;font-weight:700">$'+parseFloat(price).toFixed(2)+'</div></div>';
+  html+='</div></div>';
+
+  // === TL;DR Summary Card ===
+  html+='<div style="margin-bottom:20px;padding:20px;background:var(--card);border-radius:12px;border:1px solid var(--border)">';
+  html+='<h3 style="margin:0 0 12px">📋 Summary</h3>';
+  {
+    const bullets=[];
+    // DCF verdict
+    if(dcf){
+      const iv=(dcf.intrinsic_value||0).toFixed(2);
+      const cp=(dcf.current_price||0).toFixed(2);
+      const mos=(dcf.margin_of_safety||0).toFixed(1);
+      const conf=dcf.confidence||dcf.dcf_confidence||'?';
+      if((dcf.margin_of_safety||0)>20) bullets.push('💰 <strong>DCF says undervalued</strong> — intrinsic value $'+iv+' vs price $'+cp+' ('+mos+'% upside). Confidence: '+conf);
+      else if((dcf.margin_of_safety||0)>0) bullets.push('📊 <strong>DCF says slightly undervalued</strong> — intrinsic value $'+iv+' vs price $'+cp+' ('+mos+'% upside). Confidence: '+conf);
+      else if((dcf.margin_of_safety||0)>-30) bullets.push('⚠️ <strong>DCF says slightly overvalued</strong> — intrinsic value $'+iv+' vs price $'+cp+' ('+mos+'%). Confidence: '+conf);
+      else bullets.push('🔴 <strong>DCF says significantly overvalued</strong> — intrinsic value $'+iv+' but trading at $'+cp+' ('+mos+'%). Confidence: '+conf);
+    }
+    // Comps verdict
+    if(comps){
+      const cs=comps.comps_score||comps.score||0;
+      const cv=comps.verdict||comps.comps_verdict||'';
+      if(cs>=70) bullets.push('✅ <strong>Cheaper than peers</strong> — comps score '+cs.toFixed(0)+'/100 ('+cv.replace(/_/g,' ').toLowerCase()+')');
+      else if(cs>=40) bullets.push('📊 <strong>In line with peers</strong> — comps score '+cs.toFixed(0)+'/100 ('+cv.replace(/_/g,' ').toLowerCase()+')');
+      else bullets.push('⚠️ <strong>More expensive than peers</strong> — comps score '+cs.toFixed(0)+'/100 ('+cv.replace(/_/g,' ').toLowerCase()+')');
+    }
+    // Earnings verdict
+    if(earnings){
+      const br=earnings.beat_rate;
+      const qs=earnings.earnings_quality_score;
+      const mt=earnings.margin_trend;
+      let earningsLine='';
+      if(br!=null){
+        if(br>=80) earningsLine='✅ <strong>Strong earner</strong> — beats estimates '+br.toFixed(0)+'% of the time';
+        else if(br>=60) earningsLine='📊 <strong>Decent earner</strong> — beats estimates '+br.toFixed(0)+'% of the time';
+        else earningsLine='⚠️ <strong>Inconsistent earner</strong> — only beats '+br.toFixed(0)+'% of the time';
+      }
+      if(mt&&mt.trend){
+        const tl=mt.trend.toLowerCase();
+        if(tl.includes('expand')) earningsLine+=' with expanding margins 📈';
+        else if(tl.includes('contract')) earningsLine+=' but margins are contracting 📉';
+        else if(tl.includes('stable')) earningsLine+=' with stable margins';
+      }
+      if(earningsLine) bullets.push(earningsLine);
+    }
+    // Overall take
+    let overallColor='var(--text2)';let overallIcon='🤔';let overallText='Mixed signals — dig deeper into the details below.';
+    const dcfMos=dcf?(dcf.margin_of_safety||0):0;
+    const compsScore=comps?(comps.comps_score||comps.score||50):50;
+    const beatRate=earnings?(earnings.beat_rate||50):50;
+    if(dcfMos>20&&compsScore>=60&&beatRate>=70){overallColor='var(--green)';overallIcon='🟢';overallText='Strong buy candidate — undervalued, cheap vs peers, and solid earnings.';}
+    else if(dcfMos>0&&compsScore>=50&&beatRate>=60){overallColor='var(--green)';overallIcon='🟡';overallText='Looks reasonable — slightly undervalued with decent fundamentals.';}
+    else if(dcfMos<-50&&compsScore<50){overallColor='var(--red)';overallIcon='🔴';overallText='Caution — overvalued by DCF and expensive vs peers.';}
+    else if(dcfMos<-30){overallColor='var(--red)';overallIcon='🟠';overallText='Overvalued by DCF, but peers are priced similarly. Sector might be expensive overall.';}
+    bullets.forEach(b=>{ html+='<div style="font-size:.9rem;margin-bottom:8px;line-height:1.5">'+b+'</div>'; });
+    html+='<div style="margin-top:12px;padding:12px;border-radius:8px;background:rgba(128,128,128,.08);font-size:1rem"><span style="font-size:1.2rem">'+overallIcon+'</span> <strong style="color:'+overallColor+'">Bottom Line:</strong> '+overallText+'</div>';
+  }
+  html+='</div>';
+
+  html+='<div class="deepdive-panels">';
 
   // DCF Card
   html+='<div class="deepdive-card"><h3>💎 DCF Valuation</h3>';
@@ -1183,7 +1255,7 @@ async function loadDeepDive(){
     html+='<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px">';
     html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Intrinsic Value</div><div style="font-size:1.8rem;font-weight:700">$'+(dcf.intrinsic_value||dcf.dcf_intrinsic||0).toFixed(2)+'</div></div>';
     html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Current Price</div><div style="font-size:1.8rem;font-weight:700">$'+(dcf.current_price||0).toFixed(2)+'</div></div>';
-    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Margin of Safety</div><div style="font-size:1.8rem;font-weight:700;color:'+mosColor+'">'+(((dcf.margin_of_safety||0)*100).toFixed(1))+'%</div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Margin of Safety</div><div style="font-size:1.8rem;font-weight:700;color:'+mosColor+'">'+((dcf.margin_of_safety||0).toFixed(1))+'%</div></div>';
     html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Verdict</div><div style="font-size:1.2rem;font-weight:700"><span class="dcf-badge '+verdictClass+'">'+(dcf.verdict||dcf.dcf_verdict||'—')+'</span></div></div>';
     html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Confidence</div><div><span class="conf-badge conf-'+(dcf.confidence||dcf.dcf_confidence||'LOW')+'">'+(dcf.confidence||dcf.dcf_confidence||'—')+'</span></div></div>';
     html+='</div>';
@@ -1242,23 +1314,35 @@ async function loadDeepDive(){
   // Earnings Card
   html+='<div class="deepdive-card"><h3>📈 Earnings Analysis</h3>';
   if(earnings){
-    if(earnings.summary)html+='<div style="font-size:.9rem;margin-bottom:12px">'+earnings.summary+'</div>';
-    if(earnings.next_date)html+='<div style="margin-bottom:8px;font-size:.85rem">📅 Next earnings: <strong>'+earnings.next_date+'</strong></div>';
-    const quarters=earnings.quarters||earnings.history||[];
+    // Quality score + beat rate
+    if(earnings.earnings_quality_score!=null||earnings.beat_rate!=null){
+      html+='<div style="display:flex;gap:24px;margin-bottom:16px;flex-wrap:wrap">';
+      if(earnings.earnings_quality_score!=null)html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Quality Score</div><div style="font-size:1.8rem;font-weight:700">'+earnings.earnings_quality_score.toFixed(0)+'</div></div>';
+      if(earnings.beat_rate!=null)html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Beat Rate</div><div style="font-size:1.8rem;font-weight:700;color:var(--green)">'+earnings.beat_rate.toFixed(0)+'%</div></div>';
+      if(earnings.beat_count!=null)html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Record</div><div style="font-size:1.2rem;font-weight:700">'+earnings.beat_count+' beats / '+earnings.miss_count+' misses</div></div>';
+      html+='</div>';
+    }
+    // Beat/miss history table
+    const quarters=earnings.beat_miss_history||earnings.quarters||earnings.history||[];
     if(quarters.length){
-      html+='<table style="font-size:.8rem"><thead><tr><th>Quarter</th><th>EPS Est</th><th>EPS Actual</th><th>Surprise</th><th>Revenue</th></tr></thead><tbody>';
+      html+='<h4 style="font-size:.85rem;margin:12px 0 8px">Beat/Miss History</h4>';
+      html+='<table style="font-size:.8rem"><thead><tr><th>Quarter</th><th>EPS Est</th><th>EPS Actual</th><th>Surprise</th><th>Result</th></tr></thead><tbody>';
       quarters.forEach(q=>{
-        const surp=q.surprise_pct!=null?((q.surprise_pct>=0?'+':'')+q.surprise_pct.toFixed(1)+'%'):'—';
+        const surp=q.surprise_pct!=null?((q.surprise_pct>=0?'+':'')+(q.surprise_pct*100).toFixed(1)+'%'):'—';
         const surpColor=q.surprise_pct!=null?(q.surprise_pct>=0?'var(--green)':'var(--red)'):'';
-        html+='<tr><td>'+(q.quarter||q.date||'—')+'</td><td>'+(q.eps_estimate!=null?'$'+q.eps_estimate.toFixed(2):'—')+'</td><td>'+(q.eps_actual!=null?'$'+q.eps_actual.toFixed(2):'—')+'</td><td style="color:'+surpColor+'">'+surp+'</td><td>'+fmtCap(q.revenue)+'</td></tr>';
+        const result=q.beat?'✅ Beat':'❌ Miss';
+        html+='<tr><td>'+(q.quarter||q.date||'—')+'</td><td>'+(q.eps_estimate!=null?'$'+q.eps_estimate.toFixed(3):'—')+'</td><td>'+(q.eps_actual!=null?'$'+q.eps_actual.toFixed(3):'—')+'</td><td style="color:'+surpColor+'">'+surp+'</td><td>'+result+'</td></tr>';
       });
       html+='</tbody></table>';
     }
-    if(earnings.trend){
-      html+='<div style="margin-top:12px;font-size:.85rem"><strong>Trend:</strong> '+earnings.trend+'</div>';
+    // Margin trend
+    if(earnings.margin_trend){
+      const mt=earnings.margin_trend;
+      html+='<div style="margin-top:12px;font-size:.85rem"><strong>Margin Trend:</strong> '+(mt.trend||'—')+' (latest: '+(mt.latest!=null?mt.latest.toFixed(1)+'%':'—')+')</div>';
     }
-    if(earnings.risks&&earnings.risks.length){
-      html+='<div style="margin-top:8px;font-size:.85rem"><strong>Risks:</strong> '+earnings.risks.join(', ')+'</div>';
+    // Signals
+    if(earnings.signals&&earnings.signals.length){
+      html+='<div style="margin-top:8px;font-size:.85rem"><strong>Signals:</strong> '+earnings.signals.join(', ')+'</div>';
     }
   }else{html+='<div style="color:var(--text2)">Earnings analysis not available for this ticker.</div>'}
   html+='</div>';
@@ -1279,7 +1363,7 @@ showDetail=async function(ticker){
     if(s.dcf_intrinsic!=null)extra+='<div class="metric-card"><div class="label">DCF Intrinsic</div><div class="value">$'+Number(s.dcf_intrinsic).toFixed(2)+'</div></div>';
     if(s.dcf_margin_of_safety!=null){
       const mc=s.dcf_margin_of_safety>0?'var(--green)':'var(--red)';
-      extra+='<div class="metric-card"><div class="label">Margin of Safety</div><div class="value" style="color:'+mc+'">'+(s.dcf_margin_of_safety>=0?'+':'')+(s.dcf_margin_of_safety*100).toFixed(1)+'%</div></div>';
+      extra+='<div class="metric-card"><div class="label">Margin of Safety</div><div class="value" style="color:'+mc+'">'+(s.dcf_margin_of_safety>=0?'+':'')+s.dcf_margin_of_safety.toFixed(1)+'%</div></div>';
     }
     if(s.dcf_verdict)extra+='<div class="metric-card"><div class="label">DCF Verdict</div><div class="value"><span class="dcf-badge '+(s.dcf_verdict.toLowerCase().includes('under')?'dcf-undervalued':'dcf-overvalued')+'">'+s.dcf_verdict+'</span></div></div>';
     if(s.dcf_confidence)extra+='<div class="metric-card"><div class="label">DCF Confidence</div><div class="value"><span class="conf-badge conf-'+s.dcf_confidence+'">'+s.dcf_confidence+'</span></div></div>';
