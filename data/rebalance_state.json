@@ -4,11 +4,11 @@
   "candidate_streaks": {
     "IQV": {
       "signal": "STRONG_BUY",
-      "days": 1,
+      "days": 2,
       "since": "2026-02-27",
-      "score": 74.55,
-      "ml_score": 47.0
+      "score": 81.05,
+      "ml_score": 30.7
     }
   },
-  "updated": "2026-02-27T13:30:05.274949"
+  "updated": "2026-03-02T13:30:31.906218"
 }

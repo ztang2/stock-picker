@@ -6,30 +6,37 @@
       "entry_date": "2026-02-17",
       "entry_score": 82.7
     },
-    "ACGL": {
-      "shares": 7.045443,
-      "entry_price": 99.36,
-      "entry_date": "2026-02-17",
-      "entry_score": 87.3
-    },
     "ALL": {
       "shares": 4.841559,
       "entry_price": 206.55,
       "entry_date": "2026-02-23",
       "entry_score": 89.81
     },
-    "TEL": {
-      "shares": 4.283566,
-      "entry_price": 233.45,
-      "entry_date": "2026-02-23",
-      "entry_score": 81.03
-    },
     "CF": {
       "shares": 7.253134,
       "entry_price": 96.51,
       "entry_date": "2026-02-23",
       "entry_score": 85.32
+    },
+    "HIG": {
+      "shares": 13,
+      "entry_price": 141.64,
+      "entry_date": "2026-03-02",
+      "entry_score": 84.7
+    },
+    "GDDY": {
+      "shares": 8.5,
+      "entry_price": 89.22,
+      "entry_date": "2026-03-02",
+      "entry_score": 82.8
+    },
+    "NFLX": {
+      "shares": 40,
+      "entry_price": 80.51,
+      "entry_date": "2025-01-01",
+      "entry_score": 0,
+      "note": "Non-picker legacy holding"
     }
   },
-  "updated": "2026-02-23T20:30:00"
+  "updated": "2026-03-02T18:39:37.299054"
 }

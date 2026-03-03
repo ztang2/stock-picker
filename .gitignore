@@ -37,6 +37,12 @@ data/openbb_comparison_results.txt
 !data/scan_results.json
 !data/signal_history.json
 !data/streak_tracker.json
+!data/holdings.json
+!data/trade_history.json
+!data/risk_config.json
+!data/rebalance_state.json
+!data/audit_baseline_*.json
+!data/daily_snapshots/
 
 # Node
 node_modules/

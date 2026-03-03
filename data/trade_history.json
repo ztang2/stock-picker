@@ -1,0 +1,34 @@
+[
+  {
+    "ticker": "ACGL",
+    "action": "SELL",
+    "shares": 7.045,
+    "price": 99.36,
+    "reason": "War risk - reinsurer exposure to Strait of Hormuz claims",
+    "timestamp": "2026-03-02T07:42:09.661372"
+  },
+  {
+    "ticker": "TEL",
+    "action": "SELL",
+    "shares": 4.28,
+    "price": 211.95,
+    "reason": "Stop loss triggered - war supply chain fears",
+    "timestamp": "2026-03-02T11:12:42.414056"
+  },
+  {
+    "ticker": "HIG",
+    "action": "BUY",
+    "shares": 13,
+    "price": 141.64,
+    "reason": "Top scorer, insurance strength",
+    "timestamp": "2026-03-02T11:21:08.732921"
+  },
+  {
+    "ticker": "GDDY",
+    "action": "BUY",
+    "shares": 8.5,
+    "price": 89.22,
+    "reason": "SaaS diversification, BUY signal",
+    "timestamp": "2026-03-02T11:21:08.733024"
+  }
+]
