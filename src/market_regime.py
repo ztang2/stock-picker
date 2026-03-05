@@ -312,6 +312,16 @@ def detect_market_regime(spy_hist: pd.DataFrame) -> Dict:
         dxy_signal = _score_dxy(macro_data["dxy"]) if "dxy" in macro_data else None
         oil_signal = _score_oil(macro_data["oil"]) if "oil" in macro_data else None
 
+        # === FRED economic data (optional, non-blocking) ===
+        fred_summary = None
+        try:
+            from .fred_data import get_economic_summary
+            fred_summary = get_economic_summary()
+            if "error" in fred_summary:
+                fred_summary = None
+        except Exception as e:
+            logger.warning(f"FRED data unavailable: {e}")
+
         # === Composite Score (-14 to +14 range, normalized) ===
         scores = {
             "spy_trend": spy_trend_score,       # -2 to +2
@@ -326,6 +336,10 @@ def detect_market_regime(spy_hist: pd.DataFrame) -> Dict:
             scores["dxy"] = dxy_signal["score"]
         if oil_signal:
             scores["oil"] = oil_signal["score"]
+        if fred_summary and "composite_score" in fred_summary:
+            # Clamp FRED score to ±3 to not overwhelm market signals
+            fred_score = max(-3, min(3, fred_summary["composite_score"]))
+            scores["fred_economic"] = fred_score
 
         composite = sum(scores.values())
         max_possible = sum(abs(v) for v in scores.values()) or 1
@@ -354,8 +368,9 @@ def detect_market_regime(spy_hist: pd.DataFrame) -> Dict:
         }
 
         # Description
+        n_signals = len(scores)
         parts = [f"SPY ${current_price:.2f} ({distance_200ma_pct:+.1f}% vs 200MA)"]
-        parts.append(f"Composite: {composite:+d}/7 → {regime.upper()}")
+        parts.append(f"Composite: {composite:+d}/{n_signals} → {regime.upper()}")
         if vix_signal:
             parts.append(vix_signal["note"])
         if yield_signal:
@@ -383,6 +398,7 @@ def detect_market_regime(spy_hist: pd.DataFrame) -> Dict:
             "macro": macro_data,
             "signal_scores": scores,
             "composite_score": composite,
+            "economic": fred_summary if fred_summary else None,
         }
 
         logger.info(f"Market regime: {regime.upper()} (composite={composite:+d}, confidence={confidence:.0%})")

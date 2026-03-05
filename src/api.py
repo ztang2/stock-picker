@@ -972,6 +972,22 @@ def alpaca_perf():
         raise HTTPException(500, f"Alpaca error: {e}")
 
 
+# === Economic Data (FRED) ===
+
+@app.get("/economic/summary")
+def economic_summary():
+    """Get FRED economic data summary with composite score."""
+    from .fred_data import get_economic_summary
+    return get_economic_summary()
+
+
+@app.get("/economic/data")
+def economic_data(refresh: bool = Query(False)):
+    """Get raw FRED economic data."""
+    from .fred_data import fetch_fred_data
+    return fetch_fred_data(force_refresh=refresh)
+
+
 # === Risk Management ===
 
 @app.get("/risk/summary")
