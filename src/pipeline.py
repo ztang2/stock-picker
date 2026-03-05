@@ -725,8 +725,19 @@ def run_scan(
         except Exception as e:
             logger.warning("Failed to rotate scan results: %s", e)
 
-    # Save results
+    # Save results (sanitize NaN/Infinity for JSON compliance)
+    def _sanitize(obj):
+        import math
+        if isinstance(obj, float) and (math.isnan(obj) or math.isinf(obj)):
+            return None
+        elif isinstance(obj, dict):
+            return {k: _sanitize(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [_sanitize(v) for v in obj]
+        return obj
+
     DATA_DIR.mkdir(exist_ok=True)
+    output = _sanitize(output)
     RESULTS_FILE.write_text(json.dumps(output, indent=2, default=str))
     
     # Also save daily snapshot
