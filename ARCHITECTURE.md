@@ -41,7 +41,7 @@ Dashboard UI + Robin Daily Reports
 8. 排名 + 信号生成
 
 ### 宏观Regime检测 (`src/market_regime.py`)
-**7信号系统**判断 Bull/Bear/Sideways：
+**8信号系统**判断 Bull/Bear/Sideways：
 1. SPY vs 200MA（趋势）
 2. SPY vs 50MA（动量）
 3. SPY RSI（超买/超卖）
@@ -49,9 +49,16 @@ Dashboard UI + Robin Daily Reports
 5. 10年美债收益率（利率环境）— ^TNX
 6. 美元指数DXY（美元强弱）— DX-Y.NYB
 7. 油价（通胀/地缘风险）— CL=F
+8. FRED经济数据综合（CPI/失业率/GDP/联邦利率/收益率曲线/失业救济）— 上限±3
 
 每个信号独立评分，composite ≥+3 → Bull，≤-3 → Bear，其间 → Sideways。
 Bear regime自动调高估值+风险权重，降低成长+技术面权重。
+
+### FRED经济数据 (`src/fred_data.py`)
+6个关键指标从美联储FRED API获取（免费，6小时缓存）：
+- CPI（通胀）、失业率、GDP增长率、联邦基金利率、收益率曲线（10Y-2Y）、失业救济申请
+- 收益率曲线倒挂是最可靠的衰退预测信号
+- 经济composite ≥+3 → expansion，≤-3 → contraction
 
 ### 风险管理 (`src/risk_manager.py`)
 - 止损监控：持仓跌超15%触发警报
