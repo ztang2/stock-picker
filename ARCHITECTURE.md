@@ -32,12 +32,32 @@ Dashboard UI + Robin Daily Reports
 ### Pipeline (`src/pipeline.py`)
 **系统入口**。协调整个扫描流程：
 1. `get_universe_tickers()` 获取股票列表
-2. `fetch_stock_data()` 并行获取yfinance数据（带缓存）
-3. 5维评分 → `compute_composite()` 加权合成
-4. Top N 做 DCF/Comps 深度分析
-5. 风险调整（MidCap、crash filter、DCF penalty）
-6. Smart money bonus
-7. 排名 + 信号生成
+2. `detect_market_regime()` 7信号宏观判断（见下）
+3. `fetch_stock_data()` 并行获取yfinance数据（带缓存）
+4. 5维评分 → `compute_composite()` 加权合成（权重受regime调整）
+5. Top N 做 DCF/Comps 深度分析
+6. 风险调整（MidCap、crash filter、DCF penalty）
+7. Smart money bonus
+8. 排名 + 信号生成
+
+### 宏观Regime检测 (`src/market_regime.py`)
+**7信号系统**判断 Bull/Bear/Sideways：
+1. SPY vs 200MA（趋势）
+2. SPY vs 50MA（动量）
+3. SPY RSI（超买/超卖）
+4. VIX（恐慌指数）— ^VIX
+5. 10年美债收益率（利率环境）— ^TNX
+6. 美元指数DXY（美元强弱）— DX-Y.NYB
+7. 油价（通胀/地缘风险）— CL=F
+
+每个信号独立评分，composite ≥+3 → Bull，≤-3 → Bear，其间 → Sideways。
+Bear regime自动调高估值+风险权重，降低成长+技术面权重。
+
+### 风险管理 (`src/risk_manager.py`)
+- 止损监控：持仓跌超15%触发警报
+- 仓位限制：单股不超过总portfolio 20%
+- P&L追踪：盈亏比、胜率统计
+- API: `/risk/summary`, `/risk/stop-losses`, `/risk/positions`
 
 ### 5维评分体系
 
