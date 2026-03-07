@@ -778,8 +778,14 @@ def train_model(months_history: int = 12) -> dict:
 
     # Compute metrics for all approaches
     def _score(m):
-        return (m.get("accuracy", 0) * 0.3 + m.get("f1", 0) * 0.3 +
-                m.get("recall", 0) * 0.2 + m.get("regression_corr", 0) * 0.2)
+        # Precision-first: for stock picking, we care most about
+        # "when we say BUY, does it actually beat SPY?"
+        # Minimum precision threshold: if precision < 55%, heavily penalize
+        prec = m.get("precision", 0)
+        penalty = 0 if prec >= 0.55 else -0.1
+        return (prec * 0.40 + m.get("f1", 0) * 0.20 +
+                m.get("accuracy", 0) * 0.15 + m.get("regression_corr", 0) * 0.15 +
+                m.get("recall", 0) * 0.10 + penalty)
 
     all_metrics = {}
     all_scores = {}
@@ -793,8 +799,14 @@ def train_model(months_history: int = 12) -> dict:
         all_metrics["specialized_ensemble"] = spec_metrics
         all_scores["specialized_ensemble"] = _score(spec_metrics)
 
-    # Select best approach
-    selected = max(all_scores, key=all_scores.get)
+    # Select best approach — prefer high-precision models for stock picking
+    # If any model has precision >= 60%, pick the highest-precision one
+    high_prec = {k: all_metrics[k]["precision"] for k in all_scores
+                 if all_metrics[k].get("precision", 0) >= 0.60}
+    if high_prec:
+        selected = max(high_prec, key=high_prec.get)
+    else:
+        selected = max(all_scores, key=all_scores.get)
     logger.info("Composite scores: " + ", ".join(f"{k}={v:.4f}" for k, v in sorted(all_scores.items(), key=lambda x: -x[1])))
     logger.info(f"Selected approach: {selected}")
 
