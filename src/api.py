@@ -972,6 +972,15 @@ def alpaca_perf():
         raise HTTPException(500, f"Alpaca error: {e}")
 
 
+# === Quality Scores (Piotroski + Altman) ===
+
+@app.get("/quality/{ticker}")
+def quality_scores(ticker: str):
+    """Get Piotroski F-Score and Altman Z-Score for a stock."""
+    from .quality_scores import compute_quality_scores
+    return compute_quality_scores(ticker.upper())
+
+
 # === Economic Data (FRED) ===
 
 @app.get("/economic/summary")

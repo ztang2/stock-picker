@@ -552,6 +552,67 @@ def run_scan(
 
     logger.info("DCF & comps analysis completed in %.1fs", time.time() - dcf_comps_start)
 
+    # --- Quality scores (Piotroski F-Score + Altman Z-Score) for top N ---
+    logger.info("Computing quality scores for top %d stocks...", len(ranked))
+    quality_start = time.time()
+    
+    from .quality_scores import compute_quality_scores
+    
+    def _fetch_quality(ticker: str):
+        try:
+            return ticker, compute_quality_scores(ticker)
+        except Exception:
+            return ticker, None
+    
+    quality_map = {}
+    with ThreadPoolExecutor(max_workers=3) as executor:
+        futures = {executor.submit(_fetch_quality, s["ticker"]): s["ticker"] for s in ranked}
+        for future in as_completed(futures):
+            tkr_q, q_result = future.result()
+            if q_result:
+                quality_map[tkr_q] = q_result
+    
+    for stock in ranked:
+        tkr = stock["ticker"]
+        q = quality_map.get(tkr)
+        if q:
+            p = q.get("piotroski", {})
+            a = q.get("altman", {})
+            stock["piotroski_score"] = p.get("score")
+            stock["piotroski_grade"] = p.get("grade")
+            stock["altman_z_score"] = a.get("score")
+            stock["altman_zone"] = a.get("zone")
+            stock["quality_score"] = q.get("quality_score")
+            
+            # Quality bonus/penalty
+            quality_bonus = 0
+            ps = p.get("score")
+            az = a.get("score")
+            
+            # Piotroski 8-9 = strong company, 0-3 = weak
+            if ps is not None:
+                if ps >= 8:
+                    quality_bonus += 2
+                elif ps >= 6:
+                    quality_bonus += 1
+                elif ps <= 3:
+                    quality_bonus -= 2
+                elif ps <= 4:
+                    quality_bonus -= 1
+            
+            # Altman: distress zone = big penalty
+            if az is not None:
+                if az < 1.8:
+                    quality_bonus -= 3
+                elif az > 5.0:
+                    quality_bonus += 1
+            
+            if quality_bonus != 0:
+                stock["composite_score"] = max(0, stock.get("composite_score", 0) + quality_bonus)
+                stock["quality_bonus"] = quality_bonus
+    
+    logger.info("Quality scores completed in %.1fs", time.time() - quality_start)
+
     # --- Smart money signals (analyst revisions + insider trading) for top N only ---
     # Only fetch for top_n to avoid 500 yfinance API calls
     # Parallelized: each stock's 4 yfinance calls are I/O-bound and independent
