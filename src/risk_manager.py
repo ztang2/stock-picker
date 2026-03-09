@@ -23,7 +23,7 @@ TRADE_HISTORY_FILE = DATA_DIR / "trade_history.json"
 # Defaults
 DEFAULT_STOP_LOSS_PCT = -15.0  # Alert when down 15%
 DEFAULT_MAX_POSITION_PCT = 20.0  # No single stock > 20% of portfolio
-DEFAULT_TRAILING_STOP_PCT = None  # Optional trailing stop (not enabled by default)
+DEFAULT_TRAILING_STOP_PCT = -10  # Trailing stop: sell if price drops 10% from peak
 
 
 def load_risk_config() -> dict:
@@ -111,6 +111,197 @@ def check_stop_losses(holdings: Dict[str, dict], prices: Optional[Dict[str, floa
     return alerts
 
 
+# --- Trailing Stop ---
+
+TRAILING_STOP_FILE = DATA_DIR / "trailing_stops.json"
+
+# Energy tickers that need trailing stop monitoring
+ENERGY_TICKERS = {"CF", "EQT", "CTRA", "XOM", "CVX", "COP", "EOG", "DVN", "RRC", "OXY", "AR", "MPC", "VLO", "PSX"}
+
+
+def _load_trailing_stops() -> dict:
+    if TRAILING_STOP_FILE.exists():
+        try:
+            return json.loads(TRAILING_STOP_FILE.read_text())
+        except Exception:
+            pass
+    return {}
+
+
+def _save_trailing_stops(data: dict):
+    TRAILING_STOP_FILE.write_text(json.dumps(data, indent=2, default=str))
+
+
+def check_trailing_stops(holdings: Dict[str, dict], prices: Optional[Dict[str, float]] = None) -> List[dict]:
+    """Check trailing stops for energy stocks.
+    
+    Tracks the highest price since purchase. If current price drops 
+    more than trailing_stop_pct from the peak, triggers alert.
+    
+    Returns list of trailing stop alerts.
+    """
+    config = load_risk_config()
+    trailing_pct = config.get("trailing_stop_pct", DEFAULT_TRAILING_STOP_PCT)
+    
+    if trailing_pct is None:
+        return []
+    
+    if prices is None:
+        prices = _get_current_prices(list(holdings.keys()))
+    
+    # Load high water marks
+    hwm = _load_trailing_stops()
+    alerts = []
+    updated = False
+    
+    for ticker, pos in holdings.items():
+        current_price = prices.get(ticker)
+        if current_price is None:
+            continue
+        
+        entry_price = pos.get("entry_price", 0)
+        if not entry_price:
+            continue
+        
+        # Update high water mark
+        prev_high = hwm.get(ticker, {}).get("high", entry_price)
+        if current_price > prev_high:
+            prev_high = current_price
+            hwm[ticker] = {
+                "high": round(prev_high, 2),
+                "high_date": datetime.now().strftime("%Y-%m-%d"),
+                "entry_price": entry_price,
+            }
+            updated = True
+        elif ticker not in hwm:
+            hwm[ticker] = {
+                "high": round(max(entry_price, current_price), 2),
+                "high_date": pos.get("entry_date", "unknown"),
+                "entry_price": entry_price,
+            }
+            updated = True
+        
+        # Check trailing stop
+        drop_from_high = ((current_price - prev_high) / prev_high) * 100
+        is_energy = ticker in ENERGY_TICKERS
+        
+        alert = {
+            "ticker": ticker,
+            "entry_price": entry_price,
+            "current_price": round(current_price, 2),
+            "high_price": round(prev_high, 2),
+            "drop_from_high_pct": round(drop_from_high, 2),
+            "trailing_stop_pct": trailing_pct,
+            "is_energy": is_energy,
+        }
+        
+        if drop_from_high <= trailing_pct:
+            alert["status"] = "TRAILING_STOP_TRIGGERED"
+            alert["urgency"] = "HIGH"
+            label = " (ENERGY ⚡)" if is_energy else ""
+            alert["message"] = (
+                f"🔴 {ticker}{label} dropped {drop_from_high:.1f}% from peak ${prev_high:.2f} "
+                f"→ ${current_price:.2f}. Trailing stop {trailing_pct}% breached!"
+            )
+            alerts.append(alert)
+        elif drop_from_high <= trailing_pct + 3:  # Within 3% of trailing stop
+            alert["status"] = "APPROACHING_TRAILING_STOP"
+            alert["urgency"] = "MEDIUM"
+            label = " (ENERGY ⚡)" if is_energy else ""
+            alert["message"] = (
+                f"🟡 {ticker}{label} down {drop_from_high:.1f}% from peak ${prev_high:.2f}. "
+                f"Trailing stop at {trailing_pct}%."
+            )
+            alerts.append(alert)
+    
+    if updated:
+        _save_trailing_stops(hwm)
+    
+    return alerts
+
+
+# --- Oil Price Monitor ---
+
+OIL_STATE_FILE = DATA_DIR / "oil_monitor.json"
+
+
+def check_oil_price_alert(threshold_drop_pct: float = -15.0) -> Optional[dict]:
+    """Monitor oil price for significant pullback from recent highs.
+    
+    Tracks oil (CL=F) high water mark. If oil drops more than 
+    threshold_drop_pct from peak, triggers alert to consider 
+    reducing energy positions.
+    
+    Returns alert dict or None.
+    """
+    try:
+        oil = yf.Ticker("CL=F")
+        hist = oil.history(period="3mo")
+        if hist is None or hist.empty:
+            return None
+        
+        current = float(hist["Close"].iloc[-1])
+        peak = float(hist["Close"].max())
+        peak_date = str(hist["Close"].idxmax().date())
+        
+        drop_pct = ((current - peak) / peak) * 100
+        
+        # Load/update state
+        state = {}
+        if OIL_STATE_FILE.exists():
+            try:
+                state = json.loads(OIL_STATE_FILE.read_text())
+            except Exception:
+                pass
+        
+        state.update({
+            "current": round(current, 2),
+            "peak": round(peak, 2),
+            "peak_date": peak_date,
+            "drop_from_peak_pct": round(drop_pct, 2),
+            "checked_at": datetime.now().isoformat(),
+        })
+        OIL_STATE_FILE.write_text(json.dumps(state, indent=2))
+        
+        if drop_pct <= threshold_drop_pct:
+            return {
+                "status": "OIL_PULLBACK_ALERT",
+                "urgency": "HIGH",
+                "current": round(current, 2),
+                "peak": round(peak, 2),
+                "peak_date": peak_date,
+                "drop_pct": round(drop_pct, 2),
+                "message": (
+                    f"🛢️ OIL PULLBACK ALERT: Oil dropped {drop_pct:.1f}% from peak "
+                    f"${peak:.2f} ({peak_date}) → ${current:.2f}. "
+                    f"Consider reducing energy positions (CF, EQT, CTRA)!"
+                ),
+            }
+        elif drop_pct <= threshold_drop_pct + 5:
+            return {
+                "status": "OIL_WEAKENING",
+                "urgency": "MEDIUM",
+                "current": round(current, 2),
+                "peak": round(peak, 2),
+                "drop_pct": round(drop_pct, 2),
+                "message": (
+                    f"🟡 Oil down {drop_pct:.1f}% from peak ${peak:.2f}. "
+                    f"Watching for further weakness."
+                ),
+            }
+        
+        return {
+            "status": "OK",
+            "current": round(current, 2),
+            "peak": round(peak, 2),
+            "drop_pct": round(drop_pct, 2),
+        }
+        
+    except Exception as e:
+        logger.warning(f"Oil price check failed: {e}")
+        return None
+
+
 def check_position_limits(holdings: Dict[str, dict], prices: Optional[Dict[str, float]] = None,
                           extra_holdings: Optional[Dict[str, dict]] = None) -> List[dict]:
     """Check if any position exceeds the max position size limit.
@@ -183,6 +374,8 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
     
     stop_loss_alerts = check_stop_losses(all_holdings, prices)
     position_alerts = check_position_limits(holdings, prices, extra_holdings)
+    trailing_alerts = check_trailing_stops(all_holdings, prices)
+    oil_alert = check_oil_price_alert()
     
     # P&L summary
     total_invested = 0
@@ -221,9 +414,14 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
     stop_approaching = [a for a in stop_loss_alerts if a.get("status") == "APPROACHING_STOP_LOSS"]
     over_limit = [p for p in position_alerts if p.get("status") == "OVER_LIMIT"]
     
+    trailing_triggered = [a for a in trailing_alerts if a.get("status") == "TRAILING_STOP_TRIGGERED"]
+    
     risk_flags += len(stop_triggered) * 25
     risk_flags += len(stop_approaching) * 10
     risk_flags += len(over_limit) * 15
+    risk_flags += len(trailing_triggered) * 20
+    if oil_alert and oil_alert.get("status") == "OIL_PULLBACK_ALERT":
+        risk_flags += 15
     risk_score = max(0, 100 - risk_flags)
     
     return {
@@ -240,11 +438,15 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
         "avg_loss_pct": round(avg_loss, 2),
         "risk_score": risk_score,
         "stop_loss_alerts": stop_loss_alerts,
+        "trailing_stop_alerts": trailing_alerts,
         "position_alerts": position_alerts,
+        "oil_monitor": oil_alert,
         "warnings": {
             "stop_losses_triggered": len(stop_triggered),
             "approaching_stop_loss": len(stop_approaching),
             "over_position_limit": len(over_limit),
+            "trailing_stops_triggered": len(trailing_triggered),
+            "oil_pullback": oil_alert.get("status") == "OIL_PULLBACK_ALERT" if oil_alert else False,
         },
     }
 

@@ -1,0 +1,32 @@
+{
+  "EQT": {
+    "high": 61.96,
+    "high_date": "2026-03-08",
+    "entry_price": 57.12
+  },
+  "ALL": {
+    "high": 212.32,
+    "high_date": "2026-03-08",
+    "entry_price": 206.55
+  },
+  "CF": {
+    "high": 115.78,
+    "high_date": "2026-03-08",
+    "entry_price": 96.51
+  },
+  "HIG": {
+    "high": 141.64,
+    "high_date": "2026-03-02",
+    "entry_price": 141.64
+  },
+  "GDDY": {
+    "high": 93.95,
+    "high_date": "2026-03-08",
+    "entry_price": 89.22
+  },
+  "NFLX": {
+    "high": 99.02,
+    "high_date": "2026-03-08",
+    "entry_price": 80.51
+  }
+}

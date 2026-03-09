@@ -972,6 +972,24 @@ def alpaca_perf():
         raise HTTPException(500, f"Alpaca error: {e}")
 
 
+# === Oil Monitor & Trailing Stops ===
+
+@app.get("/risk/oil")
+def oil_monitor():
+    """Check oil price vs recent peak for pullback alert."""
+    from .risk_manager import check_oil_price_alert
+    result = check_oil_price_alert()
+    return result or {"status": "unavailable"}
+
+
+@app.get("/risk/trailing-stops")
+def trailing_stops():
+    """Check trailing stop alerts for all holdings."""
+    from .risk_manager import check_trailing_stops
+    holdings = _load_holdings()
+    return {"alerts": check_trailing_stops(holdings)}
+
+
 # === Quality Scores (Piotroski + Altman) ===
 
 @app.get("/quality/{ticker}")
