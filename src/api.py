@@ -986,7 +986,12 @@ def oil_monitor():
 def trailing_stops():
     """Check trailing stop alerts for all holdings."""
     from .risk_manager import check_trailing_stops
-    holdings = _load_holdings()
+    import json
+    holdings_file = Path(__file__).parent.parent / "data" / "holdings.json"
+    if not holdings_file.exists():
+        return {"alerts": []}
+    data = json.loads(holdings_file.read_text())
+    holdings = data.get("holdings", data) if isinstance(data, dict) else {x["ticker"]: x for x in data}
     return {"alerts": check_trailing_stops(holdings)}
 
 
