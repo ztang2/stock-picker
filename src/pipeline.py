@@ -823,6 +823,19 @@ def run_scan(
     if not snapshot_file.exists():
         snapshot_file.write_text(json.dumps(output, indent=2, default=str))
         logger.info("Saved daily snapshot: %s", snapshot_file)
+    
+    # Save momentum radar snapshot for tracking
+    try:
+        from .early_momentum import scan_top_momentum
+        momentum_dir = DATA_DIR / "momentum_snapshots"
+        momentum_dir.mkdir(exist_ok=True)
+        momentum_file = momentum_dir / f"{today}.json"
+        if not momentum_file.exists():
+            momentum_data = scan_top_momentum(20)
+            momentum_file.write_text(json.dumps(momentum_data, indent=2, default=str))
+            logger.info("Saved momentum snapshot: %s (%d stocks)", momentum_file, len(momentum_data))
+    except Exception as e:
+        logger.warning("Momentum snapshot failed: %s", e)
 
     return output
 
