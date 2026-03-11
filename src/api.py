@@ -972,6 +972,27 @@ def alpaca_perf():
         raise HTTPException(500, f"Alpaca error: {e}")
 
 
+# === Company Intelligence ===
+
+@app.get("/intel/{ticker}")
+def company_intel(ticker: str):
+    """Get company intelligence (news, analysts, description) for a single ticker."""
+    from .company_intel import get_company_intel
+    return get_company_intel(ticker.upper())
+
+
+@app.get("/intel/top/{n}")
+def top_intel(n: int = 20):
+    """Get company intelligence for top N stocks from latest scan."""
+    from .company_intel import get_top_intel, format_intel_summary
+    results = get_top_intel(n)
+    return {
+        "count": len(results),
+        "stocks": results,
+        "summaries": [format_intel_summary(r) for r in results],
+    }
+
+
 # === Oil Monitor & Trailing Stops ===
 
 @app.get("/risk/oil")

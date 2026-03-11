@@ -1,0 +1,2538 @@
+{
+  "EXLS": {
+    "ticker": "EXLS",
+    "name": "ExlService Holdings, Inc.",
+    "sector": "Technology",
+    "industry": "Information Technology Services",
+    "description": "ExlService Holdings, Inc., operates as a data and artificial intelligence (\u0093AI\u0094) company in the North America, the United Kingdom, Europe, and internationally. The company operates through Insurance; Healthcare and Life Sciences; Banking, Capital Markets, and Diversified Industries; and Internati...",
+    "market_cap": 4876877824,
+    "market_cap_str": "$4.9B",
+    "employees": 65000,
+    "website": "https://www.exlservice.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 12.553617,
+      "pe_trailing": 19.954546,
+      "peg_ratio": null,
+      "profit_margin": "12.0%",
+      "revenue_growth": "12.7%",
+      "earnings_growth": "19.2%",
+      "debt_to_equity": 44.459,
+      "current_ratio": 2.561,
+      "roe": "27.2%",
+      "free_cash_flow": 257523248,
+      "dividend_yield": null,
+      "beta": 0.905,
+      "52w_high": 48.79,
+      "52w_low": 26.94,
+      "current_price": 30.73
+    },
+    "news": [
+      {
+        "title": "Concentrix, EXL, Genpact, Robert Half, and Accenture Shares Are Falling, What You Need To Know",
+        "publisher": "StockStory",
+        "published": "2026-03-10T21:21:14Z",
+        "link": "https://finance.yahoo.com/news/concentrix-exl-genpact-robert-half-212114331.html"
+      },
+      {
+        "title": "AI Fears Have Weighed on IT Services Companies Like Accenture. Never Fear, Analysts Say.",
+        "publisher": "Barrons.com",
+        "published": "2026-03-05T21:59:00Z",
+        "link": "https://www.barrons.com/articles/ai-fears-have-weighed-on-it-services-companies-7839f3b9?siteid=yhoof2&yptr=yahoo"
+      },
+      {
+        "title": "How The ExlService (EXLS) Story Is Shifting With New Targets Buybacks And Cloud Moves",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-26T08:17:08Z",
+        "link": "https://finance.yahoo.com/news/exlservice-exls-story-shifting-targets-081708347.html"
+      },
+      {
+        "title": "Reassessing ExlService Holdings (EXLS) Valuation After Recent Share Price Pullback",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-26T07:09:16Z",
+        "link": "https://finance.yahoo.com/news/reassessing-exlservice-holdings-exls-valuation-070916181.html"
+      },
+      {
+        "title": "ExlService Holdings Inc (EXLS) Q4 2025 Earnings Call Highlights: Strong Revenue Growth Driven ...",
+        "publisher": "GuruFocus.com",
+        "published": "2026-02-25T21:05:49Z",
+        "link": "https://finance.yahoo.com/news/exlservice-holdings-inc-exls-q4-210549785.html"
+      },
+      {
+        "title": "ExlService Q4 Earnings Call Highlights",
+        "publisher": "MarketBeat",
+        "published": "2026-02-25T19:21:19Z",
+        "link": "https://www.marketbeat.com/instant-alerts/exlservice-q4-earnings-call-highlights-2026-02-25/?utm_source=yahoofinance&utm_medium=yahoofinance"
+      },
+      {
+        "title": "ExlService (EXLS) Q4 2025 Earnings Call Transcript",
+        "publisher": "Motley Fool",
+        "published": "2026-02-25T17:14:34Z",
+        "link": "https://www.fool.com/earnings/call-transcripts/2026/02/25/exlservice-exls-q4-2025-earnings-call-transcript/"
+      },
+      {
+        "title": "ExlService Holdings, Inc. Q4 2025 Earnings Call Summary",
+        "publisher": "Moby",
+        "published": "2026-02-25T13:30:00Z",
+        "link": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-exlservice-holdings-inc-q4-2025-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 2,
+        "buy": 5,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 2,
+        "buy": 5,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 2,
+        "buy": 5,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 5,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 30.73,
+      "low": 35.0,
+      "high": 46.0,
+      "mean": 41.71429,
+      "median": 42.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 2,
+      "buy": 5,
+      "hold": 2,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:25.194115"
+  },
+  "HST": {
+    "ticker": "HST",
+    "name": "Host Hotels & Resorts, Inc.",
+    "sector": "Real Estate",
+    "industry": "REIT - Hotel & Motel",
+    "description": "Host Hotels & Resorts, Inc., herein referred to as we, Host Inc., or the Company, is a self-managed and self-administered real estate investment trust that owns hotel property. We conduct our operations as an umbrella partnership, REIT, through an operating partnership, Host Hotels & Resorts, L.P...",
+    "market_cap": 13411266560,
+    "market_cap_str": "$13.4B",
+    "employees": 162,
+    "website": "https://www.hosthotels.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 19.722149,
+      "pe_trailing": 17.5,
+      "peg_ratio": null,
+      "profit_margin": "12.5%",
+      "revenue_growth": "12.8%",
+      "earnings_growth": "27.1%",
+      "debt_to_equity": 83.779,
+      "current_ratio": 2.361,
+      "roe": "11.5%",
+      "free_cash_flow": 1182749952,
+      "dividend_yield": "416.0%",
+      "beta": 1.154,
+      "52w_high": 21.0,
+      "52w_low": 12.22,
+      "current_price": 19.25
+    },
+    "news": [
+      {
+        "title": "Is It Time To Reassess Host Hotels & Resorts (HST) After Its 1 Year Share Price Surge?",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-24T16:11:45Z",
+        "link": "https://finance.yahoo.com/news/time-reassess-host-hotels-resorts-161145401.html"
+      },
+      {
+        "title": "Host Hotels & Resorts Inc (HST) Q4 2025 Earnings Call Highlights: Strong Revenue Growth and ...",
+        "publisher": "GuruFocus.com",
+        "published": "2026-02-21T01:04:37Z",
+        "link": "https://finance.yahoo.com/news/host-hotels-resorts-inc-hst-010437097.html"
+      },
+      {
+        "title": "This Stock Lets You Collect a Dividend While on Vacation",
+        "publisher": "Barchart",
+        "published": "2026-02-20T16:50:03Z",
+        "link": "https://www.barchart.com/story/news/332046/this-stock-lets-you-collect-a-dividend-while-on-vacation"
+      },
+      {
+        "title": "Host Hotels & Resorts sells 2 Four Seasons for combined $1.1B",
+        "publisher": "Hotel Dive",
+        "published": "2026-02-20T09:50:03Z",
+        "link": "https://www.hoteldive.com/news/host-sells-four-seasons-hotels/812682/"
+      },
+      {
+        "title": "Host Hotels & Resorts Q4 Earnings Call Highlights",
+        "publisher": "MarketBeat",
+        "published": "2026-02-19T17:26:55Z",
+        "link": "https://www.marketbeat.com/instant-alerts/host-hotels-resorts-q4-earnings-call-highlights-2026-02-19/?utm_source=yahoofinance&utm_medium=yahoofinance"
+      },
+      {
+        "title": "Host Hotels' Q4 AFFO & Revenues Top Estimates, Hotel RevPAR Rises",
+        "publisher": "Zacks",
+        "published": "2026-02-19T17:24:00Z",
+        "link": "https://finance.yahoo.com/news/host-hotels-q4-affo-revenues-172400941.html"
+      },
+      {
+        "title": "Assessing Host Hotels & Resorts (HST) Valuation After Earnings Beat And US$1.1b Premium Resort Sale",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-19T14:11:25Z",
+        "link": "https://finance.yahoo.com/news/assessing-host-hotels-resorts-hst-141125873.html"
+      },
+      {
+        "title": "Host Hotels & Resorts, Inc. Q4 2025 Earnings Call Summary",
+        "publisher": "Moby",
+        "published": "2026-02-19T13:30:00Z",
+        "link": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-host-hotels-resorts-inc-q4-2025-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 1,
+        "buy": 10,
+        "hold": 9,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 1,
+        "buy": 10,
+        "hold": 9,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 1,
+        "buy": 10,
+        "hold": 9,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 1,
+        "buy": 9,
+        "hold": 9,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 19.25,
+      "low": 18.0,
+      "high": 27.0,
+      "mean": 21.05263,
+      "median": 21.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 1,
+      "buy": 10,
+      "hold": 9,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:26.131947"
+  },
+  "IQV": {
+    "ticker": "IQV",
+    "name": "IQVIA Holdings Inc.",
+    "sector": "Healthcare",
+    "industry": "Diagnostics & Research",
+    "description": "IQVIA Holdings Inc. provides clinical research services, commercial insights, and healthcare intelligence to the life sciences and healthcare industries in the Americas, Europe, Africa, and the Asia-Pacific. It operates through three segments: Technology & Analytics Solutions, Research & Developm...",
+    "market_cap": 29006819328,
+    "market_cap_str": "$29.0B",
+    "employees": 93000,
+    "website": "https://www.iqvia.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 12.15497,
+      "pe_trailing": 21.77452,
+      "peg_ratio": null,
+      "profit_margin": "8.3%",
+      "revenue_growth": "10.3%",
+      "earnings_growth": "23.6%",
+      "debt_to_equity": 245.928,
+      "current_ratio": 0.749,
+      "roe": "21.4%",
+      "free_cash_flow": 2216624896,
+      "dividend_yield": null,
+      "beta": 1.411,
+      "52w_high": 247.05,
+      "52w_low": 134.65,
+      "current_price": 170.93
+    },
+    "news": [
+      {
+        "title": "IQVIA Holdings Inc. (IQV) Advances Clinical Research and Data Capabilities to Drive Growth",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-10T18:38:28Z",
+        "link": "https://finance.yahoo.com/news/iqvia-holdings-inc-iqv-advances-183828418.html"
+      },
+      {
+        "title": "Is IQVIA Holdings Stock Underperforming the Nasdaq?",
+        "publisher": "Barchart",
+        "published": "2026-03-10T14:01:35Z",
+        "link": "https://www.barchart.com/story/news/665729/is-iqvia-holdings-stock-underperforming-the-nasdaq"
+      },
+      {
+        "title": "Netflix resumed, Starbucks downgraded: Wall Street's top analyst calls",
+        "publisher": "The Fly",
+        "published": "2026-03-09T13:33:43Z",
+        "link": "https://finance.yahoo.com/news/netflix-resumed-starbucks-downgraded-wall-133343741.html"
+      },
+      {
+        "title": "Jim Cramer on IQVIA: \u201cI Like the Business Very Much, I Just Don\u2019t Know Whether This Is the Right Stock to Play It\u201d",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-04T15:08:17Z",
+        "link": "https://finance.yahoo.com/news/jim-cramer-iqvia-business-very-150817359.html"
+      },
+      {
+        "title": "Is IQVIA (IQV) Offering An Opportunity After Recent Share Price Declines?",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-04T02:09:20Z",
+        "link": "https://finance.yahoo.com/news/iqvia-iqv-offering-opportunity-recent-020920805.html"
+      },
+      {
+        "title": "MongoDB downgraded, Block upgraded: Wall Street's top analyst calls",
+        "publisher": "The Fly",
+        "published": "2026-03-03T14:33:11Z",
+        "link": "https://finance.yahoo.com/news/mongodb-downgraded-block-upgraded-wall-143311526.html"
+      },
+      {
+        "title": "Analysts at Mizuho Remain Bullish on IQVIA (IQV) Following Q4 Results",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-02T20:36:33Z",
+        "link": "https://finance.yahoo.com/news/analysts-mizuho-remain-bullish-iqvia-203633397.html"
+      },
+      {
+        "title": "Can AI Acceleration and R&D Strength Drive VEEV Ahead of Q4 Earnings?",
+        "publisher": "Zacks",
+        "published": "2026-03-02T17:13:00Z",
+        "link": "https://finance.yahoo.com/news/ai-acceleration-r-d-strength-171300997.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 5,
+        "buy": 17,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 3,
+        "buy": 16,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
+        "buy": 16,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 3,
+        "buy": 16,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 170.93,
+      "low": 200.0,
+      "high": 287.0,
+      "mean": 236.19048,
+      "median": 240.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 5,
+      "buy": 17,
+      "hold": 3,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:27.179979"
+  },
+  "CTSH": {
+    "ticker": "CTSH",
+    "name": "Cognizant Technology Solutions Corporation",
+    "sector": "Technology",
+    "industry": "Information Technology Services",
+    "description": "Cognizant Technology Solutions Corporation, a professional services company, provides consulting and technology, and outsourcing services in North America, Europe, and internationally. It operates through four segments: Financial Services; Health Sciences; Products and Resources; and Communicatio...",
+    "market_cap": 30397073408,
+    "market_cap_str": "$30.4B",
+    "employees": 351600,
+    "website": "https://www.cognizant.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 10.247665,
+      "pe_trailing": 13.811403,
+      "peg_ratio": null,
+      "profit_margin": "10.6%",
+      "revenue_growth": "4.9%",
+      "earnings_growth": "22.1%",
+      "debt_to_equity": 7.819,
+      "current_ratio": 2.137,
+      "roe": "15.2%",
+      "free_cash_flow": 1927250048,
+      "dividend_yield": "210.0%",
+      "beta": 0.983,
+      "52w_high": 87.03,
+      "52w_low": 60.04,
+      "current_price": 62.98
+    },
+    "news": [
+      {
+        "title": "Cognizant Maps 2026 Growth: 4%-6.5% Outlook, AI Deal Shifts and Margin Levers in Focus",
+        "publisher": "MarketBeat",
+        "published": "2026-03-09T07:01:50Z",
+        "link": "https://www.marketbeat.com/instant-alerts/cognizant-maps-2026-growth-4-65-outlook-ai-deal-shifts-and-margin-levers-in-focus-2026-03-09/?utm_source=yahoofinance&utm_medium=yahoofinance"
+      },
+      {
+        "title": "A Look At Cognizant Technology Solutions (CTSH) Valuation After New AI Partnerships And Contract Renewal",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-06T23:11:46Z",
+        "link": "https://finance.yahoo.com/news/look-cognizant-technology-solutions-ctsh-231146829.html"
+      },
+      {
+        "title": "Why Is Cognizant (CTSH) Down 14.4% Since Last Earnings Report?",
+        "publisher": "Zacks",
+        "published": "2026-03-06T16:30:09Z",
+        "link": "https://finance.yahoo.com/news/why-cognizant-ctsh-down-14-163009678.html"
+      },
+      {
+        "title": "Cognizant AI Deals Highlight Enterprise Focus And Valuation Opportunity",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-06T08:11:54Z",
+        "link": "https://finance.yahoo.com/news/cognizant-ai-deals-highlight-enterprise-081154287.html"
+      },
+      {
+        "title": "Cognizant Technology Solutions (CTSH) Renews Partnership With Travel + Leisure Co.",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-05T16:31:38Z",
+        "link": "https://finance.yahoo.com/news/cognizant-technology-solutions-ctsh-renews-163138390.html"
+      },
+      {
+        "title": "WIX Beats Q4 Earnings Estimates on Revenue Momentum, Wins $250M Deal",
+        "publisher": "Zacks",
+        "published": "2026-03-04T14:39:00Z",
+        "link": "https://finance.yahoo.com/news/wix-beats-q4-earnings-estimates-143900338.html"
+      },
+      {
+        "title": "Cognizant Grows Through Expanding Clientele & Strong Partnerships",
+        "publisher": "Zacks",
+        "published": "2026-03-03T14:40:00Z",
+        "link": "https://finance.yahoo.com/news/cognizant-grows-expanding-clientele-strong-144000763.html"
+      },
+      {
+        "title": "Innodata Delivers 48% Growth in 2025: Can 2026 Surpass It?",
+        "publisher": "Zacks",
+        "published": "2026-03-02T17:10:00Z",
+        "link": "https://finance.yahoo.com/news/innodata-delivers-48-growth-2025-171000840.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 3,
+        "buy": 10,
+        "hold": 14,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 3,
+        "buy": 10,
+        "hold": 14,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
+        "buy": 10,
+        "hold": 15,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 3,
+        "buy": 8,
+        "hold": 16,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 62.98,
+      "low": 65.0,
+      "high": 108.0,
+      "mean": 89.5552,
+      "median": 88.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 3,
+      "buy": 10,
+      "hold": 14,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:33.953419"
+  },
+  "FHI": {
+    "ticker": "FHI",
+    "name": "Federated Hermes, Inc.",
+    "sector": "Financial Services",
+    "industry": "Asset Management",
+    "description": "Federated Hermes, Inc. is a publicly owned investment manager. Through its subsidiaries, the firm provides its services to individuals, including high net worth individuals, banking or thrift institutions, investment companies, pension and profit sharing plans, pooled investment vehicles, charita...",
+    "market_cap": 4285239552,
+    "market_cap_str": "$4.3B",
+    "employees": 2091,
+    "website": "https://www.federatedhermes.com/us/home.do",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 9.643289,
+      "pe_trailing": 10.771929,
+      "peg_ratio": null,
+      "profit_margin": "22.4%",
+      "revenue_growth": "13.7%",
+      "earnings_growth": "33.6%",
+      "debt_to_equity": 36.171,
+      "current_ratio": 2.75,
+      "roe": "34.3%",
+      "free_cash_flow": 384157760,
+      "dividend_yield": "246.0%",
+      "beta": 0.673,
+      "52w_high": 57.33,
+      "52w_low": 35.05,
+      "current_price": 55.26
+    },
+    "news": [
+      {
+        "title": "Blue Owl Stock Falls on $48M Exposure to Failed U.K. Lender",
+        "publisher": "Zacks",
+        "published": "2026-03-09T17:25:00Z",
+        "link": "https://finance.yahoo.com/news/blue-owl-stock-falls-48m-172500954.html"
+      },
+      {
+        "title": "Is It Too Late To Consider Federated Hermes (FHI) After Its Strong Multi\u2011Year Rally?",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-09T10:07:02Z",
+        "link": "https://finance.yahoo.com/news/too-consider-federated-hermes-fhi-100702935.html"
+      },
+      {
+        "title": "A Look At Federated Hermes (FHI) Valuation After Weak February Jobs Report Weighs On Financial Stocks",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-09T00:20:35Z",
+        "link": "https://finance.yahoo.com/news/look-federated-hermes-fhi-valuation-002035693.html"
+      },
+      {
+        "title": "Hamilton Lane, Franklin Resources, Federated Hermes, Artisan Partners, and OneMain Shares Are Falling, What You Need To Know",
+        "publisher": "StockStory",
+        "published": "2026-03-06T20:14:37Z",
+        "link": "https://finance.yahoo.com/news/hamilton-lane-franklin-resources-federated-201437621.html"
+      },
+      {
+        "title": "Are You Looking for a High-Growth Dividend Stock?",
+        "publisher": "Zacks",
+        "published": "2026-03-04T16:45:03Z",
+        "link": "https://finance.yahoo.com/news/looking-high-growth-dividend-stock-164503672.html"
+      },
+      {
+        "title": "1 Value Stock with Exciting Potential and 2 We Ignore",
+        "publisher": "StockStory",
+        "published": "2026-03-02T19:30:36Z",
+        "link": "https://finance.yahoo.com/news/1-value-stock-exciting-potential-193036426.html"
+      },
+      {
+        "title": "How Investors May Respond To Federated Hermes (FHI) Earnings Beat and High-ROE, Buyback-Fueled EPS Growth",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-28T07:09:27Z",
+        "link": "https://finance.yahoo.com/news/investors-may-respond-federated-hermes-070927952.html"
+      },
+      {
+        "title": "Federated Slashes S&P 500 Target, But Isn't Bearish",
+        "publisher": "Bloomberg",
+        "published": "2026-02-27T12:24:50Z",
+        "link": "https://finance.yahoo.com/video/federated-slashes-p-500-target-122450359.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 0,
+        "buy": 1,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 0,
+        "buy": 1,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 0,
+        "buy": 1,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 0,
+        "buy": 1,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 55.26,
+      "low": 50.0,
+      "high": 60.0,
+      "mean": 55.57143,
+      "median": 55.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 0,
+      "buy": 1,
+      "hold": 7,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:34.754911"
+  },
+  "CF": {
+    "ticker": "CF",
+    "name": "CF Industries Holdings, Inc.",
+    "sector": "Basic Materials",
+    "industry": "Agricultural Inputs",
+    "description": "CF Industries Holdings, Inc., together with its subsidiaries, engages in the production of ammonia in North America, Europe, and internationally. It operates through Ammonia, Granular Urea, UAN, AN, and Other segments. The company offers ammonia products; nitrogen products, such as granular urea,...",
+    "market_cap": 17165009920,
+    "market_cap_str": "$17.2B",
+    "employees": 2900,
+    "website": "https://www.cfindustries.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 15.776127,
+      "pe_trailing": 12.268673,
+      "peg_ratio": null,
+      "profit_margin": "20.5%",
+      "revenue_growth": "22.8%",
+      "earnings_growth": "37.1%",
+      "debt_to_equity": 46.765,
+      "current_ratio": 3.365,
+      "roe": "23.4%",
+      "free_cash_flow": 1307874944,
+      "dividend_yield": "182.0%",
+      "beta": 0.689,
+      "52w_high": 121.8,
+      "52w_low": 67.34,
+      "current_price": 110.05
+    },
+    "news": [
+      {
+        "title": "Stock Market Today: Dow Gains As Trump Says Iran War Is 'Very Complete'; Cruise Stock Soars (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "published": "2026-03-09T20:25:49Z",
+        "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-news-oil-prices-nvidia-stock/?src=A00220&yptr=yahoo"
+      },
+      {
+        "title": "The Iran War Is Boosting This Farming Stock. It\u2019s Bad News for Farmers.",
+        "publisher": "Barrons.com",
+        "published": "2026-03-09T18:38:00Z",
+        "link": "https://www.barrons.com/articles/iran-war-boosting-this-farming-stock-d4aea47e?siteid=yhoof2&yptr=yahoo"
+      },
+      {
+        "title": "Fertilizer Stocks Lifted By Mideast War",
+        "publisher": "The Wall Street Journal",
+        "published": "2026-03-09T16:44:20Z",
+        "link": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-03-09-2026/card/fertilizer-stocks-lifted-by-mideast-war-wV4sPBL1rbJkM3Sc6vvk?siteid=yhoof2&yptr=yahoo"
+      },
+      {
+        "title": "Assessing CF Industries Holdings (CF) Valuation After Strong Recent Share Price Gains",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-05T09:16:28Z",
+        "link": "https://finance.yahoo.com/news/assessing-cf-industries-holdings-cf-091628084.html"
+      },
+      {
+        "title": "Justice Department probes fertilizer giants for possible price collusion",
+        "publisher": "Investing.com",
+        "published": "2026-03-04T19:20:06Z",
+        "link": "https://finance.yahoo.com/news/justice-department-probes-fertilizer-giants-192006014.html"
+      },
+      {
+        "title": "CF Industries' Stock Rallies 37% in 3 Months: Here's Why",
+        "publisher": "Zacks",
+        "published": "2026-03-04T12:15:00Z",
+        "link": "https://finance.yahoo.com/news/cf-industries-stock-rallies-37-121500859.html"
+      },
+      {
+        "title": "CF Industries Benefits From Strong Nitrogen Demand and Higher Prices",
+        "publisher": "Zacks",
+        "published": "2026-03-03T16:00:00Z",
+        "link": "https://finance.yahoo.com/news/cf-industries-benefits-strong-nitrogen-160000375.html"
+      },
+      {
+        "title": "Nutrien to Commence Share Buyback Following TSX Approval",
+        "publisher": "Zacks",
+        "published": "2026-03-03T14:40:00Z",
+        "link": "https://finance.yahoo.com/news/nutrien-commence-share-buyback-following-144000542.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 1,
+        "buy": 2,
+        "hold": 16,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 1,
+        "buy": 2,
+        "hold": 16,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 1,
+        "buy": 3,
+        "hold": 16,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 3,
+        "hold": 14,
+        "sell": 0,
+        "strongSell": 1
+      }
+    ],
+    "price_targets": {
+      "current": 110.05,
+      "low": 72.0,
+      "high": 120.0,
+      "mean": 97.73684,
+      "median": 97.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 1,
+      "buy": 2,
+      "hold": 16,
+      "sell": 1,
+      "strong_sell": 1
+    },
+    "cached_at": "2026-03-10T19:45:35.482575"
+  },
+  "ALL": {
+    "ticker": "ALL",
+    "name": "The Allstate Corporation",
+    "sector": "Financial Services",
+    "industry": "Insurance - Property & Casualty",
+    "description": "The Allstate Corporation, together with its subsidiaries, provides property and casualty, and other insurance products in the United States and Canada. It operates in four segments: Allstate Protection; Run-off Property-Liability; Protection Services; and Corporate and Other. The company offers p...",
+    "market_cap": 53853687808,
+    "market_cap_str": "$53.9B",
+    "employees": 53000,
+    "website": "https://www.allstate.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 8.235641,
+      "pe_trailing": 5.4519176,
+      "peg_ratio": null,
+      "profit_margin": "15.2%",
+      "revenue_growth": "5.1%",
+      "earnings_growth": "103.2%",
+      "debt_to_equity": 25.091,
+      "current_ratio": 0.366,
+      "roe": "39.5%",
+      "free_cash_flow": 8924749824,
+      "dividend_yield": "208.0%",
+      "beta": 0.206,
+      "52w_high": 216.75,
+      "52w_low": 176.0,
+      "current_price": 207.5
+    },
+    "news": [
+      {
+        "title": "Allstate Wiretap Lawsuit Puts Data Privacy And Telematics Strategy Under Review",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-08T23:10:24Z",
+        "link": "https://finance.yahoo.com/news/allstate-wiretap-lawsuit-puts-data-231024484.html"
+      },
+      {
+        "title": "Why Is Allstate (ALL) Down 1.7% Since Last Earnings Report?",
+        "publisher": "Zacks",
+        "published": "2026-03-06T16:30:05Z",
+        "link": "https://finance.yahoo.com/news/why-allstate-down-1-7-163005090.html"
+      },
+      {
+        "title": "Allstate Corporation Stock: Is ALL Outperforming the Financial Sector?",
+        "publisher": "Barchart",
+        "published": "2026-03-06T11:54:08Z",
+        "link": "https://www.barchart.com/story/news/603960/allstate-corporation-stock-is-all-outperforming-the-financial-sector"
+      },
+      {
+        "title": "AIG Scores Upgrade in Goldman\u2019s Assessment of Insurers\u2019 AI Risks",
+        "publisher": "The Daily Upside",
+        "published": "2026-03-06T05:01:00Z",
+        "link": "https://www.thedailyupside.com/technology/artificial-intelligence/goldman-upgrades-aig-downgrades-allstate-as-insurance-industry-faces-growing-ai-risks/"
+      },
+      {
+        "title": "Allstate (ALL) Registers a Bigger Fall Than the Market: Important Facts to Note",
+        "publisher": "Zacks",
+        "published": "2026-03-05T22:45:05Z",
+        "link": "https://finance.yahoo.com/news/allstate-registers-bigger-fall-market-224505176.html"
+      },
+      {
+        "title": "Goldman Sachs says commercial insurers best positioned for AI, upgrades AIG",
+        "publisher": "Investing.com",
+        "published": "2026-03-05T19:42:42Z",
+        "link": "https://finance.yahoo.com/news/goldman-sachs-says-commercial-insurers-194242934.html"
+      },
+      {
+        "title": "MSCI Acquires Compass Financial to Expand Multi-Asset Indexes",
+        "publisher": "Zacks",
+        "published": "2026-03-05T18:21:00Z",
+        "link": "https://finance.yahoo.com/news/msci-acquires-compass-financial-expand-182100006.html"
+      },
+      {
+        "title": "Meta downgraded, MongoDB upgraded: Wall Street's top analyst calls",
+        "publisher": "The Fly",
+        "published": "2026-03-05T14:36:14Z",
+        "link": "https://finance.yahoo.com/news/meta-downgraded-mongodb-upgraded-wall-143614191.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 3,
+        "buy": 10,
+        "hold": 9,
+        "sell": 0,
+        "strongSell": 2
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 3,
+        "buy": 11,
+        "hold": 8,
+        "sell": 0,
+        "strongSell": 2
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
+        "buy": 11,
+        "hold": 8,
+        "sell": 0,
+        "strongSell": 2
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 3,
+        "buy": 12,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 2
+      }
+    ],
+    "price_targets": {
+      "current": 207.5,
+      "low": 176.0,
+      "high": 281.0,
+      "mean": 240.5238,
+      "median": 244.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 3,
+      "buy": 10,
+      "hold": 9,
+      "sell": 0,
+      "strong_sell": 2
+    },
+    "cached_at": "2026-03-10T19:45:36.218656"
+  },
+  "EPAM": {
+    "ticker": "EPAM",
+    "name": "EPAM Systems, Inc.",
+    "sector": "Technology",
+    "industry": "Information Technology Services",
+    "description": "EPAM Systems, Inc. provides digital platform engineering and software development services worldwide. The company offers engineering services, including requirements analysis and platform selection, customization, cross-platform migration, implementation, and integration; cloud services for creat...",
+    "market_cap": 7854395392,
+    "market_cap_str": "$7.9B",
+    "employees": 62850,
+    "website": "https://www.epam.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 10.220085,
+      "pe_trailing": 21.126299,
+      "peg_ratio": null,
+      "profit_margin": "6.9%",
+      "revenue_growth": "12.8%",
+      "earnings_growth": "9.9%",
+      "debt_to_equity": 3.907,
+      "current_ratio": 2.594,
+      "roe": "10.3%",
+      "free_cash_flow": 725305344,
+      "dividend_yield": null,
+      "beta": 1.768,
+      "52w_high": 222.53,
+      "52w_low": 125.57,
+      "current_price": 142.18
+    },
+    "news": [
+      {
+        "title": "EPAM\u2019s Dutch IT Accolade Versus Weak Share Price And Valuation Gap",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-10T22:11:14Z",
+        "link": "https://finance.yahoo.com/news/epam-dutch-accolade-versus-weak-221114200.html"
+      },
+      {
+        "title": "ABM, EPAM, Alight, Booz Allen Hamilton, and CBIZ Stocks Trade Down, What You Need To Know",
+        "publisher": "StockStory",
+        "published": "2026-03-10T21:06:14Z",
+        "link": "https://finance.yahoo.com/news/abm-epam-alight-booz-allen-210614977.html"
+      },
+      {
+        "title": "EPAM Systems (EPAM): An AI Loser or Gainer?",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-06T13:02:46Z",
+        "link": "https://finance.yahoo.com/news/epam-systems-epam-ai-loser-130246363.html"
+      },
+      {
+        "title": "12 Stocks Completely Fall Apart As The S&P 500 Unravels",
+        "publisher": "Investor's Business Daily",
+        "published": "2026-03-06T12:30:48Z",
+        "link": "https://www.investors.com/etfs-and-funds/sectors/sp500-stocks-completely-fall-apart-as-the-500-unravels/?src=A00220&yptr=yahoo"
+      },
+      {
+        "title": "AI Fears Have Weighed on IT Services Companies Like Accenture. Never Fear, Analysts Say.",
+        "publisher": "Barrons.com",
+        "published": "2026-03-05T21:59:00Z",
+        "link": "https://www.barrons.com/articles/ai-fears-have-weighed-on-it-services-companies-7839f3b9?siteid=yhoof2&yptr=yahoo"
+      },
+      {
+        "title": "A Look At EPAM Systems (EPAM) Valuation After Cautious 2026 Outlook And NEORIS Customer Revenue Decline",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-05T20:11:11Z",
+        "link": "https://finance.yahoo.com/news/look-epam-systems-epam-valuation-201111645.html"
+      },
+      {
+        "title": "Analysts Reduce PT on EPAM Systems (EPAM) While Keeping Positive Outlook",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-05T16:31:57Z",
+        "link": "https://finance.yahoo.com/news/analysts-reduce-pt-epam-systems-163157286.html"
+      },
+      {
+        "title": "Innodata Stock Dips After Q4: Buying Opportunity or Warning?",
+        "publisher": "Zacks",
+        "published": "2026-03-05T14:20:00Z",
+        "link": "https://finance.yahoo.com/news/innodata-stock-dips-q4-buying-142000136.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 2,
+        "buy": 10,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 2,
+        "buy": 10,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 2,
+        "buy": 10,
+        "hold": 6,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 10,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 1
+      }
+    ],
+    "price_targets": {
+      "current": 142.18,
+      "low": 140.0,
+      "high": 265.0,
+      "mean": 191.17647,
+      "median": 193.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 2,
+      "buy": 10,
+      "hold": 7,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:36.921525"
+  },
+  "JHG": {
+    "ticker": "JHG",
+    "name": "Janus Henderson Group plc",
+    "sector": "Financial Services",
+    "industry": "Asset Management",
+    "description": "Janus Henderson Group plc is an asset management holding entity. Through its subsidiaries, the firm provides services to institutional, retail clients, and high net worth clients. It manages separate client-focused equity and fixed income portfolios. The firm also manages equity, fixed income, an...",
+    "market_cap": 7837826560,
+    "market_cap_str": "$7.8B",
+    "employees": 2328,
+    "website": "https://www.janushenderson.com",
+    "country": "United Kingdom",
+    "key_stats": {
+      "pe_forward": 10.505034,
+      "pe_trailing": 9.726577,
+      "peg_ratio": null,
+      "profit_margin": "26.3%",
+      "revenue_growth": "61.3%",
+      "earnings_growth": "244.6%",
+      "debt_to_equity": 8.248,
+      "current_ratio": 4.18,
+      "roe": "16.2%",
+      "free_cash_flow": 466237504,
+      "dividend_yield": "315.0%",
+      "beta": 1.518,
+      "52w_high": 53.76,
+      "52w_low": 28.26,
+      "current_price": 50.87
+    },
+    "news": [
+      {
+        "title": "VCTR Proposes the Acquisition of JHG, Sees $500M in Cost Synergies",
+        "publisher": "Zacks",
+        "published": "2026-03-03T15:45:00Z",
+        "link": "https://finance.yahoo.com/news/vctr-proposes-acquisition-jhg-sees-154500335.html"
+      },
+      {
+        "title": "Best Value Stocks to Buy for March 3rd",
+        "publisher": "Zacks",
+        "published": "2026-03-03T15:06:00Z",
+        "link": "https://finance.yahoo.com/news/best-value-stocks-buy-march-150600036.html"
+      },
+      {
+        "title": "Victory Capital Bid Puts Janus Henderson Valuation And Outlook In Focus",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-03T03:17:31Z",
+        "link": "https://finance.yahoo.com/news/victory-capital-bid-puts-janus-031731690.html"
+      },
+      {
+        "title": "JPM, BCS & FITB Sued by Tricolor Noteholders Over Alleged Red Flags",
+        "publisher": "Zacks",
+        "published": "2026-03-02T18:04:00Z",
+        "link": "https://finance.yahoo.com/news/jpm-bcs-fitb-sued-tricolor-180400433.html"
+      },
+      {
+        "title": "Janus Henderson (JHG) Launches Janus Henderson AA\u2011A CLO ETF",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-01T09:58:19Z",
+        "link": "https://finance.yahoo.com/news/janus-henderson-jhg-launches-janus-095819560.html"
+      },
+      {
+        "title": "Tricolor Noteholders Sue JPMorgan, Barclays and Fifth Third",
+        "publisher": "Bloomberg",
+        "published": "2026-02-27T19:26:36Z",
+        "link": "https://finance.yahoo.com/news/tricolor-noteholders-sue-jpmorgan-barclays-192636010.html"
+      },
+      {
+        "title": "Victory Capital makes bid for Janus Henderson to outstrip\u202fTrian deal",
+        "publisher": "Private Banker International",
+        "published": "2026-02-27T12:01:27Z",
+        "link": "https://www.privatebankerinternational.com/news/victory-capital-bid-janus-outstrip-trian/"
+      },
+      {
+        "title": "Bidding War for Janus Henderson",
+        "publisher": "Bloomberg",
+        "published": "2026-02-26T21:05:10Z",
+        "link": "https://finance.yahoo.com/video/bidding-war-janus-henderson-210510349.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 1,
+        "buy": 1,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 1,
+        "buy": 1,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 1,
+        "buy": 1,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 1,
+        "buy": 2,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 50.87,
+      "low": 48.0,
+      "high": 55.0,
+      "mean": 50.85714,
+      "median": 50.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 1,
+      "buy": 1,
+      "hold": 5,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:37.756734"
+  },
+  "QLYS": {
+    "ticker": "QLYS",
+    "name": "Qualys, Inc.",
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "description": "Qualys, Inc. provides cloud-based platform delivering information technology (IT), security, and compliance solutions in the United States and internationally. The company provides Qualys Cloud Apps, which include cybersecurity asset management; enterprise TruRisk management; vulnerability manage...",
+    "market_cap": 3420165376,
+    "market_cap_str": "$3.4B",
+    "employees": 2625,
+    "website": "https://www.qualys.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 11.95935,
+      "pe_trailing": 17.533087,
+      "peg_ratio": null,
+      "profit_margin": "29.6%",
+      "revenue_growth": "10.1%",
+      "earnings_growth": "23.6%",
+      "debt_to_equity": 9.315,
+      "current_ratio": 1.407,
+      "roe": "38.2%",
+      "free_cash_flow": 259132000,
+      "dividend_yield": null,
+      "beta": 0.604,
+      "52w_high": 155.47,
+      "52w_low": 85.14,
+      "current_price": 95.38
+    },
+    "news": [
+      {
+        "title": "Trump Trade: White House announces Executive Order to combat cybercrime",
+        "publisher": "TipRanks",
+        "published": "2026-03-10T14:07:38Z",
+        "link": "https://finance.yahoo.com/news/trump-trade-white-house-announces-140738405.html"
+      },
+      {
+        "title": "Box, Five9, Qualys, SentinelOne, and monday.com Stocks Trade Up, What You Need To Know",
+        "publisher": "StockStory",
+        "published": "2026-03-03T23:57:42Z",
+        "link": "https://finance.yahoo.com/news/box-five9-qualys-sentinelone-monday-235742514.html"
+      },
+      {
+        "title": "Qualys, Amplitude, Domo, Wix, and LiveRamp Shares Skyrocket, What You Need To Know",
+        "publisher": "StockStory",
+        "published": "2026-03-03T00:15:36Z",
+        "link": "https://finance.yahoo.com/news/qualys-amplitude-domo-wix-liveramp-001536965.html"
+      },
+      {
+        "title": "Assessing Qualys (QLYS) Valuation After Robust Q4 Revenue Growth And Positive 2026 Outlook",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-27T21:08:30Z",
+        "link": "https://finance.yahoo.com/news/assessing-qualys-qlys-valuation-robust-210830549.html"
+      },
+      {
+        "title": "Tenable, Intuit, Unity, Autodesk, and Qualys Stocks Trade Up, What You Need To Know",
+        "publisher": "StockStory",
+        "published": "2026-02-26T22:39:33Z",
+        "link": "https://finance.yahoo.com/news/tenable-intuit-unity-autodesk-qualys-223933307.html"
+      },
+      {
+        "title": "Anthropic Jolts Cybersecurity Stocks, JFrog After Finance, Health Care, Legal Drama",
+        "publisher": "Investor's Business Daily",
+        "published": "2026-02-23T16:54:22Z",
+        "link": "https://www.investors.com/news/technology/cybersecurity-stocks-jfrog-stock-gitlab-anthropic-claude-tools/?src=A00220&yptr=yahoo"
+      },
+      {
+        "title": "International Markets Revenue A Bright Spot For Qualys, Inc. (QLYS)",
+        "publisher": "Insider Monkey",
+        "published": "2026-02-22T18:42:26Z",
+        "link": "https://finance.yahoo.com/news/international-markets-revenue-bright-spot-184226667.html"
+      },
+      {
+        "title": "Rapid7, Tenable, SentinelOne, Zscaler, and Qualys Shares Plummet, What You Need To Know",
+        "publisher": "StockStory",
+        "published": "2026-02-20T21:30:55Z",
+        "link": "https://finance.yahoo.com/news/rapid7-tenable-sentinelone-zscaler-qualys-213055286.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 1,
+        "buy": 6,
+        "hold": 15,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 1,
+        "buy": 6,
+        "hold": 15,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 0,
+        "buy": 6,
+        "hold": 16,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 0,
+        "buy": 5,
+        "hold": 17,
+        "sell": 1,
+        "strongSell": 1
+      }
+    ],
+    "price_targets": {
+      "current": 95.38,
+      "low": 113.0,
+      "high": 170.0,
+      "mean": 138.52632,
+      "median": 135.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 1,
+      "buy": 6,
+      "hold": 15,
+      "sell": 1,
+      "strong_sell": 1
+    },
+    "cached_at": "2026-03-10T19:45:38.514335"
+  },
+  "FAF": {
+    "ticker": "FAF",
+    "name": "First American Financial Corporation",
+    "sector": "Financial Services",
+    "industry": "Insurance - Specialty",
+    "description": "First American Financial Corporation, through its subsidiaries, provides financial services. It operates through Title Insurance and Services, and Home Warranty segments. The Title Insurance and Services segment issues title insurance policies on residential and commercial property, as well as of...",
+    "market_cap": 6676487680,
+    "market_cap_str": "$6.7B",
+    "employees": 19102,
+    "website": "https://www.firstam.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 9.331459,
+      "pe_trailing": 10.919999,
+      "peg_ratio": null,
+      "profit_margin": "8.3%",
+      "revenue_growth": "21.6%",
+      "earnings_growth": "194.5%",
+      "debt_to_equity": 48.334,
+      "current_ratio": 0.347,
+      "roe": "12.0%",
+      "free_cash_flow": 557875008,
+      "dividend_yield": "334.0%",
+      "beta": 1.261,
+      "52w_high": 71.47,
+      "52w_low": 53.09,
+      "current_price": 65.52
+    },
+    "news": [
+      {
+        "title": "Here's Why First American Financial (FAF) is a Strong Value Stock",
+        "publisher": "Zacks",
+        "published": "2026-03-10T13:40:01Z",
+        "link": "https://finance.yahoo.com/news/heres-why-first-american-financial-134001069.html"
+      },
+      {
+        "title": "Is First American Financial (FAF) Stock Undervalued Right Now?",
+        "publisher": "Zacks",
+        "published": "2026-03-09T13:40:04Z",
+        "link": "https://finance.yahoo.com/news/first-american-financial-faf-stock-134004082.html"
+      },
+      {
+        "title": "AIZ Stock Trading at a Discount to Industry at 1.9X: Time to Hold?",
+        "publisher": "Zacks",
+        "published": "2026-03-09T12:56:00Z",
+        "link": "https://finance.yahoo.com/news/aiz-stock-trading-discount-industry-125600023.html"
+      },
+      {
+        "title": "Fast-paced Momentum Stock First American Financial (FAF) Is Still Trading at a Bargain",
+        "publisher": "Zacks",
+        "published": "2026-03-09T12:55:01Z",
+        "link": "https://finance.yahoo.com/news/fast-paced-momentum-stock-first-125501383.html"
+      },
+      {
+        "title": "Assessing First American Financial (FAF) Valuation After Mixed Short Term Share Price Moves",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-07T21:12:08Z",
+        "link": "https://finance.yahoo.com/news/assessing-first-american-financial-faf-211208566.html"
+      },
+      {
+        "title": "NMIH Stock Trading at a Discount to Industry at 1.15X: Time to Buy?",
+        "publisher": "Zacks",
+        "published": "2026-03-06T15:23:00Z",
+        "link": "https://finance.yahoo.com/news/nmih-stock-trading-discount-industry-152300590.html"
+      },
+      {
+        "title": "First American Financial (FAF) is a Top-Ranked Momentum Stock: Should You Buy?",
+        "publisher": "Zacks",
+        "published": "2026-03-05T14:50:02Z",
+        "link": "https://finance.yahoo.com/news/first-american-financial-faf-top-145002208.html"
+      },
+      {
+        "title": "FAF Stock Near 52-Week High: A Signal for Investors to Hold Tight?",
+        "publisher": "Zacks",
+        "published": "2026-03-05T13:23:00Z",
+        "link": "https://finance.yahoo.com/news/faf-stock-near-52-week-132300091.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 1,
+        "buy": 3,
+        "hold": 1,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 1,
+        "buy": 2,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 1,
+        "buy": 2,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 1,
+        "buy": 2,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 65.52,
+      "low": 70.0,
+      "high": 90.0,
+      "mean": 81.6,
+      "median": 82.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 1,
+      "buy": 3,
+      "hold": 1,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:39.316048"
+  },
+  "CVLT": {
+    "ticker": "CVLT",
+    "name": "Commvault Systems, Inc.",
+    "sector": "Technology",
+    "industry": "Software - Application",
+    "description": "Commvault Systems, Inc. provides a cyber resilience platform for protecting and recovering data and cloud-native applications in the Americas and internationally. The company offers Operational Recovery, which provides backup, verifiable recovery, and cost-optimized cloud workload mobility to ens...",
+    "market_cap": 3543863808,
+    "market_cap_str": "$3.5B",
+    "employees": 3300,
+    "website": "https://www.commvault.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 16.663626,
+      "pe_trailing": 41.85938,
+      "peg_ratio": null,
+      "profit_margin": "7.6%",
+      "revenue_growth": "19.5%",
+      "earnings_growth": "66.7%",
+      "debt_to_equity": 424.464,
+      "current_ratio": 2.343,
+      "roe": "34.5%",
+      "free_cash_flow": 247072496,
+      "dividend_yield": null,
+      "beta": 0.593,
+      "52w_high": 200.68,
+      "52w_low": 79.51,
+      "current_price": 80.37
+    },
+    "news": [
+      {
+        "title": "The Bull Case For Commvault Systems (CVLT) Could Change Following New Identity Resilience Integrations With Okta",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-07T03:11:47Z",
+        "link": "https://finance.yahoo.com/news/bull-case-commvault-systems-cvlt-031147660.html"
+      },
+      {
+        "title": "Is It Time To Reconsider Commvault Systems (CVLT) After Its Sharp One Year Share Price Drop",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-07T01:14:28Z",
+        "link": "https://finance.yahoo.com/news/time-reconsider-commvault-systems-cvlt-011428121.html"
+      },
+      {
+        "title": "INTU Stock Rises 18.3% Post Q2 Earnings: Should You Buy or Sell?",
+        "publisher": "Zacks",
+        "published": "2026-03-06T18:36:00Z",
+        "link": "https://finance.yahoo.com/news/intu-stock-rises-18-3-183600680.html"
+      },
+      {
+        "title": "ITRI's Cellular 500 Modules & UtilityIQ Transform Utility Connectivity",
+        "publisher": "Zacks",
+        "published": "2026-03-06T13:28:00Z",
+        "link": "https://finance.yahoo.com/news/itris-cellular-500-modules-utilityiq-132800462.html"
+      },
+      {
+        "title": "3 Under-the-Radar Software Stocks Ready to Bounce",
+        "publisher": "MarketBeat",
+        "published": "2026-03-06T12:36:00Z",
+        "link": "https://www.marketbeat.com/stock-ideas/3-under-the-radar-software-stocks-ready-to-bounce/?utm_source=yahoofinance&utm_medium=yahoofinance"
+      },
+      {
+        "title": "2 of Wall Street\u2019s Favorite Stocks to Consider Right Now and 1 Facing Challenges",
+        "publisher": "StockStory",
+        "published": "2026-03-06T11:19:37Z",
+        "link": "https://finance.yahoo.com/news/2-wall-street-favorite-stocks-111937627.html"
+      },
+      {
+        "title": "Blackbaud Expands AI Innovation to Boost Social Impact Outcomes",
+        "publisher": "Zacks",
+        "published": "2026-03-05T12:26:00Z",
+        "link": "https://finance.yahoo.com/news/blackbaud-expands-ai-innovation-boost-122600268.html"
+      },
+      {
+        "title": "3 Software Stocks to Watch as the Industry Gains Momentum",
+        "publisher": "Zacks",
+        "published": "2026-03-04T13:56:00Z",
+        "link": "https://finance.yahoo.com/news/3-software-stocks-watch-industry-135600334.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 0,
+        "buy": 10,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 0,
+        "buy": 10,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 1,
+        "buy": 10,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 80.37,
+      "low": 100.0,
+      "high": 185.0,
+      "mean": 140.33333,
+      "median": 143.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 0,
+      "buy": 10,
+      "hold": 2,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:39.916887"
+  },
+  "DUOL": {
+    "ticker": "DUOL",
+    "name": "Duolingo, Inc.",
+    "sector": "Technology",
+    "industry": "Software - Application",
+    "description": "Duolingo, Inc. operates as a mobile learning platform in the United States, the United Kingdom, and internationally. The company offers 250 language courses, including Spanish, English, French, German, Italian, Portuguese, Japanese, and Chinese through its Duolingo app. It also provides a digital...",
+    "market_cap": 4468728832,
+    "market_cap_str": "$4.5B",
+    "employees": 900,
+    "website": "https://www.duolingo.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 11.511671,
+      "pe_trailing": 11.106185,
+      "peg_ratio": null,
+      "profit_margin": "39.9%",
+      "revenue_growth": "35.0%",
+      "earnings_growth": "193.6%",
+      "debt_to_equity": 7.497,
+      "current_ratio": 2.607,
+      "roe": "38.1%",
+      "free_cash_flow": 264798880,
+      "dividend_yield": null,
+      "beta": 0.892,
+      "52w_high": 544.93,
+      "52w_low": 91.99,
+      "current_price": 95.18
+    },
+    "news": [
+      {
+        "title": "What Duolingo (DUOL)'s Free-Tier Pivot and Buyback Plan Means For Shareholders",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-10T20:12:47Z",
+        "link": "https://finance.yahoo.com/news/duolingo-duol-free-tier-pivot-201247927.html"
+      },
+      {
+        "title": "Duolingo Stock Plunges 64% in a Year: Should You Sell It Now?",
+        "publisher": "Zacks",
+        "published": "2026-03-10T17:35:00Z",
+        "link": "https://finance.yahoo.com/news/duolingo-stock-plunges-64-sell-173500514.html"
+      },
+      {
+        "title": "3 Growth Stocks Down 70% to Buy Right Now",
+        "publisher": "Motley Fool",
+        "published": "2026-03-10T17:12:00Z",
+        "link": "https://www.fool.com/investing/2026/03/10/3-growth-stocks-down-70-to-buy-right-now/"
+      },
+      {
+        "title": "Duolingo Stock Is Down Big This Year. Here's Why Things Could Get Even Worse",
+        "publisher": "Motley Fool",
+        "published": "2026-03-09T19:20:00Z",
+        "link": "https://www.fool.com/investing/2026/03/09/duolingo-stock-is-down-big-this-year-heres-why-thi/"
+      },
+      {
+        "title": "Jim Cramer on Duolingo: \u201cI Have No Reason to Recommend It\u201d",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-09T17:28:06Z",
+        "link": "https://finance.yahoo.com/news/jim-cramer-duolingo-no-reason-172806707.html"
+      },
+      {
+        "title": "Arthedge Capital Doubles Down on Duolingo Stock, Adds Another $7 Million",
+        "publisher": "Motley Fool",
+        "published": "2026-03-09T16:04:36Z",
+        "link": "https://www.fool.com/coverage/filings/2026/03/09/arthedge-capital-doubles-down-on-duolingo-stock-adds-another-usd7-million/"
+      },
+      {
+        "title": "A Look At Duolingo (DUOL) Valuation After Earnings Reset Guidance And AI Expansion Shift",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-07T03:11:25Z",
+        "link": "https://finance.yahoo.com/news/look-duolingo-duol-valuation-earnings-031125097.html"
+      },
+      {
+        "title": "Gilder Gagnon Howe Dumps 66,000 Duolingo Shares Worth $15.7 Million",
+        "publisher": "Motley Fool",
+        "published": "2026-03-06T21:51:10Z",
+        "link": "https://www.fool.com/coverage/filings/2026/03/06/gilder-gagnon-howe-dumps-66000-duol-shares-worth-15-7-million/"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 2,
+        "buy": 3,
+        "hold": 17,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 2,
+        "buy": 3,
+        "hold": 17,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 6,
+        "buy": 7,
+        "hold": 9,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 6,
+        "buy": 5,
+        "hold": 10,
+        "sell": 1,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 95.18,
+      "low": 81.0,
+      "high": 145.0,
+      "mean": 105.73,
+      "median": 100.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 2,
+      "buy": 3,
+      "hold": 17,
+      "sell": 1,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:40.598559"
+  },
+  "GDDY": {
+    "ticker": "GDDY",
+    "name": "GoDaddy Inc.",
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "description": "GoDaddy Inc. engages in the design and development of cloud-based products in the United States and internationally. It operates in two segments: Applications and Commerce (A&C), and Core Platform (Core). The A&C segment offers applications products, including Websites + Marketing, a mobile-optim...",
+    "market_cap": 12191123456,
+    "market_cap_str": "$12.2B",
+    "employees": 5845,
+    "website": "https://www.godaddy.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 6.8952074,
+      "pe_trailing": 14.503216,
+      "peg_ratio": null,
+      "profit_margin": "17.7%",
+      "revenue_growth": "6.8%",
+      "earnings_growth": "31.7%",
+      "debt_to_equity": 1795.723,
+      "current_ratio": 0.615,
+      "roe": "192.9%",
+      "free_cash_flow": 1307524992,
+      "dividend_yield": null,
+      "beta": 0.979,
+      "52w_high": 193.55,
+      "52w_low": 73.06,
+      "current_price": 90.21
+    },
+    "news": [
+      {
+        "title": "GoDaddy\u2019s Alexandra Rosen Reveals Small Business Outlook for 2026",
+        "publisher": "NYSE",
+        "published": "2026-03-09T16:24:09Z",
+        "link": "https://finance.yahoo.com/video/godaddy-alexandra-rosen-reveals-small-162409035.html"
+      },
+      {
+        "title": "Is GoDaddy (GDDY) Pricing Look Attractive After Recent Share Price Pullback",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-09T04:11:24Z",
+        "link": "https://finance.yahoo.com/news/godaddy-gddy-pricing-look-attractive-041124329.html"
+      },
+      {
+        "title": "GoDaddy (GDDY) Is Up 7.8% After Discounted .coms Hit 2026 Outlook And Spur Legal Probe \u2013 Has The Bull Case Changed?",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-08T15:09:16Z",
+        "link": "https://finance.yahoo.com/news/godaddy-gddy-7-8-discounted-150916789.html"
+      },
+      {
+        "title": "Goodnow Investment Group Boosts Stake in Instacart as Brands Compete for Digital Shelf Space",
+        "publisher": "Motley Fool",
+        "published": "2026-03-07T02:41:38Z",
+        "link": "https://www.fool.com/coverage/filings/2026/03/06/goodnow-investment-group-boosts-stake-in-instacart-as-brands-compete-for-digital-shelf-space/"
+      },
+      {
+        "title": "2 Top Growth Stocks to Buy, And 1 to Sell Right Away",
+        "publisher": "24/7 Wall St.",
+        "published": "2026-03-05T16:57:55Z",
+        "link": "https://247wallst.com/investing/2026/03/05/2-top-growth-stocks-to-buy-and-1-to-sell-right-away/"
+      },
+      {
+        "title": "Evercore ISI Lowers its Price Target on GoDaddy Inc. (GDDY) to $95 and Maintains an In Line Rating",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-04T05:48:19Z",
+        "link": "https://finance.yahoo.com/news/evercore-isi-lowers-price-target-054819569.html"
+      },
+      {
+        "title": "Salesforce Recasts Growth Story Around AI Agents And Capital Returns",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-03T01:05:46Z",
+        "link": "https://finance.yahoo.com/news/salesforce-recasts-growth-story-around-010546241.html"
+      },
+      {
+        "title": "1 Value Stock to Consider Right Now and 2 We Find Risky",
+        "publisher": "StockStory",
+        "published": "2026-03-02T19:35:36Z",
+        "link": "https://finance.yahoo.com/news/1-value-stock-consider-now-193536443.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 3,
+        "buy": 6,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 3,
+        "buy": 6,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
+        "buy": 6,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 3,
+        "buy": 6,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 90.21,
+      "low": 77.0,
+      "high": 195.0,
+      "mean": 119.42857,
+      "median": 102.5
+    },
+    "recommendation_summary": {
+      "strong_buy": 3,
+      "buy": 6,
+      "hold": 7,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:41.336108"
+  },
+  "GEN": {
+    "ticker": "GEN",
+    "name": "Gen Digital Inc.",
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "description": "Gen Digital Inc. engages in the provision of cyber safety solutions for individuals, families, and small businesses. It offers security and performance management, identity protection, and online privacy, as well as technology platform. The company offers its products under the Norton, Avast, Lif...",
+    "market_cap": 13432077312,
+    "market_cap_str": "$13.4B",
+    "employees": 3500,
+    "website": "https://www.gendigital.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 7.5904107,
+      "pe_trailing": 22.453608,
+      "peg_ratio": null,
+      "profit_margin": "12.8%",
+      "revenue_growth": "25.8%",
+      "earnings_growth": "20.1%",
+      "debt_to_equity": 363.379,
+      "current_ratio": 0.466,
+      "roe": "26.9%",
+      "free_cash_flow": 1316375040,
+      "dividend_yield": "230.0%",
+      "beta": 1.095,
+      "52w_high": 32.22,
+      "52w_low": 21.33,
+      "current_price": 21.78
+    },
+    "news": [
+      {
+        "title": "Trump Trade: White House announces Executive Order to combat cybercrime",
+        "publisher": "TipRanks",
+        "published": "2026-03-10T14:07:38Z",
+        "link": "https://finance.yahoo.com/news/trump-trade-white-house-announces-140738405.html"
+      },
+      {
+        "title": "Assessing Whether Gen Digital (GEN) Looks Undervalued After Recent Share Price Pullback",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-01T12:13:42Z",
+        "link": "https://finance.yahoo.com/news/assessing-whether-gen-digital-gen-121342201.html"
+      },
+      {
+        "title": "Gen Digital Inc. (GEN): A Bull Case Theory",
+        "publisher": "Insider Monkey",
+        "published": "2026-02-28T17:00:33Z",
+        "link": "https://finance.yahoo.com/news/gen-digital-inc-gen-bull-170033857.html"
+      },
+      {
+        "title": "Argus Research Cuts Price Target on Gen Digital Inc. (GEN) Citing Impact From Tech Selloff",
+        "publisher": "Insider Monkey",
+        "published": "2026-02-27T02:43:46Z",
+        "link": "https://finance.yahoo.com/news/argus-research-cuts-price-target-024346717.html"
+      },
+      {
+        "title": "Gen Digital Inc.\u2019s (GEN) LifeLock Software Expands Identity Protection Plans For Americans",
+        "publisher": "Insider Monkey",
+        "published": "2026-02-25T10:19:06Z",
+        "link": "https://finance.yahoo.com/news/gen-digital-inc-gen-lifelock-101906382.html"
+      },
+      {
+        "title": "Gen Digital (GEN) Partners With Vercel",
+        "publisher": "Insider Monkey",
+        "published": "2026-02-22T17:08:45Z",
+        "link": "https://finance.yahoo.com/news/gen-digital-gen-partners-vercel-170845388.html"
+      },
+      {
+        "title": "Is Stronger AI-Focused Earnings And Capital Returns Altering The Investment Case For Gen Digital (GEN)?",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-14T03:17:24Z",
+        "link": "https://finance.yahoo.com/news/stronger-ai-focused-earnings-capital-031724153.html"
+      },
+      {
+        "title": "Assessing Gen Digital (GEN) Valuation After Recent Share Price Volatility",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-13T13:09:38Z",
+        "link": "https://finance.yahoo.com/news/assessing-gen-digital-gen-valuation-130938231.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 0,
+        "buy": 6,
+        "hold": 6,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 0,
+        "buy": 5,
+        "hold": 6,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 0,
+        "buy": 5,
+        "hold": 6,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 21.78,
+      "low": 22.0,
+      "high": 46.0,
+      "mean": 31.18818,
+      "median": 32.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 0,
+      "buy": 6,
+      "hold": 6,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:41.938658"
+  },
+  "THC": {
+    "ticker": "THC",
+    "name": "Tenet Healthcare Corporation",
+    "sector": "Healthcare",
+    "industry": "Medical Care Facilities",
+    "description": "Tenet Healthcare Corporation operates as a diversified healthcare services company in the United States. The company operates through two segments: Hospital Operations and Services, and Ambulatory Care. Its general hospitals offer acute care services, operating and recovery rooms, radiology and r...",
+    "market_cap": 20865656832,
+    "market_cap_str": "$20.9B",
+    "employees": 77000,
+    "website": "https://www.tenethealth.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 13.555525,
+      "pe_trailing": 15.33721,
+      "peg_ratio": null,
+      "profit_margin": "6.6%",
+      "revenue_growth": "8.9%",
+      "earnings_growth": "27.6%",
+      "debt_to_equity": 160.793,
+      "current_ratio": 1.759,
+      "roe": "27.0%",
+      "free_cash_flow": 1677374976,
+      "dividend_yield": null,
+      "beta": 1.412,
+      "52w_high": 247.21,
+      "52w_low": 109.82,
+      "current_price": 237.42
+    },
+    "news": [
+      {
+        "title": "A Look At Tenet Healthcare (THC) Valuation After Sector Job Losses Stir Investor Caution",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-09T05:06:11Z",
+        "link": "https://finance.yahoo.com/news/look-tenet-healthcare-thc-valuation-050611545.html"
+      },
+      {
+        "title": "How Investors May Respond To Tenet Healthcare (THC) Amid Jobs Report Jitters And Sector Uncertainty",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-08T23:08:46Z",
+        "link": "https://finance.yahoo.com/news/investors-may-respond-tenet-healthcare-230846996.html"
+      },
+      {
+        "title": "Tenet Healthcare, Revvity, Avantor, Azenta, and Elanco Shares Plummet, What You Need To Know",
+        "publisher": "StockStory",
+        "published": "2026-03-06T22:09:37Z",
+        "link": "https://finance.yahoo.com/news/tenet-healthcare-revvity-avantor-azenta-220937926.html"
+      },
+      {
+        "title": "Tenet Healthcare Corporation (THC) is Attracting Investor Attention: Here is What You Should Know",
+        "publisher": "Zacks",
+        "published": "2026-03-06T14:00:06Z",
+        "link": "https://finance.yahoo.com/news/tenet-healthcare-corporation-thc-attracting-140006058.html"
+      },
+      {
+        "title": "1 Unpopular Stock That Deserves a Second Chance and 2 Facing Headwinds",
+        "publisher": "StockStory",
+        "published": "2026-03-05T16:21:53Z",
+        "link": "https://finance.yahoo.com/news/1-unpopular-stock-deserves-second-162153058.html"
+      },
+      {
+        "title": "'AI Winner' HCA, Stock Of The Day, Gets Healthy With Palantir",
+        "publisher": "Investor's Business Daily",
+        "published": "2026-03-04T19:19:34Z",
+        "link": "https://www.investors.com/research/ibd-stock-of-the-day/hca-stock-of-the-day-ai-winner-palantir/?src=A00220&yptr=yahoo"
+      },
+      {
+        "title": "SEM's $16.50 Take-Private Moment: Undervalued or Perfectly Timed?",
+        "publisher": "Zacks",
+        "published": "2026-03-04T14:04:00Z",
+        "link": "https://finance.yahoo.com/news/sems-16-50-private-moment-140400507.html"
+      },
+      {
+        "title": "Is It Too Late To Consider Tenet Healthcare (THC) After An 89% One Year Rally?",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-01T21:13:14Z",
+        "link": "https://finance.yahoo.com/news/too-consider-tenet-healthcare-thc-211314499.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 5,
+        "buy": 14,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 5,
+        "buy": 14,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 5,
+        "buy": 14,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 5,
+        "buy": 14,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 1
+      }
+    ],
+    "price_targets": {
+      "current": 237.42,
+      "low": 213.0,
+      "high": 288.0,
+      "mean": 259.38095,
+      "median": 264.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 5,
+      "buy": 14,
+      "hold": 3,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:42.642740"
+  },
+  "HIG": {
+    "ticker": "HIG",
+    "name": "The Hartford Insurance Group, Inc.",
+    "sector": "Financial Services",
+    "industry": "Insurance - Diversified",
+    "description": "The Hartford Insurance Group, Inc., together with its subsidiaries, provides insurance and financial services to individual and business customers in the United States, the United Kingdom, and internationally. It operates through Business Insurance, Personal Insurance, Property & Casualty Other O...",
+    "market_cap": 38279065600,
+    "market_cap_str": "$38.3B",
+    "employees": 19200,
+    "website": "https://www.thehartford.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 9.471848,
+      "pe_trailing": 10.311795,
+      "peg_ratio": null,
+      "profit_margin": "13.5%",
+      "revenue_growth": "6.7%",
+      "earnings_growth": "38.2%",
+      "debt_to_equity": 23.937,
+      "current_ratio": 1.84,
+      "roe": "21.7%",
+      "free_cash_flow": 5811999744,
+      "dividend_yield": "175.0%",
+      "beta": 0.516,
+      "52w_high": 144.5,
+      "52w_low": 107.49,
+      "current_price": 137.25
+    },
+    "news": [
+      {
+        "title": "AMSF Misses on Q4 Earnings Despite Rising Premiums, Hikes Dividend",
+        "publisher": "Zacks",
+        "published": "2026-02-26T16:56:00Z",
+        "link": "https://finance.yahoo.com/news/amsf-misses-q4-earnings-despite-165600603.html"
+      },
+      {
+        "title": "Can AMERISAFE's Higher Premiums Cushion the Expense Blow in Q4?",
+        "publisher": "Zacks",
+        "published": "2026-02-24T15:09:00Z",
+        "link": "https://finance.yahoo.com/news/amerisafes-higher-premiums-cushion-expense-150900853.html"
+      },
+      {
+        "title": "How The Investment Story For Hartford Insurance Group (HIG) Is Shifting As Targets Edge Higher",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-23T07:05:55Z",
+        "link": "https://finance.yahoo.com/news/investment-story-hartford-insurance-group-070555697.html"
+      },
+      {
+        "title": "Progressive's January Earnings Increase Y/Y on Higher Premiums",
+        "publisher": "Zacks",
+        "published": "2026-02-19T13:23:00Z",
+        "link": "https://finance.yahoo.com/news/progressives-january-earnings-increase-y-132300509.html"
+      },
+      {
+        "title": "3 Reasons to Avoid HIG and 1 Stock to Buy Instead",
+        "publisher": "StockStory",
+        "published": "2026-02-17T04:03:26Z",
+        "link": "https://finance.yahoo.com/news/3-reasons-avoid-hig-1-040326319.html"
+      },
+      {
+        "title": "Does Hartford (HIG) Offer Upside After Strong Multi\u2011Year Share Price Performance",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-13T12:12:05Z",
+        "link": "https://finance.yahoo.com/news/does-hartford-hig-offer-upside-121205108.html"
+      },
+      {
+        "title": "Are Wall Street Analysts Bullish on Hartford Insurance Stock?",
+        "publisher": "Barchart",
+        "published": "2026-02-13T08:30:01Z",
+        "link": "https://www.barchart.com/story/news/200910/are-wall-street-analysts-bullish-on-hartford-insurance-stock"
+      },
+      {
+        "title": "RNR Boosts Dividend, Expands Buyback in Shareholder-Friendly Push",
+        "publisher": "Zacks",
+        "published": "2026-02-12T15:36:00Z",
+        "link": "https://finance.yahoo.com/news/rnr-boosts-dividend-expands-buyback-153600197.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 4,
+        "buy": 7,
+        "hold": 12,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 4,
+        "buy": 7,
+        "hold": 12,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 4,
+        "buy": 7,
+        "hold": 12,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 4,
+        "buy": 7,
+        "hold": 12,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 137.25,
+      "low": 135.0,
+      "high": 163.0,
+      "mean": 150.85,
+      "median": 150.0
+    },
+    "recommendation_summary": {
+      "strong_buy": 4,
+      "buy": 7,
+      "hold": 12,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:43.428709"
+  },
+  "RRC": {
+    "ticker": "RRC",
+    "name": "Range Resources Corporation",
+    "sector": "Energy",
+    "industry": "Oil & Gas E&P",
+    "description": "Range Resources Corporation operates as an independent natural gas, natural gas liquids (NGLs), and oil company in the United States. The company engages in the exploration, development, and acquisition of natural gas, NGLs, and oil properties located in the Appalachian region. It sells natural g...",
+    "market_cap": 9629071360,
+    "market_cap_str": "$9.6B",
+    "employees": 564,
+    "website": "https://www.rangeresources.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 9.908279,
+      "pe_trailing": 14.832116,
+      "peg_ratio": null,
+      "profit_margin": "22.0%",
+      "revenue_growth": "16.3%",
+      "earnings_growth": "94.1%",
+      "debt_to_equity": 31.783,
+      "current_ratio": 0.672,
+      "roe": "15.9%",
+      "free_cash_flow": 342940992,
+      "dividend_yield": "98.0%",
+      "beta": 0.568,
+      "52w_high": 43.5,
+      "52w_low": 30.32,
+      "current_price": 40.64
+    },
+    "news": [
+      {
+        "title": "A Look At Range Resources (RRC) Valuation After Strong Results And Dividend Increase",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-06T23:13:17Z",
+        "link": "https://finance.yahoo.com/news/look-range-resources-rrc-valuation-231317376.html"
+      },
+      {
+        "title": "EQT Stock Gains 31% in a Year: Here's What Investors Should Know",
+        "publisher": "Zacks",
+        "published": "2026-03-06T15:45:00Z",
+        "link": "https://finance.yahoo.com/news/eqt-stock-gains-31-heres-154500661.html"
+      },
+      {
+        "title": "Insider Sales Test Range Resources Story After Strong Results And Dividend",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-06T15:09:06Z",
+        "link": "https://finance.yahoo.com/news/insider-sales-test-range-resources-150906026.html"
+      },
+      {
+        "title": "Oil Prices Approach $90 As Iran Holds Supply Hostage",
+        "publisher": "Investor's Business Daily",
+        "published": "2026-03-06T14:33:45Z",
+        "link": "https://www.investors.com/news/oil-prices-approach-90-as-iran-holds-supply-hostage/?src=A00220&yptr=yahoo"
+      },
+      {
+        "title": "Venture Global Q4 Earnings Top Estimates on Higher LNG Sales Volumes",
+        "publisher": "Zacks",
+        "published": "2026-03-03T17:51:00Z",
+        "link": "https://finance.yahoo.com/news/venture-global-q4-earnings-top-175100163.html"
+      },
+      {
+        "title": "Range Resources Q4 Earnings Call Highlights",
+        "publisher": "MarketBeat",
+        "published": "2026-02-28T23:07:02Z",
+        "link": "https://www.marketbeat.com/instant-alerts/range-resources-q4-earnings-call-highlights-2026-02-28/?utm_source=yahoofinance&utm_medium=yahoofinance"
+      },
+      {
+        "title": "Range Resources (RRC) Achieves Record Operational Efficiency, $650M in 2025 Free Cash Flow",
+        "publisher": "Insider Monkey",
+        "published": "2026-02-27T21:49:44Z",
+        "link": "https://finance.yahoo.com/news/range-resources-rrc-achieves-record-214944738.html"
+      },
+      {
+        "title": "Range Resources Beats on Q4 Earnings, Raises Production Guidance",
+        "publisher": "Zacks",
+        "published": "2026-02-27T17:47:00Z",
+        "link": "https://finance.yahoo.com/news/range-resources-beats-q4-earnings-174700081.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 1,
+        "buy": 4,
+        "hold": 17,
+        "sell": 0,
+        "strongSell": 2
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 1,
+        "buy": 4,
+        "hold": 17,
+        "sell": 0,
+        "strongSell": 2
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 1,
+        "buy": 4,
+        "hold": 18,
+        "sell": 0,
+        "strongSell": 2
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 1,
+        "buy": 7,
+        "hold": 16,
+        "sell": 0,
+        "strongSell": 1
+      }
+    ],
+    "price_targets": {
+      "current": 40.64,
+      "low": 33.0,
+      "high": 50.0,
+      "mean": 42.16667,
+      "median": 42.5
+    },
+    "recommendation_summary": {
+      "strong_buy": 1,
+      "buy": 4,
+      "hold": 17,
+      "sell": 0,
+      "strong_sell": 2
+    },
+    "cached_at": "2026-03-10T19:45:44.071546"
+  },
+  "GL": {
+    "ticker": "GL",
+    "name": "Globe Life Inc.",
+    "sector": "Financial Services",
+    "industry": "Insurance - Life",
+    "description": "Globe Life Inc., through its subsidiaries, provides various life and supplemental health insurance products to lower middle- and middle-income families in the United States. It operates in three segments: Life Insurance, Supplemental Health Insurance, and Investments. The company offers whole, te...",
+    "market_cap": 11376464896,
+    "market_cap_str": "$11.4B",
+    "employees": 3695,
+    "website": "https://home.globelifeinsurance.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 8.6428795,
+      "pe_trailing": 10.149858,
+      "peg_ratio": null,
+      "profit_margin": "19.4%",
+      "revenue_growth": "3.6%",
+      "earnings_growth": "9.5%",
+      "debt_to_equity": 51.258,
+      "current_ratio": 0.76,
+      "roe": "20.6%",
+      "free_cash_flow": 1136790528,
+      "dividend_yield": "92.0%",
+      "beta": 0.455,
+      "52w_high": 152.71,
+      "52w_low": 109.38,
+      "current_price": 142.91
+    },
+    "news": [
+      {
+        "title": "Why Is Globe Life (GL) Down 2.4% Since Last Earnings Report?",
+        "publisher": "Zacks",
+        "published": "2026-03-06T16:30:11Z",
+        "link": "https://finance.yahoo.com/news/why-globe-life-gl-down-163011776.html"
+      },
+      {
+        "title": "Zacks.com featured highlights include Flowserve, Methanex and Globe Life",
+        "publisher": "Zacks",
+        "published": "2026-03-05T08:29:00Z",
+        "link": "https://finance.yahoo.com/news/zacks-com-featured-highlights-flowserve-082900017.html"
+      },
+      {
+        "title": "3 Resilient Sales Growth Stocks for Navigating a Risk-Off Market",
+        "publisher": "Zacks",
+        "published": "2026-03-04T13:06:00Z",
+        "link": "https://finance.yahoo.com/news/3-resilient-sales-growth-stocks-130600818.html"
+      },
+      {
+        "title": "Assessing Globe Life (GL) Valuation After Dividend Hike And Insider Share Sale",
+        "publisher": "Simply Wall St.",
+        "published": "2026-03-04T12:11:22Z",
+        "link": "https://finance.yahoo.com/news/assessing-globe-life-gl-valuation-121122703.html"
+      },
+      {
+        "title": "The Zacks Analyst Blog Highlights Acushnet, Globe Life, Eaton and WESCO",
+        "publisher": "Zacks",
+        "published": "2026-03-04T09:40:00Z",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-acushnet-094000595.html"
+      },
+      {
+        "title": "4 Dividend Stocks Boost Payouts as Investors Seek Safety in a Volatile Market",
+        "publisher": "Zacks",
+        "published": "2026-03-03T16:12:00Z",
+        "link": "https://finance.yahoo.com/news/4-dividend-stocks-boost-payouts-161200084.html"
+      },
+      {
+        "title": "Zacks.com featured highlights include Ross Stores, Globe Life, Banco Bilbao, Zoetis and TE Connectivity",
+        "publisher": "Zacks",
+        "published": "2026-03-02T09:07:00Z",
+        "link": "https://finance.yahoo.com/news/zacks-com-featured-highlights-ross-090700474.html"
+      },
+      {
+        "title": "Wells Fargo Raises Globe Life (GL) Target, Keeps Overweight Rating",
+        "publisher": "Insider Monkey",
+        "published": "2026-03-01T15:05:14Z",
+        "link": "https://finance.yahoo.com/news/wells-fargo-raises-globe-life-150514746.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 3,
+        "buy": 4,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 3,
+        "buy": 4,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
+        "buy": 4,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 3,
+        "buy": 5,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 142.91,
+      "low": 150.0,
+      "high": 199.0,
+      "mean": 172.1,
+      "median": 173.5
+    },
+    "recommendation_summary": {
+      "strong_buy": 3,
+      "buy": 4,
+      "hold": 3,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:44.712719"
+  },
+  "CINF": {
+    "ticker": "CINF",
+    "name": "Cincinnati Financial Corporation",
+    "sector": "Financial Services",
+    "industry": "Insurance - Property & Casualty",
+    "description": "Cincinnati Financial Corporation provides property casualty insurance products in the United States. The company operates through five segments: Commercial Lines Insurance, Personal Lines Insurance, Excess and Surplus Lines Insurance, Life Insurance, and Investments. The Commercial Lines Insuranc...",
+    "market_cap": 25700929536,
+    "market_cap_str": "$25.7B",
+    "employees": 5705,
+    "website": "https://www.cinfin.com",
+    "country": "United States",
+    "key_stats": {
+      "pe_forward": 17.898956,
+      "pe_trailing": 10.851778,
+      "peg_ratio": null,
+      "profit_margin": "18.9%",
+      "revenue_growth": "21.8%",
+      "earnings_growth": "67.3%",
+      "debt_to_equity": 5.568,
+      "current_ratio": 0.639,
+      "roe": "16.0%",
+      "free_cash_flow": 6141499904,
+      "dividend_yield": "215.0%",
+      "beta": 0.636,
+      "52w_high": 174.27,
+      "52w_low": 123.02,
+      "current_price": 164.73
+    },
+    "news": [
+      {
+        "title": "These Dividend Stocks Are Almost Guaranteed to Keep Raising Their Payouts",
+        "publisher": "24/7 Wall St.",
+        "published": "2026-03-06T17:04:54Z",
+        "link": "https://247wallst.com/investing/2026/03/06/these-dividend-stocks-are-almost-guaranteed-to-keep-raising-their-payouts/"
+      },
+      {
+        "title": "PLMR Stock Outperforms Industry: Time to Add it for Better Returns?",
+        "publisher": "Zacks",
+        "published": "2026-03-05T13:26:00Z",
+        "link": "https://finance.yahoo.com/news/plmr-stock-outperforms-industry-time-132600465.html"
+      },
+      {
+        "title": "Property & Casualty Insurance Stocks Q4 Teardown: Cincinnati Financial (NASDAQ:CINF) Vs The Rest",
+        "publisher": "StockStory",
+        "published": "2026-03-05T09:55:51Z",
+        "link": "https://finance.yahoo.com/news/property-casualty-insurance-stocks-q4-095551878.html"
+      },
+      {
+        "title": "How Cincinnati Financial (CINF) Story Is Shifting With New Analyst Targets And Dividend Move",
+        "publisher": "Simply Wall St.",
+        "published": "2026-02-25T19:07:44Z",
+        "link": "https://finance.yahoo.com/news/cincinnati-financial-cinf-story-shifting-190744040.html"
+      },
+      {
+        "title": "Cincinnati Financial Corporation (CINF) Down 4% Despite Earnings Beat",
+        "publisher": "Insider Monkey",
+        "published": "2026-02-24T17:39:58Z",
+        "link": "https://finance.yahoo.com/news/cincinnati-financial-corporation-cinf-down-173958863.html"
+      },
+      {
+        "title": "Do Wall Street Analysts Like Cincinnati Financial Stock?",
+        "publisher": "Barchart",
+        "published": "2026-02-19T14:06:50Z",
+        "link": "https://www.barchart.com/story/news/304989/do-wall-street-analysts-like-cincinnati-financial-stock"
+      },
+      {
+        "title": "1 Surging  Stock with Exciting Potential and 2 Facing Challenges",
+        "publisher": "StockStory",
+        "published": "2026-02-19T04:42:01Z",
+        "link": "https://finance.yahoo.com/news/1-surging-stock-exciting-potential-044201253.html"
+      },
+      {
+        "title": "1 Insurance Stock Worth Investigating and 2 We Avoid",
+        "publisher": "StockStory",
+        "published": "2026-02-12T04:37:30Z",
+        "link": "https://finance.yahoo.com/news/1-insurance-stock-worth-investigating-043730425.html"
+      }
+    ],
+    "analyst_ratings": [
+      {
+        "period": "0m",
+        "strongBuy": 1,
+        "buy": 3,
+        "hold": 4,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 1,
+        "buy": 3,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 1,
+        "buy": 3,
+        "hold": 4,
+        "sell": 0,
+        "strongSell": 0
+      }
+    ],
+    "price_targets": {
+      "current": 164.73,
+      "low": 156.0,
+      "high": 191.0,
+      "mean": 173.66667,
+      "median": 174.5
+    },
+    "recommendation_summary": {
+      "strong_buy": 1,
+      "buy": 3,
+      "hold": 4,
+      "sell": 0,
+      "strong_sell": 0
+    },
+    "cached_at": "2026-03-10T19:45:45.445636"
+  }
+}
