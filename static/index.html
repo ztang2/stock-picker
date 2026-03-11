@@ -229,6 +229,7 @@ tr.stock-row:hover{background:var(--surface2)}
   <div class="tab" onclick="switchTab('alerts')">Alerts</div>
   <div class="tab" onclick="switchTab('accuracy')">Accuracy</div>
   <div class="tab" onclick="switchTab('deepdive')">Deep Dive</div>
+  <div class="tab" onclick="switchTab('momentum')">🚀 Momentum</div>
   <div class="tab" onclick="switchTab('fmp')">FMP Data</div>
 </div>
 
@@ -369,6 +370,20 @@ tr.stock-row:hover{background:var(--surface2)}
     </div>
     <div id="deepdiveContent">
       <div class="empty-state"><div class="icon">🔬</div><div>Enter a ticker to see DCF valuation, comparable analysis, and earnings deep-dive.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MOMENTUM RADAR TAB -->
+<div class="tab-content" id="tab-momentum">
+  <div class="backtest-card">
+    <div style="font-size:1.1rem;font-weight:700;margin-bottom:4px">🚀 Early Momentum Radar</div>
+    <div style="font-size:.8rem;color:var(--text2);margin-bottom:16px">
+      Leading indicators that predict stocks about to break out. Combines analyst revisions, insider buying, revenue acceleration, institutional changes, and earnings surprise.
+    </div>
+    <button class="btn btn-primary" onclick="loadMomentum()">Scan Top 100 Stocks</button>
+    <div id="momentumResults" style="margin-top:16px">
+      <div class="empty-state"><div class="icon">🚀</div><div>Click "Scan" to find stocks with strong momentum signals.</div></div>
     </div>
   </div>
 </div>
@@ -1486,6 +1501,83 @@ showDetail=async function(ticker){
 };
 
 loadCached();
+
+// === Momentum Radar ===
+async function loadMomentum(){
+  const el=document.getElementById('momentumResults');
+  el.innerHTML='<div style="text-align:center;padding:40px;color:var(--text2)">Scanning top 100 stocks for momentum signals... (this takes 1-2 minutes)</div>';
+  try{
+    const r=await fetch('/momentum/scan/20');
+    const d=await r.json();
+    if(!d.stocks||d.stocks.length===0){
+      el.innerHTML='<div class="empty-state"><div class="icon">📊</div><div>No stocks with significant momentum signals found.</div></div>';
+      return;
+    }
+    let html='<div style="margin-bottom:12px;font-size:.85rem;color:var(--text2)">Found '+d.count+' stocks with momentum score ≥ 4</div>';
+    html+='<table class="scan-table"><thead><tr><th>Rank</th><th>Ticker</th><th>Momentum</th><th>Signal</th><th>Pipeline</th><th>Analyst ↑</th><th>Insider</th><th>Rev Accel</th><th>Earnings</th><th>Inst.</th></tr></thead><tbody>';
+    d.stocks.forEach((s,i)=>{
+      const sig=s.signals||{};
+      const ar=sig.analyst_revision||{};
+      const ib=sig.insider_buying||{};
+      const ra=sig.revenue_acceleration||{};
+      const es=sig.earnings_surprise||{};
+      const ic=sig.institutional_change||{};
+      
+      const emoji=s.composite_score>=8?'🔥':s.composite_score>=6?'📈':'📊';
+      const sigColor=s.signal==='STRONG_MOMENTUM'?'var(--green)':s.signal==='MOMENTUM'?'#4ade80':'var(--text2)';
+      
+      // Analyst details
+      const upside=ar.details?.target_upside_pct;
+      const arText=upside?((upside>0?'+':'')+upside.toFixed(0)+'%'):'—';
+      
+      // Insider details
+      const buys=ib.details?.insider_buys||0;
+      const sells=ib.details?.insider_sells||0;
+      const ibText=buys>0?(buys+' buy'+(buys>1?'s':'')):sells>5?sells+' sells':'—';
+      const ibColor=buys>sells?'var(--green)':sells>buys*2?'var(--red)':'';
+      
+      // Revenue acceleration
+      const accel=ra.details?.accelerating;
+      const raGrowth=ra.details?.latest_qoq_growth;
+      const raText=accel===true?'↗ '+raGrowth?.toFixed(0)+'%':accel===false?(raGrowth?.toFixed(0)+'%'):'—';
+      const raColor=accel?'var(--green)':'';
+      
+      // Earnings
+      const beats=es.details?.beats_last_4q;
+      const esText=beats!==undefined?beats+'/4 beat':'—';
+      const esColor=beats>=3?'var(--green)':'';
+      
+      // Institutional
+      const instPct=ic.details?.institutional_pct;
+      const shortPct=ic.details?.short_pct;
+      const icText=instPct?(instPct.toFixed(0)+'%'):'—';
+      
+      html+='<tr onclick="loadDeepDiveFor(\''+s.ticker+'\')" style="cursor:pointer">';
+      html+='<td>'+emoji+' '+(i+1)+'</td>';
+      html+='<td><strong>'+s.ticker+'</strong><br><span style="font-size:.7rem;color:var(--text2)">'+(s.sector||'')+'</span></td>';
+      html+='<td><strong style="font-size:1.1rem">'+s.composite_score.toFixed(1)+'</strong>/10</td>';
+      html+='<td style="color:'+sigColor+';font-weight:600">'+s.signal+'</td>';
+      html+='<td>'+((s.scan_score||0).toFixed(0))+'</td>';
+      html+='<td>'+arText+'</td>';
+      html+='<td style="color:'+ibColor+'">'+ibText+'</td>';
+      html+='<td style="color:'+raColor+'">'+raText+'</td>';
+      html+='<td style="color:'+esColor+'">'+esText+'</td>';
+      html+='<td>'+icText+(shortPct?'<br><span style="font-size:.7rem;color:var(--text2)">short '+shortPct.toFixed(1)+'%</span>':'')+'</td>';
+      html+='</tr>';
+    });
+    html+='</tbody></table>';
+    el.innerHTML=html;
+  }catch(e){
+    el.innerHTML='<div style="color:var(--red);padding:20px">Error: '+e.message+'</div>';
+  }
+}
+
+function loadDeepDiveFor(ticker){
+  switchTab('deepdive');
+  const input=document.getElementById('deepDiveSearch');
+  if(input){input.value=ticker;}
+  loadDeepDive();
+}
 </script>
 </body>
 </html>
