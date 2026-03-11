@@ -18,12 +18,6 @@
       "entry_date": "2026-02-23",
       "entry_score": 85.32
     },
-    "GDDY": {
-      "shares": 8.5,
-      "entry_price": 89.22,
-      "entry_date": "2026-03-02",
-      "entry_score": 82.8
-    },
     "NFLX": {
       "shares": 40,
       "entry_price": 80.51,
@@ -42,6 +36,11 @@
       "shares": 26,
       "entry_price": 31.68,
       "entry_date": "2026-03-09"
+    },
+    "PCTY": {
+      "shares": 6.505614,
+      "entry_price": 113.75,
+      "entry_date": "2026-03-11"
     }
   },
   "updated": "2026-03-09T09:03:00"

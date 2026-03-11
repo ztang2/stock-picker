@@ -30,5 +30,22 @@
     "price": 89.22,
     "reason": "SaaS diversification, BUY signal",
     "timestamp": "2026-03-02T11:21:08.733024"
+  },
+  {
+    "date": "2026-03-11",
+    "ticker": "GDDY",
+    "action": "SELL",
+    "shares": 8.5,
+    "price": 87.06,
+    "reason": "No catalyst, swapping for PCTY"
+  },
+  {
+    "date": "2026-03-11",
+    "ticker": "PCTY",
+    "action": "BUY",
+    "shares": 6.505614,
+    "price": 113.75,
+    "amount": 740.0,
+    "reason": "HR SaaS, PE 13.6, growth 28%, Piotroski 8/9, momentum 5.6"
   }
 ]
