@@ -390,8 +390,22 @@ def run_scan(
 
     # Merge details
     detail_map = {r["ticker"]: r for r in filtered}
+    # Sector-capped selection: max 4 per sector in top N to prevent concentration
+    MAX_PER_SECTOR = 4
+    sector_counts = {}
+    selected_tickers = []
+    for _, row in ranked_df.iterrows():
+        if len(selected_tickers) >= top_n:
+            break
+        tkr = row["ticker"]
+        sector = detail_map.get(tkr, {}).get("sector", "Unknown")
+        if sector_counts.get(sector, 0) >= MAX_PER_SECTOR:
+            continue
+        sector_counts[sector] = sector_counts.get(sector, 0) + 1
+        selected_tickers.append(tkr)
+    
     ranked = []
-    for _, row in ranked_df.head(top_n).iterrows():
+    for _, row in ranked_df[ranked_df["ticker"].isin(selected_tickers)].iterrows():
         tkr = row["ticker"]
         detail = detail_map[tkr]
         sr = sector_scores.get(tkr, {})
