@@ -32,13 +32,17 @@ Dashboard UI + Robin Daily Reports
 ### Pipeline (`src/pipeline.py`)
 **系统入口**。协调整个扫描流程：
 1. `get_universe_tickers()` 获取股票列表
-2. `detect_market_regime()` 7信号宏观判断（见下）
+2. `detect_market_regime()` 8信号宏观判断（见下）
 3. `fetch_stock_data()` 并行获取yfinance数据（带缓存）
 4. 5维评分 → `compute_composite()` 加权合成（权重受regime调整）
-5. Top N 做 DCF/Comps 深度分析
-6. 风险调整（MidCap、crash filter、DCF penalty）
-7. Smart money bonus
-8. 排名 + 信号生成
+5. **Sector-capped Top N selection** — 每行业最多4只（`MAX_PER_SECTOR=4`），防止单一行业集中
+6. Top N 做 DCF/Comps 深度分析
+7. 风险调整（MidCap、crash filter、DCF penalty）
+8. Smart money bonus
+9. 排名 + 信号生成
+
+> **为什么要sector cap？** 没有forward PE数据时，trailing PE偏低的金融股会占据Top 20的35%+。
+> 3/10回测验证：加cap前Tech 8 + Financial 7 = 75%，加cap后8个行业均匀分布。
 
 ### 宏观Regime检测 (`src/market_regime.py`)
 **8信号系统**判断 Bull/Bear/Sideways：
@@ -62,9 +66,12 @@ Bear regime自动调高估值+风险权重，降低成长+技术面权重。
 
 ### 风险管理 (`src/risk_manager.py`)
 - 止损监控：持仓跌超15%触发警报
-- 仓位限制：单股不超过总portfolio 20%
+- Trailing stop: -10% from peak触发（追踪高水位）
+- 仓位限制：单股不超过总portfolio 20%，**单行业不超过35%**
+- 油价监控: -15% from 3月peak触发减仓提醒
 - P&L追踪：盈亏比、胜率统计
-- API: `/risk/summary`, `/risk/stop-losses`, `/risk/positions`
+- **性能**: 模块级`_get_sector_cache()`缓存scan_results.json的sector数据（820 tickers），进程内只加载一次
+- API: `/risk/summary`, `/risk/stop-losses`, `/risk/positions`, `/risk/trailing-stops`, `/risk/oil`
 
 ### 5维评分体系
 
@@ -154,6 +161,27 @@ Bear regime自动调高估值+风险权重，降低成长+技术面权重。
 6. **Specialized ensemble** — XGB=classifier, LGB=regressor
    - STRONG BUY: 63.9% accuracy, +4.23% avg excess return
 
+### Early Momentum Score (`src/early_momentum.py`)
+预判雷达 — 识别即将突破的股票，弥补pipeline后视镜缺陷。
+
+**5个领先指标**（每个0-2分，总分0-10）：
+1. **Analyst estimate revisions** — 目标价upside + 近期升/降级趋势
+2. **Insider buying** — 净买入、买入金额>$1M、多人买入
+3. **Revenue acceleration** — QoQ收入增速在加快（不只是增长，是增速在提高）
+4. **Institutional validation** — 机构持仓比例 + 做空比例（静态快照，非变化量）
+5. **Earnings surprise** — 连续beat次数 + 最近surprise幅度
+
+| 分数 | 信号 | 含义 |
+|------|------|------|
+| ≥8 | 🔥 STRONG_MOMENTUM | 多信号共振，强烈关注 |
+| ≥6 | 📈 MOMENTUM | 有明显正向动量 |
+| ≥4 | 📊 NEUTRAL | 一般 |
+| <4 | WEAK/NO_MOMENTUM | 无特殊信号 |
+
+- `scan_top_momentum(n)`: 扫描pipeline Top 100，并行5线程（ThreadPoolExecutor）
+- 缓存: `data/early_momentum_cache.json`（12小时TTL，scan后批量写入避免竞争）
+- **注意**: `institutional_validation`是静态数据，真正的机构动向需要13F季度数据
+
 ### Smart Money (`src/insider.py`)
 - Analyst revisions: upgrades/downgrades, price target, consensus
 - Insider trading: buy/sell ratio, net shares
@@ -181,6 +209,8 @@ FastAPI server, 默认 `http://localhost:8000`
 | `GET /accuracy` | 历史准确率 |
 | `GET /portfolio` | 投资组合 |
 | `GET /alerts` | 警报 |
+| `GET /momentum/scan/{n}` | Momentum雷达扫描（必须在/{ticker}前注册） |
+| `GET /momentum/{ticker}` | 单股momentum评分 |
 
 ## Dashboard (`static/index.html`)
 
@@ -191,6 +221,7 @@ FastAPI server, 默认 `http://localhost:8000`
 - **Alerts**: 信号变化通知
 - **Accuracy**: 历史预测准确率
 - **Deep Dive**: 单股深度分析（Summary + DCF + Comps + Earnings）
+- **🚀 Momentum**: Early Momentum Radar — 扫描Top 100并显示领先指标，点击行跳转Deep Dive
 - **FMP Data**: 旧数据源状态（已弃用）
 
 ## Cron Schedule (PT, weekdays)
