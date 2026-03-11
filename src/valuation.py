@@ -19,9 +19,11 @@ def score_valuation(info: dict, growth_score: Optional[float] = None) -> dict:
     """
     metrics: dict = {}
 
+    # Prefer forwardPE for live scoring (forward-looking is appropriate when buying)
+    # Falls back to trailingPE (which is what backtests use after stripping forward fields)
     pe = info.get("forwardPE") or info.get("trailingPE")
     ps = info.get("priceToSalesTrailing12Months")
-    peg = info.get("pegRatio")
+    peg = info.get("pegRatio")  # Will be None in backtests (forward-looking, stripped)
 
     metrics["pe_ratio"] = pe
     metrics["ps_ratio"] = ps

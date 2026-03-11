@@ -84,7 +84,8 @@ def score_fundamentals(info: dict) -> dict:
         metrics["fcf_to_net_income"] = None
         components.append(None)
 
-    # Earnings surprise (not always available in yfinance, best-effort)
+    # Earnings quarterly growth (forward-looking in yfinance, stripped in backtests)
+    # Will be None in backtest mode — contributes 0 to score, preventing look-ahead bias
     earnings_surprise = info.get("earningsQuarterlyGrowth")
     metrics["earnings_quarterly_growth"] = earnings_surprise
     if earnings_surprise is not None:

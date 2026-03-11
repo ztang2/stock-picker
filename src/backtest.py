@@ -125,8 +125,23 @@ def run_backtest(months_back: int = 6, top_n: int = 20) -> dict:
             info = t.info or {}
             if not info.get("regularMarketPrice") and not info.get("currentPrice"):
                 continue
+            # Remove forward-looking fields to prevent look-ahead bias
+            # These fields contain analyst estimates/forecasts that wouldn't
+            # have been available at the historical signal date
+            FORWARD_LOOKING_KEYS = {
+                "forwardPE", "forwardEps", "pegRatio",
+                "earningsGrowth", "earningsQuarterlyGrowth",
+                "revenueGrowth",  # yfinance returns forward estimate
+                "targetHighPrice", "targetLowPrice", "targetMeanPrice",
+                "targetMedianPrice", "recommendationKey", "recommendationMean",
+                "numberOfAnalystOpinions",
+            }
+            clean_info = {
+                k: v for k, v in info.items()
+                if not callable(v) and k not in FORWARD_LOOKING_KEYS
+            }
             stock_data[ticker] = {
-                "info": {k: v for k, v in info.items() if not callable(v)},
+                "info": clean_info,
                 "history": hist.to_dict(orient="list"),
                 "history_index": [str(d) for d in hist.index],
             }

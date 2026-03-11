@@ -21,6 +21,7 @@ def score_growth(info: dict) -> dict:
     metrics["revenue_growth"] = rev_growth
 
     # 2. Earnings growth (quarterly YoY)
+    # Forward-looking in yfinance — stripped in backtests to prevent look-ahead bias
     earnings_growth = info.get("earningsQuarterlyGrowth")
     metrics["earnings_growth"] = earnings_growth
 

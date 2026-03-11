@@ -359,6 +359,28 @@ def check_position_limits(holdings: Dict[str, dict], prices: Optional[Dict[str, 
     # Sort by portfolio_pct descending
     alerts.sort(key=lambda x: x["portfolio_pct"], reverse=True)
     
+    # Sector concentration check (max 35% per sector)
+    MAX_SECTOR_PCT = 35.0
+    sector_values = {}
+    for p in alerts:
+        ticker = p["ticker"]
+        try:
+            sector = yf.Ticker(ticker).info.get("sector", "Unknown")
+        except Exception:
+            sector = "Unknown"
+        p["sector"] = sector
+        sector_values[sector] = sector_values.get(sector, 0) + p["value"]
+    
+    for p in alerts:
+        sector = p.get("sector", "Unknown")
+        sector_total = sector_values.get(sector, 0)
+        sector_pct = (sector_total / total_value * 100) if total_value > 0 else 0
+        p["sector_pct"] = round(sector_pct, 1)
+        if sector_pct > MAX_SECTOR_PCT:
+            if p.get("status") == "OK":
+                p["status"] = "SECTOR_CONCENTRATED"
+            p["sector_warning"] = f"⚠️ {sector} sector is {sector_pct:.0f}% of portfolio (limit: {MAX_SECTOR_PCT:.0f}%)"
+    
     return alerts
 
 
