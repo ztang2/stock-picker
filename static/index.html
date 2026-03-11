@@ -1521,7 +1521,7 @@ async function loadMomentum(){
       const ib=sig.insider_buying||{};
       const ra=sig.revenue_acceleration||{};
       const es=sig.earnings_surprise||{};
-      const ic=sig.institutional_change||{};
+      const ic=sig.institutional_validation||{};
       
       const emoji=s.composite_score>=8?'🔥':s.composite_score>=6?'📈':'📊';
       const sigColor=s.signal==='STRONG_MOMENTUM'?'var(--green)':s.signal==='MOMENTUM'?'#4ade80':'var(--text2)';

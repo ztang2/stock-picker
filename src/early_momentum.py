@@ -74,7 +74,7 @@ def compute_early_momentum(ticker: str, force_refresh: bool = False) -> dict:
         signals["revenue_acceleration"] = _score_revenue_acceleration(tk)
         
         # 4. Institutional Holdings Change (+2 max)
-        signals["institutional_change"] = _score_institutional_change(info)
+        signals["institutional_validation"] = _score_institutional_validation(info)
         
         # 5. Earnings Surprise (+2 max)
         signals["earnings_surprise"] = _score_earnings_surprise(tk)
@@ -280,11 +280,13 @@ def _score_revenue_acceleration(tk) -> dict:
     return {"score": min(round(score, 1), 2.0), "details": details}
 
 
-def _score_institutional_change(info: dict) -> dict:
-    """Score based on institutional ownership signals.
+def _score_institutional_validation(info: dict) -> dict:
+    """Score based on institutional ownership validation.
     
-    High institutional ownership + recent increases = smart money
-    is accumulating.
+    Static snapshot of institutional interest — high ownership + low
+    short interest = market validation. NOT a change signal (would
+    need 13F quarterly data for that). Renamed from 'institutional_change'
+    to be honest about what it measures.
     
     Score: 0-2
     """
@@ -409,27 +411,43 @@ def _score_earnings_surprise(tk) -> dict:
 def scan_top_momentum(n: int = 20) -> List[dict]:
     """Compute early momentum for top N stocks from latest scan.
     
+    Uses ThreadPoolExecutor for parallel fetching.
     Returns list sorted by momentum score (highest first).
     """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    
     scan_file = DATA_DIR / "scan_results.json"
     if not scan_file.exists():
         return []
     
     try:
         scan_data = json.loads(scan_file.read_text())
-        # Get all stocks, not just top N — momentum might be in lower-ranked stocks
         all_scores = scan_data.get("all_scores", [])
-        # Take top 100 by composite score to check for momentum
         candidates = sorted(all_scores, key=lambda x: x.get("composite_score", 0), reverse=True)[:100]
         tickers = [s["ticker"] for s in candidates]
     except Exception:
         return []
     
+    # Parallel fetch (5 workers)
+    momentum_results = {}
+    with ThreadPoolExecutor(max_workers=5) as pool:
+        futures = {pool.submit(compute_early_momentum, t, False): t for t in tickers}
+        for future in as_completed(futures):
+            ticker = futures[future]
+            try:
+                momentum_results[ticker] = future.result()
+            except Exception:
+                pass
+    
+    # Batch save cache (avoid per-ticker file writes during parallel scan)
+    cache = _load_cache()
+    cache.update(momentum_results)
+    _save_cache(cache)
+    
+    # Filter and enrich
     results = []
-    for ticker in tickers:
-        momentum = compute_early_momentum(ticker)
-        if momentum.get("composite_score", 0) >= 4:  # Only include notable scores
-            # Add scan data
+    for ticker, momentum in momentum_results.items():
+        if momentum.get("composite_score", 0) >= 4:
             scan_info = next((s for s in candidates if s["ticker"] == ticker), {})
             momentum["scan_score"] = scan_info.get("composite_score", 0)
             momentum["scan_signal"] = scan_info.get("entry_signal", "?")

@@ -974,13 +974,6 @@ def alpaca_perf():
 
 # === Early Momentum ===
 
-@app.get("/momentum/{ticker}")
-def early_momentum(ticker: str):
-    """Get early momentum score for a single ticker."""
-    from .early_momentum import compute_early_momentum
-    return compute_early_momentum(ticker.upper())
-
-
 @app.get("/momentum/scan/{n}")
 def momentum_scan(n: int = 20):
     """Scan top stocks for early momentum signals."""
@@ -991,6 +984,13 @@ def momentum_scan(n: int = 20):
         "stocks": results,
         "report": format_momentum_report(results),
     }
+
+
+@app.get("/momentum/{ticker}")
+def early_momentum(ticker: str):
+    """Get early momentum score for a single ticker."""
+    from .early_momentum import compute_early_momentum
+    return compute_early_momentum(ticker.upper())
 
 
 # === Company Intelligence ===
