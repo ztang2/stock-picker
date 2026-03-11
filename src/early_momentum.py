@@ -204,13 +204,20 @@ def _score_insider_activity(tk) -> dict:
             details["buy_value"] = buy_value
             details["sell_value"] = sell_value
             
-            # Net buying
+            # Net buying — check BOTH headcount AND dollar value
             if buys > 0 and buys >= sells:
-                score += 1.0
-                if buy_value > 1_000_000:  # >$1M in purchases
-                    score += 0.5
-                if buys >= 3:  # Multiple insiders buying
-                    score += 0.5
+                if buy_value >= sell_value:
+                    # True net buyer by headcount AND value
+                    score += 1.0
+                    if buy_value > 1_000_000:
+                        score += 0.5
+                    if buys >= 3:
+                        score += 0.5
+                else:
+                    # Mixed: more people buying but net selling by value
+                    score += 0.3
+                    details["mixed_signal"] = True
+                    details["note"] = f"More buyers ({buys}) but sell value ${sell_value:,.0f} > buy value ${buy_value:,.0f}"
             elif sells > buys * 2:  # Heavy selling
                 score = 0
                 
