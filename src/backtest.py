@@ -171,7 +171,21 @@ def run_backtest(months_back: int = 6, top_n: int = 20) -> dict:
 
     weights = config.get("weights", {})
     ranked_df = compute_composite(results, weights)
-    top_tickers = ranked_df.head(top_n)["ticker"].tolist()
+    
+    # Sector-capped selection (max 4 per sector, same as pipeline)
+    MAX_PER_SECTOR = 4
+    sector_counts = {}
+    top_tickers = []
+    detail_map = {r["ticker"]: r for r in results}
+    for _, row in ranked_df.iterrows():
+        if len(top_tickers) >= top_n:
+            break
+        tkr = row["ticker"]
+        sector = detail_map.get(tkr, {}).get("sector") or stock_data.get(tkr, {}).get("info", {}).get("sector", "Unknown")
+        if sector_counts.get(sector, 0) >= MAX_PER_SECTOR:
+            continue
+        sector_counts[sector] = sector_counts.get(sector, 0) + 1
+        top_tickers.append(tkr)
 
     logger.info("Backtest: top %d picks from %s: %s", top_n, start_date, top_tickers[:5])
 
@@ -560,7 +574,21 @@ def _run_rolling_backtest_impl(years: int, top_n: int, max_stocks: int) -> dict:
                 config = load_config()
                 weights = config.get("weights", {})
                 ranked_df = compute_composite(stock_analyses, weights, strategy=strategy)
-                top_tickers = ranked_df.head(top_n)["ticker"].tolist()
+                
+                # Sector-capped selection (max 4 per sector)
+                MAX_PER_SECTOR = 4
+                _sc = {}
+                top_tickers = []
+                _dm = {r["ticker"]: r for r in stock_analyses}
+                for _, row in ranked_df.iterrows():
+                    if len(top_tickers) >= top_n:
+                        break
+                    tkr = row["ticker"]
+                    sector = _dm.get(tkr, {}).get("sector", "Unknown")
+                    if _sc.get(sector, 0) >= MAX_PER_SECTOR:
+                        continue
+                    _sc[sector] = _sc.get(sector, 0) + 1
+                    top_tickers.append(tkr)
 
                 # Measure forward returns at 1m, 3m, 6m
                 forward_returns: Dict[str, Optional[float]] = {}
