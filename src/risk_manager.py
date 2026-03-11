@@ -362,12 +362,22 @@ def check_position_limits(holdings: Dict[str, dict], prices: Optional[Dict[str, 
     # Sector concentration check (max 35% per sector)
     MAX_SECTOR_PCT = 35.0
     sector_values = {}
+    
+    # Load sector from cached scan data (avoid slow yfinance calls)
+    _sector_cache = {}
+    try:
+        _scan_file = DATA_DIR / "scan_results.json"
+        if _scan_file.exists():
+            _scan = json.loads(_scan_file.read_text())
+            for s in _scan.get("all_scores", []):
+                if s.get("sector"):
+                    _sector_cache[s["ticker"]] = s["sector"]
+    except Exception:
+        pass
+    
     for p in alerts:
         ticker = p["ticker"]
-        try:
-            sector = yf.Ticker(ticker).info.get("sector", "Unknown")
-        except Exception:
-            sector = "Unknown"
+        sector = _sector_cache.get(ticker) or all_holdings.get(ticker, {}).get("sector", "Unknown")
         p["sector"] = sector
         sector_values[sector] = sector_values.get(sector, 0) + p["value"]
     
