@@ -21,6 +21,28 @@ RISK_CONFIG_FILE = DATA_DIR / "risk_config.json"
 TRADE_HISTORY_FILE = DATA_DIR / "trade_history.json"
 
 # Defaults
+# Module-level sector cache (loaded once per process)
+_sector_cache: Dict[str, str] = {}
+_sector_cache_loaded = False
+
+
+def _get_sector_cache() -> Dict[str, str]:
+    global _sector_cache, _sector_cache_loaded
+    if _sector_cache_loaded:
+        return _sector_cache
+    try:
+        scan_file = DATA_DIR / "scan_results.json"
+        if scan_file.exists():
+            scan = json.loads(scan_file.read_text())
+            for s in scan.get("all_scores", []):
+                if s.get("sector"):
+                    _sector_cache[s["ticker"]] = s["sector"]
+    except Exception:
+        pass
+    _sector_cache_loaded = True
+    return _sector_cache
+
+
 DEFAULT_STOP_LOSS_PCT = -15.0  # Alert when down 15%
 DEFAULT_MAX_POSITION_PCT = 20.0  # No single stock > 20% of portfolio
 DEFAULT_TRAILING_STOP_PCT = -10  # Trailing stop: sell if price drops 10% from peak
@@ -362,18 +384,7 @@ def check_position_limits(holdings: Dict[str, dict], prices: Optional[Dict[str, 
     # Sector concentration check (max 35% per sector)
     MAX_SECTOR_PCT = 35.0
     sector_values = {}
-    
-    # Load sector from cached scan data (avoid slow yfinance calls)
-    _sector_cache = {}
-    try:
-        _scan_file = DATA_DIR / "scan_results.json"
-        if _scan_file.exists():
-            _scan = json.loads(_scan_file.read_text())
-            for s in _scan.get("all_scores", []):
-                if s.get("sector"):
-                    _sector_cache[s["ticker"]] = s["sector"]
-    except Exception:
-        pass
+    _sector_cache = _get_sector_cache()
     
     for p in alerts:
         ticker = p["ticker"]
