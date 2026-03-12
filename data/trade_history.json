@@ -47,5 +47,14 @@
     "price": 113.75,
     "amount": 740.0,
     "reason": "HR SaaS, PE 13.6, growth 28%, Piotroski 8/9, momentum 5.6"
+  },
+  {
+    "date": "2026-03-12",
+    "ticker": "CF",
+    "action": "SELL",
+    "shares": 3,
+    "price": 135.29,
+    "amount": 405.87,
+    "reason": "Partial profit-take at RSI 84, above all analyst targets. Keep 4.25sh for war upside."
   }
 ]
