@@ -56,5 +56,32 @@
     "price": 135.29,
     "amount": 405.87,
     "reason": "Partial profit-take at RSI 84, above all analyst targets. Keep 4.25sh for war upside."
+  },
+  {
+    "date": "2026-03-12",
+    "ticker": "ALL",
+    "action": "SELL",
+    "shares": 4.841559,
+    "price": 206.39,
+    "amount": 999.25,
+    "reason": "Flat performance (+0.1% in 17 days), low momentum 3.3/10, swapping for HST+QLYS"
+  },
+  {
+    "date": "2026-03-12",
+    "ticker": "QLYS",
+    "action": "BUY",
+    "shares": 7.218183,
+    "price": 97.67,
+    "amount": 705.0,
+    "reason": "Cybersecurity, PE 12, margin 30%, Trump EO catalyst"
+  },
+  {
+    "date": "2026-03-12",
+    "ticker": "HST",
+    "action": "BUY",
+    "shares": 37.046837,
+    "price": 18.9,
+    "amount": 700.0,
+    "reason": "New sector (Real Estate), REIT hotel, pipeline #9"
   }
 ]

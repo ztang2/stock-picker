@@ -6,12 +6,6 @@
       "entry_date": "2026-02-17",
       "entry_score": 82.7
     },
-    "ALL": {
-      "shares": 4.841559,
-      "entry_price": 206.55,
-      "entry_date": "2026-02-23",
-      "entry_score": 89.81
-    },
     "CF": {
       "shares": 4.50386,
       "entry_price": 97.8,
@@ -41,6 +35,16 @@
       "shares": 6.505614,
       "entry_price": 113.75,
       "entry_date": "2026-03-11"
+    },
+    "QLYS": {
+      "shares": 7.218183,
+      "entry_price": 97.67,
+      "entry_date": "2026-03-12"
+    },
+    "HST": {
+      "shares": 37.046837,
+      "entry_price": 18.9,
+      "entry_date": "2026-03-12"
     }
   },
   "updated": "2026-03-09T09:03:00"
