@@ -681,7 +681,23 @@ async function showDetail(ticker){
       let html='<div style="grid-column:1/-1;margin-top:12px"><h3 style="font-size:.9rem;color:var(--accent2);margin-bottom:8px">'+title+'</h3><div class="modal-grid">';
       Object.entries(obj).forEach(([k,v])=>{
         let display='—';
-        const label=k.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+        const _labelMap={
+          'revenue_growth':'营收增长','profit_margin':'利润率','roe':'净资产收益率','debt_to_equity':'负债权益比',
+          'fcf_yield':'自由现金流收益率','fcf_to_net_income':'FCF/净利润','earnings_quarterly_growth':'季度盈利增长',
+          'pe_ratio':'市盈率','ps_ratio':'市销率','peg_ratio':'PEG比率','growth_adjusted':'成长调整',
+          'rsi':'RSI相对强弱','macd_histogram':'MACD柱','price':'价格','ma50':'50日均线','ma200':'200日均线',
+          'above_ma50':'高于MA50','above_ma200':'高于MA200','volume_trend':'成交量趋势',
+          'beta':'贝塔系数','sharpe_ratio':'夏普比率','max_drawdown':'最大回撤','volatility':'波动率',
+          'score':'评分','composite_score':'综合评分','entry_signal':'入场信号',
+          'dcf_intrinsic':'DCF内在价值','margin_of_safety':'安全边际','dcf_verdict':'DCF判定','dcf_confidence':'DCF置信度',
+          'comps_score':'可比评分','comps_verdict':'可比判定','dividend_yield':'股息率',
+          'drawdown_from_ma50':'偏离MA50','sector':'行业','industry':'细分行业','market_cap':'市值',
+          'current_price':'当前价格','target_price':'目标价','recommendation':'分析师评级',
+          'piotroski_score':'Piotroski评分','altman_z_score':'Altman Z评分',
+          'short_percent':'做空比例','insider_buying':'内部人买入','institutional_holdings':'机构持仓'
+        };
+        const _eng=k.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+        const label=_labelMap[k]?_labelMap[k]+' <span style="opacity:.6;font-size:.85em">'+_eng+'</span>':_eng;
         if(v===null||v===undefined){display='—'}
         else if(k==='score'){display='<span class="score '+scoreClass(v)+'">'+fmtScore(v)+'/100</span>'}
         else if(typeof v==='boolean'){display=v?'✅ Yes':'❌ No'}
@@ -1488,16 +1504,16 @@ showDetail=async function(ticker){
   if(s){
     const grid=document.getElementById('modalGrid');
     let extra='';
-    if(s.dcf_intrinsic!=null)extra+='<div class="metric-card"><div class="label">DCF Intrinsic</div><div class="value">$'+Number(s.dcf_intrinsic).toFixed(2)+'</div></div>';
+    if(s.dcf_intrinsic!=null)extra+='<div class="metric-card"><div class="label">DCF内在价值 <span style="opacity:.6;font-size:.85em">DCF Intrinsic</span></div><div class="value">$'+Number(s.dcf_intrinsic).toFixed(2)+'</div></div>';
     if(s.dcf_margin_of_safety!=null){
       const mc=s.dcf_margin_of_safety>0?'var(--green)':'var(--red)';
-      extra+='<div class="metric-card"><div class="label">Margin of Safety</div><div class="value" style="color:'+mc+'">'+(s.dcf_margin_of_safety>=0?'+':'')+s.dcf_margin_of_safety.toFixed(1)+'%</div></div>';
+      extra+='<div class="metric-card"><div class="label">安全边际 <span style="opacity:.6;font-size:.85em">Margin of Safety</span></div><div class="value" style="color:'+mc+'">'+(s.dcf_margin_of_safety>=0?'+':'')+s.dcf_margin_of_safety.toFixed(1)+'%</div></div>';
     }
-    if(s.dcf_verdict)extra+='<div class="metric-card"><div class="label">DCF Verdict</div><div class="value"><span class="dcf-badge '+(s.dcf_verdict.toLowerCase().includes('under')?'dcf-undervalued':'dcf-overvalued')+'">'+s.dcf_verdict+'</span></div></div>';
-    if(s.dcf_confidence)extra+='<div class="metric-card"><div class="label">DCF Confidence</div><div class="value"><span class="conf-badge conf-'+s.dcf_confidence+'">'+s.dcf_confidence+'</span></div></div>';
-    if(s.comps_score!=null)extra+='<div class="metric-card"><div class="label">Comps Score</div><div class="value"><span class="score '+scoreClass(s.comps_score)+'">'+fmtScore(s.comps_score)+'</span></div></div>';
-    if(s.comps_verdict)extra+='<div class="metric-card"><div class="label">Comps Verdict</div><div class="value">'+s.comps_verdict+'</div></div>';
-    if(s.fcf_yield!=null)extra+='<div class="metric-card"><div class="label">FCF Yield</div><div class="value">'+(s.fcf_yield*100).toFixed(1)+'%</div></div>';
+    if(s.dcf_verdict)extra+='<div class="metric-card"><div class="label">DCF判定 <span style="opacity:.6;font-size:.85em">DCF Verdict</span></div><div class="value"><span class="dcf-badge '+(s.dcf_verdict.toLowerCase().includes('under')?'dcf-undervalued':'dcf-overvalued')+'">'+s.dcf_verdict+'</span></div></div>';
+    if(s.dcf_confidence)extra+='<div class="metric-card"><div class="label">DCF置信度 <span style="opacity:.6;font-size:.85em">DCF Confidence</span></div><div class="value"><span class="conf-badge conf-'+s.dcf_confidence+'">'+s.dcf_confidence+'</span></div></div>';
+    if(s.comps_score!=null)extra+='<div class="metric-card"><div class="label">可比评分 <span style="opacity:.6;font-size:.85em">Comps Score</span></div><div class="value"><span class="score '+scoreClass(s.comps_score)+'">'+fmtScore(s.comps_score)+'</span></div></div>';
+    if(s.comps_verdict)extra+='<div class="metric-card"><div class="label">可比判定 <span style="opacity:.6;font-size:.85em">Comps Verdict</span></div><div class="value">'+s.comps_verdict+'</div></div>';
+    if(s.fcf_yield!=null)extra+='<div class="metric-card"><div class="label">自由现金流收益率 <span style="opacity:.6;font-size:.85em">FCF Yield</span></div><div class="value">'+(s.fcf_yield*100).toFixed(1)+'%</div></div>';
     if(extra)grid.innerHTML='<div style="grid-column:1/-1;margin-top:12px"><h3 style="font-size:.9rem;color:var(--accent2);margin-bottom:8px">估值 Valuation</h3><div class="modal-grid">'+extra+'</div></div>'+grid.innerHTML;
   }
 };
