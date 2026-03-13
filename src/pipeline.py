@@ -151,6 +151,16 @@ def apply_filters(
                         if (r.get("growth") or {}).get("revenue_growth") is None
                         or ((r.get("growth") or {}).get("revenue_growth") or 0) >= min_rev_growth]
 
+    # Hard filter: exclude stocks with severe revenue decline (value trap protection)
+    # Revenue shrinking >10% is a red flag regardless of valuation
+    before_count = len(filtered)
+    filtered = [r for r in filtered
+                if (r.get("growth") or {}).get("revenue_growth") is None
+                or ((r.get("growth") or {}).get("revenue_growth") or 0) >= -0.10]
+    dropped = before_count - len(filtered)
+    if dropped > 0:
+        logger.info("Value trap filter: removed %d stocks with revenue decline >10%%", dropped)
+
     return filtered
 
 
