@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stock Picker</title>
+<title>选股器 Stock Picker</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0a0a0a;--surface:#141414;--surface2:#1e1e1e;--border:#2a2a2a;--text:#e0e0e0;--text2:#888;--accent:#6366f1;--accent2:#818cf8;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--orange:#f97316;--blue:#3b82f6}
@@ -205,37 +205,37 @@ tr.stock-row:hover{background:var(--surface2)}
 <body>
 
 <div class="header">
-  <h1>📊 Stock Picker</h1>
+  <h1>📊 选股器 <span style="font-size:.7em;opacity:.7">Stock Picker</span></h1>
   <div class="strategy-bar">
-    <button class="strat-btn" data-strat="conservative" onclick="setStrategy('conservative')">🛡️ Conservative</button>
-    <button class="strat-btn active" data-strat="balanced" onclick="setStrategy('balanced')">⚖️ Balanced</button>
-    <button class="strat-btn" data-strat="aggressive" onclick="setStrategy('aggressive')">🚀 Aggressive</button>
-    <button class="btn btn-secondary" onclick="showComparison()" style="margin-left:8px;font-size:.75rem">📊 Compare</button>
+    <button class="strat-btn" data-strat="conservative" onclick="setStrategy('conservative')">🛡️ 保守 <span style="font-size:.8em;opacity:.7">Conservative</span></button>
+    <button class="strat-btn active" data-strat="balanced" onclick="setStrategy('balanced')">⚖️ 均衡 <span style="font-size:.8em;opacity:.7">Balanced</span></button>
+    <button class="strat-btn" data-strat="aggressive" onclick="setStrategy('aggressive')">🚀 激进 <span style="font-size:.8em;opacity:.7">Aggressive</span></button>
+    <button class="btn btn-secondary" onclick="showComparison()" style="margin-left:8px;font-size:.75rem">📊 对比 <span style="font-size:.85em;opacity:.7">Compare</span></button>
   </div>
   <div style="display:flex;align-items:center;gap:12px">
     <div id="regimeBadge" style="display:none;font-size:.75rem;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--surface2);font-weight:600" title="Market regime detection"></div>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
     <div class="scan-status">
       <span class="status-dot" id="statusDot"></span>
-      <span id="statusText">Ready</span>
+      <span id="statusText">就绪 Ready</span>
     </div>
   </div>
 </div>
 
 <div class="tab-bar">
-  <div class="tab active" onclick="switchTab('scanner')">Scanner</div>
-  <div class="tab" onclick="switchTab('portfolio')">Portfolio</div>
-  <div class="tab" onclick="switchTab('backtest')">Backtest</div>
-  <div class="tab" onclick="switchTab('alerts')">Alerts</div>
-  <div class="tab" onclick="switchTab('accuracy')">Accuracy</div>
-  <div class="tab" onclick="switchTab('deepdive')">Deep Dive</div>
-  <div class="tab" onclick="switchTab('momentum')">🚀 Momentum</div>
-  <div class="tab" onclick="switchTab('fmp')">FMP Data</div>
+  <div class="tab active" onclick="switchTab('scanner')">扫描器 <span style="font-size:.8em;opacity:.7">Scanner</span></div>
+  <div class="tab" onclick="switchTab('portfolio')">投资组合 <span style="font-size:.8em;opacity:.7">Portfolio</span></div>
+  <div class="tab" onclick="switchTab('backtest')">回测 <span style="font-size:.8em;opacity:.7">Backtest</span></div>
+  <div class="tab" onclick="switchTab('alerts')">预警 <span style="font-size:.8em;opacity:.7">Alerts</span></div>
+  <div class="tab" onclick="switchTab('accuracy')">准确率 <span style="font-size:.8em;opacity:.7">Accuracy</span></div>
+  <div class="tab" onclick="switchTab('deepdive')">深度分析 <span style="font-size:.8em;opacity:.7">Deep Dive</span></div>
+  <div class="tab" onclick="switchTab('momentum')">🚀 动量雷达 <span style="font-size:.8em;opacity:.7">Momentum</span></div>
+  <div class="tab" onclick="switchTab('fmp')">FMP数据 <span style="font-size:.8em;opacity:.7">FMP Data</span></div>
 </div>
 
 <!-- Alerts banner (collapsible, shown on scanner tab) -->
 <div class="alerts-toggle" id="alertsToggle" onclick="toggleAlerts()" style="display:none">
-  🔔 Alerts <span class="alert-badge-count" id="alertCount">0</span>
+  🔔 预警 Alerts <span class="alert-badge-count" id="alertCount">0</span>
   <span style="margin-left:auto;font-size:.7rem">▼</span>
 </div>
 <div class="alerts-panel" id="alertsPanel"></div>
@@ -245,10 +245,10 @@ tr.stock-row:hover{background:var(--surface2)}
 <div class="controls">
   <button class="btn btn-primary" id="scanBtn" onclick="runScan()">
     <span class="spinner" id="scanSpinner"></span>
-    Run Scan
+    运行扫描 Run Scan
   </button>
   <select id="minCapFilter" onchange="applyFilters()">
-    <option value="0">All Market Caps</option>
+    <option value="0">全部市值 All Market Caps</option>
     <option value="1e9">$1B+</option>
     <option value="10e9">$10B+</option>
     <option value="50e9">$50B+</option>
@@ -256,15 +256,15 @@ tr.stock-row:hover{background:var(--surface2)}
     <option value="500e9">$500B+</option>
     <option value="1e12">$1T+</option>
   </select>
-  <input type="text" id="searchInput" placeholder="Search ticker or name..." oninput="applyFilters()">
-  <button class="btn btn-secondary" id="signalFilterBtn" onclick="toggleSignalFilter()">🟢 Signals Only</button>
+  <input type="text" id="searchInput" placeholder="搜索代码或名称 Search ticker or name..." oninput="applyFilters()">
+  <button class="btn btn-secondary" id="signalFilterBtn" onclick="toggleSignalFilter()">🟢 仅信号 Signals Only</button>
 </div>
 
 <div class="layout">
   <div class="sidebar" id="sidebar">
-    <h3>Sectors</h3>
+    <h3>行业 Sectors</h3>
     <div class="sector-item active" data-sector="" onclick="selectSector(this,'')">
-      All Sectors <span class="count" id="allCount">0</span>
+      全部行业 All Sectors <span class="count" id="allCount">0</span>
     </div>
     <div id="sectorList"></div>
   </div>
@@ -273,30 +273,30 @@ tr.stock-row:hover{background:var(--surface2)}
     <div class="table-wrap">
       <table id="stockTable" style="display:none">
         <thead><tr>
-          <th data-col="rank" class="sorted" onclick="sortBy('rank')">Rank <span class="sort-arrow">▲</span></th>
-          <th data-col="ticker" onclick="sortBy('ticker')">Ticker <span class="sort-arrow">▲</span></th>
-          <th data-col="name" onclick="sortBy('name')">Name <span class="sort-arrow">▲</span></th>
-          <th data-col="entry_signal" onclick="sortBy('entry_signal')">Signal <span class="sort-arrow">▲</span></th>
-          <th data-col="sector" onclick="sortBy('sector')">Sector <span class="sort-arrow">▲</span></th>
-          <th data-col="market_cap" onclick="sortBy('market_cap')">Mkt Cap <span class="sort-arrow">▲</span></th>
-          <th data-col="composite_score" onclick="sortBy('composite_score')">Composite <span class="sort-arrow">▲</span></th>
-          <th data-col="fund_score" onclick="sortBy('fund_score')">Fund <span class="sort-arrow">▲</span></th>
-          <th data-col="val_score" onclick="sortBy('val_score')">Value <span class="sort-arrow">▲</span></th>
-          <th data-col="tech_score" onclick="sortBy('tech_score')">Tech <span class="sort-arrow">▲</span></th>
-          <th data-col="risk_score" onclick="sortBy('risk_score')">Risk <span class="sort-arrow">▲</span></th>
-          <th data-col="growth_score" onclick="sortBy('growth_score')" id="growthHeader" style="display:none">Growth <span class="sort-arrow">▲</span></th>
-          <th data-col="dcf_margin_of_safety" onclick="sortBy('dcf_margin_of_safety')">DCF MoS <span class="sort-arrow">▲</span></th>
-          <th data-col="dcf_confidence" onclick="sortBy('dcf_confidence')">DCF Conf <span class="sort-arrow">▲</span></th>
-          <th data-col="comps_score" onclick="sortBy('comps_score')">Comps <span class="sort-arrow">▲</span></th>
-          <th data-col="fcf_yield" onclick="sortBy('fcf_yield')">FCF Yield <span class="sort-arrow">▲</span></th>
-          <th data-col="consecutive_days" onclick="sortBy('consecutive_days')">📅 Days <span class="sort-arrow">▲</span></th>
+          <th data-col="rank" class="sorted" onclick="sortBy('rank')">排名 <span style="font-size:.8em;opacity:.6">Rank</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="ticker" onclick="sortBy('ticker')">代码 <span style="font-size:.8em;opacity:.6">Ticker</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="name" onclick="sortBy('name')">名称 <span style="font-size:.8em;opacity:.6">Name</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="entry_signal" onclick="sortBy('entry_signal')">信号 <span style="font-size:.8em;opacity:.6">Signal</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="sector" onclick="sortBy('sector')">行业 <span style="font-size:.8em;opacity:.6">Sector</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="market_cap" onclick="sortBy('market_cap')">市值 <span style="font-size:.8em;opacity:.6">Mkt Cap</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="composite_score" onclick="sortBy('composite_score')">综合 <span style="font-size:.8em;opacity:.6">Composite</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="fund_score" onclick="sortBy('fund_score')">基本面 <span style="font-size:.8em;opacity:.6">Fund</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="val_score" onclick="sortBy('val_score')">估值 <span style="font-size:.8em;opacity:.6">Value</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="tech_score" onclick="sortBy('tech_score')">技术 <span style="font-size:.8em;opacity:.6">Tech</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="risk_score" onclick="sortBy('risk_score')">风险 <span style="font-size:.8em;opacity:.6">Risk</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="growth_score" onclick="sortBy('growth_score')" id="growthHeader" style="display:none">成长 <span style="font-size:.8em;opacity:.6">Growth</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="dcf_margin_of_safety" onclick="sortBy('dcf_margin_of_safety')">DCF安全边际 <span style="font-size:.8em;opacity:.6">MoS</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="dcf_confidence" onclick="sortBy('dcf_confidence')">DCF置信度 <span style="font-size:.8em;opacity:.6">Conf</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="comps_score" onclick="sortBy('comps_score')">可比 <span style="font-size:.8em;opacity:.6">Comps</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="fcf_yield" onclick="sortBy('fcf_yield')">自由现金流收益率 <span style="font-size:.8em;opacity:.6">FCF Yield</span> <span class="sort-arrow">▲</span></th>
+          <th data-col="consecutive_days" onclick="sortBy('consecutive_days')">📅 天数 <span style="font-size:.8em;opacity:.6">Days</span> <span class="sort-arrow">▲</span></th>
         </tr></thead>
         <tbody id="tableBody"></tbody>
       </table>
     </div>
     <div class="empty-state" id="emptyState">
       <div class="icon">📈</div>
-      <div>No data yet. Run a scan or wait for cached results to load.</div>
+      <div>暂无数据，请运行扫描或等待缓存加载。<br><span style="font-size:.85em;opacity:.7">No data yet. Run a scan or wait for cached results to load.</span></div>
     </div>
   </div>
 </div>
@@ -305,16 +305,16 @@ tr.stock-row:hover{background:var(--surface2)}
 <!-- PORTFOLIO TAB -->
 <div class="tab-content" id="tab-portfolio">
   <div class="controls">
-    <button class="btn btn-primary" id="portfolioBtn" onclick="loadPortfolio()">Build Portfolio</button>
+    <button class="btn btn-primary" id="portfolioBtn" onclick="loadPortfolio()">构建组合 Build Portfolio</button>
     <select id="portfolioSize">
-      <option value="5">5 Stocks</option>
-      <option value="10" selected>10 Stocks</option>
-      <option value="15">15 Stocks</option>
-      <option value="20">20 Stocks</option>
+      <option value="5">5 只股票 Stocks</option>
+      <option value="10" selected>10 只股票 Stocks</option>
+      <option value="15">15 只股票 Stocks</option>
+      <option value="20">20 只股票 Stocks</option>
     </select>
   </div>
   <div id="portfolioContent">
-    <div class="empty-state"><div class="icon">💼</div><div>Click "Build Portfolio" to generate a diversified portfolio suggestion.</div></div>
+    <div class="empty-state"><div class="icon">💼</div><div>点击"构建组合"生成多元化投资组合建议。<br><span style="font-size:.85em;opacity:.7">Click "Build Portfolio" to generate a diversified portfolio suggestion.</span></div></div>
   </div>
 </div>
 
@@ -323,18 +323,18 @@ tr.stock-row:hover{background:var(--surface2)}
   <div class="controls">
     <button class="btn btn-primary" id="backtestBtn" onclick="runBacktest()">
       <span class="spinner" id="btSpinner"></span>
-      Run Backtest
+      运行回测 Run Backtest
     </button>
     <select id="backtestMonths">
-      <option value="1">1 Month Back</option>
-      <option value="3">3 Months Back</option>
-      <option value="6" selected>6 Months Back</option>
-      <option value="12">12 Months Back</option>
+      <option value="1">回溯1个月 1 Month Back</option>
+      <option value="3">回溯3个月 3 Months Back</option>
+      <option value="6" selected>回溯6个月 6 Months Back</option>
+      <option value="12">回溯12个月 12 Months Back</option>
     </select>
-    <button class="btn btn-secondary" onclick="loadBacktestHistory()">Load History</button>
+    <button class="btn btn-secondary" onclick="loadBacktestHistory()">加载历史 Load History</button>
   </div>
   <div id="backtestContent">
-    <div class="empty-state"><div class="icon">📉</div><div>Run a backtest to see how our picks would have performed historically.</div></div>
+    <div class="empty-state"><div class="icon">📉</div><div>运行回测查看历史表现。<br><span style="font-size:.85em;opacity:.7">Run a backtest to see how our picks would have performed historically.</span></div></div>
   </div>
 
   <!-- Rolling Backtest Section -->
@@ -342,9 +342,9 @@ tr.stock-row:hover{background:var(--surface2)}
     <div class="controls">
       <button class="btn btn-primary" id="rollingBtn" onclick="runRollingBacktest()">
         <span class="spinner" id="rollingSpinner"></span>
-        Run 5-Year Rolling Backtest
+        运行5年滚动回测 Run 5-Year Rolling Backtest
       </button>
-      <span style="font-size:.75rem;color:var(--text2)">⚠️ Takes a few minutes — tests 60 monthly periods across 3 strategies</span>
+      <span style="font-size:.75rem;color:var(--text2)">⚠️ 需要几分钟 — 测试3种策略的60个月度周期 Takes a few minutes</span>
     </div>
     <div id="rollingStatus" style="display:none;padding:8px 24px;font-size:.8rem;color:var(--text2)"></div>
     <div id="rollingContent"></div>
@@ -354,10 +354,10 @@ tr.stock-row:hover{background:var(--surface2)}
 <!-- ALERTS TAB -->
 <div class="tab-content" id="tab-alerts">
   <div class="controls">
-    <button class="btn btn-primary" onclick="loadFullAlerts()">Refresh Alerts</button>
+    <button class="btn btn-primary" onclick="loadFullAlerts()">刷新预警 Refresh Alerts</button>
   </div>
   <div id="alertsTabContent">
-    <div class="empty-state"><div class="icon">🔔</div><div>Loading alerts...</div></div>
+    <div class="empty-state"><div class="icon">🔔</div><div>加载预警中... Loading alerts...</div></div>
   </div>
 </div>
 
@@ -365,11 +365,11 @@ tr.stock-row:hover{background:var(--surface2)}
 <div class="tab-content" id="tab-deepdive">
   <div class="deepdive-container">
     <div class="deepdive-search">
-      <input type="text" id="deepdiveInput" placeholder="Enter ticker (e.g. AAPL)..." onkeydown="if(event.key==='Enter')loadDeepDive()">
-      <button class="btn btn-primary" onclick="loadDeepDive()">Analyze</button>
+      <input type="text" id="deepdiveInput" placeholder="输入代码 Enter ticker (e.g. AAPL)..." onkeydown="if(event.key==='Enter')loadDeepDive()">
+      <button class="btn btn-primary" onclick="loadDeepDive()">分析 Analyze</button>
     </div>
     <div id="deepdiveContent">
-      <div class="empty-state"><div class="icon">🔬</div><div>Enter a ticker to see DCF valuation, comparable analysis, and earnings deep-dive.</div></div>
+      <div class="empty-state"><div class="icon">🔬</div><div>输入代码查看DCF估值、可比分析和盈利深度分析。<br><span style="font-size:.85em;opacity:.7">Enter a ticker to see DCF valuation, comparable analysis, and earnings deep-dive.</span></div></div>
     </div>
   </div>
 </div>
@@ -377,13 +377,14 @@ tr.stock-row:hover{background:var(--surface2)}
 <!-- MOMENTUM RADAR TAB -->
 <div class="tab-content" id="tab-momentum">
   <div class="backtest-card">
-    <div style="font-size:1.1rem;font-weight:700;margin-bottom:4px">🚀 Early Momentum Radar</div>
+    <div style="font-size:1.1rem;font-weight:700;margin-bottom:4px">🚀 早期动量雷达 <span style="font-size:.8em;opacity:.7">Early Momentum Radar</span></div>
     <div style="font-size:.8rem;color:var(--text2);margin-bottom:16px">
-      Leading indicators that predict stocks about to break out. Combines analyst revisions, insider buying, revenue acceleration, institutional changes, and earnings surprise.
+      预测即将突破的股票的领先指标。结合分析师修正、内部人买入、收入加速、机构变化和盈利惊喜。<br>
+      <span style="opacity:.7">Leading indicators that predict stocks about to break out. Combines analyst revisions, insider buying, revenue acceleration, institutional changes, and earnings surprise.</span>
     </div>
-    <button class="btn btn-primary" onclick="loadMomentum()">Scan Top 100 Stocks</button>
+    <button class="btn btn-primary" onclick="loadMomentum()">扫描前100只股票 Scan Top 100</button>
     <div id="momentumResults" style="margin-top:16px">
-      <div class="empty-state"><div class="icon">🚀</div><div>Click "Scan" to find stocks with strong momentum signals.</div></div>
+      <div class="empty-state"><div class="icon">🚀</div><div>点击"扫描"发现具有强动量信号的股票。<br><span style="font-size:.85em;opacity:.7">Click "Scan" to find stocks with strong momentum signals.</span></div></div>
     </div>
   </div>
 </div>
@@ -391,43 +392,43 @@ tr.stock-row:hover{background:var(--surface2)}
 <!-- FMP DATA TAB -->
 <div class="tab-content" id="tab-fmp">
   <div class="backtest-card">
-    <div style="font-size:1.1rem;font-weight:700;margin-bottom:4px">📡 FMP Historical Fundamentals</div>
+    <div style="font-size:1.1rem;font-weight:700;margin-bottom:4px">📡 FMP历史基本面 <span style="font-size:.8em;opacity:.7">Historical Fundamentals</span></div>
     <div style="font-size:.8rem;color:var(--text2);margin-bottom:16px">
-      Financial Modeling Prep provides real historical fundamental data for accurate backtesting.<br>
-      Free tier allows 250 calls/day (4 calls per ticker). Full S&P 500 dataset takes ~2-3 days to populate.
+      FMP提供真实的历史基本面数据，用于精确回测。免费版每日250次调用（每只股票4次），完整S&P 500数据需2-3天填充。<br>
+      <span style="opacity:.7">Financial Modeling Prep provides real historical fundamental data for accurate backtesting. Free tier allows 250 calls/day.</span>
     </div>
     <div id="fmpStatus" style="margin-bottom:16px">
       <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px">
         <div>
           <div style="font-size:2rem;font-weight:700" id="fmpCachedCount">—</div>
-          <div style="font-size:.75rem;color:var(--text2)">Tickers Cached</div>
+          <div style="font-size:.75rem;color:var(--text2)">已缓存代码 Tickers Cached</div>
         </div>
         <div>
           <div style="font-size:2rem;font-weight:700" id="fmpCallsRemaining">—</div>
-          <div style="font-size:.75rem;color:var(--text2)">API Calls Left Today</div>
+          <div style="font-size:.75rem;color:var(--text2)">今日剩余调用 API Calls Left</div>
         </div>
       </div>
       <div style="background:var(--bg);border-radius:6px;height:24px;overflow:hidden;margin-bottom:8px">
         <div id="fmpProgressBar" style="height:100%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:6px;transition:width .5s;width:0%"></div>
       </div>
-      <div style="font-size:.8rem;color:var(--text2)" id="fmpProgressText">Loading status...</div>
+      <div style="font-size:.8rem;color:var(--text2)" id="fmpProgressText">加载状态中... Loading status...</div>
     </div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
       <button class="btn btn-primary" id="fmpFetchBtn" onclick="fetchFmpData()">
         <span class="spinner" id="fmpSpinner"></span>
-        Fetch More Data
+        获取更多数据 Fetch More Data
       </button>
       <select id="fmpLimit">
-        <option value="10">10 tickers</option>
-        <option value="25">25 tickers</option>
-        <option value="50" selected>50 tickers</option>
-        <option value="100">100 tickers</option>
+        <option value="10">10 只代码 tickers</option>
+        <option value="25">25 只代码 tickers</option>
+        <option value="50" selected>50 只代码 tickers</option>
+        <option value="100">100 只代码 tickers</option>
       </select>
-      <button class="btn btn-secondary" onclick="loadFmpStatus()">Refresh Status</button>
+      <button class="btn btn-secondary" onclick="loadFmpStatus()">刷新状态 Refresh Status</button>
     </div>
     <div id="fmpResult" style="margin-top:16px"></div>
     <div id="fmpBadge" style="display:none;margin-top:16px;padding:12px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:8px;font-size:.85rem;color:var(--green)">
-      ✅ FMP data available — backtests will use real historical fundamentals!
+      ✅ FMP数据可用 — 回测将使用真实历史基本面数据！FMP data available — backtests will use real historical fundamentals!
     </div>
   </div>
 </div>
@@ -435,12 +436,12 @@ tr.stock-row:hover{background:var(--surface2)}
 <!-- ACCURACY TAB -->
 <div class="tab-content" id="tab-accuracy">
   <div class="controls">
-    <button class="btn btn-primary" onclick="loadAccuracy()">Refresh</button>
-    <button class="btn btn-secondary" onclick="takeAccuracySnapshot()">📸 Take Snapshot</button>
-    <span style="font-size:.75rem;color:var(--text2)">Snapshots log current signals for future accuracy tracking</span>
+    <button class="btn btn-primary" onclick="loadAccuracy()">刷新 Refresh</button>
+    <button class="btn btn-secondary" onclick="takeAccuracySnapshot()">📸 拍摄快照 Take Snapshot</button>
+    <span style="font-size:.75rem;color:var(--text2)">快照记录当前信号以追踪未来准确率 Snapshots log current signals for future accuracy tracking</span>
   </div>
   <div id="accuracyContent">
-    <div class="empty-state"><div class="icon">🎯</div><div>Loading accuracy data...</div></div>
+    <div class="empty-state"><div class="icon">🎯</div><div>加载准确率数据中... Loading accuracy data...</div></div>
   </div>
 </div>
 
@@ -448,7 +449,7 @@ tr.stock-row:hover{background:var(--surface2)}
 <div class="compare-overlay" id="compareOverlay" onclick="if(event.target===this)closeComparison()">
   <div class="compare-modal">
     <button class="compare-close" onclick="closeComparison()">&times;</button>
-    <h2 style="margin-bottom:16px">📊 Strategy Comparison</h2>
+    <h2 style="margin-bottom:16px">📊 策略对比 <span style="font-size:.7em;opacity:.7">Strategy Comparison</span></h2>
     <div id="compareContent"><div class="empty-state"><div class="icon">⏳</div><div>Loading comparison...</div></div></div>
   </div>
 </div>
@@ -498,10 +499,11 @@ function sentimentDot(score){if(score==null)return'';if(score>60)return'<span cl
 function freshnessDot(f,days){if(!f||f==='unknown')return'';const titles={fresh:'Fresh (<24h)',recent:'Recent (<7d)',stale:'Stale (<30d)',very_stale:'Very stale (>30d)'};return'<span class="freshness-dot freshness-'+f+'" title="'+(titles[f]||f)+(days!=null?' — '+days+'d old':'')+'"></span>'}
 function signalBadge(sig){if(!sig)return'';const icon=SIGNAL_ICONS[sig]||'⚪';return'<span class="signal-badge signal-'+sig+'">'+icon+' '+sig+'</span>'}
 
-function setStatus(text,state){document.getElementById('statusText').textContent=text;document.getElementById('statusDot').className='status-dot'+(state?' '+state:'')}
+const statusMap={'Ready':'就绪 Ready','Scanning...':'扫描中... Scanning...','Cached results loaded':'缓存已加载 Cached results loaded','No cached data':'无缓存数据 No cached data','API unreachable':'API不可达 API unreachable','Scan complete':'扫描完成 Scan complete','Scan failed':'扫描失败 Scan failed','Scan error':'扫描错误 Scan error'};
+function setStatus(text,state){document.getElementById('statusText').textContent=statusMap[text]||text;document.getElementById('statusDot').className='status-dot'+(state?' '+state:'')}
 
 function switchTab(name){
-  const tabMap={'deep dive':'deepdive'};
+  const tabMap={'deep dive':'deepdive','深度分析 deep dive':'deepdive','扫描器 scanner':'scanner','投资组合 portfolio':'portfolio','回测 backtest':'backtest','预警 alerts':'alerts','准确率 accuracy':'accuracy','🚀 动量雷达 momentum':'momentum','fmp数据 fmp data':'fmp'};
   document.querySelectorAll('.tab').forEach(t=>{const tn=t.textContent.toLowerCase().trim();t.classList.toggle('active',(tabMap[tn]||tn)===name)});
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.toggle('active',c.id==='tab-'+name));
   if(name==='alerts')loadFullAlerts();
@@ -595,7 +597,7 @@ async function showComparison(){
   const overlay=document.getElementById('compareOverlay');
   overlay.classList.add('open');
   const cont=document.getElementById('compareContent');
-  cont.innerHTML='<div class="empty-state"><div class="icon">⏳</div><div>Running comparison across all strategies...</div></div>';
+  cont.innerHTML='<div class="empty-state"><div class="icon">⏳</div><div>正在对比所有策略... Running comparison across all strategies...</div></div>';
   try{
     const r=await fetch('/compare?strategies=conservative,balanced,aggressive');
     if(!r.ok){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>Failed</div></div>';return}
@@ -697,13 +699,13 @@ async function showDetail(ticker){
       return html;
     }
     let gridHtml='';
-    if(d.composite_score!=null)gridHtml+='<div class="metric-card"><div class="label">Composite Score</div><div class="value"><span class="score '+scoreClass(d.composite_score)+'">'+fmtScore(d.composite_score)+'/100</span></div></div>';
-    if(d.entry_signal)gridHtml+='<div class="metric-card"><div class="label">Entry Signal</div><div class="value">'+(SIGNAL_ICONS[d.entry_signal]||'')+' '+d.entry_signal+'</div></div>';
-    if(d.dividend_yield!=null)gridHtml+='<div class="metric-card"><div class="label">Dividend Yield</div><div class="value">'+(d.dividend_yield*100).toFixed(2)+'%</div></div>';
-    gridHtml+=renderMetricSection('Fundamentals',d.fundamentals);
-    gridHtml+=renderMetricSection('Valuation',d.valuation);
-    gridHtml+=renderMetricSection('Technicals',d.technicals);
-    gridHtml+=renderMetricSection('Risk',d.risk);
+    if(d.composite_score!=null)gridHtml+='<div class="metric-card"><div class="label">综合评分 Composite Score</div><div class="value"><span class="score '+scoreClass(d.composite_score)+'">'+fmtScore(d.composite_score)+'/100</span></div></div>';
+    if(d.entry_signal)gridHtml+='<div class="metric-card"><div class="label">入场信号 Entry Signal</div><div class="value">'+(SIGNAL_ICONS[d.entry_signal]||'')+' '+d.entry_signal+'</div></div>';
+    if(d.dividend_yield!=null)gridHtml+='<div class="metric-card"><div class="label">股息率 Dividend Yield</div><div class="value">'+(d.dividend_yield*100).toFixed(2)+'%</div></div>';
+    gridHtml+=renderMetricSection('基本面 Fundamentals',d.fundamentals);
+    gridHtml+=renderMetricSection('估值 Valuation',d.valuation);
+    gridHtml+=renderMetricSection('技术面 Technicals',d.technicals);
+    gridHtml+=renderMetricSection('风险 Risk',d.risk);
     grid.innerHTML=gridHtml;
 
     // Data freshness warning (check from scan results)
@@ -717,14 +719,14 @@ async function showDetail(ticker){
       const g=d.growth;
       const sec=document.getElementById('modalGrowth');
       sec.style.display='block';
-      let html='<h3>Growth Metrics</h3><div class="momentum-grid">';
+      let html='<h3>成长指标 <span style="font-size:.8em;opacity:.7">Growth Metrics</span></h3><div class="momentum-grid">';
       const gMetrics=[
-        ['Revenue Growth',g.revenue_growth!=null?fmtPct(g.revenue_growth):'—'],
-        ['Earnings Growth (Q)',g.earnings_growth!=null?fmtPct(g.earnings_growth):'—'],
-        ['Revenue Accel.',g.revenue_acceleration!=null?(g.revenue_acceleration>0?'↑':'↓')+' '+(g.revenue_acceleration*100).toFixed(1)+'%':'—'],
-        ['Gross Margins',g.gross_margins!=null?(g.gross_margins*100).toFixed(1)+'%':'—'],
-        ['Operating Margins',g.operating_margins!=null?(g.operating_margins*100).toFixed(1)+'%':'—'],
-        ['Growth Score',g.score!=null?fmtScore(g.score)+'/100':'—'],
+        ['营收增长 Revenue Growth',g.revenue_growth!=null?fmtPct(g.revenue_growth):'—'],
+        ['盈利增长(季) Earnings Growth (Q)',g.earnings_growth!=null?fmtPct(g.earnings_growth):'—'],
+        ['营收加速 Revenue Accel.',g.revenue_acceleration!=null?(g.revenue_acceleration>0?'↑':'↓')+' '+(g.revenue_acceleration*100).toFixed(1)+'%':'—'],
+        ['毛利率 Gross Margins',g.gross_margins!=null?(g.gross_margins*100).toFixed(1)+'%':'—'],
+        ['运营利润率 Operating Margins',g.operating_margins!=null?(g.operating_margins*100).toFixed(1)+'%':'—'],
+        ['成长评分 Growth Score',g.score!=null?fmtScore(g.score)+'/100':'—'],
       ];
       gMetrics.forEach(([label,val])=>{html+='<div class="momentum-card"><div class="label">'+label+'</div><div class="value">'+val+'</div></div>'});
       html+='</div>';
@@ -738,18 +740,18 @@ async function showDetail(ticker){
       sec.style.display='block';
       const sigColor={'STRONG_BUY':'var(--green)','BUY':'var(--blue)','HOLD':'var(--text2)','WAIT':'var(--red)'};
       const col=sigColor[m.entry_signal]||'var(--text2)';
-      let html='<h3>Entry Timing & Momentum</h3>';
+      let html='<h3>入场时机与动量 <span style="font-size:.8em;opacity:.7">Entry Timing & Momentum</span></h3>';
       html+='<div style="display:flex;align-items:center;gap:16px;margin-bottom:12px">';
       html+='<div style="font-size:2.5rem">'+(SIGNAL_ICONS[m.entry_signal]||'⚪')+'</div>';
       html+='<div><div style="font-size:1.2rem;font-weight:700;color:'+col+'">'+m.entry_signal+'</div>';
-      html+='<div style="font-size:.8rem;color:var(--text2)">Entry Score: '+(m.entry_score!=null?m.entry_score:'—')+'/100</div></div>';
+      html+='<div style="font-size:.8rem;color:var(--text2)">入场评分 Entry Score: '+(m.entry_score!=null?m.entry_score:'—')+'/100</div></div>';
       html+='</div>';
       html+='<div class="momentum-grid">';
       // Support/Resistance
-      html+='<div class="momentum-card"><div class="label">Support</div><div class="value" style="color:var(--green)">'+(m.support!=null?'$'+m.support:'—')+'</div></div>';
-      html+='<div class="momentum-card"><div class="label">Resistance</div><div class="value" style="color:var(--red)">'+(m.resistance!=null?'$'+m.resistance:'—')+'</div></div>';
+      html+='<div class="momentum-card"><div class="label">支撑位 Support</div><div class="value" style="color:var(--green)">'+(m.support!=null?'$'+m.support:'—')+'</div></div>';
+      html+='<div class="momentum-card"><div class="label">阻力位 Resistance</div><div class="value" style="color:var(--red)">'+(m.resistance!=null?'$'+m.resistance:'—')+'</div></div>';
       // ADX
-      html+='<div class="momentum-card"><div class="label">ADX (Trend Strength)</div><div class="value">'+(m.adx!=null?m.adx:'—')+'</div>';
+      html+='<div class="momentum-card"><div class="label">ADX (趋势强度 Trend Strength)</div><div class="value">'+(m.adx!=null?m.adx:'—')+'</div>';
       if(m.adx!=null){
         const adxPct=Math.min(m.adx/50*100,100);
         const adxCol=m.adx>25?'var(--green)':m.adx>15?'var(--yellow)':'var(--red)';
@@ -759,22 +761,22 @@ async function showDetail(ticker){
       // Bollinger
       if(m.bollinger){
         const bb=m.bollinger;
-        html+='<div class="momentum-card"><div class="label">Bollinger Position</div><div class="value">'+(bb.position*100).toFixed(0)+'%</div>';
+        html+='<div class="momentum-card"><div class="label">布林位置 Bollinger Position</div><div class="value">'+(bb.position*100).toFixed(0)+'%</div>';
         const bbCol=bb.position<0.3?'var(--green)':bb.position>0.7?'var(--red)':'var(--yellow)';
         html+='<div class="bar-track"><div class="bar-fill" style="width:'+(bb.position*100)+'%;background:'+bbCol+'"></div></div>';
-        if(bb.squeeze)html+='<div style="margin-top:4px;font-size:.7rem;color:var(--yellow)">⚡ Squeeze detected</div>';
+        if(bb.squeeze)html+='<div style="margin-top:4px;font-size:.7rem;color:var(--yellow)">⚡ 挤压检测 Squeeze detected</div>';
         html+='</div>';
       }
       // Volume
       if(m.volume_breakout){
         const vb=m.volume_breakout;
-        html+='<div class="momentum-card"><div class="label">Volume</div><div class="value'+(vb.breakout?' style="color:var(--green)"':'')+'">'+vb.volume_ratio+'x avg</div>';
-        if(vb.breakout)html+='<div style="margin-top:4px;font-size:.7rem;color:var(--green)">🚀 Volume breakout!</div>';
+        html+='<div class="momentum-card"><div class="label">成交量 Volume</div><div class="value'+(vb.breakout?' style="color:var(--green)"':'')+'">'+vb.volume_ratio+'x 均值avg</div>';
+        if(vb.breakout)html+='<div style="margin-top:4px;font-size:.7rem;color:var(--green)">🚀 放量突破 Volume breakout!</div>';
         html+='</div>';
       }
       html+='</div>';
       // Reasoning
-      if(m.reasoning)html+='<div class="reasoning-text"><strong>Analysis:</strong> '+m.reasoning+'</div>';
+      if(m.reasoning)html+='<div class="reasoning-text"><strong>分析 Analysis:</strong> '+m.reasoning+'</div>';
       sec.innerHTML=html;
     }
 
@@ -787,7 +789,7 @@ async function showDetail(ticker){
       const recColor=rec==='buy'||rec==='strong_buy'?'var(--green)':rec==='sell'||rec==='strong_sell'?'var(--red)':'var(--yellow)';
       const recIcon=rec==='buy'||rec==='strong_buy'?'🟢':rec==='sell'||rec==='strong_sell'?'🔴':'🟡';
       const recLabel=(s.recommendation||'hold').replace(/_/g,' ').toUpperCase();
-      let html='<h3>Analyst Sentiment</h3>';
+      let html='<h3>分析师情绪 <span style="font-size:.8em;opacity:.7">Analyst Sentiment</span></h3>';
       html+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">';
       html+='<span style="font-size:2rem">'+recIcon+'</span>';
       html+='<div><div style="font-size:1.1rem;font-weight:700;color:'+recColor+'">'+recLabel+'</div>';
@@ -903,7 +905,7 @@ async function loadFullAlerts(){
     const seen=new Set();
     const unique=all.filter(a=>{const k=a.message+a.timestamp;if(seen.has(k))return false;seen.add(k);return true});
     unique.sort((a,b)=>(b.timestamp||'').localeCompare(a.timestamp||''));
-    if(!unique.length){cont.innerHTML='<div class="empty-state"><div class="icon">🔔</div><div>No alerts yet. Run a scan to generate alerts.</div></div>';return}
+    if(!unique.length){cont.innerHTML='<div class="empty-state"><div class="icon">🔔</div><div>暂无预警。运行扫描以生成预警。<br><span style="font-size:.85em;opacity:.7">No alerts yet. Run a scan to generate alerts.</span></div></div>';return}
     const sevIcon={'critical':'🔴','warning':'🟡','info':'🔵'};
     cont.innerHTML='<div class="alerts-list">'+unique.map(a=>'<div class="alert-history-item"><span class="severity-dot severity-'+(a.severity||'info')+'"></span><strong style="min-width:50px">'+a.ticker+'</strong><span>'+a.message+'</span><span style="margin-left:auto;color:var(--text2);font-size:.75rem">'+(a.timestamp||'')+'</span></div>').join('')+'</div>';
   }catch(e){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>Error: '+e.message+'</div></div>'}
@@ -911,7 +913,7 @@ async function loadFullAlerts(){
 
 // Portfolio
 async function loadPortfolio(){
-  const btn=document.getElementById('portfolioBtn');btn.disabled=true;btn.textContent='Building...';
+  const btn=document.getElementById('portfolioBtn');btn.disabled=true;btn.textContent='构建中... Building...';
   const size=document.getElementById('portfolioSize').value;
   const cont=document.getElementById('portfolioContent');
   cont.innerHTML='<div class="empty-state"><div class="icon">⏳</div><div>Loading risk data & building portfolio...</div></div>';
@@ -922,7 +924,7 @@ async function loadPortfolio(){
     if(!r.ok){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>Failed. Run a scan first.</div></div>';return}
     renderPortfolio(await r.json());
   }catch(e){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>Error: '+e.message+'</div></div>'}
-  btn.disabled=false;btn.textContent='Build Portfolio';
+  btn.disabled=false;btn.textContent='构建组合 Build Portfolio';
 }
 
 function renderPortfolio(data){
@@ -933,17 +935,17 @@ function renderPortfolio(data){
   if(risk){
     const rc=risk.risk_score>=70?'var(--green)':risk.risk_score>=40?'orange':'var(--red)';
     riskHtml+='<div style="margin-bottom:20px;padding:20px;background:var(--card);border-radius:12px;border:1px solid var(--border)">';
-    riskHtml+='<h3 style="margin:0 0 16px">🛡️ Risk Management</h3>';
+    riskHtml+='<h3 style="margin:0 0 16px">🛡️ 风险管理 <span style="font-size:.8em;opacity:.7">Risk Management</span></h3>';
     riskHtml+='<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px">';
-    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Portfolio Value</div><div style="font-size:1.5rem;font-weight:700">$'+risk.portfolio_value.toLocaleString()+'</div></div>';
-    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Total P&L</div><div style="font-size:1.5rem;font-weight:700;color:'+(risk.total_pnl>=0?'var(--green)':'var(--red)')+'">$'+risk.total_pnl.toFixed(2)+' ('+risk.total_pnl_pct.toFixed(1)+'%)</div></div>';
-    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Win Rate</div><div style="font-size:1.5rem;font-weight:700">'+risk.win_rate+'%</div></div>';
-    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Risk Score</div><div style="font-size:1.5rem;font-weight:700;color:'+rc+'">'+risk.risk_score+'/100</div></div>';
+    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">组合价值 Portfolio Value</div><div style="font-size:1.5rem;font-weight:700">$'+risk.portfolio_value.toLocaleString()+'</div></div>';
+    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">总盈亏 Total P&L</div><div style="font-size:1.5rem;font-weight:700;color:'+(risk.total_pnl>=0?'var(--green)':'var(--red)')+'">$'+risk.total_pnl.toFixed(2)+' ('+risk.total_pnl_pct.toFixed(1)+'%)</div></div>';
+    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">胜率 Win Rate</div><div style="font-size:1.5rem;font-weight:700">'+risk.win_rate+'%</div></div>';
+    riskHtml+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">风险评分 Risk Score</div><div style="font-size:1.5rem;font-weight:700;color:'+rc+'">'+risk.risk_score+'/100</div></div>';
     riskHtml+='</div>';
     // Stop loss table
     if(risk.stop_loss_alerts&&risk.stop_loss_alerts.length){
-      riskHtml+='<h4 style="font-size:.9rem;margin:12px 0 8px">Stop-Loss Monitor (threshold: -15%)</h4>';
-      riskHtml+='<table style="font-size:.8rem;width:100%"><thead><tr><th>Ticker</th><th>Entry</th><th>Current</th><th>P&L %</th><th>P&L $</th><th>Status</th></tr></thead><tbody>';
+      riskHtml+='<h4 style="font-size:.9rem;margin:12px 0 8px">止损监控 Stop-Loss Monitor (阈值 threshold: -15%)</h4>';
+      riskHtml+='<table style="font-size:.8rem;width:100%"><thead><tr><th>代码 Ticker</th><th>入场 Entry</th><th>当前 Current</th><th>盈亏% P&L %</th><th>盈亏$ P&L $</th><th>状态 Status</th></tr></thead><tbody>';
       risk.stop_loss_alerts.forEach(a=>{
         const color=a.status==='STOP_LOSS_TRIGGERED'?'var(--red)':a.status==='APPROACHING_STOP_LOSS'?'orange':a.pnl_pct>=0?'var(--green)':'var(--text)';
         const icon=a.status==='STOP_LOSS_TRIGGERED'?'🔴':a.status==='APPROACHING_STOP_LOSS'?'🟡':'🟢';
@@ -953,8 +955,8 @@ function renderPortfolio(data){
     }
     // Position limits
     if(risk.position_alerts&&risk.position_alerts.length){
-      riskHtml+='<h4 style="font-size:.9rem;margin:16px 0 8px">Position Size Limits (max: 20%)</h4>';
-      riskHtml+='<table style="font-size:.8rem;width:100%"><thead><tr><th>Ticker</th><th>Value</th><th>% of Portfolio</th><th>Status</th></tr></thead><tbody>';
+      riskHtml+='<h4 style="font-size:.9rem;margin:16px 0 8px">持仓限额 Position Size Limits (最大 max: 20%)</h4>';
+      riskHtml+='<table style="font-size:.8rem;width:100%"><thead><tr><th>代码 Ticker</th><th>价值 Value</th><th>占比 % of Portfolio</th><th>状态 Status</th></tr></thead><tbody>';
       risk.position_alerts.forEach(p=>{
         const bar='<div style="width:100%;background:var(--bg2);border-radius:3px;height:16px;position:relative"><div style="width:'+Math.min(p.portfolio_pct,100)+'%;background:'+(p.status==='OVER_LIMIT'?'var(--red)':'var(--green)')+';height:100%;border-radius:3px"></div><span style="position:absolute;left:4px;top:0;font-size:.7rem;line-height:16px">'+p.portfolio_pct+'%</span></div>';
         riskHtml+='<tr><td><strong>'+p.ticker+'</strong></td><td>$'+p.value.toLocaleString()+'</td><td>'+bar+'</td><td>'+(p.status==='OVER_LIMIT'?'⚠️ OVER':'✅ OK')+'</td></tr>';
@@ -963,23 +965,23 @@ function renderPortfolio(data){
     }
     riskHtml+='</div>';
   }
-  if(!data.stocks||!data.stocks.length){cont.innerHTML=riskHtml+'<div class="empty-state"><div class="icon">📭</div><div>No stocks selected.</div></div>';return}
+  if(!data.stocks||!data.stocks.length){cont.innerHTML=riskHtml+'<div class="empty-state"><div class="icon">📭</div><div>未选择股票 No stocks selected.</div></div>';return}
   const m=data.metrics||{};
   let gradParts=[],cumPct=0;
   data.stocks.forEach((s,i)=>{const start=cumPct;cumPct+=s.allocation_pct;gradParts.push(PIE_COLORS[i%PIE_COLORS.length]+' '+start+'% '+cumPct+'%')});
   const grad='conic-gradient('+gradParts.join(',')+')';
-  let html='<div class="backtest-card"><div style="font-size:1.1rem;font-weight:700;margin-bottom:12px">Portfolio Metrics</div><div class="backtest-grid">';
-  html+='<div class="bt-metric"><div class="bt-val">'+m.portfolio_beta+'</div><div class="bt-label">Portfolio Beta</div></div>';
-  html+='<div class="bt-metric"><div class="bt-val">'+m.diversification_score+'</div><div class="bt-label">Diversification</div></div>';
-  html+='<div class="bt-metric"><div class="bt-val">'+m.num_sectors+'</div><div class="bt-label">Sectors</div></div>';
-  html+='<div class="bt-metric"><div class="bt-val">'+m.num_stocks+'</div><div class="bt-label">Stocks</div></div>';
+  let html='<div class="backtest-card"><div style="font-size:1.1rem;font-weight:700;margin-bottom:12px">组合指标 <span style="font-size:.8em;opacity:.7">Portfolio Metrics</span></div><div class="backtest-grid">';
+  html+='<div class="bt-metric"><div class="bt-val">'+m.portfolio_beta+'</div><div class="bt-label">组合Beta Portfolio Beta</div></div>';
+  html+='<div class="bt-metric"><div class="bt-val">'+m.diversification_score+'</div><div class="bt-label">分散度 Diversification</div></div>';
+  html+='<div class="bt-metric"><div class="bt-val">'+m.num_sectors+'</div><div class="bt-label">行业数 Sectors</div></div>';
+  html+='<div class="bt-metric"><div class="bt-val">'+m.num_stocks+'</div><div class="bt-label">股票数 Stocks</div></div>';
   html+='</div></div>';
   html+='<div class="pie-container"><div class="pie-chart" style="background:'+grad+'"></div><div class="pie-legend">';
   data.stocks.forEach((s,i)=>{
     html+='<div class="pie-legend-item"><span class="pie-swatch" style="background:'+PIE_COLORS[i%PIE_COLORS.length]+'"></span><span><strong>'+s.ticker+'</strong> · '+s.sector+'</span><span class="alloc">'+s.allocation_pct.toFixed(1)+'%</span></div>';
   });
   html+='</div></div>';
-  html+='<div class="portfolio-section"><table><thead><tr><th>Ticker</th><th>Name</th><th>Sector</th><th>Allocation</th><th>Volatility</th><th>Beta</th></tr></thead><tbody>';
+  html+='<div class="portfolio-section"><table><thead><tr><th>代码 Ticker</th><th>名称 Name</th><th>行业 Sector</th><th>配置 Allocation</th><th>波动率 Volatility</th><th>Beta</th></tr></thead><tbody>';
   data.stocks.forEach(s=>{
     html+='<tr class="stock-row" onclick="showDetail(\''+s.ticker+'\')"><td class="ticker-cell">'+s.ticker+'</td><td>'+s.name+'</td><td>'+s.sector+'</td><td><strong>'+s.allocation_pct.toFixed(1)+'%</strong></td><td>'+(s.volatility*100).toFixed(1)+'%</td><td>'+s.beta.toFixed(2)+'</td></tr>';
   });
@@ -1012,18 +1014,18 @@ async function loadBacktestHistory(){
 function renderBacktest(data){
   const cont=document.getElementById('backtestContent');
   if(!data||data.error){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>'+(data.error||'No data')+'</div></div>';return}
-  let html='<div class="backtest-card"><div style="font-size:1.1rem;font-weight:700">Backtest: '+data.months_back+' Months Back</div><div style="font-size:.8rem;color:var(--text2);margin-bottom:16px">'+data.start_date+' → '+data.end_date+' · Top '+data.top_picks.length+' picks</div>';
+  let html='<div class="backtest-card"><div style="font-size:1.1rem;font-weight:700">回测 Backtest: 回溯'+data.months_back+'个月 Months Back</div><div style="font-size:.8rem;color:var(--text2);margin-bottom:16px">'+data.start_date+' → '+data.end_date+' · 前'+data.top_picks.length+'只 Top picks</div>';
   const periods=data.periods||{};
   for(const[pname,p]of Object.entries(periods)){
     html+='<div style="margin-bottom:16px"><div style="font-weight:600;margin-bottom:8px">Period: '+pname+'</div><div class="backtest-grid">';
-    html+='<div class="bt-metric"><div class="bt-val '+(p.portfolio_return>=0?'bt-positive':'bt-negative')+'">'+fmtPct(p.portfolio_return)+'</div><div class="bt-label">Portfolio Return</div></div>';
-    html+='<div class="bt-metric"><div class="bt-val '+(p.spy_return>=0?'bt-positive':'bt-negative')+'">'+fmtPct(p.spy_return)+'</div><div class="bt-label">SPY Return</div></div>';
-    if(p.alpha!=null)html+='<div class="bt-metric"><div class="bt-val '+(p.alpha>=0?'bt-positive':'bt-negative')+'">'+fmtPct(p.alpha)+'</div><div class="bt-label">Alpha</div></div>';
-    if(p.win_rate!=null)html+='<div class="bt-metric"><div class="bt-val">'+(p.win_rate*100).toFixed(0)+'%</div><div class="bt-label">Win Rate</div></div>';
-    if(p.max_drawdown!=null)html+='<div class="bt-metric"><div class="bt-val bt-negative">'+fmtPct(p.max_drawdown)+'</div><div class="bt-label">Max Drawdown</div></div>';
+    html+='<div class="bt-metric"><div class="bt-val '+(p.portfolio_return>=0?'bt-positive':'bt-negative')+'">'+fmtPct(p.portfolio_return)+'</div><div class="bt-label">组合收益 Portfolio Return</div></div>';
+    html+='<div class="bt-metric"><div class="bt-val '+(p.spy_return>=0?'bt-positive':'bt-negative')+'">'+fmtPct(p.spy_return)+'</div><div class="bt-label">SPY收益 SPY Return</div></div>';
+    if(p.alpha!=null)html+='<div class="bt-metric"><div class="bt-val '+(p.alpha>=0?'bt-positive':'bt-negative')+'">'+fmtPct(p.alpha)+'</div><div class="bt-label">超额收益 Alpha</div></div>';
+    if(p.win_rate!=null)html+='<div class="bt-metric"><div class="bt-val">'+(p.win_rate*100).toFixed(0)+'%</div><div class="bt-label">胜率 Win Rate</div></div>';
+    if(p.max_drawdown!=null)html+='<div class="bt-metric"><div class="bt-val bt-negative">'+fmtPct(p.max_drawdown)+'</div><div class="bt-label">最大回撤 Max Drawdown</div></div>';
     html+='</div></div>';
   }
-  html+='<div style="font-size:.8rem;color:var(--text2);margin-top:8px">Picks: '+data.top_picks.join(', ')+'</div>';
+  html+='<div style="font-size:.8rem;color:var(--text2);margin-top:8px">精选 Picks: '+data.top_picks.join(', ')+'</div>';
   html+='</div>';
   cont.innerHTML=html;
 }
@@ -1068,8 +1070,8 @@ function renderRollingBacktest(data){
     if(h&&h.win_rate>bestWin){bestWin=h.win_rate;bestStrat=s}}
 
   // Strategy comparison table
-  let html='<div class="backtest-card"><div style="font-size:1.1rem;font-weight:700;margin-bottom:4px">📊 Rolling Backtest Results</div>';
-  html+='<div style="font-size:.8rem;color:var(--text2);margin-bottom:16px">'+data.periods_evaluated+' monthly periods · '+data.tickers_used+' stocks · Tested '+data.timestamp+'</div>';
+  let html='<div class="backtest-card"><div style="font-size:1.1rem;font-weight:700;margin-bottom:4px">📊 滚动回测结果 <span style="font-size:.8em;opacity:.7">Rolling Backtest Results</span></div>';
+  html+='<div style="font-size:.8rem;color:var(--text2);margin-bottom:16px">'+data.periods_evaluated+' 个月度周期 · '+data.tickers_used+' 只股票 · 测试于 '+data.timestamp+'</div>';
 
   // Horizon tabs
   html+='<div style="display:flex;gap:8px;margin-bottom:16px">';
@@ -1079,7 +1081,7 @@ function renderRollingBacktest(data){
   for(const h of horizons){
     const vis=h===horizon?'':'display:none;';
     html+='<div class="rolling-horizon" data-horizon="'+h+'" style="'+vis+'">';
-    html+='<table style="margin-bottom:16px"><thead><tr><th>Strategy</th><th>Win Rate</th><th>Avg Alpha</th><th>Sharpe</th><th>t-stat</th><th>p-value</th><th>Best</th><th>Worst</th></tr></thead><tbody>';
+    html+='<table style="margin-bottom:16px"><thead><tr><th>策略 Strategy</th><th>胜率 Win Rate</th><th>平均Alpha Avg Alpha</th><th>夏普 Sharpe</th><th>t统计 t-stat</th><th>p值 p-value</th><th>最佳 Best</th><th>最差 Worst</th></tr></thead><tbody>';
     for(const s of stratNames){
       const d=((strats[s]||{}).horizons||{})[h];
       if(!d||d.insufficient_data){
@@ -1113,7 +1115,7 @@ function renderRollingBacktest(data){
     // Monthly alpha bar chart for best strategy
     const bestPeriods=(strats[bestStrat]||{}).periods||[];
     if(bestPeriods.length>0){
-      html+='<div style="margin-top:16px"><div style="font-size:.85rem;font-weight:600;margin-bottom:8px">Monthly Alpha — '+emojis[bestStrat]+' '+bestStrat+'</div>';
+      html+='<div style="margin-top:16px"><div style="font-size:.85rem;font-weight:600;margin-bottom:8px">月度Alpha — '+emojis[bestStrat]+' '+bestStrat+'</div>';
       html+='<div style="display:flex;align-items:flex-end;gap:2px;height:120px;padding:0 4px;border-bottom:1px solid var(--border);position:relative">';
       // Zero line
       const alphas=bestPeriods.map(p=>p[h+'_alpha']).filter(a=>a!=null);
@@ -1170,7 +1172,7 @@ async function fetchFmpData(){
   const btn=document.getElementById('fmpFetchBtn');btn.classList.add('loading');btn.disabled=true;
   const limit=document.getElementById('fmpLimit').value;
   const res=document.getElementById('fmpResult');
-  res.innerHTML='<div style="color:var(--text2);font-size:.85rem">Fetching data... this may take a minute.</div>';
+  res.innerHTML='<div style="color:var(--text2);font-size:.85rem">获取数据中... 可能需要一分钟。Fetching data...</div>';
   try{
     const r=await fetch('/fmp/fetch?limit='+limit);
     if(!r.ok){res.innerHTML='<div style="color:var(--red)">Fetch failed.</div>';return}
@@ -1196,23 +1198,23 @@ async function loadAccuracy(){
     const r=await fetch('/accuracy');if(!r.ok){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>Failed</div></div>';return}
     const d=await r.json();
     if(!d.buy_signals||d.buy_signals===0){
-      cont.innerHTML='<div class="empty-state"><div class="icon">🎯</div><div>No signal history yet. Take a snapshot after running a scan to start tracking accuracy over time.</div></div>';
+      cont.innerHTML='<div class="empty-state"><div class="icon">🎯</div><div>暂无信号历史。运行扫描后拍摄快照以开始追踪准确率。<br><span style="font-size:.85em;opacity:.7">No signal history yet. Take a snapshot after running a scan to start tracking accuracy over time.</span></div></div>';
       return;
     }
-    let html='<div class="backtest-card"><div style="font-size:1.1rem;font-weight:700;margin-bottom:4px">🎯 Signal Accuracy</div>';
-    html+='<div style="font-size:.8rem;color:var(--text2);margin-bottom:16px">'+d.total_signals+' total signals · '+d.buy_signals+' buy signals · '+d.evaluated+' evaluated</div>';
+    let html='<div class="backtest-card"><div style="font-size:1.1rem;font-weight:700;margin-bottom:4px">🎯 信号准确率 <span style="font-size:.8em;opacity:.7">Signal Accuracy</span></div>';
+    html+='<div style="font-size:.8rem;color:var(--text2);margin-bottom:16px">'+d.total_signals+' 总信号 · '+d.buy_signals+' 买入信号 · '+d.evaluated+' 已评估 evaluated</div>';
     html+='<div class="backtest-grid">';
-    if(d.win_rate!=null)html+='<div class="bt-metric"><div class="bt-val '+(d.win_rate>=50?'bt-positive':'bt-negative')+'">'+d.win_rate+'%</div><div class="bt-label">Win Rate</div></div>';
-    if(d.avg_return!=null)html+='<div class="bt-metric"><div class="bt-val '+(d.avg_return>=0?'bt-positive':'bt-negative')+'">'+(d.avg_return>=0?'+':'')+d.avg_return+'%</div><div class="bt-label">Avg Return</div></div>';
-    if(d.avg_alpha!=null)html+='<div class="bt-metric"><div class="bt-val '+(d.avg_alpha>=0?'bt-positive':'bt-negative')+'">'+(d.avg_alpha>=0?'+':'')+d.avg_alpha+'%</div><div class="bt-label">Avg Alpha vs SPY</div></div>';
+    if(d.win_rate!=null)html+='<div class="bt-metric"><div class="bt-val '+(d.win_rate>=50?'bt-positive':'bt-negative')+'">'+d.win_rate+'%</div><div class="bt-label">胜率 Win Rate</div></div>';
+    if(d.avg_return!=null)html+='<div class="bt-metric"><div class="bt-val '+(d.avg_return>=0?'bt-positive':'bt-negative')+'">'+(d.avg_return>=0?'+':'')+d.avg_return+'%</div><div class="bt-label">平均回报 Avg Return</div></div>';
+    if(d.avg_alpha!=null)html+='<div class="bt-metric"><div class="bt-val '+(d.avg_alpha>=0?'bt-positive':'bt-negative')+'">'+(d.avg_alpha>=0?'+':'')+d.avg_alpha+'%</div><div class="bt-label">平均Alpha vs SPY</div></div>';
     html+='</div>';
     // Best/worst
-    if(d.best_pick)html+='<div style="margin-top:12px;font-size:.85rem">🏆 Best: <strong>'+d.best_pick.ticker+'</strong> +'+(d.best_pick.return_pct||0).toFixed(1)+'% ('+d.best_pick.date+')</div>';
-    if(d.worst_pick)html+='<div style="font-size:.85rem">📉 Worst: <strong>'+d.worst_pick.ticker+'</strong> '+(d.worst_pick.return_pct||0).toFixed(1)+'% ('+d.worst_pick.date+')</div>';
+    if(d.best_pick)html+='<div style="margin-top:12px;font-size:.85rem">🏆 最佳 Best: <strong>'+d.best_pick.ticker+'</strong> +'+(d.best_pick.return_pct||0).toFixed(1)+'% ('+d.best_pick.date+')</div>';
+    if(d.worst_pick)html+='<div style="font-size:.85rem">📉 最差 Worst: <strong>'+d.worst_pick.ticker+'</strong> '+(d.worst_pick.return_pct||0).toFixed(1)+'% ('+d.worst_pick.date+')</div>';
     // By strategy
     const strats=d.by_strategy||{};
     if(Object.keys(strats).length){
-      html+='<div style="margin-top:16px"><div style="font-weight:600;margin-bottom:8px">By Strategy</div><table><thead><tr><th>Strategy</th><th>Picks</th><th>Win Rate</th><th>Avg Return</th></tr></thead><tbody>';
+      html+='<div style="margin-top:16px"><div style="font-weight:600;margin-bottom:8px">按策略 By Strategy</div><table><thead><tr><th>策略 Strategy</th><th>精选 Picks</th><th>胜率 Win Rate</th><th>平均回报 Avg Return</th></tr></thead><tbody>';
       for(const[s,v]of Object.entries(strats)){
         html+='<tr><td>'+s+'</td><td>'+v.picks+'</td><td>'+(v.win_rate!=null?v.win_rate+'%':'—')+'</td><td>'+(v.avg_return!=null?(v.avg_return>=0?'+':'')+v.avg_return+'%':'—')+'</td></tr>';
       }
@@ -1220,7 +1222,7 @@ async function loadAccuracy(){
     }
     // Picks table
     if(d.picks&&d.picks.length){
-      html+='<div style="margin-top:16px"><div style="font-weight:600;margin-bottom:8px">Past Picks</div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Ticker</th><th>Signal</th><th>Entry</th><th>Current</th><th>Return</th><th>Alpha</th><th>Period</th></tr></thead><tbody>';
+      html+='<div style="margin-top:16px"><div style="font-weight:600;margin-bottom:8px">历史精选 Past Picks</div><div class="table-wrap"><table><thead><tr><th>日期 Date</th><th>代码 Ticker</th><th>信号 Signal</th><th>入场 Entry</th><th>当前 Current</th><th>回报 Return</th><th>Alpha</th><th>周期 Period</th></tr></thead><tbody>';
       d.picks.forEach(p=>{
         const rc=p.return_pct>=0?'bt-positive':'bt-negative';
         const ac=p.alpha_pct!=null?(p.alpha_pct>=0?'bt-positive':'bt-negative'):'';
@@ -1246,7 +1248,7 @@ async function loadDeepDive(){
   const ticker=document.getElementById('deepdiveInput').value.trim().toUpperCase();
   if(!ticker)return;
   const cont=document.getElementById('deepdiveContent');
-  cont.innerHTML='<div class="empty-state"><div class="icon">⏳</div><div>Loading deep dive for '+ticker+'...</div></div>';
+  cont.innerHTML='<div class="empty-state"><div class="icon">⏳</div><div>加载深度分析 Loading deep dive for '+ticker+'...</div></div>';
   
   const [dcfR,compsR,earningsR]=await Promise.allSettled([
     fetch('/dcf/'+ticker).then(r=>r.ok?r.json():null),
@@ -1257,7 +1259,7 @@ async function loadDeepDive(){
   const comps=compsR.status==='fulfilled'?compsR.value:null;
   const earnings=earningsR.status==='fulfilled'?earningsR.value:null;
 
-  if(!dcf&&!comps&&!earnings){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>No data available for '+ticker+'. Make sure the API endpoints are running.</div></div>';return}
+  if(!dcf&&!comps&&!earnings){cont.innerHTML='<div class="empty-state"><div class="icon">❌</div><div>'+ticker+' 无可用数据，请确保API端点正在运行。<br><span style="font-size:.85em;opacity:.7">No data available. Make sure the API endpoints are running.</span></div></div>';return}
 
   let html='';
 
@@ -1271,12 +1273,12 @@ async function loadDeepDive(){
   html+='<div><div style="font-size:1.8rem;font-weight:700">'+ticker+'</div><div style="font-size:1.1rem;color:var(--text2)">'+companyName+'</div>';
   if(sector) html+='<div style="font-size:.85rem;color:var(--text2);margin-top:4px">'+sector+(industry?' · '+industry:'')+'</div>';
   html+='</div>';
-  if(price) html+='<div style="text-align:right"><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Current Price</div><div style="font-size:2rem;font-weight:700">$'+parseFloat(price).toFixed(2)+'</div></div>';
+  if(price) html+='<div style="text-align:right"><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">当前价格 Current Price</div><div style="font-size:2rem;font-weight:700">$'+parseFloat(price).toFixed(2)+'</div></div>';
   html+='</div></div>';
 
   // === TL;DR Summary Card ===
   html+='<div style="margin-bottom:20px;padding:20px;background:var(--card);border-radius:12px;border:1px solid var(--border)">';
-  html+='<h3 style="margin:0 0 12px">📋 Summary</h3>';
+  html+='<h3 style="margin:0 0 12px">📋 摘要 <span style="font-size:.8em;opacity:.7">Summary</span></h3>';
   {
     const bullets=[];
     // DCF verdict
@@ -1322,32 +1324,32 @@ async function loadDeepDive(){
     const dcfMos=dcf?(dcf.margin_of_safety||0):0;
     const compsScore=comps?(comps.comps_score||comps.score||50):50;
     const beatRate=earnings?(earnings.beat_rate||50):50;
-    if(dcfMos>20&&compsScore>=60&&beatRate>=70){overallColor='var(--green)';overallIcon='🟢';overallText='Strong buy candidate — undervalued, cheap vs peers, and solid earnings.';}
-    else if(dcfMos>0&&compsScore>=50&&beatRate>=60){overallColor='var(--green)';overallIcon='🟡';overallText='Looks reasonable — slightly undervalued with decent fundamentals.';}
-    else if(dcfMos<-50&&compsScore<50){overallColor='var(--red)';overallIcon='🔴';overallText='Caution — overvalued by DCF and expensive vs peers.';}
-    else if(dcfMos<-30){overallColor='var(--red)';overallIcon='🟠';overallText='Overvalued by DCF, but peers are priced similarly. Sector might be expensive overall.';}
+    if(dcfMos>20&&compsScore>=60&&beatRate>=70){overallColor='var(--green)';overallIcon='🟢';overallText='强力买入候选 — 低估、相比同行便宜、盈利稳健。Strong buy candidate — undervalued, cheap vs peers, and solid earnings.';}
+    else if(dcfMos>0&&compsScore>=50&&beatRate>=60){overallColor='var(--green)';overallIcon='🟡';overallText='看起来合理 — 略微低估，基本面不错。Looks reasonable — slightly undervalued with decent fundamentals.';}
+    else if(dcfMos<-50&&compsScore<50){overallColor='var(--red)';overallIcon='🔴';overallText='注意 — DCF高估且相比同行偏贵。Caution — overvalued by DCF and expensive vs peers.';}
+    else if(dcfMos<-30){overallColor='var(--red)';overallIcon='🟠';overallText='DCF高估，但同行定价类似，行业整体可能偏贵。Overvalued by DCF, but peers are priced similarly.';}
     bullets.forEach(b=>{ html+='<div style="font-size:.9rem;margin-bottom:8px;line-height:1.5">'+b+'</div>'; });
-    html+='<div style="margin-top:12px;padding:12px;border-radius:8px;background:rgba(128,128,128,.08);font-size:1rem"><span style="font-size:1.2rem">'+overallIcon+'</span> <strong style="color:'+overallColor+'">Bottom Line:</strong> '+overallText+'</div>';
+    html+='<div style="margin-top:12px;padding:12px;border-radius:8px;background:rgba(128,128,128,.08);font-size:1rem"><span style="font-size:1.2rem">'+overallIcon+'</span> <strong style="color:'+overallColor+'">结论 Bottom Line:</strong> '+overallText+'</div>';
   }
   html+='</div>';
 
   html+='<div class="deepdive-panels">';
 
   // DCF Card
-  html+='<div class="deepdive-card"><h3>💎 DCF Valuation</h3>';
+  html+='<div class="deepdive-card"><h3>💎 DCF估值 <span style="font-size:.8em;opacity:.7">DCF Valuation</span></h3>';
   if(dcf){
     const mosColor=(dcf.margin_of_safety||0)>0?'var(--green)':'var(--red)';
     const verdictClass=(dcf.verdict||'').toLowerCase().includes('under')?'dcf-undervalued':'dcf-overvalued';
     html+='<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px">';
-    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Intrinsic Value</div><div style="font-size:1.8rem;font-weight:700">$'+(dcf.intrinsic_value||dcf.dcf_intrinsic||0).toFixed(2)+'</div></div>';
-    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Current Price</div><div style="font-size:1.8rem;font-weight:700">$'+(dcf.current_price||0).toFixed(2)+'</div></div>';
-    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Margin of Safety</div><div style="font-size:1.8rem;font-weight:700;color:'+mosColor+'">'+((dcf.margin_of_safety||0).toFixed(1))+'%</div></div>';
-    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Verdict</div><div style="font-size:1.2rem;font-weight:700"><span class="dcf-badge '+verdictClass+'">'+(dcf.verdict||dcf.dcf_verdict||'—')+'</span></div></div>';
-    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Confidence</div><div><span class="conf-badge conf-'+(dcf.confidence||dcf.dcf_confidence||'LOW')+'">'+(dcf.confidence||dcf.dcf_confidence||'—')+'</span></div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">内在价值 Intrinsic Value</div><div style="font-size:1.8rem;font-weight:700">$'+(dcf.intrinsic_value||dcf.dcf_intrinsic||0).toFixed(2)+'</div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">当前价格 Current Price</div><div style="font-size:1.8rem;font-weight:700">$'+(dcf.current_price||0).toFixed(2)+'</div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">安全边际 Margin of Safety</div><div style="font-size:1.8rem;font-weight:700;color:'+mosColor+'">'+((dcf.margin_of_safety||0).toFixed(1))+'%</div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">判定 Verdict</div><div style="font-size:1.2rem;font-weight:700"><span class="dcf-badge '+verdictClass+'">'+(dcf.verdict||dcf.dcf_verdict||'—')+'</span></div></div>';
+    html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">置信度 Confidence</div><div><span class="conf-badge conf-'+(dcf.confidence||dcf.dcf_confidence||'LOW')+'">'+(dcf.confidence||dcf.dcf_confidence||'—')+'</span></div></div>';
     html+='</div>';
     // Assumptions breakdown
     if(dcf.assumptions||dcf.wacc||dcf.growth_rate||dcf.terminal_growth){
-      html+='<div style="font-size:.85rem;color:var(--text2);border-top:1px solid var(--border);padding-top:12px"><strong>Assumptions:</strong><br>';
+      html+='<div style="font-size:.85rem;color:var(--text2);border-top:1px solid var(--border);padding-top:12px"><strong>假设 Assumptions:</strong><br>';
       const a=dcf.assumptions||dcf;
       if(a.wacc!=null)html+='WACC: '+(a.wacc*100).toFixed(1)+'% · ';
       if(a.growth_rate!=null)html+='Growth: '+(a.growth_rate*100).toFixed(1)+'% · ';
@@ -1361,7 +1363,7 @@ async function loadDeepDive(){
       const baseGrowth=dcf.assumptions?dcf.assumptions.growth_rate:null;
       const cp=dcf.current_price||0;
       html+='<div style="margin-top:16px;border-top:1px solid var(--border);padding-top:12px">';
-      html+='<div style="font-size:.85rem;font-weight:600;margin-bottom:8px">📊 Sensitivity Analysis <span style="font-weight:400;color:var(--text2)">(Intrinsic Value at different WACC × Growth Rate)</span></div>';
+      html+='<div style="font-size:.85rem;font-weight:600;margin-bottom:8px">📊 敏感性分析 Sensitivity Analysis <span style="font-weight:400;color:var(--text2)">(不同WACC×增长率下的内在价值)</span></div>';
       // Get WACC columns from first row
       const waccKeys=Object.keys(dcf.sensitivity[0].values);
       html+='<table style="font-size:.75rem;width:100%;border-collapse:collapse">';
@@ -1396,7 +1398,7 @@ async function loadDeepDive(){
       html+='</div>';
     }
     if(dcf.fcf_projections&&dcf.fcf_projections.length){
-      html+='<div style="margin-top:12px"><div style="font-size:.8rem;font-weight:600;margin-bottom:6px">Projected FCF</div>';
+      html+='<div style="margin-top:12px"><div style="font-size:.8rem;font-weight:600;margin-bottom:6px">预测自由现金流 Projected FCF</div>';
       html+='<div style="display:flex;align-items:flex-end;gap:4px;height:80px">';
       const maxFcf=Math.max(...dcf.fcf_projections.map(f=>Math.abs(f.value||f)));
       dcf.fcf_projections.forEach((f,i)=>{
@@ -1406,23 +1408,23 @@ async function loadDeepDive(){
       });
       html+='</div></div>';
     }
-  }else{html+='<div style="color:var(--text2)">DCF data not available for this ticker.</div>'}
+  }else{html+='<div style="color:var(--text2)">该代码无DCF数据。DCF data not available for this ticker.</div>'}
   html+='</div>';
 
   // Comps Card
-  html+='<div class="deepdive-card"><h3>📊 Comparable Analysis</h3>';
+  html+='<div class="deepdive-card"><h3>📊 可比分析 <span style="font-size:.8em;opacity:.7">Comparable Analysis</span></h3>';
   if(comps){
     if(comps.score!=null||comps.comps_score!=null){
       const cs=comps.score||comps.comps_score;
       html+='<div style="display:flex;gap:24px;margin-bottom:16px">';
-      html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Comps Score</div><div class="score '+scoreClass(cs)+'" style="font-size:1.8rem;font-weight:700">'+fmtScore(cs)+'</div></div>';
-      html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Verdict</div><div style="font-size:1.2rem;font-weight:700">'+(comps.verdict||comps.comps_verdict||'—')+'</div></div>';
+      html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">可比评分 Comps Score</div><div class="score '+scoreClass(cs)+'" style="font-size:1.8rem;font-weight:700">'+fmtScore(cs)+'</div></div>';
+      html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">判定 Verdict</div><div style="font-size:1.2rem;font-weight:700">'+(comps.verdict||comps.comps_verdict||'—')+'</div></div>';
       html+='</div>';
     }
     const peers=comps.peers||comps.comparables||[];
     if(peers.length){
-      html+='<div style="font-size:.8rem;font-weight:600;margin-bottom:8px">Peer Comparison</div>';
-      html+='<table style="font-size:.8rem"><thead><tr><th>Ticker</th><th>P/E</th><th>EV/EBITDA</th><th>P/S</th><th>Mkt Cap</th></tr></thead><tbody>';
+      html+='<div style="font-size:.8rem;font-weight:600;margin-bottom:8px">同行对比 Peer Comparison</div>';
+      html+='<table style="font-size:.8rem"><thead><tr><th>代码 Ticker</th><th>P/E</th><th>EV/EBITDA</th><th>P/S</th><th>市值 Mkt Cap</th></tr></thead><tbody>';
       peers.forEach(p=>{
         const isSelf=(p.ticker||'')===ticker;
         html+='<tr style="'+(isSelf?'background:rgba(99,102,241,.08);font-weight:600':'')+'">';
@@ -1434,25 +1436,25 @@ async function loadDeepDive(){
       });
       html+='</tbody></table>';
     }
-  }else{html+='<div style="color:var(--text2)">Comparable analysis not available for this ticker.</div>'}
+  }else{html+='<div style="color:var(--text2)">该代码无可比分析数据。Comparable analysis not available for this ticker.</div>'}
   html+='</div>';
 
   // Earnings Card
-  html+='<div class="deepdive-card"><h3>📈 Earnings Analysis</h3>';
+  html+='<div class="deepdive-card"><h3>📈 盈利分析 <span style="font-size:.8em;opacity:.7">Earnings Analysis</span></h3>';
   if(earnings){
     // Quality score + beat rate
     if(earnings.earnings_quality_score!=null||earnings.beat_rate!=null){
       html+='<div style="display:flex;gap:24px;margin-bottom:16px;flex-wrap:wrap">';
-      if(earnings.earnings_quality_score!=null)html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Quality Score</div><div style="font-size:1.8rem;font-weight:700">'+earnings.earnings_quality_score.toFixed(0)+'</div></div>';
-      if(earnings.beat_rate!=null)html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Beat Rate</div><div style="font-size:1.8rem;font-weight:700;color:var(--green)">'+earnings.beat_rate.toFixed(0)+'%</div></div>';
-      if(earnings.beat_count!=null)html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">Record</div><div style="font-size:1.2rem;font-weight:700">'+earnings.beat_count+' beats / '+earnings.miss_count+' misses</div></div>';
+      if(earnings.earnings_quality_score!=null)html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">质量评分 Quality Score</div><div style="font-size:1.8rem;font-weight:700">'+earnings.earnings_quality_score.toFixed(0)+'</div></div>';
+      if(earnings.beat_rate!=null)html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">超预期率 Beat Rate</div><div style="font-size:1.8rem;font-weight:700;color:var(--green)">'+earnings.beat_rate.toFixed(0)+'%</div></div>';
+      if(earnings.beat_count!=null)html+='<div><div style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">记录 Record</div><div style="font-size:1.2rem;font-weight:700">'+earnings.beat_count+' 超预期 beats / '+earnings.miss_count+' 不及预期 misses</div></div>';
       html+='</div>';
     }
     // Beat/miss history table
     const quarters=earnings.beat_miss_history||earnings.quarters||earnings.history||[];
     if(quarters.length){
-      html+='<h4 style="font-size:.85rem;margin:12px 0 8px">Beat/Miss History</h4>';
-      html+='<table style="font-size:.8rem"><thead><tr><th>Quarter</th><th>EPS Est</th><th>EPS Actual</th><th>Surprise</th><th>Result</th></tr></thead><tbody>';
+      html+='<h4 style="font-size:.85rem;margin:12px 0 8px">超预期/不及预期历史 Beat/Miss History</h4>';
+      html+='<table style="font-size:.8rem"><thead><tr><th>季度 Quarter</th><th>EPS预期 Est</th><th>EPS实际 Actual</th><th>惊喜 Surprise</th><th>结果 Result</th></tr></thead><tbody>';
       quarters.forEach(q=>{
         const surp=q.surprise_pct!=null?((q.surprise_pct>=0?'+':'')+(q.surprise_pct*100).toFixed(1)+'%'):'—';
         const surpColor=q.surprise_pct!=null?(q.surprise_pct>=0?'var(--green)':'var(--red)'):'';
@@ -1470,7 +1472,7 @@ async function loadDeepDive(){
     if(earnings.signals&&earnings.signals.length){
       html+='<div style="margin-top:8px;font-size:.85rem"><strong>Signals:</strong> '+earnings.signals.join(', ')+'</div>';
     }
-  }else{html+='<div style="color:var(--text2)">Earnings analysis not available for this ticker.</div>'}
+  }else{html+='<div style="color:var(--text2)">该代码无盈利分析数据。Earnings analysis not available for this ticker.</div>'}
   html+='</div>';
 
   html+='</div>';
@@ -1496,7 +1498,7 @@ showDetail=async function(ticker){
     if(s.comps_score!=null)extra+='<div class="metric-card"><div class="label">Comps Score</div><div class="value"><span class="score '+scoreClass(s.comps_score)+'">'+fmtScore(s.comps_score)+'</span></div></div>';
     if(s.comps_verdict)extra+='<div class="metric-card"><div class="label">Comps Verdict</div><div class="value">'+s.comps_verdict+'</div></div>';
     if(s.fcf_yield!=null)extra+='<div class="metric-card"><div class="label">FCF Yield</div><div class="value">'+(s.fcf_yield*100).toFixed(1)+'%</div></div>';
-    if(extra)grid.innerHTML='<div style="grid-column:1/-1;margin-top:12px"><h3 style="font-size:.9rem;color:var(--accent2);margin-bottom:8px">Valuation</h3><div class="modal-grid">'+extra+'</div></div>'+grid.innerHTML;
+    if(extra)grid.innerHTML='<div style="grid-column:1/-1;margin-top:12px"><h3 style="font-size:.9rem;color:var(--accent2);margin-bottom:8px">估值 Valuation</h3><div class="modal-grid">'+extra+'</div></div>'+grid.innerHTML;
   }
 };
 
@@ -1505,16 +1507,16 @@ loadCached();
 // === Momentum Radar ===
 async function loadMomentum(){
   const el=document.getElementById('momentumResults');
-  el.innerHTML='<div style="text-align:center;padding:40px;color:var(--text2)">Scanning top 100 stocks for momentum signals... (this takes 1-2 minutes)</div>';
+  el.innerHTML='<div style="text-align:center;padding:40px;color:var(--text2)">正在扫描前100只股票的动量信号... (需要1-2分钟)<br>Scanning top 100 stocks for momentum signals...</div>';
   try{
     const r=await fetch('/momentum/scan/20');
     const d=await r.json();
     if(!d.stocks||d.stocks.length===0){
-      el.innerHTML='<div class="empty-state"><div class="icon">📊</div><div>No stocks with significant momentum signals found.</div></div>';
+      el.innerHTML='<div class="empty-state"><div class="icon">📊</div><div>未发现有显著动量信号的股票。<br><span style="font-size:.85em;opacity:.7">No stocks with significant momentum signals found.</span></div></div>';
       return;
     }
-    let html='<div style="margin-bottom:12px;font-size:.85rem;color:var(--text2)">Found '+d.count+' stocks with momentum score ≥ 4</div>';
-    html+='<table class="scan-table"><thead><tr><th>Rank</th><th>Ticker</th><th>Momentum</th><th>Signal</th><th>Pipeline</th><th>Analyst ↑</th><th>Insider</th><th>Rev Accel</th><th>Earnings</th><th>Inst.</th></tr></thead><tbody>';
+    let html='<div style="margin-bottom:12px;font-size:.85rem;color:var(--text2)">发现 '+d.count+' 只动量评分≥4的股票 Found stocks with momentum score ≥ 4</div>';
+    html+='<table class="scan-table"><thead><tr><th>排名 Rank</th><th>代码 Ticker</th><th>动量 Momentum</th><th>信号 Signal</th><th>管道 Pipeline</th><th>分析师↑ Analyst</th><th>内部人 Insider</th><th>营收加速 Rev Accel</th><th>盈利 Earnings</th><th>机构 Inst.</th></tr></thead><tbody>';
     d.stocks.forEach((s,i)=>{
       const sig=s.signals||{};
       const ar=sig.analyst_revision||{};
