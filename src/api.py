@@ -1024,6 +1024,14 @@ def oil_monitor():
     return result or {"status": "unavailable"}
 
 
+@app.get("/risk/ceasefire")
+def ceasefire_monitor():
+    """Check for early ceasefire / war de-escalation signals."""
+    from .risk_manager import check_ceasefire_signals
+    result = check_ceasefire_signals()
+    return result or {"status": "unavailable"}
+
+
 @app.get("/risk/trailing-stops")
 def trailing_stops():
     """Check trailing stop alerts for all holdings."""

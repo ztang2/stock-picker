@@ -324,6 +324,134 @@ def check_oil_price_alert(threshold_drop_pct: float = -15.0) -> Optional[dict]:
         return None
 
 
+CEASEFIRE_STATE_FILE = DATA_DIR / "ceasefire_monitor.json"
+
+# Tickers sensitive to peace (energy beneficiaries that would dump on ceasefire)
+ENERGY_TICKERS = {"CF", "EQT", "CTRA", "RRC", "OXY", "DVN", "XOM", "CVX", "AR", "CNX",
+                  "FANG", "MPC", "VLO", "PSX", "HAL", "SLB", "BKR"}
+# Tickers that rally on peace
+PEACE_TICKERS = {"HST", "UAL", "DAL", "AAL", "LUV", "CCL", "RCL", "NCLH",
+                 "MAR", "HLT", "BKNG", "ABNB", "EXPE"}
+
+
+def check_ceasefire_signals() -> Optional[dict]:
+    """Detect early warning signals of potential ceasefire / war de-escalation.
+    
+    Monitors:
+    1. Oil price single-day drop > 5% (unusual without supply news)
+    2. VIX drop > 10% in a day (fear unwinding)
+    3. Defense stocks down + Travel stocks up (sector rotation = peace bet)
+    
+    Returns alert dict with urgency level, or None.
+    """
+    try:
+        # Fetch latest data
+        tickers_to_check = ["CL=F", "^VIX", "LMT", "NOC", "UAL", "DAL"]
+        data = yf.download(tickers_to_check, period="5d", progress=False)
+        if data is None or data.empty:
+            return None
+        
+        signals = []
+        signal_count = 0
+        
+        # 1. Oil single-day drop
+        try:
+            oil = data["Close"]["CL=F"].dropna()
+            if len(oil) >= 2:
+                oil_today = float(oil.iloc[-1])
+                oil_yesterday = float(oil.iloc[-2])
+                oil_change = ((oil_today - oil_yesterday) / oil_yesterday) * 100
+                if oil_change <= -5:
+                    signals.append(f"🛢️ Oil crashed {oil_change:.1f}% in one day (${oil_yesterday:.0f}→${oil_today:.0f})")
+                    signal_count += 2  # Strong signal
+                elif oil_change <= -3:
+                    signals.append(f"🛢️ Oil dropped {oil_change:.1f}% (${oil_yesterday:.0f}→${oil_today:.0f})")
+                    signal_count += 1
+        except Exception:
+            pass
+        
+        # 2. VIX drop
+        try:
+            vix = data["Close"]["^VIX"].dropna()
+            if len(vix) >= 2:
+                vix_today = float(vix.iloc[-1])
+                vix_yesterday = float(vix.iloc[-2])
+                vix_change = ((vix_today - vix_yesterday) / vix_yesterday) * 100
+                if vix_change <= -10:
+                    signals.append(f"📉 VIX crashed {vix_change:.1f}% ({vix_yesterday:.1f}→{vix_today:.1f}) — fear unwinding")
+                    signal_count += 2
+                elif vix_change <= -5:
+                    signals.append(f"📉 VIX dropped {vix_change:.1f}% ({vix_yesterday:.1f}→{vix_today:.1f})")
+                    signal_count += 1
+        except Exception:
+            pass
+        
+        # 3. Sector rotation: defense down + travel up
+        try:
+            defense_changes = []
+            travel_changes = []
+            for t in ["LMT", "NOC"]:
+                s = data["Close"][t].dropna()
+                if len(s) >= 2:
+                    chg = ((float(s.iloc[-1]) - float(s.iloc[-2])) / float(s.iloc[-2])) * 100
+                    defense_changes.append(chg)
+            for t in ["UAL", "DAL"]:
+                s = data["Close"][t].dropna()
+                if len(s) >= 2:
+                    chg = ((float(s.iloc[-1]) - float(s.iloc[-2])) / float(s.iloc[-2])) * 100
+                    travel_changes.append(chg)
+            
+            if defense_changes and travel_changes:
+                avg_defense = sum(defense_changes) / len(defense_changes)
+                avg_travel = sum(travel_changes) / len(travel_changes)
+                if avg_defense < -2 and avg_travel > 2:
+                    signals.append(f"🔄 Sector rotation: Defense {avg_defense:+.1f}% / Travel {avg_travel:+.1f}% — peace bet")
+                    signal_count += 2
+        except Exception:
+            pass
+        
+        # Save state
+        state = {
+            "checked_at": datetime.now().isoformat(),
+            "signal_count": signal_count,
+            "signals": signals,
+        }
+        try:
+            CEASEFIRE_STATE_FILE.write_text(json.dumps(state, indent=2))
+        except Exception:
+            pass
+        
+        # Determine urgency
+        if signal_count >= 4:
+            urgency = "CRITICAL"
+            msg = "🚨 CEASEFIRE WARNING — 多重信号指向战争可能结束！立即准备减仓能源股！"
+        elif signal_count >= 2:
+            urgency = "HIGH"  
+            msg = "⚠️ 停火预警 — 市场出现异常信号，密切关注新闻"
+        elif signal_count >= 1:
+            urgency = "MEDIUM"
+            msg = "🟡 注意：市场信号略有异常，继续观察"
+        else:
+            return {
+                "status": "OK",
+                "signal_count": 0,
+                "message": "No ceasefire signals detected",
+            }
+        
+        return {
+            "status": "CEASEFIRE_WARNING",
+            "urgency": urgency,
+            "signal_count": signal_count,
+            "signals": signals,
+            "message": msg,
+            "action": "Review energy positions (CF, EQT, CTRA). If ceasefire confirmed, sell within 30min-1hr.",
+        }
+        
+    except Exception as e:
+        logger.warning(f"Ceasefire signal check failed: {e}")
+        return None
+
+
 def check_position_limits(holdings: Dict[str, dict], prices: Optional[Dict[str, float]] = None,
                           extra_holdings: Optional[Dict[str, dict]] = None) -> List[dict]:
     """Check if any position exceeds the max position size limit.
@@ -419,6 +547,7 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
     position_alerts = check_position_limits(holdings, prices, extra_holdings)
     trailing_alerts = check_trailing_stops(all_holdings, prices)
     oil_alert = check_oil_price_alert()
+    ceasefire_alert = check_ceasefire_signals()
     
     # P&L summary
     total_invested = 0
@@ -465,6 +594,14 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
     risk_flags += len(trailing_triggered) * 20
     if oil_alert and oil_alert.get("status") == "OIL_PULLBACK_ALERT":
         risk_flags += 15
+    if ceasefire_alert and ceasefire_alert.get("status") == "CEASEFIRE_WARNING":
+        cf_urgency = ceasefire_alert.get("urgency", "")
+        if cf_urgency == "CRITICAL":
+            risk_flags += 30
+        elif cf_urgency == "HIGH":
+            risk_flags += 20
+        elif cf_urgency == "MEDIUM":
+            risk_flags += 10
     risk_score = max(0, 100 - risk_flags)
     
     return {
@@ -484,12 +621,14 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
         "trailing_stop_alerts": trailing_alerts,
         "position_alerts": position_alerts,
         "oil_monitor": oil_alert,
+        "ceasefire_monitor": ceasefire_alert,
         "warnings": {
             "stop_losses_triggered": len(stop_triggered),
             "approaching_stop_loss": len(stop_approaching),
             "over_position_limit": len(over_limit),
             "trailing_stops_triggered": len(trailing_triggered),
             "oil_pullback": oil_alert.get("status") == "OIL_PULLBACK_ALERT" if oil_alert else False,
+            "ceasefire_warning": ceasefire_alert.get("status") == "CEASEFIRE_WARNING" if ceasefire_alert else False,
         },
     }
 
