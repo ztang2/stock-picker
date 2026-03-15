@@ -1125,6 +1125,79 @@ def risk_positions():
     return {"positions": check_position_limits(holdings, extra_holdings=extra)}
 
 
+@app.get("/profit/status")
+def profit_status():
+    """Check profit-taking status for all holdings."""
+    from .profit_taker import check_profit_status, get_profit_summary
+    from .rebalance import load_holdings
+    
+    holdings = load_holdings()
+    alerts = check_profit_status(holdings)
+    summary = get_profit_summary(alerts)
+    
+    return {
+        "summary": summary,
+        "alerts": alerts,
+    }
+
+
+@app.get("/profit/{ticker}")
+def profit_ticker(ticker: str):
+    """Get profit-taking status for a single ticker."""
+    from .profit_taker import get_profit_status_single
+    from .rebalance import load_holdings
+    
+    holdings = load_holdings()
+    result = get_profit_status_single(ticker.upper(), holdings)
+    
+    if result is None:
+        raise HTTPException(status_code=404, detail=f"Ticker {ticker.upper()} not found in holdings")
+    
+    return result
+
+
+@app.get("/sizing/{ticker}")
+def sizing_ticker(
+    ticker: str,
+    portfolio_value: float = Query(default=10000, description="Total portfolio value"),
+    num_positions: int = Query(default=8, description="Number of positions in portfolio")
+):
+    """Get conviction score and recommended allocation for a single stock.
+    
+    Example: GET /sizing/AAPL?portfolio_value=50000&num_positions=10
+    """
+    result = get_single_ticker_sizing(ticker.upper(), portfolio_value, num_positions)
+    
+    if "error" in result:
+        raise HTTPException(status_code=404, detail=result["error"])
+    
+    return result
+
+
+@app.get("/sizing/portfolio")
+def sizing_portfolio(
+    portfolio_value: float = Query(default=10000, description="Total portfolio value"),
+    rebalance: bool = Query(default=False, description="Include rebalance suggestions")
+):
+    """Full portfolio sizing analysis with optional rebalance suggestions.
+    
+    Uses current holdings from holdings.json.
+    
+    Examples:
+    - GET /sizing/portfolio?portfolio_value=50000
+    - GET /sizing/portfolio?portfolio_value=50000&rebalance=true
+    """
+    if rebalance:
+        result = get_rebalance_suggestions(portfolio_value)
+    else:
+        result = get_portfolio_sizing(portfolio_value)
+    
+    if "error" in result:
+        raise HTTPException(status_code=400, detail=result["error"])
+    
+    return result
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("src.api:app", host="0.0.0.0", port=8000, reload=True)
