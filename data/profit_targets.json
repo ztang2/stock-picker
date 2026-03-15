@@ -1,0 +1,45 @@
+{
+  "EQT": {
+    "entry_price": 57.12,
+    "tiers_triggered": []
+  },
+  "CF": {
+    "entry_price": 97.8,
+    "tiers_triggered": [
+      1,
+      2
+    ],
+    "tier1_date": "2026-03-12",
+    "tier1_price": 135.29,
+    "tier2_date": "2026-03-15",
+    "tier2_price": 129.57
+  },
+  "NFLX": {
+    "entry_price": 80.51,
+    "tiers_triggered": [
+      1
+    ],
+    "tier1_date": "2026-03-15",
+    "tier1_price": 95.31
+  },
+  "INCY": {
+    "entry_price": 95.38,
+    "tiers_triggered": []
+  },
+  "CTRA": {
+    "entry_price": 31.68,
+    "tiers_triggered": []
+  },
+  "PCTY": {
+    "entry_price": 113.75,
+    "tiers_triggered": []
+  },
+  "QLYS": {
+    "entry_price": 97.67,
+    "tiers_triggered": []
+  },
+  "HST": {
+    "entry_price": 18.9,
+    "tiers_triggered": []
+  }
+}

@@ -549,6 +549,14 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
     oil_alert = check_oil_price_alert()
     ceasefire_alert = check_ceasefire_signals()
     
+    # Profit-taking alerts
+    profit_alerts = []
+    try:
+        from .profit_taker import check_profit_status, get_profit_summary
+        profit_alerts = check_profit_status(all_holdings)
+    except Exception as e:
+        logger.warning(f"Failed to check profit status: {e}")
+    
     # P&L summary
     total_invested = 0
     total_current = 0
@@ -622,6 +630,7 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
         "position_alerts": position_alerts,
         "oil_monitor": oil_alert,
         "ceasefire_monitor": ceasefire_alert,
+        "profit_alerts": profit_alerts,
         "warnings": {
             "stop_losses_triggered": len(stop_triggered),
             "approaching_stop_loss": len(stop_approaching),
@@ -629,6 +638,7 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
             "trailing_stops_triggered": len(trailing_triggered),
             "oil_pullback": oil_alert.get("status") == "OIL_PULLBACK_ALERT" if oil_alert else False,
             "ceasefire_warning": ceasefire_alert.get("status") == "CEASEFIRE_WARNING" if ceasefire_alert else False,
+            "profit_targets_hit": len([a for a in profit_alerts if a.get("status") == "TAKE_PROFIT"]) if profit_alerts else 0,
         },
     }
 
