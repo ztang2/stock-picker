@@ -37,6 +37,7 @@ from .dcf_valuation import run_dcf, get_dcf_summary
 from .comps_analysis import run_comps
 from .thesis_tracker import record_thesis, get_thesis, check_all_theses, close_thesis
 from .earnings_analysis import analyze_earnings
+from .position_sizing import get_single_ticker_sizing, get_portfolio_sizing, get_rebalance_suggestions
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -991,6 +992,15 @@ def early_momentum(ticker: str):
     """Get early momentum score for a single ticker."""
     from .early_momentum import compute_early_momentum
     return compute_early_momentum(ticker.upper())
+
+
+# === Entry Timing ===
+
+@app.get("/entry/{ticker}")
+def entry_timing(ticker: str):
+    """Get entry timing analysis for a ticker (RSI, support levels, MA distance, volume)."""
+    from .entry_timing import analyze_entry_timing
+    return analyze_entry_timing(ticker.upper())
 
 
 # === Company Intelligence ===
