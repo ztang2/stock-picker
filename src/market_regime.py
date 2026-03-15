@@ -460,3 +460,129 @@ def get_regime_sell_adjustments(regime: str) -> Dict:
             "rsi_threshold_offset": 0,
             "sell_score_multiplier": 1.0,
         }
+
+
+# ──────────────────────────────────────────────────────────────
+# Geopolitical Event Detection & Industry Impact
+# ──────────────────────────────────────────────────────────────
+
+# Event types and their trigger conditions (from regime signals)
+# Each event maps industries to score adjustments (+bonus or -penalty)
+GEOPOLITICAL_EVENTS = {
+    "oil_war": {
+        # Triggered when: oil signal <= -2 (oil surge) AND vix signal <= -1
+        "trigger": lambda scores: scores.get("oil", 0) <= -2 and scores.get("vix", 0) <= -1,
+        "name": "Oil/Energy Crisis (War/Sanctions)",
+        "beneficiaries": {
+            # Industries that profit from high oil prices
+            "Oil & Gas E&P": 5,
+            "Oil & Gas Integrated": 4,
+            "Oil & Gas Midstream": 4,
+            "Oil & Gas Refining & Marketing": 4,
+            "Oil & Gas Equipment & Services": 3,
+            "Agricultural Inputs": 4,       # CF — fertilizer tied to nat gas
+            "Uranium": 3,                   # Alternative energy demand
+            "Aerospace & Defense": 3,       # Military spending
+            "Thermal Coal": 3,
+        },
+        "casualties": {
+            # Industries hurt by high oil + war uncertainty
+            "Airlines": -5,
+            "Lodging": -4,                  # Hotels
+            "REIT - Hotel & Motel": -4,     # Hotel REITs (HST)
+            "Resorts & Casinos": -4,
+            "Leisure": -3,
+            "Travel Services": -4,
+            "Restaurants": -2,
+            "Trucking": -3,
+            "Auto Manufacturers": -3,
+            "Recreational Vehicles": -3,
+            "Marine Shipping": -2,          # Hormuz disruption
+            "Cruise Lines": -4,
+        },
+    },
+    "trade_war": {
+        # Triggered when: dxy signal >= +1 (strong dollar) AND composite <= -2
+        "trigger": lambda scores: scores.get("dxy", 0) >= 1 and scores.get("oil", 0) >= 0,
+        "name": "Trade War / Tariffs",
+        "beneficiaries": {
+            "Domestic Manufacturing": 3,
+            "Utilities - Regulated Electric": 2,
+            "Waste Management": 2,
+            "Discount Stores": 2,
+        },
+        "casualties": {
+            "Semiconductors": -3,
+            "Consumer Electronics": -3,
+            "Auto Parts": -3,
+            "Farm Products": -2,
+            "Luxury Goods": -2,
+        },
+    },
+    "recession_fear": {
+        # Triggered when: composite <= -4 AND us10y signal positive (yields rising or inverted)
+        "trigger": lambda scores: (scores.get("spy_trend", 0) + scores.get("spy_momentum", 0)) <= -3,
+        "name": "Recession / Market Crash",
+        "beneficiaries": {
+            "Discount Stores": 3,
+            "Utilities - Regulated Electric": 3,
+            "Gold": 4,
+            "Drug Manufacturers - General": 2,
+            "Household & Personal Products": 2,
+            "Food Distribution": 2,
+        },
+        "casualties": {
+            "Luxury Goods": -4,
+            "Apparel Retail": -3,
+            "Residential Construction": -3,
+            "Auto Manufacturers": -3,
+            "Banks - Regional": -2,
+        },
+    },
+}
+
+
+def detect_geopolitical_events(regime_data: dict) -> list:
+    """Detect active geopolitical events from regime signal scores.
+    
+    Returns list of active events with their industry adjustments.
+    """
+    if not regime_data:
+        return []
+
+    scores = regime_data.get("signal_scores", {})
+    if not scores:
+        return []
+
+    active_events = []
+    for event_id, event_cfg in GEOPOLITICAL_EVENTS.items():
+        try:
+            if event_cfg["trigger"](scores):
+                active_events.append({
+                    "event": event_id,
+                    "name": event_cfg["name"],
+                    "beneficiaries": event_cfg["beneficiaries"],
+                    "casualties": event_cfg["casualties"],
+                })
+                logger.info(f"Geopolitical event detected: {event_cfg['name']}")
+        except Exception:
+            pass
+
+    return active_events
+
+
+def get_geopolitical_adjustments(regime_data: dict) -> dict:
+    """Return a dict of {industry: score_adjustment} from all active events.
+    
+    Multiple events stack additively.
+    """
+    events = detect_geopolitical_events(regime_data)
+    adjustments = {}
+    
+    for event in events:
+        for industry, bonus in event["beneficiaries"].items():
+            adjustments[industry] = adjustments.get(industry, 0) + bonus
+        for industry, penalty in event["casualties"].items():
+            adjustments[industry] = adjustments.get(industry, 0) + penalty
+
+    return adjustments

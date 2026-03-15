@@ -26,7 +26,7 @@ from .earnings_guard import apply_earnings_guard
 from .freshness import check_freshness
 from .streak_tracker import update_streaks, add_streaks_to_results
 from .sentiment import score_analyst_sentiment
-from .market_regime import detect_market_regime
+from .market_regime import detect_market_regime, detect_geopolitical_events
 from .insider import get_combined_smart_money_score
 from .ml_model import predict_scores
 
@@ -348,8 +348,14 @@ def run_scan(
     # Compute sector-relative scores
     sector_scores = compute_sector_relative_scores(results)
 
+    # Detect geopolitical events and get industry adjustments
+    from .market_regime import get_geopolitical_adjustments
+    geo_adjustments = get_geopolitical_adjustments(regime_data)
+    if geo_adjustments:
+        logger.info(f"Geopolitical adjustments active: {len(geo_adjustments)} industries affected")
+
     # Score and rank (on filtered set), passing sector scores for sector-relative weighting
-    ranked_df = compute_composite(filtered, weights, strategy=strategy, sector_scores=sector_scores, regime=regime)
+    ranked_df = compute_composite(filtered, weights, strategy=strategy, sector_scores=sector_scores, regime=regime, geo_adjustments=geo_adjustments)
     
     # --- ML Integration with Adaptive Weighting ---
     # Count daily snapshots to determine ML weight
@@ -793,6 +799,8 @@ def run_scan(
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "strategy": strategy,
         "market_regime": regime_data,
+        "geopolitical_events": detect_geopolitical_events(regime_data) if regime_data else [],
+        "geo_adjustments": geo_adjustments if geo_adjustments else {},
         "stocks_analyzed": len(results),
         "stocks_after_filter": len(filtered),
         "sanity_warnings": sanity_warnings,

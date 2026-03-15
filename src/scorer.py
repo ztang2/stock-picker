@@ -22,6 +22,7 @@ def compute_composite(
     strategy: str = "balanced",
     sector_scores: Optional[dict] = None,
     regime: Optional[str] = None,
+    **kwargs,
 ) -> pd.DataFrame:
     """Take list of per-stock result dicts and produce ranked DataFrame.
 
@@ -142,6 +143,21 @@ def compute_composite(
     detail_map = {r["ticker"]: r for r in results}
     df["momentum_bonus"] = df["ticker"].map(lambda t: _momentum_bonus(detail_map.get(t, {})))
     df["composite"] = df["composite"] + df["momentum_bonus"]
+
+    # Geopolitical event adjustments (industry-level bonus/penalty)
+    geo_adjustments = kwargs.get("geo_adjustments", {})
+    if geo_adjustments:
+        def _geo_bonus(ticker: str) -> float:
+            r = detail_map.get(ticker, {})
+            industry = (r.get("info_cache") or {}).get("industry") or r.get("industry", "")
+            return geo_adjustments.get(industry, 0)
+        df["geo_bonus"] = df["ticker"].map(_geo_bonus)
+        df["composite"] = df["composite"] + df["geo_bonus"]
+        adjusted = df[df["geo_bonus"] != 0]
+        if len(adjusted) > 0:
+            logger.info(f"Geopolitical adjustments applied to {len(adjusted)} stocks "
+                       f"(range: {adjusted['geo_bonus'].min():+.0f} to {adjusted['geo_bonus'].max():+.0f})")
+
     df["composite"] = df["composite"].clip(lower=0)
 
     df = df.sort_values("composite", ascending=False).reset_index(drop=True)
