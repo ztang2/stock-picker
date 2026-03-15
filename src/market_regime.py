@@ -29,6 +29,7 @@ MACRO_TICKERS = {
     "us10y": "^TNX",      # 10-Year Treasury Yield
     "dxy": "DX-Y.NYB",    # US Dollar Index
     "oil": "CL=F",        # WTI Crude Oil Futures
+    "qqq": "QQQ",         # Nasdaq 100 ETF (tech momentum)
 }
 
 
@@ -231,6 +232,54 @@ def _score_oil(oil_data: dict) -> Dict:
     return {"signal": signal, "score": score, "note": note}
 
 
+def _score_tech_momentum(qqq_data: dict, spy_hist: pd.DataFrame) -> Dict:
+    """Score Tech Momentum: QQQ performance relative to SPY.
+
+    Measures whether money is flowing into tech or out of tech.
+    QQQ outperforming SPY = tech momentum positive.
+    """
+    try:
+        qqq_change_20d = qqq_data["change_20d_pct"]
+        qqq_current = qqq_data["current"]
+
+        # SPY 20-day change
+        spy_close = spy_hist["Close"]
+        if len(spy_close) < 20:
+            return {"signal": "unknown", "score": 0, "note": "Insufficient SPY data"}
+        spy_20d_ago = float(spy_close.iloc[-20])
+        spy_now = float(spy_close.iloc[-1])
+        spy_change_20d = ((spy_now - spy_20d_ago) / spy_20d_ago) * 100
+
+        # QQQ vs SPY relative performance
+        relative = qqq_change_20d - spy_change_20d
+
+        score = 0
+        if relative > 5:
+            score = 2
+            signal = "tech_boom"
+            note = f"QQQ ${qqq_current:.0f} — TECH BOOM (QQQ {qqq_change_20d:+.1f}% vs SPY {spy_change_20d:+.1f}%, spread +{relative:.1f}%)"
+        elif relative > 2:
+            score = 1
+            signal = "tech_leading"
+            note = f"QQQ ${qqq_current:.0f} — tech leading (QQQ {qqq_change_20d:+.1f}% vs SPY {spy_change_20d:+.1f}%)"
+        elif relative < -5:
+            score = -2
+            signal = "tech_crash"
+            note = f"QQQ ${qqq_current:.0f} — TECH CRASH (QQQ {qqq_change_20d:+.1f}% vs SPY {spy_change_20d:+.1f}%, spread {relative:.1f}%)"
+        elif relative < -2:
+            score = -1
+            signal = "tech_lagging"
+            note = f"QQQ ${qqq_current:.0f} — tech lagging (QQQ {qqq_change_20d:+.1f}% vs SPY {spy_change_20d:+.1f}%)"
+        else:
+            signal = "neutral"
+            note = f"QQQ ${qqq_current:.0f} — in line with SPY (spread {relative:+.1f}%)"
+
+        return {"signal": signal, "score": score, "note": note}
+    except Exception as e:
+        logger.warning(f"Tech momentum scoring failed: {e}")
+        return {"signal": "error", "score": 0, "note": f"Tech momentum error: {e}"}
+
+
 def detect_market_regime(spy_hist: pd.DataFrame) -> Dict:
     """Detect current market regime based on 7 macro signals.
 
@@ -311,6 +360,7 @@ def detect_market_regime(spy_hist: pd.DataFrame) -> Dict:
         yield_signal = _score_yields(macro_data["us10y"]) if "us10y" in macro_data else None
         dxy_signal = _score_dxy(macro_data["dxy"]) if "dxy" in macro_data else None
         oil_signal = _score_oil(macro_data["oil"]) if "oil" in macro_data else None
+        tech_signal = _score_tech_momentum(macro_data["qqq"], spy_hist) if "qqq" in macro_data else None
 
         # === FRED economic data (optional, non-blocking) ===
         fred_summary = None
@@ -336,6 +386,8 @@ def detect_market_regime(spy_hist: pd.DataFrame) -> Dict:
             scores["dxy"] = dxy_signal["score"]
         if oil_signal:
             scores["oil"] = oil_signal["score"]
+        if tech_signal:
+            scores["tech_momentum"] = tech_signal["score"]
         if fred_summary and "composite_score" in fred_summary:
             # Clamp FRED score to ±3 to not overwhelm market signals
             fred_score = max(-3, min(3, fred_summary["composite_score"]))
@@ -379,6 +431,8 @@ def detect_market_regime(spy_hist: pd.DataFrame) -> Dict:
             parts.append(oil_signal["note"])
         if dxy_signal:
             parts.append(dxy_signal["note"])
+        if tech_signal:
+            parts.append(tech_signal["note"])
 
         description = " | ".join(parts)
 
@@ -499,6 +553,51 @@ GEOPOLITICAL_EVENTS = {
             "Recreational Vehicles": -3,
             "Marine Shipping": -2,          # Hormuz disruption
             "Cruise Lines": -4,
+        },
+    },
+    "tech_boom": {
+        # Triggered when: tech_momentum >= +2 (QQQ crushing SPY)
+        "trigger": lambda scores: scores.get("tech_momentum", 0) >= 2,
+        "name": "Tech / AI Boom",
+        "beneficiaries": {
+            "Semiconductors": 5,
+            "Semiconductor Equipment & Materials": 4,
+            "Software - Application": 3,
+            "Software - Infrastructure": 3,
+            "Information Technology Services": 3,
+            "Electronic Components": 2,
+            "Communication Equipment": 2,
+            "Cloud Computing": 4,
+            "Computer Hardware": 2,
+            "Scientific & Technical Instruments": 2,
+            "Solar": 2,                     # Tech-adjacent clean energy
+        },
+        "casualties": {
+            # When money flows to tech, it flows out of:
+            "Utilities - Regulated Electric": -2,
+            "Oil & Gas E&P": -1,            # Mild rotation out
+            "Banks - Regional": -1,
+            "REIT - Retail": -1,
+        },
+    },
+    "tech_crash": {
+        # Triggered when: tech_momentum <= -2 (QQQ crashing vs SPY)
+        "trigger": lambda scores: scores.get("tech_momentum", 0) <= -2,
+        "name": "Tech Selloff / Rotation Out",
+        "beneficiaries": {
+            "Utilities - Regulated Electric": 3,
+            "Consumer Defensive": 2,
+            "Gold": 2,
+            "Insurance - Diversified": 2,
+            "Household & Personal Products": 2,
+        },
+        "casualties": {
+            "Semiconductors": -4,
+            "Semiconductor Equipment & Materials": -3,
+            "Software - Application": -3,
+            "Software - Infrastructure": -3,
+            "Information Technology Services": -2,
+            "Cloud Computing": -3,
         },
     },
     "trade_war": {
