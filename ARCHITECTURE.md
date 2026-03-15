@@ -1,6 +1,6 @@
 # Stock Picker — Architecture Guide
 
-> 最后更新: 2026-02-28
+> 最后更新: 2026-03-15
 > 参考: Anthropic financial-services-plugins 架构思路，自主实现
 
 ## 概览
@@ -187,6 +187,38 @@ Bear regime自动调高估值+风险权重，降低成长+技术面权重。
 - Insider trading: buy/sell ratio, net shares
 - Composite score bonus: ±2 to ±5（根据策略）
 
+### 入场时机 (`src/entry_timing.py`) — 3/15新增
+- RSI超卖检测（<30=强买入区，>70=等回调）
+- 支撑位识别（MA20/MA50、近期摆动低点、整数关口）
+- MA距离分析（>5%高于MA20 = 等回调）
+- 成交量确认（放量下跌=恐慌抛售=好入场）
+- 综合入场评分0-100（80+=立刻买，<40=等回调）
+- **不影响pipeline评分**，独立API供参考
+
+### 仓位管理 (`src/position_sizing.py`) — 3/15新增
+- 确信度评分0-100（pipeline分+信号强度+momentum+Piotroski质量）
+- 仓位分配：确信度>80 = 1.5×基准，<40 = 0.7×基准
+- 硬限制：单股最低3%、最高15%
+- 再平衡建议：对比当前vs建议配比，尊重30天持有期
+- **不影响pipeline评分**，独立API供参考
+
+### 自动止盈 (`src/profit_taker.py`) — 3/15新增
+- 三档止盈：+20%卖1/3，+30%再卖1/3，+50%清仓
+- Beta动态调整：高beta(>1.2)收紧至+15%/+25%/+40%，低beta(<0.6)放宽至+25%/+35%/+60%
+- 状态追踪：`data/profit_targets.json`记录已触发的档位
+- **不影响pipeline评分**，独立API供参考
+
+### 地缘政治事件检测 (`src/market_regime.py` 扩展) — 3/15新增
+- 5种事件：Oil War、Tech Boom、Tech Crash、Trade War、Recession
+- 从9个macro信号自动检测（新增第9信号：QQQ vs SPY科技动量）
+- 行业级加减分（如Oil War: E&P +5, Airlines -5）
+- **直接影响pipeline评分** — 通过`geo_adjustments`加入composite score
+
+### 停火预警 (`src/risk_manager.py` 扩展) — 3/15新增
+- 3个信号：油价单日暴跌、VIX骤降、军工跌+航空涨
+- 信号累计 → 4+=CRITICAL, 2+=HIGH, 1+=MEDIUM
+- 集成到`/risk/summary`，Robin crons自动读取
+
 ### 卖出信号 (`src/sell_signals.py` + `src/rebalance.py`)
 - Tolerance Band: 连续5天跌出Top 20 → 触发卖出评估
 - 30天最短持有期
@@ -211,6 +243,12 @@ FastAPI server, 默认 `http://localhost:8000`
 | `GET /alerts` | 警报 |
 | `GET /momentum/scan/{n}` | Momentum雷达扫描（必须在/{ticker}前注册） |
 | `GET /momentum/{ticker}` | 单股momentum评分 |
+| `GET /entry/{ticker}` | 入场时机评分（RSI/支撑位/MA距离/成交量） |
+| `GET /sizing/{ticker}` | 单股确信度+建议仓位 |
+| `GET /sizing/portfolio` | 全仓位分析+再平衡建议（?rebalance=true） |
+| `GET /profit/status` | 全持仓止盈状态 |
+| `GET /profit/{ticker}` | 单股止盈目标状态 |
+| `GET /risk/ceasefire` | 停火预警信号检测 |
 
 ## Dashboard (`static/index.html`)
 
