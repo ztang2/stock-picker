@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Picker — UI Playground</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== THEME SYSTEM ===== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+/* --- Theme A: Bloomberg Terminal --- */
+:root[data-theme="bloomberg"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface2: #111111;
+  --border: #1a1a1a;
+  --text: #00ff41;
+  --text2: #00b32c;
+  --text3: #006618;
+  --accent: #00ff41;
+  --green: #00ff41;
+  --red: #ff2222;
+  --yellow: #ffcc00;
+  --blue: #00aaff;
+  --orange: #ff8800;
+  --font-main: 'JetBrains Mono', monospace;
+  --font-num: 'JetBrains Mono', monospace;
+  --radius: 2px;
+  --radius-card: 2px;
+  --shadow: none;
+  --header-border: 1px solid #00ff41;
+  --card-border: 1px solid #1a3a1a;
+  --badge-buy: #003300;
+  --badge-buy-text: #00ff41;
+  --badge-hold: #1a1a00;
+  --badge-hold-text: #ffcc00;
+  --badge-sell: #1a0000;
+  --badge-sell-text: #ff2222;
+}
+
+/* --- Theme B: Modern Finance --- */
+:root[data-theme="modern"] {
+  --bg: #0f1117;
+  --surface: #161b22;
+  --surface2: #1c2128;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --text3: #484f58;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --red: #f85149;
+  --yellow: #d29922;
+  --blue: #58a6ff;
+  --orange: #db6d28;
+  --font-main: 'Space Grotesk', sans-serif;
+  --font-num: 'JetBrains Mono', monospace;
+  --radius: 6px;
+  --radius-card: 12px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --header-border: 1px solid #30363d;
+  --card-border: 1px solid #30363d;
+  --badge-buy: rgba(63,185,80,0.15);
+  --badge-buy-text: #3fb950;
+  --badge-hold: rgba(210,153,34,0.15);
+  --badge-hold-text: #d29922;
+  --badge-sell: rgba(248,81,73,0.15);
+  --badge-sell-text: #f85149;
+}
+
+/* --- Theme C: Luxury Dark --- */
+:root[data-theme="luxury"] {
+  --bg: #050810;
+  --surface: #0b0f1a;
+  --surface2: #111827;
+  --border: rgba(99,179,237,0.1);
+  --text: #f0f4ff;
+  --text2: #94a3b8;
+  --text3: #475569;
+  --accent: #00d2ff;
+  --green: #00e5a0;
+  --red: #ff4d6d;
+  --yellow: #ffd60a;
+  --blue: #00d2ff;
+  --orange: #ff9500;
+  --font-main: 'Instrument Sans', sans-serif;
+  --font-num: 'JetBrains Mono', monospace;
+  --radius: 8px;
+  --radius-card: 16px;
+  --shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,179,237,0.05);
+  --header-border: 1px solid rgba(99,179,237,0.12);
+  --card-border: 1px solid rgba(99,179,237,0.08);
+  --badge-buy: rgba(0,229,160,0.1);
+  --badge-buy-text: #00e5a0;
+  --badge-hold: rgba(255,214,10,0.1);
+  --badge-hold-text: #ffd60a;
+  --badge-sell: rgba(255,77,109,0.1);
+  --badge-sell-text: #ff4d6d;
+}
+
+/* ===== THEME SWITCHER ===== */
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.switcher {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
+  background: rgba(0,0,0,0.8);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 6px;
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+}
+.switcher button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #aaa;
+  background: transparent;
+  letter-spacing: 0.02em;
+}
+.switcher button.active { background: rgba(255,255,255,0.15); color: #fff; }
+.switcher button:hover:not(.active) { background: rgba(255,255,255,0.05); color: #fff; }
+
+/* ===== LAYOUT ===== */
+.shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: var(--header-border);
+  margin-bottom: 24px;
+  position: relative;
+}
+
+[data-theme="bloomberg"] .header::before {
+  content: '[ STOCK PICKER TERMINAL v2.4 ]';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.2em;
+  top: 4px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+[data-theme="bloomberg"] .logo {
+  color: var(--green);
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+}
+
+[data-theme="modern"] .logo {
+  background: linear-gradient(135deg, #58a6ff, #79c0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="luxury"] .logo {
+  background: linear-gradient(135deg, #00d2ff, #00e5a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: var(--text2);
+}
+
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  display: inline-block;
+  margin-right: 6px;
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* ===== SUMMARY CARDS ===== */
+.summary-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  padding: 16px 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="luxury"] .stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,210,255,0.3), transparent);
+}
+
+[data-theme="bloomberg"] .stat-card {
+  border-left: 2px solid var(--accent);
+  padding-left: 12px;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+[data-theme="bloomberg"] .stat-label {
+  color: var(--text3);
+  font-size: 0.65rem;
+}
+
+.stat-value {
+  font-family: var(--font-num);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+[data-theme="bloomberg"] .stat-value { font-size: 1.3rem; }
+
+.stat-sub {
+  font-size: 0.72rem;
+  color: var(--text2);
+  margin-top: 4px;
+  font-family: var(--font-num);
+}
+
+.up { color: var(--green); }
+.down { color: var(--red); }
+.neutral { color: var(--yellow); }
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text2);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: var(--card-border);
+}
+
+[data-theme="bloomberg"] .section-title {
+  color: var(--accent);
+  border-color: var(--text3);
+}
+
+/* ===== STOCK TABLE (Bloomberg) ===== */
+[data-theme="bloomberg"] .stock-grid { display: none; }
+[data-theme="bloomberg"] .stock-table { display: table; }
+[data-theme="modern"] .stock-table { display: none; }
+[data-theme="luxury"] .stock-table { display: none; }
+[data-theme="modern"] .stock-grid { display: grid; }
+[data-theme="luxury"] .stock-grid { display: grid; }
+
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stock-table th {
+  text-align: left;
+  padding: 6px 10px;
+  color: var(--text3);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #1a1a1a;
+  font-weight: 400;
+}
+
+.stock-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #0d0d0d;
+  vertical-align: middle;
+}
+
+.stock-table tr:hover td { background: #0a1a0a; }
+
+.rank-num {
+  color: var(--text3);
+  font-size: 0.75rem;
+}
+
+/* ===== STOCK GRID (Modern + Luxury) ===== */
+.stock-grid {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+}
+
+.stock-card {
+  background: var(--surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.stock-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+
+[data-theme="luxury"] .stock-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  background: linear-gradient(135deg, rgba(0,210,255,0.03), transparent);
+  pointer-events: none;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.ticker-big {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: var(--font-num);
+  letter-spacing: -0.02em;
+}
+
+.company-name {
+  font-size: 0.75rem;
+  color: var(--text2);
+  margin-top: 2px;
+}
+
+.score-circle {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-num);
+  position: relative;
+}
+
+[data-theme="modern"] .score-circle {
+  background: rgba(63,185,80,0.1);
+  border: 2px solid rgba(63,185,80,0.3);
+}
+
+[data-theme="luxury"] .score-circle {
+  background: rgba(0,229,160,0.08);
+  border: 1.5px solid rgba(0,229,160,0.25);
+}
+
+.score-num {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.score-label-small {
+  font-size: 0.5rem;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.metric-box {
+  background: var(--surface2);
+  border-radius: var(--radius);
+  padding: 7px 8px;
+  text-align: center;
+}
+
+[data-theme="luxury"] .metric-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.metric-val {
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-num);
+  display: block;
+}
+
+.metric-key {
+  font-size: 0.6rem;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== BADGE ===== */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge-buy { background: var(--badge-buy); color: var(--badge-buy-text); }
+.badge-hold { background: var(--badge-hold); color: var(--badge-hold-text); }
+.badge-sell { background: var(--badge-sell); color: var(--badge-sell-text); }
+.badge-strong { background: rgba(0,210,255,0.1); color: #00d2ff; }
+
+[data-theme="bloomberg"] .badge {
+  border-radius: 0;
+  border: 1px solid currentColor;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== SPARKLINE ===== */
+.sparkline {
+  width: 80px;
+  height: 28px;
+  display: inline-block;
+}
+
+/* ===== HOLDINGS SECTION ===== */
+.holdings-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.holding-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  padding: 10px 14px;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  min-width: 160px;
+}
+
+[data-theme="bloomberg"] .holding-pill {
+  border-radius: 0;
+  border-color: #1a3a1a;
+  min-width: auto;
+  gap: 16px;
+}
+
+.holding-ticker {
+  font-family: var(--font-num);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.holding-pnl {
+  font-family: var(--font-num);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ===== REGIME BANNER ===== */
+.regime-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+  background: rgba(255,77,109,0.08);
+  border: 1px solid rgba(255,77,109,0.2);
+  color: #ff4d6d;
+}
+
+[data-theme="bloomberg"] .regime-banner {
+  border-radius: 0;
+  border-left: 3px solid #ff2222;
+  background: #0d0000;
+  color: #ff2222;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.regime-icon { font-size: 1rem; }
+
+/* ===== BLOOMBERG SPECIFIC ===== */
+[data-theme="bloomberg"] {
+  --bg: #000;
+}
+
+[data-theme="bloomberg"] .shell {
+  max-width: 1200px;
+}
+
+.blm-row {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 16px;
+}
+
+.blm-sidebar {
+  display: none;
+}
+
+[data-theme="bloomberg"] .blm-sidebar { display: block; }
+
+.sidebar-widget {
+  background: var(--surface);
+  border: 1px solid #1a1a1a;
+  border-left: 2px solid var(--accent);
+  padding: 12px;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.sidebar-title {
+  color: var(--accent);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 6px;
+}
+
+.sidebar-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  border-bottom: 1px dotted #111;
+  color: var(--text2);
+}
+
+.sidebar-row span:last-child { color: var(--text); }
+
+/* ===== LUXURY GLOW ===== */
+[data-theme="luxury"] .stat-card:nth-child(1) { border-color: rgba(0,229,160,0.15); }
+[data-theme="luxury"] .stat-card:nth-child(2) { border-color: rgba(0,210,255,0.15); }
+[data-theme="luxury"] .stat-card:nth-child(3) { border-color: rgba(0,229,160,0.1); }
+[data-theme="luxury"] .stat-card:nth-child(4) { border-color: rgba(255,214,10,0.1); }
+
+[data-theme="luxury"] body {
+  background-image:
+    radial-gradient(ellipse 800px 600px at 20% 20%, rgba(0,210,255,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 400px at 80% 80%, rgba(0,229,160,0.03) 0%, transparent 60%);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .summary-row { grid-template-columns: repeat(2, 1fr); }
+  .stock-grid { grid-template-columns: 1fr !important; }
+  .blm-row { grid-template-columns: 1fr; }
+  .blm-sidebar { display: none !important; }
+}
+
+</style>
+</head>
+<body>
+<div data-theme="modern" id="app">
+
+<!-- THEME SWITCHER -->
+<div class="switcher">
+  <button onclick="setTheme('bloomberg')" id="btn-bloomberg">📟 Terminal</button>
+  <button onclick="setTheme('modern')" id="btn-modern" class="active">📊 Modern</button>
+  <button onclick="setTheme('luxury')" id="btn-luxury">✨ Luxury</button>
+</div>
+
+<div class="shell">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">股票选手 Stock Picker</div>
+    <div class="header-meta">
+      <span><span class="status-dot"></span>Live</span>
+      <span style="font-family:var(--font-num)">SPY $541.22 <span class="down">-1.27%</span></span>
+      <span>Mar 15, 2026</span>
+    </div>
+  </div>
+
+  <!-- REGIME BANNER -->
+  <div class="regime-banner">
+    <span class="regime-icon">🐻</span>
+    <strong>BEAR MARKET</strong> — SPY below 200-day MA. Defensive weighting active.
+    &nbsp;|&nbsp; Oil: $98.92 &nbsp;|&nbsp; VIX: 24.3
+  </div>
+
+  <!-- HOLDINGS STRIP -->
+  <div class="section-title">💼 Your Holdings</div>
+  <div class="holdings-row">
+    <div class="holding-pill">
+      <div>
+        <div class="holding-ticker">CF</div>
+        <div style="font-size:0.65rem;color:var(--text2)">Basic Materials</div>
+      </div>
+      <div>
+        <div class="holding-pnl up">+32.5%</div>
+        <div style="font-size:0.65rem;color:var(--text2)">+$143</div>
+      </div>
+    </div>
+    <div class="holding-pill">
+      <div>
+        <div class="holding-ticker">NFLX</div>
+        <div style="font-size:0.65rem;color:var(--text2)">Technology</div>
+      </div>
+      <div>
+        <div class="holding-pnl up">+18.4%</div>
+        <div style="font-size:0.65rem;color:var(--text2)">+$592</div>
+      </div>
+    </div>
+    <div class="holding-pill">
+      <div>
+        <div class="holding-ticker">EQT</div>
+        <div style="font-size:0.65rem;color:var(--text2)">Energy</div>
+      </div>
+      <div>
+        <div class="holding-pnl up">+12.7%</div>
+        <div style="font-size:0.65rem;color:var(--text2)">+$89</div>
+      </div>
+    </div>
+    <div class="holding-pill">
+      <div>
+        <div class="holding-ticker">INCY</div>
+        <div style="font-size:0.65rem;color:var(--text2)">Healthcare</div>
+      </div>
+      <div>
+        <div class="holding-pnl down">-3.0%</div>
+        <div style="font-size:0.65rem;color:var(--text2)">-$28</div>
+      </div>
+    </div>
+    <div class="holding-pill">
+      <div>
+        <div class="holding-ticker">PCTY</div>
+        <div style="font-size:0.65rem;color:var(--text2)">Technology</div>
+      </div>
+      <div>
+        <div class="holding-pnl down">-3.8%</div>
+        <div style="font-size:0.65rem;color:var(--text2)">-$28</div>
+      </div>
+    </div>
+    <div class="holding-pill">
+      <div>
+        <div class="holding-ticker">CTRA</div>
+        <div style="font-size:0.65rem;color:var(--text2)">Energy</div>
+      </div>
+      <div>
+        <div class="holding-pnl up">+1.5%</div>
+        <div style="font-size:0.65rem;color:var(--text2)">+$12</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY STATS -->
+  <div class="summary-row" style="margin-bottom:24px">
+    <div class="stat-card">
+      <div class="stat-label">Total Value</div>
+      <div class="stat-value">$9,063</div>
+      <div class="stat-sub up">+$779 (+9.4%)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Win Rate (30d)</div>
+      <div class="stat-value up">62.5%</div>
+      <div class="stat-sub">5 win / 3 loss</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Avg Alpha</div>
+      <div class="stat-value up">+1.09%</div>
+      <div class="stat-sub">vs SPY benchmark</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Best Pick</div>
+      <div class="stat-value up">CF</div>
+      <div class="stat-sub up">+32.5% (+$143)</div>
+    </div>
+  </div>
+
+  <!-- MAIN AREA -->
+  <div class="blm-row">
+    <div>
+      <div class="section-title">🏆 Top Picks — Today's Scan</div>
+
+      <!-- Bloomberg: Table -->
+      <table class="stock-table">
+        <thead>
+          <tr>
+            <th>#</th><th>TICKER</th><th>COMPANY</th><th>SCORE</th>
+            <th>SIGNAL</th><th>SECTOR</th><th>RSI</th><th>P/E</th><th>ALPHA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank-num">01</td>
+            <td style="color:var(--green);font-weight:700">CF</td>
+            <td style="color:var(--text2)">CF Industries</td>
+            <td class="up">83.74</td>
+            <td><span class="badge badge-buy">BUY</span></td>
+            <td style="color:var(--text2)">Basic Materials</td>
+            <td class="neutral">64.2</td>
+            <td>10.2</td>
+            <td class="up">+2.1%</td>
+          </tr>
+          <tr>
+            <td class="rank-num">02</td>
+            <td style="color:var(--text);font-weight:700">INCY</td>
+            <td style="color:var(--text2)">Incyte Corp</td>
+            <td class="up">81.44</td>
+            <td><span class="badge badge-strong">STRONG BUY</span></td>
+            <td style="color:var(--text2)">Healthcare</td>
+            <td class="up">38.7</td>
+            <td>24.1</td>
+            <td class="up">+1.8%</td>
+          </tr>
+          <tr>
+            <td class="rank-num">03</td>
+            <td style="color:var(--text);font-weight:700">HST</td>
+            <td style="color:var(--text2)">Host Hotels</td>
+            <td class="up">79.88</td>
+            <td><span class="badge badge-buy">BUY</span></td>
+            <td style="color:var(--text2)">Real Estate</td>
+            <td class="up">52.1</td>
+            <td>18.6</td>
+            <td class="up">+0.9%</td>
+          </tr>
+          <tr>
+            <td class="rank-num">04</td>
+            <td style="color:var(--text);font-weight:700">PCTY</td>
+            <td style="color:var(--text2)">Paylocity</td>
+            <td>76.33</td>
+            <td><span class="badge badge-buy">BUY</span></td>
+            <td style="color:var(--text2)">Technology</td>
+            <td class="up">56.5</td>
+            <td>13.6</td>
+            <td class="neutral">+0.4%</td>
+          </tr>
+          <tr>
+            <td class="rank-num">05</td>
+            <td style="color:var(--text);font-weight:700">CTRA</td>
+            <td style="color:var(--text2)">Coterra Energy</td>
+            <td>74.19</td>
+            <td><span class="badge badge-hold">WAIT</span></td>
+            <td style="color:var(--text2)">Energy</td>
+            <td class="neutral">45.3</td>
+            <td>8.9</td>
+            <td class="up">+0.3%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Modern/Luxury: Card Grid -->
+      <div class="stock-grid">
+        <!-- Card 1 -->
+        <div class="stock-card">
+          <div class="card-top">
+            <div>
+              <div class="ticker-big">CF <span style="font-size:0.6rem;font-weight:400;color:var(--text2);margin-left:4px">#1</span></div>
+              <div class="company-name">CF Industries Holdings</div>
+              <div style="margin-top:6px"><span class="badge badge-buy">BUY</span> <span style="font-size:0.68rem;color:var(--text2);margin-left:4px">Basic Materials</span></div>
+            </div>
+            <div>
+              <div class="score-circle">
+                <span class="score-num up">83.7</span>
+                <span class="score-label-small">score</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-metrics">
+            <div class="metric-box">
+              <span class="metric-val">10.2</span>
+              <span class="metric-key">P/E</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val neutral">64.2</span>
+              <span class="metric-key">RSI</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val up">0.39</span>
+              <span class="metric-key">Beta</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div style="font-family:var(--font-num);font-size:0.85rem">$129.57 <span class="up">↑32.5%</span></div>
+            <svg class="sparkline" viewBox="0 0 80 28">
+              <polyline points="0,24 10,22 20,18 30,14 40,10 50,12 60,8 70,6 80,4" fill="none" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round"/>
+              <linearGradient id="sg1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--green)" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="var(--green)" stop-opacity="0"/>
+              </linearGradient>
+              <polygon points="0,28 0,24 10,22 20,18 30,14 40,10 50,12 60,8 70,6 80,4 80,28" fill="url(#sg1)"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="stock-card">
+          <div class="card-top">
+            <div>
+              <div class="ticker-big">INCY <span style="font-size:0.6rem;font-weight:400;color:var(--text2);margin-left:4px">#12</span></div>
+              <div class="company-name">Incyte Corporation</div>
+              <div style="margin-top:6px"><span class="badge badge-strong">STRONG BUY</span> <span style="font-size:0.68rem;color:var(--text2);margin-left:4px">Healthcare</span></div>
+            </div>
+            <div>
+              <div class="score-circle" style="border-color:rgba(0,210,255,0.3);background:rgba(0,210,255,0.08)">
+                <span class="score-num" style="color:var(--blue)">81.4</span>
+                <span class="score-label-small">score</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-metrics">
+            <div class="metric-box">
+              <span class="metric-val">24.1</span>
+              <span class="metric-key">P/E</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val up">38.7</span>
+              <span class="metric-key">RSI</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val">0.72</span>
+              <span class="metric-key">Beta</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div style="font-family:var(--font-num);font-size:0.85rem">$92.54 <span class="down">↓3.0%</span></div>
+            <svg class="sparkline" viewBox="0 0 80 28">
+              <polyline points="0,4 10,8 20,12 30,10 40,16 50,20 60,18 70,22 80,24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="stock-card">
+          <div class="card-top">
+            <div>
+              <div class="ticker-big">HST <span style="font-size:0.6rem;font-weight:400;color:var(--text2);margin-left:4px">#9</span></div>
+              <div class="company-name">Host Hotels & Resorts</div>
+              <div style="margin-top:6px"><span class="badge badge-buy">BUY</span> <span style="font-size:0.68rem;color:var(--text2);margin-left:4px">Real Estate</span></div>
+            </div>
+            <div>
+              <div class="score-circle">
+                <span class="score-num up">79.9</span>
+                <span class="score-label-small">score</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-metrics">
+            <div class="metric-box">
+              <span class="metric-val">18.6</span>
+              <span class="metric-key">P/E</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val neutral">52.1</span>
+              <span class="metric-key">RSI</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val up">0.88</span>
+              <span class="metric-key">Beta</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div style="font-family:var(--font-num);font-size:0.85rem">$18.51 <span class="down">↓2.1%</span></div>
+            <svg class="sparkline" viewBox="0 0 80 28">
+              <polyline points="0,10 10,8 20,12 30,14 40,10 50,14 60,12 70,16 80,18" fill="none" stroke="var(--yellow)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="stock-card">
+          <div class="card-top">
+            <div>
+              <div class="ticker-big">PCTY <span style="font-size:0.6rem;font-weight:400;color:var(--text2);margin-left:4px">#17</span></div>
+              <div class="company-name">Paylocity Holding</div>
+              <div style="margin-top:6px"><span class="badge badge-buy">BUY</span> <span style="font-size:0.68rem;color:var(--text2);margin-left:4px">Technology</span></div>
+            </div>
+            <div>
+              <div class="score-circle">
+                <span class="score-num up">76.3</span>
+                <span class="score-label-small">score</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-metrics">
+            <div class="metric-box">
+              <span class="metric-val">13.6</span>
+              <span class="metric-key">P/E</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val neutral">56.5</span>
+              <span class="metric-key">RSI</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val">0.72</span>
+              <span class="metric-key">Beta</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div style="font-family:var(--font-num);font-size:0.85rem">$109.39 <span class="down">↓3.8%</span></div>
+            <svg class="sparkline" viewBox="0 0 80 28">
+              <polyline points="0,6 10,8 20,10 30,14 40,16 50,18 60,20 70,22 80,24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloomberg Sidebar -->
+    <div class="blm-sidebar">
+      <div class="sidebar-widget">
+        <div class="sidebar-title">◆ MARKET STATUS</div>
+        <div class="sidebar-row"><span>REGIME</span><span class="down">BEAR</span></div>
+        <div class="sidebar-row"><span>SPY</span><span class="down">$541.22 -1.27%</span></div>
+        <div class="sidebar-row"><span>VIX</span><span class="neutral">24.3</span></div>
+        <div class="sidebar-row"><span>OIL</span><span class="up">$98.92</span></div>
+        <div class="sidebar-row"><span>SCAN</span><span class="up">485 stocks</span></div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="sidebar-title">◆ PORTFOLIO P&amp;L</div>
+        <div class="sidebar-row"><span>TOTAL</span><span>$9,063</span></div>
+        <div class="sidebar-row"><span>RETURN</span><span class="up">+9.41%</span></div>
+        <div class="sidebar-row"><span>ALPHA</span><span class="up">+1.09%</span></div>
+        <div class="sidebar-row"><span>WIN RATE</span><span>62.5%</span></div>
+        <div class="sidebar-row"><span>BEST</span><span class="up">CF +32.5%</span></div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="sidebar-title">◆ RISK ALERTS</div>
+        <div style="color:#ff2222;font-size:0.75rem;line-height:1.6">
+          ⚠ NFLX 42.5% &gt; 20% LIMIT<br>
+          ⚠ COMMS SECTOR 42%<br>
+          ✓ ALL STOPS OK<br>
+          ✓ OIL MONITOR OK
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="sidebar-title">◆ ML MODEL</div>
+        <div class="sidebar-row"><span>STATUS</span><span class="up">ACTIVE</span></div>
+        <div class="sidebar-row"><span>WEIGHT</span><span>35%</span></div>
+        <div class="sidebar-row"><span>ACCURACY</span><span class="up">61.0%</span></div>
+        <div class="sidebar-row"><span>SAMPLES</span><span>2,574</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /shell -->
+</div><!-- /app -->
+
+<script>
+function setTheme(theme) {
+  document.getElementById('app').setAttribute('data-theme', theme);
+  document.querySelectorAll('.switcher button').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + theme).classList.add('active');
+}
+
+// Default
+setTheme('modern');
+</script>
+
+</body>
+</html>

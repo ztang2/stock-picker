@@ -1,7 +1,7 @@
 {
   "EQT": {
-    "high": 61.96,
-    "high_date": "2026-03-08",
+    "high": 64.71,
+    "high_date": "2026-03-13",
     "entry_price": 57.12
   },
   "ALL": {
@@ -10,9 +10,9 @@
     "entry_price": 206.55
   },
   "CF": {
-    "high": 115.78,
-    "high_date": "2026-03-08",
-    "entry_price": 96.51
+    "high": 136.0,
+    "high_date": "2026-03-12",
+    "entry_price": 97.8
   },
   "HIG": {
     "high": 141.64,
@@ -28,5 +28,30 @@
     "high": 99.02,
     "high_date": "2026-03-08",
     "entry_price": 80.51
+  },
+  "INCY": {
+    "high": 97.67,
+    "high_date": "2026-03-10",
+    "entry_price": 95.38
+  },
+  "CTRA": {
+    "high": 32.15,
+    "high_date": "2026-03-13",
+    "entry_price": 31.68
+  },
+  "PCTY": {
+    "high": 114.2,
+    "high_date": "2026-03-12",
+    "entry_price": 113.75
+  },
+  "QLYS": {
+    "high": 99.71,
+    "high_date": "2026-03-13",
+    "entry_price": 97.67
+  },
+  "HST": {
+    "high": 18.9,
+    "high_date": "2026-03-12",
+    "entry_price": 18.9
   }
 }

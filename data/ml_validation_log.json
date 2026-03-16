@@ -148,5 +148,877 @@
         "beat_spy": true
       }
     ]
+  },
+  {
+    "date": "2026-03-02",
+    "prev_scan_timestamp": "2026-03-02T07:45:15",
+    "spy_return": 0.057,
+    "ml_accuracy": 45.0,
+    "ml_avg_return": 0.399,
+    "ml_predictions_count": 20,
+    "predictions": [
+      {
+        "ticker": "ALL",
+        "ml_score": 46.9,
+        "ml_signal": "HOLD",
+        "return_pct": -0.82,
+        "beat_spy": false
+      },
+      {
+        "ticker": "HIG",
+        "ml_score": 55.6,
+        "ml_signal": "BUY",
+        "return_pct": 1.134,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CINF",
+        "ml_score": 71.7,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": 3.407,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CF",
+        "ml_score": 69.3,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": -2.258,
+        "beat_spy": false
+      },
+      {
+        "ticker": "EXLS",
+        "ml_score": 56.2,
+        "ml_signal": "AVOID",
+        "return_pct": 1.265,
+        "beat_spy": true
+      },
+      {
+        "ticker": "FAF",
+        "ml_score": 62.7,
+        "ml_signal": "BUY",
+        "return_pct": -1.07,
+        "beat_spy": false
+      },
+      {
+        "ticker": "FHI",
+        "ml_score": 30.4,
+        "ml_signal": "AVOID",
+        "return_pct": 2.964,
+        "beat_spy": true
+      },
+      {
+        "ticker": "GDDY",
+        "ml_score": 64.2,
+        "ml_signal": "BUY",
+        "return_pct": -1.198,
+        "beat_spy": false
+      },
+      {
+        "ticker": "THC",
+        "ml_score": 65.6,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": -1.314,
+        "beat_spy": false
+      },
+      {
+        "ticker": "JHG",
+        "ml_score": 60.9,
+        "ml_signal": "BUY",
+        "return_pct": 0.735,
+        "beat_spy": true
+      },
+      {
+        "ticker": "ADBE",
+        "ml_score": 32.0,
+        "ml_signal": "AVOID",
+        "return_pct": -0.583,
+        "beat_spy": false
+      },
+      {
+        "ticker": "IQV",
+        "ml_score": 30.1,
+        "ml_signal": "AVOID",
+        "return_pct": -0.723,
+        "beat_spy": false
+      },
+      {
+        "ticker": "PCTY",
+        "ml_score": 42.0,
+        "ml_signal": "AVOID",
+        "return_pct": -0.046,
+        "beat_spy": false
+      },
+      {
+        "ticker": "ACGL",
+        "ml_score": 55.7,
+        "ml_signal": "BUY",
+        "return_pct": 0.909,
+        "beat_spy": true
+      },
+      {
+        "ticker": "DUOL",
+        "ml_score": 34.0,
+        "ml_signal": "AVOID",
+        "return_pct": 2.909,
+        "beat_spy": true
+      },
+      {
+        "ticker": "COR",
+        "ml_score": 53.5,
+        "ml_signal": "HOLD",
+        "return_pct": -1.099,
+        "beat_spy": false
+      },
+      {
+        "ticker": "CVS",
+        "ml_score": 56.3,
+        "ml_signal": "BUY",
+        "return_pct": 1.643,
+        "beat_spy": true
+      },
+      {
+        "ticker": "RRC",
+        "ml_score": 51.7,
+        "ml_signal": "HOLD",
+        "return_pct": -0.048,
+        "beat_spy": false
+      },
+      {
+        "ticker": "DOCU",
+        "ml_score": 54.7,
+        "ml_signal": "HOLD",
+        "return_pct": 2.875,
+        "beat_spy": true
+      },
+      {
+        "ticker": "WDAY",
+        "ml_score": 32.6,
+        "ml_signal": "AVOID",
+        "return_pct": -0.704,
+        "beat_spy": false
+      }
+    ]
+  },
+  {
+    "date": "2026-03-03",
+    "prev_scan_timestamp": "2026-03-03T06:31:00",
+    "spy_return": -0.881,
+    "ml_accuracy": 80.0,
+    "ml_avg_return": 1.412,
+    "ml_predictions_count": 20,
+    "predictions": [
+      {
+        "ticker": "ALL",
+        "ml_score": 46.9,
+        "ml_signal": "HOLD",
+        "return_pct": -0.424,
+        "beat_spy": true
+      },
+      {
+        "ticker": "FAF",
+        "ml_score": 59.0,
+        "ml_signal": "BUY",
+        "return_pct": -1.576,
+        "beat_spy": false
+      },
+      {
+        "ticker": "HIG",
+        "ml_score": 53.7,
+        "ml_signal": "HOLD",
+        "return_pct": 0.577,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CF",
+        "ml_score": 69.3,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": -0.384,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CINF",
+        "ml_score": 71.3,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": 2.525,
+        "beat_spy": true
+      },
+      {
+        "ticker": "EXLS",
+        "ml_score": 54.9,
+        "ml_signal": "HOLD",
+        "return_pct": 3.602,
+        "beat_spy": true
+      },
+      {
+        "ticker": "FHI",
+        "ml_score": 30.2,
+        "ml_signal": "AVOID",
+        "return_pct": 2.024,
+        "beat_spy": true
+      },
+      {
+        "ticker": "GDDY",
+        "ml_score": 68.6,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": -0.067,
+        "beat_spy": true
+      },
+      {
+        "ticker": "JHG",
+        "ml_score": 72.4,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": -0.155,
+        "beat_spy": true
+      },
+      {
+        "ticker": "ADBE",
+        "ml_score": 40.6,
+        "ml_signal": "AVOID",
+        "return_pct": 3.27,
+        "beat_spy": true
+      },
+      {
+        "ticker": "THC",
+        "ml_score": 64.1,
+        "ml_signal": "BUY",
+        "return_pct": 1.943,
+        "beat_spy": true
+      },
+      {
+        "ticker": "IQV",
+        "ml_score": 30.7,
+        "ml_signal": "AVOID",
+        "return_pct": -0.9,
+        "beat_spy": false
+      },
+      {
+        "ticker": "PCTY",
+        "ml_score": 37.2,
+        "ml_signal": "AVOID",
+        "return_pct": 5.331,
+        "beat_spy": true
+      },
+      {
+        "ticker": "ACGL",
+        "ml_score": 52.9,
+        "ml_signal": "HOLD",
+        "return_pct": 0.33,
+        "beat_spy": true
+      },
+      {
+        "ticker": "DOCU",
+        "ml_score": 40.9,
+        "ml_signal": "AVOID",
+        "return_pct": 4.168,
+        "beat_spy": true
+      },
+      {
+        "ticker": "DUOL",
+        "ml_score": 35.6,
+        "ml_signal": "AVOID",
+        "return_pct": 3.715,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CVS",
+        "ml_score": 56.2,
+        "ml_signal": "BUY",
+        "return_pct": 0.187,
+        "beat_spy": true
+      },
+      {
+        "ticker": "COR",
+        "ml_score": 48.8,
+        "ml_signal": "HOLD",
+        "return_pct": -1.42,
+        "beat_spy": false
+      },
+      {
+        "ticker": "RRC",
+        "ml_score": 46.4,
+        "ml_signal": "HOLD",
+        "return_pct": -0.907,
+        "beat_spy": false
+      },
+      {
+        "ticker": "WDAY",
+        "ml_score": 35.0,
+        "ml_signal": "AVOID",
+        "return_pct": 6.409,
+        "beat_spy": true
+      }
+    ]
+  },
+  {
+    "date": "2026-03-04",
+    "prev_scan_timestamp": "2026-03-04T06:30:54",
+    "spy_return": 0.706,
+    "ml_accuracy": 60.0,
+    "ml_avg_return": 1.047,
+    "ml_predictions_count": 20,
+    "predictions": [
+      {
+        "ticker": "FAF",
+        "ml_score": 43.4,
+        "ml_signal": "AVOID",
+        "return_pct": 1.281,
+        "beat_spy": true
+      },
+      {
+        "ticker": "ALL",
+        "ml_score": 62.7,
+        "ml_signal": "HOLD",
+        "return_pct": 1.152,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CF",
+        "ml_score": 66.7,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": -3.484,
+        "beat_spy": false
+      },
+      {
+        "ticker": "THC",
+        "ml_score": 73.8,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": 3.13,
+        "beat_spy": true
+      },
+      {
+        "ticker": "JLL",
+        "ml_score": 26.6,
+        "ml_signal": "AVOID",
+        "return_pct": 0.791,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CINF",
+        "ml_score": 77.3,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": 0.449,
+        "beat_spy": false
+      },
+      {
+        "ticker": "FHI",
+        "ml_score": 32.8,
+        "ml_signal": "AVOID",
+        "return_pct": 2.509,
+        "beat_spy": true
+      },
+      {
+        "ticker": "HIG",
+        "ml_score": 40.0,
+        "ml_signal": "AVOID",
+        "return_pct": 1.87,
+        "beat_spy": true
+      },
+      {
+        "ticker": "GDDY",
+        "ml_score": 57.5,
+        "ml_signal": "BUY",
+        "return_pct": 0.283,
+        "beat_spy": false
+      },
+      {
+        "ticker": "EXLS",
+        "ml_score": 42.1,
+        "ml_signal": "AVOID",
+        "return_pct": 3.767,
+        "beat_spy": true
+      },
+      {
+        "ticker": "JHG",
+        "ml_score": 66.2,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": -0.523,
+        "beat_spy": false
+      },
+      {
+        "ticker": "IQV",
+        "ml_score": 25.9,
+        "ml_signal": "AVOID",
+        "return_pct": 3.865,
+        "beat_spy": true
+      },
+      {
+        "ticker": "TOL",
+        "ml_score": 32.3,
+        "ml_signal": "AVOID",
+        "return_pct": 1.206,
+        "beat_spy": true
+      },
+      {
+        "ticker": "GL",
+        "ml_score": 59.9,
+        "ml_signal": "BUY",
+        "return_pct": 0.963,
+        "beat_spy": true
+      },
+      {
+        "ticker": "PCTY",
+        "ml_score": 34.4,
+        "ml_signal": "AVOID",
+        "return_pct": 4.864,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CVS",
+        "ml_score": 60.9,
+        "ml_signal": "BUY",
+        "return_pct": 0.449,
+        "beat_spy": false
+      },
+      {
+        "ticker": "DUOL",
+        "ml_score": 45.5,
+        "ml_signal": "HOLD",
+        "return_pct": -1.727,
+        "beat_spy": false
+      },
+      {
+        "ticker": "RRC",
+        "ml_score": 43.8,
+        "ml_signal": "AVOID",
+        "return_pct": -0.455,
+        "beat_spy": false
+      },
+      {
+        "ticker": "ORI",
+        "ml_score": 61.4,
+        "ml_signal": "BUY",
+        "return_pct": 1.047,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CB",
+        "ml_score": 36.4,
+        "ml_signal": "AVOID",
+        "return_pct": -0.503,
+        "beat_spy": false
+      }
+    ]
+  },
+  {
+    "date": "2026-03-05",
+    "prev_scan_timestamp": "2026-03-05T06:30:28",
+    "spy_return": -0.558,
+    "ml_accuracy": 45.0,
+    "ml_avg_return": 0.114,
+    "ml_predictions_count": 20,
+    "predictions": [
+      {
+        "ticker": "CF",
+        "ml_score": 68.1,
+        "ml_signal": "BUY",
+        "return_pct": 5.797,
+        "beat_spy": true
+      },
+      {
+        "ticker": "TXT",
+        "ml_score": 49.0,
+        "ml_signal": "AVOID",
+        "return_pct": -2.93,
+        "beat_spy": false
+      },
+      {
+        "ticker": "ALL",
+        "ml_score": 39.0,
+        "ml_signal": "AVOID",
+        "return_pct": -1.195,
+        "beat_spy": false
+      },
+      {
+        "ticker": "JLL",
+        "ml_score": 30.8,
+        "ml_signal": "AVOID",
+        "return_pct": -0.518,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CINF",
+        "ml_score": 56.5,
+        "ml_signal": "HOLD",
+        "return_pct": -0.97,
+        "beat_spy": false
+      },
+      {
+        "ticker": "THC",
+        "ml_score": 59.0,
+        "ml_signal": "BUY",
+        "return_pct": -1.389,
+        "beat_spy": false
+      },
+      {
+        "ticker": "FHI",
+        "ml_score": 22.0,
+        "ml_signal": "AVOID",
+        "return_pct": -0.559,
+        "beat_spy": false
+      },
+      {
+        "ticker": "JHG",
+        "ml_score": 68.2,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": 0.175,
+        "beat_spy": true
+      },
+      {
+        "ticker": "GDDY",
+        "ml_score": 27.3,
+        "ml_signal": "AVOID",
+        "return_pct": 5.042,
+        "beat_spy": true
+      },
+      {
+        "ticker": "FAF",
+        "ml_score": 25.8,
+        "ml_signal": "AVOID",
+        "return_pct": -0.776,
+        "beat_spy": false
+      },
+      {
+        "ticker": "HIG",
+        "ml_score": 14.7,
+        "ml_signal": "AVOID",
+        "return_pct": -1.751,
+        "beat_spy": false
+      },
+      {
+        "ticker": "GL",
+        "ml_score": 40.7,
+        "ml_signal": "AVOID",
+        "return_pct": -0.953,
+        "beat_spy": false
+      },
+      {
+        "ticker": "PGR",
+        "ml_score": 20.6,
+        "ml_signal": "AVOID",
+        "return_pct": -0.388,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CB",
+        "ml_score": 33.2,
+        "ml_signal": "AVOID",
+        "return_pct": -0.503,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CVS",
+        "ml_score": 43.7,
+        "ml_signal": "AVOID",
+        "return_pct": -2.333,
+        "beat_spy": false
+      },
+      {
+        "ticker": "DUOL",
+        "ml_score": 32.6,
+        "ml_signal": "AVOID",
+        "return_pct": 5.584,
+        "beat_spy": true
+      },
+      {
+        "ticker": "EHC",
+        "ml_score": 27.8,
+        "ml_signal": "AVOID",
+        "return_pct": -1.212,
+        "beat_spy": false
+      },
+      {
+        "ticker": "ORI",
+        "ml_score": 32.5,
+        "ml_signal": "AVOID",
+        "return_pct": -0.919,
+        "beat_spy": false
+      },
+      {
+        "ticker": "RRC",
+        "ml_score": 29.4,
+        "ml_signal": "AVOID",
+        "return_pct": 0.674,
+        "beat_spy": true
+      },
+      {
+        "ticker": "QLYS",
+        "ml_score": 26.7,
+        "ml_signal": "AVOID",
+        "return_pct": 1.397,
+        "beat_spy": true
+      }
+    ]
+  },
+  {
+    "date": "2026-03-06",
+    "prev_scan_timestamp": "2026-03-06T06:38:39",
+    "spy_return": -1.275,
+    "ml_accuracy": 87.5,
+    "ml_avg_return": 0.095,
+    "ml_predictions_count": 16,
+    "predictions": [
+      {
+        "ticker": "ALL",
+        "ml_score": 36.3,
+        "ml_signal": "AVOID",
+        "return_pct": 0.85,
+        "beat_spy": true
+      },
+      {
+        "ticker": "THC",
+        "ml_score": 63.1,
+        "ml_signal": "BUY",
+        "return_pct": 1.066,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CF",
+        "ml_score": 63.4,
+        "ml_signal": "BUY",
+        "return_pct": 0.968,
+        "beat_spy": true
+      },
+      {
+        "ticker": "FAF",
+        "ml_score": 36.3,
+        "ml_signal": "AVOID",
+        "return_pct": -1.658,
+        "beat_spy": false
+      },
+      {
+        "ticker": "FHI",
+        "ml_score": 20.9,
+        "ml_signal": "AVOID",
+        "return_pct": -0.125,
+        "beat_spy": true
+      },
+      {
+        "ticker": "JHG",
+        "ml_score": 73.7,
+        "ml_signal": "BUY",
+        "return_pct": 0.568,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CINF",
+        "ml_score": 55.7,
+        "ml_signal": "BUY",
+        "return_pct": -0.079,
+        "beat_spy": true
+      },
+      {
+        "ticker": "JLL",
+        "ml_score": 28.1,
+        "ml_signal": "AVOID",
+        "return_pct": 0.44,
+        "beat_spy": true
+      },
+      {
+        "ticker": "HIG",
+        "ml_score": 15.8,
+        "ml_signal": "AVOID",
+        "return_pct": 1.148,
+        "beat_spy": true
+      },
+      {
+        "ticker": "GDDY",
+        "ml_score": 26.5,
+        "ml_signal": "AVOID",
+        "return_pct": 1.207,
+        "beat_spy": true
+      },
+      {
+        "ticker": "GL",
+        "ml_score": 36.8,
+        "ml_signal": "AVOID",
+        "return_pct": -0.357,
+        "beat_spy": true
+      },
+      {
+        "ticker": "PGR",
+        "ml_score": 28.4,
+        "ml_signal": "AVOID",
+        "return_pct": 0.766,
+        "beat_spy": true
+      },
+      {
+        "ticker": "RRC",
+        "ml_score": 35.2,
+        "ml_signal": "AVOID",
+        "return_pct": -3.624,
+        "beat_spy": false
+      },
+      {
+        "ticker": "CVS",
+        "ml_score": 35.8,
+        "ml_signal": "AVOID",
+        "return_pct": 0.039,
+        "beat_spy": true
+      },
+      {
+        "ticker": "DUOL",
+        "ml_score": 22.5,
+        "ml_signal": "AVOID",
+        "return_pct": 0.731,
+        "beat_spy": true
+      },
+      {
+        "ticker": "CB",
+        "ml_score": 20.4,
+        "ml_signal": "AVOID",
+        "return_pct": -0.422,
+        "beat_spy": true
+      }
+    ]
+  },
+  {
+    "date": "2026-03-09",
+    "prev_scan_timestamp": "2026-03-09T07:55:51",
+    "spy_return": 0.876,
+    "ml_accuracy": 10.0,
+    "ml_avg_return": -0.7,
+    "ml_predictions_count": 20,
+    "predictions": [
+      {
+        "ticker": "ALL",
+        "ml_score": 42.5,
+        "ml_signal": "AVOID",
+        "return_pct": -2.181,
+        "beat_spy": false
+      },
+      {
+        "ticker": "FAF",
+        "ml_score": 33.6,
+        "ml_signal": "AVOID",
+        "return_pct": -1.893,
+        "beat_spy": false
+      },
+      {
+        "ticker": "THC",
+        "ml_score": 46.4,
+        "ml_signal": "HOLD",
+        "return_pct": 1.536,
+        "beat_spy": true
+      },
+      {
+        "ticker": "JLL",
+        "ml_score": 23.3,
+        "ml_signal": "AVOID",
+        "return_pct": 0.795,
+        "beat_spy": false
+      },
+      {
+        "ticker": "CF",
+        "ml_score": 25.6,
+        "ml_signal": "AVOID",
+        "return_pct": -4.094,
+        "beat_spy": false
+      },
+      {
+        "ticker": "JHG",
+        "ml_score": 46.6,
+        "ml_signal": "HOLD",
+        "return_pct": -0.273,
+        "beat_spy": false
+      },
+      {
+        "ticker": "FHI",
+        "ml_score": 25.3,
+        "ml_signal": "AVOID",
+        "return_pct": -0.931,
+        "beat_spy": false
+      },
+      {
+        "ticker": "INCY",
+        "ml_score": 75.4,
+        "ml_signal": "STRONG_BUY",
+        "return_pct": 1.209,
+        "beat_spy": true
+      },
+      {
+        "ticker": "GEN",
+        "ml_score": 46.3,
+        "ml_signal": "HOLD",
+        "return_pct": -0.265,
+        "beat_spy": false
+      },
+      {
+        "ticker": "HIG",
+        "ml_score": 17.2,
+        "ml_signal": "AVOID",
+        "return_pct": -0.934,
+        "beat_spy": false
+      },
+      {
+        "ticker": "CTRA",
+        "ml_score": 55.0,
+        "ml_signal": "BUY",
+        "return_pct": 0.483,
+        "beat_spy": false
+      },
+      {
+        "ticker": "RRC",
+        "ml_score": 45.8,
+        "ml_signal": "AVOID",
+        "return_pct": 0.313,
+        "beat_spy": false
+      },
+      {
+        "ticker": "CVS",
+        "ml_score": 59.1,
+        "ml_signal": "BUY",
+        "return_pct": 0.436,
+        "beat_spy": false
+      },
+      {
+        "ticker": "GL",
+        "ml_score": 39.4,
+        "ml_signal": "AVOID",
+        "return_pct": -0.12,
+        "beat_spy": false
+      },
+      {
+        "ticker": "GDDY",
+        "ml_score": 40.2,
+        "ml_signal": "AVOID",
+        "return_pct": -2.406,
+        "beat_spy": false
+      },
+      {
+        "ticker": "CINF",
+        "ml_score": 19.0,
+        "ml_signal": "AVOID",
+        "return_pct": -1.252,
+        "beat_spy": false
+      },
+      {
+        "ticker": "NFG",
+        "ml_score": 37.9,
+        "ml_signal": "AVOID",
+        "return_pct": -0.043,
+        "beat_spy": false
+      },
+      {
+        "ticker": "DUOL",
+        "ml_score": 34.7,
+        "ml_signal": "AVOID",
+        "return_pct": -1.472,
+        "beat_spy": false
+      },
+      {
+        "ticker": "PGR",
+        "ml_score": 28.9,
+        "ml_signal": "AVOID",
+        "return_pct": -1.804,
+        "beat_spy": false
+      },
+      {
+        "ticker": "CB",
+        "ml_score": 9.5,
+        "ml_signal": "AVOID",
+        "return_pct": -1.098,
+        "beat_spy": false
+      }
+    ]
   }
 ]

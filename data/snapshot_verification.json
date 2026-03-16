@@ -1,9 +1,9 @@
 {
-  "verified_at": "2026-02-27T13:30:05.289797",
+  "verified_at": "2026-03-09T13:30:09.039379",
   "collection_start": "2026-02-19",
-  "expected_trading_days": 7,
-  "snapshots_found": 11,
-  "valid_snapshots": 7,
+  "expected_trading_days": 13,
+  "snapshots_found": 21,
+  "valid_snapshots": 17,
   "missing_days": [],
   "file_issues": {
     "2026-02-17": {
@@ -44,9 +44,13 @@
     }
   },
   "extra_days": [
-    "2026-02-21",
-    "2026-02-22"
+    "2026-02-28",
+    "2026-03-08",
+    "2026-03-07",
+    "2026-03-01",
+    "2026-02-22",
+    "2026-02-21"
   ],
   "status": "ISSUES_FOUND",
-  "completeness_pct": 100.0
+  "completeness_pct": 130.8
 }

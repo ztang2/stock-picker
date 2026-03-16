@@ -83,5 +83,23 @@
     "price": 18.9,
     "amount": 700.0,
     "reason": "New sector (Real Estate), REIT hotel, pipeline #9"
+  },
+  {
+    "date": "2026-03-16",
+    "ticker": "HST",
+    "action": "SELL",
+    "shares": 37.046837,
+    "price": 18.97,
+    "total": 702.78,
+    "reason": "Geo hotel penalty, war invalidates peace hedge"
+  },
+  {
+    "date": "2026-03-16",
+    "ticker": "DUOL",
+    "action": "BUY",
+    "shares": 6.886374,
+    "price": 101.65,
+    "total": 700.0,
+    "reason": "Education tech PE 12.7, margin 40%, growth 35%"
   }
 ]

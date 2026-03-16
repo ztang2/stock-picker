@@ -1,1295 +1,5 @@
 [
   {
-    "timestamp": "2026-02-14T19:09:15",
-    "months_back": 6,
-    "start_date": "2025-08-18",
-    "end_date": "2026-02-14",
-    "top_picks": [
-      "ALL",
-      "BR",
-      "CINF",
-      "ACGL",
-      "BAC",
-      "AIZ",
-      "BK",
-      "APA",
-      "CAH",
-      "AON",
-      "BMY",
-      "CF",
-      "CBOE",
-      "BRO",
-      "CB",
-      "CHRW",
-      "AOS",
-      "CMI",
-      "BEN",
-      "CFG"
-    ],
-    "periods": {
-      "1m": {
-        "spy_return": 0.0247,
-        "portfolio_return": 0.0135,
-        "alpha": -0.0112,
-        "win_rate": 0.35,
-        "max_drawdown": -0.0514,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "ALL",
-            "return": -0.0428
-          },
-          {
-            "ticker": "BR",
-            "return": -0.0538
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.0313
-          },
-          {
-            "ticker": "ACGL",
-            "return": -0.0332
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.0786
-          },
-          {
-            "ticker": "AIZ",
-            "return": 0.0055
-          },
-          {
-            "ticker": "BK",
-            "return": 0.0518
-          },
-          {
-            "ticker": "APA",
-            "return": 0.1837
-          },
-          {
-            "ticker": "CAH",
-            "return": -0.007
-          },
-          {
-            "ticker": "AON",
-            "return": -0.0202
-          },
-          {
-            "ticker": "BMY",
-            "return": -0.0423
-          },
-          {
-            "ticker": "CF",
-            "return": -0.0031
-          },
-          {
-            "ticker": "CBOE",
-            "return": -0.0366
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.0289
-          },
-          {
-            "ticker": "CB",
-            "return": -0.0025
-          },
-          {
-            "ticker": "CHRW",
-            "return": 0.1039
-          },
-          {
-            "ticker": "AOS",
-            "return": 0.0134
-          },
-          {
-            "ticker": "CMI",
-            "return": 0.0297
-          },
-          {
-            "ticker": "BEN",
-            "return": -0.0339
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.0768
-          }
-        ]
-      },
-      "3m": {
-        "spy_return": 0.0376,
-        "portfolio_return": 0.0424,
-        "alpha": 0.0048,
-        "win_rate": 0.5,
-        "max_drawdown": -0.0958,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "ALL",
-            "return": 0.0152
-          },
-          {
-            "ticker": "BR",
-            "return": -0.1323
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.0838
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.0162
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.0803
-          },
-          {
-            "ticker": "AIZ",
-            "return": 0.079
-          },
-          {
-            "ticker": "BK",
-            "return": 0.0546
-          },
-          {
-            "ticker": "APA",
-            "return": 0.2079
-          },
-          {
-            "ticker": "CAH",
-            "return": 0.3815
-          },
-          {
-            "ticker": "AON",
-            "return": -0.042
-          },
-          {
-            "ticker": "BMY",
-            "return": -0.0153
-          },
-          {
-            "ticker": "CF",
-            "return": -0.0388
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.0484
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.1482
-          },
-          {
-            "ticker": "CB",
-            "return": 0.083
-          },
-          {
-            "ticker": "CHRW",
-            "return": 0.2473
-          },
-          {
-            "ticker": "AOS",
-            "return": -0.1178
-          },
-          {
-            "ticker": "CMI",
-            "return": 0.1402
-          },
-          {
-            "ticker": "BEN",
-            "return": -0.1277
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.0334
-          }
-        ]
-      },
-      "6m": {
-        "spy_return": 0.0658,
-        "portfolio_return": 0.1484,
-        "alpha": 0.0826,
-        "win_rate": 0.75,
-        "max_drawdown": -0.1358,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "ALL",
-            "return": 0.0117
-          },
-          {
-            "ticker": "BR",
-            "return": -0.3266
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.0985
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.0889
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.1084
-          },
-          {
-            "ticker": "AIZ",
-            "return": 0.0478
-          },
-          {
-            "ticker": "BK",
-            "return": 0.1681
-          },
-          {
-            "ticker": "APA",
-            "return": 0.3964
-          },
-          {
-            "ticker": "CAH",
-            "return": 0.4831
-          },
-          {
-            "ticker": "AON",
-            "return": -0.1195
-          },
-          {
-            "ticker": "BMY",
-            "return": 0.2929
-          },
-          {
-            "ticker": "CF",
-            "return": 0.1336
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.1185
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.2757
-          },
-          {
-            "ticker": "CB",
-            "return": 0.1906
-          },
-          {
-            "ticker": "CHRW",
-            "return": 0.4441
-          },
-          {
-            "ticker": "AOS",
-            "return": 0.1268
-          },
-          {
-            "ticker": "CMI",
-            "return": 0.5093
-          },
-          {
-            "ticker": "BEN",
-            "return": 0.1086
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.3628
-          }
-        ]
-      }
-    }
-  },
-  {
-    "timestamp": "2026-02-14T19:29:18",
-    "months_back": 6,
-    "start_date": "2025-08-18",
-    "end_date": "2026-02-14",
-    "top_picks": [
-      "ALL",
-      "BR",
-      "CINF",
-      "ACGL",
-      "BAC",
-      "AIZ",
-      "BK",
-      "CAH",
-      "APA",
-      "AON",
-      "BRO",
-      "AOS",
-      "BMY",
-      "CF",
-      "CBOE",
-      "CB",
-      "CHRW",
-      "CMI",
-      "BEN",
-      "CFG"
-    ],
-    "periods": {
-      "1m": {
-        "spy_return": 0.0247,
-        "portfolio_return": 0.0135,
-        "alpha": -0.0112,
-        "win_rate": 0.35,
-        "max_drawdown": -0.0514,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "ALL",
-            "return": -0.0428
-          },
-          {
-            "ticker": "BR",
-            "return": -0.0538
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.0313
-          },
-          {
-            "ticker": "ACGL",
-            "return": -0.0332
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.0786
-          },
-          {
-            "ticker": "AIZ",
-            "return": 0.0055
-          },
-          {
-            "ticker": "BK",
-            "return": 0.0518
-          },
-          {
-            "ticker": "CAH",
-            "return": -0.007
-          },
-          {
-            "ticker": "APA",
-            "return": 0.1837
-          },
-          {
-            "ticker": "AON",
-            "return": -0.0202
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.0289
-          },
-          {
-            "ticker": "AOS",
-            "return": 0.0134
-          },
-          {
-            "ticker": "BMY",
-            "return": -0.0423
-          },
-          {
-            "ticker": "CF",
-            "return": -0.0031
-          },
-          {
-            "ticker": "CBOE",
-            "return": -0.0366
-          },
-          {
-            "ticker": "CB",
-            "return": -0.0025
-          },
-          {
-            "ticker": "CHRW",
-            "return": 0.1039
-          },
-          {
-            "ticker": "CMI",
-            "return": 0.0297
-          },
-          {
-            "ticker": "BEN",
-            "return": -0.0339
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.0768
-          }
-        ]
-      },
-      "3m": {
-        "spy_return": 0.0376,
-        "portfolio_return": 0.0424,
-        "alpha": 0.0048,
-        "win_rate": 0.5,
-        "max_drawdown": -0.0958,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "ALL",
-            "return": 0.0152
-          },
-          {
-            "ticker": "BR",
-            "return": -0.1323
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.0838
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.0162
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.0803
-          },
-          {
-            "ticker": "AIZ",
-            "return": 0.079
-          },
-          {
-            "ticker": "BK",
-            "return": 0.0546
-          },
-          {
-            "ticker": "CAH",
-            "return": 0.3815
-          },
-          {
-            "ticker": "APA",
-            "return": 0.2079
-          },
-          {
-            "ticker": "AON",
-            "return": -0.042
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.1482
-          },
-          {
-            "ticker": "AOS",
-            "return": -0.1178
-          },
-          {
-            "ticker": "BMY",
-            "return": -0.0153
-          },
-          {
-            "ticker": "CF",
-            "return": -0.0388
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.0484
-          },
-          {
-            "ticker": "CB",
-            "return": 0.083
-          },
-          {
-            "ticker": "CHRW",
-            "return": 0.2473
-          },
-          {
-            "ticker": "CMI",
-            "return": 0.1402
-          },
-          {
-            "ticker": "BEN",
-            "return": -0.1277
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.0334
-          }
-        ]
-      },
-      "6m": {
-        "spy_return": 0.0658,
-        "portfolio_return": 0.1484,
-        "alpha": 0.0826,
-        "win_rate": 0.75,
-        "max_drawdown": -0.1358,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "ALL",
-            "return": 0.0117
-          },
-          {
-            "ticker": "BR",
-            "return": -0.3266
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.0985
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.0889
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.1084
-          },
-          {
-            "ticker": "AIZ",
-            "return": 0.0478
-          },
-          {
-            "ticker": "BK",
-            "return": 0.1681
-          },
-          {
-            "ticker": "CAH",
-            "return": 0.4831
-          },
-          {
-            "ticker": "APA",
-            "return": 0.3964
-          },
-          {
-            "ticker": "AON",
-            "return": -0.1195
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.2757
-          },
-          {
-            "ticker": "AOS",
-            "return": 0.1268
-          },
-          {
-            "ticker": "BMY",
-            "return": 0.2929
-          },
-          {
-            "ticker": "CF",
-            "return": 0.1336
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.1185
-          },
-          {
-            "ticker": "CB",
-            "return": 0.1906
-          },
-          {
-            "ticker": "CHRW",
-            "return": 0.4441
-          },
-          {
-            "ticker": "CMI",
-            "return": 0.5093
-          },
-          {
-            "ticker": "BEN",
-            "return": 0.1086
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.3628
-          }
-        ]
-      }
-    }
-  },
-  {
-    "timestamp": "2026-02-14T19:30:22",
-    "months_back": 12,
-    "start_date": "2025-02-19",
-    "end_date": "2026-02-14",
-    "top_picks": [
-      "CAH",
-      "ALL",
-      "AMP",
-      "BRO",
-      "BR",
-      "CINF",
-      "BAC",
-      "BK",
-      "ACN",
-      "BKNG",
-      "BBY",
-      "APA",
-      "AAPL",
-      "ACGL",
-      "CF",
-      "AON",
-      "CHTR",
-      "CMI",
-      "CBOE",
-      "CFG"
-    ],
-    "periods": {
-      "1m": {
-        "spy_return": -0.0771,
-        "portfolio_return": -0.0532,
-        "alpha": 0.0239,
-        "win_rate": 0.55,
-        "max_drawdown": -0.1006,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "CAH",
-            "return": 0.0406
-          },
-          {
-            "ticker": "ALL",
-            "return": 0.083
-          },
-          {
-            "ticker": "AMP",
-            "return": -0.1034
-          },
-          {
-            "ticker": "BRO",
-            "return": 0.0553
-          },
-          {
-            "ticker": "BR",
-            "return": -0.0214
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.0674
-          },
-          {
-            "ticker": "BAC",
-            "return": -0.0711
-          },
-          {
-            "ticker": "BK",
-            "return": -0.0539
-          },
-          {
-            "ticker": "ACN",
-            "return": -0.2176
-          },
-          {
-            "ticker": "BKNG",
-            "return": -0.0947
-          },
-          {
-            "ticker": "BBY",
-            "return": -0.1925
-          },
-          {
-            "ticker": "APA",
-            "return": -0.1263
-          },
-          {
-            "ticker": "AAPL",
-            "return": -0.1086
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.0371
-          },
-          {
-            "ticker": "CF",
-            "return": -0.0839
-          },
-          {
-            "ticker": "AON",
-            "return": -0.0114
-          },
-          {
-            "ticker": "CHTR",
-            "return": 0.0062
-          },
-          {
-            "ticker": "CMI",
-            "return": -0.1617
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.0246
-          },
-          {
-            "ticker": "CFG",
-            "return": -0.1308
-          }
-        ]
-      },
-      "3m": {
-        "spy_return": -0.0299,
-        "portfolio_return": -0.0162,
-        "alpha": 0.0136,
-        "win_rate": 0.6,
-        "max_drawdown": -0.1754,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "CAH",
-            "return": 0.2256
-          },
-          {
-            "ticker": "ALL",
-            "return": 0.0917
-          },
-          {
-            "ticker": "AMP",
-            "return": -0.0525
-          },
-          {
-            "ticker": "BRO",
-            "return": 0.0026
-          },
-          {
-            "ticker": "BR",
-            "return": 0.0197
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.1073
-          },
-          {
-            "ticker": "BAC",
-            "return": -0.0226
-          },
-          {
-            "ticker": "BK",
-            "return": 0.0266
-          },
-          {
-            "ticker": "ACN",
-            "return": -0.1754
-          },
-          {
-            "ticker": "BKNG",
-            "return": 0.0413
-          },
-          {
-            "ticker": "BBY",
-            "return": -0.2091
-          },
-          {
-            "ticker": "APA",
-            "return": -0.2568
-          },
-          {
-            "ticker": "AAPL",
-            "return": -0.1541
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.062
-          },
-          {
-            "ticker": "CF",
-            "return": 0.0552
-          },
-          {
-            "ticker": "AON",
-            "return": -0.0802
-          },
-          {
-            "ticker": "CHTR",
-            "return": 0.1712
-          },
-          {
-            "ticker": "CMI",
-            "return": -0.1371
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.0785
-          },
-          {
-            "ticker": "CFG",
-            "return": -0.1187
-          }
-        ]
-      },
-      "6m": {
-        "spy_return": 0.0558,
-        "portfolio_return": -0.0081,
-        "alpha": -0.0639,
-        "win_rate": 0.35,
-        "max_drawdown": -0.2018,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "CAH",
-            "return": 0.1893
-          },
-          {
-            "ticker": "ALL",
-            "return": 0.0915
-          },
-          {
-            "ticker": "AMP",
-            "return": -0.0737
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.1521
-          },
-          {
-            "ticker": "BR",
-            "return": 0.0967
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.1112
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.0543
-          },
-          {
-            "ticker": "BK",
-            "return": 0.1654
-          },
-          {
-            "ticker": "ACN",
-            "return": -0.3552
-          },
-          {
-            "ticker": "BKNG",
-            "return": 0.0865
-          },
-          {
-            "ticker": "BBY",
-            "return": -0.1908
-          },
-          {
-            "ticker": "APA",
-            "return": -0.1086
-          },
-          {
-            "ticker": "AAPL",
-            "return": -0.0548
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.0187
-          },
-          {
-            "ticker": "CF",
-            "return": 0.0195
-          },
-          {
-            "ticker": "AON",
-            "return": -0.0708
-          },
-          {
-            "ticker": "CHTR",
-            "return": -0.2621
-          },
-          {
-            "ticker": "CMI",
-            "return": 0.052
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.1767
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.0449
-          }
-        ]
-      },
-      "12m": {
-        "spy_return": 0.1253,
-        "portfolio_return": 0.0684,
-        "alpha": -0.0569,
-        "win_rate": 0.45,
-        "max_drawdown": -0.2605,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "CAH",
-            "return": 0.7638
-          },
-          {
-            "ticker": "ALL",
-            "return": 0.1043
-          },
-          {
-            "ticker": "AMP",
-            "return": -0.1267
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.3859
-          },
-          {
-            "ticker": "BR",
-            "return": -0.2615
-          },
-          {
-            "ticker": "CINF",
-            "return": 0.2206
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.1686
-          },
-          {
-            "ticker": "BK",
-            "return": 0.3613
-          },
-          {
-            "ticker": "ACN",
-            "return": -0.4196
-          },
-          {
-            "ticker": "BKNG",
-            "return": -0.1838
-          },
-          {
-            "ticker": "BBY",
-            "return": -0.2389
-          },
-          {
-            "ticker": "APA",
-            "return": 0.2447
-          },
-          {
-            "ticker": "AAPL",
-            "return": 0.0491
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.1093
-          },
-          {
-            "ticker": "CF",
-            "return": 0.1557
-          },
-          {
-            "ticker": "AON",
-            "return": -0.1819
-          },
-          {
-            "ticker": "CHTR",
-            "return": -0.3388
-          },
-          {
-            "ticker": "CMI",
-            "return": 0.5879
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.3161
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.4239
-          }
-        ]
-      }
-    }
-  },
-  {
-    "timestamp": "2026-02-14T22:56:30",
-    "months_back": 6,
-    "start_date": "2025-08-18",
-    "end_date": "2026-02-14",
-    "top_picks": [
-      "CINF",
-      "BR",
-      "ALL",
-      "ACGL",
-      "BAC",
-      "AIZ",
-      "BMY",
-      "BK",
-      "CAH",
-      "CBOE",
-      "APA",
-      "CF",
-      "BRO",
-      "AAPL",
-      "ADBE",
-      "APP",
-      "ADI",
-      "CFG",
-      "AOS",
-      "AON"
-    ],
-    "periods": {
-      "1m": {
-        "spy_return": 0.0247,
-        "portfolio_return": 0.0337,
-        "alpha": 0.009,
-        "win_rate": 0.4,
-        "max_drawdown": -0.0498,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "CINF",
-            "return": 0.0313
-          },
-          {
-            "ticker": "BR",
-            "return": -0.0538
-          },
-          {
-            "ticker": "ALL",
-            "return": -0.0428
-          },
-          {
-            "ticker": "ACGL",
-            "return": -0.0332
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.0786
-          },
-          {
-            "ticker": "AIZ",
-            "return": 0.0055
-          },
-          {
-            "ticker": "BMY",
-            "return": -0.0423
-          },
-          {
-            "ticker": "BK",
-            "return": 0.0518
-          },
-          {
-            "ticker": "CAH",
-            "return": -0.007
-          },
-          {
-            "ticker": "CBOE",
-            "return": -0.0366
-          },
-          {
-            "ticker": "APA",
-            "return": 0.1837
-          },
-          {
-            "ticker": "CF",
-            "return": -0.0031
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.0289
-          },
-          {
-            "ticker": "AAPL",
-            "return": 0.0351
-          },
-          {
-            "ticker": "ADBE",
-            "return": 0.0135
-          },
-          {
-            "ticker": "APP",
-            "return": 0.3834
-          },
-          {
-            "ticker": "ADI",
-            "return": 0.068
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.0768
-          },
-          {
-            "ticker": "AOS",
-            "return": 0.0134
-          },
-          {
-            "ticker": "AON",
-            "return": -0.0202
-          }
-        ]
-      },
-      "3m": {
-        "spy_return": 0.0376,
-        "portfolio_return": 0.0401,
-        "alpha": 0.0025,
-        "win_rate": 0.45,
-        "max_drawdown": -0.0886,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "CINF",
-            "return": 0.0838
-          },
-          {
-            "ticker": "BR",
-            "return": -0.1323
-          },
-          {
-            "ticker": "ALL",
-            "return": 0.0152
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.0162
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.0803
-          },
-          {
-            "ticker": "AIZ",
-            "return": 0.079
-          },
-          {
-            "ticker": "BMY",
-            "return": -0.0153
-          },
-          {
-            "ticker": "BK",
-            "return": 0.0546
-          },
-          {
-            "ticker": "CAH",
-            "return": 0.3815
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.0484
-          },
-          {
-            "ticker": "APA",
-            "return": 0.2079
-          },
-          {
-            "ticker": "CF",
-            "return": -0.0388
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.1482
-          },
-          {
-            "ticker": "AAPL",
-            "return": 0.1595
-          },
-          {
-            "ticker": "ADBE",
-            "return": -0.0901
-          },
-          {
-            "ticker": "APP",
-            "return": 0.2297
-          },
-          {
-            "ticker": "ADI",
-            "return": -0.003
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.0334
-          },
-          {
-            "ticker": "AOS",
-            "return": -0.1178
-          },
-          {
-            "ticker": "AON",
-            "return": -0.042
-          }
-        ]
-      },
-      "6m": {
-        "spy_return": 0.0658,
-        "portfolio_return": 0.0961,
-        "alpha": 0.0302,
-        "win_rate": 0.65,
-        "max_drawdown": -0.1235,
-        "stocks_measured": 20,
-        "stock_returns": [
-          {
-            "ticker": "CINF",
-            "return": 0.0985
-          },
-          {
-            "ticker": "BR",
-            "return": -0.3266
-          },
-          {
-            "ticker": "ALL",
-            "return": 0.0117
-          },
-          {
-            "ticker": "ACGL",
-            "return": 0.0889
-          },
-          {
-            "ticker": "BAC",
-            "return": 0.1084
-          },
-          {
-            "ticker": "AIZ",
-            "return": 0.0478
-          },
-          {
-            "ticker": "BMY",
-            "return": 0.2929
-          },
-          {
-            "ticker": "BK",
-            "return": 0.1681
-          },
-          {
-            "ticker": "CAH",
-            "return": 0.4831
-          },
-          {
-            "ticker": "CBOE",
-            "return": 0.1185
-          },
-          {
-            "ticker": "APA",
-            "return": 0.3964
-          },
-          {
-            "ticker": "CF",
-            "return": 0.1336
-          },
-          {
-            "ticker": "BRO",
-            "return": -0.2757
-          },
-          {
-            "ticker": "AAPL",
-            "return": 0.1099
-          },
-          {
-            "ticker": "ADBE",
-            "return": -0.2611
-          },
-          {
-            "ticker": "APP",
-            "return": -0.1094
-          },
-          {
-            "ticker": "ADI",
-            "return": 0.4668
-          },
-          {
-            "ticker": "CFG",
-            "return": 0.3628
-          },
-          {
-            "ticker": "AOS",
-            "return": 0.1268
-          },
-          {
-            "ticker": "AON",
-            "return": -0.1195
-          }
-        ]
-      }
-    }
-  },
-  {
     "timestamp": "2026-02-14T23:05:48",
     "months_back": 12,
     "start_date": "2025-02-19",
@@ -14178,6 +12888,2106 @@
           {
             "ticker": "ABBV",
             "return": 0.1285
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-03-10T22:07:36",
+    "months_back": 6,
+    "start_date": "2025-09-11",
+    "end_date": "2026-03-10",
+    "top_picks": [
+      "CINF",
+      "AFL",
+      "BIIB",
+      "ALL",
+      "CB",
+      "CF",
+      "AOS",
+      "APA",
+      "AIZ",
+      "BSX",
+      "BMY",
+      "ADSK",
+      "ACN",
+      "CI",
+      "ALLE",
+      "ADBE",
+      "CHTR",
+      "BRK-B",
+      "AMP",
+      "A"
+    ],
+    "periods": {
+      "1m": {
+        "spy_return": -0.0043,
+        "portfolio_return": -0.0178,
+        "alpha": -0.0136,
+        "win_rate": 0.35,
+        "max_drawdown": -0.0627,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0198
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0208
+          },
+          {
+            "ticker": "BIIB",
+            "return": -0.0153
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0158
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0004
+          },
+          {
+            "ticker": "CF",
+            "return": 0.014
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0882
+          },
+          {
+            "ticker": "APA",
+            "return": -0.0453
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.019
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.0856
+          },
+          {
+            "ticker": "BMY",
+            "return": -0.0626
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0648
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.0131
+          },
+          {
+            "ticker": "CI",
+            "return": -0.0168
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.022
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0372
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.0168
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0157
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.043
+          },
+          {
+            "ticker": "A",
+            "return": 0.0802
+          }
+        ]
+      },
+      "3m": {
+        "spy_return": 0.0484,
+        "portfolio_return": -0.0009,
+        "alpha": -0.0493,
+        "win_rate": 0.3,
+        "max_drawdown": -0.1066,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0432
+          },
+          {
+            "ticker": "AFL",
+            "return": -0.0087
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.1929
+          },
+          {
+            "ticker": "ALL",
+            "return": -0.0016
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0483
+          },
+          {
+            "ticker": "CF",
+            "return": -0.1113
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0809
+          },
+          {
+            "ticker": "APA",
+            "return": 0.1582
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0493
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.1116
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.092
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0752
+          },
+          {
+            "ticker": "ACN",
+            "return": 0.115
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1366
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.0953
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0212
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.1918
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.013
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.004
+          },
+          {
+            "ticker": "A",
+            "return": 0.1344
+          }
+        ]
+      },
+      "6m": {
+        "spy_return": 0.0356,
+        "portfolio_return": -0.0028,
+        "alpha": -0.0384,
+        "win_rate": 0.35,
+        "max_drawdown": -0.1352,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0623
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0255
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.2659
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0349
+          },
+          {
+            "ticker": "CB",
+            "return": 0.1497
+          },
+          {
+            "ticker": "CF",
+            "return": 0.2922
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0552
+          },
+          {
+            "ticker": "APA",
+            "return": 0.4135
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0381
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.3295
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.2974
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.2178
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.1742
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1324
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.1673
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.2151
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.169
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0056
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.0836
+          },
+          {
+            "ticker": "A",
+            "return": -0.0857
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-03-10T22:08:46",
+    "months_back": 6,
+    "start_date": "2025-09-11",
+    "end_date": "2026-03-10",
+    "top_picks": [
+      "CINF",
+      "AFL",
+      "BIIB",
+      "ALL",
+      "CB",
+      "CF",
+      "AOS",
+      "APA",
+      "AIZ",
+      "BSX",
+      "BMY",
+      "ADSK",
+      "ACN",
+      "CI",
+      "ALLE",
+      "ADBE",
+      "CHTR",
+      "BRK-B",
+      "AMP",
+      "A"
+    ],
+    "periods": {
+      "1m": {
+        "spy_return": -0.0043,
+        "portfolio_return": -0.0178,
+        "alpha": -0.0136,
+        "win_rate": 0.35,
+        "max_drawdown": -0.0627,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0198
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0208
+          },
+          {
+            "ticker": "BIIB",
+            "return": -0.0153
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0158
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0004
+          },
+          {
+            "ticker": "CF",
+            "return": 0.014
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0882
+          },
+          {
+            "ticker": "APA",
+            "return": -0.0453
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.019
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.0856
+          },
+          {
+            "ticker": "BMY",
+            "return": -0.0626
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0648
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.0131
+          },
+          {
+            "ticker": "CI",
+            "return": -0.0168
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.022
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0372
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.0168
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0157
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.043
+          },
+          {
+            "ticker": "A",
+            "return": 0.0802
+          }
+        ]
+      },
+      "3m": {
+        "spy_return": 0.0484,
+        "portfolio_return": -0.0009,
+        "alpha": -0.0493,
+        "win_rate": 0.3,
+        "max_drawdown": -0.1066,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0432
+          },
+          {
+            "ticker": "AFL",
+            "return": -0.0087
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.1929
+          },
+          {
+            "ticker": "ALL",
+            "return": -0.0016
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0483
+          },
+          {
+            "ticker": "CF",
+            "return": -0.1113
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0809
+          },
+          {
+            "ticker": "APA",
+            "return": 0.1582
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0493
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.1116
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.092
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0752
+          },
+          {
+            "ticker": "ACN",
+            "return": 0.115
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1366
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.0953
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0212
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.1918
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.013
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.004
+          },
+          {
+            "ticker": "A",
+            "return": 0.1344
+          }
+        ]
+      },
+      "6m": {
+        "spy_return": 0.0356,
+        "portfolio_return": -0.0028,
+        "alpha": -0.0384,
+        "win_rate": 0.35,
+        "max_drawdown": -0.1352,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0623
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0255
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.2659
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0349
+          },
+          {
+            "ticker": "CB",
+            "return": 0.1497
+          },
+          {
+            "ticker": "CF",
+            "return": 0.2922
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0552
+          },
+          {
+            "ticker": "APA",
+            "return": 0.4135
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0381
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.3295
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.2974
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.2178
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.1742
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1324
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.1673
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.2151
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.169
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0056
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.0836
+          },
+          {
+            "ticker": "A",
+            "return": -0.0857
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-03-10T22:10:03",
+    "months_back": 6,
+    "start_date": "2025-09-11",
+    "end_date": "2026-03-10",
+    "top_picks": [
+      "CINF",
+      "AFL",
+      "BIIB",
+      "ALL",
+      "CB",
+      "CF",
+      "AOS",
+      "APA",
+      "AIZ",
+      "BSX",
+      "BMY",
+      "ADSK",
+      "ACN",
+      "CI",
+      "ALLE",
+      "ADBE",
+      "CHTR",
+      "BRK-B",
+      "AMP",
+      "A"
+    ],
+    "periods": {
+      "1m": {
+        "spy_return": -0.0043,
+        "portfolio_return": -0.0178,
+        "alpha": -0.0136,
+        "win_rate": 0.35,
+        "max_drawdown": -0.0627,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0198
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0208
+          },
+          {
+            "ticker": "BIIB",
+            "return": -0.0153
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0158
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0004
+          },
+          {
+            "ticker": "CF",
+            "return": 0.014
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0882
+          },
+          {
+            "ticker": "APA",
+            "return": -0.0453
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.019
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.0856
+          },
+          {
+            "ticker": "BMY",
+            "return": -0.0626
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0648
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.0131
+          },
+          {
+            "ticker": "CI",
+            "return": -0.0168
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.022
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0372
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.0168
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0157
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.043
+          },
+          {
+            "ticker": "A",
+            "return": 0.0802
+          }
+        ]
+      },
+      "3m": {
+        "spy_return": 0.0484,
+        "portfolio_return": -0.0009,
+        "alpha": -0.0493,
+        "win_rate": 0.3,
+        "max_drawdown": -0.1066,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0432
+          },
+          {
+            "ticker": "AFL",
+            "return": -0.0087
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.1929
+          },
+          {
+            "ticker": "ALL",
+            "return": -0.0016
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0483
+          },
+          {
+            "ticker": "CF",
+            "return": -0.1113
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0809
+          },
+          {
+            "ticker": "APA",
+            "return": 0.1582
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0493
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.1116
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.092
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0752
+          },
+          {
+            "ticker": "ACN",
+            "return": 0.115
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1366
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.0953
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0212
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.1918
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.013
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.004
+          },
+          {
+            "ticker": "A",
+            "return": 0.1344
+          }
+        ]
+      },
+      "6m": {
+        "spy_return": 0.0356,
+        "portfolio_return": -0.0028,
+        "alpha": -0.0384,
+        "win_rate": 0.35,
+        "max_drawdown": -0.1352,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0623
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0255
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.2659
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0349
+          },
+          {
+            "ticker": "CB",
+            "return": 0.1497
+          },
+          {
+            "ticker": "CF",
+            "return": 0.2922
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0552
+          },
+          {
+            "ticker": "APA",
+            "return": 0.4135
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0381
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.3295
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.2974
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.2178
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.1742
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1324
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.1673
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.2151
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.169
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0056
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.0836
+          },
+          {
+            "ticker": "A",
+            "return": -0.0857
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-03-10T22:13:23",
+    "months_back": 6,
+    "start_date": "2025-09-11",
+    "end_date": "2026-03-10",
+    "top_picks": [
+      "CINF",
+      "AFL",
+      "BIIB",
+      "ALL",
+      "CB",
+      "CF",
+      "AOS",
+      "APA",
+      "AIZ",
+      "BSX",
+      "BMY",
+      "ADSK",
+      "ACN",
+      "CI",
+      "ALLE",
+      "ADBE",
+      "CHTR",
+      "BRK-B",
+      "AMP",
+      "A"
+    ],
+    "periods": {
+      "1m": {
+        "spy_return": -0.0043,
+        "portfolio_return": -0.0178,
+        "alpha": -0.0136,
+        "win_rate": 0.35,
+        "max_drawdown": -0.0627,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0198
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0208
+          },
+          {
+            "ticker": "BIIB",
+            "return": -0.0153
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0158
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0004
+          },
+          {
+            "ticker": "CF",
+            "return": 0.014
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0882
+          },
+          {
+            "ticker": "APA",
+            "return": -0.0453
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.019
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.0856
+          },
+          {
+            "ticker": "BMY",
+            "return": -0.0626
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0648
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.0131
+          },
+          {
+            "ticker": "CI",
+            "return": -0.0168
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.022
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0372
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.0168
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0157
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.043
+          },
+          {
+            "ticker": "A",
+            "return": 0.0802
+          }
+        ]
+      },
+      "3m": {
+        "spy_return": 0.0484,
+        "portfolio_return": -0.0009,
+        "alpha": -0.0493,
+        "win_rate": 0.3,
+        "max_drawdown": -0.1066,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0432
+          },
+          {
+            "ticker": "AFL",
+            "return": -0.0087
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.1929
+          },
+          {
+            "ticker": "ALL",
+            "return": -0.0016
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0483
+          },
+          {
+            "ticker": "CF",
+            "return": -0.1113
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0809
+          },
+          {
+            "ticker": "APA",
+            "return": 0.1582
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0493
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.1116
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.092
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0752
+          },
+          {
+            "ticker": "ACN",
+            "return": 0.115
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1366
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.0953
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0212
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.1918
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.013
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.004
+          },
+          {
+            "ticker": "A",
+            "return": 0.1344
+          }
+        ]
+      },
+      "6m": {
+        "spy_return": 0.0356,
+        "portfolio_return": -0.0028,
+        "alpha": -0.0384,
+        "win_rate": 0.35,
+        "max_drawdown": -0.1352,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0623
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0255
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.2659
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0349
+          },
+          {
+            "ticker": "CB",
+            "return": 0.1497
+          },
+          {
+            "ticker": "CF",
+            "return": 0.2922
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0552
+          },
+          {
+            "ticker": "APA",
+            "return": 0.4135
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0381
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.3295
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.2974
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.2178
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.1742
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1324
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.1673
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.2151
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.169
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0056
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.0836
+          },
+          {
+            "ticker": "A",
+            "return": -0.0857
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-03-10T22:26:30",
+    "months_back": 6,
+    "start_date": "2025-09-11",
+    "end_date": "2026-03-10",
+    "top_picks": [
+      "CINF",
+      "AFL",
+      "BIIB",
+      "ALL",
+      "CB",
+      "CF",
+      "AOS",
+      "APA",
+      "AIZ",
+      "BSX",
+      "BMY",
+      "ADSK",
+      "ACN",
+      "CI",
+      "ALLE",
+      "ADBE",
+      "CHTR",
+      "BRK-B",
+      "AMP",
+      "A"
+    ],
+    "periods": {
+      "1m": {
+        "spy_return": -0.0043,
+        "portfolio_return": -0.0178,
+        "alpha": -0.0136,
+        "win_rate": 0.35,
+        "max_drawdown": -0.0627,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0198
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0208
+          },
+          {
+            "ticker": "BIIB",
+            "return": -0.0153
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0158
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0004
+          },
+          {
+            "ticker": "CF",
+            "return": 0.014
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0882
+          },
+          {
+            "ticker": "APA",
+            "return": -0.0453
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.019
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.0856
+          },
+          {
+            "ticker": "BMY",
+            "return": -0.0626
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0648
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.0131
+          },
+          {
+            "ticker": "CI",
+            "return": -0.0168
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.022
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0372
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.0168
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0157
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.043
+          },
+          {
+            "ticker": "A",
+            "return": 0.0802
+          }
+        ]
+      },
+      "3m": {
+        "spy_return": 0.0484,
+        "portfolio_return": -0.0009,
+        "alpha": -0.0493,
+        "win_rate": 0.3,
+        "max_drawdown": -0.1066,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0432
+          },
+          {
+            "ticker": "AFL",
+            "return": -0.0087
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.1929
+          },
+          {
+            "ticker": "ALL",
+            "return": -0.0016
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0483
+          },
+          {
+            "ticker": "CF",
+            "return": -0.1113
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0809
+          },
+          {
+            "ticker": "APA",
+            "return": 0.1582
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0493
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.1116
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.092
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0752
+          },
+          {
+            "ticker": "ACN",
+            "return": 0.115
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1366
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.0953
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0212
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.1918
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.013
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.004
+          },
+          {
+            "ticker": "A",
+            "return": 0.1344
+          }
+        ]
+      },
+      "6m": {
+        "spy_return": 0.0356,
+        "portfolio_return": -0.0028,
+        "alpha": -0.0384,
+        "win_rate": 0.35,
+        "max_drawdown": -0.1352,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0623
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0255
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.2659
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0349
+          },
+          {
+            "ticker": "CB",
+            "return": 0.1497
+          },
+          {
+            "ticker": "CF",
+            "return": 0.2922
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0552
+          },
+          {
+            "ticker": "APA",
+            "return": 0.4135
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0381
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.3295
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.2974
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.2178
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.1742
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1324
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.1673
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.2151
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.169
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0056
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.0836
+          },
+          {
+            "ticker": "A",
+            "return": -0.0857
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-03-10T22:31:21",
+    "months_back": 6,
+    "start_date": "2025-09-11",
+    "end_date": "2026-03-10",
+    "top_picks": [
+      "CINF",
+      "AFL",
+      "BIIB",
+      "ALL",
+      "CB",
+      "CF",
+      "AOS",
+      "APA",
+      "AIZ",
+      "BSX",
+      "BMY",
+      "ADSK",
+      "ACN",
+      "CI",
+      "ALLE",
+      "ADBE",
+      "CHTR",
+      "BRK-B",
+      "AMP",
+      "A"
+    ],
+    "periods": {
+      "1m": {
+        "spy_return": -0.0043,
+        "portfolio_return": -0.0178,
+        "alpha": -0.0136,
+        "win_rate": 0.35,
+        "max_drawdown": -0.0627,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0198
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0208
+          },
+          {
+            "ticker": "BIIB",
+            "return": -0.0153
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0158
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0004
+          },
+          {
+            "ticker": "CF",
+            "return": 0.014
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0882
+          },
+          {
+            "ticker": "APA",
+            "return": -0.0453
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.019
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.0856
+          },
+          {
+            "ticker": "BMY",
+            "return": -0.0626
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0648
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.0131
+          },
+          {
+            "ticker": "CI",
+            "return": -0.0168
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.022
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0372
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.0168
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0157
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.043
+          },
+          {
+            "ticker": "A",
+            "return": 0.0802
+          }
+        ]
+      },
+      "3m": {
+        "spy_return": 0.0484,
+        "portfolio_return": -0.0009,
+        "alpha": -0.0493,
+        "win_rate": 0.3,
+        "max_drawdown": -0.1066,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0432
+          },
+          {
+            "ticker": "AFL",
+            "return": -0.0087
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.1929
+          },
+          {
+            "ticker": "ALL",
+            "return": -0.0016
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0483
+          },
+          {
+            "ticker": "CF",
+            "return": -0.1113
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0809
+          },
+          {
+            "ticker": "APA",
+            "return": 0.1582
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0493
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.1116
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.092
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0752
+          },
+          {
+            "ticker": "ACN",
+            "return": 0.115
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1366
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.0953
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0212
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.1918
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.013
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.004
+          },
+          {
+            "ticker": "A",
+            "return": 0.1344
+          }
+        ]
+      },
+      "6m": {
+        "spy_return": 0.0356,
+        "portfolio_return": -0.0028,
+        "alpha": -0.0384,
+        "win_rate": 0.35,
+        "max_drawdown": -0.1352,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0623
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0255
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.2659
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0349
+          },
+          {
+            "ticker": "CB",
+            "return": 0.1497
+          },
+          {
+            "ticker": "CF",
+            "return": 0.2922
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0552
+          },
+          {
+            "ticker": "APA",
+            "return": 0.4135
+          },
+          {
+            "ticker": "AIZ",
+            "return": 0.0381
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.3295
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.2974
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.2178
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.1742
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1324
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.1673
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.2151
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.169
+          },
+          {
+            "ticker": "BRK-B",
+            "return": -0.0056
+          },
+          {
+            "ticker": "AMP",
+            "return": -0.0836
+          },
+          {
+            "ticker": "A",
+            "return": -0.0857
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-03-10T22:35:24",
+    "months_back": 6,
+    "start_date": "2025-09-11",
+    "end_date": "2026-03-10",
+    "top_picks": [
+      "CINF",
+      "AFL",
+      "BIIB",
+      "ALL",
+      "CB",
+      "CF",
+      "AOS",
+      "APA",
+      "BSX",
+      "BMY",
+      "ADSK",
+      "ACN",
+      "CI",
+      "ALLE",
+      "ADBE",
+      "CHTR",
+      "CLX",
+      "BBY",
+      "AVB",
+      "BR"
+    ],
+    "periods": {
+      "1m": {
+        "spy_return": -0.0043,
+        "portfolio_return": -0.0331,
+        "alpha": -0.0288,
+        "win_rate": 0.25,
+        "max_drawdown": -0.0677,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0198
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0208
+          },
+          {
+            "ticker": "BIIB",
+            "return": -0.0153
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0158
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0004
+          },
+          {
+            "ticker": "CF",
+            "return": 0.014
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0882
+          },
+          {
+            "ticker": "APA",
+            "return": -0.0453
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.0856
+          },
+          {
+            "ticker": "BMY",
+            "return": -0.0626
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0648
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.0131
+          },
+          {
+            "ticker": "CI",
+            "return": -0.0168
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.022
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0372
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.0168
+          },
+          {
+            "ticker": "CLX",
+            "return": -0.0343
+          },
+          {
+            "ticker": "BBY",
+            "return": -0.0908
+          },
+          {
+            "ticker": "AVB",
+            "return": -0.0539
+          },
+          {
+            "ticker": "BR",
+            "return": -0.0862
+          }
+        ]
+      },
+      "3m": {
+        "spy_return": 0.0484,
+        "portfolio_return": -0.03,
+        "alpha": -0.0784,
+        "win_rate": 0.2,
+        "max_drawdown": -0.1094,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0432
+          },
+          {
+            "ticker": "AFL",
+            "return": -0.0087
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.1929
+          },
+          {
+            "ticker": "ALL",
+            "return": -0.0016
+          },
+          {
+            "ticker": "CB",
+            "return": 0.0483
+          },
+          {
+            "ticker": "CF",
+            "return": -0.1113
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0809
+          },
+          {
+            "ticker": "APA",
+            "return": 0.1582
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.1116
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.092
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.0752
+          },
+          {
+            "ticker": "ACN",
+            "return": 0.115
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1366
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.0953
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.0212
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.1918
+          },
+          {
+            "ticker": "CLX",
+            "return": -0.1673
+          },
+          {
+            "ticker": "BBY",
+            "return": -0.0431
+          },
+          {
+            "ticker": "AVB",
+            "return": -0.0959
+          },
+          {
+            "ticker": "BR",
+            "return": -0.1095
+          }
+        ]
+      },
+      "6m": {
+        "spy_return": 0.0356,
+        "portfolio_return": -0.0241,
+        "alpha": -0.0597,
+        "win_rate": 0.3,
+        "max_drawdown": -0.1325,
+        "stocks_measured": 20,
+        "stock_returns": [
+          {
+            "ticker": "CINF",
+            "return": 0.0623
+          },
+          {
+            "ticker": "AFL",
+            "return": 0.0255
+          },
+          {
+            "ticker": "BIIB",
+            "return": 0.2659
+          },
+          {
+            "ticker": "ALL",
+            "return": 0.0349
+          },
+          {
+            "ticker": "CB",
+            "return": 0.1497
+          },
+          {
+            "ticker": "CF",
+            "return": 0.2922
+          },
+          {
+            "ticker": "AOS",
+            "return": -0.0552
+          },
+          {
+            "ticker": "APA",
+            "return": 0.4135
+          },
+          {
+            "ticker": "BSX",
+            "return": -0.3295
+          },
+          {
+            "ticker": "BMY",
+            "return": 0.2974
+          },
+          {
+            "ticker": "ADSK",
+            "return": -0.2178
+          },
+          {
+            "ticker": "ACN",
+            "return": -0.1742
+          },
+          {
+            "ticker": "CI",
+            "return": -0.1324
+          },
+          {
+            "ticker": "ALLE",
+            "return": -0.1673
+          },
+          {
+            "ticker": "ADBE",
+            "return": -0.2151
+          },
+          {
+            "ticker": "CHTR",
+            "return": -0.169
+          },
+          {
+            "ticker": "CLX",
+            "return": -0.0485
+          },
+          {
+            "ticker": "BBY",
+            "return": -0.1524
+          },
+          {
+            "ticker": "AVB",
+            "return": -0.0971
+          },
+          {
+            "ticker": "BR",
+            "return": -0.2645
           }
         ]
       }

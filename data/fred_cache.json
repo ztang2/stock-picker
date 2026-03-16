@@ -1,0 +1,99 @@
+{
+  "_timestamp": "2026-03-15T14:38:04.176552",
+  "cpi": {
+    "name": "CPI (Inflation)",
+    "series_id": "CPIAUCSL",
+    "current": 327.46,
+    "previous": 326.59,
+    "mom_change": 0.87,
+    "mom_change_pct": 0.27,
+    "yoy_change_pct": 2.66,
+    "last_date": "2026-02-01",
+    "signal": {
+      "direction": "neutral",
+      "score": 0,
+      "note": "CPI YoY +2.7% \u2014 near target"
+    },
+    "impact": "Rising CPI \u2192 inflation \u2192 bad for growth stocks, good for commodities"
+  },
+  "unemployment": {
+    "name": "Unemployment Rate",
+    "series_id": "UNRATE",
+    "current": 4.4,
+    "previous": 4.3,
+    "mom_change": 0.1,
+    "mom_change_pct": 2.33,
+    "yoy_change_pct": 10.0,
+    "last_date": "2026-02-01",
+    "signal": {
+      "direction": "neutral",
+      "score": 0,
+      "note": "Unemployment 4.4% \u2014 moderate"
+    },
+    "impact": "Rising unemployment \u2192 economic slowdown \u2192 defensive stocks outperform"
+  },
+  "fed_rate": {
+    "name": "Federal Funds Rate",
+    "series_id": "FEDFUNDS",
+    "current": 3.64,
+    "previous": 3.64,
+    "mom_change": 0.0,
+    "mom_change_pct": 0.0,
+    "yoy_change_pct": -15.94,
+    "last_date": "2026-02-01",
+    "signal": {
+      "direction": "neutral",
+      "score": 0,
+      "note": "Fed rate 3.64% \u2014 moderate"
+    },
+    "impact": "Higher rates \u2192 pressure on valuations, good for financials/banks"
+  },
+  "yield_curve": {
+    "name": "10Y-2Y Spread (Yield Curve)",
+    "series_id": "T10Y2Y",
+    "current": 0.55,
+    "previous": 0.51,
+    "mom_change": 0.04,
+    "mom_change_pct": 7.84,
+    "yoy_change_pct": 0,
+    "last_date": "2026-03-13",
+    "signal": {
+      "direction": "bullish",
+      "score": 1,
+      "note": "Yield curve +0.55% \u2014 normal, healthy"
+    },
+    "impact": "Negative spread \u2192 recession signal, historically very reliable"
+  },
+  "jobless_claims": {
+    "name": "Initial Jobless Claims",
+    "series_id": "ICSA",
+    "current": 213000.0,
+    "previous": 214000.0,
+    "mom_change": -1000.0,
+    "mom_change_pct": -0.47,
+    "yoy_change_pct": -4.48,
+    "last_date": "2026-03-07",
+    "signal": {
+      "direction": "neutral",
+      "score": 0,
+      "note": "Jobless claims 213K \u2014 normal"
+    },
+    "impact": "Rising claims \u2192 labor market weakening \u2192 bearish signal"
+  },
+  "gdp_growth": {
+    "name": "Real GDP Growth Rate",
+    "series_id": "A191RL1Q225SBEA",
+    "current": 0.7,
+    "previous": 4.4,
+    "mom_change": -3.7,
+    "mom_change_pct": -84.09,
+    "yoy_change_pct": 0,
+    "last_date": "2025-10-01",
+    "signal": {
+      "direction": "bearish",
+      "score": -1,
+      "note": "GDP +0.7% \u2014 stagnation"
+    },
+    "impact": "Negative GDP \u2192 recession, positive \u2192 expansion"
+  }
+}

@@ -41,11 +41,12 @@
       "entry_price": 97.67,
       "entry_date": "2026-03-12"
     },
-    "HST": {
-      "shares": 37.046837,
-      "entry_price": 18.9,
-      "entry_date": "2026-03-12"
+    "DUOL": {
+      "shares": 6.886374,
+      "entry_price": 101.65,
+      "entry_date": "2026-03-16",
+      "entry_score": 87.3
     }
   },
-  "updated": "2026-03-09T09:03:00"
+  "updated": "2026-03-16"
 }
