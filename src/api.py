@@ -1246,6 +1246,179 @@ def holdings_rank():
     }
 
 
+@app.get("/robin/report")
+def robin_report():
+    """All-in-one endpoint for Robin cron — everything pre-computed in one call.
+    Combines: holdings + rank + P&L + risk alerts + top 5 + rebalance.
+    Robin doesn't need to call multiple endpoints or process large JSON."""
+    import yfinance as yf
+    from .rebalance import load_holdings
+    from .risk_manager import get_portfolio_summary, check_ceasefire_signals
+    
+    holdings_data = load_holdings()
+    
+    # --- Holdings with live prices + P&L + rank ---
+    # Load cached scan for ranks
+    try:
+        with open(RESULTS_FILE) as f:
+            scan = json.load(f)
+    except Exception:
+        scan = {}
+    
+    all_scores = scan.get("all_scores", [])
+    ranked = sorted(all_scores, key=lambda x: -x.get("composite_score", 0)) if isinstance(all_scores, list) else []
+    
+    # Build ticker→rank+score map
+    rank_map = {}
+    for i, s in enumerate(ranked):
+        rank_map[s.get("ticker", "")] = {
+            "rank": i + 1,
+            "score": round(s.get("composite_score", 0), 2),
+        }
+    
+    # Add NFLX
+    all_holdings = dict(holdings_data)
+    if "NFLX" not in all_holdings:
+        all_holdings["NFLX"] = {"shares": 40, "entry_price": 80.51, "entry_date": "2026-02-11"}
+    
+    # Fetch live prices
+    tickers_str = " ".join(all_holdings.keys())
+    try:
+        live_data = yf.download(tickers_str, period="1d", progress=False)
+        live_prices = {}
+        if len(all_holdings) == 1:
+            t = list(all_holdings.keys())[0]
+            live_prices[t] = float(live_data["Close"].iloc[-1]) if len(live_data) > 0 else None
+        else:
+            for t in all_holdings:
+                try:
+                    live_prices[t] = float(live_data["Close"][t].iloc[-1])
+                except:
+                    live_prices[t] = None
+    except:
+        live_prices = {t: None for t in all_holdings}
+    
+    # Build holdings report
+    positions = []
+    total_value = 0
+    total_cost = 0
+    winners = 0
+    losers = 0
+    
+    for ticker, info in all_holdings.items():
+        shares = info.get("shares", 0)
+        entry = info.get("entry_price", 0)
+        price = live_prices.get(ticker)
+        cost = shares * entry
+        value = shares * price if price else cost
+        pnl = value - cost
+        pnl_pct = (pnl / cost * 100) if cost > 0 else 0
+        
+        total_value += value
+        total_cost += cost
+        if pnl > 0: winners += 1
+        else: losers += 1
+        
+        r = rank_map.get(ticker, {})
+        positions.append({
+            "ticker": ticker,
+            "shares": shares,
+            "entry_price": entry,
+            "current_price": round(price, 2) if price else None,
+            "pnl": round(pnl, 2),
+            "pnl_pct": round(pnl_pct, 2),
+            "rank": r.get("rank", "N/A"),
+            "score": r.get("score", "N/A"),
+            "entry_date": info.get("entry_date", ""),
+        })
+    
+    positions.sort(key=lambda x: -x["pnl"])
+    
+    # --- Top 5 from scan ---
+    top5 = []
+    for s in ranked[:5]:
+        top5.append({
+            "rank": ranked.index(s) + 1,
+            "ticker": s.get("ticker", ""),
+            "score": round(s.get("composite_score", 0), 2),
+            "sector": s.get("sector", ""),
+        })
+    
+    # --- Risk alerts ---
+    risk_alerts = []
+    
+    # Trailing stops
+    try:
+        trailing_file = os.path.join(DATA_DIR, "trailing_stops.json")
+        if os.path.exists(trailing_file):
+            with open(trailing_file) as f:
+                ts_data = json.load(f)
+            for ticker, ts_info in ts_data.items():
+                if ticker in all_holdings and live_prices.get(ticker):
+                    high = ts_info.get("high_price", live_prices[ticker])
+                    drop = (live_prices[ticker] - high) / high * 100 if high > 0 else 0
+                    if drop <= -10:
+                        risk_alerts.append(f"🔴 {ticker} trailing stop: -{abs(drop):.1f}% from peak ${high:.2f} → ${live_prices[ticker]:.2f}")
+    except:
+        pass
+    
+    # Position concentration
+    for p in positions:
+        if total_value > 0:
+            weight = (p["shares"] * (p["current_price"] or p["entry_price"])) / total_value * 100
+            if weight > 20:
+                risk_alerts.append(f"⚠️ {p['ticker']} overweight: {weight:.1f}% (limit 20%)")
+    
+    # Ceasefire
+    try:
+        cf_signals = check_ceasefire_signals()
+        if cf_signals.get("urgency") in ("HIGH", "CRITICAL"):
+            risk_alerts.append(f"🚨 CEASEFIRE WARNING ({cf_signals['urgency']}): {'; '.join(cf_signals.get('signals', []))}")
+    except:
+        pass
+    
+    total_pnl = total_value - total_cost
+    total_pnl_pct = (total_pnl / total_cost * 100) if total_cost > 0 else 0
+    
+    return {
+        "report_type": "post_market",
+        "generated_at": datetime.now().isoformat(),
+        "scan_timestamp": scan.get("timestamp", ""),
+        "portfolio": {
+            "total_value": round(total_value, 2),
+            "total_cost": round(total_cost, 2),
+            "total_pnl": round(total_pnl, 2),
+            "total_pnl_pct": round(total_pnl_pct, 2),
+            "positions_count": len(positions),
+            "winners": winners,
+            "losers": losers,
+        },
+        "positions": positions,
+        "top5_pipeline": top5,
+        "risk_alerts": risk_alerts,
+        "note": "ALL numbers are pre-computed. Report them exactly as shown."
+    }
+
+
+@app.get("/scan/top/{n}")
+def scan_top_n(n: int = 5):
+    """Return only top N stocks from cached scan — lightweight for cron."""
+    try:
+        with open(RESULTS_FILE) as f:
+            scan = json.load(f)
+    except Exception:
+        return {"error": "No cached scan"}
+    
+    all_scores = scan.get("all_scores", [])
+    ranked = sorted(all_scores, key=lambda x: -x.get("composite_score", 0))[:n]
+    
+    return {
+        "top": [{"rank": i+1, "ticker": s.get("ticker",""), "score": round(s.get("composite_score",0), 2), "sector": s.get("sector","")} for i, s in enumerate(ranked)],
+        "total_stocks": len(all_scores),
+        "scan_timestamp": scan.get("timestamp", ""),
+    }
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("src.api:app", host="0.0.0.0", port=8000, reload=True)

@@ -16616,3 +16616,30 @@ INFO:     Started reloader process [46236] using WatchFiles
 INFO:     Started server process [46238]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/api.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46238]
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [46548]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46548]
+INFO:     Stopping reloader process [46236]
+INFO:     Will watch for changes in these directories: ['/Users/zhuorantang/clawd/stock-picker/src']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [46556] using WatchFiles
+/Users/zhuorantang/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+INFO:     Started server process [46558]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+/Users/zhuorantang/clawd/stock-picker/src/api.py:1287: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  live_data = yf.download(tickers_str, period="1d", progress=False)
+/Users/zhuorantang/clawd/stock-picker/src/risk_manager.py:350: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  data = yf.download(tickers_to_check, period="5d", progress=False)
