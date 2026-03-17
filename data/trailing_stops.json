@@ -35,8 +35,8 @@
     "entry_price": 95.38
   },
   "CTRA": {
-    "high": 32.15,
-    "high_date": "2026-03-13",
+    "high": 32.48,
+    "high_date": "2026-03-16",
     "entry_price": 31.68
   },
   "PCTY": {
@@ -53,5 +53,10 @@
     "high": 18.9,
     "high_date": "2026-03-12",
     "entry_price": 18.9
+  },
+  "DUOL": {
+    "high": 101.95,
+    "high_date": "2026-03-16",
+    "entry_price": 101.65
   }
 }

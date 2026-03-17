@@ -41,5 +41,9 @@
   "HST": {
     "entry_price": 18.9,
     "tiers_triggered": []
+  },
+  "DUOL": {
+    "entry_price": 101.65,
+    "tiers_triggered": []
   }
 }

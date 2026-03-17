@@ -1,173 +1,5 @@
 [
   {
-    "type": "new_entry",
-    "ticker": "JLL",
-    "message": "JLL entered top 20 (score: 89.5)",
-    "severity": "info",
-    "timestamp": "2026-03-08T20:10:39"
-  },
-  {
-    "type": "dropped",
-    "ticker": "HST",
-    "message": "HST dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-08T20:10:39"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T20:10:39"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T20:10:39"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-08T20:10:39"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:32:50"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:32:50"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-08T22:32:50"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:33:15"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-08T22:33:15"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:33:15"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:38:23"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-08T22:38:23"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:38:23"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:38:49"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:38:49"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-08T22:38:49"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:46:02"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:46:02"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-08T22:46:02"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:46:24"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-08T22:46:24"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-08T22:46:24"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-09T00:01:59"
-  },
-  {
     "type": "strong_sell",
     "ticker": "FAF",
     "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
@@ -1398,5 +1230,173 @@
     "message": "NFG has SELL signal: RSI extremely overbought (81.7); (RSI discounted: strong uptrend)",
     "severity": "warning",
     "timestamp": "2026-03-15T19:56:45"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "CF",
+    "message": "CF has SELL signal: RSI overbought (77.7); (RSI discounted: strong uptrend)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:28:36"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "CTRA",
+    "message": "CTRA has SELL signal: Price near resistance ($32.43, +0.9%); Fundamentals deteriorated (18.7 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:28:36"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "FHI",
+    "message": "FHI has SELL signal: Price near resistance ($57.80, +1.4%); Fundamentals weakening (11.5 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:28:36"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "RRC",
+    "message": "RRC has SELL signal: RSI overbought (79.4); (RSI discounted: strong uptrend)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:28:36"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "EQT",
+    "message": "EQT has STRONG SELL signal: RSI extremely overbought (81.1); (RSI discounted: strong uptrend)",
+    "severity": "critical",
+    "timestamp": "2026-03-16T18:28:36"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "NFG",
+    "message": "NFG has SELL signal: RSI extremely overbought (81.7); (RSI discounted: strong uptrend)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:28:36"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "JLL",
+    "message": "JLL entered top 20 (score: 90.0)",
+    "severity": "info",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "ALL",
+    "message": "ALL entered top 20 (score: 87.3)",
+    "severity": "info",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "FSLR",
+    "message": "FSLR entered top 20 (score: 85.3)",
+    "severity": "info",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "SFM",
+    "message": "SFM entered top 20 (score: 81.6)",
+    "severity": "info",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "dropped",
+    "ticker": "TXT",
+    "message": "TXT dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "dropped",
+    "ticker": "WDAY",
+    "message": "WDAY dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CINF",
+    "message": "CINF dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "dropped",
+    "ticker": "EIX",
+    "message": "EIX dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "FSLR",
+    "message": "FSLR entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "CTRA",
+    "message": "CTRA has STRONG SELL signal: RSI overbought (65.0); Price near resistance ($32.71, +1.1%)",
+    "severity": "critical",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "SFM",
+    "message": "SFM has SELL signal: Price near resistance ($82.72, +1.2%); Fundamentals weakening (13.5 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TOL",
+    "message": "TOL has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (17.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "RRC",
+    "message": "RRC has SELL signal: RSI extremely overbought (80.0); (RSI discounted: strong uptrend)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "EQT",
+    "message": "EQT has STRONG SELL signal: RSI extremely overbought (86.8); (RSI discounted: strong uptrend)",
+    "severity": "critical",
+    "timestamp": "2026-03-16T18:37:15"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "CTRA",
+    "message": "CTRA has STRONG SELL signal: RSI overbought (65.0); Price near resistance ($32.71, +1.1%)",
+    "severity": "critical",
+    "timestamp": "2026-03-16T19:08:40"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "SFM",
+    "message": "SFM has SELL signal: Price near resistance ($82.72, +1.2%); Fundamentals weakening (13.7 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T19:08:40"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "RRC",
+    "message": "RRC has SELL signal: RSI extremely overbought (80.0); (RSI discounted: strong uptrend)",
+    "severity": "warning",
+    "timestamp": "2026-03-16T19:08:40"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "EQT",
+    "message": "EQT has STRONG SELL signal: RSI extremely overbought (86.8); (RSI discounted: strong uptrend)",
+    "severity": "critical",
+    "timestamp": "2026-03-16T19:08:40"
   }
 ]

@@ -1198,6 +1198,54 @@ def sizing_portfolio(
     return result
 
 
+@app.get("/holdings/rank")
+def holdings_rank():
+    """Pre-computed holdings rank from cached scan — lightweight endpoint for Robin cron.
+    Returns ONLY holdings data so the LLM doesn't need to parse 800+ stock JSON."""
+    from .rebalance import load_holdings
+    
+    holdings_data = load_holdings()
+    holding_tickers = set(holdings_data.keys())
+    # Always include NFLX
+    holding_tickers.add("NFLX")
+    
+    # Load cached scan
+    try:
+        with open(RESULTS_FILE) as f:
+            scan = json.load(f)
+    except Exception:
+        return {"error": "No cached scan available"}
+    
+    all_scores = scan.get("all_scores", [])
+    if isinstance(all_scores, list):
+        ranked = sorted(all_scores, key=lambda x: -x.get("composite_score", 0))
+    else:
+        return {"error": "Unexpected all_scores format"}
+    
+    # Find holdings in ranked list
+    results = []
+    for rank_idx, stock in enumerate(ranked):
+        ticker = stock.get("ticker", "")
+        if ticker in holding_tickers:
+            results.append({
+                "ticker": ticker,
+                "rank": rank_idx + 1,
+                "composite_score": round(stock.get("composite_score", 0), 2),
+                "signal": stock.get("signal", ""),
+                "ml_signal": stock.get("ml_signal", ""),
+                "sector": stock.get("sector", ""),
+            })
+    
+    results.sort(key=lambda x: x["rank"])
+    
+    return {
+        "holdings_ranked": results,
+        "total_stocks": len(ranked),
+        "scan_timestamp": scan.get("timestamp", ""),
+        "note": "Ranks and scores are EXACT from cached scan. Do NOT modify these numbers."
+    }
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("src.api:app", host="0.0.0.0", port=8000, reload=True)

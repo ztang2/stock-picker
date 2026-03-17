@@ -1,14 +1,33 @@
 {
-  "signal_streaks": {},
-  "swap_history": [],
-  "candidate_streaks": {
-    "GEN": {
-      "signal": "STRONG_BUY",
-      "days": 2,
-      "since": "2026-03-06",
-      "score": 80.5,
-      "ml_score": 46.3
+  "signal_streaks": {
+    "EQT": {
+      "signal": "STRONG_SELL",
+      "days": 1,
+      "since": "2026-03-16",
+      "sell_score": 0
+    },
+    "CF": {
+      "signal": "SELL",
+      "days": 1,
+      "since": "2026-03-16",
+      "sell_score": 0
+    },
+    "CTRA": {
+      "signal": "SELL",
+      "days": 1,
+      "since": "2026-03-16",
+      "sell_score": 0
     }
   },
-  "updated": "2026-03-09T13:30:08.946956"
+  "swap_history": [],
+  "candidate_streaks": {
+    "TOL": {
+      "signal": "STRONG_BUY",
+      "days": 1,
+      "since": "2026-03-16",
+      "score": 84.74,
+      "ml_score": 63.2
+    }
+  },
+  "updated": "2026-03-16T10:56:53.788539"
 }
