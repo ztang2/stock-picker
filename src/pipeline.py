@@ -275,6 +275,10 @@ def run_scan(
             result = fetch_stock_data(ticker_sym)
             if result:
                 stock_data[ticker_sym] = result
+            # Rate limit protection: pause every 20 tickers to avoid Yahoo ban
+            if (i + 1) % 20 == 0 and i < len(missing) - 1:
+                import time
+                time.sleep(2)
         _save_cache(stock_data)
 
     # Fetch SPY for beta and regime detection

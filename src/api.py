@@ -111,9 +111,23 @@ def scan(
     exclude: Optional[str] = Query(None, description="Comma-separated tickers to exclude"),
     strategy: str = Query("balanced", description="Strategy: conservative, balanced, aggressive"),
     sync: bool = Query(False, description="If true, block until scan completes and return results"),
+    force: bool = Query(False, description="Force scan even if recent scan exists"),
     _: None = Depends(verify_api_key),
 ):
-    """Run full scan. Default: async (returns immediately, poll /scan/status). Use sync=true to block."""
+    """Run full scan. Default: async (returns immediately, poll /scan/status). Use sync=true to block.
+    Scans are rate-limited to once per hour unless force=true."""
+    # Rate limit: don't re-scan within 1 hour unless forced
+    if not force:
+        try:
+            scan_file = DATA_DIR / "scan_results.json"
+            if scan_file.exists():
+                scan_age = time.time() - scan_file.stat().st_mtime
+                if scan_age < 3600:  # 1 hour
+                    cached = json.loads(scan_file.read_text())
+                    cached["_note"] = f"Cached scan from {int(scan_age)}s ago. Use force=true to re-scan."
+                    return cached
+        except Exception:
+            pass
     config = load_config()
     exclude_list = [t.strip().upper() for t in exclude.split(",")] if exclude else None
 
