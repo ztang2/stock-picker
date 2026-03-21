@@ -74,7 +74,26 @@ def _get_price_data(tickers: List[str], start: str, end: str) -> Dict[str, pd.Da
     # Batch download
     try:
         data = yf.download(tickers, start=start, end=end, progress=False, group_by="ticker", threads=True)
-        if len(tickers) == 1:
+        # Flatten MultiIndex columns if present (yfinance batch format)
+        if isinstance(data.columns, pd.MultiIndex):
+            if len(tickers) == 1:
+                if not data.empty:
+                    df = data[tickers[0]].dropna(how="all") if tickers[0] in data.columns.get_level_values(0) else data
+                    # Flatten remaining MultiIndex
+                    if isinstance(df.columns, pd.MultiIndex):
+                        df.columns = df.columns.get_level_values(-1)
+                    result[tickers[0]] = df
+            else:
+                for t in tickers:
+                    try:
+                        df = data[t].dropna(how="all")
+                        if isinstance(df.columns, pd.MultiIndex):
+                            df.columns = df.columns.get_level_values(-1)
+                        if not df.empty:
+                            result[t] = df
+                    except Exception:
+                        pass
+        elif len(tickers) == 1:
             if not data.empty:
                 result[tickers[0]] = data
         else:
@@ -96,7 +115,7 @@ def _compute_forward_return(prices: pd.DataFrame, date: str, days: int = 20) -> 
         dt = pd.Timestamp(date)
         mask = prices.index >= dt
         future = prices.loc[mask]
-        if len(future) < days + 1:
+        if len(future) < days:
             return None
         start_price = future.iloc[0]["Close"]
         end_price = future.iloc[min(days, len(future) - 1)]["Close"]
