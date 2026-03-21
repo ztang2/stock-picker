@@ -90,7 +90,7 @@ def _get_price_data(tickers: List[str], start: str, end: str) -> Dict[str, pd.Da
     return result
 
 
-def _compute_forward_return(prices: pd.DataFrame, date: str, days: int = 21) -> Optional[float]:
+def _compute_forward_return(prices: pd.DataFrame, date: str, days: int = 20) -> Optional[float]:
     """Compute forward return from date over next `days` trading days."""
     try:
         dt = pd.Timestamp(date)
@@ -107,7 +107,7 @@ def _compute_forward_return(prices: pd.DataFrame, date: str, days: int = 21) -> 
         return None
 
 
-def _compute_spy_return(spy_prices: pd.DataFrame, date: str, days: int = 21) -> Optional[float]:
+def _compute_spy_return(spy_prices: pd.DataFrame, date: str, days: int = 20) -> Optional[float]:
     return _compute_forward_return(spy_prices, date, days)
 
 
@@ -308,7 +308,7 @@ def _build_dataset() -> pd.DataFrame:
 
         all_tickers = set()
         for snap in snapshots:
-            for stock in snap.get("top", snap.get("stocks", [])):
+            for stock in snap.get("all_scores", snap.get("top", snap.get("stocks", []))):
                 all_tickers.add(stock["ticker"])
 
         dates = [s["date"] for s in snapshots]
@@ -329,7 +329,7 @@ def _build_dataset() -> pd.DataFrame:
             regime = regime_info.get("regime", "sideways") if isinstance(regime_info, dict) else "sideways"
             spy_ret = _compute_spy_return(spy_prices, date_str) if spy_prices is not None else None
 
-            for stock in snap.get("top", snap.get("stocks", [])):
+            for stock in snap.get("all_scores", snap.get("top", snap.get("stocks", []))):
                 ticker = stock["ticker"]
                 if ticker not in price_data or spy_ret is None:
                     continue
