@@ -1,0 +1,1281 @@
+[
+  {
+    "ticker": "JLL",
+    "composite_score": 6.0,
+    "signal": "MOMENTUM",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.5,
+        "details": {
+          "target_upside_pct": 23.8,
+          "recent_upgrades": 1,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 0,
+          "insider_sells": 7,
+          "buy_value": 0,
+          "sell_value": 10736508.0
+        }
+      },
+      "revenue_acceleration": {
+        "score": 2.0,
+        "details": {
+          "quarterly_growth_rates": [
+            16.9,
+            4.2,
+            8.8
+          ],
+          "latest_qoq_growth": 16.9,
+          "previous_qoq_growth": 4.2,
+          "accelerating": true,
+          "acceleration_ppt": 12.7
+        }
+      },
+      "institutional_validation": {
+        "score": 1.5,
+        "details": {
+          "institutional_pct": 95.9,
+          "short_pct": 1.9,
+          "total_held_pct": 96.8,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            5.8,
+            3.0,
+            5.5,
+            18.3
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 18.3
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:31.972957",
+    "scan_score": 85.2,
+    "scan_signal": "BUY",
+    "sector": "Real Estate"
+  },
+  {
+    "ticker": "CRM",
+    "composite_score": 5.8,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 1.5,
+        "details": {
+          "target_upside_pct": 33.9,
+          "recent_upgrades": 2,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 3,
+          "insider_sells": 51,
+          "buy_value": 26382229.0,
+          "sell_value": 60389607.0
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.5,
+        "details": {
+          "quarterly_growth_rates": [
+            11.2,
+            0.6,
+            -1.0
+          ],
+          "latest_qoq_growth": 11.2,
+          "previous_qoq_growth": 0.6,
+          "accelerating": true,
+          "acceleration_ppt": 10.6
+        }
+      },
+      "institutional_validation": {
+        "score": 0.8,
+        "details": {
+          "institutional_pct": 85.5,
+          "short_pct": 2.4,
+          "total_held_pct": 88.2
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            1.3,
+            4.7,
+            13.6,
+            24.9
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 24.9
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:42.223745",
+    "scan_score": 72.82,
+    "scan_signal": "BUY",
+    "sector": "Technology"
+  },
+  {
+    "ticker": "JHG",
+    "composite_score": 5.5,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.0,
+        "details": {
+          "target_upside_pct": -1.0,
+          "recent_upgrades": 1,
+          "recent_downgrades": 3
+        }
+      },
+      "insider_buying": {
+        "score": 0.0,
+        "details": {}
+      },
+      "revenue_acceleration": {
+        "score": 2.0,
+        "details": {
+          "quarterly_growth_rates": [
+            46.4,
+            13.4,
+            -0.9
+          ],
+          "latest_qoq_growth": 46.4,
+          "previous_qoq_growth": 13.4,
+          "accelerating": true,
+          "acceleration_ppt": 32.9
+        }
+      },
+      "institutional_validation": {
+        "score": 1.5,
+        "details": {
+          "institutional_pct": 92.4,
+          "short_pct": 2.6,
+          "total_held_pct": 92.7,
+          "buyback_indicator": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            9.3,
+            7.8,
+            8.8,
+            68.8
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 68.8
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:31.900859",
+    "scan_score": 86.88,
+    "scan_signal": "BUY",
+    "sector": "Financial Services"
+  },
+  {
+    "ticker": "IQV",
+    "composite_score": 5.5,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 1.5,
+        "details": {
+          "target_upside_pct": 42.9,
+          "recent_upgrades": 4,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 1,
+          "insider_sells": 6,
+          "buy_value": 255740,
+          "sell_value": 23000519
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.5,
+        "details": {
+          "quarterly_growth_rates": [
+            7.4,
+            1.2,
+            6.4
+          ],
+          "latest_qoq_growth": 7.4,
+          "previous_qoq_growth": 1.2,
+          "accelerating": true,
+          "acceleration_ppt": 6.1
+        }
+      },
+      "institutional_validation": {
+        "score": 1.5,
+        "details": {
+          "institutional_pct": 103.4,
+          "short_pct": 2.6,
+          "total_held_pct": 104.5,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.0,
+        "details": {
+          "last_4q_surprises": [
+            2.6,
+            1.4,
+            0.8,
+            0.7
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 0.7
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:32.785662",
+    "scan_score": 82.98,
+    "scan_signal": "BUY",
+    "sector": "Healthcare"
+  },
+  {
+    "ticker": "TPR",
+    "composite_score": 5.5,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.5,
+        "details": {
+          "target_upside_pct": 15.3,
+          "recent_upgrades": 0,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 0,
+          "insider_sells": 27,
+          "buy_value": 0,
+          "sell_value": 57865240
+        }
+      },
+      "revenue_acceleration": {
+        "score": 2.0,
+        "details": {
+          "quarterly_growth_rates": [
+            51.9,
+            -1.0,
+            7.7
+          ],
+          "latest_qoq_growth": 51.9,
+          "previous_qoq_growth": -1.0,
+          "accelerating": true,
+          "acceleration_ppt": 52.9
+        }
+      },
+      "institutional_validation": {
+        "score": 1.0,
+        "details": {
+          "institutional_pct": 98.4,
+          "short_pct": 6.6,
+          "total_held_pct": 98.8,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            17.1,
+            2.1,
+            8.9,
+            20.7
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 20.7
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:41.202166",
+    "scan_score": 73.3,
+    "scan_signal": "BUY",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "ticker": "THC",
+    "composite_score": 5.3,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.5,
+        "details": {
+          "target_upside_pct": 25.9,
+          "recent_upgrades": 1,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 0,
+          "insider_sells": 37,
+          "buy_value": 0,
+          "sell_value": 76515446.0
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.5,
+        "details": {
+          "quarterly_growth_rates": [
+            8.5,
+            -0.1,
+            2.8
+          ],
+          "latest_qoq_growth": 8.5,
+          "previous_qoq_growth": -0.1,
+          "accelerating": true,
+          "acceleration_ppt": 8.6
+        }
+      },
+      "institutional_validation": {
+        "score": 1.3,
+        "details": {
+          "institutional_pct": 99.2,
+          "short_pct": 4.1,
+          "total_held_pct": 100.3,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            39.2,
+            40.1,
+            10.5,
+            15.6
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 15.6
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:30.952081",
+    "scan_score": 87.05,
+    "scan_signal": "BUY",
+    "sector": "Healthcare"
+  },
+  {
+    "ticker": "FHI",
+    "composite_score": 5.3,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.5,
+        "details": {
+          "target_upside_pct": -2.9,
+          "recent_upgrades": 2,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 0,
+          "insider_sells": 49,
+          "buy_value": 0,
+          "sell_value": 18293972
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.0,
+        "details": {
+          "quarterly_growth_rates": [
+            0.3,
+            -0.2,
+            1.1
+          ],
+          "latest_qoq_growth": 0.3,
+          "previous_qoq_growth": -0.2,
+          "accelerating": true,
+          "acceleration_ppt": 0.5
+        }
+      },
+      "institutional_validation": {
+        "score": 1.8,
+        "details": {
+          "institutional_pct": 93.4,
+          "short_pct": 4.6,
+          "total_held_pct": 97.8,
+          "tight_float": true,
+          "buyback_indicator": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            37.0,
+            13.3,
+            19.2,
+            14.0
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 14.0
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:31.040322",
+    "scan_score": 94.04,
+    "scan_signal": "BUY",
+    "sector": "Financial Services"
+  },
+  {
+    "ticker": "PCTY",
+    "composite_score": 5.3,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 1.0,
+        "details": {
+          "target_upside_pct": 43.5,
+          "recent_upgrades": 1,
+          "recent_downgrades": 2
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 0,
+          "insider_sells": 115,
+          "buy_value": 0,
+          "sell_value": 272710851.0
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.0,
+        "details": {
+          "quarterly_growth_rates": [
+            4.4,
+            -0.4,
+            -0.8
+          ],
+          "latest_qoq_growth": 4.4,
+          "previous_qoq_growth": -0.4,
+          "accelerating": true,
+          "acceleration_ppt": 4.8
+        }
+      },
+      "institutional_validation": {
+        "score": 1.3,
+        "details": {
+          "institutional_pct": 82.3,
+          "short_pct": 5.3,
+          "total_held_pct": 101.8,
+          "tight_float": true,
+          "buyback_indicator": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            14.8,
+            15.5,
+            11.3,
+            15.9
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 15.9
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:33.614944",
+    "scan_score": 81.48,
+    "scan_signal": "BUY",
+    "sector": "Technology"
+  },
+  {
+    "ticker": "GEN",
+    "composite_score": 5.3,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 1.5,
+        "details": {
+          "target_upside_pct": 51.7,
+          "recent_upgrades": 1,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 2,
+          "insider_sells": 9,
+          "buy_value": 456693.0,
+          "sell_value": 42364166.0
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.0,
+        "details": {
+          "quarterly_growth_rates": [
+            0.5,
+            -1.0,
+            42.4
+          ],
+          "latest_qoq_growth": 0.5,
+          "previous_qoq_growth": -1.0,
+          "accelerating": true,
+          "acceleration_ppt": 1.5
+        }
+      },
+      "institutional_validation": {
+        "score": 1.8,
+        "details": {
+          "institutional_pct": 90.7,
+          "short_pct": 5.0,
+          "total_held_pct": 100.1,
+          "tight_float": true,
+          "buyback_indicator": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.0,
+        "details": {
+          "last_4q_surprises": [
+            1.3,
+            6.7,
+            1.6,
+            1.4
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 1.4
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:37.255140",
+    "scan_score": 76.51,
+    "scan_signal": "STRONG_BUY",
+    "sector": "Technology"
+  },
+  {
+    "ticker": "EXLS",
+    "composite_score": 5.0,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 1.0,
+        "details": {
+          "target_upside_pct": 34.5,
+          "recent_upgrades": 0,
+          "recent_downgrades": 3
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 0,
+          "insider_sells": 39,
+          "buy_value": 0,
+          "sell_value": 60277895.0
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.5,
+        "details": {
+          "quarterly_growth_rates": [
+            6.4,
+            -5.8,
+            8.1
+          ],
+          "latest_qoq_growth": 6.4,
+          "previous_qoq_growth": -5.8,
+          "accelerating": true,
+          "acceleration_ppt": 12.2
+        }
+      },
+      "institutional_validation": {
+        "score": 1.0,
+        "details": {
+          "institutional_pct": 101.1,
+          "short_pct": 8.0,
+          "total_held_pct": 104.3,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.5,
+        "details": {
+          "last_4q_surprises": [
+            8.8,
+            8.2,
+            3.2,
+            7.5
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 7.5
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:32.948889",
+    "scan_score": 81.9,
+    "scan_signal": "BUY",
+    "sector": "Technology"
+  },
+  {
+    "ticker": "NEM",
+    "composite_score": 4.8,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 1.0,
+        "details": {
+          "target_upside_pct": 31.0,
+          "recent_upgrades": 0,
+          "recent_downgrades": 1
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 1,
+          "insider_sells": 41,
+          "buy_value": 400335,
+          "sell_value": 12162002
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.0,
+        "details": {
+          "quarterly_growth_rates": [
+            3.8,
+            -1.0,
+            -2.9
+          ],
+          "latest_qoq_growth": 3.8,
+          "previous_qoq_growth": -1.0,
+          "accelerating": true,
+          "acceleration_ppt": 4.8
+        }
+      },
+      "institutional_validation": {
+        "score": 0.8,
+        "details": {
+          "institutional_pct": 80.9,
+          "short_pct": 2.7,
+          "total_held_pct": 81.2
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            37.1,
+            22.9,
+            18.8,
+            24.2
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 24.2
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:40.813091",
+    "scan_score": 73.92,
+    "scan_signal": "BUY",
+    "sector": "Basic Materials"
+  },
+  {
+    "ticker": "HII",
+    "composite_score": 4.5,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.5,
+        "details": {
+          "target_upside_pct": -2.2,
+          "recent_upgrades": 2,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 3,
+          "insider_sells": 16,
+          "buy_value": 1229486.0,
+          "sell_value": 15885418.0
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.5,
+        "details": {
+          "quarterly_growth_rates": [
+            9.9,
+            4.1,
+            14.8
+          ],
+          "latest_qoq_growth": 9.9,
+          "previous_qoq_growth": 4.1,
+          "accelerating": true,
+          "acceleration_ppt": 5.7
+        }
+      },
+      "institutional_validation": {
+        "score": 1.0,
+        "details": {
+          "institutional_pct": 96.3,
+          "short_pct": 5.4,
+          "total_held_pct": 97.1,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.5,
+        "details": {
+          "last_4q_surprises": [
+            35.0,
+            12.5,
+            8.3,
+            5.0
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 5.0
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:34.523887",
+    "scan_score": 79.65,
+    "scan_signal": "BUY",
+    "sector": "Industrials"
+  },
+  {
+    "ticker": "CHWY",
+    "composite_score": 4.5,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 1.5,
+        "details": {
+          "target_upside_pct": 74.6,
+          "recent_upgrades": 0,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 0,
+          "insider_sells": 56,
+          "buy_value": 0,
+          "sell_value": 4263685949.0
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.0,
+        "details": {
+          "quarterly_growth_rates": [
+            1.2,
+            -1.4,
+            -5.6
+          ],
+          "latest_qoq_growth": 1.2,
+          "previous_qoq_growth": -1.4,
+          "accelerating": true,
+          "acceleration_ppt": 2.6
+        }
+      },
+      "institutional_validation": {
+        "score": 1.0,
+        "details": {
+          "institutional_pct": 96.8,
+          "short_pct": 7.6,
+          "total_held_pct": 99.2,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.0,
+        "details": {
+          "last_4q_surprises": [
+            36.9,
+            3.3,
+            -0.5,
+            5.4
+          ],
+          "beats_last_4q": 3,
+          "latest_surprise_pct": 5.4
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:38.192452",
+    "scan_score": 76.27,
+    "scan_signal": "HOLD",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "ticker": "QLYS",
+    "composite_score": 4.5,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 1.0,
+        "details": {
+          "target_upside_pct": 41.7,
+          "recent_upgrades": 0,
+          "recent_downgrades": 1
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 1,
+          "insider_sells": 91,
+          "buy_value": 628,
+          "sell_value": 42419019
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.5,
+        "details": {
+          "quarterly_growth_rates": [
+            4.9,
+            -3.7,
+            -0.2
+          ],
+          "latest_qoq_growth": 4.9,
+          "previous_qoq_growth": -3.7,
+          "accelerating": true,
+          "acceleration_ppt": 8.7
+        }
+      },
+      "institutional_validation": {
+        "score": 1.0,
+        "details": {
+          "institutional_pct": 104.0,
+          "short_pct": 11.8,
+          "total_held_pct": 104.7,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.0,
+        "details": {
+          "last_4q_surprises": [
+            13.8,
+            13.3,
+            19.2,
+            4.9
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 4.9
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:40.945695",
+    "scan_score": 73.66,
+    "scan_signal": "BUY",
+    "sector": "Technology"
+  },
+  {
+    "ticker": "FAF",
+    "composite_score": 4.3,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 1.0,
+        "details": {
+          "target_upside_pct": 23.5,
+          "recent_upgrades": 2,
+          "recent_downgrades": 1
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 1,
+          "insider_sells": 7,
+          "buy_value": 4050101,
+          "sell_value": 11452715
+        }
+      },
+      "revenue_acceleration": {
+        "score": 0.0,
+        "details": {
+          "quarterly_growth_rates": [
+            3.2,
+            7.5,
+            16.4
+          ],
+          "latest_qoq_growth": 3.2,
+          "previous_qoq_growth": 7.5,
+          "accelerating": false
+        }
+      },
+      "institutional_validation": {
+        "score": 1.3,
+        "details": {
+          "institutional_pct": 97.4,
+          "short_pct": 3.9,
+          "total_held_pct": 101.2,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            28.5,
+            9.6,
+            17.1,
+            38.8
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 38.8
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:31.072501",
+    "scan_score": 87.65,
+    "scan_signal": "HOLD",
+    "sector": "Financial Services"
+  },
+  {
+    "ticker": "EXE",
+    "composite_score": 4.3,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.5,
+        "details": {
+          "target_upside_pct": 20.1,
+          "recent_upgrades": 0,
+          "recent_downgrades": 0
+        }
+      },
+      "insider_buying": {
+        "score": 0.3,
+        "details": {
+          "insider_buys": 5,
+          "insider_sells": 1,
+          "buy_value": 988380.0,
+          "sell_value": 4343978.0,
+          "mixed_signal": true,
+          "note": "More buyers (5) but sell value $4,343,978 > buy value $988,380"
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.5,
+        "details": {
+          "quarterly_growth_rates": [
+            3.4,
+            -33.2,
+            60.0
+          ],
+          "latest_qoq_growth": 3.4,
+          "previous_qoq_growth": -33.2,
+          "accelerating": true,
+          "acceleration_ppt": 36.6
+        }
+      },
+      "institutional_validation": {
+        "score": 1.0,
+        "details": {
+          "institutional_pct": 94.0,
+          "short_pct": 2.8,
+          "total_held_pct": 94.3
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.0,
+        "details": {
+          "last_4q_surprises": [
+            8.0,
+            -4.1,
+            14.2,
+            5.9
+          ],
+          "beats_last_4q": 3,
+          "latest_surprise_pct": 5.9
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:38.319126",
+    "scan_score": 75.37,
+    "scan_signal": "BUY",
+    "sector": "Energy"
+  },
+  {
+    "ticker": "NFG",
+    "composite_score": 4.1,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.0,
+        "details": {
+          "target_upside_pct": 5.4,
+          "recent_upgrades": 2,
+          "recent_downgrades": 2
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 0,
+          "insider_sells": 6,
+          "buy_value": 0,
+          "sell_value": 2766377.0
+        }
+      },
+      "revenue_acceleration": {
+        "score": 2.0,
+        "details": {
+          "quarterly_growth_rates": [
+            33.0,
+            -5.0,
+            -28.4
+          ],
+          "latest_qoq_growth": 33.0,
+          "previous_qoq_growth": -5.0,
+          "accelerating": true,
+          "acceleration_ppt": 38.0
+        }
+      },
+      "institutional_validation": {
+        "score": 0.6,
+        "details": {
+          "institutional_pct": 81.1,
+          "short_pct": 4.2,
+          "total_held_pct": 82.4
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.5,
+        "details": {
+          "last_4q_surprises": [
+            8.1,
+            6.2,
+            9.7,
+            7.3
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 7.3
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:33.576077",
+    "scan_score": 81.52,
+    "scan_signal": "HOLD",
+    "sector": "Energy"
+  },
+  {
+    "ticker": "CNX",
+    "composite_score": 4.1,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.0,
+        "details": {
+          "target_upside_pct": -14.9,
+          "recent_upgrades": 0,
+          "recent_downgrades": 1
+        }
+      },
+      "insider_buying": {
+        "score": 0.3,
+        "details": {
+          "insider_buys": 3,
+          "insider_sells": 2,
+          "buy_value": 4328259,
+          "sell_value": 35293974,
+          "mixed_signal": true,
+          "note": "More buyers (3) but sell value $35,293,974 > buy value $4,328,259"
+        }
+      },
+      "revenue_acceleration": {
+        "score": 0.0,
+        "details": {
+          "quarterly_growth_rates": [
+            -2.7,
+            -1.8,
+            11.3
+          ],
+          "latest_qoq_growth": -2.7,
+          "previous_qoq_growth": -1.8,
+          "accelerating": false
+        }
+      },
+      "institutional_validation": {
+        "score": 1.8,
+        "details": {
+          "institutional_pct": 95.2,
+          "short_pct": 17.8,
+          "short_squeeze_potential": true,
+          "total_held_pct": 99.9,
+          "tight_float": true,
+          "buyback_indicator": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 2.0,
+        "details": {
+          "last_4q_surprises": [
+            23.8,
+            30.0,
+            31.0,
+            72.4
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 72.4
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:37.560571",
+    "scan_score": 76.34,
+    "scan_signal": "HOLD",
+    "sector": "Energy"
+  },
+  {
+    "ticker": "BMY",
+    "composite_score": 4.1,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.0,
+        "details": {
+          "target_upside_pct": 5.7,
+          "recent_upgrades": 1,
+          "recent_downgrades": 1
+        }
+      },
+      "insider_buying": {
+        "score": 0.3,
+        "details": {
+          "insider_buys": 4,
+          "insider_sells": 4,
+          "buy_value": 512366.0,
+          "sell_value": 2709831.0,
+          "mixed_signal": true,
+          "note": "More buyers (4) but sell value $2,709,831 > buy value $512,366"
+        }
+      },
+      "revenue_acceleration": {
+        "score": 2.0,
+        "details": {
+          "quarterly_growth_rates": [
+            21.2,
+            2.0,
+            11.9
+          ],
+          "latest_qoq_growth": 21.2,
+          "previous_qoq_growth": 2.0,
+          "accelerating": true,
+          "acceleration_ppt": 19.2
+        }
+      },
+      "institutional_validation": {
+        "score": 0.8,
+        "details": {
+          "institutional_pct": 83.1,
+          "short_pct": 1.6,
+          "total_held_pct": 83.2
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.0,
+        "details": {
+          "last_4q_surprises": [
+            19.9,
+            32.6,
+            7.6,
+            4.6
+          ],
+          "beats_last_4q": 4,
+          "latest_surprise_pct": 4.6
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:38.328631",
+    "scan_score": 75.44,
+    "scan_signal": "BUY",
+    "sector": "Healthcare"
+  },
+  {
+    "ticker": "CF",
+    "composite_score": 4.0,
+    "signal": "NEUTRAL",
+    "signals": {
+      "analyst_revision": {
+        "score": 0.0,
+        "details": {
+          "target_upside_pct": -22.7,
+          "recent_upgrades": 2,
+          "recent_downgrades": 2
+        }
+      },
+      "insider_buying": {
+        "score": 0,
+        "details": {
+          "insider_buys": 0,
+          "insider_sells": 35,
+          "buy_value": 0,
+          "sell_value": 78789928
+        }
+      },
+      "revenue_acceleration": {
+        "score": 1.5,
+        "details": {
+          "quarterly_growth_rates": [
+            7.8,
+            -9.5,
+            4.0
+          ],
+          "latest_qoq_growth": 7.8,
+          "previous_qoq_growth": -9.5,
+          "accelerating": true,
+          "acceleration_ppt": 17.3
+        }
+      },
+      "institutional_validation": {
+        "score": 1.0,
+        "details": {
+          "institutional_pct": 106.6,
+          "short_pct": 8.4,
+          "total_held_pct": 107.3,
+          "tight_float": true
+        }
+      },
+      "earnings_surprise": {
+        "score": 1.5,
+        "details": {
+          "last_4q_surprises": [
+            22.9,
+            -4.5,
+            5.6,
+            10.4
+          ],
+          "beats_last_4q": 3,
+          "latest_surprise_pct": 10.4
+        }
+      }
+    },
+    "cached_at": "2026-03-17T09:42:31.224650",
+    "scan_score": 89.75,
+    "scan_signal": "HOLD",
+    "sector": "Basic Materials"
+  }
+]

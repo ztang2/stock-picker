@@ -1,5 +1,5 @@
 {
-  "_timestamp": "2026-03-16T18:36:28.605463",
+  "_timestamp": "2026-03-21T10:08:26.174425",
   "cpi": {
     "name": "CPI (Inflation)",
     "series_id": "CPIAUCSL",
@@ -51,32 +51,32 @@
   "yield_curve": {
     "name": "10Y-2Y Spread (Yield Curve)",
     "series_id": "T10Y2Y",
-    "current": 0.55,
-    "previous": 0.55,
-    "mom_change": 0.0,
-    "mom_change_pct": 0.0,
+    "current": 0.51,
+    "previous": 0.46,
+    "mom_change": 0.05,
+    "mom_change_pct": 10.87,
     "yoy_change_pct": 0,
-    "last_date": "2026-03-16",
+    "last_date": "2026-03-20",
     "signal": {
       "direction": "bullish",
       "score": 1,
-      "note": "Yield curve +0.55% \u2014 normal, healthy"
+      "note": "Yield curve +0.51% \u2014 normal, healthy"
     },
     "impact": "Negative spread \u2192 recession signal, historically very reliable"
   },
   "jobless_claims": {
     "name": "Initial Jobless Claims",
     "series_id": "ICSA",
-    "current": 213000.0,
-    "previous": 214000.0,
-    "mom_change": -1000.0,
-    "mom_change_pct": -0.47,
-    "yoy_change_pct": -4.48,
-    "last_date": "2026-03-07",
+    "current": 205000.0,
+    "previous": 213000.0,
+    "mom_change": -8000.0,
+    "mom_change_pct": -3.76,
+    "yoy_change_pct": -8.89,
+    "last_date": "2026-03-14",
     "signal": {
       "direction": "neutral",
       "score": 0,
-      "note": "Jobless claims 213K \u2014 normal"
+      "note": "Jobless claims 205K \u2014 normal"
     },
     "impact": "Rising claims \u2192 labor market weakening \u2192 bearish signal"
   },

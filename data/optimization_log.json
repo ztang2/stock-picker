@@ -49,5 +49,175 @@
       }
     },
     "combos_tested": 44
+  },
+  {
+    "date": "2026-03-17T08:00:09.854210",
+    "strategy": "balanced",
+    "decision": "rejected",
+    "reason": "Win rate 42.86% below 55% threshold",
+    "old_weights": {
+      "fundamentals": 0.26,
+      "valuation": 0.17,
+      "technicals": 0.22,
+      "risk": 0.08,
+      "growth": 0.12,
+      "sentiment": 0.05,
+      "sector_relative": 0.1
+    },
+    "new_weights": null,
+    "old_backtest": {
+      "period": "6m",
+      "alpha": -0.0301,
+      "win_rate": 0.4,
+      "portfolio_return": -0.0079,
+      "spy_return": 0.0222,
+      "max_drawdown": -0.1664,
+      "weights_used": {
+        "fundamentals": 0.26,
+        "valuation": 0.17,
+        "technicals": 0.22,
+        "risk": 0.08,
+        "growth": 0.12,
+        "sentiment": 0.05,
+        "sector_relative": 0.1
+      }
+    },
+    "new_backtest": {
+      "period": "6m",
+      "alpha": -0.0283,
+      "win_rate": 0.4286,
+      "portfolio_return": -0.0061,
+      "spy_return": 0.0222,
+      "max_drawdown": -0.1754,
+      "weights_used": {
+        "fundamentals": 0.1,
+        "valuation": 0.1,
+        "technicals": 0.4,
+        "risk": 0.12,
+        "sentiment": 0.06,
+        "sector_relative": 0.12,
+        "growth": 0.1
+      }
+    },
+    "combos_tested": 44
+  },
+  {
+    "date": "2026-03-17T08:01:15.002250",
+    "strategy": "balanced",
+    "decision": "rejected",
+    "reason": "Win rate 42.86% below 55% threshold",
+    "old_weights": {
+      "fundamentals": 0.26,
+      "valuation": 0.17,
+      "technicals": 0.22,
+      "risk": 0.08,
+      "growth": 0.12,
+      "sentiment": 0.05,
+      "sector_relative": 0.1
+    },
+    "new_weights": null,
+    "old_backtest": {
+      "period": "6m",
+      "alpha": -0.0301,
+      "win_rate": 0.4,
+      "portfolio_return": -0.0079,
+      "spy_return": 0.0222,
+      "max_drawdown": -0.1664,
+      "weights_used": {
+        "fundamentals": 0.26,
+        "valuation": 0.17,
+        "technicals": 0.22,
+        "risk": 0.08,
+        "growth": 0.12,
+        "sentiment": 0.05,
+        "sector_relative": 0.1
+      }
+    },
+    "new_backtest": {
+      "period": "6m",
+      "alpha": -0.0283,
+      "win_rate": 0.4286,
+      "portfolio_return": -0.0061,
+      "spy_return": 0.0222,
+      "max_drawdown": -0.1754,
+      "weights_used": {
+        "fundamentals": 0.1,
+        "valuation": 0.1,
+        "technicals": 0.3,
+        "risk": 0.15,
+        "sentiment": 0.075,
+        "sector_relative": 0.15,
+        "growth": 0.125
+      }
+    },
+    "combos_tested": 44
+  },
+  {
+    "date": "2026-03-17T08:14:58.053790",
+    "decision": "error",
+    "reason": "Could not backtest current weights",
+    "old_weights": {
+      "fundamentals": 0.26,
+      "valuation": 0.17,
+      "technicals": 0.22,
+      "risk": 0.08,
+      "growth": 0.12,
+      "sentiment": 0.05,
+      "sector_relative": 0.1
+    },
+    "new_weights": null,
+    "old_backtest": null,
+    "new_backtest": null
+  },
+  {
+    "date": "2026-03-17T10:33:42.897808",
+    "strategy": "balanced",
+    "decision": "no_change",
+    "reason": "Current weights are already optimal",
+    "old_weights": {
+      "fundamentals": 0.26,
+      "valuation": 0.17,
+      "technicals": 0.22,
+      "risk": 0.08,
+      "growth": 0.12,
+      "sentiment": 0.05,
+      "sector_relative": 0.1
+    },
+    "new_weights": null,
+    "old_backtest": {
+      "period": "6m",
+      "alpha": -0.0285,
+      "win_rate": 0.35,
+      "portfolio_return": -0.0088,
+      "spy_return": 0.0197,
+      "max_drawdown": -0.1664,
+      "weights_used": {
+        "fundamentals": 0.26,
+        "valuation": 0.17,
+        "technicals": 0.22,
+        "risk": 0.08,
+        "growth": 0.12,
+        "sentiment": 0.05,
+        "sector_relative": 0.1
+      }
+    },
+    "new_backtest": {
+      "period": "6m",
+      "alpha": -0.0285,
+      "win_rate": 0.35,
+      "portfolio_return": -0.0088,
+      "spy_return": 0.0197,
+      "max_drawdown": -0.1664,
+      "weights_used": {
+        "fundamentals": 0.26,
+        "valuation": 0.17,
+        "technicals": 0.22,
+        "risk": 0.08,
+        "growth": 0.12,
+        "sentiment": 0.05,
+        "sector_relative": 0.1
+      }
+    },
+    "combos_tested": 44
   }
 ]

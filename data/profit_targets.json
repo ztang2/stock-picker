@@ -45,5 +45,9 @@
   "DUOL": {
     "entry_price": 101.65,
     "tiers_triggered": []
+  },
+  "JHG": {
+    "entry_price": 50.67,
+    "tiers_triggered": []
   }
 }

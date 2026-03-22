@@ -1,425 +1,5 @@
 [
   {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-09T00:01:59"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-09T00:01:59"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-09T13:30:09"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-09T13:30:09"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-09T13:30:09"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-09T18:12:42"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-09T18:12:42"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-09T18:12:42"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "ALL",
-    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.6%); Fundamentals deteriorated (16.2 point drop)",
-    "severity": "warning",
-    "timestamp": "2026-03-09T18:13:11"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "FAF",
-    "message": "FAF has STRONG SELL signal: Fundamentals deteriorated (18.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-09T18:13:11"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CF",
-    "message": "CF has SELL signal: RSI extremely overbought (81.0); (RSI discounted: strong uptrend)",
-    "severity": "warning",
-    "timestamp": "2026-03-09T18:13:11"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "EXLS",
-    "message": "EXLS entered top 20 (score: 91.6)",
-    "severity": "info",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "HST",
-    "message": "HST entered top 20 (score: 91.0)",
-    "severity": "info",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "IQV",
-    "message": "IQV entered top 20 (score: 88.6)",
-    "severity": "info",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "CTSH",
-    "message": "CTSH entered top 20 (score: 88.1)",
-    "severity": "info",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "EPAM",
-    "message": "EPAM entered top 20 (score: 83.5)",
-    "severity": "info",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "QLYS",
-    "message": "QLYS entered top 20 (score: 81.3)",
-    "severity": "info",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "CVLT",
-    "message": "CVLT entered top 20 (score: 80.5)",
-    "severity": "info",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "dropped",
-    "ticker": "JLL",
-    "message": "JLL dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "dropped",
-    "ticker": "INCY",
-    "message": "INCY dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CTRA",
-    "message": "CTRA dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CVS",
-    "message": "CVS dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "dropped",
-    "ticker": "NFG",
-    "message": "NFG dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "dropped",
-    "ticker": "PGR",
-    "message": "PGR dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CB",
-    "message": "CB dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "strong_buy",
-    "ticker": "CTSH",
-    "message": "CTSH entry signal changed to STRONG_BUY",
-    "severity": "critical",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "strong_buy",
-    "ticker": "QLYS",
-    "message": "QLYS entry signal changed to STRONG_BUY",
-    "severity": "critical",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "JHG",
-    "message": "JHG has SELL signal: Fundamentals deteriorated (17.2 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:00:03"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "JHG",
-    "message": "JHG has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:00:33"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "JHG",
-    "message": "JHG has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T21:04:17"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "JHG",
-    "message": "JHG has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:12:10"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "INCY",
-    "message": "INCY entered top 20 (score: 84.3)",
-    "severity": "info",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "TOL",
-    "message": "TOL entered top 20 (score: 82.8)",
-    "severity": "info",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "SFM",
-    "message": "SFM entered top 20 (score: 82.2)",
-    "severity": "info",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "CTRA",
-    "message": "CTRA entered top 20 (score: 80.6)",
-    "severity": "info",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "EHC",
-    "message": "EHC entered top 20 (score: 77.9)",
-    "severity": "info",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "NFG",
-    "message": "NFG entered top 20 (score: 76.5)",
-    "severity": "info",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "CNX",
-    "message": "CNX entered top 20 (score: 74.8)",
-    "severity": "info",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "dropped",
-    "ticker": "JHG",
-    "message": "JHG dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CTSH",
-    "message": "CTSH dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "dropped",
-    "ticker": "GEN",
-    "message": "GEN dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "dropped",
-    "ticker": "EPAM",
-    "message": "EPAM dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "dropped",
-    "ticker": "GL",
-    "message": "GL dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "dropped",
-    "ticker": "CINF",
-    "message": "CINF dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "dropped",
-    "ticker": "QLYS",
-    "message": "QLYS dropped out of top rankings",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "strong_buy",
-    "ticker": "INCY",
-    "message": "INCY entry signal changed to STRONG_BUY",
-    "severity": "critical",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:51:19"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:53:35"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T22:55:20"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T23:03:39"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T23:05:07"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T23:05:07"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T23:05:07"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T23:05:08"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T23:09:55"
-  },
-  {
-    "type": "sell_warning",
-    "ticker": "CNX",
-    "message": "CNX has SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "warning",
-    "timestamp": "2026-03-10T23:11:43"
-  },
-  {
-    "type": "strong_sell",
-    "ticker": "CNX",
-    "message": "CNX has STRONG SELL signal: Fundamentals deteriorated (17.4 point drop); MACD bearish crossover",
-    "severity": "critical",
-    "timestamp": "2026-03-11T14:19:44"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "JHG",
-    "message": "JHG entered top 20 (score: 88.5)",
-    "severity": "info",
-    "timestamp": "2026-03-11T14:23:15"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "QLYS",
-    "message": "QLYS entered top 20 (score: 86.0)",
-    "severity": "info",
-    "timestamp": "2026-03-11T14:23:15"
-  },
-  {
-    "type": "new_entry",
-    "ticker": "AVGO",
-    "message": "AVGO entered top 20 (score: 83.0)",
-    "severity": "info",
-    "timestamp": "2026-03-11T14:23:15"
-  },
-  {
     "type": "new_entry",
     "ticker": "AR",
     "message": "AR entered top 20 (score: 78.7)",
@@ -1398,5 +978,425 @@
     "message": "EQT has STRONG SELL signal: RSI extremely overbought (86.8); (RSI discounted: strong uptrend)",
     "severity": "critical",
     "timestamp": "2026-03-16T19:08:40"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "WDAY",
+    "message": "WDAY entered top 20 (score: 81.9)",
+    "severity": "info",
+    "timestamp": "2026-03-17T18:56:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "FSLR",
+    "message": "FSLR dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-17T18:56:45"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "CTRA",
+    "message": "CTRA has SELL signal: Price near resistance ($32.71, +1.1%); Fundamentals deteriorated (18.8 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-03-17T18:56:45"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "EQT",
+    "message": "EQT has STRONG SELL signal: RSI extremely overbought (86.8); (RSI discounted: strong uptrend)",
+    "severity": "critical",
+    "timestamp": "2026-03-17T18:56:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "FSLR",
+    "message": "FSLR entered top 20 (score: 86.5)",
+    "severity": "info",
+    "timestamp": "2026-03-17T19:04:55"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "CNX",
+    "message": "CNX entered top 20 (score: 75.5)",
+    "severity": "info",
+    "timestamp": "2026-03-17T19:04:55"
+  },
+  {
+    "type": "dropped",
+    "ticker": "EXLS",
+    "message": "EXLS dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-17T19:04:55"
+  },
+  {
+    "type": "dropped",
+    "ticker": "EQT",
+    "message": "EQT dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-17T19:04:55"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "FSLR",
+    "message": "FSLR entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-03-17T19:04:55"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "CTRA",
+    "message": "CTRA has STRONG SELL signal: RSI overbought (73.7); Price near resistance ($33.04, +0.2%)",
+    "severity": "critical",
+    "timestamp": "2026-03-17T19:04:55"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Fundamentals deteriorated (16.2 point drop); Price dropped below MA50 ($213.53)",
+    "severity": "warning",
+    "timestamp": "2026-03-17T19:04:55"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "CTRA",
+    "message": "CTRA has STRONG SELL signal: RSI overbought (73.7); Price near resistance ($33.04, +0.2%)",
+    "severity": "critical",
+    "timestamp": "2026-03-17T20:29:00"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Fundamentals deteriorated (16.2 point drop); Price dropped below MA50 ($213.53)",
+    "severity": "warning",
+    "timestamp": "2026-03-17T20:29:00"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "FHI",
+    "message": "FHI entered top 20 (score: 92.5)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "INCY",
+    "message": "INCY entered top 20 (score: 91.6)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "JHG",
+    "message": "JHG entered top 20 (score: 89.4)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "JBL",
+    "message": "JBL entered top 20 (score: 89.1)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "FSLR",
+    "message": "FSLR entered top 20 (score: 88.9)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "JLL",
+    "message": "JLL entered top 20 (score: 88.7)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "EXLS",
+    "message": "EXLS entered top 20 (score: 88.4)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "TXT",
+    "message": "TXT entered top 20 (score: 87.5)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "IQV",
+    "message": "IQV entered top 20 (score: 85.9)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "RRC",
+    "message": "RRC entered top 20 (score: 84.8)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "NFG",
+    "message": "NFG entered top 20 (score: 82.8)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "THC",
+    "message": "THC entered top 20 (score: 81.6)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "GDDY",
+    "message": "GDDY entered top 20 (score: 80.2)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "LMT",
+    "message": "LMT entered top 20 (score: 80.0)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "EIX",
+    "message": "EIX entered top 20 (score: 78.8)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "TRV",
+    "message": "TRV entered top 20 (score: 78.5)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CINF",
+    "message": "CINF dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CRM",
+    "message": "CRM dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CVLT",
+    "message": "CVLT dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CTSH",
+    "message": "CTSH dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "ACGL",
+    "message": "ACGL dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CHWY",
+    "message": "CHWY dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "DG",
+    "message": "DG dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "DAL",
+    "message": "DAL dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "DELL",
+    "message": "DELL dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "BSX",
+    "message": "BSX dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CB",
+    "message": "CB dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "COR",
+    "message": "COR dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "BRX",
+    "message": "BRX dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CAH",
+    "message": "CAH dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "DGX",
+    "message": "DGX dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "dropped",
+    "ticker": "AR",
+    "message": "AR dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "score_change",
+    "ticker": "CF",
+    "message": "CF score moved up by 11.0 (77.4 \u2192 88.4)",
+    "severity": "info",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "INCY",
+    "message": "INCY entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "RRC",
+    "message": "RRC has SELL signal: RSI overbought (75.4); (RSI discounted: strong uptrend)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "CTRA",
+    "message": "CTRA has STRONG SELL signal: RSI overbought (73.3); Price near resistance ($34.67, +0.6%)",
+    "severity": "critical",
+    "timestamp": "2026-03-20T19:02:45"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "RRC",
+    "message": "RRC has SELL signal: RSI overbought (75.4); (RSI discounted: strong uptrend)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:06:34"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "CTRA",
+    "message": "CTRA has STRONG SELL signal: RSI overbought (73.3); Price near resistance ($34.67, +0.6%)",
+    "severity": "critical",
+    "timestamp": "2026-03-20T19:06:34"
+  },
+  {
+    "type": "score_change",
+    "ticker": "JHG",
+    "message": "JHG score moved down by 10.1 (89.4 \u2192 79.3)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:07:02"
+  },
+  {
+    "type": "score_change",
+    "ticker": "INCY",
+    "message": "INCY score moved down by 13.3 (91.6 \u2192 78.3)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:07:02"
+  },
+  {
+    "type": "score_change",
+    "ticker": "FHI",
+    "message": "FHI score moved down by 16.4 (92.5 \u2192 76.1)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:07:02"
+  },
+  {
+    "type": "score_change",
+    "ticker": "EIX",
+    "message": "EIX score moved down by 10.0 (78.8 \u2192 68.8)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:07:02"
+  },
+  {
+    "type": "score_change",
+    "ticker": "NFG",
+    "message": "NFG score moved down by 15.0 (82.8 \u2192 67.8)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:07:02"
+  },
+  {
+    "type": "score_change",
+    "ticker": "LMT",
+    "message": "LMT score moved down by 14.1 (80.0 \u2192 65.8)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:07:02"
+  },
+  {
+    "type": "score_change",
+    "ticker": "TRV",
+    "message": "TRV score moved down by 13.1 (78.5 \u2192 65.5)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:07:02"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "CTRA",
+    "message": "CTRA has STRONG SELL signal: RSI overbought (73.3); Price near resistance ($34.67, +0.6%)",
+    "severity": "critical",
+    "timestamp": "2026-03-20T19:07:02"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "RRC",
+    "message": "RRC has SELL signal: RSI overbought (75.4); (RSI discounted: strong uptrend)",
+    "severity": "warning",
+    "timestamp": "2026-03-20T19:07:02"
   }
 ]

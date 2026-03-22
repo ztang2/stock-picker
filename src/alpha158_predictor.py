@@ -29,9 +29,9 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 MODEL_DIR = DATA_DIR / "alpha158_models"
 TRAINING_DATA = DATA_DIR / "alpha158_training.parquet"
 
-# Ensemble weights (LightGBM 70%, XGBoost 30%)
-LGB_WEIGHT = 0.7
-XGB_WEIGHT = 0.3
+# Model weights: Pure LightGBM (IC 0.039 vs XGB 0.010 — XGB drags ensemble down)
+LGB_WEIGHT = 1.0
+XGB_WEIGHT = 0.0
 
 # Regime tickers
 REGIME_TICKERS = {
