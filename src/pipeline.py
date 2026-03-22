@@ -382,10 +382,13 @@ def run_scan(
     # ML must EARN its weight by proving accuracy > 55%
     ml_accuracy = None
     try:
-        ml_metrics_file = DATA_DIR / "ml_metrics.json"
-        if ml_metrics_file.exists():
-            ml_meta = json.loads(ml_metrics_file.read_text())
-            ml_accuracy = ml_meta.get("accuracy")
+        # Check both possible locations for ML metrics
+        for ml_metrics_path in [DATA_DIR / "ml_metrics.json", DATA_DIR / "ml" / "metrics.json"]:
+            if ml_metrics_path.exists():
+                ml_meta = json.loads(ml_metrics_path.read_text())
+                ml_accuracy = ml_meta.get("accuracy")
+                if ml_accuracy is not None:
+                    break
     except Exception:
         pass
     
