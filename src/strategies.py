@@ -42,13 +42,16 @@ STRATEGIES: Dict[str, dict] = {
         "emoji": "⚖️",
         "description": "All-around strategy mixing value and growth. Default for most users.",
         "weights": {
-            "fundamentals": 0.26,
-            "valuation": 0.17,
-            "technicals": 0.22,
-            "risk": 0.08,
-            "growth": 0.12,
-            "sentiment": 0.05,
-            "sector_relative": 0.10,
+            # Optimized 2026-03-21: grid search over 11K combos on 33 days of real data
+            # Optimal: fund=40% val=25% growth=25% tech=5% risk=5% sent=0% (IC 0.334)
+            # Compromise: shift toward optimal but keep some tech/risk (data is limited)
+            "fundamentals": 0.32,
+            "valuation": 0.22,
+            "technicals": 0.10,
+            "risk": 0.06,
+            "growth": 0.20,
+            "sentiment": 0.02,
+            "sector_relative": 0.08,
             # sum = 1.00
         },
         "smart_money_bonus": {

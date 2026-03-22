@@ -1,0 +1,22 @@
+{
+  "tested_at": "2026-03-21T19:57:28.131910",
+  "combos": 11082,
+  "samples": 274,
+  "current": {
+    "fundamentals": 0.25,
+    "valuation": 0.2,
+    "technicals": 0.2,
+    "risk": 0.15,
+    "growth": 0.15,
+    "sentiment": 0.05
+  },
+  "best": {
+    "fundamentals": 0.4,
+    "valuation": 0.25,
+    "technicals": 0.05,
+    "risk": 0.05,
+    "growth": 0.25,
+    "sentiment": 0.0
+  },
+  "best_ic": 0.3341
+}
