@@ -377,22 +377,35 @@ def run_scan(
         except Exception:
             pass
     
-    # Adaptive ML weight based on training data availability
+    # Adaptive ML weight based on MODEL ACCURACY, not just data availability
+    # ML must EARN its weight by proving accuracy > 55%
+    ml_accuracy = None
+    try:
+        ml_metrics_file = DATA_DIR / "ml_metrics.json"
+        if ml_metrics_file.exists():
+            ml_meta = json.loads(ml_metrics_file.read_text())
+            ml_accuracy = ml_meta.get("accuracy")
+    except Exception:
+        pass
+    
     if ml_disabled:
         ml_weight = 0.0
         logger.info("ML weight = 0% (auto-disabled due to poor performance)")
     elif snapshot_count < 10:
-        ml_weight = 0.0  # Not enough data, don't use ML
-        logger.info(f"ML integration: {snapshot_count} snapshots available, ML weight = 0% (insufficient data)")
-    elif snapshot_count < 30:
-        ml_weight = 0.10  # 10-30 days: 10% ML
-        logger.info(f"ML integration: {snapshot_count} snapshots available, ML weight = 10%")
-    elif snapshot_count < 60:
-        ml_weight = 0.20  # 30-60 days: 20% ML
-        logger.info(f"ML integration: {snapshot_count} snapshots available, ML weight = 20%")
+        ml_weight = 0.0
+        logger.info(f"ML weight = 0% ({snapshot_count} snapshots, insufficient data)")
+    elif ml_accuracy is not None and ml_accuracy < 0.55:
+        ml_weight = 0.0  # Model not good enough yet
+        logger.info(f"ML weight = 0% (accuracy {ml_accuracy:.1%} < 55% threshold)")
+    elif ml_accuracy is not None and ml_accuracy < 0.60:
+        ml_weight = 0.10  # Barely useful: 10%
+        logger.info(f"ML weight = 10% (accuracy {ml_accuracy:.1%})")
+    elif ml_accuracy is not None and ml_accuracy < 0.65:
+        ml_weight = 0.20  # Decent: 20%
+        logger.info(f"ML weight = 20% (accuracy {ml_accuracy:.1%})")
     else:
-        ml_weight = 0.30  # 60+ days: 30% ML
-        logger.info(f"ML integration: {snapshot_count} snapshots available, ML weight = 30%")
+        ml_weight = 0.30  # Strong: 30%
+        logger.info(f"ML weight = 30% (accuracy {ml_accuracy})")
     
     # Apply ML scoring if model exists and weight > 0
     ml_scores_map = {}
