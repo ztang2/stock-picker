@@ -29,6 +29,7 @@ from .sentiment import score_analyst_sentiment
 from .market_regime import detect_market_regime, detect_geopolitical_events
 from .insider import get_combined_smart_money_score
 from .ml_model import predict_scores
+from .alpha158_predictor import predict_for_stocks as alpha158_predict
 
 logger = logging.getLogger(__name__)
 
@@ -420,6 +421,36 @@ def run_scan(
             logger.warning(f"ML prediction failed: {e}")
             ml_weight = 0.0  # Fall back to no ML if prediction fails
 
+    # --- Alpha158 ML Integration (Qlib methodology) ---
+    alpha158_map = {}
+    alpha158_weight = 0.0
+    try:
+        alpha158_metrics_file = DATA_DIR / "alpha158_models" / "metrics.json"
+        if alpha158_metrics_file.exists():
+            a158_meta = json.loads(alpha158_metrics_file.read_text())
+            a158_ic = a158_meta.get("ensemble_ic", 0)
+            # IC-based weight: IC > 0.03 = 10%, IC > 0.05 = 15%, IC > 0.08 = 20%
+            if a158_ic > 0.08:
+                alpha158_weight = 0.20
+            elif a158_ic > 0.05:
+                alpha158_weight = 0.15
+            elif a158_ic > 0.03:
+                alpha158_weight = 0.10
+            else:
+                alpha158_weight = 0.0
+            logger.info(f"Alpha158 IC: {a158_ic:.4f} → weight: {alpha158_weight:.0%}")
+            
+            if alpha158_weight > 0:
+                # Only predict for top stocks to save time (not all 800)
+                top_tickers = [row["ticker"] for _, row in ranked_df.head(min(top_n * 3, 100)).iterrows()]
+                a158_preds = alpha158_predict(tickers=top_tickers)
+                if a158_preds and not a158_preds[0].get("error"):
+                    alpha158_map = {p["ticker"]: p for p in a158_preds}
+                    logger.info(f"Alpha158 predictions for {len(alpha158_map)} stocks")
+    except Exception as e:
+        logger.warning(f"Alpha158 prediction failed: {e}")
+        alpha158_weight = 0.0
+
     # Merge details
     detail_map = {r["ticker"]: r for r in filtered}
     # Sector-capped selection: max 4 per sector in top N to prevent concentration
@@ -446,17 +477,26 @@ def run_scan(
         # Get base composite score
         base_composite = float(row["composite"])
         
-        # Blend with ML score if available
+        # Blend with old ML score if available
         ml_data = ml_scores_map.get(tkr)
         if ml_data and ml_weight > 0:
-            ml_score = ml_data.get("ml_score", 50)  # ML score is 0-100
-            # Final score = base * (1 - weight) + ml * weight
+            ml_score = ml_data.get("ml_score", 50)
             final_composite = base_composite * (1 - ml_weight) + ml_score * ml_weight
             ml_signal = ml_data.get("consensus_signal", "N/A")
         else:
             final_composite = base_composite
             ml_score = None
             ml_signal = None
+        
+        # Blend with Alpha158 score (Qlib methodology)
+        a158_data = alpha158_map.get(tkr)
+        a158_score = None
+        if a158_data and alpha158_weight > 0:
+            # Alpha158 predicts excess return (%). Convert to 0-100 scale:
+            # -5% → 25, 0% → 50, +5% → 75 (linear mapping)
+            raw_pred = a158_data.get("predicted_excess_return", 0)
+            a158_score = max(0, min(100, 50 + raw_pred * 5))  # 1% excess = 5 points
+            final_composite = final_composite * (1 - alpha158_weight) + a158_score * alpha158_weight
         
         ranked.append({
             "rank": int(row["rank"]),
@@ -470,6 +510,9 @@ def run_scan(
             "ml_score": round(ml_score, 2) if ml_score is not None else None,
             "ml_signal": ml_signal,
             "ml_weight": round(ml_weight, 2),
+            "alpha158_score": round(a158_score, 1) if a158_score is not None else None,
+            "alpha158_pred": a158_data.get("predicted_excess_return") if a158_data else None,
+            "alpha158_weight": round(alpha158_weight, 2),
             "fundamentals_pct": round(float(row["fund_pct"]), 2) if pd.notna(row["fund_pct"]) else None,
             "valuation_pct": round(float(row["val_pct"]), 2) if pd.notna(row["val_pct"]) else None,
             "technicals_pct": round(float(row["tech_pct"]), 2) if pd.notna(row["tech_pct"]) else None,

@@ -1,0 +1,16 @@
+{
+  "method": "Alpha158 + XGBoost (Qlib methodology)",
+  "train_samples": 159146,
+  "valid_samples": 21637,
+  "test_samples": 29751,
+  "features": 118,
+  "ic_test": -0.09559613439682182,
+  "icir_test": -0.28655672741582205,
+  "rank_ic_test": -0.0791962980810872,
+  "rank_icir_test": -0.3043711407146886,
+  "accuracy_test": 0.5090921313569292,
+  "top_10pct_excess": -0.014829344119869607,
+  "bottom_10pct_excess": 0.009662941880404742,
+  "spread": -0.02449228600027435,
+  "best_iteration": 29
+}

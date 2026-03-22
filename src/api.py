@@ -457,6 +457,33 @@ def ml_compare():
         raise HTTPException(500, f"ML comparison failed: {e}")
 
 
+@app.get("/alpha158/train")
+def alpha158_train():
+    """Train Alpha158 Qlib-style ML model."""
+    try:
+        from .alpha158_predictor import train as a158_train
+        return a158_train()
+    except Exception as e:
+        raise HTTPException(500, f"Alpha158 training failed: {e}")
+
+
+@app.get("/alpha158/predict")
+def alpha158_predict(n: int = Query(20)):
+    """Predict Alpha158 scores for top N stocks."""
+    try:
+        from .alpha158_predictor import predict_for_stocks
+        return predict_for_stocks()[:n]
+    except Exception as e:
+        raise HTTPException(500, f"Alpha158 prediction failed: {e}")
+
+
+@app.get("/alpha158/metrics")
+def alpha158_metrics():
+    """Get Alpha158 model metrics."""
+    from .alpha158_predictor import get_metrics
+    return get_metrics()
+
+
 @app.get("/optimize/run")
 def optimize_run(strategy: str = Query("balanced")):
     """Run weight optimization."""
