@@ -3,17 +3,6 @@
     "entry_price": 57.12,
     "tiers_triggered": []
   },
-  "CF": {
-    "entry_price": 97.8,
-    "tiers_triggered": [
-      1,
-      2
-    ],
-    "tier1_date": "2026-03-12",
-    "tier1_price": 135.29,
-    "tier2_date": "2026-03-15",
-    "tier2_price": 129.57
-  },
   "NFLX": {
     "entry_price": 80.51,
     "tiers_triggered": [
@@ -38,10 +27,6 @@
     "entry_price": 97.67,
     "tiers_triggered": []
   },
-  "HST": {
-    "entry_price": 18.9,
-    "tiers_triggered": []
-  },
   "DUOL": {
     "entry_price": 101.65,
     "tiers_triggered": []
@@ -49,5 +34,28 @@
   "JHG": {
     "entry_price": 50.67,
     "tiers_triggered": []
+  },
+  "EXLS": {
+    "entry_price": 30.33,
+    "tiers": [
+      {
+        "level": 1,
+        "target_pct": 20,
+        "sell_fraction": 0.33,
+        "triggered": false
+      },
+      {
+        "level": 2,
+        "target_pct": 30,
+        "sell_fraction": 0.33,
+        "triggered": false
+      },
+      {
+        "level": 3,
+        "target_pct": 50,
+        "sell_fraction": 1.0,
+        "triggered": false
+      }
+    ]
   }
 }
