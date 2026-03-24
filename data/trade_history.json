@@ -101,5 +101,17 @@
     "price": 101.65,
     "total": 700.0,
     "reason": "Education tech PE 12.7, margin 40%, growth 35%"
+  },
+  {
+    "date": "2026-03-24",
+    "action": "SELL",
+    "ticker": "CF",
+    "shares": 4.50386,
+    "price": 127.41,
+    "total": 573.84,
+    "entry_price": 97.8,
+    "profit": 133.36,
+    "profit_pct": 30.3,
+    "reason": "Oil -9.5%, Trump 5-day pause on Iran strikes, trailing stop triggered, take profit +30%"
   }
 ]

@@ -6,12 +6,6 @@
       "entry_date": "2026-02-17",
       "entry_score": 82.7
     },
-    "CF": {
-      "shares": 4.50386,
-      "entry_price": 97.8,
-      "entry_date": "2026-02-23",
-      "entry_score": 85.32
-    },
     "NFLX": {
       "shares": 40,
       "entry_price": 80.51,
@@ -54,5 +48,5 @@
       "entry_score": 88.8
     }
   },
-  "updated": "2026-03-16"
+  "updated": "2026-03-24T07:59:28.672350"
 }
