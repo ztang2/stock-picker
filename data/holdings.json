@@ -46,7 +46,15 @@
       "entry_price": 50.67,
       "entry_date": "2026-03-19",
       "entry_score": 88.8
+    },
+    "EXLS": {
+      "ticker": "EXLS",
+      "shares": 18.961253,
+      "entry_price": 30.33,
+      "entry_date": "2026-03-24",
+      "sector": "Technology",
+      "industry": "Information Technology Services"
     }
   },
-  "updated": "2026-03-24T07:59:28.672350"
+  "updated": "2026-03-24T09:12:03.027736"
 }

@@ -113,5 +113,14 @@
     "profit": 133.36,
     "profit_pct": 30.3,
     "reason": "Oil -9.5%, Trump 5-day pause on Iran strikes, trailing stop triggered, take profit +30%"
+  },
+  {
+    "date": "2026-03-24",
+    "action": "BUY",
+    "ticker": "EXLS",
+    "shares": 18.961253,
+    "price": 30.33,
+    "total": 575.0,
+    "reason": "Pipeline #7 (86.4), IT services, RSI 32.6 oversold, analyst +37.8% upside, CF proceeds redeployed"
   }
 ]
