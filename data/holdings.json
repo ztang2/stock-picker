@@ -30,11 +30,6 @@
       "entry_price": 113.75,
       "entry_date": "2026-03-11"
     },
-    "QLYS": {
-      "shares": 7.218183,
-      "entry_price": 97.67,
-      "entry_date": "2026-03-12"
-    },
     "DUOL": {
       "shares": 6.886374,
       "entry_price": 101.65,
@@ -54,7 +49,15 @@
       "entry_date": "2026-03-24",
       "sector": "Technology",
       "industry": "Information Technology Services"
+    },
+    "FAF": {
+      "ticker": "FAF",
+      "shares": 11.323305,
+      "entry_price": 59.17,
+      "entry_date": "2026-03-26",
+      "sector": "Financial Services",
+      "industry": "Insurance - Specialty"
     }
   },
-  "updated": "2026-03-24T09:12:03.027736"
+  "updated": "2026-03-26T08:03:16.212216"
 }

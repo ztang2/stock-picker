@@ -23,10 +23,6 @@
     "entry_price": 113.75,
     "tiers_triggered": []
   },
-  "QLYS": {
-    "entry_price": 97.67,
-    "tiers_triggered": []
-  },
   "DUOL": {
     "entry_price": 101.65,
     "tiers_triggered": []
@@ -37,6 +33,29 @@
   },
   "EXLS": {
     "entry_price": 30.33,
+    "tiers": [
+      {
+        "level": 1,
+        "target_pct": 20,
+        "sell_fraction": 0.33,
+        "triggered": false
+      },
+      {
+        "level": 2,
+        "target_pct": 30,
+        "sell_fraction": 0.33,
+        "triggered": false
+      },
+      {
+        "level": 3,
+        "target_pct": 50,
+        "sell_fraction": 1.0,
+        "triggered": false
+      }
+    ]
+  },
+  "FAF": {
+    "entry_price": 59.17,
     "tiers": [
       {
         "level": 1,

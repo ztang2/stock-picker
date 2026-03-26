@@ -122,5 +122,26 @@
     "price": 30.33,
     "total": 575.0,
     "reason": "Pipeline #7 (86.4), IT services, RSI 32.6 oversold, analyst +37.8% upside, CF proceeds redeployed"
+  },
+  {
+    "date": "2026-03-26",
+    "action": "SELL",
+    "ticker": "QLYS",
+    "shares": 7.218183,
+    "price": 91.92,
+    "total": 663.5,
+    "entry_price": 97.67,
+    "profit": -41.5,
+    "profit_pct": -5.9,
+    "reason": "Insider selling $42M (CEO+CFO), AI competition threat, cut loss"
+  },
+  {
+    "date": "2026-03-26",
+    "action": "BUY",
+    "ticker": "FAF",
+    "shares": 11.323305,
+    "price": 59.17,
+    "total": 670.0,
+    "reason": "Pipeline #14 STRONG_BUY, insider buying $4M, earnings +194%, PE 8.3, analyst +39.8%"
   }
 ]
