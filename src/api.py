@@ -1322,22 +1322,29 @@ def robin_report():
     if "NFLX" not in all_holdings:
         all_holdings["NFLX"] = {"shares": 40, "entry_price": 80.51, "entry_date": "2026-02-11"}
     
-    # Fetch live prices
+    # Fetch live prices (fallback to 5d for weekends/holidays)
     tickers_str = " ".join(all_holdings.keys())
-    try:
-        live_data = yf.download(tickers_str, period="1d", progress=False)
-        live_prices = {}
-        if len(all_holdings) == 1:
-            t = list(all_holdings.keys())[0]
-            live_prices[t] = float(live_data["Close"].iloc[-1]) if len(live_data) > 0 else None
-        else:
-            for t in all_holdings:
-                try:
-                    live_prices[t] = float(live_data["Close"][t].iloc[-1])
-                except:
-                    live_prices[t] = None
-    except:
-        live_prices = {t: None for t in all_holdings}
+    live_prices = {t: None for t in all_holdings}
+    for period in ["1d", "5d"]:
+        try:
+            live_data = yf.download(tickers_str, period=period, progress=False)
+            if len(all_holdings) == 1:
+                t = list(all_holdings.keys())[0]
+                if len(live_data) > 0:
+                    live_prices[t] = float(live_data["Close"].iloc[-1])
+            else:
+                for t in all_holdings:
+                    try:
+                        val = float(live_data["Close"][t].iloc[-1])
+                        if val and val > 0:
+                            live_prices[t] = val
+                    except:
+                        pass
+            # If we got most prices, stop
+            if sum(1 for v in live_prices.values() if v) >= len(all_holdings) * 0.5:
+                break
+        except:
+            pass
     
     # Build holdings report
     positions = []
