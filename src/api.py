@@ -1467,6 +1467,13 @@ def scan_top_n(n: int = 5):
     }
 
 
+@app.get("/review/{ticker}")
+def devil_review(ticker: str):
+    """Devil's Advocate review — find every reason NOT to buy this stock."""
+    from .devils_advocate import review
+    return review(ticker.upper())
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("src.api:app", host="0.0.0.0", port=8000, reload=True)
