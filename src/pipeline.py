@@ -699,11 +699,120 @@ def run_scan(
                 elif az > 5.0:
                     quality_bonus += 1
             
+            # Earnings decline penalty (separate from quality)
+            eg = stock.get("earnings_growth") or (stock.get("growth", {}) or {}).get("earnings_growth")
+            if eg is not None and eg < -0.3:  # earnings dropped >30%
+                quality_bonus -= 2
+                stock["earnings_decline_flag"] = f"earnings_growth_{eg*100:.0f}%"
+            elif eg is not None and eg < -0.15:  # earnings dropped >15%
+                quality_bonus -= 1
+                stock["earnings_decline_flag"] = f"earnings_growth_{eg*100:.0f}%"
+
             if quality_bonus != 0:
                 stock["composite_score"] = max(0, stock.get("composite_score", 0) + quality_bonus)
                 stock["quality_bonus"] = quality_bonus
     
     logger.info("Quality scores completed in %.1fs", time.time() - quality_start)
+
+    # --- Insider selling penalty + Short interest penalty (top N only) ---
+    # Fetch insider data for ranked stocks and penalize heavy selling
+    logger.info("Checking insider selling & short interest for top %d stocks...", len(ranked))
+    insider_start = time.time()
+
+    def _fetch_insider_short(ticker: str):
+        """Fetch 2026 insider transactions and short interest."""
+        try:
+            tk = yf.Ticker(ticker)
+            info = tk.info or {}
+            short_pct = info.get("shortPercentOfFloat", 0) or 0
+
+            # Insider transactions (2026 only)
+            insider_sell_value = 0
+            insider_buy_value = 0
+            insider_sells = 0
+            insider_buys = 0
+            ins = tk.insider_transactions
+            if ins is not None and not ins.empty:
+                recent = ins[ins['Start Date'] >= '2026-01-01']
+                for _, row in recent.iterrows():
+                    text = str(row.get("Text", "")).lower()
+                    value = abs(row.get("Value", 0) or 0)
+                    if "purchase" in text or "buy" in text:
+                        insider_buys += 1
+                        insider_buy_value += value
+                    elif "sale" in text:
+                        insider_sells += 1
+                        insider_sell_value += value
+
+            return ticker, {
+                "short_pct": short_pct,
+                "insider_sell_value": insider_sell_value,
+                "insider_buy_value": insider_buy_value,
+                "insider_sells": insider_sells,
+                "insider_buys": insider_buys,
+            }
+        except Exception:
+            return ticker, None
+
+    insider_results = {}
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = {executor.submit(_fetch_insider_short, s["ticker"]): s["ticker"] for s in ranked}
+        for future in as_completed(futures):
+            ticker, data = future.result()
+            insider_results[ticker] = data
+
+    for stock in ranked:
+        idata = insider_results.get(stock["ticker"])
+        if not idata:
+            continue
+
+        penalty = 0
+        flags = []
+
+        # Insider selling penalty
+        sell_val = idata["insider_sell_value"]
+        buy_val = idata["insider_buy_value"]
+        buys = idata["insider_buys"]
+
+        if sell_val > 10_000_000 and buys == 0:
+            penalty -= 3
+            flags.append(f"insider_sell_critical_${sell_val/1e6:.0f}M")
+        elif sell_val > 5_000_000 and buys == 0:
+            penalty -= 2
+            flags.append(f"insider_sell_high_${sell_val/1e6:.0f}M")
+        elif sell_val > 1_000_000 and buys == 0:
+            penalty -= 1
+            flags.append(f"insider_sell_${sell_val/1e6:.1f}M")
+
+        # Insider buying bonus
+        if buy_val > 1_000_000:
+            penalty += 2
+            flags.append(f"insider_buy_${buy_val/1e6:.1f}M")
+        elif buy_val > 500_000 and buys > 0:
+            penalty += 1
+            flags.append(f"insider_buy_${buy_val/1e3:.0f}K")
+
+        # Short interest penalty
+        short_pct = idata["short_pct"]
+        if short_pct and short_pct > 0.15:  # >15%
+            penalty -= 2
+            flags.append(f"short_{short_pct*100:.1f}%")
+        elif short_pct and short_pct > 0.10:  # >10%
+            penalty -= 1
+            flags.append(f"short_{short_pct*100:.1f}%")
+
+        if penalty != 0:
+            stock["composite_score"] = max(0, stock.get("composite_score", 0) + penalty)
+            stock["insider_short_penalty"] = penalty
+            stock["insider_short_flags"] = flags
+
+        stock["insider_sell_value"] = sell_val
+        stock["insider_buy_value"] = buy_val
+        stock["insider_sells_2026"] = idata["insider_sells"]
+        stock["insider_buys_2026"] = buys
+        stock["short_pct_float"] = short_pct
+
+    logger.info("Insider/short check completed in %.1fs", time.time() - insider_start)
 
     # --- Smart money signals (analyst revisions + insider trading) for top N only ---
     # Only fetch for top_n to avoid 500 yfinance API calls
