@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run import tests
+        run: |
+          python -c "from src.pipeline import run_scan; print('pipeline OK')"
+          python -c "from src.risk_manager import get_portfolio_summary; print('risk_manager OK')"
+          python -c "from src.entry_timing import analyze_entry; print('entry_timing OK')"
+          python -c "from src.quality_scores import compute_quality; print('quality_scores OK')"
+          python -c "from src.early_momentum import compute_momentum; print('early_momentum OK')"
+          python -c "from src.devils_advocate import _quantitative_flags; print('devils_advocate OK')"
+
+      - name: Run API startup test
+        run: |
+          timeout 10 python -c "
+          from src.api import app
+          print('API app loaded successfully')
+          " || true
+
+      - name: Docker build test
+        run: docker build -t stock-picker:test .

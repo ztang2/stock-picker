@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+.env
+.git
+.gitignore
+*.md
+venv/
+.venv/
+data/alpha158_training.parquet
+data/alpha158_xgb.model
