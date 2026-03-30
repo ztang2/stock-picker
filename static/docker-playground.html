@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>Docker 可视化学习</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0d1117; color: #e6edf3; 
+  min-height: 100vh; padding: 40px;
+}
+h1 { font-size: 32px; margin-bottom: 10px; }
+.subtitle { color: #8b949e; margin-bottom: 40px; font-size: 18px; }
+
+.container { max-width: 1100px; margin: 0 auto; }
+
+/* Tabs */
+.tabs { display: flex; gap: 4px; margin-bottom: 30px; }
+.tab { 
+  padding: 10px 24px; background: #161b22; border: 1px solid #30363d;
+  border-radius: 8px 8px 0 0; cursor: pointer; color: #8b949e; font-size: 15px;
+  transition: all 0.2s;
+}
+.tab.active { background: #1f2937; color: #58a6ff; border-bottom-color: #1f2937; }
+.tab:hover { color: #e6edf3; }
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* Concept cards */
+.concept { 
+  background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+  padding: 30px; margin-bottom: 24px;
+}
+.concept h2 { font-size: 22px; margin-bottom: 16px; color: #58a6ff; }
+.concept p { line-height: 1.8; color: #c9d1d9; margin-bottom: 12px; }
+
+/* Visual comparison */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+.compare-box {
+  background: #0d1117; border: 2px solid #30363d; border-radius: 12px;
+  padding: 24px; text-align: center;
+}
+.compare-box.bad { border-color: #f85149; }
+.compare-box.good { border-color: #3fb950; }
+.compare-box h3 { font-size: 18px; margin-bottom: 16px; }
+.compare-box.bad h3 { color: #f85149; }
+.compare-box.good h3 { color: #3fb950; }
+
+/* Stack visualization */
+.stack { 
+  display: flex; flex-direction: column; gap: 4px; margin: 10px 0;
+}
+.stack-layer {
+  padding: 10px 16px; border-radius: 6px; font-size: 14px;
+  text-align: center; font-weight: 600;
+}
+.layer-app { background: #1f6feb; }
+.layer-deps { background: #388bfd; }
+.layer-python { background: #58a6ff; color: #0d1117; }
+.layer-os { background: #8b949e; color: #0d1117; }
+.layer-docker { background: #3fb950; color: #0d1117; }
+.layer-host { background: #f0883e; color: #0d1117; }
+
+/* Interactive demo */
+.demo-area {
+  background: #0d1117; border: 1px solid #30363d; border-radius: 12px;
+  padding: 20px; margin: 16px 0;
+}
+.terminal {
+  background: #161b22; border-radius: 8px; padding: 16px; 
+  font-family: 'JetBrains Mono', 'Menlo', monospace; font-size: 14px;
+  color: #8b949e; overflow-x: auto;
+}
+.terminal .cmd { color: #3fb950; }
+.terminal .output { color: #c9d1d9; }
+.terminal .comment { color: #6e7681; }
+.terminal .error { color: #f85149; }
+
+/* Animation */
+.flow { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
+.flow-box {
+  background: #161b22; border: 2px solid #30363d; border-radius: 12px;
+  padding: 16px 24px; text-align: center; min-width: 140px;
+  transition: all 0.3s;
+}
+.flow-box:hover { border-color: #58a6ff; transform: translateY(-2px); }
+.flow-box .icon { font-size: 32px; margin-bottom: 8px; }
+.flow-box .label { font-size: 13px; color: #8b949e; }
+.flow-arrow { color: #58a6ff; font-size: 24px; }
+
+/* Buttons */
+.btn {
+  padding: 10px 24px; border-radius: 8px; border: none;
+  background: #238636; color: white; font-size: 15px; font-weight: 600;
+  cursor: pointer; margin: 8px 4px; transition: all 0.2s;
+}
+.btn:hover { background: #2ea043; }
+.btn.secondary { background: #30363d; }
+.btn.secondary:hover { background: #484f58; }
+
+/* Quiz */
+.quiz-option {
+  display: block; padding: 12px 20px; margin: 8px 0;
+  background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+  cursor: pointer; transition: all 0.2s; color: #c9d1d9;
+}
+.quiz-option:hover { border-color: #58a6ff; }
+.quiz-option.correct { border-color: #3fb950; background: #3fb95020; }
+.quiz-option.wrong { border-color: #f85149; background: #f8514920; }
+.quiz-result { margin-top: 12px; font-weight: 600; }
+
+/* Dockerfile viewer */
+.dockerfile-line {
+  display: flex; gap: 12px; padding: 4px 0; align-items: flex-start;
+}
+.df-keyword { color: #ff7b72; font-weight: 700; min-width: 70px; font-family: monospace; }
+.df-value { color: #c9d1d9; font-family: monospace; }
+.df-explain { color: #8b949e; font-size: 13px; margin-left: 8px; font-style: italic; }
+
+.highlight { color: #ffa657; }
+.green { color: #3fb950; }
+.blue { color: #58a6ff; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🐳 Docker 可视化学习</h1>
+  <p class="subtitle">用最简单的方式理解Docker — 为什么用、怎么用</p>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('concept')">📦 核心概念</div>
+    <div class="tab" onclick="showTab('compare')">⚡ 对比</div>
+    <div class="tab" onclick="showTab('dockerfile')">📄 我们的Dockerfile</div>
+    <div class="tab" onclick="showTab('commands')">💻 常用命令</div>
+    <div class="tab" onclick="showTab('quiz')">🧠 测试</div>
+  </div>
+
+  <!-- Panel 1: Core Concepts -->
+  <div class="panel active" id="concept">
+    <div class="concept">
+      <h2>Docker 是什么？</h2>
+      <p>Docker 把你的 <span class="highlight">代码 + 依赖 + 运行环境</span> 打包成一个"盒子"（Container）。</p>
+      <p>这个盒子拿到 <strong>任何电脑</strong> 上都能跑，不用重新装任何东西。</p>
+      
+      <div class="flow">
+        <div class="flow-box">
+          <div class="icon">📝</div>
+          <div><strong>Dockerfile</strong></div>
+          <div class="label">构建说明书</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <div class="icon">📦</div>
+          <div><strong>Image</strong></div>
+          <div class="label">打包好的盒子</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <div class="icon">🚀</div>
+          <div><strong>Container</strong></div>
+          <div class="label">跑起来的实例</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept">
+      <h2>三个核心概念</h2>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+        <div class="demo-area">
+          <h3 style="color: #ffa657; margin-bottom: 10px;">📝 Dockerfile</h3>
+          <p style="font-size: 14px;">像菜谱一样的文本文件。告诉Docker：用什么基础环境、装什么依赖、复制什么文件、怎么启动。</p>
+          <p style="font-size: 13px; color: #6e7681; margin-top: 8px;">类比：宜家家具的安装说明书</p>
+        </div>
+        <div class="demo-area">
+          <h3 style="color: #58a6ff; margin-bottom: 10px;">📦 Image</h3>
+          <p style="font-size: 14px;">按照Dockerfile构建出来的"成品"。只读的，像一个模板。可以分享给别人。</p>
+          <p style="font-size: 13px; color: #6e7681; margin-top: 8px;">类比：装好的宜家家具（还没搬进房间）</p>
+        </div>
+        <div class="demo-area">
+          <h3 style="color: #3fb950; margin-bottom: 10px;">🚀 Container</h3>
+          <p style="font-size: 14px;">Image跑起来后就是Container。可以同时跑多个Container（从同一个Image）。</p>
+          <p style="font-size: 13px; color: #6e7681; margin-top: 8px;">类比：家具搬进房间，开始使用了</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept">
+      <h2>Container vs Virtual Machine（虚拟机）</h2>
+      <div class="compare">
+        <div class="compare-box">
+          <h3>🖥️ 虚拟机 (VM)</h3>
+          <div class="stack">
+            <div class="stack-layer layer-app">你的App</div>
+            <div class="stack-layer layer-deps">依赖库</div>
+            <div class="stack-layer layer-os">完整的操作系统 (几GB)</div>
+            <div class="stack-layer" style="background: #6e7681; color: #0d1117;">Hypervisor</div>
+            <div class="stack-layer layer-host">宿主机</div>
+          </div>
+          <p style="color: #8b949e; font-size: 13px; margin-top: 10px;">启动慢（分钟级）· 占用大 · 隔离性强</p>
+        </div>
+        <div class="compare-box good">
+          <h3>🐳 Docker Container</h3>
+          <div class="stack">
+            <div class="stack-layer layer-app">你的App</div>
+            <div class="stack-layer layer-deps">依赖库</div>
+            <div class="stack-layer layer-docker">Docker Engine</div>
+            <div class="stack-layer layer-host">宿主机（共享内核）</div>
+          </div>
+          <p style="color: #3fb950; font-size: 13px; margin-top: 10px;">启动快（秒级）· 占用小 · 轻量</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 2: Compare -->
+  <div class="panel" id="compare">
+    <div class="concept">
+      <h2>没Docker vs 有Docker</h2>
+      <div class="compare">
+        <div class="compare-box bad">
+          <h3>❌ 没有 Docker</h3>
+          <div style="text-align: left; font-size: 14px; line-height: 2;">
+            <p>1. 在Mac上开发，跑得好好的 ✅</p>
+            <p>2. 部署到Linux服务器...</p>
+            <p>3. Python版本不对 ❌</p>
+            <p>4. 装了一堆依赖还是报错 ❌</p>
+            <p>5. 数据库连不上 ❌</p>
+            <p>6. "在我电脑上明明能跑啊！" 😤</p>
+          </div>
+        </div>
+        <div class="compare-box good">
+          <h3>✅ 有 Docker</h3>
+          <div style="text-align: left; font-size: 14px; line-height: 2;">
+            <p>1. 写好Dockerfile 📝</p>
+            <p>2. <code style="color: #3fb950;">docker build</code> 打包 📦</p>
+            <p>3. 推到任何服务器</p>
+            <p>4. <code style="color: #3fb950;">docker run</code> 一键启动 🚀</p>
+            <p>5. 完全一样的环境 ✅</p>
+            <p>6. "在哪都能跑" 😎</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept">
+      <h2>Stock Picker 的例子</h2>
+      <div class="compare">
+        <div class="compare-box bad">
+          <h3>❌ 现在的方式</h3>
+          <div class="terminal" style="text-align: left;">
+            <p class="comment"># 新电脑上要做的事：</p>
+            <p class="cmd">$ brew install python@3.11</p>
+            <p class="cmd">$ pip install fastapi uvicorn yfinance pandas xgboost lightgbm scipy scikit-learn ...</p>
+            <p class="error">ERROR: lightgbm wheel build failed</p>
+            <p class="cmd">$ brew install libomp</p>
+            <p class="cmd">$ pip install lightgbm</p>
+            <p class="cmd">$ git clone ... && cd stock-picker</p>
+            <p class="cmd">$ cp .env.example .env && vim .env</p>
+            <p class="cmd">$ python -m uvicorn src.api:app</p>
+            <p class="comment"># 30分钟后终于跑起来了...</p>
+          </div>
+        </div>
+        <div class="compare-box good">
+          <h3>✅ Docker 方式</h3>
+          <div class="terminal" style="text-align: left;">
+            <p class="comment"># 新电脑上只需要：</p>
+            <p class="cmd">$ docker run -p 8000:8000 stock-picker</p>
+            <p class="output">INFO: Started server on 0.0.0.0:8000</p>
+            <p class="comment"># 完了。就这一行。</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p class="comment"># 10秒搞定 ✅</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 3: Our Dockerfile -->
+  <div class="panel" id="dockerfile">
+    <div class="concept">
+      <h2>📄 Stock Picker 的 Dockerfile（逐行解释）</h2>
+      <div class="demo-area" style="font-size: 15px; line-height: 2.2;">
+        <div class="dockerfile-line">
+          <span class="df-keyword">FROM</span>
+          <span class="df-value">python:3.11-slim</span>
+          <span class="df-explain">← 基础镜像：用Python 3.11（精简版，没有多余的东西）</span>
+        </div>
+        <div class="dockerfile-line" style="margin-top: 12px;">
+          <span class="df-keyword">WORKDIR</span>
+          <span class="df-value">/app</span>
+          <span class="df-explain">← 在容器里创建 /app 文件夹，后面的操作都在这里</span>
+        </div>
+        <div class="dockerfile-line" style="margin-top: 12px;">
+          <span class="df-keyword">COPY</span>
+          <span class="df-value">requirements.txt .</span>
+          <span class="df-explain">← 先只复制依赖列表（利用Docker缓存，依赖没变就不重装）</span>
+        </div>
+        <div class="dockerfile-line">
+          <span class="df-keyword">RUN</span>
+          <span class="df-value">pip install -r requirements.txt</span>
+          <span class="df-explain">← 安装所有Python依赖</span>
+        </div>
+        <div class="dockerfile-line" style="margin-top: 12px;">
+          <span class="df-keyword">COPY</span>
+          <span class="df-value">src/ src/</span>
+          <span class="df-explain">← 复制源代码</span>
+        </div>
+        <div class="dockerfile-line">
+          <span class="df-keyword">COPY</span>
+          <span class="df-value">static/ static/</span>
+          <span class="df-explain">← 复制前端文件（dashboard）</span>
+        </div>
+        <div class="dockerfile-line">
+          <span class="df-keyword">COPY</span>
+          <span class="df-value">config.yaml .</span>
+          <span class="df-explain">← 复制配置文件</span>
+        </div>
+        <div class="dockerfile-line">
+          <span class="df-keyword">COPY</span>
+          <span class="df-value">data/ data/</span>
+          <span class="df-explain">← 复制数据文件（scan结果、holdings等）</span>
+        </div>
+        <div class="dockerfile-line" style="margin-top: 12px;">
+          <span class="df-keyword">EXPOSE</span>
+          <span class="df-value">8000</span>
+          <span class="df-explain">← 告诉Docker这个容器用8000端口</span>
+        </div>
+        <div class="dockerfile-line" style="margin-top: 12px;">
+          <span class="df-keyword">CMD</span>
+          <span class="df-value">["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]</span>
+          <span class="df-explain">← 容器启动时运行的命令</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept">
+      <h2>构建和运行流程</h2>
+      <div class="flow">
+        <div class="flow-box" style="border-color: #ffa657;">
+          <div class="icon">📝</div>
+          <div><strong>Dockerfile</strong></div>
+          <div class="label">说明书</div>
+        </div>
+        <div class="flow-arrow">→<br><small style="font-size:11px; color:#8b949e;">docker build</small></div>
+        <div class="flow-box" style="border-color: #58a6ff;">
+          <div class="icon">📦</div>
+          <div><strong>Image</strong></div>
+          <div class="label">~500MB</div>
+        </div>
+        <div class="flow-arrow">→<br><small style="font-size:11px; color:#8b949e;">docker run</small></div>
+        <div class="flow-box" style="border-color: #3fb950;">
+          <div class="icon">🚀</div>
+          <div><strong>Container</strong></div>
+          <div class="label">localhost:8000</div>
+        </div>
+      </div>
+      <div class="terminal" style="margin-top: 16px;">
+        <p class="comment"># 第一步：构建Image（第一次慢，之后用缓存很快）</p>
+        <p class="cmd">$ docker build -t stock-picker .</p>
+        <p class="output">Step 1/8 : FROM python:3.11-slim</p>
+        <p class="output">Step 2/8 : WORKDIR /app</p>
+        <p class="output">Step 3/8 : COPY requirements.txt .</p>
+        <p class="output">Step 4/8 : RUN pip install ...</p>
+        <p class="output">Successfully built abc123def</p>
+        <p class="output">Successfully tagged stock-picker:latest</p>
+        <p>&nbsp;</p>
+        <p class="comment"># 第二步：运行Container</p>
+        <p class="cmd">$ docker run -p 8000:8000 stock-picker</p>
+        <p class="output">INFO: Started server on 0.0.0.0:8000</p>
+        <p class="comment"># 打开 http://localhost:8000 就能看到Dashboard了 🎉</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 4: Commands -->
+  <div class="panel" id="commands">
+    <div class="concept">
+      <h2>💻 Docker 常用命令</h2>
+      <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+        <tr style="border-bottom: 1px solid #30363d;">
+          <td style="padding: 12px; color: #3fb950; font-family: monospace; white-space: nowrap;">docker build -t name .</td>
+          <td style="padding: 12px; color: #8b949e;">构建Image（-t 起名字，. 是当前目录）</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #30363d;">
+          <td style="padding: 12px; color: #3fb950; font-family: monospace; white-space: nowrap;">docker run -p 8000:8000 name</td>
+          <td style="padding: 12px; color: #8b949e;">运行Container（-p 映射端口）</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #30363d;">
+          <td style="padding: 12px; color: #3fb950; font-family: monospace; white-space: nowrap;">docker ps</td>
+          <td style="padding: 12px; color: #8b949e;">查看运行中的Container</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #30363d;">
+          <td style="padding: 12px; color: #3fb950; font-family: monospace; white-space: nowrap;">docker stop [id]</td>
+          <td style="padding: 12px; color: #8b949e;">停止Container</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #30363d;">
+          <td style="padding: 12px; color: #3fb950; font-family: monospace; white-space: nowrap;">docker images</td>
+          <td style="padding: 12px; color: #8b949e;">查看所有Image</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #30363d;">
+          <td style="padding: 12px; color: #3fb950; font-family: monospace; white-space: nowrap;">docker logs [id]</td>
+          <td style="padding: 12px; color: #8b949e;">查看Container日志</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #30363d;">
+          <td style="padding: 12px; color: #3fb950; font-family: monospace; white-space: nowrap;">docker exec -it [id] bash</td>
+          <td style="padding: 12px; color: #8b949e;">进入Container内部（像SSH）</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px; color: #3fb950; font-family: monospace; white-space: nowrap;">docker push user/name</td>
+          <td style="padding: 12px; color: #8b949e;">推到Docker Hub（给别人用）</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="concept">
+      <h2>面试常问的Docker问题</h2>
+      <div class="demo-area">
+        <p><strong class="blue">Q: Docker和虚拟机有什么区别？</strong></p>
+        <p style="margin: 8px 0 16px; color: #c9d1d9;">Docker共享宿主机内核，轻量快速（秒级启动）。VM有独立OS，重量级（分钟级启动）。Docker适合微服务，VM适合需要完全隔离的场景。</p>
+        
+        <p><strong class="blue">Q: Image和Container的区别？</strong></p>
+        <p style="margin: 8px 0 16px; color: #c9d1d9;">Image是只读的模板（像类class），Container是Image跑起来的实例（像对象instance）。一个Image可以启动多个Container。</p>
+        
+        <p><strong class="blue">Q: 为什么先COPY requirements.txt再COPY代码？</strong></p>
+        <p style="margin: 8px 0 16px; color: #c9d1d9;">利用Docker layer缓存。依赖不常变，代码常变。这样改代码不用重新安装依赖，build更快。</p>
+        
+        <p><strong class="blue">Q: -p 8000:8000 是什么意思？</strong></p>
+        <p style="margin: 8px 0; color: #c9d1d9;">左边是宿主机端口，右边是Container内部端口。把Container的8000端口映射到你电脑的8000端口。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 5: Quiz -->
+  <div class="panel" id="quiz">
+    <div class="concept">
+      <h2>🧠 测测你学到了什么</h2>
+      
+      <div id="quiz-area">
+        <div class="quiz-q" data-answer="2">
+          <p style="font-weight: 700; margin-bottom: 12px;">1. Docker的核心价值是什么？</p>
+          <div class="quiz-option" onclick="checkAnswer(this, 1, 2)">A. 让程序跑得更快</div>
+          <div class="quiz-option" onclick="checkAnswer(this, 2, 2)">B. 保证代码在任何环境都能一样地运行</div>
+          <div class="quiz-option" onclick="checkAnswer(this, 3, 2)">C. 替代GitHub</div>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-q" data-answer="1" style="margin-top: 24px;">
+          <p style="font-weight: 700; margin-bottom: 12px;">2. Dockerfile是什么？</p>
+          <div class="quiz-option" onclick="checkAnswer(this, 1, 1)">A. 描述如何构建Docker Image的说明文件</div>
+          <div class="quiz-option" onclick="checkAnswer(this, 2, 1)">B. Docker的配置文件，存放密码</div>
+          <div class="quiz-option" onclick="checkAnswer(this, 3, 1)">C. Docker的日志文件</div>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-q" data-answer="3" style="margin-top: 24px;">
+          <p style="font-weight: 700; margin-bottom: 12px;">3. 为什么Dockerfile里先COPY requirements.txt，再COPY代码？</p>
+          <div class="quiz-option" onclick="checkAnswer(this, 1, 3)">A. 因为requirements.txt更重要</div>
+          <div class="quiz-option" onclick="checkAnswer(this, 2, 3)">B. 没有特别原因，顺序无所谓</div>
+          <div class="quiz-option" onclick="checkAnswer(this, 3, 3)">C. 利用Docker缓存 — 依赖没变就不用重新安装，build更快</div>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-q" data-answer="2" style="margin-top: 24px;">
+          <p style="font-weight: 700; margin-bottom: 12px;">4. docker run -p 8000:8000 的 -p 是什么意思？</p>
+          <div class="quiz-option" onclick="checkAnswer(this, 1, 2)">A. 设置密码 (password)</div>
+          <div class="quiz-option" onclick="checkAnswer(this, 2, 2)">B. 端口映射 (port mapping) — 宿主机:容器</div>
+          <div class="quiz-option" onclick="checkAnswer(this, 3, 2)">C. 设置进程数 (processes)</div>
+          <div class="quiz-result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function checkAnswer(el, selected, correct) {
+  const parent = el.closest('.quiz-q');
+  const options = parent.querySelectorAll('.quiz-option');
+  const result = parent.querySelector('.quiz-result');
+  
+  // Prevent double-click
+  if (parent.dataset.answered) return;
+  parent.dataset.answered = true;
+  
+  options.forEach((opt, i) => {
+    if (i + 1 === correct) opt.classList.add('correct');
+    if (i + 1 === selected && selected !== correct) opt.classList.add('wrong');
+  });
+  
+  if (selected === correct) {
+    result.innerHTML = '<span style="color: #3fb950;">✅ 正确！</span>';
+  } else {
+    result.innerHTML = '<span style="color: #f85149;">❌ 答错了，看看绿色的选项</span>';
+  }
+}
+</script>
+</body>
+</html>
