@@ -49,3 +49,5 @@ node_modules/
 package-lock.json
 data/alpha158_training.parquet
 data/alpha158_xgb.model
+data/alpha158_training.parquet
+data/alpha158_xgb.model
