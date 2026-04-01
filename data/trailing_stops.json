@@ -15,8 +15,8 @@
     "entry_price": 95.38
   },
   "CTRA": {
-    "high": 35.18,
-    "high_date": "2026-03-25",
+    "high": 36.59,
+    "high_date": "2026-03-30",
     "entry_price": 31.68
   },
   "PCTY": {
@@ -35,13 +35,13 @@
     "entry_price": 50.67
   },
   "EXLS": {
-    "high_water_mark": 30.33,
-    "entry_price": 30.33,
-    "entry_date": "2026-03-24"
+    "high": 30.61,
+    "high_date": "2026-03-31",
+    "entry_price": 30.33
   },
   "FAF": {
-    "high_water_mark": 59.17,
-    "entry_price": 59.17,
-    "entry_date": "2026-03-26"
+    "high": 60.28,
+    "high_date": "2026-03-30",
+    "entry_price": 59.17
   }
 }

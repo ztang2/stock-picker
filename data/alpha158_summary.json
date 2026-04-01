@@ -1,10 +1,10 @@
 {
-  "created_at": "2026-03-21T18:21:29.917236",
-  "total_samples": 210534,
-  "tickers": 902,
+  "created_at": "2026-04-01T09:03:36.967491",
+  "total_samples": 209251,
+  "tickers": 900,
   "date_range": [
-    "2021-06-16 00:00:00",
-    "2026-02-20 00:00:00"
+    "2021-06-29 00:00:00",
+    "2026-03-03 00:00:00"
   ],
   "features": 118,
   "feature_names": [
@@ -127,8 +127,8 @@
     "VMA60",
     "VSTD60"
   ],
-  "beat_spy_rate": 0.4813854294318257,
-  "avg_excess_return": 0.00041627278584373804,
+  "beat_spy_rate": 0.4834433288251908,
+  "avg_excess_return": 0.000889509727566175,
   "forward_days": 20,
   "sample_frequency": "every 5 trading days"
 }

@@ -1,87 +1,90 @@
 {
   "approaches": {
     "xgboost": {
-      "total_samples": 1532,
-      "walk_forward_samples": 972,
-      "accuracy": 0.4259,
-      "precision": 0.4259,
-      "recall": 1.0,
-      "f1": 0.5974,
-      "regression_mae": 0.0698,
-      "regression_corr": -0.0
+      "total_samples": 5594,
+      "walk_forward_samples": 1634,
+      "accuracy": 0.5098,
+      "precision": 0.3824,
+      "recall": 0.188,
+      "f1": 0.2521,
+      "regression_mae": 0.0637,
+      "regression_corr": 0.0762
     },
     "lightgbm": {
-      "total_samples": 1532,
-      "walk_forward_samples": 972,
-      "accuracy": 0.4259,
-      "precision": 0.4259,
-      "recall": 1.0,
-      "f1": 0.5974,
-      "regression_mae": 0.0698,
-      "regression_corr": 0.0
+      "total_samples": 5594,
+      "walk_forward_samples": 1634,
+      "accuracy": 0.4455,
+      "precision": 0.4222,
+      "recall": 0.7103,
+      "f1": 0.5296,
+      "regression_mae": 0.0674,
+      "regression_corr": -0.0193
     },
     "simple_avg": {
-      "total_samples": 1532,
-      "walk_forward_samples": 972,
-      "accuracy": 0.4259,
-      "precision": 0.4259,
-      "recall": 1.0,
-      "f1": 0.5974,
-      "regression_mae": 0.0698,
-      "regression_corr": 0.0
+      "total_samples": 5594,
+      "walk_forward_samples": 1634,
+      "accuracy": 0.5122,
+      "precision": 0.3887,
+      "recall": 0.1922,
+      "f1": 0.2572,
+      "regression_mae": 0.0641,
+      "regression_corr": 0.0248
     },
     "weighted_avg": {
-      "total_samples": 1532,
-      "walk_forward_samples": 972,
-      "accuracy": 0.4259,
-      "precision": 0.4259,
-      "recall": 1.0,
-      "f1": 0.5974,
-      "regression_mae": 0.0698,
-      "regression_corr": 0.0
+      "total_samples": 5594,
+      "walk_forward_samples": 1634,
+      "accuracy": 0.5147,
+      "precision": 0.3944,
+      "recall": 0.195,
+      "f1": 0.261,
+      "regression_mae": 0.064,
+      "regression_corr": 0.0288
     },
     "meta_learner": {
-      "total_samples": 1532,
-      "walk_forward_samples": 972,
-      "accuracy": 0.5,
-      "precision": 0.4259,
-      "recall": 0.5,
-      "f1": 0.46,
-      "regression_mae": 0.0698,
-      "regression_corr": 0.0
-    },
-    "specialized_ensemble": {
-      "total_samples": 1532,
-      "walk_forward_samples": 972,
-      "accuracy": 0.5741,
+      "total_samples": 5594,
+      "walk_forward_samples": 1634,
+      "accuracy": 0.5606,
       "precision": 0.0,
       "recall": 0.0,
       "f1": 0.0,
-      "regression_mae": 0.0698,
-      "regression_corr": 0.0,
-      "consensus_buy_count": 0,
-      "consensus_buy_accuracy": 0,
-      "consensus_buy_avg_excess": 0.0,
-      "strong_buy_count": 0,
-      "strong_buy_accuracy": 0,
-      "strong_buy_avg_excess": 0.0,
-      "avoid_count": 0,
-      "avoid_accuracy": 0,
+      "regression_mae": 0.0611,
+      "regression_corr": 0.0006
+    },
+    "specialized_ensemble": {
+      "total_samples": 5594,
+      "walk_forward_samples": 1634,
+      "accuracy": 0.5453,
+      "precision": 0.4138,
+      "recall": 0.0836,
+      "f1": 0.139,
+      "regression_mae": 0.0674,
+      "regression_corr": -0.0193,
+      "consensus_buy_count": 145,
+      "consensus_buy_accuracy": 0.4138,
+      "consensus_buy_avg_excess": -0.42,
+      "strong_buy_count": 40,
+      "strong_buy_accuracy": 0.475,
+      "strong_buy_avg_excess": 0.5,
+      "avoid_count": 444,
+      "avoid_accuracy": 0.5113,
       "signal_distribution": {
-        "HOLD": 972
+        "HOLD": 1045,
+        "AVOID": 444,
+        "BUY": 105,
+        "STRONG_BUY": 40
       }
     }
   },
   "composite_scores": {
-    "xgboost": 0.3537,
-    "lightgbm": 0.3537,
-    "simple_avg": 0.3537,
-    "weighted_avg": 0.3537,
-    "meta_learner": 0.2874,
-    "specialized_ensemble": -0.0139
+    "xgboost": 0.2101,
+    "lightgbm": 0.3098,
+    "simple_avg": 0.2067,
+    "weighted_avg": 0.211,
+    "meta_learner": -0.0158,
+    "specialized_ensemble": 0.1806
   },
-  "selected": "xgboost",
-  "optimized_weight_xgb": 0.5,
-  "optimized_weight_lgb": 0.5,
-  "compared_at": "2026-03-21T16:54:11.111381"
+  "selected": "lightgbm",
+  "optimized_weight_xgb": 0.5337,
+  "optimized_weight_lgb": 0.4663,
+  "compared_at": "2026-03-29T12:20:03.076778"
 }

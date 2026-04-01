@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docker 完全指南 — Stock Picker</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.7}
+.container{max-width:900px;margin:0 auto;padding:20px}
+h1{font-size:28px;text-align:center;margin:30px 0 10px;color:#58a6ff}
+.subtitle{text-align:center;color:#8b949e;margin-bottom:30px;font-size:15px}
+
+/* Tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;justify-content:center}
+.tab{padding:8px 16px;border-radius:8px;background:#161b22;border:1px solid #30363d;color:#8b949e;cursor:pointer;font-size:13px;transition:all .2s}
+.tab:hover{border-color:#58a6ff;color:#c9d1d9}
+.tab.active{background:#1f6feb;border-color:#1f6feb;color:#fff}
+
+/* Sections */
+.section{display:none}
+.section.active{display:block}
+
+/* Cards */
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;margin-bottom:20px}
+.card h2{color:#58a6ff;font-size:20px;margin-bottom:12px}
+.card h3{color:#79c0ff;font-size:16px;margin:16px 0 8px}
+
+/* Code blocks */
+.code-block{background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:16px;margin:12px 0;font-family:'Fira Code',monospace;font-size:13px;overflow-x:auto;position:relative}
+.code-block .comment{color:#8b949e}
+.code-block .keyword{color:#ff7b72}
+.code-block .string{color:#a5d6ff}
+.code-block .cmd{color:#d2a8ff}
+.code-block .flag{color:#79c0ff}
+
+/* Visual diagrams */
+.diagram{display:flex;align-items:center;justify-content:center;gap:12px;margin:20px 0;flex-wrap:wrap}
+.box{padding:14px 20px;border-radius:10px;text-align:center;font-size:13px;font-weight:600;min-width:120px}
+.box-blue{background:#1f3a5f;border:2px solid #58a6ff;color:#58a6ff}
+.box-green{background:#1a3a2a;border:2px solid #3fb950;color:#3fb950}
+.box-orange{background:#3a2a1a;border:2px solid #d29922;color:#d29922}
+.box-red{background:#3a1a1a;border:2px solid #f85149;color:#f85149}
+.box-purple{background:#2a1a3a;border:2px solid #bc8cff;color:#bc8cff}
+.arrow{color:#484f58;font-size:24px}
+
+/* Comparison table */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.compare-col{background:#0d1117;border-radius:10px;padding:16px;border:1px solid #30363d}
+.compare-col h4{margin-bottom:10px;font-size:15px}
+.compare-col.bad h4{color:#f85149}
+.compare-col.good h4{color:#3fb950}
+.compare-col ul{list-style:none;padding-left:0}
+.compare-col li{padding:4px 0;font-size:13px}
+.compare-col li::before{content:'• ';color:#484f58}
+
+/* Steps */
+.step{display:flex;gap:16px;margin:16px 0;align-items:flex-start}
+.step-num{background:#1f6feb;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:16px}
+.step-content{flex:1}
+.step-content p{margin-bottom:6px}
+
+/* Annotation */
+.annotate{margin:16px 0}
+.annotate-line{display:flex;gap:12px;padding:8px 12px;border-left:3px solid #30363d;margin:4px 0;align-items:baseline}
+.annotate-line:hover{background:#161b22;border-left-color:#58a6ff}
+.annotate-code{font-family:'Fira Code',monospace;color:#79c0ff;font-size:13px;min-width:320px;white-space:nowrap}
+.annotate-desc{color:#8b949e;font-size:13px}
+
+/* Interactive terminal */
+.terminal{background:#0d1117;border:1px solid #30363d;border-radius:10px;overflow:hidden;margin:16px 0}
+.terminal-bar{background:#161b22;padding:8px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #30363d}
+.terminal-dot{width:12px;height:12px;border-radius:50%}
+.terminal-dot.red{background:#f85149}
+.terminal-dot.yellow{background:#d29922}
+.terminal-dot.green{background:#3fb950}
+.terminal-title{color:#8b949e;font-size:12px;margin-left:8px}
+.terminal-body{padding:16px;font-family:'Fira Code',monospace;font-size:13px;min-height:200px;max-height:400px;overflow-y:auto}
+.terminal-line{margin:2px 0}
+.terminal-prompt{color:#3fb950}
+.terminal-output{color:#8b949e}
+.terminal-input{background:none;border:none;color:#c9d1d9;font-family:inherit;font-size:inherit;outline:none;width:calc(100% - 20px)}
+.terminal-input-line{display:flex;align-items:center;gap:8px;margin-top:8px}
+
+/* Quiz */
+.quiz-q{font-weight:600;margin:12px 0 8px;color:#c9d1d9}
+.quiz-options{display:flex;flex-direction:column;gap:6px}
+.quiz-opt{padding:10px 14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;cursor:pointer;font-size:13px;transition:all .2s}
+.quiz-opt:hover{border-color:#58a6ff}
+.quiz-opt.correct{background:#1a3a2a;border-color:#3fb950;color:#3fb950}
+.quiz-opt.wrong{background:#3a1a1a;border-color:#f85149;color:#f85149}
+.quiz-explain{margin-top:8px;padding:10px;background:#161b22;border-radius:8px;font-size:13px;color:#8b949e;display:none}
+
+/* Lifecycle animation */
+.lifecycle{display:flex;align-items:center;justify-content:center;gap:8px;margin:20px 0;flex-wrap:wrap}
+.lc-stage{padding:10px 16px;border-radius:8px;font-size:12px;font-weight:600;opacity:0.3;transition:all .5s;text-align:center}
+.lc-stage.active{opacity:1;transform:scale(1.1)}
+.lc-arrow{color:#484f58;font-size:18px;transition:color .5s}
+.lc-arrow.active{color:#58a6ff}
+
+/* Highlight */
+.hl{color:#ffa657;font-weight:600}
+.hl-blue{color:#58a6ff}
+.hl-green{color:#3fb950}
+.hl-red{color:#f85149}
+
+/* Responsive */
+@media(max-width:600px){
+  .compare{grid-template-columns:1fr}
+  .annotate-line{flex-direction:column;gap:4px}
+  .annotate-code{min-width:auto}
+  .step{flex-direction:column;gap:8px}
+}
+
+/* Progress bar */
+.progress-bar{background:#161b22;border-radius:10px;padding:10px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.progress-fill{height:6px;background:#1f6feb;border-radius:3px;transition:width .3s}
+.progress-bg{flex:1;height:6px;background:#30363d;border-radius:3px;overflow:hidden}
+.progress-text{color:#8b949e;font-size:12px;white-space:nowrap}
+
+/* Emoji icon */
+.icon{font-size:24px;margin-right:8px}
+
+/* Flow animation */
+.flow-container{position:relative;padding:20px;background:#0d1117;border-radius:10px;margin:16px 0}
+.flow-step{display:flex;align-items:center;gap:12px;padding:10px;margin:8px 0;border-radius:8px;border:1px solid transparent;transition:all .3s}
+.flow-step.highlight{background:#1f3a5f;border-color:#58a6ff}
+.flow-icon{font-size:20px;width:36px;text-align:center}
+.flow-text{font-size:13px}
+.flow-detail{font-size:12px;color:#8b949e;margin-top:2px}
+
+button.action-btn{background:#1f6feb;color:#fff;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s}
+button.action-btn:hover{background:#388bfd}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🐳 Docker 完全指南</h1>
+  <p class="subtitle">用你的 Stock Picker 项目学 Docker — 从概念到实操</p>
+
+  <div class="progress-bar">
+    <span class="progress-text" id="prog-text">1/8</span>
+    <div class="progress-bg"><div class="progress-fill" id="prog-fill" style="width:12.5%"></div></div>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-tab="0">🤔 为什么</div>
+    <div class="tab" data-tab="1">📦 三大概念</div>
+    <div class="tab" data-tab="2">📄 Dockerfile</div>
+    <div class="tab" data-tab="3">🔨 Build</div>
+    <div class="tab" data-tab="4">🚀 Run</div>
+    <div class="tab" data-tab="5">🔗 端口映射</div>
+    <div class="tab" data-tab="6">💻 命令速查</div>
+    <div class="tab" data-tab="7">🏭 大公司</div>
+    <div class="tab" data-tab="8">🔗 CI/CD</div>
+    <div class="tab" data-tab="9">📚 进阶</div>
+    <div class="tab" data-tab="10">🧠 测验</div>
+  </div>
+
+  <!-- TAB 0: Why Docker -->
+  <div class="section active" data-section="0">
+    <div class="card">
+      <h2><span class="icon">🤔</span>为什么需要 Docker？</h2>
+      <p>一句话：<span class="hl">"在我电脑上能跑"不代表"在别人电脑上也能跑"。</span></p>
+
+      <div class="compare">
+        <div class="compare-col bad">
+          <h4>❌ 没有 Docker</h4>
+          <ul>
+            <li>新人入职，花1天配环境</li>
+            <li>"我这里能跑啊" — 经典甩锅</li>
+            <li>Python 3.9 vs 3.11 兼容问题</li>
+            <li>macOS vs Linux 行为不同</li>
+            <li>装依赖到一半报错</li>
+            <li>手动改配置忘记记录</li>
+          </ul>
+        </div>
+        <div class="compare-col good">
+          <h4>✅ 有 Docker</h4>
+          <ul>
+            <li>新人入职，一条命令搞定</li>
+            <li>你跑的和我跑的100%一样</li>
+            <li>Python版本锁定在容器里</li>
+            <li>不管什么系统，容器内都是Linux</li>
+            <li>依赖已经装好在镜像里</li>
+            <li>Dockerfile就是配置文档</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>用 Stock Picker 举例</h3>
+      <p>你的 stock-picker 需要：Python 3.11 + FastAPI + pandas + yfinance + XGBoost + LightGBM + scipy + 20多个库。</p>
+      <p>如果你的同事想跑你的项目：</p>
+
+      <div class="compare">
+        <div class="compare-col bad">
+          <h4>❌ 传统方式</h4>
+          <ul>
+            <li>装 Python 3.11</li>
+            <li>pip install ... （20+个库）</li>
+            <li>XGBoost 编译报错（缺C++编译器）</li>
+            <li>scipy 版本冲突</li>
+            <li>找不到 config.yaml</li>
+            <li>data/ 目录结构不对</li>
+            <li>折腾2小时，放弃</li>
+          </ul>
+        </div>
+        <div class="compare-col good">
+          <h4>✅ Docker 方式</h4>
+          <ul>
+            <li>docker build -t stock-picker .</li>
+            <li>docker run -p 8000:8000 stock-picker</li>
+            <li>打开 localhost:8000</li>
+            <li>完事。</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>总共2条命令，2分钟</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>类比</h3>
+      <div class="diagram">
+        <div class="box box-red">🏠 搬家拆家具<br><small>传统部署</small></div>
+        <span class="arrow">vs</span>
+        <div class="box box-green">📦 整个房间装集装箱<br><small>Docker</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 1: Three Concepts -->
+  <div class="section" data-section="1">
+    <div class="card">
+      <h2><span class="icon">📦</span>Docker 三大概念</h2>
+      <p>Docker 只有三个核心概念，理解了就会了：</p>
+
+      <div class="diagram">
+        <div class="box box-blue">📄 Dockerfile<br><small>菜谱</small></div>
+        <span class="arrow">→ build →</span>
+        <div class="box box-orange">📦 Image<br><small>预制菜</small></div>
+        <span class="arrow">→ run →</span>
+        <div class="box box-green">🏃 Container<br><small>端上桌的菜</small></div>
+      </div>
+
+      <h3>1. Dockerfile（菜谱 📄）</h3>
+      <p>一个文本文件，写着"怎么打包"的步骤。</p>
+      <p>就像菜谱告诉你：先放油，再放蒜，炒3分钟...</p>
+      <p><span class="hl">你只需要写一次。</span>改代码不用改它。</p>
+
+      <h3>2. Image（镜像/预制菜 📦）</h3>
+      <p><code>docker build</code> 按照 Dockerfile 的步骤打包出来的东西。</p>
+      <p>它是一个<span class="hl">静态快照</span>——包含了操作系统 + Python + 所有库 + 你的代码。</p>
+      <p>就像预制菜：做好了、封装了、冻在冰箱里。本身不会运行。</p>
+      <p>可以分发给任何人。他们不需要知道你怎么做的，拿来直接加热（run）就行。</p>
+
+      <h3>3. Container（容器/端上桌的菜 🏃）</h3>
+      <p><code>docker run</code> 把 Image 变成一个<span class="hl">正在运行的进程</span>。</p>
+      <p>就像把预制菜从冰箱拿出来，加热，端上桌。</p>
+      <p>一个 Image 可以同时启动多个 Container（就像一个菜谱可以做很多盘菜）。</p>
+
+      <h3>Docker vs VM（虚拟机）</h3>
+      <div class="compare">
+        <div class="compare-col good">
+          <h4>🐳 Docker Container</h4>
+          <ul>
+            <li>共享宿主机内核（轻量）</li>
+            <li>启动：秒级</li>
+            <li>体积：MB级（几百MB）</li>
+            <li>资源占用：极小</li>
+            <li>适合：部署应用</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <h4>🖥️ 虚拟机 (VM)</h4>
+          <ul>
+            <li>完整操作系统（重量级）</li>
+            <li>启动：分钟级</li>
+            <li>体积：GB级（几个GB）</li>
+            <li>资源占用：很大</li>
+            <li>适合：跑不同OS</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="diagram">
+        <div class="box box-green" style="min-width:200px">
+          🐳 Container<br>
+          <small>App + 库<br>共享 OS 内核<br>~600MB</small>
+        </div>
+        <span class="arrow">vs</span>
+        <div class="box box-orange" style="min-width:200px">
+          🖥️ VM<br>
+          <small>App + 库 + 整个OS<br>独立内核<br>~5GB</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: Dockerfile -->
+  <div class="section" data-section="2">
+    <div class="card">
+      <h2><span class="icon">📄</span>我们的 Dockerfile — 逐行解释</h2>
+      <p>这是 stock-picker 的 Dockerfile，一共8行。点击每一行看详解：</p>
+
+      <div class="annotate" id="dockerfile-lines">
+        <div class="annotate-line" data-detail="0" onclick="toggleDetail(this)">
+          <span class="annotate-code"><span style="color:#ff7b72">FROM</span> python:3.11-slim</span>
+          <span class="annotate-desc">👈 点击看详解</span>
+        </div>
+        <div class="detail-box" id="detail-0" style="display:none;padding:12px;background:#1a2332;border-radius:8px;margin:4px 0 8px;font-size:13px">
+          <p><span class="hl">选基础镜像</span> — 就像选一台"新电脑"的配置。</p>
+          <p><code>python:3.11-slim</code> = 装了 Python 3.11 的精简版 Linux。</p>
+          <p>为什么 <code>slim</code>？完整版800MB，slim只要150MB。我们不需要C编译器等额外工具。</p>
+          <p style="color:#8b949e;margin-top:8px">💡 其他选项：<code>python:3.11</code>(完整版), <code>python:3.11-alpine</code>(超精简但兼容性差)</p>
+        </div>
+
+        <div class="annotate-line" data-detail="1" onclick="toggleDetail(this)">
+          <span class="annotate-code"><span style="color:#ff7b72">WORKDIR</span> /app</span>
+          <span class="annotate-desc">设置工作目录</span>
+        </div>
+        <div class="detail-box" id="detail-1" style="display:none;padding:12px;background:#1a2332;border-radius:8px;margin:4px 0 8px;font-size:13px">
+          <p><span class="hl">在容器里创建并进入 /app 目录。</span></p>
+          <p>后面所有 COPY、RUN 命令都在这个目录下执行。</p>
+          <p>就像你打开 Terminal 先 <code>cd ~/clawd/stock-picker</code> 一样。</p>
+        </div>
+
+        <div class="annotate-line" data-detail="2" onclick="toggleDetail(this)">
+          <span class="annotate-code"><span style="color:#ff7b72">COPY</span> requirements.txt .</span>
+          <span class="annotate-desc">先复制依赖清单</span>
+        </div>
+        <div class="detail-box" id="detail-2" style="display:none;padding:12px;background:#1a2332;border-radius:8px;margin:4px 0 8px;font-size:13px">
+          <p><span class="hl">只复制 requirements.txt 到容器里。</span></p>
+          <p>为什么不直接 COPY 所有文件？因为 Docker 有<span class="hl-blue">缓存机制</span>：</p>
+          <p>如果 requirements.txt 没变 → Docker 跳过下一步的 pip install → <span class="hl-green">build 从几分钟变成几秒</span></p>
+          <p>如果你改了代码但没加新库，pip install 这步直接用缓存，不重新装。</p>
+          <p style="color:#8b949e;margin-top:8px">💡 这是 Dockerfile 的最佳实践：把"不常变"的步骤放前面。</p>
+        </div>
+
+        <div class="annotate-line" data-detail="3" onclick="toggleDetail(this)">
+          <span class="annotate-code"><span style="color:#ff7b72">RUN</span> pip install --no-cache-dir -r requirements.txt</span>
+          <span class="annotate-desc">安装 Python 依赖</span>
+        </div>
+        <div class="detail-box" id="detail-3" style="display:none;padding:12px;background:#1a2332;border-radius:8px;margin:4px 0 8px;font-size:13px">
+          <p><span class="hl">在容器里执行 pip install。</span></p>
+          <p><code>--no-cache-dir</code> = 不保存 pip 的下载缓存，减小镜像体积。</p>
+          <p><code>-r requirements.txt</code> = 按清单装所有库（FastAPI, pandas, XGBoost...）</p>
+          <p>这一步最耗时（约60秒），但因为缓存机制，改代码后不会重新跑。</p>
+        </div>
+
+        <div class="annotate-line" data-detail="4" onclick="toggleDetail(this)">
+          <span class="annotate-code"><span style="color:#ff7b72">COPY</span> src/ src/</span>
+          <span class="annotate-desc">复制源代码</span>
+        </div>
+        <div class="detail-box" id="detail-4" style="display:none;padding:12px;background:#1a2332;border-radius:8px;margin:4px 0 8px;font-size:13px">
+          <p><span class="hl">把你的 Python 代码复制到容器的 /app/src/ 目录。</span></p>
+          <p>每次改代码 → 重新 build → 这一步会更新 → 但前面的 pip install 用缓存跳过。</p>
+          <p>所以改代码后重新 build 只要几秒，不用重新装依赖。</p>
+        </div>
+
+        <div class="annotate-line" data-detail="5" onclick="toggleDetail(this)">
+          <span class="annotate-code"><span style="color:#ff7b72">COPY</span> static/ static/ &nbsp;&amp;&amp;&nbsp; <span style="color:#ff7b72">COPY</span> config.yaml . &nbsp;&amp;&amp;&nbsp; <span style="color:#ff7b72">COPY</span> data/ data/</span>
+          <span class="annotate-desc">复制其他文件</span>
+        </div>
+        <div class="detail-box" id="detail-5" style="display:none;padding:12px;background:#1a2332;border-radius:8px;margin:4px 0 8px;font-size:13px">
+          <p>把网页文件（static/）、配置（config.yaml）、数据（data/）也复制进去。</p>
+          <p>容器是<span class="hl">隔离的</span>——它看不到你 Mac 上的文件。必须明确 COPY 进去。</p>
+        </div>
+
+        <div class="annotate-line" data-detail="6" onclick="toggleDetail(this)">
+          <span class="annotate-code"><span style="color:#ff7b72">EXPOSE</span> 8000</span>
+          <span class="annotate-desc">声明端口</span>
+        </div>
+        <div class="detail-box" id="detail-6" style="display:none;padding:12px;background:#1a2332;border-radius:8px;margin:4px 0 8px;font-size:13px">
+          <p><span class="hl">告诉 Docker "这个容器会用 8000 端口"。</span></p>
+          <p>注意：这只是一个声明/文档，<span class="hl-red">不会自动打开端口</span>。</p>
+          <p>真正打开端口要在 <code>docker run -p 8002:8000</code> 里指定。</p>
+        </div>
+
+        <div class="annotate-line" data-detail="7" onclick="toggleDetail(this)">
+          <span class="annotate-code"><span style="color:#ff7b72">CMD</span> ["python", "-m", "uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]</span>
+          <span class="annotate-desc">启动命令</span>
+        </div>
+        <div class="detail-box" id="detail-7" style="display:none;padding:12px;background:#1a2332;border-radius:8px;margin:4px 0 8px;font-size:13px">
+          <p><span class="hl">容器启动时执行这条命令。</span></p>
+          <p>等同于你在 Terminal 里跑 <code>python -m uvicorn src.api:app --host 0.0.0.0 --port 8000</code></p>
+          <p><code>--host 0.0.0.0</code> = 监听所有网络接口（不只是 localhost），这样容器外面才能访问。</p>
+          <p style="color:#8b949e;margin-top:8px">💡 CMD vs RUN 的区别：RUN 在 build 时执行，CMD 在 run 时执行。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: Build -->
+  <div class="section" data-section="3">
+    <div class="card">
+      <h2><span class="icon">🔨</span>Build — 构建镜像</h2>
+
+      <div class="code-block">
+        <span class="cmd">docker build</span> <span class="flag">-t</span> <span class="string">stock-picker</span> <span class="flag">.</span>
+      </div>
+
+      <h3>每个部分什么意思</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#d2a8ff">docker build</span>
+          <span class="annotate-desc">"Docker，请构建一个镜像"</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#79c0ff">-t stock-picker</span>
+          <span class="annotate-desc">给镜像起名叫 "stock-picker"（-t = tag）</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#ffa657">.</span>
+          <span class="annotate-desc">在当前目录找 Dockerfile（这个点很重要！）</span>
+        </div>
+      </div>
+
+      <h3>Build 过程（动画）</h3>
+      <div class="flow-container" id="build-flow">
+        <div class="flow-step" id="bs-0">
+          <span class="flow-icon">📥</span>
+          <div>
+            <div class="flow-text">下载 Python 3.11 基础镜像</div>
+            <div class="flow-detail">从 Docker Hub 下载，约 150MB，只需下载一次</div>
+          </div>
+        </div>
+        <div class="flow-step" id="bs-1">
+          <span class="flow-icon">📁</span>
+          <div>
+            <div class="flow-text">创建 /app 工作目录</div>
+            <div class="flow-detail">WORKDIR /app</div>
+          </div>
+        </div>
+        <div class="flow-step" id="bs-2">
+          <span class="flow-icon">📋</span>
+          <div>
+            <div class="flow-text">复制 requirements.txt</div>
+            <div class="flow-detail">先只复制依赖清单（为了缓存优化）</div>
+          </div>
+        </div>
+        <div class="flow-step" id="bs-3">
+          <span class="flow-icon">⚙️</span>
+          <div>
+            <div class="flow-text">pip install 所有依赖（最耗时 ~60秒）</div>
+            <div class="flow-detail">FastAPI, pandas, XGBoost, LightGBM, scipy...</div>
+          </div>
+        </div>
+        <div class="flow-step" id="bs-4">
+          <span class="flow-icon">📦</span>
+          <div>
+            <div class="flow-text">复制代码和数据</div>
+            <div class="flow-detail">src/, static/, config.yaml, data/</div>
+          </div>
+        </div>
+        <div class="flow-step" id="bs-5">
+          <span class="flow-icon">✅</span>
+          <div>
+            <div class="flow-text">打包成镜像 "stock-picker:latest"</div>
+            <div class="flow-detail">约 600MB，包含 OS + Python + 库 + 你的代码</div>
+          </div>
+        </div>
+      </div>
+      <button class="action-btn" onclick="animateBuild()">▶️ 播放 Build 过程</button>
+
+      <h3 style="margin-top:20px">缓存的威力</h3>
+      <div class="compare">
+        <div class="compare-col bad">
+          <h4>首次 Build</h4>
+          <ul>
+            <li>下载基础镜像：10秒</li>
+            <li>pip install：60秒</li>
+            <li>复制代码：1秒</li>
+            <li><strong>总计：~70秒</strong></li>
+          </ul>
+        </div>
+        <div class="compare-col good">
+          <h4>改代码后 Rebuild</h4>
+          <ul>
+            <li>基础镜像：已缓存 ✓</li>
+            <li>pip install：已缓存 ✓</li>
+            <li>复制代码：1秒</li>
+            <li><strong>总计：~3秒</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: Run -->
+  <div class="section" data-section="4">
+    <div class="card">
+      <h2><span class="icon">🚀</span>Run — 运行容器</h2>
+
+      <div class="code-block">
+        <span class="cmd">docker run</span> <span class="flag">-d</span> <span class="flag">--name</span> <span class="string">stock-picker-test</span> <span class="flag">-p</span> <span class="string">8002:8000</span> <span class="string">stock-picker</span>
+      </div>
+
+      <h3>每个参数什么意思</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#d2a8ff">docker run</span>
+          <span class="annotate-desc">"Docker，请启动一个容器"</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#79c0ff">-d</span>
+          <span class="annotate-desc">后台运行（detached），不占你的 Terminal</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#79c0ff">--name stock-picker-test</span>
+          <span class="annotate-desc">给容器起个名字（方便后面 stop/rm）</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#ffa657">-p 8002:8000</span>
+          <span class="annotate-desc">端口映射：Mac的8002 → 容器的8000（下一页详解）</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#3fb950">stock-picker</span>
+          <span class="annotate-desc">用哪个镜像启动</span>
+        </div>
+      </div>
+
+      <h3>容器的生命周期</h3>
+      <div class="lifecycle" id="lifecycle">
+        <div class="lc-stage box-blue" id="lc-0">📦 Image<br><small>静止</small></div>
+        <span class="lc-arrow" id="lca-0">→</span>
+        <div class="lc-stage box-green" id="lc-1">🏃 Running<br><small>docker run</small></div>
+        <span class="lc-arrow" id="lca-1">→</span>
+        <div class="lc-stage box-orange" id="lc-2">⏸️ Stopped<br><small>docker stop</small></div>
+        <span class="lc-arrow" id="lca-2">→</span>
+        <div class="lc-stage box-red" id="lc-3">🗑️ Removed<br><small>docker rm</small></div>
+      </div>
+      <button class="action-btn" onclick="animateLifecycle()">▶️ 播放生命周期</button>
+
+      <h3 style="margin-top:20px">不加 -d 会怎样？</h3>
+      <div class="compare">
+        <div class="compare-col">
+          <h4>docker run（前台）</h4>
+          <ul>
+            <li>日志直接打印在Terminal</li>
+            <li>Ctrl+C 停止容器</li>
+            <li>关掉Terminal = 容器停了</li>
+            <li>适合：调试、看日志</li>
+          </ul>
+        </div>
+        <div class="compare-col good">
+          <h4>docker run -d（后台）</h4>
+          <ul>
+            <li>Terminal 空出来继续用</li>
+            <li>docker logs 看日志</li>
+            <li>关掉Terminal容器还在跑</li>
+            <li>适合：正式运行</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: Port Mapping -->
+  <div class="section" data-section="5">
+    <div class="card">
+      <h2><span class="icon">🔗</span>端口映射 — 最容易搞混的概念</h2>
+
+      <p>容器是<span class="hl">隔离的</span>。它有自己的网络。你在浏览器输 <code>localhost:8000</code>，请求到不了容器里面。</p>
+      <p>需要用 <code>-p</code> 建一个"隧道"：</p>
+
+      <div class="code-block">
+        <span class="flag">-p</span> <span class="string">8002</span>:<span class="string">8000</span>
+        <br><br>
+        <span class="comment">    ↑        ↑</span>
+        <br>
+        <span class="comment">  你Mac的   容器内的</span>
+        <br>
+        <span class="comment">  端口      端口</span>
+      </div>
+
+      <div style="background:#0d1117;border-radius:10px;padding:20px;margin:16px 0;text-align:center">
+        <div style="display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center">
+          <div style="padding:16px 24px;border:2px solid #58a6ff;border-radius:10px;text-align:center">
+            <div style="font-size:20px">💻</div>
+            <div style="color:#58a6ff;font-weight:600">你的 Mac</div>
+            <div style="color:#8b949e;font-size:12px">localhost:<span class="hl">8002</span></div>
+          </div>
+          <div style="color:#3fb950;font-size:20px">🔗 → → →</div>
+          <div style="padding:16px 24px;border:2px solid #3fb950;border-radius:10px;text-align:center">
+            <div style="font-size:20px">🐳</div>
+            <div style="color:#3fb950;font-weight:600">Docker 容器</div>
+            <div style="color:#8b949e;font-size:12px">0.0.0.0:<span class="hl">8000</span></div>
+          </div>
+        </div>
+      </div>
+
+      <h3>为什么我们用 8002 不用 8000？</h3>
+      <p>因为你 Mac 上已经有一个 stock-picker 在 <code>:8000</code> 跑着（直接跑的 Python 进程，不是 Docker）。</p>
+      <p>同一个端口不能两个程序用 → 所以 Docker 用 8002 避免冲突。</p>
+
+      <h3>常见端口映射</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code">-p 8000:8000</span>
+          <span class="annotate-desc">Mac 8000 → 容器 8000（最直觉）</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">-p 8002:8000</span>
+          <span class="annotate-desc">Mac 8002 → 容器 8000（避免冲突）</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">-p 80:8000</span>
+          <span class="annotate-desc">Mac 80 → 容器 8000（这样输 localhost 不用加端口号）</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">-p 3000:3000 -p 8000:8000</span>
+          <span class="annotate-desc">可以映射多个端口</span>
+        </div>
+      </div>
+
+      <h3>不加 -p 会怎样？</h3>
+      <p><span class="hl-red">容器跑了但你访问不了。</span>请求到不了容器里。这是新手最常踩的坑。</p>
+    </div>
+  </div>
+
+  <!-- TAB 6: Commands -->
+  <div class="section" data-section="6">
+    <div class="card">
+      <h2><span class="icon">💻</span>命令速查表</h2>
+
+      <h3>镜像 (Image) 操作</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code">docker build -t 名字 .</span>
+          <span class="annotate-desc">构建镜像</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker images</span>
+          <span class="annotate-desc">列出所有镜像</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker rmi 名字</span>
+          <span class="annotate-desc">删除镜像</span>
+        </div>
+      </div>
+
+      <h3>容器 (Container) 操作</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code">docker run -d --name 名 -p 端口 镜像</span>
+          <span class="annotate-desc">启动容器</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker ps</span>
+          <span class="annotate-desc">查看运行中的容器</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker ps -a</span>
+          <span class="annotate-desc">查看所有容器（包括停了的）</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker logs 名字</span>
+          <span class="annotate-desc">查看容器日志</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker stop 名字</span>
+          <span class="annotate-desc">停止容器</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker rm 名字</span>
+          <span class="annotate-desc">删除已停止的容器</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker exec -it 名字 bash</span>
+          <span class="annotate-desc">进入容器内部（像SSH进一台服务器）</span>
+        </div>
+      </div>
+
+      <h3>清理</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code">docker system prune</span>
+          <span class="annotate-desc">清理所有没用的镜像/容器/缓存</span>
+        </div>
+      </div>
+
+      <h3>面试常问</h3>
+      <div style="background:#0d1117;border-radius:8px;padding:16px;margin:12px 0;font-size:13px">
+        <p><span class="hl">Q: CMD 和 ENTRYPOINT 的区别？</span></p>
+        <p style="color:#8b949e">A: CMD 可以被 docker run 后面的参数覆盖，ENTRYPOINT 不会。一般用 CMD 就够了。</p>
+        <br>
+        <p><span class="hl">Q: COPY 和 ADD 的区别？</span></p>
+        <p style="color:#8b949e">A: ADD 能自动解压 tar 文件和下载 URL。但官方推荐用 COPY（更明确）。</p>
+        <br>
+        <p><span class="hl">Q: 怎么减小 Docker 镜像体积？</span></p>
+        <p style="color:#8b949e">A: 用 slim/alpine 基础镜像，合并 RUN 命令，用 multi-stage build，.dockerignore 排除无用文件。</p>
+        <br>
+        <p><span class="hl">Q: Docker 网络模式有哪些？</span></p>
+        <p style="color:#8b949e">A: bridge（默认，容器间隔离）, host（共享宿主网络）, none（无网络）。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 7: Enterprise -->
+  <div class="section" data-section="7">
+    <div class="card">
+      <h2><span class="icon">🏭</span>大公司怎么用 Docker？</h2>
+      <p>你学到的核心是<span class="hl">"环境一致性"</span>。但大公司用Docker还有更大的目的：</p>
+
+      <h3>1. 微服务架构 🧩</h3>
+      <p>Netflix不是一个大程序，是<span class="hl">几百个小服务</span>：</p>
+      <div class="diagram">
+        <div class="box box-blue">👤 用户服务<br><small>Container</small></div>
+        <div class="box box-green">🎬 推荐服务<br><small>Container</small></div>
+        <div class="box box-orange">💳 支付服务<br><small>Container</small></div>
+        <div class="box box-purple">📊 数据服务<br><small>Container</small></div>
+      </div>
+      <p>每个服务装进一个Docker容器，独立部署、独立更新。</p>
+      <p>推荐算法改了？只重新部署推荐服务的容器，其他不动。</p>
+
+      <h3>2. 弹性伸缩 📈</h3>
+      <div class="compare">
+        <div class="compare-col">
+          <h4>双11 中午 12:00</h4>
+          <ul>
+            <li>流量暴涨 10x</li>
+            <li>自动启动 100 个容器</li>
+            <li>秒级扩容（容器秒级启动）</li>
+            <li>处理完峰值请求</li>
+          </ul>
+        </div>
+        <div class="compare-col good">
+          <h4>凌晨 3:00</h4>
+          <ul>
+            <li>几乎没人用</li>
+            <li>自动缩到 5 个容器</li>
+            <li>省 95% 服务器费用</li>
+            <li>VM 做不到（启动要几分钟）</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>3. CI/CD 自动化 ⚡</h3>
+      <p>代码push → 自动build镜像 → 自动测试 → 自动部署。全程无人干预。</p>
+      <p><span class="hl-blue">你的GitHub Actions就是这个流程的简化版。</span>（下一页详解）</p>
+
+      <h3>4. 环境一致性 ✅</h3>
+      <p>开发环境 = 测试环境 = 生产环境。</p>
+      <p>"我电脑上能跑"的问题彻底消失。<span class="hl">这就是你学到的核心。</span></p>
+
+      <h3>核心观念</h3>
+      <div style="background:#0d1117;border-radius:10px;padding:20px;margin:16px 0;text-align:center;font-size:16px">
+        <span class="hl">把应用变成可以随时创建、销毁、复制、迁移的标准化单元。</span>
+        <p style="color:#8b949e;font-size:13px;margin-top:8px">就像集装箱革命 — 以前货物形状各异装船很难。有了标准集装箱，什么货都能用同样的船、同样的吊车运。Docker对软件做了同样的事。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 8: CI/CD -->
+  <div class="section" data-section="8">
+    <div class="card">
+      <h2><span class="icon">🔗</span>Docker + GitHub Actions = CI/CD</h2>
+      <p>两个完全不同的东西，但经常一起用：</p>
+
+      <div class="diagram">
+        <div class="box box-blue">🐳 Docker<br><small>打包工具<br>"怎么打包和运行"</small></div>
+        <span class="arrow">+</span>
+        <div class="box box-green">⚡ GitHub Actions<br><small>自动化流水线<br>"什么时候自动做"</small></div>
+      </div>
+
+      <p>类比：Docker = <span class="hl">烤箱</span>，GitHub Actions = <span class="hl">定时器</span>（"每次push代码自动烤面包"）</p>
+
+      <h3>你的 Stock Picker 的流程</h3>
+      <div class="flow-container" id="cicd-flow">
+        <div class="flow-step" id="ci-0">
+          <span class="flow-icon">📝</span>
+          <div>
+            <div class="flow-text">你 push 代码到 GitHub</div>
+            <div class="flow-detail">git push origin main</div>
+          </div>
+        </div>
+        <div class="flow-step" id="ci-1">
+          <span class="flow-icon">⚡</span>
+          <div>
+            <div class="flow-text">GitHub Actions 自动触发</div>
+            <div class="flow-detail">读取 .github/workflows/test.yml</div>
+          </div>
+        </div>
+        <div class="flow-step" id="ci-2">
+          <span class="flow-icon">🐍</span>
+          <div>
+            <div class="flow-text">① 装 Python + 依赖</div>
+            <div class="flow-detail">在 GitHub 的服务器上（不是你的电脑）</div>
+          </div>
+        </div>
+        <div class="flow-step" id="ci-3">
+          <span class="flow-icon">🧪</span>
+          <div>
+            <div class="flow-text">② 跑测试</div>
+            <div class="flow-detail">验证代码没有bug</div>
+          </div>
+        </div>
+        <div class="flow-step" id="ci-4">
+          <span class="flow-icon">🐳</span>
+          <div>
+            <div class="flow-text">③ docker build</div>
+            <div class="flow-detail">验证 Dockerfile 能正常构建</div>
+          </div>
+        </div>
+        <div class="flow-step" id="ci-5">
+          <span class="flow-icon">✅</span>
+          <div>
+            <div class="flow-text">全部通过 → 代码没问题</div>
+            <div class="flow-detail">任一失败 → GitHub 通知你</div>
+          </div>
+        </div>
+      </div>
+      <button class="action-btn" onclick="animateCICD()">▶️ 播放 CI/CD 流程</button>
+
+      <h3 style="margin-top:20px">大公司的完整流程（更进一步）</h3>
+      <div class="flow-container">
+        <div class="flow-step">
+          <span class="flow-icon">📝</span>
+          <div>
+            <div class="flow-text">push 代码</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-icon">⚡</span>
+          <div>
+            <div class="flow-text">GitHub Actions 触发</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-icon">🔨</span>
+          <div>
+            <div class="flow-text">docker build → 生成新镜像</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-icon">📤</span>
+          <div>
+            <div class="flow-text">docker push → 传到 Docker Hub / AWS ECR</div>
+            <div class="flow-detail">镜像仓库（像代码的GitHub，但存的是Docker镜像）</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-icon">🚀</span>
+          <div>
+            <div class="flow-text">自动部署 → 服务器拉取新镜像</div>
+            <div class="flow-detail">替换旧容器，用户无感知</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-icon">👤</span>
+          <div>
+            <div class="flow-text">用户访问的已经是新版本了</div>
+            <div class="flow-detail">全程无人干预</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>名词解释</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#58a6ff">CI (Continuous Integration)</span>
+          <span class="annotate-desc">持续集成 — 每次push自动测试，确保代码没问题</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#3fb950">CD (Continuous Deployment)</span>
+          <span class="annotate-desc">持续部署 — 测试通过后自动部署到生产环境</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#d29922">Docker Hub / ECR</span>
+          <span class="annotate-desc">镜像仓库 — 存储Docker镜像的地方（像GitHub存代码）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 9: Advanced -->
+  <div class="section" data-section="9">
+    <div class="card">
+      <h2><span class="icon">📚</span>进阶概念 — 碰到时再看</h2>
+      <p>你目前的知识够用了。以下三个概念等实际碰到再深入。</p>
+
+      <h3>1. Docker Compose 🎼</h3>
+      <p><span class="hl">同时管理多个容器。</span>现实中一个项目不只有API，还有数据库、缓存等。</p>
+
+      <p>比如 stock-picker 如果加了数据库：</p>
+      <div class="code-block">
+        <span class="comment"># docker-compose.yml</span><br>
+        <span class="keyword">version</span>: <span class="string">'3'</span><br>
+        <span class="keyword">services</span>:<br>
+        &nbsp;&nbsp;<span class="keyword">api</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">build</span>: .<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">ports</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="string">"8000:8000"</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">depends_on</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- db<br>
+        <br>
+        &nbsp;&nbsp;<span class="keyword">db</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">image</span>: <span class="string">postgres:15</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">environment</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">POSTGRES_PASSWORD</span>: <span class="string">secret</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">volumes</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="string">db-data:/var/lib/postgresql/data</span><br>
+        <br>
+        <span class="keyword">volumes</span>:<br>
+        &nbsp;&nbsp;<span class="keyword">db-data</span>:
+      </div>
+
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code">docker compose up -d</span>
+          <span class="annotate-desc">一条命令启动所有容器（API + 数据库）</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker compose down</span>
+          <span class="annotate-desc">一条命令停止并清理所有容器</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker compose logs -f</span>
+          <span class="annotate-desc">查看所有容器的日志（实时跟踪）</span>
+        </div>
+      </div>
+
+      <p><span class="hl-blue">面试常问：</span>"你的项目有多个服务怎么管理？" → "Docker Compose，一个 YAML 文件定义所有服务和依赖关系。"</p>
+
+      <h3>2. Volume（数据卷）💾</h3>
+      <p><span class="hl">问题：容器删了，里面的数据也没了。</span></p>
+      <p>比如数据库跑在容器里，你 <code>docker rm</code> 后所有数据丢失。</p>
+      <p>Volume 把数据存在容器<span class="hl">外面</span>（你的 Mac 硬盘上），容器删了数据还在。</p>
+
+      <div style="background:#0d1117;border-radius:10px;padding:20px;margin:16px 0;text-align:center">
+        <div style="display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center">
+          <div style="padding:16px 24px;border:2px solid #f85149;border-radius:10px;text-align:center">
+            <div style="font-size:20px">🐳</div>
+            <div style="color:#f85149;font-weight:600">容器（临时的）</div>
+            <div style="color:#8b949e;font-size:12px">删了就没了</div>
+          </div>
+          <div style="color:#3fb950;font-size:20px">🔗</div>
+          <div style="padding:16px 24px;border:2px solid #3fb950;border-radius:10px;text-align:center">
+            <div style="font-size:20px">💾</div>
+            <div style="color:#3fb950;font-weight:600">Volume（持久的）</div>
+            <div style="color:#8b949e;font-size:12px">存在 Mac 硬盘上</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <span class="comment"># 创建一个 volume 并挂载到容器</span><br>
+        <span class="cmd">docker run</span> <span class="flag">-v</span> <span class="string">my-data:/app/data</span> stock-picker<br>
+        <br>
+        <span class="comment">#   ↑ volume名   ↑ 容器内路径</span><br>
+        <span class="comment"># 容器里 /app/data 的内容会持久保存在 my-data 这个 volume 里</span>
+      </div>
+
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code">docker volume ls</span>
+          <span class="annotate-desc">列出所有 volume</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">docker volume rm 名字</span>
+          <span class="annotate-desc">删除 volume</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">-v ~/data:/app/data</span>
+          <span class="annotate-desc">也可以直接映射 Mac 上的目录（bind mount）</span>
+        </div>
+      </div>
+
+      <h3>3. Docker Hub 🌐</h3>
+      <p><span class="hl">像 GitHub，但存的是 Docker 镜像而不是代码。</span></p>
+
+      <div class="diagram">
+        <div class="box box-blue">💻 你的电脑<br><small>docker build</small></div>
+        <span class="arrow">→ push →</span>
+        <div class="box box-orange">🌐 Docker Hub<br><small>hub.docker.com</small></div>
+        <span class="arrow">→ pull →</span>
+        <div class="box box-green">☁️ 服务器/同事<br><small>docker run</small></div>
+      </div>
+
+      <div class="code-block">
+        <span class="comment"># 给镜像打标签（用你的 Docker Hub 用户名）</span><br>
+        <span class="cmd">docker tag</span> stock-picker <span class="string">ztang2/stock-picker:v1</span><br>
+        <br>
+        <span class="comment"># 推送到 Docker Hub</span><br>
+        <span class="cmd">docker push</span> <span class="string">ztang2/stock-picker:v1</span><br>
+        <br>
+        <span class="comment"># 别人（或服务器）拉取并运行</span><br>
+        <span class="cmd">docker pull</span> <span class="string">ztang2/stock-picker:v1</span><br>
+        <span class="cmd">docker run</span> <span class="flag">-p</span> <span class="string">8000:8000</span> <span class="string">ztang2/stock-picker:v1</span>
+      </div>
+
+      <p>你之前用的 <code>python:3.11-slim</code> 就是从 Docker Hub 下载的官方 Python 镜像。</p>
+
+      <h3>什么时候学这些？</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#ffa657">Docker Compose</span>
+          <span class="annotate-desc">当你的项目需要数据库或多个服务时</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#ffa657">Volume</span>
+          <span class="annotate-desc">当你需要在容器里存持久数据时</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#ffa657">Docker Hub</span>
+          <span class="annotate-desc">当你想把镜像分享给别人或部署到服务器时</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 10: Quiz -->
+  <div class="section" data-section="10">
+    <div class="card">
+      <h2><span class="icon">🧠</span>测验 — 检查理解</h2>
+      <p id="quiz-score" style="color:#8b949e;margin-bottom:16px">答对 0/6</p>
+
+      <div id="q0">
+        <p class="quiz-q">1. Docker 的三个核心概念是？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQuiz(0,this,false)">Container, VM, Cloud</div>
+          <div class="quiz-opt" onclick="checkQuiz(0,this,true)">Dockerfile, Image, Container</div>
+          <div class="quiz-opt" onclick="checkQuiz(0,this,false)">Build, Push, Deploy</div>
+        </div>
+        <div class="quiz-explain" id="qe0">Dockerfile（菜谱）→ build → Image（预制菜）→ run → Container（端上桌的菜）</div>
+      </div>
+
+      <div id="q1" style="margin-top:16px">
+        <p class="quiz-q">2. <code>docker build -t stock-picker .</code> 最后的 <code>.</code> 是什么意思？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQuiz(1,this,false)">表示"结束"</div>
+          <div class="quiz-opt" onclick="checkQuiz(1,this,true)">在当前目录找 Dockerfile</div>
+          <div class="quiz-opt" onclick="checkQuiz(1,this,false)">隐藏文件的意思</div>
+        </div>
+        <div class="quiz-explain" id="qe1">. = 当前目录。Docker 会在这个目录里找 Dockerfile 并把这个目录的文件作为 build context。</div>
+      </div>
+
+      <div id="q2" style="margin-top:16px">
+        <p class="quiz-q">3. <code>-p 8002:8000</code> 左边的 8002 是？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQuiz(2,this,false)">容器内的端口</div>
+          <div class="quiz-opt" onclick="checkQuiz(2,this,true)">你 Mac（宿主机）的端口</div>
+          <div class="quiz-opt" onclick="checkQuiz(2,this,false)">Docker 的默认端口</div>
+        </div>
+        <div class="quiz-explain" id="qe2">格式是 宿主机端口:容器端口。左边是你 Mac 上的端口，右边是容器内部的端口。</div>
+      </div>
+
+      <div id="q3" style="margin-top:16px">
+        <p class="quiz-q">4. 为什么先 COPY requirements.txt 再 COPY src/？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQuiz(3,this,false)">文件大小排序，小的先复制</div>
+          <div class="quiz-opt" onclick="checkQuiz(3,this,false)">没有原因，顺序无所谓</div>
+          <div class="quiz-opt" onclick="checkQuiz(3,this,true)">利用缓存：依赖不变时跳过 pip install</div>
+        </div>
+        <div class="quiz-explain" id="qe3">Docker 每一层（每条指令）都会缓存。如果 requirements.txt 没变，pip install 那步直接用缓存。这样改代码后 rebuild 只要几秒。</div>
+      </div>
+
+      <div id="q4" style="margin-top:16px">
+        <p class="quiz-q">5. Container 和 VM 最大的区别是？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQuiz(4,this,true)">Container 共享宿主内核，VM 有独立内核</div>
+          <div class="quiz-opt" onclick="checkQuiz(4,this,false)">Container 更安全</div>
+          <div class="quiz-opt" onclick="checkQuiz(4,this,false)">VM 更快</div>
+        </div>
+        <div class="quiz-explain" id="qe4">Container 直接用宿主机的 Linux 内核，所以体积小（MB级）、启动快（秒级）。VM 包含完整操作系统，体积GB级，启动分钟级。</div>
+      </div>
+
+      <div id="q5" style="margin-top:16px">
+        <p class="quiz-q">6. 容器停了之后，<code>localhost:8002</code> 还能访问吗？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQuiz(5,this,false)">能，数据还在</div>
+          <div class="quiz-opt" onclick="checkQuiz(5,this,true)">不能，容器停了端口就关了</div>
+          <div class="quiz-opt" onclick="checkQuiz(5,this,false)">看情况</div>
+        </div>
+        <div class="quiz-explain" id="qe5">容器停了 = 进程结束了 = 端口关了。需要重新 docker run 才能访问。但 Image 还在，随时可以重新启动。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Tab switching
+const tabs = document.querySelectorAll('.tab');
+const sections = document.querySelectorAll('.section');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const idx = tab.dataset.tab;
+    tabs.forEach(t => t.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`[data-section="${idx}"]`).classList.add('active');
+    document.getElementById('prog-fill').style.width = ((+idx+1)/11*100)+'%';
+    document.getElementById('prog-text').textContent = `${+idx+1}/11`;
+  });
+});
+
+// Detail toggle
+function toggleDetail(el) {
+  const id = 'detail-' + el.dataset.detail;
+  const box = document.getElementById(id);
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+}
+
+// Build animation
+function animateBuild() {
+  const steps = document.querySelectorAll('#build-flow .flow-step');
+  steps.forEach(s => s.classList.remove('highlight'));
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i > 0) steps[i-1].classList.remove('highlight');
+    if (i >= steps.length) { clearInterval(interval); return; }
+    steps[i].classList.add('highlight');
+    steps[i].scrollIntoView({behavior:'smooth',block:'nearest'});
+    i++;
+  }, 1200);
+}
+
+// Lifecycle animation
+function animateLifecycle() {
+  const stages = ['lc-0','lc-1','lc-2','lc-3'];
+  const arrows = ['lca-0','lca-1','lca-2'];
+  stages.forEach(s => document.getElementById(s).classList.remove('active'));
+  arrows.forEach(a => document.getElementById(a).classList.remove('active'));
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i >= stages.length) { clearInterval(interval); return; }
+    document.getElementById(stages[i]).classList.add('active');
+    if (i > 0) document.getElementById(arrows[i-1]).classList.add('active');
+    i++;
+  }, 1000);
+}
+
+// CI/CD animation
+function animateCICD() {
+  const steps = document.querySelectorAll('#cicd-flow .flow-step');
+  steps.forEach(s => s.classList.remove('highlight'));
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i > 0) steps[i-1].classList.remove('highlight');
+    if (i >= steps.length) { clearInterval(interval); return; }
+    steps[i].classList.add('highlight');
+    i++;
+  }, 1200);
+}
+
+// Quiz
+let score = 0;
+const answered = {};
+function checkQuiz(q, el, correct) {
+  if (answered[q]) return;
+  answered[q] = true;
+  el.classList.add(correct ? 'correct' : 'wrong');
+  if (correct) score++;
+  document.getElementById('quiz-score').textContent = `答对 ${score}/6`;
+  document.getElementById('qe'+q).style.display = 'block';
+  if (!correct) {
+    // Highlight correct
+    const opts = el.parentElement.children;
+    for (let o of opts) {
+      if (o !== el) o.style.opacity = '0.5';
+    }
+  }
+}
+</script>
+</body>
+</html>

@@ -1,44 +1,50 @@
 {
   "specialized_ensemble_metrics": {
-    "total_samples": 1532,
-    "walk_forward_samples": 972,
-    "accuracy": 0.5741,
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1": 0.0,
-    "regression_mae": 0.0698,
-    "regression_corr": 0.0,
-    "consensus_buy_count": 0,
-    "consensus_buy_accuracy": 0,
-    "consensus_buy_avg_excess": 0.0,
-    "strong_buy_count": 0,
-    "strong_buy_accuracy": 0,
-    "strong_buy_avg_excess": 0.0,
-    "avoid_count": 0,
-    "avoid_accuracy": 0,
+    "total_samples": 5594,
+    "walk_forward_samples": 1634,
+    "accuracy": 0.5453,
+    "precision": 0.4138,
+    "recall": 0.0836,
+    "f1": 0.139,
+    "regression_mae": 0.0674,
+    "regression_corr": -0.0193,
+    "consensus_buy_count": 145,
+    "consensus_buy_accuracy": 0.4138,
+    "consensus_buy_avg_excess": -0.42,
+    "strong_buy_count": 40,
+    "strong_buy_accuracy": 0.475,
+    "strong_buy_avg_excess": 0.5,
+    "avoid_count": 444,
+    "avoid_accuracy": 0.5113,
     "signal_distribution": {
-      "HOLD": 972
+      "HOLD": 1045,
+      "AVOID": 444,
+      "BUY": 105,
+      "STRONG_BUY": 40
     }
   },
   "comparison_vs_simple_avg": {
-    "specialized_consensus_buy_accuracy": 0,
-    "specialized_consensus_buy_avg_excess_pct": 0.0,
-    "simple_avg_buy_accuracy": 0.4259,
-    "specialized_strong_buy_accuracy": 0,
-    "specialized_avoid_accuracy": 0
+    "specialized_consensus_buy_accuracy": 0.4138,
+    "specialized_consensus_buy_avg_excess_pct": -0.42,
+    "simple_avg_buy_accuracy": 0.3887,
+    "specialized_strong_buy_accuracy": 0.475,
+    "specialized_avoid_accuracy": 0.5113
   },
   "signal_distribution": {
-    "HOLD": 972
+    "HOLD": 1045,
+    "AVOID": 444,
+    "BUY": 105,
+    "STRONG_BUY": 40
   },
-  "composite_score": -0.0139,
+  "composite_score": 0.1806,
   "all_composite_scores": {
-    "xgboost": 0.3537,
-    "lightgbm": 0.3537,
-    "simple_avg": 0.3537,
-    "weighted_avg": 0.3537,
-    "meta_learner": 0.2874,
-    "specialized_ensemble": -0.0139
+    "lightgbm": 0.3098,
+    "weighted_avg": 0.211,
+    "xgboost": 0.2101,
+    "simple_avg": 0.2067,
+    "specialized_ensemble": 0.1806,
+    "meta_learner": -0.0158
   },
-  "selected_overall": "xgboost",
-  "evaluated_at": "2026-03-21T16:54:11.111804"
+  "selected_overall": "lightgbm",
+  "evaluated_at": "2026-03-29T12:20:03.077030"
 }

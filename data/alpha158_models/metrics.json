@@ -1,8 +1,8 @@
 {
-  "trained_at": "2026-03-21T19:04:01.547378",
-  "train_samples": 159146,
-  "valid_samples": 21637,
-  "test_samples": 29751,
+  "trained_at": "2026-04-01T09:03:49.225331",
+  "train_samples": 157066,
+  "valid_samples": 21590,
+  "test_samples": 30595,
   "features": 147,
   "feature_names": [
     "KMID",
@@ -153,15 +153,15 @@
     "vix_regime",
     "oil_spy_corr20"
   ],
-  "xgb_ic": 0.010021261825319186,
-  "xgb_icir": 0.027586696473350516,
-  "lgb_ic": 0.03910788820114195,
-  "lgb_icir": 0.118357529940415,
-  "ensemble_ic": 0.03910788820114195,
-  "ensemble_icir": 0.118357529940415,
-  "ensemble_spread": 0.008555851354877988,
-  "top_10pct_excess": 0.0013755999860558935,
-  "bottom_10pct_excess": -0.007180251368822095,
+  "xgb_ic": 0.07197101518367123,
+  "xgb_icir": 0.20435966411706108,
+  "lgb_ic": 0.0008089645522991372,
+  "lgb_icir": 0.0024010631287690017,
+  "ensemble_ic": 0.0008089645522991372,
+  "ensemble_icir": 0.0024010631287690017,
+  "ensemble_spread": -0.008282009467044885,
+  "top_10pct_excess": -0.001122421573478575,
+  "bottom_10pct_excess": 0.007159587893566311,
   "weights": {
     "xgb": 0.0,
     "lgb": 1.0

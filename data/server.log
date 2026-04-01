@@ -933,3 +933,249 @@ INFO:     127.0.0.1:64338 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64338 - "GET /risk/summary HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64362 - "GET /risk/summary HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64362 - "GET /portfolio?stocks=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50009 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50011 - "GET /rebalance/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50013 - "GET /validation/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50015 - "GET /insider/MCK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50019 - "GET /scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50105 - "GET /scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50113 - "GET /scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53577 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53577 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53579 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53581 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53579 - "GET /sectors HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53577 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53577 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54538 - "GET /robin/report HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:54555 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54557 - "GET /momentum/scan/10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54807 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54824 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54826 - "GET /risk/trailing-stops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54882 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55192 - "GET /accuracy/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55237 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55348 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55360 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55435 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55447 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55449 - "GET /momentum/scan/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57430 - "GET /robin/report HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:57447 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57449 - "GET /momentum/scan/10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57608 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57988 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57993 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57995 - "GET /risk/trailing-stops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58012 - "GET /entry/FHI HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58015 - "GET /quality/FHI HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58018 - "GET /momentum/FHI HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58020 - "GET /entry/UHS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58022 - "GET /quality/UHS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58024 - "GET /momentum/UHS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58026 - "GET /entry/EXLS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58028 - "GET /quality/EXLS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58030 - "GET /momentum/EXLS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58032 - "GET /entry/TXT HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58034 - "GET /quality/TXT HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58036 - "GET /momentum/TXT HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58347 - "GET /accuracy/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58394 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58466 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58478 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60879 - "GET /robin/report HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:60896 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60898 - "GET /momentum/scan/10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61126 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61143 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61145 - "GET /risk/trailing-stops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61608 - "GET /accuracy/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61689 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61758 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61770 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61862 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61874 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61876 - "GET /momentum/scan/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61987 - "GET /entry/QLYS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61990 - "GET /quality/QLYS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61993 - "GET /momentum/QLYS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62158 - "GET /momentum/FHI HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62160 - "GET /quality/FHI HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62164 - "GET /entry/FHI HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62192 - "GET /momentum/FHI HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62194 - "GET /momentum/JLL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62196 - "GET /momentum/TXT HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62198 - "GET /momentum/UHS HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62200 - "GET /momentum/HST HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62202 - "GET /momentum/TOL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62204 - "GET /momentum/ALL HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62206 - "GET /momentum/NFG HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62208 - "GET /momentum/WDAY HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62210 - "GET /momentum/FAF HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62212 - "GET /momentum/GEN HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62214 - "GET /momentum/IQV HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62216 - "GET /momentum/RRC HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62218 - "GET /momentum/THC HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62221 - "GET /momentum/CNX HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62346 - "GET /quality/FAF HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62350 - "GET /momentum/FAF HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62352 - "GET /entry/FAF HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50849 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50848 - "GET /robin/report HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50850 - "GET /momentum/scan/10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50908 - "GET /momentum/scan/10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51242 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51240 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51241 - "GET /risk/trailing-stops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51586 - "GET /accuracy/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51639 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51692 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51731 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51730 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51813 - "GET /static/playground2.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51813 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51815 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51815 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51832 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51832 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51815 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51815 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51888 - "GET /static/playground2.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51896 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51911 - "GET /static/playground.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51919 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51929 - "GET /static/playground2.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51941 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51964 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51964 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51966 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51964 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51964 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51966 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51972 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52025 - "GET /static/playground2.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52034 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52082 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52084 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52082 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52082 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52117 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52117 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52119 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52119 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52117 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52132 - "GET /static/playground2.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52172 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52174 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52174 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52172 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52172 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52232 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52234 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52234 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52232 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52232 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52261 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52374 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52374 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52444 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52444 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52446 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52444 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52809 - "GET /momentum/VST HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52813 - "GET /quality/VST HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55666 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55665 - "GET /robin/report HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:55667 - "GET /momentum/scan/10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55848 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55850 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55912 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55914 - "GET /momentum/scan/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55913 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56213 - "GET /scan/top/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56212 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56211 - "GET /risk/trailing-stops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56634 - "GET /accuracy/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56718 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56717 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56842 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56841 - "GET /momentum/scan/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56840 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59657 - "GET /scan/top/10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59658 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59660 - "GET /accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59659 - "GET /ml/train?months_history=12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60579 - "GET /ml/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60581 - "GET /ml/compare HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61924 - "GET /review/QLYS HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:61927 - "GET /review/QLYS HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:61931 - "GET /review/QLYS HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:61936 - "GET /review/QLYS HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:61939 - "GET /review/QLYS HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:65409 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65411 - "GET /scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65413 - "GET /rebalance/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65415 - "GET /validation/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65417 - "GET /insider/MCK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65425 - "GET /scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65427 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49620 - "GET /scan/top/10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49623 - "GET /robin/report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49621 - "GET /accuracy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50559 - "GET /ml/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50558 - "GET /ml/compare HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50560 - "GET /ml/train?months_history=12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51609 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51609 - "GET /fmp/status HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51611 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51611 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51614 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51609 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51609 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan?strategy=balanced HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51670 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51670 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /stock/INCY HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /scan/cached HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51650 - "GET /sectors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51760 - "GET /alerts?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51760 - "GET /risk/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53287 - "GET /static/docker-playground.html HTTP/1.1" 200 OK

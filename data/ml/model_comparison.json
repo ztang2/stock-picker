@@ -1,26 +1,26 @@
 {
   "xgboost": {
-    "total_samples": 1532,
-    "walk_forward_samples": 972,
-    "accuracy": 0.4259,
-    "precision": 0.4259,
-    "recall": 1.0,
-    "f1": 0.5974,
-    "regression_mae": 0.0698,
-    "regression_corr": -0.0
+    "total_samples": 5594,
+    "walk_forward_samples": 1634,
+    "accuracy": 0.5098,
+    "precision": 0.3824,
+    "recall": 0.188,
+    "f1": 0.2521,
+    "regression_mae": 0.0637,
+    "regression_corr": 0.0762
   },
   "lightgbm": {
-    "total_samples": 1532,
-    "walk_forward_samples": 972,
-    "accuracy": 0.4259,
-    "precision": 0.4259,
-    "recall": 1.0,
-    "f1": 0.5974,
-    "regression_mae": 0.0698,
-    "regression_corr": 0.0
+    "total_samples": 5594,
+    "walk_forward_samples": 1634,
+    "accuracy": 0.4455,
+    "precision": 0.4222,
+    "recall": 0.7103,
+    "f1": 0.5296,
+    "regression_mae": 0.0674,
+    "regression_corr": -0.0193
   },
-  "xgboost_composite_score": 0.3537,
-  "lightgbm_composite_score": 0.3537,
-  "selected_model": "xgboost",
-  "compared_at": "2026-03-21T16:54:11.111902"
+  "xgboost_composite_score": 0.2101,
+  "lightgbm_composite_score": 0.3098,
+  "selected_model": "lightgbm",
+  "compared_at": "2026-03-29T12:20:03.077132"
 }
