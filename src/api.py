@@ -38,6 +38,7 @@ from .comps_analysis import run_comps
 from .thesis_tracker import record_thesis, get_thesis, check_all_theses, close_thesis
 from .earnings_analysis import analyze_earnings
 from .position_sizing import get_single_ticker_sizing, get_portfolio_sizing, get_rebalance_suggestions
+from .diversification import compute_diversification, compute_correlation, compute_whatif
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -1472,6 +1473,57 @@ def devil_review(ticker: str):
     """Devil's Advocate review — find every reason NOT to buy this stock."""
     from .devils_advocate import review
     return review(ticker.upper())
+
+
+@app.get("/snapshots/recent")
+async def snapshots_recent(days: int = 7):
+    """Return last N daily snapshots for sparkline/delta data."""
+    snapshot_dir = Path(__file__).parent.parent / "data" / "daily_snapshots"
+    if not snapshot_dir.exists():
+        return []
+    files = sorted(snapshot_dir.glob("*.json"), reverse=True)[:days]
+    result = []
+    for f in files:
+        with open(f) as fh:
+            data = json.load(fh)
+        stocks = {}
+        for s in data.get("top", []) + data.get("all_scores", []):
+            stocks[s["ticker"]] = {
+                "composite_score": s.get("composite_score", 0),
+                "rank": s.get("rank", 999),
+            }
+        result.append({"date": f.stem, "stocks": stocks})
+    return list(reversed(result))
+
+
+@app.get("/portfolio/diversification")
+async def portfolio_diversification():
+    scan_path = Path(__file__).parent.parent / "data" / "scan_results.json"
+    scan_data = {}
+    if scan_path.exists():
+        with open(scan_path) as f:
+            scan_data = json.load(f)
+    return compute_diversification(scan_data)
+
+
+@app.get("/portfolio/correlation")
+async def portfolio_correlation():
+    scan_path = Path(__file__).parent.parent / "data" / "scan_results.json"
+    scan_data = {}
+    if scan_path.exists():
+        with open(scan_path) as f:
+            scan_data = json.load(f)
+    return compute_correlation(scan_data)
+
+
+@app.get("/portfolio/whatif")
+async def portfolio_whatif(ticker: str):
+    scan_path = Path(__file__).parent.parent / "data" / "scan_results.json"
+    scan_data = {}
+    if scan_path.exists():
+        with open(scan_path) as f:
+            scan_data = json.load(f)
+    return compute_whatif(ticker, scan_data)
 
 
 if __name__ == "__main__":
