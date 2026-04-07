@@ -1,25 +1,46 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Shell from "./components/layout/Shell";
+import { useApi } from "./hooks/useApi";
+import { api } from "./lib/api";
+import type { ScanResult } from "./lib/types";
+import { createContext, useContext } from "react";
+
+export const ScanContext = createContext<{
+  scan: ScanResult | null;
+  loading: boolean;
+  refetch: () => void;
+}>({ scan: null, loading: true, refetch: () => {} });
+
+export function useScan() {
+  return useContext(ScanContext);
+}
 
 function Placeholder({ name }: { name: string }) {
   return (
-    <div className="flex items-center justify-center h-screen text-text-secondary">
+    <div className="flex items-center justify-center h-64 text-text-secondary">
       {name} — coming soon
     </div>
   );
 }
 
 export default function App() {
+  const { data: scan, loading, refetch } = useApi<ScanResult>(() => api.scanCached());
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Placeholder name="Home" />} />
-        <Route path="/scanner" element={<Placeholder name="Scanner" />} />
-        <Route path="/portfolio" element={<Placeholder name="Portfolio" />} />
-        <Route path="/backtest" element={<Placeholder name="Backtest" />} />
-        <Route path="/alerts" element={<Placeholder name="Alerts" />} />
-        <Route path="/accuracy" element={<Placeholder name="Accuracy" />} />
-        <Route path="/momentum" element={<Placeholder name="Momentum" />} />
-      </Routes>
-    </BrowserRouter>
+    <ScanContext.Provider value={{ scan, loading, refetch }}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Shell scan={scan} />}>
+            <Route path="/" element={<Placeholder name="Home" />} />
+            <Route path="/scanner" element={<Placeholder name="Scanner" />} />
+            <Route path="/portfolio" element={<Placeholder name="Portfolio" />} />
+            <Route path="/backtest" element={<Placeholder name="Backtest" />} />
+            <Route path="/alerts" element={<Placeholder name="Alerts" />} />
+            <Route path="/accuracy" element={<Placeholder name="Accuracy" />} />
+            <Route path="/momentum" element={<Placeholder name="Momentum" />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ScanContext.Provider>
   );
 }
