@@ -10,7 +10,11 @@ def _load_holdings():
     if not path.exists():
         return []
     with open(path) as f:
-        return json.load(f)
+        data = json.load(f)
+    if isinstance(data, dict):
+        holdings_dict = data.get("holdings", data)
+        return [{"ticker": k, **v} for k, v in holdings_dict.items() if isinstance(v, dict)]
+    return data
 
 
 def _load_price_cache():
@@ -48,10 +52,13 @@ def _herfindahl(weights):
 def _pairwise_correlations(tickers, cache, days=90):
     closes = {}
     for t in tickers:
-        hist = cache.get(t, {}).get("history", {}).get("Close", {})
-        if isinstance(hist, dict):
-            dates = sorted(hist.keys())[-days:]
-            closes[t] = [hist[d] for d in dates]
+        hist = cache.get(t, {}).get("history", {})
+        close_data = hist.get("Close", [])
+        if isinstance(close_data, list) and len(close_data) >= 20:
+            closes[t] = [x for x in close_data[-days:] if x is not None]
+        elif isinstance(close_data, dict):
+            dates = sorted(close_data.keys())[-days:]
+            closes[t] = [close_data[d] for d in dates]
 
     tickers_with_data = [t for t in tickers if t in closes and len(closes[t]) >= 20]
     if len(tickers_with_data) < 2:
