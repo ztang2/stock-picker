@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useScan } from "../App";
 import { useApi } from "../hooks/useApi";
 import { useTimeOfDay } from "../hooks/useTimeOfDay";
@@ -14,6 +15,16 @@ const GREETING: Record<string, string> = {
   evening: "Good evening",
 };
 
+const stagger = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" as const } },
+};
+
 export default function Home() {
   const { scan, loading } = useScan();
   const tod = useTimeOfDay();
@@ -27,8 +38,8 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-5">
+    <motion.div variants={stagger} initial="hidden" animate="show">
+      <motion.div variants={fadeUp} className="flex justify-between items-center mb-5">
         <div>
           <h1 className="text-xl font-bold text-text-primary">{GREETING[tod]}, Zhuoran</h1>
           <div className="text-[13px] text-text-secondary">
@@ -36,11 +47,13 @@ export default function Home() {
             {" · "}Last scan: {new Date(scan.timestamp).toLocaleTimeString()}
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <SummaryCards scan={scan} alerts={alerts} accuracy={accuracy} risk={risk} />
+      <motion.div variants={fadeUp}>
+        <SummaryCards scan={scan} alerts={alerts} accuracy={accuracy} risk={risk} />
+      </motion.div>
 
-      <div className="grid grid-cols-[1.2fr_1fr] gap-4">
+      <motion.div variants={fadeUp} className="grid grid-cols-[1.2fr_1fr] gap-4">
         <ActionItems
           stopLosses={stopLosses?.alerts ?? []}
           earningsNear={scan.top.filter((s) => (s.sell_reasons ?? []).some((r) => r.toLowerCase().includes("earn")))}
@@ -49,7 +62,7 @@ export default function Home() {
           <NewSignals stocks={scan.top} />
           <MarketPulse regime={scan.market_regime} />
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

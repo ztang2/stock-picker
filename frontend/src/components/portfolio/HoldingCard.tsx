@@ -20,13 +20,17 @@ export default function HoldingCard({ position, signal, stopLossPct, profitTrigg
     ? "border-danger/30 hover:border-danger"
     : profitTriggered
     ? "border-caution/30 hover:border-caution"
-    : "border-border hover:border-accent";
+    : "border-border hover:border-accent/50";
+
+  const progressGlow = pnlPct >= 0
+    ? "shadow-[0_0_8px_var(--color-positive-glow)]"
+    : "shadow-[0_0_8px_var(--color-danger-glow)]";
 
   const weight = totalValue > 0 ? (positionValue / totalValue) * 100 : 0;
 
   return (
     <motion.div
-      className={`p-3.5 rounded-xl bg-surface border ${borderClass} cursor-pointer transition-all duration-200`}
+      className={`p-3.5 rounded-2xl glass-card border ${borderClass} cursor-pointer transition-all duration-200`}
       whileHover={{ y: -1 }}
     >
       <div className="flex justify-between items-center mb-2">
@@ -44,21 +48,21 @@ export default function HoldingCard({ position, signal, stopLossPct, profitTrigg
           )}
         </div>
         <div className="text-right">
-          <div className={`text-[15px] font-bold ${pnlColor(pnlDollar)}`}>
+          <div className={`text-[15px] font-bold font-data ${pnlColor(pnlDollar)} ${pnlDollar >= 0 ? "glow-positive" : "glow-danger"}`}>
             {pnlDollar >= 0 ? "+" : ""}${pnlDollar.toLocaleString()}
           </div>
-          <div className={`text-[11px] ${pnlColor(pnlPct)}`}>
+          <div className={`text-[11px] font-data ${pnlColor(pnlPct)}`}>
             {pnlPct >= 0 ? "+" : ""}{pnlPct.toFixed(1)}%
           </div>
         </div>
       </div>
-      <div className="flex justify-between text-xs text-text-secondary">
+      <div className="flex justify-between text-xs text-text-secondary font-data">
         <span>{position.shares?.toFixed(2) ?? "—"} shares · Avg ${position.entry_price?.toFixed(2) ?? "—"}</span>
         <span>${positionValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} ({weight.toFixed(1)}%)</span>
       </div>
       <div className="mt-2 h-1 rounded-full bg-border overflow-hidden">
         <div
-          className={`h-full rounded-full ${pnlPct >= 0 ? "bg-gradient-to-r from-positive to-accent" : "bg-danger"}`}
+          className={`h-full rounded-full ${pnlPct >= 0 ? "bg-gradient-to-r from-positive to-accent" : "bg-danger"} ${progressGlow}`}
           style={{ width: `${Math.min(Math.max(50 + pnlPct * 2, 5), 100)}%` }}
         />
       </div>

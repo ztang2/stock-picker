@@ -1,27 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-base: #0f1117;
-  --color-surface: #1e293b;
-  --color-border: #334155;
-  --color-text-primary: #f1f5f9;
-  --color-text-secondary: #94a3b8;
-  --color-text-muted: #64748b;
-  --color-positive: #22c55e;
-  --color-caution: #f59e0b;
-  --color-danger: #ef4444;
-  --color-accent: #6366f1;
+  --color-base: #0a0e17;
+  --color-surface: #111827;
+  --color-surface-raised: #1a2235;
+  --color-border: #1e2d4a;
+  --color-border-subtle: #162033;
+  --color-text-primary: #e8edf5;
+  --color-text-secondary: #8b97b0;
+  --color-text-muted: #556481;
+  --color-positive: #34d399;
+  --color-positive-glow: #34d39940;
+  --color-caution: #fbbf24;
+  --color-caution-glow: #fbbf2440;
+  --color-danger: #f87171;
+  --color-danger-glow: #f8717140;
+  --color-accent: #22d3ee;
+  --color-accent-dim: #22d3ee20;
+  --color-accent-glow: #22d3ee40;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 body {
-  @apply bg-base text-text-primary font-[system-ui,-apple-system,sans-serif] m-0;
+  font-family: var(--font-sans);
+  background: var(--color-base);
+  color: var(--color-text-primary);
+  margin: 0;
 }
 
+/* Noise texture overlay on body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Data numbers use mono font */
+.font-data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset, 0 4px 24px rgba(0,0,0,0.2);
+}
+
+.glass-card:hover {
+  border-color: var(--color-border);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset, 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* Glow text effects */
+.glow-positive {
+  text-shadow: 0 0 12px var(--color-positive-glow);
+}
+
+.glow-danger {
+  text-shadow: 0 0 12px var(--color-danger-glow);
+}
+
+.glow-accent {
+  text-shadow: 0 0 12px var(--color-accent-glow);
+}
+
+/* Sidebar active glow bar */
+.nav-active-glow {
+  box-shadow: inset 3px 0 0 var(--color-accent), 0 0 12px var(--color-accent-glow);
+  background: var(--color-accent-dim);
+}
+
+/* Pulse animation for alerts */
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--color-danger-glow); }
+  50% { opacity: 0.6; box-shadow: 0 0 8px 4px var(--color-danger-glow); }
 }
 
 .animate-pulse-dot {
   animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Signal badge glow */
+.badge-glow-positive {
+  box-shadow: 0 0 8px var(--color-positive-glow);
+}
+.badge-glow-danger {
+  box-shadow: 0 0 8px var(--color-danger-glow);
+}
+.badge-glow-caution {
+  box-shadow: 0 0 8px var(--color-caution-glow);
 }

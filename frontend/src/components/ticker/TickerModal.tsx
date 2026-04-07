@@ -77,14 +77,14 @@ export default function TickerModal({ stock, onClose }: TickerModalProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/60 z-50 flex items-start justify-center pt-8 overflow-auto"
+        className="fixed inset-0 bg-base/95 backdrop-blur-xl z-50 flex items-start justify-center pt-8 overflow-auto"
         onClick={onClose}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
         <motion.div
-          className="bg-base border border-border rounded-2xl w-full max-w-4xl mb-8 overflow-hidden"
+          className="glass-card rounded-2xl w-full max-w-4xl mb-8 overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.5)]"
           onClick={(e) => e.stopPropagation()}
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -104,7 +104,7 @@ export default function TickerModal({ stock, onClose }: TickerModalProps) {
               <div className="text-sm text-text-secondary">{stock?.name} · {stock?.sector}</div>
             </div>
             <div className="text-right">
-              <div className="text-2xl font-bold text-text-primary">${stock?.current_price?.toFixed(2) ?? "—"}</div>
+              <div className="text-2xl font-bold text-text-primary font-data">${stock?.current_price?.toFixed(2) ?? "—"}</div>
               <button onClick={onClose} className="text-text-muted hover:text-text-primary text-xs mt-1">✕ Close</button>
             </div>
           </div>
@@ -112,10 +112,10 @@ export default function TickerModal({ stock, onClose }: TickerModalProps) {
           <SynthesisBanner text={stock?.synthesis} />
 
           <div className="grid grid-cols-[220px_1fr] gap-4 px-6 pb-4">
-            <div className="p-4 rounded-xl bg-surface border border-border flex flex-col items-center">
+            <div className="p-4 rounded-xl glass-card flex flex-col items-center">
               <div className="text-[11px] text-text-muted uppercase tracking-wider font-semibold mb-2">Score Profile</div>
               <RadarChart scores={scores} size={170} showLabels={true} />
-              <div className={`mt-1 text-3xl font-extrabold ${scoreColor(stock?.composite_score ?? 0)}`}>
+              <div className={`mt-1 text-3xl font-extrabold font-data ${scoreColor(stock?.composite_score ?? 0)} ${(stock?.composite_score ?? 0) > 75 ? "glow-positive" : (stock?.composite_score ?? 0) < 50 ? "glow-danger" : ""}`}>
                 {Math.round(stock?.composite_score ?? 0)}
               </div>
               <div className="text-[11px] text-text-secondary">Overall Score</div>
@@ -129,15 +129,17 @@ export default function TickerModal({ stock, onClose }: TickerModalProps) {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-4 py-2 rounded-md text-xs font-semibold transition-colors ${
-                    activeTab === tab ? "bg-accent text-white" : "text-text-secondary hover:text-text-primary"
+                  className={`px-4 py-2 rounded-md text-xs font-semibold transition-all duration-150 ${
+                    activeTab === tab
+                      ? "text-accent border-b-2 border-accent shadow-[0_2px_8px_var(--color-accent-glow)]"
+                      : "text-text-secondary hover:text-text-primary"
                   }`}
                 >
                   {tab}
                 </button>
               ))}
             </div>
-            <div className="rounded-xl bg-surface border border-border overflow-hidden">
+            <div className="rounded-xl glass-card overflow-hidden">
               <TabErrorBoundary tabName={activeTab}>
                 {renderTab()}
               </TabErrorBoundary>
