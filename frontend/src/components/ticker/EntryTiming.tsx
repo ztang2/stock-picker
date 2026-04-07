@@ -15,7 +15,7 @@ interface EntryData {
     support?: { score: number; support_levels: Array<{ level: number; type: string; distance_pct: number }> };
     resistance?: { score: number; resistance_levels?: Array<{ level: number; type: string; distance_pct: number }> };
     volume?: { score: number; signal: string };
-    ma_distance?: { score: number; distance_pct: number; signal: string };
+    ma_distance?: { score: number; distance_pct?: number; distance_from_ma20_pct?: number; distance_from_ma50_pct?: number; signal?: string };
   };
 }
 
@@ -34,7 +34,9 @@ export default function EntryTiming({ ticker }: EntryTimingProps) {
   const supportLevels = data.signals?.support?.support_levels ?? [];
   const resistanceLevels = data.signals?.resistance?.resistance_levels ?? [];
   const volumeSignal = data.signals?.volume?.signal ?? "—";
-  const maDistance = data.signals?.ma_distance?.distance_pct ?? 0;
+  const maDistance = data.signals?.ma_distance?.distance_from_ma20_pct
+    ?? data.signals?.ma_distance?.distance_pct
+    ?? 0;
 
   return (
     <div className="p-4 grid grid-cols-3 gap-4">
