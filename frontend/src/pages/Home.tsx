@@ -43,7 +43,7 @@ export default function Home() {
       <div className="grid grid-cols-[1.2fr_1fr] gap-4">
         <ActionItems
           stopLosses={stopLosses?.alerts ?? []}
-          earningsNear={scan.top.filter((s) => s.sell_reasons.some((r) => r.toLowerCase().includes("earn")))}
+          earningsNear={scan.top.filter((s) => (s.sell_reasons ?? []).some((r) => r.toLowerCase().includes("earn")))}
         />
         <div className="flex flex-col gap-4">
           <NewSignals stocks={scan.top} />

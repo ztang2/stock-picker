@@ -156,6 +156,34 @@ export interface ProfitTarget {
   }>;
 }
 
+export interface TrailingStopAlert {
+  ticker: string;
+  entry_price: number;
+  current_price: number;
+  high_price: number;
+  drop_from_high_pct: number;
+  trailing_stop_pct: number;
+  is_energy: boolean;
+  status: string;
+  urgency: string;
+  message: string;
+}
+
+export interface PositionAlert {
+  ticker: string;
+  shares: number;
+  current_price: number;
+  value: number;
+  entry_price: number;
+  portfolio_pct: number;
+  max_allowed_pct: number;
+  status: string;
+  message?: string;
+  sector?: string;
+  sector_pct?: number;
+  sector_warning?: string;
+}
+
 export interface RiskSummary {
   timestamp: string;
   portfolio_value: number;
@@ -170,8 +198,12 @@ export interface RiskSummary {
   avg_loss_pct: number;
   risk_score: number;
   stop_loss_alerts: StopLossAlert[];
-  concentration_warnings: string[];
-  geopolitical_risks: string[];
+  trailing_stop_alerts?: TrailingStopAlert[];
+  position_alerts?: PositionAlert[];
+  profit_alerts?: Array<Record<string, unknown>>;
+  warnings?: Record<string, unknown>;
+  concentration_warnings?: string[];
+  geopolitical_risks?: string[];
 }
 
 export interface EntryTiming {
@@ -205,9 +237,12 @@ export interface DevilsAdvocate {
 
 export interface BacktestPeriod {
   spy_return: number;
-  pick_return: number;
+  portfolio_return: number;
+  pick_return?: number;
   alpha: number;
   win_rate: number;
+  max_drawdown?: number;
+  stocks_measured?: number;
 }
 
 export interface BacktestResult {

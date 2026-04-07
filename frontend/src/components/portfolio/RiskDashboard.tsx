@@ -32,7 +32,7 @@ export default function RiskDashboard({ risk, sectorWeights, regime }: RiskDashb
           }`}>
             {regime.regime} regime
           </span>
-          {risk.concentration_warnings.map((w, i) => (
+          {(risk.concentration_warnings ?? []).map((w, i) => (
             <span key={i} className="px-2 py-0.5 rounded-full text-[11px] bg-caution/10 border border-caution/20 text-caution">
               {w}
             </span>

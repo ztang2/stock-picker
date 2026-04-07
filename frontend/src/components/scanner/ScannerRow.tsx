@@ -55,9 +55,9 @@ export default function ScannerRow({ stock, rank, sparkline, scoreDelta, onClick
       <td className="py-2.5 px-3">
         <ScoreBadge signal={stock.entry_signal} />
       </td>
-      <td className="py-2.5 px-3 font-semibold text-text-primary">${stock.current_price.toFixed(2)}</td>
+      <td className="py-2.5 px-3 font-semibold text-text-primary">${stock.current_price?.toFixed(2) ?? "—"}</td>
       <td className="py-2.5 px-3">
-        {stock.ma50 > 0 && (
+        {(stock.ma50 ?? 0) > 0 && (stock.current_price ?? 0) > 0 && (
           <span className={`font-semibold ${pnlColor(stock.current_price - stock.ma50)}`}>
             {((stock.current_price / stock.ma50 - 1) * 100).toFixed(1)}%
           </span>

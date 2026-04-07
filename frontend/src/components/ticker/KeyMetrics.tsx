@@ -16,7 +16,7 @@ export default function KeyMetrics({ stock }: KeyMetricsProps) {
   return (
     <div className="grid grid-cols-3 gap-2.5">
       <MetricCard label="RSI (14)" value={rsi.toFixed(1)} subtitle={rsi > 70 ? "Overbought" : rsi < 30 ? "Oversold" : "Neutral"} valueColor={rsiColor} />
-      <MetricCard label="Valuation" value={stock.valuation_pct > 0 ? stock.valuation_pct.toFixed(0) : "N/A"} subtitle={`Valuation score: ${(stock.valuation_pct ?? 0).toFixed(0)}`} />
+      <MetricCard label="Valuation" value={(stock.valuation_pct ?? 0) > 0 ? (stock.valuation_pct ?? 0).toFixed(0) : "N/A"} subtitle={`Valuation score: ${(stock.valuation_pct ?? 0).toFixed(0)}`} />
       <MetricCard label="ML Confidence" value={stock.ml_score != null ? stock.ml_score.toFixed(2) : "N/A"} subtitle={stock.ml_signal ?? "No prediction"} valueColor={mlColor} />
       <MetricCard label="Growth Score" value={(stock.growth_pct ?? 0).toFixed(0)} subtitle="Percentile rank" valueColor={scoreColor(stock.growth_pct ?? 0)} />
       <MetricCard

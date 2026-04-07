@@ -25,8 +25,8 @@ export default function Backtest() {
             <div className="text-[11px] text-text-muted uppercase tracking-wider mb-2">{PCT_LABELS[key] ?? key}</div>
             <div className="grid grid-cols-2 gap-y-1.5 text-sm">
               <span className="text-text-secondary">Pick return</span>
-              <span className={`font-semibold text-right ${pnlColor(p.pick_return)}`}>
-                {p.pick_return != null ? `${(p.pick_return * 100).toFixed(1)}%` : "—"}
+              <span className={`font-semibold text-right ${pnlColor(p.portfolio_return ?? p.pick_return ?? 0)}`}>
+                {(p.portfolio_return ?? p.pick_return) != null ? `${((p.portfolio_return ?? p.pick_return ?? 0) * 100).toFixed(1)}%` : "—"}
               </span>
               <span className="text-text-secondary">SPY return</span>
               <span className={`font-semibold text-right ${pnlColor(p.spy_return)}`}>

@@ -25,7 +25,7 @@ export default function Momentum() {
                 <ScoreBadge signal={s.entry_signal} />
               </div>
               <div className="text-xs text-text-secondary">{s.name} · {s.sector}</div>
-              <div className="text-xs text-text-muted mt-1">Score: {s.composite_score.toFixed(1)} · RSI: {s.rsi.toFixed(1)}</div>
+              <div className="text-xs text-text-muted mt-1">Score: {s.composite_score?.toFixed(1) ?? "—"} · RSI: {s.rsi?.toFixed(1) ?? "—"}</div>
             </div>
           </div>
         ))}

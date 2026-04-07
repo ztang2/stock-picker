@@ -32,7 +32,7 @@ export default function ActionItems({ stopLosses, earningsNear }: ActionItemsPro
       ticker: stock.ticker,
       priority: "watch",
       title: "Earnings approaching",
-      subtitle: stock.sell_reasons.find((r) => r.toLowerCase().includes("earn")) ?? "Check earnings date",
+      subtitle: (stock.sell_reasons ?? []).find((r) => r.toLowerCase().includes("earn")) ?? "Check earnings date",
     });
   }
 

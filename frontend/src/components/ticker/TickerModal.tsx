@@ -72,7 +72,7 @@ export default function TickerModal({ stock, onClose }: TickerModalProps) {
               <div className="text-sm text-text-secondary">{stock.name} · {stock.sector}</div>
             </div>
             <div className="text-right">
-              <div className="text-2xl font-bold text-text-primary">${stock.current_price.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-text-primary">${stock.current_price?.toFixed(2) ?? "—"}</div>
               <button onClick={onClose} className="text-text-muted hover:text-text-primary text-xs mt-1">✕ Close</button>
             </div>
           </div>

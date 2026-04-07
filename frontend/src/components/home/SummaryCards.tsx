@@ -17,11 +17,11 @@ export default function SummaryCards({ scan, alerts, accuracy, risk }: SummaryCa
       <div className="p-3.5 rounded-xl bg-surface border border-border">
         <div className="text-[11px] text-text-muted uppercase tracking-wider">Portfolio Value</div>
         <div className="text-2xl font-bold text-text-primary mt-1">
-          {risk ? `$${risk.portfolio_value.toLocaleString()}` : "—"}
+          {risk ? `$${(risk.portfolio_value ?? 0).toLocaleString()}` : "—"}
         </div>
         {risk && (
           <div className={`text-[13px] ${pnlColor(risk.total_pnl)}`}>
-            {risk.total_pnl >= 0 ? "+" : ""}${risk.total_pnl.toLocaleString()} ({risk.total_pnl_pct.toFixed(2)}%)
+            {(risk.total_pnl ?? 0) >= 0 ? "+" : ""}${(risk.total_pnl ?? 0).toLocaleString()} ({(risk.total_pnl_pct ?? 0).toFixed(2)}%)
           </div>
         )}
       </div>

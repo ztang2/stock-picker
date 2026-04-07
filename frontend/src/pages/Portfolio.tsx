@@ -43,8 +43,8 @@ const { data: diversification } = useApi<DiversificationResponse>(() => api.dive
             <span className="text-4xl font-extrabold text-text-primary">
               ${portfolioValue.toLocaleString()}
             </span>
-            <span className={`text-base font-semibold ${pnlColor(risk.total_pnl)}`}>
-              {risk.total_pnl >= 0 ? "+" : ""}${risk.total_pnl.toLocaleString()} ({risk.total_pnl_pct.toFixed(2)}%)
+            <span className={`text-base font-semibold ${pnlColor(risk.total_pnl ?? 0)}`}>
+              {(risk.total_pnl ?? 0) >= 0 ? "+" : ""}${(risk.total_pnl ?? 0).toLocaleString()} ({(risk.total_pnl_pct ?? 0).toFixed(2)}%)
             </span>
           </div>
           <div className="text-[13px] text-text-secondary mt-1">
