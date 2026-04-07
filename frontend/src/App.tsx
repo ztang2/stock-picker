@@ -7,6 +7,10 @@ import { createContext, useContext } from "react";
 import Scanner from "./pages/Scanner";
 import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
+import Backtest from "./pages/Backtest";
+import Alerts from "./pages/Alerts";
+import Accuracy from "./pages/Accuracy";
+import Momentum from "./pages/Momentum";
 
 export const ScanContext = createContext<{
   scan: ScanResult | null;
@@ -37,10 +41,10 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/scanner" element={<Scanner />} />
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/backtest" element={<Placeholder name="Backtest" />} />
-            <Route path="/alerts" element={<Placeholder name="Alerts" />} />
-            <Route path="/accuracy" element={<Placeholder name="Accuracy" />} />
-            <Route path="/momentum" element={<Placeholder name="Momentum" />} />
+            <Route path="/backtest" element={<Backtest />} />
+            <Route path="/alerts" element={<Alerts />} />
+            <Route path="/accuracy" element={<Accuracy />} />
+            <Route path="/momentum" element={<Momentum />} />
           </Route>
         </Routes>
       </BrowserRouter>
