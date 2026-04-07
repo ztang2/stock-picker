@@ -25,8 +25,8 @@ interface EarningsData {
   beat_miss_history?: BeatMiss[];
   quarterly_data?: QuarterlyData[];
   earnings_quality_score?: number;
-  revenue_growth_trend?: string;
-  margin_trend?: string;
+  revenue_growth_trend?: { latest_yoy?: number; avg_yoy?: number; trend?: string } | string;
+  margin_trend?: { latest?: number; previous?: number; trend?: string } | string;
 }
 
 function fmtB(val: number | null | undefined): string {
@@ -59,11 +59,19 @@ export default function EarningsTab({ ticker }: { ticker: string }) {
         </div>
         <div className="p-3 rounded-lg bg-base border border-border">
           <div className="text-[10px] text-text-muted uppercase tracking-wider">Revenue Trend</div>
-          <div className="text-sm font-semibold text-text-primary mt-1">{data.revenue_growth_trend ?? "—"}</div>
+          <div className="text-sm font-semibold text-text-primary mt-1">
+            {typeof data.revenue_growth_trend === "object" && data.revenue_growth_trend
+              ? `${data.revenue_growth_trend.trend ?? "—"} (YoY ${data.revenue_growth_trend.latest_yoy?.toFixed(0) ?? "—"}%)`
+              : String(data.revenue_growth_trend ?? "—")}
+          </div>
         </div>
         <div className="p-3 rounded-lg bg-base border border-border">
           <div className="text-[10px] text-text-muted uppercase tracking-wider">Margin Trend</div>
-          <div className="text-sm font-semibold text-text-primary mt-1">{data.margin_trend ?? "—"}</div>
+          <div className="text-sm font-semibold text-text-primary mt-1">
+            {typeof data.margin_trend === "object" && data.margin_trend
+              ? `${data.margin_trend.trend ?? "—"} (${data.margin_trend.latest?.toFixed(1) ?? "—"}%)`
+              : String(data.margin_trend ?? "—")}
+          </div>
         </div>
       </div>
 
