@@ -1521,8 +1521,17 @@ async def portfolio_whatif(ticker: str):
 _static_dist = Path(__file__).parent.parent / "static" / "dist"
 _static_legacy = Path(__file__).parent.parent / "static"
 
+from fastapi.responses import FileResponse
+
 if _static_dist.exists():
-    app.mount("/", StaticFiles(directory=str(_static_dist), html=True), name="static")
+    app.mount("/assets", StaticFiles(directory=str(_static_dist / "assets")), name="static-assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        file_path = _static_dist / full_path
+        if file_path.is_file():
+            return FileResponse(file_path)
+        return FileResponse(_static_dist / "index.html")
 else:
     app.mount("/", StaticFiles(directory=str(_static_legacy), html=True), name="static")
 
