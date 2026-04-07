@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Shell from "./components/layout/Shell";
 import { useApi } from "./hooks/useApi";
 import { api } from "./lib/api";
@@ -27,7 +27,7 @@ export default function App() {
 
   return (
     <ScanContext.Provider value={{ scan, loading, refetch }}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route element={<Shell scan={scan} />}>
             <Route path="/" element={<Home />} />
@@ -39,7 +39,7 @@ export default function App() {
             <Route path="/momentum" element={<Momentum />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ScanContext.Provider>
   );
 }
