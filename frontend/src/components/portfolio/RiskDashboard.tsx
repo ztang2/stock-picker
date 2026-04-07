@@ -21,8 +21,8 @@ export default function RiskDashboard({ risk, sectorWeights, regime }: RiskDashb
         ))}
       </div>
       <div className="grid grid-cols-2 gap-2 mb-3">
-        <MetricCard label="Beta" value={risk.total_pnl_pct > 0 ? "1.0" : "—"} subtitle="Portfolio avg" />
-        <MetricCard label="Positions" value={String(risk.positions.length)} subtitle="Active holdings" />
+        <MetricCard label="Win Rate" value={`${risk.win_rate?.toFixed(1) ?? "—"}%`} subtitle="Portfolio avg" />
+        <MetricCard label="Positions" value={String(risk.num_positions ?? risk.stop_loss_alerts?.length ?? 0)} subtitle="Active holdings" />
       </div>
       <div className="p-3 rounded-lg bg-accent/5 border border-accent/15">
         <div className="text-[10px] text-text-muted uppercase tracking-wider mb-1.5">Macro Flags</div>

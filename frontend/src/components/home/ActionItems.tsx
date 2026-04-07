@@ -17,12 +17,12 @@ export default function ActionItems({ stopLosses, earningsNear }: ActionItemsPro
   const items: ActionItem[] = [];
 
   for (const sl of stopLosses) {
-    if (sl.loss_pct < -10) {
+    if ((sl.pnl_pct ?? 0) < -10) {
       items.push({
         ticker: sl.ticker,
         priority: "urgent",
-        title: `${Math.abs(sl.loss_pct).toFixed(1)}% loss — ${sl.status === "triggered" ? "stop triggered" : "near stop"}`,
-        subtitle: `Current: $${sl.current_price.toFixed(2)} · Entry: $${sl.entry_price.toFixed(2)}`,
+        title: `${Math.abs(sl.pnl_pct ?? 0).toFixed(1)}% loss — ${sl.status === "TRIGGERED" ? "stop triggered" : "near stop"}`,
+        subtitle: `Current: $${sl.current_price?.toFixed(2) ?? "—"} · Entry: $${sl.entry_price?.toFixed(2) ?? "—"}`,
       });
     }
   }

@@ -108,6 +108,7 @@ export interface ScanStatus {
 }
 
 export interface Alert {
+  type?: string;
   ticker: string;
   severity: "critical" | "warning" | "info";
   message: string;
@@ -120,23 +121,27 @@ export interface AlertsResponse {
 }
 
 export interface AccuracyResponse {
-  total_predictions: number;
-  correct: number;
-  accuracy_pct: number;
-  by_signal: Record<string, { correct: number; total: number; accuracy: number }>;
-  recent_snapshots: Array<{
-    date: string;
-    signals: Array<{ ticker: string; signal: string; entry_price: number; current_price: number }>;
-  }>;
+  total_signals: number;
+  buy_signals: number;
+  evaluated: number;
+  win_rate: number;
+  avg_return: number;
+  avg_alpha: number;
+  best_pick: { ticker: string; return_pct: number; alpha_pct: number } | null;
+  worst_pick: { ticker: string; return_pct: number } | null;
 }
 
 export interface StopLossAlert {
   ticker: string;
   current_price: number;
   entry_price: number;
-  loss_pct: number;
+  pnl_pct: number;
+  pnl_dollar: number;
+  shares: number;
+  entry_date: string;
+  stop_loss_threshold: number;
   status: string;
-  message: string;
+  urgency: string;
 }
 
 export interface ProfitTarget {
@@ -152,22 +157,21 @@ export interface ProfitTarget {
 }
 
 export interface RiskSummary {
-  total_portfolio_value: number;
-  total_cost_basis: number;
+  timestamp: string;
+  portfolio_value: number;
+  total_invested: number;
   total_pnl: number;
   total_pnl_pct: number;
-  positions: Array<{
-    ticker: string;
-    shares: number;
-    entry_price: number;
-    current_price: number;
-    position_value: number;
-    pnl: number;
-    pnl_pct: number;
-    risk_level: string;
-  }>;
-  stop_loss_distance_pct: number;
+  num_positions: number;
+  winners: number;
+  losers: number;
+  win_rate: number;
+  avg_win_pct: number;
+  avg_loss_pct: number;
+  risk_score: number;
+  stop_loss_alerts: StopLossAlert[];
   concentration_warnings: string[];
+  geopolitical_risks: string[];
 }
 
 export interface EntryTiming {
@@ -199,25 +203,17 @@ export interface DevilsAdvocate {
   timestamp: string;
 }
 
+export interface BacktestPeriod {
+  spy_return: number;
+  pick_return: number;
+  alpha: number;
+  win_rate: number;
+}
+
 export interface BacktestResult {
   months_back: number;
-  top_n: number;
-  backtest_results: Array<{
-    month: string;
-    picks: string[];
-    avg_return: number;
-    best_stock: string;
-    best_return: number;
-    worst_return: number;
-    drawdown: number;
-  }>;
-  summary: {
-    total_return: number;
-    win_rate: number;
-    avg_win: number;
-    avg_loss: number;
-    sharpe_ratio: number;
-  };
+  top_picks: string[];
+  periods: Record<string, BacktestPeriod>;
 }
 
 export interface DiversificationResponse {

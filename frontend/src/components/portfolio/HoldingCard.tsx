@@ -1,20 +1,10 @@
 import { motion } from "framer-motion";
 import ScoreBadge from "../common/ScoreBadge";
 import { pnlColor } from "../../lib/colors";
-
-interface Position {
-  ticker: string;
-  shares: number;
-  entry_price: number;
-  current_price: number;
-  position_value: number;
-  pnl: number;
-  pnl_pct: number;
-  risk_level: string;
-}
+import type { StopLossAlert } from "../../lib/types";
 
 interface HoldingCardProps {
-  position: Position;
+  position: StopLossAlert;
   signal?: string;
   stopLossPct?: number;
   profitTriggered?: boolean;
@@ -22,14 +12,17 @@ interface HoldingCardProps {
 }
 
 export default function HoldingCard({ position, signal, stopLossPct, profitTriggered, totalValue }: HoldingCardProps) {
-  const isNearStop = stopLossPct != null && position.pnl_pct < stopLossPct + 3;
+  const pnlPct = position.pnl_pct ?? 0;
+  const pnlDollar = position.pnl_dollar ?? 0;
+  const positionValue = (position.shares ?? 0) * (position.current_price ?? 0);
+  const isNearStop = stopLossPct != null && pnlPct < stopLossPct + 3;
   const borderClass = isNearStop
     ? "border-danger/30 hover:border-danger"
     : profitTriggered
     ? "border-caution/30 hover:border-caution"
     : "border-border hover:border-accent";
 
-  const weight = totalValue > 0 ? (position.position_value / totalValue) * 100 : 0;
+  const weight = totalValue > 0 ? (positionValue / totalValue) * 100 : 0;
 
   return (
     <motion.div
@@ -46,24 +39,27 @@ export default function HoldingCard({ position, signal, stopLossPct, profitTrigg
           {profitTriggered && (
             <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-caution/12 text-caution">PROFIT T1</span>
           )}
+          {position.status === "TRIGGERED" && (
+            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-danger/20 text-danger">STOP HIT</span>
+          )}
         </div>
         <div className="text-right">
-          <div className={`text-[15px] font-bold ${pnlColor(position.pnl)}`}>
-            {position.pnl >= 0 ? "+" : ""}${position.pnl.toLocaleString()}
+          <div className={`text-[15px] font-bold ${pnlColor(pnlDollar)}`}>
+            {pnlDollar >= 0 ? "+" : ""}${pnlDollar.toLocaleString()}
           </div>
-          <div className={`text-[11px] ${pnlColor(position.pnl_pct)}`}>
-            {position.pnl_pct >= 0 ? "+" : ""}{position.pnl_pct.toFixed(1)}%
+          <div className={`text-[11px] ${pnlColor(pnlPct)}`}>
+            {pnlPct >= 0 ? "+" : ""}{pnlPct.toFixed(1)}%
           </div>
         </div>
       </div>
       <div className="flex justify-between text-xs text-text-secondary">
-        <span>{position.shares} shares · Avg ${position.entry_price.toFixed(2)}</span>
-        <span>${position.position_value.toLocaleString()} ({weight.toFixed(1)}%)</span>
+        <span>{position.shares?.toFixed(2) ?? "—"} shares · Avg ${position.entry_price?.toFixed(2) ?? "—"}</span>
+        <span>${positionValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} ({weight.toFixed(1)}%)</span>
       </div>
       <div className="mt-2 h-1 rounded-full bg-border overflow-hidden">
         <div
-          className={`h-full rounded-full ${position.pnl >= 0 ? "bg-gradient-to-r from-positive to-accent" : "bg-danger"}`}
-          style={{ width: `${Math.min(Math.max(50 + position.pnl_pct * 2, 5), 100)}%` }}
+          className={`h-full rounded-full ${pnlPct >= 0 ? "bg-gradient-to-r from-positive to-accent" : "bg-danger"}`}
+          style={{ width: `${Math.min(Math.max(50 + pnlPct * 2, 5), 100)}%` }}
         />
       </div>
     </motion.div>

@@ -17,7 +17,7 @@ export default function SummaryCards({ scan, alerts, accuracy, risk }: SummaryCa
       <div className="p-3.5 rounded-xl bg-surface border border-border">
         <div className="text-[11px] text-text-muted uppercase tracking-wider">Portfolio Value</div>
         <div className="text-2xl font-bold text-text-primary mt-1">
-          {risk ? `$${risk.total_portfolio_value.toLocaleString()}` : "—"}
+          {risk ? `$${risk.portfolio_value.toLocaleString()}` : "—"}
         </div>
         {risk && (
           <div className={`text-[13px] ${pnlColor(risk.total_pnl)}`}>
@@ -40,10 +40,10 @@ export default function SummaryCards({ scan, alerts, accuracy, risk }: SummaryCa
       <div className="p-3.5 rounded-xl bg-surface border border-border">
         <div className="text-[11px] text-text-muted uppercase tracking-wider">Win Rate</div>
         <div className="text-2xl font-bold text-text-primary mt-1">
-          {accuracy ? `${accuracy.accuracy_pct.toFixed(1)}%` : "—"}
+          {accuracy ? `${accuracy.win_rate.toFixed(1)}%` : "—"}
         </div>
         <div className="text-[13px] text-text-secondary">
-          {accuracy ? `${accuracy.correct}/${accuracy.total_predictions} picks` : ""}
+          {accuracy ? `${accuracy.evaluated ?? 0}/${accuracy.total_signals ?? 0} picks` : ""}
         </div>
       </div>
     </div>
