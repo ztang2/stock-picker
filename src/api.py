@@ -38,6 +38,7 @@ from .comps_analysis import run_comps
 from .thesis_tracker import record_thesis, get_thesis, check_all_theses, close_thesis
 from .earnings_analysis import analyze_earnings
 from .position_sizing import get_single_ticker_sizing, get_portfolio_sizing, get_rebalance_suggestions
+from .diversification import compute_diversification, compute_correlation, compute_whatif
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -54,14 +55,6 @@ def verify_api_key(x_api_key: Optional[str] = Header(None)):
 
 
 app = FastAPI(title="Stock Picker", version="4.0.0")
-
-_static_dir = Path(__file__).resolve().parent.parent / "static"
-app.mount("/static", StaticFiles(directory=str(_static_dir), html=True), name="static")
-
-
-@app.get("/")
-def root_redirect():
-    return RedirectResponse(url="/static/index.html")
 
 
 @app.get("/health")
@@ -1130,13 +1123,8 @@ def risk_summary():
     from .rebalance import load_holdings
     
     holdings = load_holdings()
-    
-    # Add NFLX as extra holding (non-picker)
-    extra = {
-        "NFLX": {"shares": 40, "entry_price": 80.51, "entry_date": "2025-01-01"},
-    }
-    
-    return get_portfolio_summary(holdings, extra_holdings=extra)
+
+    return get_portfolio_summary(holdings)
 
 
 @app.get("/risk/stop-losses")
@@ -1146,9 +1134,7 @@ def risk_stop_losses():
     from .rebalance import load_holdings
     
     holdings = load_holdings()
-    # Include NFLX
-    holdings["NFLX"] = {"shares": 40, "entry_price": 80.51, "entry_date": "2025-01-01"}
-    
+
     return {"alerts": check_stop_losses(holdings)}
 
 
@@ -1159,11 +1145,8 @@ def risk_positions():
     from .rebalance import load_holdings
     
     holdings = load_holdings()
-    extra = {
-        "NFLX": {"shares": 40, "entry_price": 80.51, "entry_date": "2025-01-01"},
-    }
     
-    return {"positions": check_position_limits(holdings, extra_holdings=extra)}
+    return {"positions": check_position_limits(holdings)}
 
 
 @app.get("/profit/status")
@@ -1317,11 +1300,8 @@ def robin_report():
             "score": round(s.get("composite_score", 0), 2),
         }
     
-    # Add NFLX
     all_holdings = dict(holdings_data)
-    if "NFLX" not in all_holdings:
-        all_holdings["NFLX"] = {"shares": 40, "entry_price": 80.51, "entry_date": "2026-02-11"}
-    
+
     # Fetch live prices (fallback to 5d for weekends/holidays)
     tickers_str = " ".join(all_holdings.keys())
     live_prices = {t: None for t in all_holdings}
@@ -1472,6 +1452,75 @@ def devil_review(ticker: str):
     """Devil's Advocate review — find every reason NOT to buy this stock."""
     from .devils_advocate import review
     return review(ticker.upper())
+
+
+@app.get("/snapshots/recent")
+async def snapshots_recent(days: int = 7):
+    """Return last N daily snapshots for sparkline/delta data."""
+    snapshot_dir = Path(__file__).parent.parent / "data" / "daily_snapshots"
+    if not snapshot_dir.exists():
+        return []
+    files = sorted(snapshot_dir.glob("*.json"), reverse=True)[:days]
+    result = []
+    for f in files:
+        with open(f) as fh:
+            data = json.load(fh)
+        stocks = {}
+        for s in data.get("top", []) + data.get("all_scores", []):
+            stocks[s["ticker"]] = {
+                "composite_score": s.get("composite_score", 0),
+                "rank": s.get("rank", 999),
+            }
+        result.append({"date": f.stem, "stocks": stocks})
+    return list(reversed(result))
+
+
+@app.get("/portfolio/diversification")
+async def portfolio_diversification():
+    scan_path = Path(__file__).parent.parent / "data" / "scan_results.json"
+    scan_data = {}
+    if scan_path.exists():
+        with open(scan_path) as f:
+            scan_data = json.load(f)
+    return compute_diversification(scan_data)
+
+
+@app.get("/portfolio/correlation")
+async def portfolio_correlation():
+    scan_path = Path(__file__).parent.parent / "data" / "scan_results.json"
+    scan_data = {}
+    if scan_path.exists():
+        with open(scan_path) as f:
+            scan_data = json.load(f)
+    return compute_correlation(scan_data)
+
+
+@app.get("/portfolio/whatif")
+async def portfolio_whatif(ticker: str):
+    scan_path = Path(__file__).parent.parent / "data" / "scan_results.json"
+    scan_data = {}
+    if scan_path.exists():
+        with open(scan_path) as f:
+            scan_data = json.load(f)
+    return compute_whatif(ticker, scan_data)
+
+
+_static_dist = Path(__file__).parent.parent / "static" / "dist"
+_static_legacy = Path(__file__).parent.parent / "static"
+
+from fastapi.responses import FileResponse
+
+if _static_dist.exists():
+    app.mount("/assets", StaticFiles(directory=str(_static_dist / "assets")), name="static-assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        file_path = _static_dist / full_path
+        if file_path.is_file():
+            return FileResponse(file_path)
+        return FileResponse(_static_dist / "index.html")
+else:
+    app.mount("/", StaticFiles(directory=str(_static_legacy), html=True), name="static")
 
 
 if __name__ == "__main__":
