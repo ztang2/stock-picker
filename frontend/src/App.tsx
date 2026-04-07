@@ -5,6 +5,7 @@ import { api } from "./lib/api";
 import type { ScanResult } from "./lib/types";
 import { createContext, useContext } from "react";
 import Scanner from "./pages/Scanner";
+import Home from "./pages/Home";
 
 export const ScanContext = createContext<{
   scan: ScanResult | null;
@@ -32,7 +33,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Shell scan={scan} />}>
-            <Route path="/" element={<Placeholder name="Home" />} />
+            <Route path="/" element={<Home />} />
             <Route path="/scanner" element={<Scanner />} />
             <Route path="/portfolio" element={<Placeholder name="Portfolio" />} />
             <Route path="/backtest" element={<Placeholder name="Backtest" />} />
