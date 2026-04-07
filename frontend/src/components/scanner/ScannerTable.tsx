@@ -25,8 +25,8 @@ export default function ScannerTable({ stocks, snapshots, onSelectStock }: Scann
     if (sectorFilter) result = result.filter((s) => s.sector === sectorFilter);
     if (signalFilter) result = result.filter((s) => s.entry_signal === signalFilter);
     result = [...result].sort((a, b) => {
-      const av = (a as Record<string, unknown>)[sortCol] as number;
-      const bv = (b as Record<string, unknown>)[sortCol] as number;
+      const av = ((a as unknown) as Record<string, unknown>)[sortCol] as number;
+      const bv = ((b as unknown) as Record<string, unknown>)[sortCol] as number;
       return sortAsc ? av - bv : bv - av;
     });
     return result;

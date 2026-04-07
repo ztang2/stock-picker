@@ -22,14 +22,6 @@ export function useScan() {
   return useContext(ScanContext);
 }
 
-function Placeholder({ name }: { name: string }) {
-  return (
-    <div className="flex items-center justify-center h-64 text-text-secondary">
-      {name} — coming soon
-    </div>
-  );
-}
-
 export default function App() {
   const { data: scan, loading, refetch } = useApi<ScanResult>(() => api.scanCached());
 

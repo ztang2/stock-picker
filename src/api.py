@@ -56,14 +56,6 @@ def verify_api_key(x_api_key: Optional[str] = Header(None)):
 
 app = FastAPI(title="Stock Picker", version="4.0.0")
 
-_static_dir = Path(__file__).resolve().parent.parent / "static"
-app.mount("/static", StaticFiles(directory=str(_static_dir), html=True), name="static")
-
-
-@app.get("/")
-def root_redirect():
-    return RedirectResponse(url="/static/index.html")
-
 
 @app.get("/health")
 def health():
@@ -1524,6 +1516,15 @@ async def portfolio_whatif(ticker: str):
         with open(scan_path) as f:
             scan_data = json.load(f)
     return compute_whatif(ticker, scan_data)
+
+
+_static_dist = Path(__file__).parent.parent / "static" / "dist"
+_static_legacy = Path(__file__).parent.parent / "static"
+
+if _static_dist.exists():
+    app.mount("/", StaticFiles(directory=str(_static_dist), html=True), name="static")
+else:
+    app.mount("/", StaticFiles(directory=str(_static_legacy), html=True), name="static")
 
 
 if __name__ == "__main__":

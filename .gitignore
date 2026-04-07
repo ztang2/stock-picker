@@ -46,7 +46,14 @@ data/openbb_comparison_results.txt
 
 # Node
 node_modules/
+frontend/node_modules/
 package-lock.json
+
+# React frontend build
+static/dist/
+
+# Brainstorm sessions
+.superpowers/
 data/alpha158_training.parquet
 data/alpha158_xgb.model
 data/alpha158_training.parquet

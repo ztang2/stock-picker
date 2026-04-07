@@ -7,14 +7,13 @@ import DiversificationScore from "../components/portfolio/DiversificationScore";
 import CorrelationHeatmap from "../components/portfolio/CorrelationHeatmap";
 import WhatIfSimulator from "../components/portfolio/WhatIfSimulator";
 import RebalanceSuggestions from "../components/portfolio/RebalanceSuggestions";
-import type { RiskSummary, DiversificationResponse, CorrelationResponse, StopLossAlert } from "../lib/types";
+import type { RiskSummary, DiversificationResponse, CorrelationResponse } from "../lib/types";
 import { pnlColor } from "../lib/colors";
 
 export default function Portfolio() {
   const { scan } = useScan();
   const { data: risk } = useApi<RiskSummary>(() => api.riskSummary());
-  const { data: stopLosses } = useApi<{ alerts: StopLossAlert[] }>(() => api.stopLosses());
-  const { data: diversification } = useApi<DiversificationResponse>(() => api.diversification());
+const { data: diversification } = useApi<DiversificationResponse>(() => api.diversification());
   const { data: correlation } = useApi<CorrelationResponse>(() => api.correlation());
 
   if (!risk || !scan) return <div className="text-text-secondary">Loading portfolio...</div>;
