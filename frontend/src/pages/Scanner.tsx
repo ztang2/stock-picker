@@ -3,6 +3,7 @@ import { useScan } from "../App";
 import { useApi } from "../hooks/useApi";
 import { api } from "../lib/api";
 import ScannerTable from "../components/scanner/ScannerTable";
+import TickerModal from "../components/ticker/TickerModal";
 import type { Stock, SnapshotDay } from "../lib/types";
 
 export default function Scanner() {
@@ -33,6 +34,9 @@ export default function Scanner() {
         snapshots={snapshots ?? []}
         onSelectStock={setSelectedStock}
       />
+      {selectedStock && (
+        <TickerModal stock={selectedStock} onClose={() => setSelectedStock(null)} />
+      )}
     </div>
   );
 }
