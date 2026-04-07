@@ -1123,13 +1123,8 @@ def risk_summary():
     from .rebalance import load_holdings
     
     holdings = load_holdings()
-    
-    # Add NFLX as extra holding (non-picker)
-    extra = {
-        "NFLX": {"shares": 40, "entry_price": 80.51, "entry_date": "2025-01-01"},
-    }
-    
-    return get_portfolio_summary(holdings, extra_holdings=extra)
+
+    return get_portfolio_summary(holdings)
 
 
 @app.get("/risk/stop-losses")
@@ -1139,9 +1134,7 @@ def risk_stop_losses():
     from .rebalance import load_holdings
     
     holdings = load_holdings()
-    # Include NFLX
-    holdings["NFLX"] = {"shares": 40, "entry_price": 80.51, "entry_date": "2025-01-01"}
-    
+
     return {"alerts": check_stop_losses(holdings)}
 
 
@@ -1152,11 +1145,8 @@ def risk_positions():
     from .rebalance import load_holdings
     
     holdings = load_holdings()
-    extra = {
-        "NFLX": {"shares": 40, "entry_price": 80.51, "entry_date": "2025-01-01"},
-    }
     
-    return {"positions": check_position_limits(holdings, extra_holdings=extra)}
+    return {"positions": check_position_limits(holdings)}
 
 
 @app.get("/profit/status")
@@ -1310,11 +1300,8 @@ def robin_report():
             "score": round(s.get("composite_score", 0), 2),
         }
     
-    # Add NFLX
     all_holdings = dict(holdings_data)
-    if "NFLX" not in all_holdings:
-        all_holdings["NFLX"] = {"shares": 40, "entry_price": 80.51, "entry_date": "2026-02-11"}
-    
+
     # Fetch live prices (fallback to 5d for weekends/holidays)
     tickers_str = " ".join(all_holdings.keys())
     live_prices = {t: None for t in all_holdings}
