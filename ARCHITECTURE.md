@@ -1,6 +1,6 @@
 # Stock Picker — Architecture Guide
 
-> 最后更新: 2026-03-15
+> 最后更新: 2026-04-06
 > 参考: Anthropic financial-services-plugins 架构思路，自主实现
 
 ## 概览
@@ -24,7 +24,7 @@ Smart Money Signals (Analyst + Insider)
     ↓
 Entry/Exit Signals + Alerts
     ↓
-Dashboard UI + Robin Daily Reports
+React Dashboard (HashRouter SPA) + Robin Daily Reports
 ```
 
 ## 核心模块
