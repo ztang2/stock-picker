@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-base: #0f1117;
+  --color-surface: #1e293b;
+  --color-border: #334155;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-positive: #22c55e;
+  --color-caution: #f59e0b;
+  --color-danger: #ef4444;
+  --color-accent: #6366f1;
+}
+
+body {
+  @apply bg-base text-text-primary font-[system-ui,-apple-system,sans-serif] m-0;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
