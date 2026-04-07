@@ -29,7 +29,7 @@ export default function App() {
     <ScanContext.Provider value={{ scan, loading, refetch }}>
       <HashRouter>
         <Routes>
-          <Route element={<Shell scan={scan} />}>
+          <Route element={<Shell scan={scan} onScanComplete={refetch} />}>
             <Route path="/" element={<Home />} />
             <Route path="/scanner" element={<Scanner />} />
             <Route path="/portfolio" element={<Portfolio />} />
