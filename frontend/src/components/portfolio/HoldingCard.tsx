@@ -30,7 +30,7 @@ export default function HoldingCard({ position, signal, stopLossPct, profitTrigg
 
   return (
     <motion.div
-      className={`p-3.5 rounded-2xl glass-card border ${borderClass} cursor-pointer transition-all duration-200`}
+      className={`p-3.5 rounded-lg bg-surface border ${borderClass} cursor-pointer transition-all duration-200`}
       whileHover={{ y: -1 }}
     >
       <div className="flex justify-between items-center mb-2">

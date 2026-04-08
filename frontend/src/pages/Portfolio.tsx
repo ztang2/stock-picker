@@ -53,11 +53,11 @@ const { data: diversification } = useApi<DiversificationResponse>(() => api.dive
         </div>
       </div>
 
-      <div className="grid grid-cols-[1.4fr_1fr] gap-4 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-4 mb-6">
         <div>
           <div className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2.5">Holdings</div>
-          <div className="flex flex-col gap-2">
-            {positions.map((p) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
+            {[...positions].sort((a, b) => (b.shares ?? 0) * (b.current_price ?? 0) - (a.shares ?? 0) * (a.current_price ?? 0)).map((p) => (
               <HoldingCard
                 key={p.ticker}
                 position={p}
@@ -72,11 +72,11 @@ const { data: diversification } = useApi<DiversificationResponse>(() => api.dive
         <RiskDashboard risk={risk} sectorWeights={sectorWeights} regime={scan.market_regime} />
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         {diversification && <DiversificationScore data={diversification} />}
         {correlation && <CorrelationHeatmap data={correlation} />}
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <WhatIfSimulator />
         {diversification && <RebalanceSuggestions data={diversification} />}
       </div>

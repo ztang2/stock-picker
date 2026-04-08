@@ -21,7 +21,7 @@ export default function Backtest() {
 
       <div className="grid grid-cols-3 gap-3 mb-6">
         {periods.map(([key, p]) => (
-          <div key={key} className="p-3.5 rounded-xl bg-surface border border-border">
+          <div key={key} className="p-3.5 rounded-lg bg-surface border border-border">
             <div className="text-[11px] text-text-muted uppercase tracking-wider mb-2">{PCT_LABELS[key] ?? key}</div>
             <div className="grid grid-cols-2 gap-y-1.5 text-sm">
               <span className="text-text-secondary">Pick return</span>

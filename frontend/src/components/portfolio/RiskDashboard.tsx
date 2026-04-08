@@ -14,7 +14,7 @@ export default function RiskDashboard({ risk, sectorWeights, regime }: RiskDashb
   return (
     <div>
       <div className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2.5">Risk Dashboard</div>
-      <div className="p-4 rounded-xl bg-surface border border-border mb-3">
+      <div className="p-4 rounded-lg bg-surface border border-border mb-3">
         <div className="text-xs font-semibold text-text-primary mb-3">Sector Exposure</div>
         {sortedSectors.map(([sector, pct]) => (
           <SectorBar key={sector} label={sector} pct={pct} />
