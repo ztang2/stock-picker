@@ -1595,6 +1595,85 @@ async def chart_ticker(ticker: str, period: str = "3mo"):
     return result
 
 
+WATCHLIST_FILE = DATA_DIR / "watchlist.json"
+
+
+def _load_watchlist() -> dict:
+    if WATCHLIST_FILE.exists():
+        with open(WATCHLIST_FILE) as f:
+            return json.load(f)
+    return {"tickers": {}}
+
+
+def _save_watchlist(data: dict):
+    with open(WATCHLIST_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+
+def _get_current_price(ticker: str):
+    import math
+    cache_path = DATA_DIR / "stock_data_cache.json"
+    if not cache_path.exists():
+        return None
+    with open(cache_path) as f:
+        cache = json.load(f)
+    entry = cache.get(ticker)
+    if not entry:
+        return None
+    closes = entry.get("history", {}).get("Close", [])
+    for val in reversed(closes):
+        if val is not None and not math.isnan(val):
+            return val
+    return None
+
+
+@app.get("/watchlist")
+async def get_watchlist():
+    data = _load_watchlist()
+    result = []
+    for ticker, meta in data["tickers"].items():
+        current_price = _get_current_price(ticker)
+        price_at_add = meta.get("price_at_add")
+        change_pct = None
+        if current_price is not None and price_at_add and price_at_add != 0:
+            change_pct = round((current_price - price_at_add) / price_at_add * 100, 2)
+        result.append({
+            "ticker": ticker,
+            "added": meta.get("added"),
+            "price_at_add": price_at_add,
+            "current_price": current_price,
+            "change_pct": change_pct,
+        })
+    return {"watchlist": result}
+
+
+@app.post("/watchlist/{ticker}")
+async def add_to_watchlist(ticker: str):
+    from datetime import date
+    ticker = ticker.upper()
+    data = _load_watchlist()
+    if ticker in data["tickers"]:
+        return {"status": "already_exists", "ticker": ticker}
+    price = _get_current_price(ticker)
+    data["tickers"][ticker] = {
+        "added": date.today().isoformat(),
+        "price_at_add": price,
+    }
+    _save_watchlist(data)
+    return {"status": "added", "ticker": ticker, "price_at_add": price}
+
+
+@app.delete("/watchlist/{ticker}")
+async def remove_from_watchlist(ticker: str):
+    ticker = ticker.upper()
+    data = _load_watchlist()
+    if ticker not in data["tickers"]:
+        return {"status": "not_found", "ticker": ticker}
+    del data["tickers"][ticker]
+    _save_watchlist(data)
+    return {"status": "removed", "ticker": ticker}
+
+
 _static_dist = Path(__file__).parent.parent / "static" / "dist"
 _static_legacy = Path(__file__).parent.parent / "static"
 
