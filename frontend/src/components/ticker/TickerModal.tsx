@@ -65,6 +65,9 @@ export default function TickerModal({ stock, onClose }: TickerModalProps) {
     grow: stock?.growth_pct ?? 0,
   };
 
+  const compositeScore = Math.round(stock?.composite_score ?? 0);
+  const scoreGrade = compositeScore >= 80 ? "A" : compositeScore >= 65 ? "B" : compositeScore >= 50 ? "C" : "D";
+
   function renderTab() {
     switch (activeTab) {
       case "Entry Timing": return <EntryTiming ticker={stock.ticker} />;
@@ -79,74 +82,100 @@ export default function TickerModal({ stock, onClose }: TickerModalProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-base/95 backdrop-blur-xl z-50 flex items-start justify-center pt-8 overflow-auto"
+        className="fixed inset-0 z-50 flex items-start justify-center pt-6 overflow-auto backdrop-blur-xl bg-base/80"
         onClick={onClose}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
         <motion.div
-          className="glass-card rounded-2xl w-full max-w-4xl mb-8 overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.5)]"
+          className="w-full max-w-[960px] mb-8 rounded-xl overflow-hidden bg-surface border border-border"
+          style={{
+            boxShadow: "0 0 0 1px rgba(161,120,50,0.08), 0 32px 100px rgba(0,0,0,0.15)",
+          }}
           onClick={(e) => e.stopPropagation()}
-          initial={{ scale: 0.95, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.95, opacity: 0 }}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 20, opacity: 0 }}
+          transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
         >
-          <div className="flex justify-between items-start p-5 border-b border-surface">
-            <div>
-              <div className="flex items-center gap-3 mb-1">
-                <span className="text-2xl font-bold text-text-primary">{stock?.ticker}</span>
+          {/* Header — editorial ticker display */}
+          <div className="relative px-6 pt-5 pb-4">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+            <div className="flex justify-between items-start">
+              <div className="flex items-baseline gap-4">
+                <span className="text-3xl font-extrabold tracking-tight text-text-primary">{stock?.ticker}</span>
+                <span className="text-2xl font-bold font-data text-text-primary">${stock?.current_price?.toFixed(2) ?? "—"}</span>
                 <ScoreBadge signal={stock?.entry_signal ?? "HOLD"} />
                 {(stock?.consecutive_days ?? 0) > 0 && (
-                  <span className="px-2.5 py-1 rounded-md bg-caution/15 text-caution text-xs font-semibold">
-                    🔥 {stock.consecutive_days}d streak
+                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-caution/10 text-caution border border-caution/20">
+                    {stock.consecutive_days}d streak
                   </span>
                 )}
               </div>
-              <div className="text-sm text-text-secondary">{stock?.name} · {stock?.sector}</div>
+              <div className="flex items-center gap-3">
+                <div className="text-right">
+                  <div className={`text-2xl font-extrabold font-data ${scoreColor(compositeScore)}`}>
+                    {compositeScore}
+                    <span className="text-sm font-semibold text-text-muted ml-1">{scoreGrade}</span>
+                  </div>
+                </div>
+                <button
+                  onClick={onClose}
+                  className="w-8 h-8 rounded-lg bg-surface-raised/50 flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-surface-raised transition-all"
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                </button>
+              </div>
             </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold text-text-primary font-data">${stock?.current_price?.toFixed(2) ?? "—"}</div>
-              <button onClick={onClose} className="text-text-muted hover:text-text-primary text-xs mt-1">✕ Close</button>
-            </div>
+            <div className="text-[13px] text-text-muted mt-1 font-light">{stock?.name} · {stock?.sector}</div>
           </div>
 
           <SynthesisBanner text={stock?.synthesis} />
 
-          <div className="px-6 pt-4">
+          {/* Chart + Sizer — side by side */}
+          <div className="px-5 pt-3 pb-2 grid grid-cols-[1.8fr_1fr] gap-3">
             <PriceChart ticker={stock.ticker} />
             <PositionSizer ticker={stock.ticker} currentPrice={stock.current_price ?? 0} />
           </div>
 
-          <div className="grid grid-cols-[220px_1fr] gap-4 px-6 pb-4">
-            <div className="p-4 rounded-xl glass-card flex flex-col items-center">
-              <div className="text-[11px] text-text-muted uppercase tracking-wider font-semibold mb-2">Score Profile</div>
-              <RadarChart scores={scores} size={170} showLabels={true} />
-              <div className={`mt-1 text-3xl font-extrabold font-data ${scoreColor(stock?.composite_score ?? 0)} ${(stock?.composite_score ?? 0) > 75 ? "glow-positive" : (stock?.composite_score ?? 0) < 50 ? "glow-danger" : ""}`}>
-                {Math.round(stock?.composite_score ?? 0)}
+          {/* Scores row — compact horizontal */}
+          <div className="px-5 pb-3">
+            <div className="flex gap-3">
+              <div className="shrink-0 p-3 rounded-lg bg-surface flex flex-col items-center border border-border">
+                <RadarChart scores={scores} size={130} showLabels={true} />
               </div>
-              <div className="text-[11px] text-text-secondary">Overall Score</div>
+              <div className="flex-1">
+                <KeyMetrics stock={stock} />
+              </div>
             </div>
-            <KeyMetrics stock={stock} />
           </div>
 
-          <div className="px-6 pb-5">
-            <div className="flex gap-0.5 mb-4 bg-surface rounded-lg p-1">
+          {/* Tabs — underline style */}
+          <div className="px-5 pb-5">
+            <div className="flex gap-1 mb-3 border-b border-border">
               {TABS.map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-4 py-2 rounded-md text-xs font-semibold transition-all duration-150 ${
+                  className={`px-3 py-2.5 text-xs font-medium transition-all relative ${
                     activeTab === tab
-                      ? "text-accent border-b-2 border-accent shadow-[0_2px_8px_var(--color-accent-glow)]"
-                      : "text-text-secondary hover:text-text-primary"
+                      ? "text-accent"
+                      : "text-text-muted hover:text-text-secondary"
                   }`}
                 >
                   {tab}
+                  {activeTab === tab && (
+                    <motion.div
+                      layoutId="tab-indicator"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent"
+                      style={{ borderRadius: "1px 1px 0 0" }}
+                    />
+                  )}
                 </button>
               ))}
             </div>
-            <div className="rounded-xl glass-card overflow-hidden">
+            <div className="rounded-lg bg-surface border border-border overflow-hidden">
               <TabErrorBoundary tabName={activeTab}>
                 {renderTab()}
               </TabErrorBoundary>

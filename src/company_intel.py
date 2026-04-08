@@ -78,7 +78,7 @@ def get_company_intel(ticker: str, force_refresh: bool = False) -> dict:
             "profit_margin": _pct(info.get("profitMargins")),
             "revenue_growth": _pct(info.get("revenueGrowth")),
             "earnings_growth": _pct(info.get("earningsGrowth")),
-            "debt_to_equity": info.get("debtToEquity"),
+            "debt_to_equity": (info.get("debtToEquity") or 0) / 100,
             "current_ratio": info.get("currentRatio"),
             "roe": _pct(info.get("returnOnEquity")),
             "free_cash_flow": info.get("freeCashflow"),
@@ -226,7 +226,7 @@ def format_intel_summary(intel: dict) -> str:
     if stats.get("roe"):
         stat_parts.append(f"ROE {stats['roe']}")
     if stats.get("debt_to_equity") is not None:
-        stat_parts.append(f"D/E {stats['debt_to_equity']:.0f}")
+        stat_parts.append(f"D/E {stats['debt_to_equity']:.2f}")
     if stat_parts:
         lines.append(f"📊 {' | '.join(stat_parts)}")
     

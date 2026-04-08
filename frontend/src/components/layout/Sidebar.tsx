@@ -22,7 +22,7 @@ export default function Sidebar() {
       }`}
     >
       <div className="flex items-center justify-between p-4 border-b border-border"
-        style={{ background: "linear-gradient(180deg, rgba(34,211,238,0.05) 0%, transparent 100%)" }}
+        style={{ background: "linear-gradient(180deg, var(--color-accent-dim) 0%, transparent 100%)" }}
       >
         {!collapsed && (
           <span className="text-sm font-bold text-text-primary tracking-wide">Stock Picker</span>
@@ -44,7 +44,7 @@ export default function Sidebar() {
               `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-150 ${
                 isActive
                   ? "nav-active-glow text-accent font-semibold"
-                  : "text-text-secondary hover:bg-white/[0.03] hover:text-text-primary"
+                  : "text-text-secondary hover:bg-accent/[0.05] hover:text-text-primary"
               }`
             }
           >

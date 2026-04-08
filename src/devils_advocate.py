@@ -43,7 +43,8 @@ def _collect_data(ticker: str) -> Dict:
         data["revenue_growth"] = info.get("revenueGrowth", 0)
         data["earnings_growth"] = info.get("earningsGrowth", 0)
         data["beta"] = info.get("beta", 0)
-        data["debt_to_equity"] = info.get("debtToEquity", 0)
+        raw_de = info.get("debtToEquity", 0) or 0
+        data["debt_to_equity"] = raw_de / 100  # yfinance returns as %; convert to ratio
         data["52w_high"] = info.get("fiftyTwoWeekHigh", 0)
         data["52w_low"] = info.get("fiftyTwoWeekLow", 0)
         data["analyst_target"] = info.get("targetMeanPrice", 0)
@@ -309,16 +310,16 @@ def _quantitative_flags(data: Dict) -> Dict:
 
     # Debt
     de = data.get("debt_to_equity", 0)
-    if de and de > 200:
+    if de and de > 2.0:
         red_flags.append({
             "flag": "🚩 HIGH: 高负债",
-            "detail": f"Debt/Equity: {de:.0f}",
+            "detail": f"Debt/Equity: {de:.2f}",
             "severity": "HIGH",
         })
         risk_score += 1
-    elif de and de < 50:
+    elif de and de < 0.5:
         green_flags.append({
-            "flag": f"✅ 低负债 D/E={de:.0f}",
+            "flag": f"✅ 低负债 D/E={de:.2f}",
             "detail": "",
         })
 

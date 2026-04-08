@@ -79,7 +79,7 @@ export default function Watchlist() {
                   <tr
                     key={ticker}
                     onClick={() => stock && setSelectedStock(stock)}
-                    className={`border-t border-surface transition-colors ${stock ? "cursor-pointer hover:bg-white/[0.03]" : ""}`}
+                    className={`border-t border-surface transition-colors ${stock ? "cursor-pointer hover:bg-accent/[0.05]" : ""}`}
                   >
                     <td className="py-2.5 px-3">
                       <div className="font-bold text-text-primary">{ticker}</div>

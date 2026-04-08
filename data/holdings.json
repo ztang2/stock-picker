@@ -7,11 +7,10 @@
       "entry_score": 82.7
     },
     "NFLX": {
-      "shares": 40,
+      "shares": 30,
       "entry_price": 80.51,
       "entry_date": "2026-02-11",
-      "entry_score": 0,
-      "note": "Non-picker legacy holding"
+      "note": "Non-picker legacy holding. Sold 5 shares @ $101 on 2026-04-06"
     },
     "INCY": {
       "ticker": "INCY",
@@ -30,11 +29,14 @@
       "entry_price": 113.75,
       "entry_date": "2026-03-11"
     },
-    "DUOL": {
-      "shares": 6.886374,
-      "entry_price": 101.65,
-      "entry_date": "2026-03-16",
-      "entry_score": 87.3
+    "DAL": {
+      "ticker": "DAL",
+      "shares": 9.371396,
+      "entry_price": 69.36,
+      "entry_date": "2026-04-08",
+      "sector": "Industrials",
+      "industry": "Airlines",
+      "note": "Ceasefire play. Bought with DUOL proceeds."
     },
     "JHG": {
       "shares": 9.867771,
@@ -42,22 +44,22 @@
       "entry_date": "2026-03-19",
       "entry_score": 88.8
     },
-    "EXLS": {
-      "ticker": "EXLS",
-      "shares": 18.961253,
-      "entry_price": 30.33,
-      "entry_date": "2026-03-24",
-      "sector": "Technology",
-      "industry": "Information Technology Services"
-    },
     "FAF": {
       "ticker": "FAF",
-      "shares": 11.323305,
-      "entry_price": 59.17,
+      "shares": 19.522715,
+      "entry_price": 59.93,
       "entry_date": "2026-03-26",
       "sector": "Financial Services",
-      "industry": "Insurance - Specialty"
+      "industry": "Insurance - Specialty",
+      "note": "Added 8.2 shares @ $60.98 on 2026-04-07. Original: 11.32sh @ $59.17"
+    },
+    "AMD": {
+      "ticker": "AMD",
+      "shares": 5.016894,
+      "entry_price": 215.27,
+      "entry_date": "2026-04-02",
+      "signal": "BUY"
     }
   },
-  "updated": "2026-03-26T08:03:16.212216"
+  "updated": "2026-04-06T20:00:00"
 }

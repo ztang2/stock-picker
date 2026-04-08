@@ -251,16 +251,16 @@ def compute_momentum(hist: pd.DataFrame) -> dict:
 
     result["conditions_met"] = conditions_met
 
-    # Determine signal from conditions + score (RELAXED THRESHOLDS)
+    # Determine signal from conditions + score
     # STRONG_BUY: 3+ of 4 conditions
-    # BUY: 2+ of 4 conditions (was 2), OR entry_score >= 50
-    # HOLD: 1 condition OR score >= 40
-    # WAIT: none met and score < 40
+    # BUY: 2+ conditions, OR 1 condition + score >= 55, OR score >= 65
+    # HOLD: 1 condition, OR score >= 45
+    # WAIT: no conditions and score < 45
     if conditions_met >= 3:
         result["entry_signal"] = "STRONG_BUY"
-    elif conditions_met >= 2 or score >= 50:
+    elif conditions_met >= 2 or (conditions_met >= 1 and score >= 55) or score >= 65:
         result["entry_signal"] = "BUY"
-    elif conditions_met >= 1 or score >= 40:
+    elif conditions_met >= 1 or score >= 45:
         result["entry_signal"] = "HOLD"
     else:
         result["entry_signal"] = "WAIT"

@@ -76,7 +76,7 @@ export default function Home() {
   const isToday = scanDate.toDateString() === now.toDateString();
 
   return (
-    <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-[1100px]">
+    <motion.div variants={stagger} initial="hidden" animate="show">
       {/* Hero greeting */}
       <motion.div variants={fadeUp} className="mb-6">
         <div className="flex items-center justify-between">
@@ -116,7 +116,7 @@ export default function Home() {
       )}
 
       {/* Main content grid */}
-      <motion.div variants={fadeUp} className="grid grid-cols-3 gap-4">
+      <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <ActionItems
           stopLosses={stopLosses?.alerts ?? []}
           earningsNear={scan.top.filter((s) => (s.sell_reasons ?? []).some((r) => r.toLowerCase().includes("earn")))}

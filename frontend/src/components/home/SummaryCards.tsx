@@ -16,41 +16,53 @@ export default function SummaryCards({ scan, alerts, accuracy, risk }: SummaryCa
   const pnlPct = risk?.total_pnl_pct ?? 0;
 
   return (
-    <div className="grid grid-cols-4 gap-3 mb-5">
-      <div className="p-3.5 rounded-2xl glass-card relative overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-        <div className="text-[11px] text-text-muted uppercase tracking-wider">Portfolio Value</div>
-        <div className="text-2xl font-bold text-text-primary mt-1 font-data">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+      {/* Portfolio Value — hero card */}
+      <div className="p-4 rounded-lg bg-surface border border-border relative overflow-hidden group hover:border-accent/30 transition-colors">
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent/60 via-accent/20 to-transparent" />
+        <div className="text-[10px] text-text-muted uppercase tracking-widest font-medium">Portfolio</div>
+        <div className="text-2xl font-bold text-text-primary mt-1.5 font-data tracking-tight">
           {risk ? `$${(risk.portfolio_value ?? 0).toLocaleString()}` : "—"}
         </div>
         {risk && (
-          <div className={`text-[13px] font-data ${pnlColor(pnlDollar)} ${pnlDollar >= 0 ? "glow-positive" : "glow-danger"}`}>
-            {pnlDollar >= 0 ? "+" : ""}${pnlDollar.toLocaleString()} ({pnlPct.toFixed(2)}%)
+          <div className={`text-xs font-data font-medium mt-0.5 ${pnlColor(pnlDollar)}`}>
+            {pnlDollar >= 0 ? "+" : ""}${pnlDollar.toLocaleString()}
+            <span className="text-text-muted ml-1">({pnlPct.toFixed(2)}%)</span>
           </div>
         )}
       </div>
-      <div className="p-3.5 rounded-2xl glass-card relative overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-        <div className="text-[11px] text-text-muted uppercase tracking-wider">New Signals</div>
-        <div className="text-2xl font-bold text-text-primary mt-1 font-data">{newSignals + sellSignals}</div>
-        <div className="text-[13px] text-caution font-data">{newSignals} buy · {sellSignals} sell</div>
-      </div>
-      <div className="p-3.5 rounded-2xl glass-card relative overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-        <div className="text-[11px] text-text-muted uppercase tracking-wider">Alerts</div>
-        <div className="text-2xl font-bold text-text-primary mt-1 font-data">{alerts?.current.length ?? 0}</div>
-        <div className="text-[13px] text-text-secondary truncate">
-          {alerts?.current[0]?.message ?? "No active alerts"}
+
+      {/* Signals */}
+      <div className="p-4 rounded-lg bg-surface border border-border relative overflow-hidden hover:border-accent/30 transition-colors">
+        <div className="text-[10px] text-text-muted uppercase tracking-widest font-medium">Signals</div>
+        <div className="text-2xl font-bold text-text-primary mt-1.5 font-data tracking-tight">{newSignals + sellSignals}</div>
+        <div className="flex gap-2 mt-0.5">
+          {newSignals > 0 && <span className="text-xs font-data text-positive font-medium">{newSignals} buy</span>}
+          {sellSignals > 0 && <span className="text-xs font-data text-danger font-medium">{sellSignals} sell</span>}
+          {newSignals === 0 && sellSignals === 0 && <span className="text-xs text-text-muted">No signals</span>}
         </div>
       </div>
-      <div className="p-3.5 rounded-2xl glass-card relative overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-        <div className="text-[11px] text-text-muted uppercase tracking-wider">Win Rate</div>
-        <div className="text-2xl font-bold text-text-primary mt-1 font-data">
-          {accuracy ? `${accuracy.win_rate.toFixed(1)}%` : "—"}
+
+      {/* Alerts */}
+      <div className="p-4 rounded-lg bg-surface border border-border relative overflow-hidden hover:border-accent/30 transition-colors">
+        {(alerts?.current.length ?? 0) > 0 && (
+          <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-danger animate-pulse-dot" />
+        )}
+        <div className="text-[10px] text-text-muted uppercase tracking-widest font-medium">Alerts</div>
+        <div className="text-2xl font-bold text-text-primary mt-1.5 font-data tracking-tight">{alerts?.current.length ?? 0}</div>
+        <div className="text-xs text-text-muted truncate mt-0.5">
+          {alerts?.current[0]?.message ?? "All clear"}
         </div>
-        <div className="text-[13px] text-text-secondary font-data">
-          {accuracy ? `${accuracy.evaluated ?? 0}/${accuracy.total_signals ?? 0} picks` : ""}
+      </div>
+
+      {/* Win Rate */}
+      <div className="p-4 rounded-lg bg-surface border border-border relative overflow-hidden hover:border-accent/30 transition-colors">
+        <div className="text-[10px] text-text-muted uppercase tracking-widest font-medium">Win Rate</div>
+        <div className="text-2xl font-bold text-text-primary mt-1.5 font-data tracking-tight">
+          {accuracy ? `${accuracy.win_rate?.toFixed(1) ?? "—"}%` : "—"}
+        </div>
+        <div className="text-xs text-text-muted font-data mt-0.5">
+          {accuracy ? `${accuracy.evaluated ?? 0}/${accuracy.total_signals ?? 0} evaluated` : ""}
         </div>
       </div>
     </div>

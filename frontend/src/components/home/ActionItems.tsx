@@ -57,7 +57,7 @@ export default function ActionItems({ stopLosses, earningsNear, onTickerClick }:
           <div
             key={`${item.ticker}-${i}`}
             onClick={() => onTickerClick?.(item.ticker)}
-            className="px-4 py-3 border-b border-border/40 last:border-0 flex items-center gap-3 hover:bg-white/[0.02] cursor-pointer transition-colors"
+            className="px-4 py-3 border-b border-border/40 last:border-0 flex items-center gap-3 hover:bg-accent/[0.05] cursor-pointer transition-colors"
           >
             <ActionBadge priority={item.priority} />
             <div className="flex-1 min-w-0">

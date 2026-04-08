@@ -22,7 +22,7 @@ export default function NewSignals({ stocks, onTickerClick }: NewSignalsProps) {
         <div className="px-4 py-6 text-center text-sm text-text-muted">No active signals</div>
       ) : (
         notable.map((s) => (
-          <div key={s.ticker} onClick={() => onTickerClick?.(s.ticker)} className="px-4 py-2.5 border-b border-border/40 last:border-0 flex justify-between items-center hover:bg-white/[0.02] transition-colors cursor-pointer">
+          <div key={s.ticker} onClick={() => onTickerClick?.(s.ticker)} className="px-4 py-2.5 border-b border-border/40 last:border-0 flex justify-between items-center hover:bg-accent/[0.05] transition-colors cursor-pointer">
             <div className="flex items-center gap-3">
               <span className="text-[13px] font-semibold text-text-primary">{s.ticker}</span>
               <span className={`text-xs font-data font-medium ${scoreColor(s.composite_score ?? 0)}`}>{Math.round(s.composite_score ?? 0)}</span>
