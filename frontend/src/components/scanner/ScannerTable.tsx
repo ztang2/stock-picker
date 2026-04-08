@@ -69,8 +69,8 @@ export default function ScannerTable({ stocks, snapshots, onSelectStock, watched
         signalFilter={signalFilter}
         onSignalChange={setSignalFilter}
       />
-      <div className="rounded-xl border border-border overflow-hidden">
-        <table className="w-full">
+      <div className="rounded-lg border border-border overflow-hidden overflow-x-auto">
+        <table className="w-full min-w-[700px]">
           <thead className="bg-surface">
             <tr>
               <th className="py-2.5 px-1.5 w-8"></th>

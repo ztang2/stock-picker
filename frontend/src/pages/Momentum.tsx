@@ -11,9 +11,9 @@ export default function Momentum() {
   return (
     <div>
       <h1 className="text-xl font-bold mb-4">Momentum Radar</h1>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {top.map((s) => (
-          <div key={s.ticker} className="p-4 rounded-xl bg-surface border border-border flex items-center gap-4">
+          <div key={s.ticker} className="p-4 rounded-lg bg-surface border border-border flex items-center gap-4">
             <RadarChart
               scores={{ fund: s.fundamentals_pct, val: s.valuation_pct, tech: s.technicals_pct, risk: s.risk_pct, grow: s.growth_pct }}
               size={64}

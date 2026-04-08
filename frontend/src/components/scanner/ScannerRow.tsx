@@ -40,7 +40,7 @@ export default function ScannerRow({ stock, rank, sparkline, scoreDelta, onClick
   return (
     <motion.tr
       onClick={onClick}
-      className="border-t border-surface cursor-pointer transition-colors hover:bg-white/[0.03] hover:border-l-2 hover:border-l-accent/30"
+      className="border-t border-surface cursor-pointer transition-colors hover:bg-accent/[0.05] hover:border-l-2 hover:border-l-accent/30"
       whileHover={{ y: -1 }}
     >
       <td className="py-2.5 px-1.5 text-center w-8">
