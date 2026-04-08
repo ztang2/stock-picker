@@ -12,6 +12,8 @@ import CompsTab from "./CompsTab";
 import EarningsTab from "./EarningsTab";
 import MomentumTab from "./MomentumTab";
 import DevilTab from "./DevilTab";
+import PriceChart from "./PriceChart";
+import PositionSizer from "./PositionSizer";
 
 class TabErrorBoundary extends Component<
   { children: ReactNode; tabName: string },
@@ -110,6 +112,11 @@ export default function TickerModal({ stock, onClose }: TickerModalProps) {
           </div>
 
           <SynthesisBanner text={stock?.synthesis} />
+
+          <div className="px-6 pt-4">
+            <PriceChart ticker={stock.ticker} />
+            <PositionSizer ticker={stock.ticker} currentPrice={stock.current_price ?? 0} />
+          </div>
 
           <div className="grid grid-cols-[220px_1fr] gap-4 px-6 pb-4">
             <div className="p-4 rounded-xl glass-card flex flex-col items-center">

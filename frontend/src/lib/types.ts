@@ -286,3 +286,36 @@ export interface SnapshotDay {
 }
 
 export type TimeOfDay = "morning" | "midday" | "evening";
+
+export interface ChartPoint {
+  date: string;
+  open: number | null;
+  high: number | null;
+  low: number | null;
+  close: number;
+}
+
+export interface ChartData {
+  ticker: string;
+  ohlc: ChartPoint[];
+  support: number | null;
+  resistance: number | null;
+  ma50: number | null;
+}
+
+export interface WatchlistEntry {
+  added: string;
+  price_at_add: number | null;
+  current_price?: number;
+  change_pct?: number;
+}
+
+export interface WatchlistResponse {
+  tickers: Record<string, WatchlistEntry>;
+}
+
+export interface ThesisResponse {
+  ticker: string;
+  thesis: string | null;
+  source: string;
+}
