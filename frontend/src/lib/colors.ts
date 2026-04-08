@@ -12,7 +12,7 @@ export function scoreBg(score: number): string {
 
 export function scoreHex(score: number): string {
   if (score > 75) return "#22c55e";
-  if (score >= 50) return "#f59e0b";
+  if (score >= 50) return "#d4a853";
   return "#ef4444";
 }
 

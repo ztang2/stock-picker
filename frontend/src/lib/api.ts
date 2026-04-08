@@ -31,4 +31,13 @@ export const api = {
   diversification: () => get<import("./types").DiversificationResponse>("/portfolio/diversification"),
   correlation: () => get<import("./types").CorrelationResponse>("/portfolio/correlation"),
   whatIf: (ticker: string) => get<import("./types").WhatIfResponse>(`/portfolio/whatif?ticker=${ticker}`),
+  chart: (ticker: string, period = "3mo") =>
+    get<import("./types").ChartData>(`/chart/${ticker}?period=${period}`),
+  watchlist: () => get<import("./types").WatchlistResponse>("/watchlist"),
+  addToWatchlist: (ticker: string) =>
+    fetch(`/watchlist/${ticker}`, { method: "POST" }).then((r) => r.json()),
+  removeFromWatchlist: (ticker: string) =>
+    fetch(`/watchlist/${ticker}`, { method: "DELETE" }).then((r) => r.json()),
+  thesis: (ticker: string) =>
+    get<import("./types").ThesisResponse>(`/thesis/${ticker}/gemini`),
 };

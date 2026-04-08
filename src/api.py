@@ -1447,11 +1447,23 @@ def scan_top_n(n: int = 5):
     }
 
 
+@app.get("/thesis/{ticker}/gemini")
+async def thesis_gemini(ticker: str):
+    """Gemini-powered bull thesis for a stock."""
+    import asyncio
+    from .thesis import generate_gemini_thesis
+    result = await asyncio.to_thread(generate_gemini_thesis, ticker.upper())
+    if result is None:
+        return {"ticker": ticker.upper(), "thesis": None, "source": "unavailable"}
+    return result
+
+
 @app.get("/review/{ticker}")
-def devil_review(ticker: str):
+async def devil_review(ticker: str):
     """Devil's Advocate review — find every reason NOT to buy this stock."""
+    import asyncio
     from .devils_advocate import review
-    return review(ticker.upper())
+    return await asyncio.to_thread(review, ticker.upper())
 
 
 @app.get("/snapshots/recent")
@@ -1503,6 +1515,162 @@ async def portfolio_whatif(ticker: str):
         with open(scan_path) as f:
             scan_data = json.load(f)
     return compute_whatif(ticker, scan_data)
+
+
+@app.get("/cache/health")
+async def cache_health():
+    """Read-only cache health diagnostic."""
+    import asyncio
+    from .cache_health import diagnose_cache
+    return await asyncio.to_thread(diagnose_cache)
+
+
+@app.get("/chart/{ticker}")
+async def chart_ticker(ticker: str, period: str = "3mo"):
+    import asyncio
+    import math
+    import pandas as pd
+
+    def _load_chart():
+        cache_path = DATA_DIR / "stock_data_cache.json"
+        ticker_upper = ticker.upper()
+
+        # Determine lookback days
+        period_days = {"1mo": 30, "3mo": 90, "6mo": 180, "1y": 365, "2y": 730}
+        days = period_days.get(period, 90)
+
+        hist = None
+        if cache_path.exists():
+            with open(cache_path) as f:
+                cache = json.load(f)
+            if ticker_upper in cache:
+                data = cache[ticker_upper]
+                raw = pd.DataFrame(data["history"])
+                raw.index = pd.to_datetime(data["history_index"], utc=True)
+                cutoff = raw.index.max() - pd.Timedelta(days=days)
+                raw = raw[raw.index >= cutoff]
+                raw = raw[raw["Close"].apply(lambda x: not (isinstance(x, float) and math.isnan(x)))]
+                hist = raw
+
+        if hist is None or hist.empty:
+            import yfinance as yf
+            raw = yf.Ticker(ticker_upper).history(period=period)
+            if raw.empty:
+                return None
+            raw = raw[raw["Close"].apply(lambda x: not (isinstance(x, float) and math.isnan(x)))]
+            hist = raw
+
+        if hist is None or hist.empty:
+            return None
+
+        ohlc = [
+            {
+                "date": str(idx.date()),
+                "open": round(float(row["Open"]), 4),
+                "high": round(float(row["High"]), 4),
+                "low": round(float(row["Low"]), 4),
+                "close": round(float(row["Close"]), 4),
+            }
+            for idx, row in hist.iterrows()
+        ]
+
+        from .momentum import _support_resistance
+        support, resistance = _support_resistance(hist)
+
+        closes = hist["Close"].tolist()
+        ma50 = round(float(sum(closes[-50:]) / min(50, len(closes))), 4) if closes else None
+
+        return {
+            "ticker": ticker_upper,
+            "ohlc": ohlc,
+            "support": round(support, 4) if support is not None else None,
+            "resistance": round(resistance, 4) if resistance is not None else None,
+            "ma50": ma50,
+        }
+
+    result = await asyncio.to_thread(_load_chart)
+    if result is None:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail=f"No data found for {ticker}")
+    return result
+
+
+WATCHLIST_FILE = DATA_DIR / "watchlist.json"
+
+
+def _load_watchlist() -> dict:
+    if WATCHLIST_FILE.exists():
+        with open(WATCHLIST_FILE) as f:
+            return json.load(f)
+    return {"tickers": {}}
+
+
+def _save_watchlist(data: dict):
+    with open(WATCHLIST_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+
+def _get_current_price(ticker: str):
+    import math
+    cache_path = DATA_DIR / "stock_data_cache.json"
+    if not cache_path.exists():
+        return None
+    with open(cache_path) as f:
+        cache = json.load(f)
+    entry = cache.get(ticker)
+    if not entry:
+        return None
+    closes = entry.get("history", {}).get("Close", [])
+    for val in reversed(closes):
+        if val is not None and not math.isnan(val):
+            return val
+    return None
+
+
+@app.get("/watchlist")
+async def get_watchlist():
+    data = _load_watchlist()
+    enriched = {}
+    for ticker, meta in data["tickers"].items():
+        current_price = _get_current_price(ticker)
+        price_at_add = meta.get("price_at_add")
+        change_pct = None
+        if current_price is not None and price_at_add and price_at_add != 0:
+            change_pct = round((current_price - price_at_add) / price_at_add * 100, 2)
+        enriched[ticker] = {
+            "added": meta.get("added"),
+            "price_at_add": price_at_add,
+            "current_price": current_price,
+            "change_pct": change_pct,
+        }
+    return {"tickers": enriched}
+
+
+@app.post("/watchlist/{ticker}")
+async def add_to_watchlist(ticker: str):
+    from datetime import date
+    ticker = ticker.upper()
+    data = _load_watchlist()
+    if ticker in data["tickers"]:
+        return {"status": "already_exists", "ticker": ticker}
+    price = _get_current_price(ticker)
+    data["tickers"][ticker] = {
+        "added": date.today().isoformat(),
+        "price_at_add": price,
+    }
+    _save_watchlist(data)
+    return {"status": "added", "ticker": ticker, "price_at_add": price}
+
+
+@app.delete("/watchlist/{ticker}")
+async def remove_from_watchlist(ticker: str):
+    ticker = ticker.upper()
+    data = _load_watchlist()
+    if ticker not in data["tickers"]:
+        return {"status": "not_found", "ticker": ticker}
+    del data["tickers"][ticker]
+    _save_watchlist(data)
+    return {"status": "removed", "ticker": ticker}
 
 
 _static_dist = Path(__file__).parent.parent / "static" / "dist"

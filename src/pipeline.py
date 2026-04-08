@@ -30,6 +30,7 @@ from .market_regime import detect_market_regime, detect_geopolitical_events
 from .insider import get_combined_smart_money_score
 from .ml_model import predict_scores
 from .alpha158_predictor import predict_for_stocks as alpha158_predict
+from .thesis import generate_thesis
 
 logger = logging.getLogger(__name__)
 
@@ -82,6 +83,7 @@ def _reconstruct_hist(data: dict) -> pd.DataFrame:
     """Reconstruct history DataFrame from cached data."""
     hist = pd.DataFrame(data["history"])
     hist.index = pd.to_datetime(data["history_index"], utc=True)
+    hist = hist.dropna(subset=["Close"])
     return hist
 
 
@@ -242,6 +244,14 @@ def run_scan(
     strategy: str = "balanced",
 ) -> dict:
     """Run the full pipeline. Returns {results: [...], ranked: [...], timestamp}."""
+    # Auto-heal cache before scanning
+    try:
+        from .cache_health import heal_cache
+        heal_report = heal_cache()
+        logger.info("Cache heal: %s", heal_report)
+    except Exception as e:
+        logger.warning("Cache heal failed: %s", e)
+
     if config is None:
         config = load_config()
 
@@ -546,6 +556,7 @@ def run_scan(
             "above_ma50": (detail.get("technicals") or {}).get("above_ma50"),
             "above_ma200": (detail.get("technicals") or {}).get("above_ma200"),
         })
+        ranked[-1]["thesis"] = generate_thesis(ranked[-1])
 
     # --- DCF & Comps bonus for top N (avoid running on all 500+) ---
     # Cache S&P 500 tickers for midcap penalty check
@@ -965,6 +976,7 @@ def run_scan(
             "profit_margin": (fund.get("profit_margin")),
             "sentiment_score": sent.get("score"),
         })
+        all_scores[-1]["thesis"] = generate_thesis(all_scores[-1])
 
     output = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),

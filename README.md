@@ -1,24 +1,42 @@
 # Stock Picker
 
-US stock screening system using S&P 500 universe with multi-stage scoring pipeline.
+US stock screening system using S&P 500 + S&P 400 MidCap universe (903 stocks) with multi-stage scoring pipeline and React dashboard.
 
 ## Setup
 
 ```bash
 cd stock-picker
 pip install -r requirements.txt
+
+# Frontend (optional — for development)
+cd frontend
+npm install
 ```
 
 ## Usage
 
-### CLI
-```bash
-python -m src.pipeline
-```
-
 ### API Server
 ```bash
 uvicorn src.api:app --reload --port 8000
+# Dashboard at http://localhost:8000
+```
+
+### Frontend Dev Mode
+```bash
+cd frontend
+npm run dev
+# Dev server at http://localhost:5173 (proxies API to :8000)
+```
+
+### Frontend Production Build
+```bash
+cd frontend
+npm run build   # outputs to static/dist/
+```
+
+### CLI
+```bash
+python -m src.pipeline
 ```
 
 ## API Endpoints

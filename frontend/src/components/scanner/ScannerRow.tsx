@@ -11,9 +11,11 @@ interface ScannerRowProps {
   sparkline: number[];
   scoreDelta: number | null;
   onClick: () => void;
+  isWatched?: boolean;
+  onToggleWatch?: (ticker: string) => void;
 }
 
-export default function ScannerRow({ stock, rank, sparkline, scoreDelta, onClick }: ScannerRowProps) {
+export default function ScannerRow({ stock, rank, sparkline, scoreDelta, onClick, isWatched, onToggleWatch }: ScannerRowProps) {
   const scores = {
     fund: stock.fundamentals_pct,
     val: stock.valuation_pct,
@@ -38,13 +40,25 @@ export default function ScannerRow({ stock, rank, sparkline, scoreDelta, onClick
   return (
     <motion.tr
       onClick={onClick}
-      className="border-t border-surface cursor-pointer transition-colors hover:bg-white/[0.03] hover:border-l-2 hover:border-l-accent/30"
+      className="border-t border-surface cursor-pointer transition-colors hover:bg-accent/[0.05] hover:border-l-2 hover:border-l-accent/30"
       whileHover={{ y: -1 }}
     >
+      <td className="py-2.5 px-1.5 text-center w-8">
+        <button
+          onClick={(e) => { e.stopPropagation(); onToggleWatch?.(stock.ticker); }}
+          className={`text-sm transition-colors ${isWatched ? "text-caution" : "text-text-muted/30 hover:text-caution/60"}`}
+          title={isWatched ? "Remove from watchlist" : "Add to watchlist"}
+        >
+          {isWatched ? "★" : "☆"}
+        </button>
+      </td>
       <td className="py-2.5 px-3 font-bold text-text-primary font-data">{rank}</td>
       <td className="py-2.5 px-3">
         <div className="font-bold text-text-primary">{stock.ticker}</div>
         <div className="text-[11px] text-text-muted">{stock.name}</div>
+        {stock.thesis && (
+          <div className="text-[10px] text-accent/70 truncate max-w-[220px] mt-0.5">{stock.thesis}</div>
+        )}
       </td>
       <td className="py-2.5 px-3">
         <RadarChart scores={scores} size={72} showLabels={true} />

@@ -5,7 +5,8 @@ A quantitative stock screening model that scans S&P 500 daily, scores stocks acr
 
 ## Architecture
 - **Language:** Python 3.9
-- **Web:** FastAPI backend + single-page HTML dashboard (`static/index.html`)
+- **Web:** FastAPI backend + React/TypeScript frontend (Vite + Tailwind + Framer Motion)
+- **Legacy:** `static/index.html` (vanilla HTML, still served as fallback if `static/dist/` doesn't exist)
 
 - **Storage:** JSON files in `data/` (no database yet — migrate to SQLite when data grows)
 - **Hosting:** Runs on Mac mini (Apple Silicon), always-on via LaunchAgent (`com.stockpicker.server`)
@@ -32,13 +33,23 @@ src/
   accuracy.py      — Prediction accuracy tracking
 
   api.py           — FastAPI endpoints (async /scan, /scan/status polling, /snapshots/verify)
+  diversification.py — Portfolio diversification score, correlation matrix, what-if analysis
   indicators.py    — Shared RSI implementation (used by technicals, momentum, sell_signals, market_regime)
   insider.py       — Smart money analysis (analyst revisions + insider trading)
   sentiment.py     — Analyst consensus sentiment (recommendationMean + price target upside → 0-100 score)
   snapshot_verify.py — Daily snapshot integrity verification (missing days, corruption, completeness %)
 
+frontend/             — React + TypeScript + Vite + Tailwind CSS
+  src/
+    components/       — Reusable UI (RadarChart, ScoreBadge, MetricCard, etc.)
+    pages/            — Home, Scanner, Portfolio, Backtest, Alerts, Accuracy, Momentum
+    lib/              — types.ts, api.ts, colors.ts
+    hooks/            — useApi, useTimeOfDay
+  vite.config.ts      — Builds to ../static/dist/, dev proxy to :8000
+
 static/
-  index.html       — Single-file dashboard (dark/light theme)
+  dist/              — React production build (gitignored, served by FastAPI)
+  index.html         — Legacy vanilla dashboard (fallback)
 
 data/
   stock_data_cache.json   — Main cache (~19MB, .gitignored)
@@ -98,6 +109,12 @@ python3 -m uvicorn src.api:app --host 0.0.0.0 --port 8000 --reload --reload-dir 
 launchctl stop com.stockpicker.server   # stop
 launchctl start com.stockpicker.server  # start
 
+# Frontend dev mode (hot reload, proxies API to :8000)
+cd frontend && npm run dev              # http://localhost:5173
+
+# Frontend production build
+cd frontend && npm run build            # outputs to static/dist/
+
 # Run scan (async — returns immediately)
 curl -H "X-API-Key: $API_KEY" http://localhost:8000/scan
 curl http://localhost:8000/scan/status   # poll until finished
@@ -109,6 +126,12 @@ curl -H "X-API-Key: $API_KEY" "http://localhost:8000/scan?sync=true"
 # Run tests
 python3 -m pytest test_sell_signals.py -v
 ```
+
+## Frontend Notes
+- Uses **HashRouter** — URLs are `/#/scanner`, `/#/portfolio`, etc. (avoids conflicts with API routes like `/portfolio`)
+- `GEMINI_API_KEY` in `.env` enables Devil's Advocate Gemini reviews; without it, shows quantitative flags only
+- All holdings read from `data/holdings.json` — no hardcoded positions
+- `holdings.json` format: `{"holdings": {"TICKER": {"shares": N, "entry_price": N, "entry_date": "YYYY-MM-DD"}}}`
 
 ## Rules
 - Don't tune the model for individual stocks — rules must apply universally
@@ -134,8 +157,9 @@ python3 -m pytest test_sell_signals.py -v
 15. SQLite migration (replace JSON files)
 16. Sector concentration cap (max N per sector in top 20)
 17. Portfolio tracking / watchlist (Robinhood, manual entry)
-18. Correlation check (pairwise correlation on portfolio picks)
+18. ~~Correlation check (pairwise correlation on portfolio picks)~~ ✅ (correlation heatmap + diversification score + what-if simulator)
 19. Log rotation
+20. ~~React frontend redesign~~ ✅ (Home dashboard, enhanced scanner with radar charts, ticker modal, portfolio page with diversification tools)
 
 ## Owner
-Zhuoran Tang (@ztang2) — using Robinhood, ~$3,500 invested in balanced portfolio (MCK, ACGL, ALL, NEM, EQT — ~$700 each, bought 2/17). Also holds 40 shares NFLX (~$3,080) as long-term hold. Total portfolio ~$6,580.
+Zhuoran Tang (@ztang2) — using Robinhood. Current holdings: EQT, NFLX (30 shares), INCY, CTRA, PCTY, DUOL, JHG, FAF, AMD. See `data/holdings.json` for exact positions.

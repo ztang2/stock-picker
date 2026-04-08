@@ -14,7 +14,7 @@ function corrColor(val: number): string {
 export default function CorrelationHeatmap({ data }: CorrelationHeatmapProps) {
   if (data.tickers.length < 2) {
     return (
-      <div className="p-4 rounded-xl bg-surface border border-border text-sm text-text-secondary">
+      <div className="p-4 rounded-lg bg-surface border border-border text-sm text-text-secondary">
         Need at least 2 holdings for correlation analysis
       </div>
     );
@@ -23,7 +23,7 @@ export default function CorrelationHeatmap({ data }: CorrelationHeatmapProps) {
   const size = 36;
 
   return (
-    <div className="p-4 rounded-xl bg-surface border border-border">
+    <div className="p-4 rounded-lg bg-surface border border-border">
       <div className="text-xs font-semibold text-text-primary mb-3">Correlation Heatmap (90-day)</div>
       <div className="overflow-auto">
         <div className="inline-grid gap-0.5" style={{ gridTemplateColumns: `60px repeat(${data.tickers.length}, ${size}px)` }}>
@@ -37,8 +37,8 @@ export default function CorrelationHeatmap({ data }: CorrelationHeatmapProps) {
               {data.matrix[i].map((val, j) => (
                 <div
                   key={`${i}-${j}`}
-                  className="rounded-sm flex items-center justify-center text-[9px] font-bold text-white/80"
-                  style={{ width: size, height: size, backgroundColor: i === j ? "#334155" : corrColor(val) }}
+                  className="rounded-sm flex items-center justify-center text-[9px] font-bold text-text-primary/80"
+                  style={{ width: size, height: size, backgroundColor: i === j ? "var(--color-border)" : corrColor(val) }}
                   title={`${rowTicker} × ${data.tickers[j]}: ${val.toFixed(3)}`}
                 >
                   {i !== j ? val.toFixed(2) : "1.0"}

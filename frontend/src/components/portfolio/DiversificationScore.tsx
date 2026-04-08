@@ -11,11 +11,11 @@ export default function DiversificationScore({ data }: DiversificationScoreProps
   const offset = circumference * (1 - data.score / 100);
 
   return (
-    <div className="p-4 rounded-xl bg-surface border border-border">
+    <div className="p-4 rounded-lg bg-surface border border-border">
       <div className="text-xs font-semibold text-text-primary mb-3">Diversification Score</div>
       <div className="flex items-center gap-4">
         <svg width="100" height="100" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#334155" strokeWidth="6" />
+          <circle cx="50" cy="50" r="40" fill="none" stroke="var(--color-border)" strokeWidth="6" />
           <circle
             cx="50" cy="50" r="40" fill="none" stroke={color} strokeWidth="6"
             strokeDasharray={circumference} strokeDashoffset={offset}

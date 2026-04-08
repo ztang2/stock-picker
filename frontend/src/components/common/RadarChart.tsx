@@ -51,14 +51,14 @@ export default function RadarChart({ scores, size = 72, showLabels = true }: Rad
           key={pct}
           points={makeGridPolygon(pct, maxR, cx, cy)}
           fill="none"
-          stroke="#334155"
+          stroke="#27272a"
           strokeWidth="0.5"
           opacity={0.4 * pct}
         />
       ))}
       {AXES.map(({ key, angle }) => {
         const { x, y } = polarToXY(angle, maxR, cx, cy);
-        return <line key={key} x1={cx} y1={cy} x2={x} y2={y} stroke="#334155" strokeWidth="0.5" opacity="0.3" />;
+        return <line key={key} x1={cx} y1={cy} x2={x} y2={y} stroke="#27272a" strokeWidth="0.5" opacity="0.3" />;
       })}
       <polygon points={makePolygon(scores, maxR, cx, cy)} fill={`${fillColor}20`} stroke={fillColor} strokeWidth="1.5" />
       {AXES.map(({ key, angle }) => {
@@ -71,7 +71,7 @@ export default function RadarChart({ scores, size = 72, showLabels = true }: Rad
           const { x, y } = polarToXY(angle, labelR, cx, cy);
           const anchor = x < cx - 5 ? "end" : x > cx + 5 ? "start" : "middle";
           return (
-            <text key={key} x={x} y={y} textAnchor={anchor} dominantBaseline="middle" fill="#94a3b8" fontSize="6" fontWeight="600">
+            <text key={key} x={x} y={y} textAnchor={anchor} dominantBaseline="middle" fill="#52525b" fontSize="6" fontWeight="600">
               {showLabels ? `${label} ${scores[key]}` : label}
             </text>
           );

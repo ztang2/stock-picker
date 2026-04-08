@@ -1,15 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useScan } from "../App";
 import { useApi } from "../hooks/useApi";
 import { api } from "../lib/api";
+import { useToast } from "../components/common/Toast";
 import ScannerTable from "../components/scanner/ScannerTable";
 import TickerModal from "../components/ticker/TickerModal";
-import type { Stock, SnapshotDay } from "../lib/types";
+import type { Stock, SnapshotDay, WatchlistResponse } from "../lib/types";
 
 export default function Scanner() {
   const { scan, loading: scanLoading } = useScan();
   const { data: snapshots } = useApi<SnapshotDay[]>(() => api.snapshotsRecent(7));
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
+  const [watchedTickers, setWatchedTickers] = useState<Set<string>>(new Set());
+  const { toast } = useToast();
+
+  const fetchWatchlist = useCallback(async () => {
+    try {
+      const data = await api.watchlist() as WatchlistResponse;
+      setWatchedTickers(new Set(Object.keys(data.tickers)));
+    } catch {
+      // silently ignore
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchWatchlist();
+  }, [fetchWatchlist]);
+
+  const toggleWatch = useCallback(async (ticker: string) => {
+    if (watchedTickers.has(ticker)) {
+      await api.removeFromWatchlist(ticker);
+      setWatchedTickers((prev) => {
+        const next = new Set(prev);
+        next.delete(ticker);
+        return next;
+      });
+      toast("Removed from watchlist", "info");
+    } else {
+      await api.addToWatchlist(ticker);
+      setWatchedTickers((prev) => new Set(prev).add(ticker));
+      toast("Added to watchlist", "success");
+    }
+  }, [watchedTickers, toast]);
 
   if (scanLoading) {
     return <div className="text-text-secondary">Loading scan data...</div>;
@@ -33,6 +65,8 @@ export default function Scanner() {
         stocks={allStocks}
         snapshots={snapshots ?? []}
         onSelectStock={setSelectedStock}
+        watchedTickers={watchedTickers}
+        onToggleWatch={toggleWatch}
       />
       {selectedStock && (
         <TickerModal stock={selectedStock} onClose={() => setSelectedStock(null)} />

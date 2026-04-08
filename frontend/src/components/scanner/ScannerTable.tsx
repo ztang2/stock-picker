@@ -7,9 +7,11 @@ interface ScannerTableProps {
   stocks: Stock[];
   snapshots: SnapshotDay[];
   onSelectStock: (stock: Stock) => void;
+  watchedTickers?: Set<string>;
+  onToggleWatch?: (ticker: string) => void;
 }
 
-export default function ScannerTable({ stocks, snapshots, onSelectStock }: ScannerTableProps) {
+export default function ScannerTable({ stocks, snapshots, onSelectStock, watchedTickers, onToggleWatch }: ScannerTableProps) {
   const [sectorFilter, setSectorFilter] = useState<string | null>(null);
   const [signalFilter, setSignalFilter] = useState<string | null>(null);
   const [sortCol, setSortCol] = useState<string>("composite_score");
@@ -67,10 +69,11 @@ export default function ScannerTable({ stocks, snapshots, onSelectStock }: Scann
         signalFilter={signalFilter}
         onSignalChange={setSignalFilter}
       />
-      <div className="rounded-xl border border-border overflow-hidden">
-        <table className="w-full">
+      <div className="rounded-lg border border-border overflow-hidden overflow-x-auto">
+        <table className="w-full min-w-[700px]">
           <thead className="bg-surface">
             <tr>
+              <th className="py-2.5 px-1.5 w-8"></th>
               <TH col="rank">#</TH>
               <TH col="ticker">Ticker</TH>
               <th className="py-2.5 px-3 text-left text-[11px] text-text-muted uppercase tracking-wider font-semibold">Profile</th>
@@ -91,6 +94,8 @@ export default function ScannerTable({ stocks, snapshots, onSelectStock }: Scann
                 sparkline={getSparkline(stock.ticker)}
                 scoreDelta={getScoreDelta(stock.ticker)}
                 onClick={() => onSelectStock(stock)}
+                isWatched={watchedTickers?.has(stock.ticker)}
+                onToggleWatch={onToggleWatch}
               />
             ))}
           </tbody>

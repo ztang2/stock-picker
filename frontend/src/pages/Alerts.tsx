@@ -16,7 +16,7 @@ export default function Alerts() {
   return (
     <div>
       <h1 className="text-xl font-bold mb-4">Alerts</h1>
-      <div className="rounded-xl border border-border overflow-hidden">
+      <div className="rounded-lg border border-border overflow-hidden">
         {data.current.length === 0 && (
           <div className="p-4 text-sm text-text-secondary">No active alerts</div>
         )}
