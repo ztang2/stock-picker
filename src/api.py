@@ -1630,21 +1630,20 @@ def _get_current_price(ticker: str):
 @app.get("/watchlist")
 async def get_watchlist():
     data = _load_watchlist()
-    result = []
+    enriched = {}
     for ticker, meta in data["tickers"].items():
         current_price = _get_current_price(ticker)
         price_at_add = meta.get("price_at_add")
         change_pct = None
         if current_price is not None and price_at_add and price_at_add != 0:
             change_pct = round((current_price - price_at_add) / price_at_add * 100, 2)
-        result.append({
-            "ticker": ticker,
+        enriched[ticker] = {
             "added": meta.get("added"),
             "price_at_add": price_at_add,
             "current_price": current_price,
             "change_pct": change_pct,
-        })
-    return {"watchlist": result}
+        }
+    return {"tickers": enriched}
 
 
 @app.post("/watchlist/{ticker}")
