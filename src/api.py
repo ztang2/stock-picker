@@ -1447,6 +1447,17 @@ def scan_top_n(n: int = 5):
     }
 
 
+@app.get("/thesis/{ticker}/gemini")
+async def thesis_gemini(ticker: str):
+    """Gemini-powered bull thesis for a stock."""
+    import asyncio
+    from .thesis import generate_gemini_thesis
+    result = await asyncio.to_thread(generate_gemini_thesis, ticker.upper())
+    if result is None:
+        return {"ticker": ticker.upper(), "thesis": None, "source": "unavailable"}
+    return result
+
+
 @app.get("/review/{ticker}")
 async def devil_review(ticker: str):
     """Devil's Advocate review — find every reason NOT to buy this stock."""
