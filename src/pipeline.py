@@ -82,6 +82,7 @@ def _reconstruct_hist(data: dict) -> pd.DataFrame:
     """Reconstruct history DataFrame from cached data."""
     hist = pd.DataFrame(data["history"])
     hist.index = pd.to_datetime(data["history_index"], utc=True)
+    hist = hist.dropna(subset=["Close"])
     return hist
 
 
@@ -242,6 +243,14 @@ def run_scan(
     strategy: str = "balanced",
 ) -> dict:
     """Run the full pipeline. Returns {results: [...], ranked: [...], timestamp}."""
+    # Auto-heal cache before scanning
+    try:
+        from .cache_health import heal_cache
+        heal_report = heal_cache()
+        logger.info("Cache heal: %s", heal_report)
+    except Exception as e:
+        logger.warning("Cache heal failed: %s", e)
+
     if config is None:
         config = load_config()
 

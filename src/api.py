@@ -1448,10 +1448,11 @@ def scan_top_n(n: int = 5):
 
 
 @app.get("/review/{ticker}")
-def devil_review(ticker: str):
+async def devil_review(ticker: str):
     """Devil's Advocate review — find every reason NOT to buy this stock."""
+    import asyncio
     from .devils_advocate import review
-    return review(ticker.upper())
+    return await asyncio.to_thread(review, ticker.upper())
 
 
 @app.get("/snapshots/recent")
@@ -1503,6 +1504,14 @@ async def portfolio_whatif(ticker: str):
         with open(scan_path) as f:
             scan_data = json.load(f)
     return compute_whatif(ticker, scan_data)
+
+
+@app.get("/cache/health")
+async def cache_health():
+    """Read-only cache health diagnostic."""
+    import asyncio
+    from .cache_health import diagnose_cache
+    return await asyncio.to_thread(diagnose_cache)
 
 
 _static_dist = Path(__file__).parent.parent / "static" / "dist"
