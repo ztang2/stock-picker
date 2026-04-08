@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { to: "/alerts", icon: "🔔", label: "Alerts" },
   { to: "/accuracy", icon: "🎯", label: "Accuracy" },
   { to: "/momentum", icon: "🚀", label: "Momentum" },
+  { to: "/watchlist", icon: "⭐", label: "Watchlist" },
 ];
 
 export default function Sidebar() {

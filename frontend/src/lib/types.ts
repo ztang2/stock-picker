@@ -87,6 +87,7 @@ export interface Stock {
   alpha158_score: number | null;
   fcf_yield: number | null;
   synthesis?: string;
+  thesis?: string;
 }
 
 export interface ScanResult {

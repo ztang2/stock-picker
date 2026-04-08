@@ -11,6 +11,7 @@ import Backtest from "./pages/Backtest";
 import Alerts from "./pages/Alerts";
 import Accuracy from "./pages/Accuracy";
 import Momentum from "./pages/Momentum";
+import Watchlist from "./pages/Watchlist";
 
 export const ScanContext = createContext<{
   scan: ScanResult | null;
@@ -37,6 +38,7 @@ export default function App() {
             <Route path="/alerts" element={<Alerts />} />
             <Route path="/accuracy" element={<Accuracy />} />
             <Route path="/momentum" element={<Momentum />} />
+            <Route path="/watchlist" element={<Watchlist />} />
           </Route>
         </Routes>
       </HashRouter>
