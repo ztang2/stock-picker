@@ -11,9 +11,10 @@ interface ActionItem {
 interface ActionItemsProps {
   stopLosses: StopLossAlert[];
   earningsNear: Stock[];
+  onTickerClick?: (ticker: string) => void;
 }
 
-export default function ActionItems({ stopLosses, earningsNear }: ActionItemsProps) {
+export default function ActionItems({ stopLosses, earningsNear, onTickerClick }: ActionItemsProps) {
   const items: ActionItem[] = [];
 
   for (const sl of stopLosses) {
@@ -36,36 +37,39 @@ export default function ActionItems({ stopLosses, earningsNear }: ActionItemsPro
     });
   }
 
-  if (items.length === 0) {
-    return (
-      <div className="rounded-xl bg-surface border border-border p-4 text-sm text-text-secondary">
-        No action items today
-      </div>
-    );
-  }
-
   return (
-    <div className="rounded-xl bg-surface border border-border overflow-hidden">
-      <div className="px-4 py-3 border-b border-border flex items-center gap-2">
-        {items.some((i) => i.priority === "urgent") && (
-          <div className="w-2 h-2 rounded-full bg-danger animate-pulse-dot" />
-        )}
-        <span className="text-xs font-bold text-text-primary uppercase tracking-wider">
-          {items.length} Action{items.length > 1 ? "s" : ""} Needed
-        </span>
-      </div>
-      {items.map((item, i) => (
-        <div
-          key={`${item.ticker}-${i}`}
-          className="px-4 py-3 border-b border-border/50 last:border-0 flex items-center gap-3 hover:bg-accent/5 cursor-pointer transition-colors"
-        >
-          <ActionBadge priority={item.priority} />
-          <div className="flex-1">
-            <div className="text-[13px] text-text-primary font-semibold">{item.ticker} — {item.title}</div>
-            <div className="text-xs text-text-secondary">{item.subtitle}</div>
-          </div>
+    <div className="rounded-lg bg-surface border border-border overflow-hidden">
+      <div className="px-4 py-3 border-b border-border flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          {items.some((i) => i.priority === "urgent") && (
+            <div className="w-1.5 h-1.5 rounded-full bg-danger animate-pulse-dot" />
+          )}
+          <span className="text-[10px] font-semibold text-text-muted uppercase tracking-widest">
+            Action Items
+          </span>
         </div>
-      ))}
+        <span className="text-[10px] font-data text-text-muted">{items.length}</span>
+      </div>
+      {items.length === 0 ? (
+        <div className="px-4 py-3 text-xs text-text-muted">All clear</div>
+      ) : (
+        items.map((item, i) => (
+          <div
+            key={`${item.ticker}-${i}`}
+            onClick={() => onTickerClick?.(item.ticker)}
+            className="px-4 py-3 border-b border-border/40 last:border-0 flex items-center gap-3 hover:bg-white/[0.02] cursor-pointer transition-colors"
+          >
+            <ActionBadge priority={item.priority} />
+            <div className="flex-1 min-w-0">
+              <div className="text-[13px] text-text-primary font-medium">
+                <span className="font-semibold">{item.ticker}</span>
+                <span className="text-text-secondary ml-1.5">— {item.title}</span>
+              </div>
+              <div className="text-[11px] text-text-muted mt-0.5 truncate">{item.subtitle}</div>
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 }
