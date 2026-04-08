@@ -1514,6 +1514,76 @@ async def cache_health():
     return await asyncio.to_thread(diagnose_cache)
 
 
+@app.get("/chart/{ticker}")
+async def chart_ticker(ticker: str, period: str = "3mo"):
+    import asyncio
+    import math
+    import pandas as pd
+
+    def _load_chart():
+        cache_path = DATA_DIR / "stock_data_cache.json"
+        ticker_upper = ticker.upper()
+
+        # Determine lookback days
+        period_days = {"1mo": 30, "3mo": 90, "6mo": 180, "1y": 365, "2y": 730}
+        days = period_days.get(period, 90)
+
+        hist = None
+        if cache_path.exists():
+            with open(cache_path) as f:
+                cache = json.load(f)
+            if ticker_upper in cache:
+                data = cache[ticker_upper]
+                raw = pd.DataFrame(data["history"])
+                raw.index = pd.to_datetime(data["history_index"], utc=True)
+                cutoff = raw.index.max() - pd.Timedelta(days=days)
+                raw = raw[raw.index >= cutoff]
+                raw = raw[raw["Close"].apply(lambda x: not (isinstance(x, float) and math.isnan(x)))]
+                hist = raw
+
+        if hist is None or hist.empty:
+            import yfinance as yf
+            raw = yf.Ticker(ticker_upper).history(period=period)
+            if raw.empty:
+                return None
+            raw = raw[raw["Close"].apply(lambda x: not (isinstance(x, float) and math.isnan(x)))]
+            hist = raw
+
+        if hist is None or hist.empty:
+            return None
+
+        ohlc = [
+            {
+                "date": str(idx.date()),
+                "open": round(float(row["Open"]), 4),
+                "high": round(float(row["High"]), 4),
+                "low": round(float(row["Low"]), 4),
+                "close": round(float(row["Close"]), 4),
+            }
+            for idx, row in hist.iterrows()
+        ]
+
+        from .momentum import _support_resistance
+        support, resistance = _support_resistance(hist)
+
+        closes = hist["Close"].tolist()
+        ma50 = round(float(sum(closes[-50:]) / min(50, len(closes))), 4) if closes else None
+
+        return {
+            "ticker": ticker_upper,
+            "ohlc": ohlc,
+            "support": round(support, 4) if support is not None else None,
+            "resistance": round(resistance, 4) if resistance is not None else None,
+            "ma50": ma50,
+        }
+
+    result = await asyncio.to_thread(_load_chart)
+    if result is None:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail=f"No data found for {ticker}")
+    return result
+
+
 _static_dist = Path(__file__).parent.parent / "static" / "dist"
 _static_legacy = Path(__file__).parent.parent / "static"
 
