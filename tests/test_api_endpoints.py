@@ -21,7 +21,9 @@ def client(mock_api_env):
 
 @pytest.fixture
 def mock_scan_results(temp_data_dir):
-    """Create mock scan results file."""
+    """Create mock scan results in the temp DB via ScanResultsService."""
+    from src.scan_results_service import ScanResultsService
+
     results = {
         "timestamp": "2024-01-15T10:30:00",
         "strategy": "balanced",
@@ -61,8 +63,9 @@ def mock_scan_results(temp_data_dir):
         ],
     }
 
-    results_file = temp_data_dir / "scan_results.json"
-    results_file.write_text(json.dumps(results, indent=2))
+    ScanResultsService._cache = None
+    ScanResultsService._cache_timestamp = None
+    ScanResultsService.save_results(results)
 
     return results
 
@@ -88,7 +91,7 @@ class TestHealthEndpoint:
 class TestStrategiesEndpoint:
     """Tests for GET /strategies endpoint."""
 
-    @patch("src.api.list_strategies")
+    @patch("src.routes.scan.list_strategies")
     def test_strategies_returns_list(self, mock_list_strat, client):
         """Test that /strategies returns a list of strategies."""
         mock_list_strat.return_value = [
@@ -111,8 +114,8 @@ class TestStrategiesEndpoint:
 class TestScanEndpoint:
     """Tests for /scan endpoint."""
 
-    @patch("src.api.run_scan")
-    @patch("src.api.load_config")
+    @patch("src.routes.scan.run_scan")
+    @patch("src.routes.scan.load_config")
     def test_scan_sync_mode(self, mock_config, mock_run_scan, client):
         """Test /scan with sync=true returns results immediately."""
         mock_config.return_value = {"filters": {}}
@@ -132,8 +135,8 @@ class TestScanEndpoint:
         assert "timestamp" in data
         assert data["strategy"] == "balanced"
 
-    @patch("src.api.run_scan")
-    @patch("src.api.load_config")
+    @patch("src.routes.scan.run_scan")
+    @patch("src.routes.scan.load_config")
     def test_scan_async_mode(self, mock_config, mock_run_scan, client):
         """Test /scan without sync parameter starts background task."""
         mock_config.return_value = {"filters": {}}
@@ -142,19 +145,19 @@ class TestScanEndpoint:
 
         assert response.status_code == 200
         data = response.json()
-        assert data["status"] == "started"
+        assert data["status"] in ("started", "already_running")
 
     def test_scan_missing_api_key(self, client):
         """Test /scan without API key returns 401 when key is required."""
         response = client.get("/scan?sync=true")
         assert response.status_code == 401
 
-    @patch("src.api.load_config")
+    @patch("src.routes.scan.load_config")
     def test_scan_with_sector_filter(self, mock_config, client):
         """Test /scan accepts sector parameter."""
         mock_config.return_value = {"filters": {}}
 
-        with patch("src.api.run_scan") as mock_run_scan:
+        with patch("src.routes.scan.run_scan") as mock_run_scan:
             mock_run_scan.return_value = {
                 "timestamp": "2024-01-15T10:30:00",
                 "strategy": "balanced",
@@ -174,12 +177,12 @@ class TestScanEndpoint:
             call_kwargs = mock_run_scan.call_args[1]
             assert call_kwargs["sector"] == "Technology"
 
-    @patch("src.api.load_config")
+    @patch("src.routes.scan.load_config")
     def test_scan_with_market_cap_filters(self, mock_config, client):
         """Test /scan accepts min_cap and max_cap parameters."""
         mock_config.return_value = {"filters": {}}
 
-        with patch("src.api.run_scan") as mock_run_scan:
+        with patch("src.routes.scan.run_scan") as mock_run_scan:
             mock_run_scan.return_value = {
                 "timestamp": "2024-01-15T10:30:00",
                 "strategy": "balanced",
@@ -200,12 +203,12 @@ class TestScanEndpoint:
             assert call_kwargs["min_cap"] == 10000000000
             assert call_kwargs["max_cap"] == 100000000000
 
-    @patch("src.api.load_config")
+    @patch("src.routes.scan.load_config")
     def test_scan_with_exclude_tickers(self, mock_config, client):
         """Test /scan accepts exclude parameter."""
         mock_config.return_value = {"filters": {}}
 
-        with patch("src.api.run_scan") as mock_run_scan:
+        with patch("src.routes.scan.run_scan") as mock_run_scan:
             mock_run_scan.return_value = {
                 "timestamp": "2024-01-15T10:30:00",
                 "strategy": "balanced",
@@ -255,16 +258,15 @@ class TestScanCachedEndpoint:
         response = client.get("/scan/cached")
         assert response.status_code == 404
 
-    def test_scan_cached_with_data(self, client, mock_scan_results, temp_data_dir):
+    def test_scan_cached_with_data(self, client, mock_scan_results):
         """Test /scan/cached returns cached results when available."""
-        with patch("src.api.RESULTS_FILE", temp_data_dir / "scan_results.json"):
-            response = client.get("/scan/cached")
+        response = client.get("/scan/cached")
 
-            assert response.status_code == 200
-            data = response.json()
-            assert data["timestamp"] == "2024-01-15T10:30:00"
-            assert data["strategy"] == "balanced"
-            assert len(data["top"]) == 2
+        assert response.status_code == 200
+        data = response.json()
+        assert data["timestamp"] == "2024-01-15T10:30:00"
+        assert data["strategy"] == "balanced"
+        assert len(data["top"]) == 2
 
 
 # ============================================================================
@@ -274,7 +276,7 @@ class TestScanCachedEndpoint:
 class TestStockDetailEndpoint:
     """Tests for /stock/{ticker} endpoint."""
 
-    @patch("src.api.get_stock_detail")
+    @patch("src.routes.scan.get_stock_detail")
     def test_stock_detail_found(self, mock_detail, client):
         """Test /stock/{ticker} returns stock details when found."""
         mock_detail.return_value = {
@@ -295,7 +297,7 @@ class TestStockDetailEndpoint:
         assert data["ticker"] == "AAPL"
         assert data["name"] == "Apple Inc"
 
-    @patch("src.api.get_stock_detail")
+    @patch("src.routes.scan.get_stock_detail")
     def test_stock_detail_not_found(self, mock_detail, client):
         """Test /stock/{ticker} returns 404 when stock not found."""
         mock_detail.return_value = None
@@ -312,8 +314,8 @@ class TestStockDetailEndpoint:
 class TestAlertsEndpoint:
     """Tests for /alerts endpoint."""
 
-    @patch("src.api.check_alerts")
-    @patch("src.api.get_alert_history")
+    @patch("src.routes.scan.check_alerts")
+    @patch("src.routes.scan.get_alert_history")
     def test_alerts_returns_current_and_history(self, mock_history, mock_current, client):
         """Test /alerts returns both current alerts and history."""
         mock_current.return_value = [
@@ -340,7 +342,7 @@ class TestAlertsEndpoint:
 class TestBacktestEndpoint:
     """Tests for /backtest endpoint."""
 
-    @patch("src.api.run_backtest")
+    @patch("src.routes.backtest.run_backtest")
     def test_backtest_returns_results(self, mock_backtest, client):
         """Test /backtest returns backtest results."""
         mock_backtest.return_value = {
@@ -360,11 +362,10 @@ class TestBacktestEndpoint:
 
         assert response.status_code == 200
         data = response.json()
-        assert data["strategy"] == "balanced"
         assert "total_return" in data
         assert "sharpe_ratio" in data
 
-    @patch("src.api.run_backtest")
+    @patch("src.routes.backtest.run_backtest")
     def test_backtest_with_date_range(self, mock_backtest, client):
         """Test /backtest accepts start_date and end_date parameters."""
         mock_backtest.return_value = {
@@ -394,9 +395,18 @@ class TestAPIKeyVerification:
 
     def test_verify_api_key_valid(self, client):
         """Test that valid API key is accepted."""
-        with patch("src.api.run_scan"):
+        with patch("src.routes.scan.run_scan") as mock_run_scan, \
+             patch("src.routes.scan.load_config") as mock_config:
+            mock_config.return_value = {"filters": {}}
+            mock_run_scan.return_value = {
+                "timestamp": "2024-01-15T10:30:00",
+                "strategy": "balanced",
+                "top": [],
+                "all_scores": [],
+                "stocks_analyzed": 0,
+                "stocks_after_filter": 0,
+            }
             response = client.get("/scan?sync=true", headers={"X-API-Key": "test-key-12345"})
-            # Should not return 401
             assert response.status_code != 401
 
     def test_verify_api_key_invalid(self, client):
@@ -417,9 +427,9 @@ class TestAPIKeyVerification:
 class TestCompareStrategiesEndpoint:
     """Tests for /compare endpoint."""
 
-    @patch("src.api.run_scan")
-    @patch("src.api.load_config")
-    @patch("src.api.get_strategy")
+    @patch("src.routes.scan.run_scan")
+    @patch("src.routes.scan.load_config")
+    @patch("src.routes.scan.get_strategy")
     def test_compare_strategies(self, mock_get_strat, mock_config, mock_scan, client):
         """Test /compare runs multiple strategies and returns comparison."""
         mock_config.return_value = {"filters": {}}

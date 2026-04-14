@@ -134,32 +134,25 @@ class TestGetLatest:
         assert result2["timestamp"] == "2024-01-15T10:30:00"  # Still old value from cache
 
     def test_get_latest_invalidates_cache_on_file_change(self, mock_service_env, sample_scan_data):
-        """Test get_latest detects file modification and refreshes cache."""
+        """Test get_latest detects new DB row and refreshes cache."""
         from src.scan_results_service import ScanResultsService
-        import time
 
-        # Clear cache
+        # Clear cache and seed DB with initial data
         ScanResultsService._cache = None
+        ScanResultsService.save_results(sample_scan_data)
 
-        # Write sample data
-        results_file = mock_service_env / "scan_results.json"
-        results_file.write_text(json.dumps(sample_scan_data))
-
-        # First call
+        # First call loads from DB
         result1 = ScanResultsService.get_latest()
         assert result1["timestamp"] == "2024-01-15T10:30:00"
 
-        # Wait to ensure file mtime changes
-        time.sleep(0.01)
-
-        # Modify file
+        # Write a newer row to the DB
         modified_data = sample_scan_data.copy()
         modified_data["timestamp"] = "2024-01-16T10:30:00"
-        results_file.write_text(json.dumps(modified_data))
+        ScanResultsService.save_results(modified_data)
 
-        # Second call should detect mtime change and re-read
+        # get_latest returns the newest row; cache refreshes because DB timestamp changed
         result2 = ScanResultsService.get_latest()
-        assert result2["timestamp"] == "2024-01-16T10:30:00"  # New value from file
+        assert result2["timestamp"] == "2024-01-16T10:30:00"
 
 
 # ============================================================================
@@ -365,13 +358,11 @@ class TestInvalidateCache:
         assert ScanResultsService._cache is None
 
     def test_invalidate_cache_forces_reload(self, mock_service_env, sample_scan_data):
-        """Test that after invalidate_cache, next call re-reads file."""
+        """Test that after invalidate_cache, next call re-reads from DB."""
         from src.scan_results_service import ScanResultsService
-        import time
 
         ScanResultsService._cache = None
-        results_file = mock_service_env / "scan_results.json"
-        results_file.write_text(json.dumps(sample_scan_data))
+        ScanResultsService.save_results(sample_scan_data)
 
         # Load into cache
         result1 = ScanResultsService.get_latest()
@@ -380,13 +371,12 @@ class TestInvalidateCache:
         # Invalidate cache
         ScanResultsService.invalidate_cache()
 
-        # Modify file
-        time.sleep(0.01)
+        # Write a newer row to the DB
         modified_data = sample_scan_data.copy()
         modified_data["timestamp"] = "2024-01-16T10:30:00"
-        results_file.write_text(json.dumps(modified_data))
+        ScanResultsService.save_results(modified_data)
 
-        # Next call should re-read
+        # Next call should re-read the newest DB row
         result2 = ScanResultsService.get_latest()
         assert result2["timestamp"] == "2024-01-16T10:30:00"
 
@@ -398,19 +388,26 @@ class TestInvalidateCache:
 class TestSaveResults:
     """Tests for ScanResultsService.save_results()."""
 
-    def test_save_results_writes_file(self, mock_service_env, sample_scan_data):
-        """Test save_results writes JSON to file."""
-        from src.scan_results_service import ScanResultsService
+    def test_save_results_writes_to_db(self, mock_service_env, sample_scan_data):
+        """Test save_results writes a row to the SQLite DB."""
+        import sqlite3 as _sqlite3
+        from src.scan_results_service import ScanResultsService, DB_FILE
 
         ScanResultsService._cache = None
-        results_file = mock_service_env / "scan_results.json"
 
         ScanResultsService.save_results(sample_scan_data)
 
-        assert results_file.exists()
-        saved_data = json.loads(results_file.read_text())
-        assert saved_data["timestamp"] == "2024-01-15T10:30:00"
-        assert saved_data["strategy"] == "balanced"
+        db_file = mock_service_env / "scan_results.db"
+        assert db_file.exists()
+        conn = _sqlite3.connect(str(db_file))
+        count = conn.execute("SELECT COUNT(*) FROM scan_results").fetchone()[0]
+        conn.close()
+        assert count >= 1
+
+        # Verify round-trip data matches
+        result = ScanResultsService.get_latest()
+        assert result["timestamp"] == "2024-01-15T10:30:00"
+        assert result["strategy"] == "balanced"
 
     def test_save_results_invalidates_cache(self, mock_service_env, sample_scan_data):
         """Test save_results invalidates cache."""
@@ -433,14 +430,16 @@ class TestSaveResults:
         assert ScanResultsService._cache is None
 
     def test_save_results_creates_directory(self, temp_data_dir):
-        """Test save_results creates data directory if it doesn't exist."""
+        """Test save_results creates data directory and DB if they don't exist."""
         from src.scan_results_service import ScanResultsService
 
         nonexistent_dir = temp_data_dir / "nonexistent"
-        results_file = nonexistent_dir / "scan_results.json"
+        db_file = nonexistent_dir / "scan_results.db"
 
         with patch("src.scan_results_service.DATA_DIR", nonexistent_dir), \
-             patch("src.scan_results_service.RESULTS_FILE", results_file):
+             patch("src.scan_results_service.RESULTS_FILE", nonexistent_dir / "scan_results.json"), \
+             patch("src.scan_results_service.DB_FILE", db_file), \
+             patch("src.scan_results_service.PREV_RESULTS_FILE", nonexistent_dir / "prev_scan_results.json"):
 
             ScanResultsService._cache = None
 
@@ -454,7 +453,7 @@ class TestSaveResults:
             ScanResultsService.save_results(sample_data)
 
             assert nonexistent_dir.exists()
-            assert results_file.exists()
+            assert db_file.exists()
 
 
 # ============================================================================
@@ -464,21 +463,26 @@ class TestSaveResults:
 class TestRotateResults:
     """Tests for ScanResultsService.rotate_results()."""
 
-    def test_rotate_results_copies_to_prev(self, mock_service_env, sample_scan_data):
-        """Test rotate_results copies current results to prev file."""
+    def test_rotate_results_keeps_last_10_entries(self, mock_service_env, sample_scan_data):
+        """Test rotate_results prunes DB to at most 10 rows."""
+        import sqlite3 as _sqlite3
         from src.scan_results_service import ScanResultsService
 
         ScanResultsService._cache = None
-        results_file = mock_service_env / "scan_results.json"
-        prev_results_file = mock_service_env / "prev_scan_results.json"
 
-        results_file.write_text(json.dumps(sample_scan_data))
+        # Insert 12 rows
+        for i in range(12):
+            data = sample_scan_data.copy()
+            data["timestamp"] = f"2024-01-{i+1:02d}T10:30:00"
+            ScanResultsService.save_results(data)
 
         ScanResultsService.rotate_results()
 
-        assert prev_results_file.exists()
-        prev_data = json.loads(prev_results_file.read_text())
-        assert prev_data["timestamp"] == "2024-01-15T10:30:00"
+        db_file = mock_service_env / "scan_results.db"
+        conn = _sqlite3.connect(str(db_file))
+        count = conn.execute("SELECT COUNT(*) FROM scan_results").fetchone()[0]
+        conn.close()
+        assert count <= 10
 
     def test_rotate_results_no_file(self, mock_service_env):
         """Test rotate_results handles missing current file gracefully."""
