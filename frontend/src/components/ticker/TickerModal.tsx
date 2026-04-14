@@ -47,7 +47,7 @@ class TabErrorBoundary extends Component<
   }
 }
 
-const TABS = ["Entry Timing", "DCF Valuation", "Peer Comps", "Earnings", "Momentum", "Devil's Advocate"] as const;
+const TABS = ["Entry & Momentum", "Valuation", "Earnings", "Devil's Advocate"] as const;
 
 interface TickerModalProps {
   stock: Stock;
@@ -55,7 +55,7 @@ interface TickerModalProps {
 }
 
 export default function TickerModal({ stock, onClose }: TickerModalProps) {
-  const [activeTab, setActiveTab] = useState<typeof TABS[number]>("Entry Timing");
+  const [activeTab, setActiveTab] = useState<typeof TABS[number]>("Entry & Momentum");
 
   const scores = {
     fund: stock?.fundamentals_pct ?? 0,
@@ -70,11 +70,19 @@ export default function TickerModal({ stock, onClose }: TickerModalProps) {
 
   function renderTab() {
     switch (activeTab) {
-      case "Entry Timing": return <EntryTiming ticker={stock.ticker} />;
-      case "DCF Valuation": return <DCFTab ticker={stock.ticker} />;
-      case "Peer Comps": return <CompsTab ticker={stock.ticker} />;
+      case "Entry & Momentum": return (
+        <div className="space-y-6">
+          <EntryTiming ticker={stock.ticker} />
+          <MomentumTab ticker={stock.ticker} />
+        </div>
+      );
+      case "Valuation": return (
+        <div className="space-y-6">
+          <DCFTab ticker={stock.ticker} />
+          <CompsTab ticker={stock.ticker} />
+        </div>
+      );
       case "Earnings": return <EarningsTab ticker={stock.ticker} />;
-      case "Momentum": return <MomentumTab ticker={stock.ticker} />;
       case "Devil's Advocate": return <DevilTab ticker={stock.ticker} />;
     }
   }

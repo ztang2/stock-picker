@@ -119,9 +119,11 @@ body::before {
   50% { opacity: 0.6; box-shadow: 0 0 6px 3px var(--color-danger-glow); }
 }
 
-.animate-pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
+
 
 /* Signal badges */
 .badge-glow-positive { box-shadow: 0 0 0 1px var(--color-positive-glow); }

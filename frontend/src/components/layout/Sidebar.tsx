@@ -1,15 +1,16 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { Home, BarChart2, Briefcase, TrendingUp, Bell, Target, Zap, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const NAV_ITEMS = [
-  { to: "/", icon: "🏠", label: "Home" },
-  { to: "/scanner", icon: "📊", label: "Scanner" },
-  { to: "/portfolio", icon: "💼", label: "Portfolio" },
-  { to: "/backtest", icon: "📈", label: "Backtest" },
-  { to: "/alerts", icon: "🔔", label: "Alerts" },
-  { to: "/accuracy", icon: "🎯", label: "Accuracy" },
-  { to: "/momentum", icon: "🚀", label: "Momentum" },
-  { to: "/watchlist", icon: "⭐", label: "Watchlist" },
+  { to: "/", icon: <Home size={16} />, label: "Home" },
+  { to: "/scanner", icon: <BarChart2 size={16} />, label: "Scanner" },
+  { to: "/portfolio", icon: <Briefcase size={16} />, label: "Portfolio" },
+  { to: "/backtest", icon: <TrendingUp size={16} />, label: "Backtest" },
+  { to: "/alerts", icon: <Bell size={16} />, label: "Alerts" },
+  { to: "/accuracy", icon: <Target size={16} />, label: "Accuracy" },
+  { to: "/momentum", icon: <Zap size={16} />, label: "Momentum" },
+  { to: "/watchlist", icon: <Star size={16} />, label: "Watchlist" },
 ];
 
 export default function Sidebar() {
@@ -31,7 +32,7 @@ export default function Sidebar() {
           onClick={() => setCollapsed(!collapsed)}
           className="text-text-muted hover:text-accent transition-colors text-xs"
         >
-          {collapsed ? "›" : "‹"}
+          {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>
       </div>
       <div className="flex flex-col gap-0.5 p-2 flex-1">

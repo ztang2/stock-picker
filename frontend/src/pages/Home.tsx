@@ -10,6 +10,7 @@ import NewSignals from "../components/home/NewSignals";
 import MarketPulse from "../components/home/MarketPulse";
 import HoldingsStrip from "../components/home/HoldingsStrip";
 import TickerModal from "../components/ticker/TickerModal";
+import { Skeleton, SkeletonCard } from "../components/common/Skeleton";
 import type { AlertsResponse, AccuracyResponse, RiskSummary, StopLossAlert, Stock } from "../lib/types";
 
 const GREETING: Record<string, string> = {
@@ -65,8 +66,17 @@ export default function Home() {
 
   if (loading || !scan) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-text-muted text-sm tracking-wider uppercase">Loading dashboard...</div>
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <Skeleton className="h-8 w-48" />
+          <Skeleton className="h-8 w-24" />
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {[...Array(4)].map((_, i) => <SkeletonCard key={i} />)}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[...Array(3)].map((_, i) => <SkeletonCard key={i} />)}
+        </div>
       </div>
     );
   }

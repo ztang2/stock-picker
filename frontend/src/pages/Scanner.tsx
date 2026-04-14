@@ -5,6 +5,7 @@ import { api } from "../lib/api";
 import { useToast } from "../components/common/Toast";
 import ScannerTable from "../components/scanner/ScannerTable";
 import TickerModal from "../components/ticker/TickerModal";
+import { Skeleton, SkeletonRow } from "../components/common/Skeleton";
 import type { Stock, SnapshotDay, WatchlistResponse } from "../lib/types";
 
 export default function Scanner() {
@@ -44,7 +45,15 @@ export default function Scanner() {
   }, [watchedTickers, toast]);
 
   if (scanLoading) {
-    return <div className="text-text-secondary">Loading scan data...</div>;
+    return (
+      <div className="space-y-3">
+        <div className="flex items-center justify-between mb-4">
+          <Skeleton className="h-7 w-32" />
+          <Skeleton className="h-4 w-40" />
+        </div>
+        {[...Array(10)].map((_, i) => <SkeletonRow key={i} />)}
+      </div>
+    );
   }
 
   if (!scan) {
