@@ -1,12 +1,67 @@
 """Shared fixtures and test utilities for stock picker tests."""
 
 import json
+import os
 import tempfile
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 import pytest
 import pandas as pd
 import numpy as np
+
+
+_REAL_DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+_SENTINEL_PATHS = {
+    _REAL_DATA_DIR / "scan_results.db",
+    _REAL_DATA_DIR / "app.db",
+    _REAL_DATA_DIR / "scan_results.json",
+    _REAL_DATA_DIR / "prev_scan_results.json",
+    _REAL_DATA_DIR / "signal_history.json",
+    _REAL_DATA_DIR / "alerts.json",
+    _REAL_DATA_DIR / "trade_history.json",
+    _REAL_DATA_DIR / "holdings.json",
+    _REAL_DATA_DIR / "watchlist.json",
+}
+
+
+@pytest.fixture(autouse=True)
+def _block_real_data_writes(request, monkeypatch):
+    """Fail loudly if any test attempts to write to a real data/ file.
+
+    Tests that legitimately touch data/ paths must redirect them to a
+    temp dir via their own fixtures. This autouse fixture wraps builtins.open
+    and sqlite3.connect so an accidental real-path write raises immediately
+    instead of silently corrupting production state.
+    """
+    import builtins
+    import sqlite3
+
+    real_open = builtins.open
+    real_connect = sqlite3.connect
+
+    def guarded_open(file, mode="r", *args, **kwargs):
+        if isinstance(file, (str, os.PathLike)):
+            path = Path(file).resolve()
+            if path in _SENTINEL_PATHS and any(c in mode for c in ("w", "a", "x", "+")):
+                raise RuntimeError(
+                    f"Test attempted to write to real data file: {path}. "
+                    "Redirect via a fixture (e.g., patch src.<module>.PATH_CONST) "
+                    "before writing."
+                )
+        return real_open(file, mode, *args, **kwargs)
+
+    def guarded_connect(database, *args, **kwargs):
+        if isinstance(database, (str, os.PathLike)):
+            path = Path(str(database)).resolve()
+            if path in _SENTINEL_PATHS:
+                raise RuntimeError(
+                    f"Test attempted to open real SQLite DB: {path}. "
+                    "Patch DB_FILE on the service module before connecting."
+                )
+        return real_connect(database, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "open", guarded_open)
+    monkeypatch.setattr(sqlite3, "connect", guarded_connect)
 
 
 # ============================================================================
