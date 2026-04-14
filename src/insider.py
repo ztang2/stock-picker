@@ -8,7 +8,7 @@ Data source: yfinance (free, no API key needed).
 """
 
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 import pandas as pd
@@ -50,7 +50,7 @@ def analyze_analyst_signals(ticker_obj) -> dict:
     try:
         ud = ticker_obj.upgrades_downgrades
         if ud is not None and len(ud) > 0:
-            now = datetime.now()
+            now = datetime.now(timezone.utc)
             cutoff_30d = now - timedelta(days=30)
             cutoff_90d = now - timedelta(days=90)
             
@@ -209,7 +209,7 @@ def analyze_insider_signals(ticker_obj) -> dict:
                     result["buy_count"] = int(value) if pd.notna(value) else 0
                 elif "Sales" == label:
                     result["sell_count"] = int(value) if pd.notna(value) else 0
-                elif "Net Shares" in label:
+                elif "Net Shares" in label and "%" not in label:
                     result["net_shares"] = int(value) if pd.notna(value) else 0
                 elif "% Net Shares" in label and "Buy" not in label and "Sell" not in label:
                     result["pct_net_purchased"] = float(value) if pd.notna(value) else None
