@@ -89,3 +89,26 @@ filters:
   max_market_cap: 500.0e9     # Maximum cap
   exclude_tickers: ["TSLA"]   # Skip these
 ```
+
+## Running with Docker
+
+### Quick start
+```bash
+git clone https://github.com/ztang2/stock-picker.git
+cd stock-picker
+cp .env.example .env        # fill in your API keys
+docker-compose up --build
+```
+Open http://localhost:8000
+
+### First run
+On first start, `data/` will be empty. Click **Run Scan** in the app to fetch stock data (~2–3 min). Subsequent starts use the cached data.
+
+### Persisting data
+The `./data` directory is mounted as a volume — cache files, scan results, and databases persist across container restarts and rebuilds.
+
+### Pre-loading data from another machine (optional)
+```bash
+rsync -avz ./data/ user@remote:~/stock-picker/data/
+```
+Then clone and `docker-compose up --build` on the remote machine.

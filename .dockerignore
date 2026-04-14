@@ -6,5 +6,8 @@ __pycache__
 *.md
 venv/
 .venv/
+data/
+frontend/
+tests/
 data/alpha158_training.parquet
 data/alpha158_xgb.model
