@@ -894,16 +894,23 @@ def _finalize_and_save(ranked: List[dict], ranked_df: pd.DataFrame, filtered: Li
 
     output = _sanitize(output)
     ScanResultsService.save_results(output)
-    
-    # Also save daily snapshot
+
     DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+    # Mirror to scan_results.json: many modules (accuracy, alerts, validation,
+    # ml_model, position_sizing, risk_manager, routes/scan rate-limit, etc.)
+    # still read the JSON directly. Keeping them in sync prevents them from
+    # drifting to stale cached results.
+    RESULTS_FILE.write_text(json.dumps(output, indent=2, default=str))
+
     snapshot_dir = DATA_DIR / "daily_snapshots"
     snapshot_dir.mkdir(exist_ok=True)
     today = time.strftime("%Y-%m-%d")
     snapshot_file = snapshot_dir / f"{today}.json"
-    if not snapshot_file.exists():
-        snapshot_file.write_text(json.dumps(output, indent=2, default=str))
-        logger.info("Saved daily snapshot: %s", snapshot_file)
+    # Overwrite existing snapshot — the previous guard (`if not exists`) meant
+    # a morning scan that failed or got rate-limited could lock today's
+    # snapshot to stale data for the rest of the day.
+    snapshot_file.write_text(json.dumps(output, indent=2, default=str))
+    logger.info("Saved daily snapshot: %s", snapshot_file)
     
     # Save momentum radar snapshot
     try:
