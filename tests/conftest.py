@@ -284,6 +284,17 @@ def mock_api_env(temp_data_dir, monkeypatch):
     monkeypatch.setenv("DATA_DIR", str(temp_data_dir))
     monkeypatch.setenv("API_KEY", "test-key-12345")
 
+    from src.scan_results_service import ScanResultsService
+    ScanResultsService._cache = None
+    ScanResultsService._cache_timestamp = None
+
     with patch("src.api.DATA_DIR", temp_data_dir), \
-         patch("src.api.RESULTS_FILE", temp_data_dir / "scan_results.json"):
+         patch("src.routes.scan.DATA_DIR", temp_data_dir), \
+         patch("src.scan_results_service.DATA_DIR", temp_data_dir), \
+         patch("src.scan_results_service.RESULTS_FILE", temp_data_dir / "scan_results.json"), \
+         patch("src.scan_results_service.DB_FILE", temp_data_dir / "scan_results.db"), \
+         patch("src.scan_results_service.PREV_RESULTS_FILE", temp_data_dir / "prev_scan_results.json"):
         yield temp_data_dir
+
+    ScanResultsService._cache = None
+    ScanResultsService._cache_timestamp = None
