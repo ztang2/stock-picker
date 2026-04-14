@@ -12,13 +12,13 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 
-import yfinance as yf
+from .yfinance_client import get_ticker_info, get_ticker_object, download
+from . import db
 
 logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 RISK_CONFIG_FILE = DATA_DIR / "risk_config.json"
-TRADE_HISTORY_FILE = DATA_DIR / "trade_history.json"
 
 # Defaults
 # Module-level sector cache (loaded once per process)
@@ -69,7 +69,7 @@ def _get_current_prices(tickers: List[str]) -> Dict[str, float]:
     prices = {}
     for t in tickers:
         try:
-            info = yf.Ticker(t).info
+            info = get_ticker_info(t)
             price = info.get("currentPrice") or info.get("regularMarketPrice")
             if price:
                 prices[t] = float(price)
@@ -257,8 +257,7 @@ def check_oil_price_alert(threshold_drop_pct: float = -15.0) -> Optional[dict]:
     Returns alert dict or None.
     """
     try:
-        oil = yf.Ticker("CL=F")
-        hist = oil.history(period="3mo")
+        hist = get_ticker_history("CL=F", period="3mo")
         if hist is None or hist.empty:
             return None
         
@@ -347,7 +346,7 @@ def check_ceasefire_signals() -> Optional[dict]:
     try:
         # Fetch latest data
         tickers_to_check = ["CL=F", "^VIX", "LMT", "NOC", "UAL", "DAL"]
-        data = yf.download(tickers_to_check, period="5d", progress=False)
+        data = download(tickers_to_check, period="5d", progress=False)
         if data is None or data.empty:
             return None
         
@@ -646,30 +645,9 @@ def get_portfolio_summary(holdings: Dict[str, dict], prices: Optional[Dict[str, 
 def record_trade(ticker: str, action: str, shares: float, price: float,
                  reason: str = "") -> None:
     """Record a trade for P&L tracking."""
-    history = []
-    if TRADE_HISTORY_FILE.exists():
-        try:
-            history = json.loads(TRADE_HISTORY_FILE.read_text())
-        except Exception:
-            pass
-    
-    history.append({
-        "ticker": ticker,
-        "action": action,  # BUY or SELL
-        "shares": shares,
-        "price": price,
-        "reason": reason,
-        "timestamp": datetime.now().isoformat(),
-    })
-    
-    TRADE_HISTORY_FILE.write_text(json.dumps(history, indent=2))
+    db.insert_trade(ticker, action, shares, price, reason)
 
 
 def get_trade_history() -> List[dict]:
     """Get all recorded trades."""
-    if TRADE_HISTORY_FILE.exists():
-        try:
-            return json.loads(TRADE_HISTORY_FILE.read_text())
-        except Exception:
-            pass
-    return []
+    return db.get_trade_history()

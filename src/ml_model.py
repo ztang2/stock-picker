@@ -69,11 +69,11 @@ def _load_snapshots() -> List[dict]:
 
 def _get_price_data(tickers: List[str], start: str, end: str) -> Dict[str, pd.DataFrame]:
     """Fetch historical price data via yfinance."""
-    import yfinance as yf
+    from .yfinance_client import download
     result = {}
     # Batch download
     try:
-        data = yf.download(tickers, start=start, end=end, progress=False, group_by="ticker", threads=True)
+        data = download(tickers, start=start, end=end, progress=False, group_by="ticker", threads=True)
         # Flatten MultiIndex columns if present (yfinance batch format)
         if isinstance(data.columns, pd.MultiIndex):
             if len(tickers) == 1:
@@ -174,7 +174,7 @@ def _generate_synthetic_data(months: int = 18) -> pd.DataFrame:
     Uses existing scorer infrastructure on historical data to create features,
     then computes actual forward returns as labels.
     """
-    import yfinance as yf
+    from .yfinance_client import download
     from .technicals import score_technicals, _rsi, _macd_signal
 
     logger.info(f"Generating synthetic training data for {months} months...")
@@ -323,7 +323,7 @@ def _build_dataset() -> pd.DataFrame:
     if len(snapshots) >= 30:
         # Use real snapshot data
         logger.info(f"Building dataset from {len(snapshots)} snapshots")
-        import yfinance as yf
+        from .yfinance_client import download
 
         all_tickers = set()
         for snap in snapshots:

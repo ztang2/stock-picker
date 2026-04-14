@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 
-import yfinance as yf
+from .yfinance_client import get_ticker_info
 
 logger = logging.getLogger(__name__)
 
@@ -69,7 +69,7 @@ def _save_profit_targets(data: dict):
 def _get_beta(ticker: str) -> Optional[float]:
     """Fetch beta from yfinance."""
     try:
-        info = yf.Ticker(ticker).info
+        info = get_ticker_info(ticker)
         beta = info.get("beta")
         if beta is not None:
             return float(beta)
@@ -94,7 +94,7 @@ def _get_tiers_for_beta(beta: Optional[float]) -> dict:
 def _get_current_price(ticker: str) -> Optional[float]:
     """Fetch current price from yfinance."""
     try:
-        info = yf.Ticker(ticker).info
+        info = get_ticker_info(ticker)
         price = info.get("currentPrice") or info.get("regularMarketPrice")
         if price:
             return float(price)

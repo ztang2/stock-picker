@@ -2,19 +2,9 @@ import json
 import numpy as np
 from pathlib import Path
 
+from .rebalance import load_holdings
+
 DATA_DIR = Path(__file__).parent.parent / "data"
-
-
-def _load_holdings():
-    path = DATA_DIR / "holdings.json"
-    if not path.exists():
-        return []
-    with open(path) as f:
-        data = json.load(f)
-    if isinstance(data, dict):
-        holdings_dict = data.get("holdings", data)
-        return [{"ticker": k, **v} for k, v in holdings_dict.items() if isinstance(v, dict)]
-    return data
 
 
 def _load_price_cache():
@@ -73,7 +63,9 @@ def _pairwise_correlations(tickers, cache, days=90):
 
 
 def compute_diversification(scan_data):
-    holdings = _load_holdings()
+    holdings_dict = load_holdings()
+    # Convert to list format: [{"ticker": k, "shares": ..., "entry_price": ...}, ...]
+    holdings = [{"ticker": k, **v} for k, v in holdings_dict.items()]
     if not holdings:
         return {
             "score": 0,
@@ -131,7 +123,9 @@ def compute_diversification(scan_data):
 
 
 def compute_correlation(scan_data):
-    holdings = _load_holdings()
+    holdings_dict = load_holdings()
+    # Convert to list format: [{"ticker": k, "shares": ..., "entry_price": ...}, ...]
+    holdings = [{"ticker": k, **v} for k, v in holdings_dict.items()]
     tickers = [h["ticker"] for h in holdings]
     cache = _load_price_cache()
     tickers_with_data, corr = _pairwise_correlations(tickers, cache)
@@ -142,7 +136,9 @@ def compute_correlation(scan_data):
 
 
 def compute_whatif(ticker, scan_data):
-    holdings = _load_holdings()
+    holdings_dict = load_holdings()
+    # Convert to list format: [{"ticker": k, "shares": ..., "entry_price": ...}, ...]
+    holdings = [{"ticker": k, **v} for k, v in holdings_dict.items()]
     cache = _load_price_cache()
 
     sector_before = _sector_weights(holdings, scan_data)

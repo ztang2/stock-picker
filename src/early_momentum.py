@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 import numpy as np
 
 logger = logging.getLogger(__name__)
@@ -59,7 +59,7 @@ def compute_early_momentum(ticker: str, force_refresh: bool = False) -> dict:
             pass
     
     try:
-        tk = yf.Ticker(ticker)
+        tk = get_ticker_object(ticker)
         info = tk.info or {}
         
         signals = {}

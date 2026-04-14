@@ -1,0 +1,1402 @@
+[
+  {
+    "type": "new_entry",
+    "ticker": "FAF",
+    "message": "FAF entered top 20 (score: 91.6)",
+    "severity": "info",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "MKC",
+    "message": "MKC entered top 20 (score: 85.6)",
+    "severity": "info",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "EXLS",
+    "message": "EXLS entered top 20 (score: 85.3)",
+    "severity": "info",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "CF",
+    "message": "CF entered top 20 (score: 85.2)",
+    "severity": "info",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "SGI",
+    "message": "SGI entered top 20 (score: 82.4)",
+    "severity": "info",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "PATH",
+    "message": "PATH entered top 20 (score: 78.5)",
+    "severity": "info",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "dropped",
+    "ticker": "UHS",
+    "message": "UHS dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "dropped",
+    "ticker": "WDAY",
+    "message": "WDAY dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "dropped",
+    "ticker": "LVS",
+    "message": "LVS dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "dropped",
+    "ticker": "TXT",
+    "message": "TXT dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "dropped",
+    "ticker": "GDDY",
+    "message": "GDDY dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "dropped",
+    "ticker": "ALL",
+    "message": "ALL dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:44"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:45"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:45"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:49"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:49"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:51"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:51"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:57"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:32:57"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:33:02"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:33:02"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:34:58"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:34:58"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:39:12"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:39:12"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:39:14"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:39:14"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:45:58"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:45:58"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:45:58"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:45:58"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:45:58"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:45:58"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:46:07"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:46:07"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:46:07"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:46:07"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:22"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:22"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:22"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:22"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:22"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:22"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:25"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:25"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:25"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:54:25"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:55:07"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:55:07"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:55:08"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:55:08"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:56:29"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:56:29"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:56:29"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:56:29"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:56:32"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:56:32"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:56:32"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:56:32"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:58:33"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:58:33"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:58:33"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T22:58:33"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T23:23:52"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-07T23:23:52"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "FAF",
+    "message": "FAF has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (17.6 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "INCY",
+    "message": "INCY has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (16.6 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "HST",
+    "message": "HST has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (17.6 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "EXLS",
+    "message": "EXLS has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "JHG",
+    "message": "JHG has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (16.8 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "CTRA",
+    "message": "CTRA has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (18.2 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "GEN",
+    "message": "GEN has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (18.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "CF",
+    "message": "CF has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (15.9 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "HIG",
+    "message": "HIG has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (16.2 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "PATH",
+    "message": "PATH has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (15.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "TOL",
+    "message": "TOL has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (15.4 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:10:39"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "TXT",
+    "message": "TXT entered top 20 (score: 87.5)",
+    "severity": "info",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "ALL",
+    "message": "ALL entered top 20 (score: 86.9)",
+    "severity": "info",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "BMY",
+    "message": "BMY entered top 20 (score: 85.4)",
+    "severity": "info",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "LVS",
+    "message": "LVS entered top 20 (score: 85.1)",
+    "severity": "info",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "WDAY",
+    "message": "WDAY entered top 20 (score: 85.1)",
+    "severity": "info",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "EIX",
+    "message": "EIX entered top 20 (score: 80.3)",
+    "severity": "info",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "DUOL",
+    "message": "DUOL entered top 20 (score: 79.1)",
+    "severity": "info",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "GDDY",
+    "message": "GDDY entered top 20 (score: 78.9)",
+    "severity": "info",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "dropped",
+    "ticker": "FAF",
+    "message": "FAF dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "dropped",
+    "ticker": "MKC",
+    "message": "MKC dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "dropped",
+    "ticker": "EXLS",
+    "message": "EXLS dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "dropped",
+    "ticker": "CTRA",
+    "message": "CTRA dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "dropped",
+    "ticker": "NFG",
+    "message": "NFG dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "dropped",
+    "ticker": "SGI",
+    "message": "SGI dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "dropped",
+    "ticker": "GEN",
+    "message": "GEN dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "dropped",
+    "ticker": "PATH",
+    "message": "PATH dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "TXT",
+    "message": "TXT entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "THC",
+    "message": "THC entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "FHI",
+    "message": "FHI has SELL signal: Price near resistance ($58.57, +1.8%); Signal downgraded from HOLD to WAIT",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T09:39:20"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "FHI",
+    "message": "FHI has SELL signal: Price near resistance ($58.57, +1.8%); Signal downgraded from HOLD to WAIT",
+    "severity": "warning",
+    "timestamp": "2026-04-08T09:42:48"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T09:42:48"
+  },
+  {
+    "type": "score_change",
+    "ticker": "TXT",
+    "message": "TXT score moved down by 16.7 (87.5 \u2192 70.8)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T14:43:44"
+  },
+  {
+    "type": "score_change",
+    "ticker": "EIX",
+    "message": "EIX score moved down by 10.8 (80.3 \u2192 69.5)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T14:43:44"
+  },
+  {
+    "type": "score_change",
+    "ticker": "GDDY",
+    "message": "GDDY score moved down by 11.0 (78.9 \u2192 67.9)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T14:43:44"
+  },
+  {
+    "type": "score_change",
+    "ticker": "ALL",
+    "message": "ALL score moved down by 22.4 (86.9 \u2192 64.5)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T14:43:44"
+  },
+  {
+    "type": "score_change",
+    "ticker": "DUOL",
+    "message": "DUOL score moved down by 20.7 (79.1 \u2192 58.4)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T14:43:44"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:43:44"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:43:44"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:43:47"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:43:47"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:43:49"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:43:49"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:45:15"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:45:15"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:45:16"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T14:45:16"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:01:58"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:01:58"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:06:19"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:06:19"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:08:32"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:08:32"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:08:46"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:08:46"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:11:58"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:11:58"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:13:46"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:13:46"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:20:44"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "ALL",
+    "message": "ALL has STRONG SELL signal: Price near resistance ($215.66, +1.7%); Signal downgraded from BUY to HOLD",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:20:44"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:30:37"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:30:37"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:31:19"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:31:19"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:32:51"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:32:51"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:34:20"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:34:20"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:36:03"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:36:03"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:38:16"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:38:16"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:52:56"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:52:56"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:52:59"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:52:59"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:53:08"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:53:08"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T15:53:13"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T15:53:13"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T16:03:56"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T16:03:56"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (82.3); Price near resistance ($193.26, +0.1%)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T16:12:05"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "ALL",
+    "message": "ALL has SELL signal: Price near resistance ($215.66, +1.7%); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T16:12:05"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "FAF",
+    "message": "FAF entered top 20 (score: 92.4)",
+    "severity": "info",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "MKC",
+    "message": "MKC entered top 20 (score: 82.8)",
+    "severity": "info",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "PCTY",
+    "message": "PCTY entered top 20 (score: 82.5)",
+    "severity": "info",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "CTRA",
+    "message": "CTRA entered top 20 (score: 81.1)",
+    "severity": "info",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "NVST",
+    "message": "NVST entered top 20 (score: 79.9)",
+    "severity": "info",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "dropped",
+    "ticker": "BMY",
+    "message": "BMY dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "dropped",
+    "ticker": "LVS",
+    "message": "LVS dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "dropped",
+    "ticker": "EIX",
+    "message": "EIX dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "dropped",
+    "ticker": "GDDY",
+    "message": "GDDY dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "dropped",
+    "ticker": "ALL",
+    "message": "ALL dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "MKC",
+    "message": "MKC entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "PCTY",
+    "message": "PCTY entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "WDAY",
+    "message": "WDAY entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "strong_buy",
+    "ticker": "DUOL",
+    "message": "DUOL entry signal changed to STRONG_BUY",
+    "severity": "critical",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "FAF",
+    "message": "FAF has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (17.6 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "HST",
+    "message": "HST has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (17.6 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "JLL",
+    "message": "JLL has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (15.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.1 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "HIG",
+    "message": "HIG has SELL signal: Signal downgraded from BUY to HOLD; Fundamentals deteriorated (16.2 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "NBIX",
+    "message": "NBIX has SELL signal: Signal downgraded from BUY to WAIT; Fundamentals deteriorated (17.2 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "sell_warning",
+    "ticker": "THC",
+    "message": "THC has SELL signal: Signal downgraded from STRONG_BUY to BUY; Fundamentals deteriorated (15.3 point drop)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:46:18"
+  },
+  {
+    "type": "new_entry",
+    "ticker": "ALL",
+    "message": "ALL entered top 20 (score: 86.7)",
+    "severity": "info",
+    "timestamp": "2026-04-08T21:48:36"
+  },
+  {
+    "type": "dropped",
+    "ticker": "HIG",
+    "message": "HIG dropped out of top rankings",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:48:36"
+  },
+  {
+    "type": "score_change",
+    "ticker": "FAF",
+    "message": "FAF score moved down by 13.2 (92.4 \u2192 79.2)",
+    "severity": "warning",
+    "timestamp": "2026-04-08T21:48:36"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T21:48:36"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:18:14"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:18:14"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:18:14"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:18:14"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:19:45"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:19:45"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:19:50"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:19:50"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:22:58"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:22:58"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:26:06"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:26:11"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:26:21"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:29:33"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:30:03"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:31:20"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:33:51"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-08T22:34:17"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-09T21:11:47"
+  },
+  {
+    "type": "strong_sell",
+    "ticker": "SNX",
+    "message": "SNX has STRONG SELL signal: RSI extremely overbought (86.0); Fundamentals deteriorated (16.0 point drop)",
+    "severity": "critical",
+    "timestamp": "2026-04-11T23:48:34"
+  }
+]

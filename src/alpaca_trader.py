@@ -14,12 +14,13 @@ from typing import Any, Dict, List, Optional
 import requests
 from dotenv import load_dotenv
 
+from .rebalance import load_holdings
+
 load_dotenv()
 
 logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-HOLDINGS_FILE = DATA_DIR / "holdings.json"
 
 ALPACA_BASE_URL = os.getenv("ALPACA_BASE_URL", "https://paper-api.alpaca.markets")
 ALPACA_DATA_URL = "https://data.alpaca.markets"
@@ -147,15 +148,17 @@ def sync_with_holdings() -> Dict[str, Any]:
     Compares current paper positions with holdings.json and returns
     the orders needed to align them. Does NOT auto-execute.
     """
+    holdings_dict = load_holdings()
+    # Convert to list format for compatibility
+    holdings = [{"ticker": k, **v} for k, v in holdings_dict.items()]
+
     if not _is_configured():
         # Still show what holdings we have
-        holdings = _load_holdings()
         return _dry_run_response("sync_with_holdings",
                                  holdings=holdings,
                                  actions=[],
                                  message="Alpaca not configured. Showing holdings only.")
 
-    holdings = _load_holdings()
     positions = get_positions()
     pos_map = {p["ticker"]: float(p["qty"]) for p in positions}
 
@@ -206,9 +209,3 @@ def get_performance() -> Dict[str, Any]:
         "positions": positions,
         "timestamp": datetime.now().isoformat(),
     }
-
-
-def _load_holdings() -> List[Dict]:
-    if HOLDINGS_FILE.exists():
-        return json.loads(HOLDINGS_FILE.read_text())
-    return []

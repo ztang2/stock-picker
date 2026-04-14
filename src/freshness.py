@@ -7,8 +7,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional, Dict, Tuple
 
-import yfinance as yf
-
 logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"

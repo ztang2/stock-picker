@@ -17,9 +17,9 @@ from typing import Optional, Dict
 
 import numpy as np
 import pandas as pd
-import yfinance as yf
 
 from .indicators import _rsi
+from .yfinance_client import get_ticker_history
 
 logger = logging.getLogger(__name__)
 
@@ -53,8 +53,7 @@ def _fetch_macro_data() -> Dict[str, dict]:
     results = {}
     for name, ticker in MACRO_TICKERS.items():
         try:
-            tk = yf.Ticker(ticker)
-            hist = tk.history(period="6mo")
+            hist = get_ticker_history(ticker, period="6mo")
             if hist is None or len(hist) < 20:
                 logger.warning(f"Insufficient data for {name} ({ticker})")
                 continue

@@ -10,7 +10,7 @@ from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 from scipy import stats
 
 from .pipeline import load_config, analyze_single, _reconstruct_hist, DATA_DIR
@@ -39,7 +39,7 @@ def _get_hist(ticker: str, start: str, end: str) -> Optional[pd.DataFrame]:
     if key in _price_cache:
         return _price_cache[key]
     try:
-        t = yf.Ticker(ticker)
+        t = get_ticker_object(ticker)
         hist = t.history(start=start, end=end)
         if hist is not None and not hist.empty:
             _price_cache[key] = hist
@@ -118,7 +118,7 @@ def run_backtest(months_back: int = 6, top_n: int = 20) -> dict:
 
     for ticker in tickers[:100]:  # limit for speed
         try:
-            t = yf.Ticker(ticker)
+            t = get_ticker_object(ticker)
             hist = t.history(start=data_start, end=start_date)
             if hist is None or hist.empty:
                 continue
@@ -150,7 +150,7 @@ def run_backtest(months_back: int = 6, top_n: int = 20) -> dict:
 
     # Get SPY hist for beta
     try:
-        spy_t = yf.Ticker("SPY")
+        spy_t = get_ticker_object("SPY")
         spy_full = spy_t.history(start=data_start, end=start_date)
         if spy_full is not None and not spy_full.empty:
             spy_hist = spy_full
@@ -283,7 +283,7 @@ def _prefetch_all_history(tickers: List[str], years: int = 6) -> Dict[str, pd.Da
     for i in range(0, len(tickers), batch_size):
         batch = tickers[i:i + batch_size]
         try:
-            data = yf.download(batch, start=start_str, end=end_str, group_by="ticker", progress=False, threads=True)
+            data = download(batch, start=start_str, end=end_str, group_by="ticker", progress=False, threads=True)
             if data is None or data.empty:
                 continue
             for t in batch:
@@ -496,7 +496,7 @@ def _run_rolling_backtest_impl(years: int, top_n: int, max_stocks: int) -> dict:
     if "SPY" not in all_hist:
         # Try fetching SPY separately
         try:
-            spy_data = yf.download("SPY", period="%dy" % (years + 2), progress=False)
+            spy_data = download("SPY", period="%dy" % (years + 2), progress=False)
             if spy_data is not None and not spy_data.empty:
                 all_hist["SPY"] = spy_data
         except Exception:

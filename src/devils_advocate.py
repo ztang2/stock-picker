@@ -13,7 +13,7 @@ import logging
 from datetime import datetime
 from typing import Dict, Optional
 
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 import google.generativeai as genai
 
 logger = logging.getLogger(__name__)
@@ -30,7 +30,7 @@ def _collect_data(ticker: str) -> Dict:
 
     # yfinance basics
     try:
-        t = yf.Ticker(ticker)
+        t = get_ticker_object(ticker)
         info = t.info or {}
         data["company_name"] = info.get("shortName", ticker)
         data["sector"] = info.get("sector", "Unknown")

@@ -7,11 +7,11 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 from .streak_tracker import get_all_streaks
+from . import db
 
 logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-ALERTS_FILE = DATA_DIR / "alerts.json"
 PREV_RESULTS_FILE = DATA_DIR / "prev_scan_results.json"
 
 
@@ -27,18 +27,6 @@ def _load_json(path: Path) -> Optional[dict]:
 def _save_json(path: Path, data: object) -> None:
     DATA_DIR.mkdir(exist_ok=True)
     path.write_text(json.dumps(data, indent=2, default=str))
-
-
-def _load_alerts_history() -> List[dict]:
-    data = _load_json(ALERTS_FILE)
-    if isinstance(data, list):
-        return data
-    return []
-
-
-def _save_alerts(alerts: List[dict]) -> None:
-    # Keep last 200
-    _save_json(ALERTS_FILE, alerts[-200:])
 
 
 def check_alerts(
@@ -171,17 +159,14 @@ def check_alerts(
 
     # Append to history
     if alerts:
-        history = _load_alerts_history()
-        history.extend(alerts)
-        _save_alerts(history)
+        db.insert_alerts(alerts)
 
     return alerts
 
 
 def get_alert_history(limit: int = 50) -> List[dict]:
     """Return recent alert history."""
-    history = _load_alerts_history()
-    return history[-limit:]
+    return db.get_alerts(limit=limit)
 
 
 def generate_morning_briefing(current_results: Optional[dict] = None, top_n: int = 20) -> str:

@@ -16,7 +16,7 @@ Both scores use existing yfinance data — no new API needed.
 import logging
 from typing import Dict, Optional, Tuple
 
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ def compute_piotroski(ticker: str) -> Dict:
     9 criteria across profitability, leverage, and operating efficiency.
     """
     try:
-        t = yf.Ticker(ticker)
+        t = get_ticker_object(ticker)
         
         # Get financial statements
         income = t.financials
@@ -198,7 +198,7 @@ def compute_altman_z(ticker: str) -> Dict:
     E = Revenue / Total Assets
     """
     try:
-        t = yf.Ticker(ticker)
+        t = get_ticker_object(ticker)
         info = t.info
         balance = t.balance_sheet
         income = t.financials

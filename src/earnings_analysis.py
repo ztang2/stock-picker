@@ -3,7 +3,7 @@
 import logging
 from typing import Dict, List, Optional
 
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 import pandas as pd
 
 logger = logging.getLogger(__name__)
@@ -18,7 +18,7 @@ def analyze_earnings(ticker: str) -> dict:
     ticker = ticker.upper()
 
     try:
-        t = yf.Ticker(ticker)
+        t = get_ticker_object(ticker)
         info = t.info or {}
     except Exception as e:
         return {"ticker": ticker, "error": f"Failed to fetch data: {e}"}
