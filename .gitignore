@@ -65,7 +65,9 @@ data/server.log
 data/server.error.log
 logs/*.log
 
-# SQLite journals (WAL mode)
+# SQLite databases (runtime state; schema is created on startup via init_db())
+data/app.db
+data/scan_results.db
 data/*.db-shm
 data/*.db-wal
 
