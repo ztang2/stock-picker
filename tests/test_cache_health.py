@@ -38,14 +38,10 @@ def _fresh_ticker(close_value: float = 100.0) -> dict:
 
 def test_diagnose_healthy_cache(temp_data_dir):
     """A cache with only fresh, non-NaN data reports zero issues."""
-    from datetime import datetime
     from src.cache_health import diagnose_cache
 
-    # Patch _last_trading_date to return a naive datetime so pd.Timestamp(cutoff, tz='UTC')
-    # works correctly in pandas 2.x (tz-aware cutoff triggers a ValueError in that call).
-    with patch("src.cache_health._last_trading_date", return_value=datetime.utcnow()):
-        cache = _make_cache(temp_data_dir, {"AAPL": _fresh_ticker(150.0), "MSFT": _fresh_ticker(400.0)})
-        report = diagnose_cache(str(cache))
+    cache = _make_cache(temp_data_dir, {"AAPL": _fresh_ticker(150.0), "MSFT": _fresh_ticker(400.0)})
+    report = diagnose_cache(str(cache))
 
     assert report["total"] == 2
     assert report["nan_count"] == 0
