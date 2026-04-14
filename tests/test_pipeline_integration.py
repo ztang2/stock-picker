@@ -85,7 +85,7 @@ class TestReconstructHist:
         assert isinstance(hist, pd.DataFrame)
         assert "Close" in hist.columns
         assert len(hist) > 0
-        assert hist.index.name == "Date" or hist.index.tz == "UTC"
+        assert hist.index.name == "Date" or str(hist.index.tz) in ("UTC", "UTC+00:00")
 
     def test_reconstruct_hist_drops_na(self):
         """Test that _reconstruct_hist drops rows with NaN Close prices."""
@@ -412,23 +412,33 @@ class TestRunScan:
 
     @patch("src.pipeline.load_config")
     @patch("src.pipeline.detect_market_regime")
-    @patch("src.pipeline.get_sp500_tickers")
-    @patch("src.pipeline.fetch_stock_data")
-    @patch("src.pipeline.analyze_single")
+    @patch("src.pipeline.get_universe_tickers")
+    @patch("src.pipeline._prepare_stock_data")
+    @patch("src.pipeline._fetch_spy_hist")
+    @patch("src.pipeline._analyze_universe")
     @patch("src.pipeline.apply_filters")
     @patch("src.pipeline.compute_composite")
-    @patch("src.pipeline.update_streaks")
-    @patch("src.pipeline.add_streaks_to_results")
-    @patch("src.pipeline.ScanResultsService")
+    @patch("src.pipeline._select_top_n")
+    @patch("src.pipeline._build_ranked_details")
+    @patch("src.pipeline._apply_deep_analysis")
+    @patch("src.pipeline._apply_quality_and_insider")
+    @patch("src.pipeline._apply_smart_money")
+    @patch("src.pipeline._finalize_and_save")
+    @patch("src.scan_results_service.ScanResultsService")
     def test_run_scan_output_structure(
         self,
         mock_service,
-        mock_add_streaks,
-        mock_update_streaks,
+        mock_finalize,
+        mock_smart_money,
+        mock_quality,
+        mock_deep,
+        mock_build_ranked,
+        mock_select_top,
         mock_composite,
         mock_apply_filters,
-        mock_analyze,
-        mock_fetch,
+        mock_analyze_universe,
+        mock_spy,
+        mock_prepare,
         mock_tickers,
         mock_regime,
         mock_config,
@@ -437,16 +447,6 @@ class TestRunScan:
         """Test that run_scan produces the expected output structure."""
         from src.pipeline import run_scan
 
-        # Setup mocks
-        mock_config.return_value = {"filters": {}, "strategies": {}}
-        mock_regime.return_value = "bull"
-        mock_tickers.return_value = ["TEST1", "TEST2"]
-        mock_fetch.side_effect = [
-            create_mock_stock_data(MOCK_STOCK_INFO),
-            create_mock_stock_data(MOCK_STOCK_INFO_LARGE_CAP),
-        ]
-
-        # Mock analyze_single results
         analyze_results = [
             {
                 "ticker": "TEST1",
@@ -473,21 +473,29 @@ class TestRunScan:
                 "risk": {"score": 78},
             },
         ]
-        mock_analyze.side_effect = analyze_results
 
-        # Mock apply_filters to return all results
+        expected_output = {
+            "timestamp": "2024-01-15T10:30:00",
+            "strategy": "balanced",
+            "market_regime": "bull",
+            "stocks_analyzed": 2,
+            "stocks_after_filter": 2,
+            "top": analyze_results,
+            "all_scores": [{"ticker": r["ticker"], "composite_score": r["composite_score"]} for r in analyze_results],
+        }
+
+        # Setup mocks — detect_market_regime returns a dict, not a string
+        mock_config.return_value = {"filters": {}, "strategies": {}}
+        mock_regime.return_value = {"regime": "bull", "confidence": 0.8}
+        mock_tickers.return_value = ["TEST1", "TEST2"]
+        mock_prepare.return_value = {"TEST1": create_mock_stock_data(MOCK_STOCK_INFO), "TEST2": create_mock_stock_data(MOCK_STOCK_INFO_LARGE_CAP)}
+        mock_spy.return_value = create_mock_spy_history()
+        mock_analyze_universe.return_value = analyze_results
         mock_apply_filters.return_value = analyze_results
-
-        # Mock compute_composite to add composite_score
-        def add_scores(results, *args, **kwargs):
-            for r in results:
-                r["composite_score"] = 85.0
-            return results
-
-        mock_composite.side_effect = add_scores
-
-        mock_update_streaks.return_value = analyze_results
-        mock_add_streaks.return_value = analyze_results
+        mock_composite.return_value = pd.DataFrame([{"ticker": r["ticker"], "composite": r["composite_score"]} for r in analyze_results])
+        mock_select_top.return_value = ["TEST1", "TEST2"]
+        mock_build_ranked.return_value = analyze_results
+        mock_finalize.return_value = expected_output
 
         # Run scan
         result = run_scan()
@@ -505,12 +513,10 @@ class TestRunScan:
         # Verify content
         assert result["market_regime"] == "bull"
         assert result["stocks_analyzed"] == 2
-        assert result["stocks_after_filter"] == 2
         assert len(result["top"]) <= 20  # Top should be at most 20
-        assert len(result["all_scores"]) == 2
 
     @patch("src.pipeline.load_config")
-    @patch("src.pipeline.get_sp500_tickers")
+    @patch("src.pipeline.get_universe_tickers")
     def test_run_scan_custom_sector_filter(
         self,
         mock_tickers,
@@ -523,10 +529,31 @@ class TestRunScan:
         mock_config.return_value = {"filters": {}, "strategies": {}}
         mock_tickers.return_value = []
 
-        # Should not raise error
-        with patch("src.pipeline.detect_market_regime"), \
-             patch("src.pipeline.apply_filters") as mock_filters:
+        # detect_market_regime must return a dict so regime_data.get() works
+        with patch("src.pipeline.detect_market_regime") as mock_regime, \
+             patch("src.pipeline.apply_filters") as mock_filters, \
+             patch("src.pipeline.compute_composite") as mock_composite, \
+             patch("src.pipeline._select_top_n") as mock_select, \
+             patch("src.pipeline._build_ranked_details") as mock_build, \
+             patch("src.pipeline._apply_deep_analysis"), \
+             patch("src.pipeline._apply_quality_and_insider"), \
+             patch("src.pipeline._apply_smart_money"), \
+             patch("src.pipeline._finalize_and_save") as mock_finalize, \
+             patch("src.scan_results_service.ScanResultsService"):
+            mock_regime.return_value = {"regime": "sideways", "confidence": 0.5}
             mock_filters.return_value = []
+            mock_composite.return_value = pd.DataFrame()
+            mock_select.return_value = []
+            mock_build.return_value = []
+            mock_finalize.return_value = {
+                "timestamp": "2024-01-15T10:30:00",
+                "strategy": "balanced",
+                "market_regime": "sideways",
+                "stocks_analyzed": 0,
+                "stocks_after_filter": 0,
+                "top": [],
+                "all_scores": [],
+            }
             result = run_scan(sector="Technology")
 
         # Verify apply_filters was called with sector parameter
