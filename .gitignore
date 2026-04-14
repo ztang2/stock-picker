@@ -65,6 +65,10 @@ data/server.log
 data/server.error.log
 logs/*.log
 
+# SQLite journals (WAL mode)
+data/*.db-shm
+data/*.db-wal
+
 # Debug and development outputs
 data/ml/tuning_results.json
 scripts/__pycache__/
