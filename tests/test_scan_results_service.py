@@ -13,14 +13,29 @@ import pytest
 
 @pytest.fixture
 def mock_service_env(temp_data_dir):
-    """Set up environment with mocked paths for ScanResultsService testing."""
+    """Redirect ScanResultsService paths to a temp dir and reset its cache.
+
+    Must patch DB_FILE directly — it's a module-level Path computed from
+    DATA_DIR at import time, so patching DATA_DIR alone leaves DB_FILE
+    pointing at the real data/scan_results.db and tests pollute production.
+    """
+    from src.scan_results_service import ScanResultsService
+
     results_file = temp_data_dir / "scan_results.json"
     prev_results_file = temp_data_dir / "prev_scan_results.json"
+    db_file = temp_data_dir / "scan_results.db"
+
+    ScanResultsService._cache = None
+    ScanResultsService._cache_timestamp = None
 
     with patch("src.scan_results_service.DATA_DIR", temp_data_dir), \
          patch("src.scan_results_service.RESULTS_FILE", results_file), \
-         patch("src.scan_results_service.PREV_RESULTS_FILE", prev_results_file):
+         patch("src.scan_results_service.PREV_RESULTS_FILE", prev_results_file), \
+         patch("src.scan_results_service.DB_FILE", db_file):
         yield temp_data_dir
+
+    ScanResultsService._cache = None
+    ScanResultsService._cache_timestamp = None
 
 
 @pytest.fixture
