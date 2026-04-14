@@ -58,3 +58,14 @@ data/alpha158_training.parquet
 data/alpha158_xgb.model
 data/alpha158_training.parquet
 data/alpha158_xgb.model
+
+# Logs
+server.log
+data/server.log
+data/server.error.log
+logs/*.log
+
+# Debug and development outputs
+data/ml/tuning_results.json
+scripts/__pycache__/
+*.debug.json
