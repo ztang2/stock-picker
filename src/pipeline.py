@@ -9,9 +9,9 @@ from typing import Optional, List, Dict
 
 import pandas as pd
 import yaml
-import yfinance as yf
 
 from .universe import get_sp500_tickers, get_universe_tickers
+from .yfinance_client import get_ticker_info, get_ticker_history
 from .fundamentals import score_fundamentals
 from .valuation import score_valuation
 from .technicals import score_technicals
@@ -62,11 +62,10 @@ def _save_cache(data: dict):
 def fetch_stock_data(ticker: str, period: str = "1y") -> Optional[dict]:
     """Fetch info + history for a single ticker."""
     try:
-        t = yf.Ticker(ticker)
-        info = t.info or {}
-        if not info.get("regularMarketPrice") and not info.get("currentPrice"):
+        info = get_ticker_info(ticker)
+        if not info or (not info.get("regularMarketPrice") and not info.get("currentPrice")):
             return None
-        hist = t.history(period=period)
+        hist = get_ticker_history(ticker, period=period)
         if hist.empty:
             return None
         return {
@@ -235,43 +234,9 @@ def analyze_single(
     }
 
 
-def run_scan(
-    config: Optional[dict] = None,
-    sector: Optional[str] = None,
-    min_cap: Optional[float] = None,
-    max_cap: Optional[float] = None,
-    exclude_tickers: Optional[List[str]] = None,
-    strategy: str = "balanced",
-) -> dict:
-    """Run the full pipeline. Returns {results: [...], ranked: [...], timestamp}."""
-    # Auto-heal cache before scanning
-    try:
-        from .cache_health import heal_cache
-        heal_report = heal_cache()
-        logger.info("Cache heal: %s", heal_report)
-    except Exception as e:
-        logger.warning("Cache heal failed: %s", e)
 
-    if config is None:
-        config = load_config()
-
-    cache_hours = config.get("cache_hours", 24)
-    weights = config.get("weights", {})
-    thresholds = config.get("thresholds", {})
-    filters = config.get("filters", {})
-    top_n = config.get("top_n", 20)
-
-    # Get strategy config
-    strat = get_strategy(strategy)
-    strat_filters = strat.get("filters", {})
-
-    # Use strategy min_market_cap if higher than base threshold
-    min_cap_threshold = float(strat_filters.get("min_market_cap", thresholds.get("min_market_cap", 2e9)))
-    min_vol = float(thresholds.get("min_volume", 500000))
-
-    tickers = get_universe_tickers(cache_hours)
-    logger.info("Scanning %d tickers with strategy '%s'...", len(tickers), strategy)
-
+def _prepare_stock_data(config: dict, tickers: List[str], cache_hours: float) -> dict:
+    """Prepare stock data: load cache, fetch missing, save cache."""
     # Try cache
     cached = _load_cache(cache_hours)
     stock_data = cached if cached else {}
@@ -290,41 +255,14 @@ def run_scan(
             if (i + 1) % 20 == 0 and i < len(missing) - 1:
                 time.sleep(2)
         _save_cache(stock_data)
-
-    # Fetch SPY for beta and regime detection
-    spy_hist = _fetch_spy_hist(cache_hours, stock_data)
     
-    # Detect market regime
-    regime_data = detect_market_regime(spy_hist) if spy_hist is not None else {}
-    regime = regime_data.get("regime", "sideways")
-    logger.info(f"Market regime detected: {regime.upper()} (confidence: {regime_data.get('confidence', 0):.0%})")
+    return stock_data
 
-    # Load previous scan results for sell signal comparison
-    # Uses the actual previous scan output (scores/signals) rather than re-analyzing
-    prev_results_file = DATA_DIR / "prev_scan_results.json"
-    prev_results_map = {}  # type: Dict[str, dict]
-    if prev_results_file.exists():
-        try:
-            prev_scan = json.loads(prev_results_file.read_text())
-            # Load from top (detailed) AND all_scores (lightweight, covers all 500+)
-            for stock in prev_scan.get("top", prev_scan.get("stocks", [])):
-                ticker_sym = stock.get("ticker")
-                if ticker_sym:
-                    prev_results_map[ticker_sym] = {
-                        "fundamentals": {"score": stock.get("fundamentals_pct")},
-                        "momentum": {"entry_signal": stock.get("entry_signal")},
-                    }
-            for stock in prev_scan.get("all_scores", []):
-                ticker_sym = stock.get("ticker")
-                if ticker_sym and ticker_sym not in prev_results_map:
-                    prev_results_map[ticker_sym] = {
-                        "fundamentals": {"score": stock.get("fundamentals_pct") or stock.get("fund_score")},
-                        "momentum": {"entry_signal": stock.get("entry_signal") or stock.get("signal")},
-                    }
-        except Exception:
-            logger.warning("Could not load previous results for sell signal comparison")
 
-    # Analyze
+def _analyze_universe(tickers: List[str], stock_data: dict, spy_hist: Optional[pd.DataFrame],
+                     prev_results_map: Dict[str, dict], config: dict, regime: str,
+                     min_cap_threshold: float, min_vol: float) -> List[dict]:
+    """Analyze all tickers in universe: threshold filtering + analyze_single loop."""
     results = []
     for ticker_sym in tickers:
         if ticker_sym not in stock_data:
@@ -346,35 +284,13 @@ def run_scan(
             logger.warning("Analysis failed for %s", ticker_sym, exc_info=True)
 
     logger.info("Analyzed %d stocks", len(results))
+    return results
 
-    # Apply filters (including strategy-specific)
-    filtered = apply_filters(
-        results,
-        filters=filters,
-        sector=sector,
-        min_cap=min_cap,
-        max_cap=max_cap,
-        exclude_tickers=exclude_tickers,
-        strategy_filters=strat_filters,
-    )
-    logger.info("After filtering: %d stocks", len(filtered))
 
-    # Compute sector-relative scores
-    sector_scores = compute_sector_relative_scores(results)
-
-    # Detect geopolitical events and get industry adjustments
-    from .market_regime import get_geopolitical_adjustments
-    geo_adjustments = get_geopolitical_adjustments(regime_data)
-    if geo_adjustments:
-        logger.info(f"Geopolitical adjustments active: {len(geo_adjustments)} industries affected")
-
-    # Score and rank (on filtered set), passing sector scores for sector-relative weighting
-    ranked_df = compute_composite(filtered, weights, strategy=strategy, sector_scores=sector_scores, regime=regime, geo_adjustments=geo_adjustments)
-    
-    # --- ML Integration with Adaptive Weighting ---
-    # Count daily snapshots to determine ML weight
-    snapshot_dir = DATA_DIR / "daily_snapshots"
-    snapshot_count = len(list(snapshot_dir.glob("*.json"))) if snapshot_dir.exists() else 0
+def _apply_ml_scores(ranked_df: pd.DataFrame, ranked: List[dict], config: dict,
+                    snapshot_count: int, ml_weight: float) -> tuple:
+    """Apply ML scoring with adaptive weighting. Returns (ml_weight, ml_scores_map)."""
+    DATA_DIR = Path(__file__).resolve().parent.parent / "data"
     
     # Check if ML has been auto-disabled due to poor performance
     ml_weight_state_file = DATA_DIR / "ml_weight_state.json"
@@ -389,10 +305,8 @@ def run_scan(
             pass
     
     # Adaptive ML weight based on MODEL ACCURACY, not just data availability
-    # ML must EARN its weight by proving accuracy > 55%
     ml_accuracy = None
     try:
-        # Check both possible locations for ML metrics
         for ml_metrics_path in [DATA_DIR / "ml_metrics.json", DATA_DIR / "ml" / "metrics.json"]:
             if ml_metrics_path.exists():
                 ml_meta = json.loads(ml_metrics_path.read_text())
@@ -409,64 +323,35 @@ def run_scan(
         ml_weight = 0.0
         logger.info(f"ML weight = 0% ({snapshot_count} snapshots, insufficient data)")
     elif ml_accuracy is not None and ml_accuracy < 0.55:
-        ml_weight = 0.0  # Model not good enough yet
+        ml_weight = 0.0
         logger.info(f"ML weight = 0% (accuracy {ml_accuracy:.1%} < 55% threshold)")
     elif ml_accuracy is not None and ml_accuracy < 0.60:
-        ml_weight = 0.10  # Barely useful: 10%
+        ml_weight = 0.10
         logger.info(f"ML weight = 10% (accuracy {ml_accuracy:.1%})")
     elif ml_accuracy is not None and ml_accuracy < 0.65:
-        ml_weight = 0.20  # Decent: 20%
+        ml_weight = 0.20
         logger.info(f"ML weight = 20% (accuracy {ml_accuracy:.1%})")
     else:
-        ml_weight = 0.30  # Strong: 30%
+        ml_weight = 0.30
         logger.info(f"ML weight = 30% (accuracy {ml_accuracy})")
     
     # Apply ML scoring if model exists and weight > 0
     ml_scores_map = {}
     if ml_weight > 0:
         try:
-            # Get ML predictions for top stocks
             ml_predictions = predict_scores()
             if ml_predictions and not ml_predictions[0].get("error"):
                 ml_scores_map = {p["ticker"]: p for p in ml_predictions}
                 logger.info(f"ML predictions obtained for {len(ml_scores_map)} stocks")
         except Exception as e:
             logger.warning(f"ML prediction failed: {e}")
-            ml_weight = 0.0  # Fall back to no ML if prediction fails
+            ml_weight = 0.0
+    
+    return ml_weight, ml_scores_map
 
-    # --- Alpha158 ML Integration (Qlib methodology) ---
-    alpha158_map = {}
-    alpha158_weight = 0.0
-    try:
-        alpha158_metrics_file = DATA_DIR / "alpha158_models" / "metrics.json"
-        if alpha158_metrics_file.exists():
-            a158_meta = json.loads(alpha158_metrics_file.read_text())
-            a158_ic = a158_meta.get("ensemble_ic", 0)
-            # IC-based weight: IC > 0.03 = 10%, IC > 0.05 = 15%, IC > 0.08 = 20%
-            if a158_ic > 0.08:
-                alpha158_weight = 0.20
-            elif a158_ic > 0.05:
-                alpha158_weight = 0.15
-            elif a158_ic > 0.03:
-                alpha158_weight = 0.10
-            else:
-                alpha158_weight = 0.0
-            logger.info(f"Alpha158 IC: {a158_ic:.4f} → weight: {alpha158_weight:.0%}")
-            
-            if alpha158_weight > 0:
-                # Only predict for top stocks to save time (not all 800)
-                top_tickers = [row["ticker"] for _, row in ranked_df.head(min(top_n * 3, 100)).iterrows()]
-                a158_preds = alpha158_predict(tickers=top_tickers)
-                if a158_preds and not a158_preds[0].get("error"):
-                    alpha158_map = {p["ticker"]: p for p in a158_preds}
-                    logger.info(f"Alpha158 predictions for {len(alpha158_map)} stocks")
-    except Exception as e:
-        logger.warning(f"Alpha158 prediction failed: {e}")
-        alpha158_weight = 0.0
 
-    # Merge details
-    detail_map = {r["ticker"]: r for r in filtered}
-    # Sector-capped selection: max 4 per sector in top N to prevent concentration
+def _select_top_n(ranked_df: pd.DataFrame, detail_map: dict, top_n: int) -> List[str]:
+    """Select top N stocks with sector cap (max 4 per sector)."""
     MAX_PER_SECTOR = 4
     sector_counts = {}
     selected_tickers = []
@@ -480,6 +365,14 @@ def run_scan(
         sector_counts[sector] = sector_counts.get(sector, 0) + 1
         selected_tickers.append(tkr)
     
+    return selected_tickers
+
+
+def _build_ranked_details(ranked_df: pd.DataFrame, selected_tickers: List[str],
+                         detail_map: dict, sector_scores: dict,
+                         ml_scores_map: dict, alpha158_map: dict,
+                         ml_weight: float, alpha158_weight: float) -> List[dict]:
+    """Build detailed ranked list with composite scoring and feature enrichment."""
     ranked = []
     for _, row in ranked_df[ranked_df["ticker"].isin(selected_tickers)].iterrows():
         tkr = row["ticker"]
@@ -501,14 +394,12 @@ def run_scan(
             ml_score = None
             ml_signal = None
         
-        # Blend with Alpha158 score (Qlib methodology)
+        # Blend with Alpha158 score
         a158_data = alpha158_map.get(tkr)
         a158_score = None
         if a158_data and alpha158_weight > 0:
-            # Alpha158 predicts excess return (%). Convert to 0-100 scale:
-            # -5% → 25, 0% → 50, +5% → 75 (linear mapping)
             raw_pred = a158_data.get("predicted_excess_return", 0)
-            a158_score = max(0, min(100, 50 + raw_pred * 5))  # 1% excess = 5 points
+            a158_score = max(0, min(100, 50 + raw_pred * 5))
             final_composite = final_composite * (1 - alpha158_weight) + a158_score * alpha158_weight
         
         ranked.append({
@@ -542,9 +433,7 @@ def run_scan(
             "sell_signal": sell_sig.get("sell_signal", "N/A"),
             "sell_urgency": sell_sig.get("urgency", "none"),
             "sell_reasons": sell_sig.get("sell_reasons", []),
-            # Price data (needed for validation + rebalance)
             "current_price": sell_sig.get("current_price"),
-            # Technical features (needed for ML predictions)
             "rsi": sell_sig.get("rsi"),
             "macd_histogram": (detail.get("technicals") or {}).get("macd_histogram"),
             "adx": (detail.get("momentum") or {}).get("adx"),
@@ -557,16 +446,20 @@ def run_scan(
             "above_ma200": (detail.get("technicals") or {}).get("above_ma200"),
         })
         ranked[-1]["thesis"] = generate_thesis(ranked[-1])
+    
+    return ranked
 
-    # --- DCF & Comps bonus for top N (avoid running on all 500+) ---
-    # Cache S&P 500 tickers for midcap penalty check
+
+def _apply_deep_analysis(ranked: List[dict]) -> None:
+    """Apply DCF & comps bonus, risk adjustments. Mutates ranked in-place."""
+    from .dcf_valuation import run_dcf
+    from .comps_analysis import run_comps
     from .universe import get_sp500_tickers
+    
+    DATA_DIR = Path(__file__).resolve().parent.parent / "data"
     _sp500_set = set(get_sp500_tickers())
     logger.info("Running DCF & comps analysis for top %d stocks...", len(ranked))
     dcf_comps_start = time.time()
-    
-    from .dcf_valuation import run_dcf
-    from .comps_analysis import run_comps
     
     def _fetch_dcf_comps(ticker: str):
         dcf_result = None
@@ -600,7 +493,6 @@ def run_scan(
             stock["dcf_margin_of_safety"] = round(mos, 2)
             stock["dcf_verdict"] = dcf_r.get("verdict")
             stock["dcf_confidence"] = confidence
-            # Only apply bonus if confidence is HIGH or MEDIUM
             if confidence != "LOW":
                 if mos > 30:
                     dcf_bonus = 4
@@ -616,7 +508,6 @@ def run_scan(
             cs = comps_r.get("comps_score", 50)
             stock["comps_score"] = round(cs, 1)
             stock["comps_verdict"] = comps_r.get("verdict")
-            # Bonus based on relative valuation
             if cs > 70:
                 comps_bonus = 3
             elif cs > 55:
@@ -631,14 +522,12 @@ def run_scan(
             stock["composite_score"] = max(0, stock.get("composite_score", 0) + total_val_bonus)
             stock["valuation_bonus"] = total_val_bonus
 
-        # --- Risk adjustments ---
-
-        # 1. MidCap volatility discount: S&P 400 stocks get -2 penalty (higher risk)
+        # MidCap volatility discount
         if tkr not in _sp500_set:
             stock["composite_score"] = max(0, stock.get("composite_score", 0) - 2)
             stock["midcap_penalty"] = -2
 
-        # 2. Momentum crash filter: use price vs MA50 as proxy for recent drawdown
+        # Momentum crash filter
         price = stock.get("current_price", 0)
         ma50 = stock.get("ma50", 0)
         if price and ma50 and ma50 > 0:
@@ -648,18 +537,20 @@ def run_scan(
                 stock["entry_signal"] = "WATCH"
                 stock["momentum_warning"] = f"Price {drawdown_from_ma50:.1f}% below MA50 — possible falling knife"
 
-        # 3. LOW confidence DCF penalty: slight -1 instead of neutral 0
+        # LOW confidence DCF penalty
         if dcf_r and "error" not in dcf_r and dcf_r.get("confidence") == "LOW":
             stock["composite_score"] = max(0, stock.get("composite_score", 0) - 1)
             stock["dcf_low_penalty"] = -1
 
     logger.info("DCF & comps analysis completed in %.1fs", time.time() - dcf_comps_start)
 
-    # --- Quality scores (Piotroski F-Score + Altman Z-Score) for top N ---
+
+def _apply_quality_and_insider(ranked: List[dict]) -> None:
+    """Apply quality scores (Piotroski, Altman) and insider penalties. Mutates in-place."""
+    from .quality_scores import compute_quality_scores
+    
     logger.info("Computing quality scores for top %d stocks...", len(ranked))
     quality_start = time.time()
-    
-    from .quality_scores import compute_quality_scores
     
     def _fetch_quality(ticker: str):
         try:
@@ -687,12 +578,10 @@ def run_scan(
             stock["altman_zone"] = a.get("zone")
             stock["quality_score"] = q.get("quality_score")
             
-            # Quality bonus/penalty
             quality_bonus = 0
             ps = p.get("score")
             az = a.get("score")
             
-            # Piotroski 8-9 = strong company, 0-3 = weak
             if ps is not None:
                 if ps >= 8:
                     quality_bonus += 2
@@ -703,19 +592,17 @@ def run_scan(
                 elif ps <= 4:
                     quality_bonus -= 1
             
-            # Altman: distress zone = big penalty
             if az is not None:
                 if az < 1.8:
                     quality_bonus -= 3
                 elif az > 5.0:
                     quality_bonus += 1
             
-            # Earnings decline penalty (separate from quality)
             eg = stock.get("earnings_growth") or (stock.get("growth", {}) or {}).get("earnings_growth")
-            if eg is not None and eg < -0.3:  # earnings dropped >30%
+            if eg is not None and eg < -0.3:
                 quality_bonus -= 2
                 stock["earnings_decline_flag"] = f"earnings_growth_{eg*100:.0f}%"
-            elif eg is not None and eg < -0.15:  # earnings dropped >15%
+            elif eg is not None and eg < -0.15:
                 quality_bonus -= 1
                 stock["earnings_decline_flag"] = f"earnings_growth_{eg*100:.0f}%"
 
@@ -725,19 +612,17 @@ def run_scan(
     
     logger.info("Quality scores completed in %.1fs", time.time() - quality_start)
 
-    # --- Insider selling penalty + Short interest penalty (top N only) ---
-    # Fetch insider data for ranked stocks and penalize heavy selling
+    # Insider selling penalty + Short interest penalty
     logger.info("Checking insider selling & short interest for top %d stocks...", len(ranked))
     insider_start = time.time()
 
     def _fetch_insider_short(ticker: str):
-        """Fetch 2026 insider transactions and short interest."""
         try:
-            tk = yf.Ticker(ticker)
+            from .yfinance_client import get_ticker_object
+            tk = get_ticker_object(ticker)
             info = tk.info or {}
             short_pct = info.get("shortPercentOfFloat", 0) or 0
 
-            # Insider transactions (2026 only)
             insider_sell_value = 0
             insider_buy_value = 0
             insider_sells = 0
@@ -780,7 +665,6 @@ def run_scan(
         penalty = 0
         flags = []
 
-        # Insider selling penalty
         sell_val = idata["insider_sell_value"]
         buy_val = idata["insider_buy_value"]
         buys = idata["insider_buys"]
@@ -795,7 +679,6 @@ def run_scan(
             penalty -= 1
             flags.append(f"insider_sell_${sell_val/1e6:.1f}M")
 
-        # Insider buying bonus
         if buy_val > 1_000_000:
             penalty += 2
             flags.append(f"insider_buy_${buy_val/1e6:.1f}M")
@@ -803,12 +686,11 @@ def run_scan(
             penalty += 1
             flags.append(f"insider_buy_${buy_val/1e3:.0f}K")
 
-        # Short interest penalty
         short_pct = idata["short_pct"]
-        if short_pct and short_pct > 0.15:  # >15%
+        if short_pct and short_pct > 0.15:
             penalty -= 2
             flags.append(f"short_{short_pct*100:.1f}%")
-        elif short_pct and short_pct > 0.10:  # >10%
+        elif short_pct and short_pct > 0.10:
             penalty -= 1
             flags.append(f"short_{short_pct*100:.1f}%")
 
@@ -825,15 +707,16 @@ def run_scan(
 
     logger.info("Insider/short check completed in %.1fs", time.time() - insider_start)
 
-    # --- Smart money signals (analyst revisions + insider trading) for top N only ---
-    # Only fetch for top_n to avoid 500 yfinance API calls
-    # Parallelized: each stock's 4 yfinance calls are I/O-bound and independent
+
+def _apply_smart_money(ranked: List[dict], strategy: str) -> None:
+    """Apply smart money signals and bonuses. Mutates in-place."""
     logger.info("Fetching smart money data for top %d stocks (parallel)...", len(ranked))
     sm_start = time.time()
 
     def _fetch_smart_money(ticker: str):
         try:
-            ticker_obj = yf.Ticker(ticker)
+            from .yfinance_client import get_ticker_object
+            ticker_obj = get_ticker_object(ticker)
             sm = get_combined_smart_money_score(ticker_obj)
             return ticker, sm
         except Exception:
@@ -861,7 +744,8 @@ def run_scan(
 
     logger.info("Smart money fetch completed in %.1fs", time.time() - sm_start)
 
-    # --- Apply smart money bonus to composite score ---
+    # Apply smart money bonus to composite score
+    strat = get_strategy(strategy)
     sm_cfg = strat.get("smart_money_bonus", {})
     if sm_cfg.get("enabled", False):
         for stock in ranked:
@@ -879,34 +763,40 @@ def run_scan(
                 stock["composite_score"] = max(0, stock.get("composite_score", 0) + bonus)
                 stock["smart_money_bonus"] = bonus
 
-    # --- Add data freshness ---
+
+def _finalize_and_save(ranked: List[dict], ranked_df: pd.DataFrame, filtered: List[dict],
+                      regime_data: dict, strategy: str, results: List[dict],
+                      geo_adjustments: Optional[dict] = None,
+                      sanity_warnings: Optional[List[str]] = None) -> dict:
+    """Build all_scores, apply sanity checks, save results, apply streak tracking. Returns output dict."""
+    if geo_adjustments is None:
+        geo_adjustments = {}
+    from .scan_results_service import ScanResultsService
+    
+    # Add data freshness and earnings guard
     for stock in ranked:
         freshness_label, age_days = check_freshness(stock["ticker"])
         stock["data_freshness"] = freshness_label
         stock["data_age_days"] = age_days
 
-    # --- Apply earnings guard ---
     ranked = apply_earnings_guard(ranked)
 
-    # --- Re-sort by final composite_score after all bonuses ---
-    # Smart money bonus and earnings guard modify scores after initial ranking
+    # Re-sort by final composite_score after all bonuses
     ranked.sort(key=lambda s: s.get("composite_score", 0), reverse=True)
     for i, stock in enumerate(ranked):
         stock["rank"] = i + 1
 
-    # --- Update streak tracking ---
+    # Update streak tracking
     top20_tickers = [stock["ticker"] for stock in ranked[:20]]
     current_date = time.strftime("%Y-%m-%d")
     update_streaks(top20_tickers, current_date)
     
-    # --- Add consecutive_days to results ---
     ranked = add_streaks_to_results(ranked)
 
-    # --- Removed auto-upgrade logic (was upgrading all top-20 >75 to BUY, killing signal diversity) ---
-    # Entry signals now come purely from momentum analysis; composite score is a separate dimension.
-
-    # --- Sanity checks on output ---
-    sanity_warnings = []
+    # Sanity checks
+    if sanity_warnings is None:
+        sanity_warnings = []
+    
     if ranked:
         signal_counts = {}
         for s in ranked:
@@ -926,7 +816,6 @@ def run_scan(
             if avg_score > 90:
                 sanity_warnings.append(f"Score inflation: avg {avg_score:.1f} (too high, scoring may be broken)")
         
-        # Check for duplicate tickers
         tickers = [s.get("ticker") for s in ranked]
         if len(tickers) != len(set(tickers)):
             sanity_warnings.append("Duplicate tickers in results!")
@@ -935,8 +824,7 @@ def run_scan(
         for w in sanity_warnings:
             logger.warning("SANITY CHECK: %s", w)
 
-    # Build full all_scores for complete universe data (covers all 800+ stocks)
-    # Stores complete scores for every analyzed stock — enables full Scanner view
+    # Build all_scores
     results_by_ticker = {r["ticker"]: r for r in filtered if "ticker" in r}
     all_scores = []
     for idx, row in ranked_df.iterrows():
@@ -991,17 +879,9 @@ def run_scan(
         "all_scores": all_scores,
     }
 
-    # Rotate: current → previous (BEFORE saving new results)
-    PREV_RESULTS_FILE = DATA_DIR / "prev_scan_results.json"
-    if RESULTS_FILE.exists():
-        try:
-            import shutil
-            shutil.copy2(RESULTS_FILE, PREV_RESULTS_FILE)
-            logger.info("Rotated scan results → prev_scan_results.json")
-        except Exception as e:
-            logger.warning("Failed to rotate scan results: %s", e)
-
-    # Save results (sanitize NaN/Infinity for JSON compliance)
+    # Rotate and save using ScanResultsService
+    ScanResultsService.rotate_results()
+    
     def _sanitize(obj):
         import math
         if isinstance(obj, float) and (math.isnan(obj) or math.isinf(obj)):
@@ -1012,11 +892,11 @@ def run_scan(
             return [_sanitize(v) for v in obj]
         return obj
 
-    DATA_DIR.mkdir(exist_ok=True)
     output = _sanitize(output)
-    RESULTS_FILE.write_text(json.dumps(output, indent=2, default=str))
+    ScanResultsService.save_results(output)
     
     # Also save daily snapshot
+    DATA_DIR = Path(__file__).resolve().parent.parent / "data"
     snapshot_dir = DATA_DIR / "daily_snapshots"
     snapshot_dir.mkdir(exist_ok=True)
     today = time.strftime("%Y-%m-%d")
@@ -1025,7 +905,7 @@ def run_scan(
         snapshot_file.write_text(json.dumps(output, indent=2, default=str))
         logger.info("Saved daily snapshot: %s", snapshot_file)
     
-    # Save momentum radar snapshot for tracking
+    # Save momentum radar snapshot
     try:
         from .early_momentum import scan_top_momentum
         momentum_dir = DATA_DIR / "momentum_snapshots"
@@ -1039,6 +919,157 @@ def run_scan(
         logger.warning("Momentum snapshot failed: %s", e)
 
     return output
+
+
+
+def run_scan(
+    config: Optional[dict] = None,
+    sector: Optional[str] = None,
+    min_cap: Optional[float] = None,
+    max_cap: Optional[float] = None,
+    exclude_tickers: Optional[List[str]] = None,
+    strategy: str = "balanced",
+) -> dict:
+    """Run the full pipeline. Returns {results: [...], ranked: [...], timestamp}."""
+    # Auto-heal cache before scanning
+    try:
+        from .cache_health import heal_cache
+        heal_report = heal_cache()
+        logger.info("Cache heal: %s", heal_report)
+    except Exception as e:
+        logger.warning("Cache heal failed: %s", e)
+
+    if config is None:
+        config = load_config()
+
+    cache_hours = config.get("cache_hours", 24)
+    weights = config.get("weights", {})
+    thresholds = config.get("thresholds", {})
+    filters = config.get("filters", {})
+    top_n = config.get("top_n", 20)
+
+    # Get strategy config
+    strat = get_strategy(strategy)
+    strat_filters = strat.get("filters", {})
+
+    min_cap_threshold = float(strat_filters.get("min_market_cap", thresholds.get("min_market_cap", 2e9)))
+    min_vol = float(thresholds.get("min_volume", 500000))
+
+    tickers = get_universe_tickers(cache_hours)
+    logger.info("Scanning %d tickers with strategy '%s'...", len(tickers), strategy)
+
+    # Step 1: Prepare stock data
+    stock_data = _prepare_stock_data(config, tickers, cache_hours)
+
+    # Fetch SPY for beta and regime detection
+    spy_hist = _fetch_spy_hist(cache_hours, stock_data)
+    
+    regime_data = detect_market_regime(spy_hist) if spy_hist is not None else {}
+    regime = regime_data.get("regime", "sideways")
+    logger.info(f"Market regime detected: {regime.upper()} (confidence: {regime_data.get('confidence', 0):.0%})")
+
+    # Load previous scan results for sell signal comparison
+    prev_results_file = DATA_DIR / "prev_scan_results.json"
+    prev_results_map = {}
+    if prev_results_file.exists():
+        try:
+            prev_scan = json.loads(prev_results_file.read_text())
+            for stock in prev_scan.get("top", prev_scan.get("stocks", [])):
+                ticker_sym = stock.get("ticker")
+                if ticker_sym:
+                    prev_results_map[ticker_sym] = {
+                        "fundamentals": {"score": stock.get("fundamentals_pct")},
+                        "momentum": {"entry_signal": stock.get("entry_signal")},
+                    }
+            for stock in prev_scan.get("all_scores", []):
+                ticker_sym = stock.get("ticker")
+                if ticker_sym and ticker_sym not in prev_results_map:
+                    prev_results_map[ticker_sym] = {
+                        "fundamentals": {"score": stock.get("fundamentals_pct") or stock.get("fund_score")},
+                        "momentum": {"entry_signal": stock.get("entry_signal") or stock.get("signal")},
+                    }
+        except Exception:
+            logger.warning("Could not load previous results for sell signal comparison")
+
+    # Step 2: Analyze universe
+    results = _analyze_universe(tickers, stock_data, spy_hist, prev_results_map, config, regime, min_cap_threshold, min_vol)
+
+    # Step 3: Apply filters
+    filtered = apply_filters(
+        results,
+        filters=filters,
+        sector=sector,
+        min_cap=min_cap,
+        max_cap=max_cap,
+        exclude_tickers=exclude_tickers,
+        strategy_filters=strat_filters,
+    )
+    logger.info("After filtering: %d stocks", len(filtered))
+
+    # Compute sector-relative scores
+    sector_scores = compute_sector_relative_scores(results)
+
+    # Detect geopolitical adjustments
+    from .market_regime import get_geopolitical_adjustments
+    geo_adjustments = get_geopolitical_adjustments(regime_data)
+    if geo_adjustments:
+        logger.info(f"Geopolitical adjustments active: {len(geo_adjustments)} industries affected")
+
+    # Score and rank (on filtered set)
+    ranked_df = compute_composite(filtered, weights, strategy=strategy, sector_scores=sector_scores, regime=regime, geo_adjustments=geo_adjustments)
+    
+    # Step 4: ML integration with adaptive weighting
+    snapshot_dir = DATA_DIR / "daily_snapshots"
+    snapshot_count = len(list(snapshot_dir.glob("*.json"))) if snapshot_dir.exists() else 0
+    ml_weight, ml_scores_map = _apply_ml_scores(ranked_df, [], config, snapshot_count, 0.0)
+
+    # Alpha158 ML Integration
+    alpha158_map = {}
+    alpha158_weight = 0.0
+    try:
+        alpha158_metrics_file = DATA_DIR / "alpha158_models" / "metrics.json"
+        if alpha158_metrics_file.exists():
+            a158_meta = json.loads(alpha158_metrics_file.read_text())
+            a158_ic = a158_meta.get("ensemble_ic", 0)
+            if a158_ic > 0.08:
+                alpha158_weight = 0.20
+            elif a158_ic > 0.05:
+                alpha158_weight = 0.15
+            elif a158_ic > 0.03:
+                alpha158_weight = 0.10
+            else:
+                alpha158_weight = 0.0
+            logger.info(f"Alpha158 IC: {a158_ic:.4f} → weight: {alpha158_weight:.0%}")
+            
+            if alpha158_weight > 0:
+                top_tickers = [row["ticker"] for _, row in ranked_df.head(min(top_n * 3, 100)).iterrows()]
+                a158_preds = alpha158_predict(tickers=top_tickers)
+                if a158_preds and not a158_preds[0].get("error"):
+                    alpha158_map = {p["ticker"]: p for p in a158_preds}
+                    logger.info(f"Alpha158 predictions for {len(alpha158_map)} stocks")
+    except Exception as e:
+        logger.warning(f"Alpha158 prediction failed: {e}")
+        alpha158_weight = 0.0
+
+    # Step 5: Select top N and build ranked details
+    detail_map = {r["ticker"]: r for r in filtered}
+    selected_tickers = _select_top_n(ranked_df, detail_map, top_n)
+    ranked = _build_ranked_details(ranked_df, selected_tickers, detail_map, sector_scores, ml_scores_map, alpha158_map, ml_weight, alpha158_weight)
+
+    # Step 6: Apply deep analysis (DCF, comps, risk adjustments)
+    _apply_deep_analysis(ranked)
+
+    # Step 7: Apply quality and insider analysis
+    _apply_quality_and_insider(ranked)
+
+    # Step 8: Apply smart money signals
+    _apply_smart_money(ranked, strategy)
+
+    # Step 9: Finalize and save
+    output = _finalize_and_save(ranked, ranked_df, filtered, regime_data, strategy, results, geo_adjustments)
+
+    return output
+
 
 
 def get_stock_detail(ticker: str, config: Optional[dict] = None) -> Optional[dict]:

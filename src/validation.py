@@ -75,9 +75,8 @@ def validate_predictions(
     spy_price_prev = None
     spy_price_now = None
     try:
-        import yfinance as yf
-        spy = yf.Ticker("SPY")
-        spy_hist = spy.history(period="5d")
+        from .yfinance_client import get_ticker_history
+        spy_hist = get_ticker_history("SPY", period="5d")
         if len(spy_hist) >= 2:
             spy_price_prev = float(spy_hist["Close"].iloc[-2])
             spy_price_now = float(spy_hist["Close"].iloc[-1])
@@ -223,9 +222,9 @@ def _fetch_current_prices(tickers: List[str]) -> Dict[str, float]:
     """Fetch current prices for a list of tickers (batch download)."""
     prices = {}
     try:
-        import yfinance as yf
+        from .yfinance_client import download
         # Batch download instead of N+1 individual requests
-        data = yf.download(tickers, period="2d", progress=False, threads=True)
+        data = download(tickers, period="2d", progress=False, threads=True)
         if data is not None and not data.empty:
             close = data["Close"]
             if isinstance(close, pd.Series):

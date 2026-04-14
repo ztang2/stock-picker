@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 
 logger = logging.getLogger(__name__)
 
@@ -93,7 +93,7 @@ def get_thesis(ticker: str) -> Optional[dict]:
 
     # Enrich with current price data
     try:
-        t = yf.Ticker(ticker)
+        t = get_ticker_object(ticker)
         info = t.info or {}
         current_price = info.get("currentPrice") or info.get("regularMarketPrice")
         if current_price and thesis.get("entry_price"):
@@ -132,7 +132,7 @@ def check_thesis(ticker: str) -> dict:
     status = "VALID"
 
     try:
-        t = yf.Ticker(ticker)
+        t = get_ticker_object(ticker)
         info = t.info or {}
         current_price = info.get("currentPrice") or info.get("regularMarketPrice", 0)
 

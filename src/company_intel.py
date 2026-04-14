@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional
 
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 
 logger = logging.getLogger(__name__)
 
@@ -53,7 +53,7 @@ def get_company_intel(ticker: str, force_refresh: bool = False) -> dict:
                 pass
     
     try:
-        tk = yf.Ticker(ticker)
+        tk = get_ticker_object(ticker)
         info = tk.info or {}
         
         # Basic company info

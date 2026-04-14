@@ -5,7 +5,7 @@ import time
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +31,7 @@ def get_earnings_info(ticker: str) -> dict:
     }
 
     try:
-        t = yf.Ticker(ticker)
+        t = get_ticker_object(ticker)
         cal = None
         try:
             cal = t.calendar

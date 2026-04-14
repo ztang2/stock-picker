@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub Actions 完全指南 — Stock Picker</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.7}
+.container{max-width:900px;margin:0 auto;padding:20px}
+h1{font-size:28px;text-align:center;margin:30px 0 10px;color:#58a6ff}
+.subtitle{text-align:center;color:#8b949e;margin-bottom:30px;font-size:15px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;justify-content:center}
+.tab{padding:8px 16px;border-radius:8px;background:#161b22;border:1px solid #30363d;color:#8b949e;cursor:pointer;font-size:13px;transition:all .2s}
+.tab:hover{border-color:#58a6ff;color:#c9d1d9}
+.tab.active{background:#1f6feb;border-color:#1f6feb;color:#fff}
+.section{display:none}.section.active{display:block}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;margin-bottom:20px}
+.card h2{color:#58a6ff;font-size:20px;margin-bottom:12px}
+.card h3{color:#79c0ff;font-size:16px;margin:16px 0 8px}
+.code-block{background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:16px;margin:12px 0;font-family:'Fira Code',monospace;font-size:13px;overflow-x:auto;position:relative;white-space:pre}
+.comment{color:#8b949e}.keyword{color:#ff7b72}.string{color:#a5d6ff}.value{color:#79c0ff}
+.diagram{display:flex;align-items:center;justify-content:center;gap:12px;margin:20px 0;flex-wrap:wrap}
+.box{padding:14px 20px;border-radius:10px;text-align:center;font-size:13px;font-weight:600;min-width:120px}
+.box-blue{background:#1f3a5f;border:2px solid #58a6ff;color:#58a6ff}
+.box-green{background:#1a3a2a;border:2px solid #3fb950;color:#3fb950}
+.box-orange{background:#3a2a1a;border:2px solid #d29922;color:#d29922}
+.box-red{background:#3a1a1a;border:2px solid #f85149;color:#f85149}
+.box-purple{background:#2a1a3a;border:2px solid #bc8cff;color:#bc8cff}
+.arrow{color:#484f58;font-size:24px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.compare-col{background:#0d1117;border-radius:10px;padding:16px;border:1px solid #30363d}
+.compare-col h4{margin-bottom:10px;font-size:15px}
+.compare-col.bad h4{color:#f85149}.compare-col.good h4{color:#3fb950}
+.compare-col ul{list-style:none;padding-left:0}
+.compare-col li{padding:4px 0;font-size:13px}
+.compare-col li::before{content:'• ';color:#484f58}
+.annotate{margin:16px 0}
+.annotate-line{display:flex;gap:12px;padding:10px 12px;border-left:3px solid #30363d;margin:4px 0;align-items:baseline;cursor:pointer;transition:all .2s}
+.annotate-line:hover{background:#161b22;border-left-color:#58a6ff}
+.annotate-code{font-family:'Fira Code',monospace;color:#79c0ff;font-size:13px;min-width:280px;white-space:nowrap}
+.annotate-desc{color:#8b949e;font-size:13px}
+.hl{color:#ffa657;font-weight:600}
+.hl-blue{color:#58a6ff}.hl-green{color:#3fb950}.hl-red{color:#f85149}
+.flow-container{position:relative;padding:20px;background:#0d1117;border-radius:10px;margin:16px 0}
+.flow-step{display:flex;align-items:center;gap:12px;padding:10px;margin:8px 0;border-radius:8px;border:1px solid transparent;transition:all .3s}
+.flow-step.highlight{background:#1f3a5f;border-color:#58a6ff}
+.flow-icon{font-size:20px;width:36px;text-align:center}
+.flow-text{font-size:13px}.flow-detail{font-size:12px;color:#8b949e;margin-top:2px}
+button.action-btn{background:#1f6feb;color:#fff;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s}
+button.action-btn:hover{background:#388bfd}
+.detail-box{padding:14px;background:#1a2332;border-radius:8px;margin:4px 0 8px;font-size:13px;display:none}
+.progress-bar{background:#161b22;border-radius:10px;padding:10px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.progress-fill{height:6px;background:#1f6feb;border-radius:3px;transition:width .3s}
+.progress-bg{flex:1;height:6px;background:#30363d;border-radius:3px;overflow:hidden}
+.progress-text{color:#8b949e;font-size:12px;white-space:nowrap}
+.icon{font-size:24px;margin-right:8px}
+.quiz-q{font-weight:600;margin:12px 0 8px;color:#c9d1d9}
+.quiz-options{display:flex;flex-direction:column;gap:6px}
+.quiz-opt{padding:10px 14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;cursor:pointer;font-size:13px;transition:all .2s}
+.quiz-opt:hover{border-color:#58a6ff}
+.quiz-opt.correct{background:#1a3a2a;border-color:#3fb950;color:#3fb950}
+.quiz-opt.wrong{background:#3a1a1a;border-color:#f85149;color:#f85149}
+.quiz-explain{margin-top:8px;padding:10px;background:#161b22;border-radius:8px;font-size:13px;color:#8b949e;display:none}
+.yaml-block{background:#0d1117;border:1px solid #30363d;border-radius:8px;margin:12px 0;overflow:hidden}
+.yaml-header{background:#161b22;padding:8px 14px;font-size:12px;color:#8b949e;border-bottom:1px solid #30363d;display:flex;justify-content:space-between}
+.yaml-body{padding:16px;font-family:'Fira Code',monospace;font-size:13px;overflow-x:auto}
+.yaml-line{display:flex;min-height:22px;position:relative}
+.yaml-num{color:#484f58;width:30px;text-align:right;padding-right:12px;user-select:none;flex-shrink:0}
+.yaml-content{flex:1;white-space:pre}
+.yaml-line:hover{background:#161b22}
+.yaml-line.active{background:#1f3a5f;border-left:2px solid #58a6ff}
+.yaml-tooltip{position:absolute;left:100%;top:0;background:#1a2332;border:1px solid #58a6ff;border-radius:8px;padding:10px 14px;font-size:12px;color:#c9d1d9;width:300px;z-index:10;font-family:-apple-system,sans-serif;display:none;box-shadow:0 4px 12px rgba(0,0,0,.5)}
+@media(max-width:768px){.yaml-tooltip{position:static;width:auto;margin-top:4px;display:none}.compare{grid-template-columns:1fr}.annotate-line{flex-direction:column;gap:4px}.annotate-code{min-width:auto}}
+.status-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.status-green{background:#1a3a2a;color:#3fb950;border:1px solid #3fb950}
+.status-red{background:#3a1a1a;color:#f85149;border:1px solid #f85149}
+.status-yellow{background:#3a2a1a;color:#d29922;border:1px solid #d29922}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>⚡ GitHub Actions 完全指南</h1>
+  <p class="subtitle">用你的 Stock Picker 项目学 CI/CD — 从概念到实操</p>
+
+  <div class="progress-bar">
+    <span class="progress-text" id="prog-text">1/7</span>
+    <div class="progress-bg"><div class="progress-fill" id="prog-fill" style="width:14.3%"></div></div>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-tab="0">🤔 是什么</div>
+    <div class="tab" data-tab="1">📄 YAML文件</div>
+    <div class="tab" data-tab="2">🔬 逐行解读</div>
+    <div class="tab" data-tab="3">🔄 运行流程</div>
+    <div class="tab" data-tab="4">🐛 Debug实战</div>
+    <div class="tab" data-tab="5">🏭 真实场景</div>
+    <div class="tab" data-tab="6">🧠 测验</div>
+  </div>
+
+  <!-- TAB 0: What -->
+  <div class="section active" data-section="0">
+    <div class="card">
+      <h2><span class="icon">🤔</span>GitHub Actions 是什么？</h2>
+      <p><span class="hl">GitHub 提供的免费机器人，帮你自动干活。</span></p>
+      <p>你告诉它"什么时候做、做什么"，它就在 GitHub 的服务器上自动执行。</p>
+
+      <h3>类比</h3>
+      <div class="diagram">
+        <div class="box box-blue">👨‍💻 你<br><small>写代码、push</small></div>
+        <span class="arrow">→</span>
+        <div class="box box-orange">📋 test.yml<br><small>你写的"任务清单"</small></div>
+        <span class="arrow">→</span>
+        <div class="box box-green">🤖 GitHub 机器人<br><small>按清单自动执行</small></div>
+        <span class="arrow">→</span>
+        <div class="box box-purple">✅ 或 ❌<br><small>结果告诉你</small></div>
+      </div>
+
+      <p>就像你雇了一个实习生：</p>
+      <ul style="margin:12px 0 12px 20px;font-size:14px">
+        <li>你写了一张便签："<span class="hl">每次我提交代码，你帮我检查代码能不能跑、Docker能不能build</span>"</li>
+        <li>实习生（GitHub Actions）照着做</li>
+        <li>做完了告诉你：通过 ✅ 或者有问题 ❌</li>
+        <li>这个实习生<span class="hl-green">免费</span>，24小时在线，从不请假</li>
+      </ul>
+
+      <h3>核心概念：CI/CD</h3>
+      <div class="compare">
+        <div class="compare-col good">
+          <h4>CI — 持续集成 (Continuous Integration)</h4>
+          <ul>
+            <li>每次push → 自动测试</li>
+            <li>确保代码没问题</li>
+            <li>发现bug越早修越便宜</li>
+            <li><strong>你的stock-picker现在有CI了</strong></li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <h4>CD — 持续部署 (Continuous Deployment)</h4>
+          <ul>
+            <li>测试通过 → 自动部署到服务器</li>
+            <li>用户访问的永远是最新版</li>
+            <li>需要服务器（AWS/Vercel等）</li>
+            <li><strong>你以后加AWS时会用到</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>没有 CI/CD vs 有 CI/CD</h3>
+      <div class="compare">
+        <div class="compare-col bad">
+          <h4>❌ 没有 CI/CD</h4>
+          <ul>
+            <li>改了代码 push 上去</li>
+            <li>3天后发现线上崩了</li>
+            <li>不知道是哪次 push 搞坏的</li>
+            <li>回滚、debug、浪费2天</li>
+          </ul>
+        </div>
+        <div class="compare-col good">
+          <h4>✅ 有 CI/CD</h4>
+          <ul>
+            <li>改了代码 push 上去</li>
+            <li>3分钟后 GitHub 告诉你 ❌</li>
+            <li>马上知道是这次 push 的问题</li>
+            <li>修一行代码，5分钟搞定</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:#0d1117;border-radius:10px;padding:16px;margin-top:16px;text-align:center">
+        <p style="font-size:15px"><span class="hl">刚才我们就经历了真实的CI/CD流程：</span></p>
+        <p style="color:#8b949e;font-size:13px;margin-top:8px">push → ❌ 红色（函数名写错）→ 查log → 改代码 → push → ❌ 红色（另一个函数名错）→ 改 → push → ✅</p>
+        <p style="color:#8b949e;font-size:13px">如果没有CI，你可能永远不知道这些 import 有问题。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 1: YAML -->
+  <div class="section" data-section="1">
+    <div class="card">
+      <h2><span class="icon">📄</span>test.yml — 你的"任务清单"</h2>
+      <p>这是你唯一需要写的文件。放在 <code>.github/workflows/test.yml</code>。</p>
+      <p><span class="hl">GitHub 会自动扫描这个目录，发现 .yml 文件就注册为一个 workflow。</span></p>
+
+      <h3>文件位置</h3>
+      <div class="code-block"><span class="comment">stock-picker/</span>
+├── src/
+├── data/
+├── Dockerfile
+├── requirements.txt
+└── <span class="hl">.github/</span>
+    └── <span class="hl">workflows/</span>
+        └── <span class="hl">test.yml</span>   <span class="comment">← 这个文件</span></div>
+
+      <h3>为什么是 YAML？</h3>
+      <p>YAML 就是一种配置文件格式（像 JSON 但更易读）。GitHub Actions 用 YAML 定义任务。</p>
+      <p>规则很简单：<span class="hl">缩进表示层级，冒号表示键值对，短横线表示列表。</span></p>
+
+      <div class="compare">
+        <div class="compare-col">
+          <h4>YAML 写法</h4>
+<pre style="font-family:monospace;font-size:13px;color:#c9d1d9">name: CI
+on:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest</pre>
+        </div>
+        <div class="compare-col">
+          <h4>翻译成人话</h4>
+<pre style="font-family:monospace;font-size:13px;color:#8b949e">名字叫 CI
+触发条件：
+  当 push 时：
+    分支是 [main]
+任务：
+  测试：
+    在 ubuntu 最新版上跑</pre>
+        </div>
+      </div>
+
+      <h3>完整文件预览</h3>
+      <p>下一页会逐行详解。先看个全貌：</p>
+      <div class="yaml-block">
+        <div class="yaml-header"><span>.github/workflows/test.yml</span><span>44 行</span></div>
+        <div class="yaml-body" style="font-size:12px;line-height:1.6">
+<span class="keyword">name</span>: <span class="string">CI</span>
+
+<span class="keyword">on</span>:
+  <span class="keyword">push</span>:
+    <span class="keyword">branches</span>: [<span class="string">main</span>]
+  <span class="keyword">pull_request</span>:
+    <span class="keyword">branches</span>: [<span class="string">main</span>]
+
+<span class="keyword">jobs</span>:
+  <span class="keyword">test</span>:
+    <span class="keyword">runs-on</span>: <span class="string">ubuntu-latest</span>
+
+    <span class="keyword">steps</span>:
+      - <span class="keyword">uses</span>: <span class="string">actions/checkout@v4</span>
+
+      - <span class="keyword">name</span>: <span class="string">Set up Python</span>
+        <span class="keyword">uses</span>: <span class="string">actions/setup-python@v5</span>
+        <span class="keyword">with</span>:
+          <span class="keyword">python-version</span>: <span class="string">"3.11"</span>
+
+      - <span class="keyword">name</span>: <span class="string">Install dependencies</span>
+        <span class="keyword">run</span>: |
+          pip install -r requirements.txt
+          pip install pytest
+
+      - <span class="keyword">name</span>: <span class="string">Run import tests</span>
+        <span class="keyword">run</span>: |
+          python -c "from src.pipeline ..."
+          python -c "from src.risk_manager ..."
+          <span class="comment"># ... 6 个 import 测试</span>
+
+      - <span class="keyword">name</span>: <span class="string">Docker build test</span>
+        <span class="keyword">run</span>: <span class="string">docker build -t stock-picker:test .</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: Line by Line -->
+  <div class="section" data-section="2">
+    <div class="card">
+      <h2><span class="icon">🔬</span>逐行解读 — 点击每一行看详解</h2>
+
+      <div class="annotate">
+        <div class="annotate-line" onclick="toggle('d0')">
+          <span class="annotate-code"><span style="color:#ff7b72">name</span>: CI</span>
+          <span class="annotate-desc">👈 点击看详解</span>
+        </div>
+        <div class="detail-box" id="d0">
+          <p><span class="hl">给这个 workflow 起个名字。</span></p>
+          <p>你在 GitHub Actions 页面看到的就是这个名字。叫什么都行，"CI"是最常见的。</p>
+          <p>你也可以叫 "Test & Build" 或 "我的自动测试"。</p>
+        </div>
+
+        <div class="annotate-line" onclick="toggle('d1')">
+          <span class="annotate-code"><span style="color:#ff7b72">on</span>: push / pull_request</span>
+          <span class="annotate-desc">什么时候触发</span>
+        </div>
+        <div class="detail-box" id="d1">
+          <p><span class="hl">定义"什么事件会触发这个 workflow"。</span></p>
+          <p><code>push: branches: [main]</code> = 每次 push 到 main 分支时跑</p>
+          <p><code>pull_request: branches: [main]</code> = 有人提交 PR 到 main 时跑</p>
+          <p style="margin-top:8px">其他触发方式：</p>
+          <ul style="margin-left:16px;color:#8b949e">
+            <li><code>schedule</code> — 定时跑（像 cron）</li>
+            <li><code>workflow_dispatch</code> — 手动点按钮触发</li>
+            <li><code>release</code> — 发布新版本时触发</li>
+          </ul>
+        </div>
+
+        <div class="annotate-line" onclick="toggle('d2')">
+          <span class="annotate-code"><span style="color:#ff7b72">jobs</span>: test:</span>
+          <span class="annotate-desc">定义任务</span>
+        </div>
+        <div class="detail-box" id="d2">
+          <p><span class="hl">一个 workflow 可以有多个 job（任务）。</span></p>
+          <p>我们只有一个叫 "test" 的任务。大公司可能有：</p>
+          <ul style="margin-left:16px;color:#8b949e">
+            <li><code>test</code> — 跑测试</li>
+            <li><code>build</code> — 构建 Docker 镜像</li>
+            <li><code>deploy</code> — 部署到服务器</li>
+          </ul>
+          <p>多个 job 可以并行跑，也可以设置依赖（test 通过了才跑 deploy）。</p>
+        </div>
+
+        <div class="annotate-line" onclick="toggle('d3')">
+          <span class="annotate-code"><span style="color:#ff7b72">runs-on</span>: ubuntu-latest</span>
+          <span class="annotate-desc">在什么机器上跑</span>
+        </div>
+        <div class="detail-box" id="d3">
+          <p><span class="hl">告诉 GitHub "用什么操作系统的机器跑"。</span></p>
+          <p><code>ubuntu-latest</code> = 最新版 Ubuntu Linux（最常用，免费）</p>
+          <p>GitHub 会分配一台<span class="hl">全新的虚拟机</span>给你，跑完就销毁。</p>
+          <p style="margin-top:8px">其他选项：</p>
+          <ul style="margin-left:16px;color:#8b949e">
+            <li><code>windows-latest</code> — Windows 机器</li>
+            <li><code>macos-latest</code> — macOS 机器（跟你的 Mac mini 类似）</li>
+          </ul>
+          <p style="color:#3fb950;margin-top:8px">💡 免费额度：每月 2000 分钟（Ubuntu），个人项目完全够用。</p>
+        </div>
+
+        <div class="annotate-line" onclick="toggle('d4')">
+          <span class="annotate-code"><span style="color:#ff7b72">steps</span>: - uses: actions/checkout@v4</span>
+          <span class="annotate-desc">第1步：下载你的代码</span>
+        </div>
+        <div class="detail-box" id="d4">
+          <p><span class="hl">steps 是任务里的具体步骤，按顺序执行。</span></p>
+          <p><code>uses: actions/checkout@v4</code> = 使用 GitHub 官方的 "checkout" 动作</p>
+          <p>它做的事：把你的 stock-picker 代码从 GitHub 下载到这台虚拟机上。</p>
+          <p style="color:#8b949e;margin-top:8px">为什么需要这步？因为虚拟机是<span class="hl">全新的</span>，上面什么都没有。需要先把代码拉下来。</p>
+          <p style="color:#8b949e;margin-top:4px"><code>uses</code> = 使用别人写好的动作（action）。<code>@v4</code> = 版本号。</p>
+        </div>
+
+        <div class="annotate-line" onclick="toggle('d5')">
+          <span class="annotate-code"><span style="color:#ff7b72">uses</span>: actions/setup-python@v5</span>
+          <span class="annotate-desc">第2步：安装 Python 3.11</span>
+        </div>
+        <div class="detail-box" id="d5">
+          <p>虚拟机上有 Python 但版本不一定对。这步<span class="hl">安装指定版本的 Python 3.11</span>。</p>
+          <p><code>with: python-version: "3.11"</code> = 参数：装 3.11 版本。</p>
+          <p style="color:#8b949e;margin-top:8px">这跟你的 Dockerfile 里 <code>FROM python:3.11-slim</code> 对应——保持版本一致。</p>
+        </div>
+
+        <div class="annotate-line" onclick="toggle('d6')">
+          <span class="annotate-code"><span style="color:#ff7b72">run</span>: pip install -r requirements.txt</span>
+          <span class="annotate-desc">第3步：安装 Python 依赖</span>
+        </div>
+        <div class="detail-box" id="d6">
+          <p><code>run</code> = 直接执行命令（跟你在 Terminal 里输一样）。</p>
+          <p><code>pip install -r requirements.txt</code> = 装所有依赖。</p>
+          <p><code>pip install pytest</code> = 额外装测试框架（以后写更多测试用）。</p>
+          <p style="color:#8b949e;margin-top:8px"><code>|</code> 表示多行命令，每行是一条独立命令。</p>
+        </div>
+
+        <div class="annotate-line" onclick="toggle('d7')">
+          <span class="annotate-code"><span style="color:#ff7b72">run</span>: python -c "from src.pipeline import ..."</span>
+          <span class="annotate-desc">第4步：测试代码能不能导入</span>
+        </div>
+        <div class="detail-box" id="d7">
+          <p><span class="hl">这就是"测试"。</span>它做的事：</p>
+          <p>尝试 import 6 个核心模块。如果任何一个 import 失败（比如文件缺失、函数名错、依赖缺失），整个 workflow 就标红 ❌。</p>
+          <p style="margin-top:8px"><span class="hl-red">这正是我们刚才遇到的：</span></p>
+          <p style="color:#8b949e">第一次：<code>analyze_entry</code> 应该是 <code>analyze_entry_timing</code> → ❌</p>
+          <p style="color:#8b949e">第二次：<code>compute_quality</code> 应该是 <code>compute_quality_scores</code> → ❌</p>
+          <p style="color:#8b949e">第三次：全改对了 → ✅</p>
+          <p style="color:#3fb950;margin-top:8px">💡 以后可以加更多测试：单元测试、API 测试、数据验证等。</p>
+        </div>
+
+        <div class="annotate-line" onclick="toggle('d8')">
+          <span class="annotate-code"><span style="color:#ff7b72">run</span>: docker build -t stock-picker:test .</span>
+          <span class="annotate-desc">第5步：测试 Docker 构建</span>
+        </div>
+        <div class="detail-box" id="d8">
+          <p>跟你在 Mac 上跑的 <code>docker build</code> 一模一样。</p>
+          <p>验证 Dockerfile 没问题，所有依赖能正确安装。</p>
+          <p style="color:#8b949e;margin-top:8px">GitHub 的虚拟机自带 Docker，不需要额外安装。</p>
+          <p style="color:#8b949e">如果 Dockerfile 有语法错误或依赖装不上，这步会失败 → ❌。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: Flow -->
+  <div class="section" data-section="3">
+    <div class="card">
+      <h2><span class="icon">🔄</span>运行流程 — 从 push 到结果</h2>
+
+      <div class="flow-container" id="action-flow">
+        <div class="flow-step" id="af-0">
+          <span class="flow-icon">📝</span>
+          <div>
+            <div class="flow-text">你在 Mac 上 <code>git push</code></div>
+            <div class="flow-detail">代码上传到 GitHub</div>
+          </div>
+        </div>
+        <div class="flow-step" id="af-1">
+          <span class="flow-icon">👀</span>
+          <div>
+            <div class="flow-text">GitHub 检测到 push 事件</div>
+            <div class="flow-detail">扫描 .github/workflows/ 目录，找到 test.yml</div>
+          </div>
+        </div>
+        <div class="flow-step" id="af-2">
+          <span class="flow-icon">🖥️</span>
+          <div>
+            <div class="flow-text">分配一台全新的 Ubuntu 虚拟机</div>
+            <div class="flow-detail">干净的机器，什么都没装。跑完就销毁。</div>
+          </div>
+        </div>
+        <div class="flow-step" id="af-3">
+          <span class="flow-icon">📥</span>
+          <div>
+            <div class="flow-text">Step 1: checkout — 下载你的代码</div>
+            <div class="flow-detail">git clone 到虚拟机上</div>
+          </div>
+        </div>
+        <div class="flow-step" id="af-4">
+          <span class="flow-icon">🐍</span>
+          <div>
+            <div class="flow-text">Step 2: setup-python — 装 Python 3.11</div>
+            <div class="flow-detail">确保版本跟你本地和 Docker 一致</div>
+          </div>
+        </div>
+        <div class="flow-step" id="af-5">
+          <span class="flow-icon">📦</span>
+          <div>
+            <div class="flow-text">Step 3: pip install — 装所有依赖</div>
+            <div class="flow-detail">FastAPI, pandas, XGBoost... 全部装一遍</div>
+          </div>
+        </div>
+        <div class="flow-step" id="af-6">
+          <span class="flow-icon">🧪</span>
+          <div>
+            <div class="flow-text">Step 4: import tests — 测试代码</div>
+            <div class="flow-detail">尝试导入 6 个核心模块</div>
+          </div>
+        </div>
+        <div class="flow-step" id="af-7">
+          <span class="flow-icon">🐳</span>
+          <div>
+            <div class="flow-text">Step 5: docker build — 测试容器构建</div>
+            <div class="flow-detail">按 Dockerfile 构建镜像</div>
+          </div>
+        </div>
+        <div class="flow-step" id="af-8">
+          <span class="flow-icon">📊</span>
+          <div>
+            <div class="flow-text">报告结果</div>
+            <div class="flow-detail"><span class="status-badge status-green">✅ 全部通过</span> 或 <span class="status-badge status-red">❌ 某步失败</span></div>
+          </div>
+        </div>
+        <div class="flow-step" id="af-9">
+          <span class="flow-icon">🗑️</span>
+          <div>
+            <div class="flow-text">销毁虚拟机</div>
+            <div class="flow-detail">所有数据清除。下次 push 又是一台全新的机器。</div>
+          </div>
+        </div>
+      </div>
+      <button class="action-btn" onclick="animateFlow('action-flow','af-',10)">▶️ 播放完整流程</button>
+
+      <h3 style="margin-top:20px">关键概念：每次都是全新的机器</h3>
+      <p>这台虚拟机<span class="hl">跑完就销毁</span>。不会保留任何状态。</p>
+      <p>所以每次 push 都要重新：装 Python → 装依赖 → 下载代码 → 跑测试。</p>
+      <p style="color:#8b949e;margin-top:8px">（可以用 cache 加速依赖安装，但概念上每次都是从零开始）</p>
+
+      <h3>你在 Actions 页面看到的</h3>
+      <div style="background:#0d1117;border-radius:10px;padding:20px;margin:16px 0">
+        <div style="display:flex;align-items:center;gap:12px;margin:8px 0">
+          <span class="status-badge status-green">✅</span>
+          <span style="font-size:14px">fix: correct all import names in CI test</span>
+          <span style="color:#8b949e;font-size:12px;margin-left:auto">3m 24s</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;margin:8px 0">
+          <span class="status-badge status-red">❌</span>
+          <span style="font-size:14px">fix: correct import name in CI test</span>
+          <span style="color:#8b949e;font-size:12px;margin-left:auto">1m 12s</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;margin:8px 0">
+          <span class="status-badge status-red">❌</span>
+          <span style="font-size:14px">feat: Docker learning playground + daily updates</span>
+          <span style="color:#8b949e;font-size:12px;margin-left:auto">1m 08s</span>
+        </div>
+      </div>
+      <p style="color:#8b949e;font-size:13px">每条就是一次 push 触发的 workflow。点进去能看每一步的详细日志。</p>
+    </div>
+  </div>
+
+  <!-- TAB 4: Debug -->
+  <div class="section" data-section="4">
+    <div class="card">
+      <h2><span class="icon">🐛</span>Debug 实战 — 我们刚才经历的</h2>
+      <p>这不是假设场景，<span class="hl">这是你今天真实经历的 CI debug 过程</span>：</p>
+
+      <h3>第1次 Push → ❌</h3>
+      <div style="background:#3a1a1a;border:1px solid #f85149;border-radius:8px;padding:14px;margin:12px 0">
+        <p style="color:#f85149;font-weight:600">ImportError: cannot import name 'analyze_entry' from 'src.entry_timing'</p>
+        <p style="color:#8b949e;font-size:13px;margin-top:6px">问题：函数名写错了。文件里叫 <code>analyze_entry_timing</code>，test.yml 里写了 <code>analyze_entry</code></p>
+      </div>
+      <p><span class="hl-green">修复：</span> 改 test.yml 里的函数名 → push</p>
+
+      <h3>第2次 Push → ❌</h3>
+      <div style="background:#3a1a1a;border:1px solid #f85149;border-radius:8px;padding:14px;margin:12px 0">
+        <p style="color:#f85149;font-weight:600">ImportError: cannot import name 'compute_quality' from 'src.quality_scores'</p>
+        <p style="color:#8b949e;font-size:13px;margin-top:6px">问题：又一个函数名错了。实际叫 <code>compute_quality_scores</code></p>
+      </div>
+      <p><span class="hl-green">修复：</span> 这次把所有函数名都核对了一遍 → push</p>
+
+      <h3>第3次 Push → ✅</h3>
+      <div style="background:#1a3a2a;border:1px solid #3fb950;border-radius:8px;padding:14px;margin:12px 0">
+        <p style="color:#3fb950;font-weight:600">All steps passed!</p>
+        <p style="color:#8b949e;font-size:13px;margin-top:6px">pipeline OK ✓ risk_manager OK ✓ entry_timing OK ✓ quality_scores OK ✓ early_momentum OK ✓ devils_advocate OK ✓ Docker build OK ✓</p>
+      </div>
+
+      <h3>Debug 流程总结</h3>
+      <div class="flow-container">
+        <div class="flow-step" style="border-color:#f85149;background:#3a1a1a20">
+          <span class="flow-icon">❌</span>
+          <div><div class="flow-text">CI 红了</div></div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-icon">🔍</span>
+          <div><div class="flow-text">点进 Actions → 看失败的 step → 看 log</div></div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-icon">📖</span>
+          <div><div class="flow-text">找到错误信息（比如 ImportError）</div></div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-icon">🔧</span>
+          <div><div class="flow-text">本地修改代码</div></div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-icon">📝</span>
+          <div><div class="flow-text">git commit + git push</div></div>
+        </div>
+        <div class="flow-step" style="border-color:#3fb950;background:#1a3a2a20">
+          <span class="flow-icon">✅</span>
+          <div><div class="flow-text">等 CI 重新跑 → 绿了就搞定</div></div>
+        </div>
+      </div>
+
+      <p style="margin-top:16px"><span class="hl">面试时说：</span>"我在项目中配置了 GitHub Actions CI pipeline，遇到过 import 失败的问题，通过查看 workflow log 定位到函数名变更后未同步更新测试，修复后所有 checks 通过。"</p>
+    </div>
+  </div>
+
+  <!-- TAB 5: Real World -->
+  <div class="section" data-section="5">
+    <div class="card">
+      <h2><span class="icon">🏭</span>真实场景 — 大公司怎么用</h2>
+
+      <h3>你的 Stock Picker（现在）</h3>
+      <div class="diagram">
+        <div class="box box-blue">git push<br><small>你</small></div>
+        <span class="arrow">→</span>
+        <div class="box box-orange">CI 测试<br><small>import + docker</small></div>
+        <span class="arrow">→</span>
+        <div class="box box-green">✅ 通过<br><small>代码没问题</small></div>
+      </div>
+
+      <h3>中型公司（加了CD）</h3>
+      <div class="diagram">
+        <div class="box box-blue">git push</div>
+        <span class="arrow">→</span>
+        <div class="box box-orange">CI 测试</div>
+        <span class="arrow">→</span>
+        <div class="box box-purple">docker push<br><small>上传镜像</small></div>
+        <span class="arrow">→</span>
+        <div class="box box-green">自动部署<br><small>AWS/Vercel</small></div>
+      </div>
+
+      <h3>大公司（完整流程）</h3>
+      <div class="diagram" style="flex-wrap:wrap">
+        <div class="box box-blue">PR 提交</div>
+        <span class="arrow">→</span>
+        <div class="box box-orange">Lint + 格式检查</div>
+        <span class="arrow">→</span>
+        <div class="box box-orange">单元测试（500+）</div>
+        <span class="arrow">→</span>
+        <div class="box box-orange">集成测试</div>
+        <span class="arrow">→</span>
+        <div class="box box-purple">安全扫描</div>
+        <span class="arrow">→</span>
+        <div class="box box-purple">Docker build + push</div>
+        <span class="arrow">→</span>
+        <div class="box box-green">部署到 staging</div>
+        <span class="arrow">→</span>
+        <div class="box box-green">自动回归测试</div>
+        <span class="arrow">→</span>
+        <div class="box box-green">部署到 production</div>
+      </div>
+
+      <h3>常见的 GitHub Actions 用途</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code">跑测试（pytest/jest）</span>
+          <span class="annotate-desc">最基本的用途，几乎所有项目都有</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">代码格式检查（ESLint/Black）</span>
+          <span class="annotate-desc">确保代码风格统一</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">Docker build + push</span>
+          <span class="annotate-desc">构建镜像并推到 Docker Hub</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">部署到 AWS/Vercel/Netlify</span>
+          <span class="annotate-desc">测试通过后自动上线</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">安全漏洞扫描</span>
+          <span class="annotate-desc">检查依赖有没有已知漏洞</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">自动发Release</span>
+          <span class="annotate-desc">打tag后自动生成release notes</span>
+        </div>
+      </div>
+
+      <h3>GitHub Actions vs 其他CI工具</h3>
+      <div class="annotate">
+        <div class="annotate-line">
+          <span class="annotate-code" style="color:#58a6ff">GitHub Actions</span>
+          <span class="annotate-desc">跟 GitHub 原生集成，免费，最流行</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">Jenkins</span>
+          <span class="annotate-desc">老牌，需要自己搭服务器，大公司用</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">CircleCI / Travis CI</span>
+          <span class="annotate-desc">第三方CI，被GitHub Actions抢了市场</span>
+        </div>
+        <div class="annotate-line">
+          <span class="annotate-code">GitLab CI</span>
+          <span class="annotate-desc">GitLab自带的CI，用法类似</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 6: Quiz -->
+  <div class="section" data-section="6">
+    <div class="card">
+      <h2><span class="icon">🧠</span>测验 — 检查理解</h2>
+      <p id="quiz-score" style="color:#8b949e;margin-bottom:16px">答对 0/6</p>
+
+      <div id="q0">
+        <p class="quiz-q">1. GitHub Actions 的 workflow 文件放在哪？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQ(0,this,false)">项目根目录的 actions.yml</div>
+          <div class="quiz-opt" onclick="checkQ(0,this,true)">.github/workflows/ 目录下</div>
+          <div class="quiz-opt" onclick="checkQ(0,this,false)">GitHub 网页上配置，不需要文件</div>
+        </div>
+        <div class="quiz-explain" id="qe0">必须放在 .github/workflows/ 目录下，GitHub 会自动扫描这个目录里的 .yml 文件。</div>
+      </div>
+
+      <div id="q1" style="margin-top:16px">
+        <p class="quiz-q">2. <code>runs-on: ubuntu-latest</code> 是什么意思？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQ(1,this,false)">在你的 Mac 上跑</div>
+          <div class="quiz-opt" onclick="checkQ(1,this,true)">在 GitHub 分配的 Ubuntu 虚拟机上跑</div>
+          <div class="quiz-opt" onclick="checkQ(1,this,false)">在 Docker 容器里跑</div>
+        </div>
+        <div class="quiz-explain" id="qe1">GitHub 分配一台全新的 Ubuntu 虚拟机，跑完就销毁。不是你的电脑，也不是 Docker。</div>
+      </div>
+
+      <div id="q2" style="margin-top:16px">
+        <p class="quiz-q">3. 什么时候触发 CI？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQ(2,this,false)">每天定时跑一次</div>
+          <div class="quiz-opt" onclick="checkQ(2,this,false)">你手动点按钮时</div>
+          <div class="quiz-opt" onclick="checkQ(2,this,true)">每次 git push 到 main 分支时</div>
+        </div>
+        <div class="quiz-explain" id="qe2">我们配置的是 <code>on: push: branches: [main]</code>，所以每次 push 到 main 就自动跑。也可以配置定时或手动触发。</div>
+      </div>
+
+      <div id="q3" style="margin-top:16px">
+        <p class="quiz-q">4. CI 红了（❌）应该怎么做？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQ(3,this,false)">删掉 workflow 文件，不用 CI 了</div>
+          <div class="quiz-opt" onclick="checkQ(3,this,false)">等一天再 push，可能自己好了</div>
+          <div class="quiz-opt" onclick="checkQ(3,this,true)">查看失败步骤的 log → 找错误 → 修复 → 重新 push</div>
+        </div>
+        <div class="quiz-explain" id="qe3">这就是我们刚才做的！看 log 找到 ImportError → 改函数名 → push → 绿了。</div>
+      </div>
+
+      <div id="q4" style="margin-top:16px">
+        <p class="quiz-q">5. <code>uses: actions/checkout@v4</code> 做什么？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQ(4,this,true)">把你的代码从 GitHub 下载到虚拟机上</div>
+          <div class="quiz-opt" onclick="checkQ(4,this,false)">检查代码有没有语法错误</div>
+          <div class="quiz-opt" onclick="checkQ(4,this,false)">把代码部署到服务器</div>
+        </div>
+        <div class="quiz-explain" id="qe4">checkout = 把代码拉下来。虚拟机是全新的，上面什么都没有，必须先下载代码才能测试。</div>
+      </div>
+
+      <div id="q5" style="margin-top:16px">
+        <p class="quiz-q">6. CI 和 CD 的区别是？</p>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="checkQ(5,this,false)">一样的，只是叫法不同</div>
+          <div class="quiz-opt" onclick="checkQ(5,this,true)">CI = 自动测试（你有了），CD = 自动部署（以后加）</div>
+          <div class="quiz-opt" onclick="checkQ(5,this,false)">CI 用 GitHub，CD 用 Jenkins</div>
+        </div>
+        <div class="quiz-explain" id="qe5">CI (Continuous Integration) = 每次 push 自动跑测试。CD (Continuous Deployment) = 测试通过后自动部署。你现在有 CI，加了 AWS 后就有 CD 了。</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const tabs=document.querySelectorAll('.tab'),sections=document.querySelectorAll('.section');
+tabs.forEach(tab=>{tab.addEventListener('click',()=>{const i=tab.dataset.tab;tabs.forEach(t=>t.classList.remove('active'));sections.forEach(s=>s.classList.remove('active'));tab.classList.add('active');document.querySelector(`[data-section="${i}"]`).classList.add('active');document.getElementById('prog-fill').style.width=((+i+1)/7*100)+'%';document.getElementById('prog-text').textContent=`${+i+1}/7`})});
+
+function toggle(id){const el=document.getElementById(id);el.style.display=el.style.display==='none'||!el.style.display?'block':'none'}
+
+function animateFlow(cid,prefix,count){const steps=document.querySelectorAll(`#${cid} .flow-step`);steps.forEach(s=>s.classList.remove('highlight'));let i=0;const iv=setInterval(()=>{if(i>0)steps[i-1].classList.remove('highlight');if(i>=steps.length){clearInterval(iv);return}steps[i].classList.add('highlight');steps[i].scrollIntoView({behavior:'smooth',block:'nearest'});i++},1000)}
+
+let score=0;const answered={};
+function checkQ(q,el,correct){if(answered[q])return;answered[q]=true;el.classList.add(correct?'correct':'wrong');if(correct)score++;document.getElementById('quiz-score').textContent=`答对 ${score}/6`;document.getElementById('qe'+q).style.display='block';if(!correct){const opts=el.parentElement.children;for(let o of opts)if(o!==el)o.style.opacity='0.5'}}
+</script>
+</body>
+</html>

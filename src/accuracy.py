@@ -7,27 +7,12 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional, List, Dict, Any
 
-import yfinance as yf
+from .yfinance_client import download, get_ticker_object
+from . import db
 
 logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-HISTORY_FILE = DATA_DIR / "signal_history.json"
-
-
-def _load_history() -> List[Dict[str, Any]]:
-    if HISTORY_FILE.exists():
-        try:
-            return json.loads(HISTORY_FILE.read_text())
-        except Exception:
-            logger.warning("Failed to load signal history", exc_info=True)
-    return []
-
-
-def _save_history(history: List[Dict[str, Any]]):
-    DATA_DIR.mkdir(exist_ok=True)
-    # Keep last 2000 entries (~100 days × 20 stocks)
-    HISTORY_FILE.write_text(json.dumps(history[-2000:], indent=2, default=str))
 
 
 def take_snapshot(strategy: str = "balanced") -> Dict[str, Any]:
@@ -52,45 +37,27 @@ def take_snapshot(strategy: str = "balanced") -> Dict[str, Any]:
         logger.info("Saved daily snapshot: %s", snapshot_file)
     scan_strategy = data.get("strategy", strategy)
     
-    history = _load_history()
-    
-    # Avoid duplicate snapshots for same day+strategy
-    existing_keys = set()
-    for entry in history:
-        if entry.get("date") == today and entry.get("strategy") == scan_strategy:
-            existing_keys.add(entry.get("ticker"))
-    
     logged = 0
     for stock in top:
         ticker = stock.get("ticker", "")
-        if ticker in existing_keys:
-            continue
         signal = stock.get("entry_signal", "HOLD")
-        entry = {
-            "ticker": ticker,
-            "signal": signal,
-            "score": stock.get("composite_score"),
-            "price_at_signal": None,
-            "date": today,
-            "strategy": scan_strategy,
-        }
-        # Try to get current price
+        price_at_signal = None
         try:
-            t = yf.Ticker(ticker)
+            t = get_ticker_object(ticker)
             info = t.info or {}
-            entry["price_at_signal"] = info.get("currentPrice") or info.get("regularMarketPrice")
+            price_at_signal = info.get("currentPrice") or info.get("regularMarketPrice")
         except Exception:
             pass
-        history.append(entry)
+        db.insert_signal(today, ticker, signal, stock.get("composite_score"), price_at_signal, scan_strategy)
         logged += 1
     
-    _save_history(history)
-    return {"logged": logged, "total_history": len(history), "date": today, "strategy": scan_strategy}
+    total = len(db.get_signal_history(limit=10000))
+    return {"logged": logged, "total_history": total, "date": today, "strategy": scan_strategy}
 
 
 def get_accuracy() -> Dict[str, Any]:
     """Analyze historical signal accuracy."""
-    history = _load_history()
+    history = db.get_signal_history(limit=10000)
     
     if not history:
         return {
@@ -128,7 +95,7 @@ def get_accuracy() -> Dict[str, Any]:
     # Get SPY history for benchmarking
     spy_prices = {}  # type: Dict[str, float]
     try:
-        spy = yf.Ticker("SPY")
+        spy = get_ticker_object("SPY")
         spy_hist = spy.history(period="1y")
         if not spy_hist.empty:
             for idx, row in spy_hist.iterrows():
@@ -149,7 +116,7 @@ def get_accuracy() -> Dict[str, Any]:
     if unique_tickers:
         try:
             import pandas as pd
-            batch = yf.download(unique_tickers, period="1d", progress=False)
+            batch = download(unique_tickers, period="1d", progress=False)
             if not batch.empty:
                 close_col = batch.get("Close", batch)
                 if isinstance(close_col, pd.DataFrame):
@@ -167,7 +134,7 @@ def get_accuracy() -> Dict[str, Any]:
             logger.warning("Batch price download failed, falling back to individual", exc_info=True)
             for t in unique_tickers:
                 try:
-                    info = yf.Ticker(t).fast_info
+                    info = get_ticker_object(t).fast_info
                     p = info.get("lastPrice") or info.get("regularMarketPrice")
                     if p:
                         current_prices[t] = float(p)

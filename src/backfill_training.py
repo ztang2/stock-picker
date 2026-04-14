@@ -12,7 +12,6 @@ import logging
 import argparse
 import numpy as np
 import pandas as pd
-import yfinance as yf
 from pathlib import Path
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -20,6 +19,7 @@ from typing import Dict, List, Optional
 
 from .alpha158 import compute_alpha158_fast
 from .universe import get_universe_tickers as get_universe
+from .yfinance_client import download
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
@@ -41,8 +41,8 @@ def download_history(tickers: List[str], years: int = 5) -> Dict[str, pd.DataFra
     for i in range(0, len(tickers), batch_size):
         batch = tickers[i:i + batch_size]
         try:
-            data = yf.download(
-                batch, start=start.strftime('%Y-%m-%d'), 
+            data = download(
+                batch, start=start.strftime('%Y-%m-%d'),
                 end=end.strftime('%Y-%m-%d'),
                 progress=False, threads=True
             )
@@ -77,8 +77,8 @@ def download_history(tickers: List[str], years: int = 5) -> Dict[str, pd.DataFra
     
     # Download SPY separately
     try:
-        spy = yf.download('SPY', start=start.strftime('%Y-%m-%d'),
-                          end=end.strftime('%Y-%m-%d'), progress=False)
+        spy = download('SPY', start=start.strftime('%Y-%m-%d'),
+                       end=end.strftime('%Y-%m-%d'), progress=False)
         if isinstance(spy.columns, pd.MultiIndex):
             # yfinance returns ('Close','SPY') format — take first level
             spy.columns = spy.columns.get_level_values(0)

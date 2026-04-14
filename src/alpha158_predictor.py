@@ -46,7 +46,7 @@ def _ensure_dirs():
 
 def _download_regime_data(years: int = 5) -> pd.DataFrame:
     """Download macro regime data and compute features."""
-    import yfinance as yf
+    from .yfinance_client import download
     
     end = datetime.now()
     start = end - timedelta(days=years * 365)
@@ -54,7 +54,7 @@ def _download_regime_data(years: int = 5) -> pd.DataFrame:
     regime_raw = {}
     for ticker, name in REGIME_TICKERS.items():
         try:
-            data = yf.download(ticker, start=start.strftime('%Y-%m-%d'),
+            data = download(ticker, start=start.strftime('%Y-%m-%d'),
                              end=end.strftime('%Y-%m-%d'), progress=False)
             if isinstance(data.columns, pd.MultiIndex):
                 data.columns = data.columns.get_level_values(0)
@@ -268,7 +268,7 @@ def predict_for_stocks(tickers: Optional[List[str]] = None) -> List[Dict]:
     Downloads recent OHLCV, computes Alpha158 features + regime features,
     runs through ensemble model, returns ranked predictions.
     """
-    import yfinance as yf
+    from .yfinance_client import download
     from .alpha158 import compute_alpha158_fast
     
     # Load model
@@ -307,7 +307,7 @@ def predict_for_stocks(tickers: Optional[List[str]] = None) -> List[Dict]:
     for i in range(0, len(tickers), batch_size):
         batch = tickers[i:i + batch_size]
         try:
-            data = yf.download(batch, start=start.strftime('%Y-%m-%d'),
+            data = download(batch, start=start.strftime('%Y-%m-%d'),
                              end=end.strftime('%Y-%m-%d'), progress=False, threads=True)
             if isinstance(data.columns, pd.MultiIndex):
                 available = data.columns.get_level_values(1).unique()

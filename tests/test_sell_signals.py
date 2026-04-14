@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
 """Basic tests for sell_signals module."""
 
-import sys
 from pathlib import Path
 import pandas as pd
 import numpy as np
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
-from sell_signals import compute_sell_signals
+from src.sell_signals import compute_sell_signals
 
 
 def create_sample_hist(

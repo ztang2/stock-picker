@@ -2,16 +2,12 @@
 """Test the profit-taking module."""
 
 import json
-import sys
 from pathlib import Path
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
-from profit_taker import check_profit_status, get_profit_summary
+from src.profit_taker import check_profit_status, get_profit_summary
 
 # Load holdings
-holdings_file = Path(__file__).parent / "data" / "holdings.json"
+holdings_file = Path(__file__).parent.parent / "data" / "holdings.json"
 holdings_data = json.loads(holdings_file.read_text())
 holdings = holdings_data.get("holdings", {})
 

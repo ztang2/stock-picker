@@ -14,7 +14,7 @@ import logging
 from typing import Dict, List, Optional, Tuple
 from datetime import datetime, timedelta
 
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 import pandas as pd
 import numpy as np
 
@@ -37,7 +37,7 @@ def analyze_entry_timing(ticker: str) -> dict:
     """
     try:
         # Fetch 6 months of daily data for analysis
-        tk = yf.Ticker(ticker)
+        tk = get_ticker_object(ticker)
         hist = tk.history(period="6mo", interval="1d")
         
         if hist is None or hist.empty or len(hist) < 60:

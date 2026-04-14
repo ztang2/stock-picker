@@ -14,11 +14,12 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+from .rebalance import load_holdings
+
 logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 SCAN_RESULTS_FILE = DATA_DIR / "scan_results.json"
-HOLDINGS_FILE = DATA_DIR / "holdings.json"
 
 
 def load_scan_results() -> Dict:
@@ -30,17 +31,6 @@ def load_scan_results() -> Dict:
     except Exception as e:
         logger.error(f"Failed to load scan results: {e}")
         return {"all_scores": []}
-
-
-def load_holdings() -> Dict:
-    """Load current holdings."""
-    if not HOLDINGS_FILE.exists():
-        return {"holdings": {}}
-    try:
-        return json.loads(HOLDINGS_FILE.read_text())
-    except Exception as e:
-        logger.error(f"Failed to load holdings: {e}")
-        return {"holdings": {}}
 
 
 def calculate_conviction_score(ticker: str, scan_data: Optional[Dict] = None) -> Dict:
@@ -189,16 +179,16 @@ def get_portfolio_sizing(
     tickers: Optional[List[str]] = None
 ) -> Dict:
     """Calculate position sizing for entire portfolio.
-    
+
     If tickers not provided, uses current holdings.
     Returns sizing for each ticker with rebalance suggestions.
     """
     scan_data = load_scan_results()
-    holdings_data = load_holdings()
-    
+    holdings_dict = load_holdings()
+
     # Use provided tickers or current holdings
     if tickers is None:
-        tickers = list(holdings_data.get("holdings", {}).keys())
+        tickers = list(holdings_dict.keys())
     
     if not tickers:
         return {"error": "No tickers provided and no current holdings"}
@@ -248,18 +238,17 @@ def get_portfolio_sizing(
 
 def get_rebalance_suggestions(total_portfolio_value: float) -> Dict:
     """Analyze current holdings and suggest rebalancing.
-    
+
     Compares current allocations with recommended allocations based on conviction.
     Respects 30-day minimum hold rule.
     """
-    holdings_data = load_holdings()
-    holdings = holdings_data.get("holdings", {})
+    holdings = load_holdings()
     
     if not holdings:
         return {"error": "No current holdings to analyze"}
     
     # Get current prices and calculate current allocations
-    import yfinance as yf
+    from .yfinance_client import get_ticker_object
     
     current_positions = []
     total_current_value = 0
@@ -271,7 +260,7 @@ def get_rebalance_suggestions(total_portfolio_value: float) -> Dict:
         
         # Get current price
         try:
-            stock = yf.Ticker(ticker)
+            stock = get_ticker_object(ticker)
             current_price = stock.info.get("currentPrice", stock.info.get("regularMarketPrice", entry_price))
         except Exception as e:
             logger.warning(f"Failed to get price for {ticker}: {e}")

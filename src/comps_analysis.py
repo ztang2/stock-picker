@@ -8,7 +8,7 @@ import time
 from typing import Dict, List, Optional
 
 import numpy as np
-import yfinance as yf
+from .yfinance_client import get_ticker_object
 
 from .universe import get_sp500_tickers
 
@@ -39,7 +39,7 @@ def _get_stock_metrics(ticker: str, info: Optional[dict] = None) -> Optional[dic
 
     if info is None:
         try:
-            t = yf.Ticker(ticker)
+            t = get_ticker_object(ticker)
             info = t.info or {}
         except Exception:
             return None
@@ -96,7 +96,7 @@ def find_peers(ticker: str, max_peers: int = 15) -> List[dict]:
     ticker = ticker.upper()
 
     try:
-        t = yf.Ticker(ticker)
+        t = get_ticker_object(ticker)
         info = t.info or {}
     except Exception:
         return []
@@ -139,7 +139,7 @@ def find_peers(ticker: str, max_peers: int = 15) -> List[dict]:
             if sym == ticker:
                 continue
             try:
-                peer_t = yf.Ticker(sym)
+                peer_t = get_ticker_object(sym)
                 peer_info = peer_t.info or {}
                 if peer_info.get("sector") == target_sector:
                     metrics = _get_stock_metrics(sym, peer_info)

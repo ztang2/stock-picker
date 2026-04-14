@@ -63,7 +63,7 @@ def diagnose_cache(cache_path: Optional[str] = None) -> dict:
         if index_list:
             try:
                 last_date = pd.to_datetime(index_list[-1], utc=True)
-                if last_date < pd.Timestamp(cutoff, tz="UTC"):
+                if last_date < pd.Timestamp(cutoff):
                     stale_tickers.append(ticker)
             except Exception:
                 stale_tickers.append(ticker)
@@ -138,7 +138,7 @@ def heal_cache(cache_path: Optional[str] = None, max_refetch: int = 50) -> dict:
             continue
         try:
             last_date = pd.to_datetime(index_list[-1], utc=True)
-            if last_date < pd.Timestamp(cutoff, tz="UTC"):
+            if last_date < pd.Timestamp(cutoff):
                 stale.append(ticker)
         except Exception:
             stale.append(ticker)

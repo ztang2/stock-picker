@@ -69,7 +69,7 @@ const { data: diversification } = useApi<DiversificationResponse>(() => api.dive
             ))}
           </div>
         </div>
-        <RiskDashboard risk={risk} sectorWeights={sectorWeights} regime={scan.market_regime} />
+        {scan.market_regime && <RiskDashboard risk={risk} sectorWeights={sectorWeights} regime={scan.market_regime} />}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">

@@ -320,3 +320,75 @@ export interface ThesisResponse {
   thesis: string | null;
   source: string;
 }
+
+export interface StockDetail {
+  ticker: string;
+  name: string;
+  sector: string;
+  industry: string;
+  market_cap: number;
+  fundamentals: { score: number; [key: string]: unknown };
+  valuation: { score: number; [key: string]: unknown };
+  technicals: { score: number; [key: string]: unknown };
+  risk: { score: number; beta?: number; volatility?: number; [key: string]: unknown };
+  growth: { score: number; [key: string]: unknown };
+  sentiment: SentimentData | null;
+  momentum: { entry_signal: string; entry_score: number; [key: string]: unknown };
+  sell_signals: { sell_signal: string; urgency: string; sell_reasons: string[]; [key: string]: unknown };
+  earnings?: { [key: string]: unknown } | null;
+}
+
+export interface DCFSummary {
+  ticker: string;
+  intrinsic_value: number | null;
+  current_price: number | null;
+  margin_of_safety: number | null;
+  verdict: string | null;
+  confidence: string | null;
+  wacc: number | null;
+  growth_rate: number | null;
+  terminal_growth?: number | null;
+}
+
+export interface CompsResult {
+  ticker: string;
+  comps_score: number;
+  verdict: string;
+  peers: Array<{
+    ticker: string;
+    pe_ratio?: number;
+    ev_ebitda?: number;
+    ps_ratio?: number;
+  }>;
+  metrics: Record<string, unknown>;
+}
+
+export interface EarningsAnalysis {
+  ticker: string;
+  beat_rate: number;
+  quality_score: number;
+  margin_trend: string;
+  signals: string[];
+  quarterly_history: Array<Record<string, unknown>>;
+}
+
+export interface MomentumScore {
+  ticker: string;
+  total_score: number;
+  signal: string;
+  analyst_revisions: { score: number; [key: string]: unknown };
+  insider_buying: { score: number; [key: string]: unknown };
+  revenue_acceleration: { score: number; [key: string]: unknown };
+  institutional_validation: { score: number; [key: string]: unknown };
+  earnings_surprise: { score: number; [key: string]: unknown };
+}
+
+export interface PortfolioResult {
+  portfolio: Array<{
+    ticker: string;
+    weight: number;
+    score: number;
+    sector: string;
+  }>;
+  diversification_score: number;
+}

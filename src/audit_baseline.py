@@ -15,7 +15,7 @@ from typing import Dict, List
 
 import numpy as np
 import pandas as pd
-import yfinance as yf
+from .yfinance_client import download
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format='%(message)s')
@@ -33,7 +33,7 @@ def load_baseline() -> Dict:
 
 def get_performance(tickers: List[str], start_date: str, end_date: str) -> Dict[str, float]:
     """Get price performance for tickers between two dates."""
-    data = yf.download(tickers + ['SPY'], start=start_date, end=end_date, progress=False, threads=True)
+    data = download(tickers + ['SPY'], start=start_date, end=end_date, progress=False, threads=True)
     
     if isinstance(data.columns, pd.MultiIndex):
         available = data.columns.get_level_values(1).unique()
