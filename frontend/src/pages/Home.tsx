@@ -123,7 +123,7 @@ export default function Home() {
           onTickerClick={handleTickerClick}
         />
         <NewSignals stocks={scan.top} onTickerClick={handleTickerClick} />
-        <MarketPulse regime={scan.market_regime} />
+        {scan.market_regime && <MarketPulse regime={scan.market_regime} />}
       </motion.div>
 
       {selectedStock && <TickerModal stock={selectedStock} onClose={() => setSelectedStock(null)} />}
