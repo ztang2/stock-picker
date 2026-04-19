@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Pencil, Trash2, Plus } from "lucide-react";
 import ScoreBadge from "../common/ScoreBadge";
 import { pnlColor } from "../../lib/colors";
 import type { StopLossAlert } from "../../lib/types";
@@ -9,9 +10,12 @@ interface HoldingCardProps {
   stopLossPct?: number;
   profitTriggered?: boolean;
   totalValue: number;
+  onEdit?: (ticker: string) => void;
+  onRemove?: (ticker: string) => void;
+  onAddShares?: (ticker: string) => void;
 }
 
-export default function HoldingCard({ position, signal, stopLossPct, profitTriggered, totalValue }: HoldingCardProps) {
+export default function HoldingCard({ position, signal, stopLossPct, profitTriggered, totalValue, onEdit, onRemove, onAddShares }: HoldingCardProps) {
   const pnlPct = position.pnl_pct ?? 0;
   const pnlDollar = position.pnl_dollar ?? 0;
   const positionValue = (position.shares ?? 0) * (position.current_price ?? 0);
@@ -30,9 +34,43 @@ export default function HoldingCard({ position, signal, stopLossPct, profitTrigg
 
   return (
     <motion.div
-      className={`p-3.5 rounded-lg bg-surface border ${borderClass} cursor-pointer transition-all duration-200`}
+      className={`group relative p-3.5 rounded-lg bg-surface border ${borderClass} transition-all duration-200`}
       whileHover={{ y: -1 }}
     >
+      {(onEdit || onRemove || onAddShares) && (
+        <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+          {onAddShares && (
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); onAddShares(position.ticker); }}
+              className="p-1.5 rounded-md bg-base/80 border border-border text-text-muted hover:text-positive hover:border-positive/50 transition-colors"
+              aria-label={`Add shares ${position.ticker}`}
+            >
+              <Plus size={12} strokeWidth={2.5} />
+            </button>
+          )}
+          {onEdit && (
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); onEdit(position.ticker); }}
+              className="p-1.5 rounded-md bg-base/80 border border-border text-text-muted hover:text-accent hover:border-accent/50 transition-colors"
+              aria-label={`Edit ${position.ticker}`}
+            >
+              <Pencil size={12} strokeWidth={2.25} />
+            </button>
+          )}
+          {onRemove && (
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); onRemove(position.ticker); }}
+              className="p-1.5 rounded-md bg-base/80 border border-border text-text-muted hover:text-danger hover:border-danger/50 transition-colors"
+              aria-label={`Remove ${position.ticker}`}
+            >
+              <Trash2 size={12} strokeWidth={2.25} />
+            </button>
+          )}
+        </div>
+      )}
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center gap-2.5">
           <span className="text-[15px] font-bold text-text-primary">{position.ticker}</span>

@@ -40,4 +40,76 @@ export const api = {
     fetch(`/watchlist/${ticker}`, { method: "DELETE" }).then((r) => r.json()),
   thesis: (ticker: string) =>
     get<import("./types").ThesisResponse>(`/thesis/${ticker}/gemini`),
+  listHoldings: () => get<{ holdings: Record<string, HoldingRecord> }>("/portfolio/holdings"),
+  createHolding: (ticker: string, body: HoldingPayload) =>
+    mutate("POST", `/portfolio/holdings/${ticker}`, body),
+  updateHolding: (ticker: string, body: HoldingPayload) =>
+    mutate("PATCH", `/portfolio/holdings/${ticker}`, body),
+  addSharesToHolding: (ticker: string, body: { added_shares: number; added_price: number; added_date?: string; note?: string }) =>
+    mutate("POST", `/portfolio/holdings/${ticker}/add`, body),
+  deleteHolding: (ticker: string) =>
+    mutate("DELETE", `/portfolio/holdings/${ticker}`),
+  closeHolding: (ticker: string, body: { exit_price: number; exit_date: string; note?: string }) =>
+    mutate("POST", `/portfolio/holdings/${ticker}/close`, body),
+  closedHoldings: () =>
+    get<{ closed: ClosedHolding[] }>("/closed-holdings"),
+  closedStats: () =>
+    get<ClosedStats>("/closed-holdings/stats"),
 };
+
+export interface ClosedHolding {
+  ticker: string;
+  shares: number;
+  entry_price: number;
+  entry_date?: string;
+  exit_price: number;
+  exit_date: string;
+  realized_pnl: number;
+  realized_pnl_pct: number;
+  hold_days: number | null;
+  entry_score?: number;
+  entry_note?: string;
+  close_note?: string;
+}
+
+export interface ClosedStats {
+  count: number;
+  total_realized_pnl: number;
+  win_rate: number | null;
+  avg_hold_days: number | null;
+  avg_return_pct: number | null;
+  best_trade: { ticker: string; pnl_pct: number; pnl: number } | null;
+  worst_trade: { ticker: string; pnl_pct: number; pnl: number } | null;
+}
+
+export interface HoldingRecord {
+  shares: number;
+  entry_price: number;
+  entry_date?: string;
+  entry_score?: number;
+  note?: string;
+}
+
+export interface HoldingPayload {
+  shares?: number;
+  entry_price?: number;
+  entry_date?: string;
+  entry_score?: number;
+  note?: string;
+}
+
+async function mutate(method: string, path: string, body?: unknown) {
+  const res = await fetch(`${BASE}${path}`, {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-Key": "stock-picker",
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`${res.status}: ${text}`);
+  }
+  return res.json();
+}

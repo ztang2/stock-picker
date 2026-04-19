@@ -10,7 +10,8 @@ from pathlib import Path
 from typing import Optional
 
 import pandas as pd
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
+from pydantic import BaseModel, Field
 
 from ..yfinance_client import download as yf_download
 
@@ -19,6 +20,7 @@ from ..portfolio import build_portfolio
 from ..accuracy import get_accuracy, take_snapshot
 from ..rebalance import (
     load_holdings,
+    save_holdings,
     load_rebalance_state,
     save_rebalance_state,
     update_signal_streaks,
@@ -26,6 +28,7 @@ from ..rebalance import (
     format_rebalance_report,
 )
 from ..risk_manager import get_portfolio_summary, check_ceasefire_signals
+from .. import closed_holdings as closed_holdings_svc
 from ..validation import validate_predictions, format_validation_report
 from ..snapshot_verify import run_verification, format_verification_report
 from ..position_sizing import (
@@ -34,7 +37,7 @@ from ..position_sizing import (
     get_rebalance_suggestions,
 )
 from ..diversification import compute_diversification, compute_correlation, compute_whatif
-from .deps import load_config, RESULTS_FILE, DATA_DIR, logger
+from .deps import load_config, RESULTS_FILE, DATA_DIR, logger, verify_api_key
 
 router = APIRouter(tags=["portfolio"])
 
@@ -692,3 +695,144 @@ async def portfolio_whatif(ticker: str):
     from ..scan_results_service import ScanResultsService
     scan_data = ScanResultsService.get_latest() or {}
     return compute_whatif(ticker, scan_data)
+
+
+# --- Holdings CRUD ---
+
+@router.get("/portfolio/holdings")
+def list_holdings():
+    return {"holdings": load_holdings()}
+
+
+class HoldingCreate(BaseModel):
+    shares: float = Field(..., gt=0)
+    entry_price: float = Field(..., gt=0)
+    entry_date: Optional[str] = None
+    entry_score: Optional[float] = None
+    note: Optional[str] = None
+
+
+class HoldingUpdate(BaseModel):
+    shares: Optional[float] = Field(None, gt=0)
+    entry_price: Optional[float] = Field(None, gt=0)
+    entry_date: Optional[str] = None
+    entry_score: Optional[float] = None
+    note: Optional[str] = None
+
+
+@router.post("/portfolio/holdings/{ticker}")
+def create_holding(ticker: str, body: HoldingCreate, _: None = Depends(verify_api_key)):
+    ticker = ticker.upper()
+    holdings = load_holdings()
+    if ticker in holdings:
+        raise HTTPException(status_code=409, detail=f"{ticker} already exists; use PATCH to update")
+    entry = {"shares": body.shares, "entry_price": body.entry_price}
+    entry["entry_date"] = body.entry_date or datetime.now().date().isoformat()
+    if body.entry_score is not None:
+        entry["entry_score"] = body.entry_score
+    if body.note:
+        entry["note"] = body.note
+    holdings[ticker] = entry
+    save_holdings(holdings)
+    return {"ticker": ticker, "holding": entry}
+
+
+@router.patch("/portfolio/holdings/{ticker}")
+def update_holding(ticker: str, body: HoldingUpdate, _: None = Depends(verify_api_key)):
+    ticker = ticker.upper()
+    holdings = load_holdings()
+    if ticker not in holdings:
+        raise HTTPException(status_code=404, detail=f"{ticker} not in holdings")
+    entry = holdings[ticker]
+    for field in ("shares", "entry_price", "entry_date", "entry_score", "note"):
+        val = getattr(body, field)
+        if val is not None:
+            entry[field] = val
+    holdings[ticker] = entry
+    save_holdings(holdings)
+    return {"ticker": ticker, "holding": entry}
+
+
+@router.delete("/portfolio/holdings/{ticker}")
+def delete_holding(ticker: str, _: None = Depends(verify_api_key)):
+    """Hard-delete a holding WITHOUT archiving. Use for typos/erroneous adds only."""
+    ticker = ticker.upper()
+    holdings = load_holdings()
+    if ticker not in holdings:
+        raise HTTPException(status_code=404, detail=f"{ticker} not in holdings")
+    removed = holdings.pop(ticker)
+    save_holdings(holdings)
+    return {"ticker": ticker, "removed": removed}
+
+
+class HoldingAdd(BaseModel):
+    added_shares: float = Field(..., gt=0)
+    added_price: float = Field(..., gt=0)
+    added_date: Optional[str] = None
+    note: Optional[str] = None
+
+
+@router.post("/portfolio/holdings/{ticker}/add")
+def add_to_holding(ticker: str, body: HoldingAdd, _: None = Depends(verify_api_key)):
+    """Add more shares to an existing holding; recompute weighted-avg entry price."""
+    ticker = ticker.upper()
+    holdings = load_holdings()
+    if ticker not in holdings:
+        raise HTTPException(status_code=404, detail=f"{ticker} not in holdings; use POST /portfolio/holdings/{{ticker}} to create")
+
+    entry = holdings[ticker]
+    old_shares = float(entry.get("shares") or 0)
+    old_price = float(entry.get("entry_price") or 0)
+    new_shares = old_shares + body.added_shares
+    # Weighted average — guard against zero (defensive, entry_price should never be 0)
+    new_price = (
+        (old_shares * old_price + body.added_shares * body.added_price) / new_shares
+        if new_shares > 0
+        else body.added_price
+    )
+
+    added_date = body.added_date or datetime.now().date().isoformat()
+    head = f"Added {body.added_shares}sh @ ${body.added_price:.2f} on {added_date}"
+    if body.note:
+        head += f" ({body.note})"
+    existing_note = entry.get("note", "").strip()
+    entry["note"] = f"{head}. {existing_note}" if existing_note else head
+
+    entry["shares"] = round(new_shares, 6)
+    entry["entry_price"] = round(new_price, 2)
+    # entry_date preserved (original position date — keeps hold-time meaningful)
+    holdings[ticker] = entry
+    save_holdings(holdings)
+    return {"ticker": ticker, "holding": entry}
+
+
+class HoldingClose(BaseModel):
+    exit_price: float = Field(..., gt=0)
+    exit_date: str
+    note: Optional[str] = None
+
+
+@router.post("/portfolio/holdings/{ticker}/close")
+def close_holding(ticker: str, body: HoldingClose, _: None = Depends(verify_api_key)):
+    """Record a sale: archive the position with realized P&L, then remove from holdings."""
+    ticker = ticker.upper()
+    holdings = load_holdings()
+    if ticker not in holdings:
+        raise HTTPException(status_code=404, detail=f"{ticker} not in holdings")
+    entry = closed_holdings_svc.build_entry(
+        ticker, holdings[ticker], body.exit_price, body.exit_date, body.note
+    )
+    closed_holdings_svc.append(entry)
+    holdings.pop(ticker)
+    save_holdings(holdings)
+    return {"ticker": ticker, "closed": entry}
+
+
+@router.get("/closed-holdings")
+def list_closed_holdings():
+    return {"closed": closed_holdings_svc.load_closed()}
+
+
+@router.get("/closed-holdings/stats")
+def closed_holdings_stats():
+    return closed_holdings_svc.stats()

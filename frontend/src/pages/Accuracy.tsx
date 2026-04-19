@@ -2,6 +2,7 @@ import { useApi } from "../hooks/useApi";
 import { api } from "../lib/api";
 import type { AccuracyResponse } from "../lib/types";
 import { pnlColor } from "../lib/colors";
+import ClosedPositions from "../components/accuracy/ClosedPositions";
 
 export default function Accuracy() {
   const { data, loading } = useApi<AccuracyResponse>(() => api.accuracy());
@@ -61,6 +62,8 @@ export default function Accuracy() {
           </div>
         )}
       </div>
+
+      <ClosedPositions />
     </div>
   );
 }
