@@ -2,15 +2,17 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Home, BarChart2, Briefcase, TrendingUp, Bell, Target, Zap, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
+const ICON_PROPS = { size: 18, strokeWidth: 2.25 };
+
 const NAV_ITEMS = [
-  { to: "/", icon: <Home size={16} />, label: "Home" },
-  { to: "/scanner", icon: <BarChart2 size={16} />, label: "Scanner" },
-  { to: "/portfolio", icon: <Briefcase size={16} />, label: "Portfolio" },
-  { to: "/backtest", icon: <TrendingUp size={16} />, label: "Backtest" },
-  { to: "/alerts", icon: <Bell size={16} />, label: "Alerts" },
-  { to: "/accuracy", icon: <Target size={16} />, label: "Accuracy" },
-  { to: "/momentum", icon: <Zap size={16} />, label: "Momentum" },
-  { to: "/watchlist", icon: <Star size={16} />, label: "Watchlist" },
+  { to: "/", icon: <Home {...ICON_PROPS} />, label: "Home" },
+  { to: "/scanner", icon: <BarChart2 {...ICON_PROPS} />, label: "Scanner" },
+  { to: "/portfolio", icon: <Briefcase {...ICON_PROPS} />, label: "Portfolio" },
+  { to: "/backtest", icon: <TrendingUp {...ICON_PROPS} />, label: "Backtest" },
+  { to: "/alerts", icon: <Bell {...ICON_PROPS} />, label: "Alerts" },
+  { to: "/accuracy", icon: <Target {...ICON_PROPS} />, label: "Accuracy" },
+  { to: "/momentum", icon: <Zap {...ICON_PROPS} />, label: "Momentum" },
+  { to: "/watchlist", icon: <Star {...ICON_PROPS} />, label: "Watchlist" },
 ];
 
 export default function Sidebar() {
@@ -45,11 +47,11 @@ export default function Sidebar() {
               `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-150 ${
                 isActive
                   ? "nav-active-glow text-accent font-semibold"
-                  : "text-text-secondary hover:bg-accent/[0.05] hover:text-text-primary"
+                  : "text-text-primary hover:bg-accent/[0.05] hover:text-accent"
               }`
             }
           >
-            <span className="text-base">{item.icon}</span>
+            <span className="shrink-0">{item.icon}</span>
             {!collapsed && <span>{item.label}</span>}
           </NavLink>
         ))}
