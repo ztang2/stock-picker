@@ -56,7 +56,41 @@ export const api = {
   closedStats: () =>
     get<ClosedStats>("/closed-holdings/stats"),
   decayAlerts: () => get<DecayAlertsResponse>("/alerts/decay"),
+  scanChanges: (daysBack = 1, topN = 20) =>
+    get<ScanChangesResponse>(`/scan/changes?days_back=${daysBack}&top_n=${topN}`),
 };
+
+export interface ChangeEntry {
+  ticker: string;
+  current_rank?: number | null;
+  previous_rank?: number | null;
+  rank_delta?: number | null;
+  current_score?: number;
+  previous_score?: number;
+  score_delta?: number;
+  current_signal?: string;
+  previous_signal?: string;
+  signal_changed?: boolean;
+  sector?: string;
+}
+
+export interface ScanChangesResponse {
+  current_date: string;
+  previous_date: string;
+  days_back: number;
+  held_changes: ChangeEntry[];
+  top_risers: ChangeEntry[];
+  top_fallers: ChangeEntry[];
+  new_in_top: ChangeEntry[];
+  dropped_from_top: ChangeEntry[];
+  summary: {
+    held_changed: number;
+    new_in_top: number;
+    dropped_from_top: number;
+    total_universe_movers: number;
+  };
+  error?: string;
+}
 
 export interface DecayAlert {
   ticker: string;

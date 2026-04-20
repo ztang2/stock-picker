@@ -58,6 +58,7 @@ def build_briefing() -> str:
     decay = _get("/alerts/decay") or {"alerts": [], "summary": {}}
     scan = _get("/scan/cached") or {}
     closed = _get("/closed-holdings/stats") or {}
+    changes = _get("/scan/changes?days_back=1") or {}
 
     lines: list[str] = []
 
@@ -125,6 +126,34 @@ def build_briefing() -> str:
             sec = s.get("sector", "?")[:12]
             lines.append(f"  • `{t:<5}` {sc:>5.1f}  [{sig}]  {sec}")
         lines.append("")
+
+    # === What Changed (since previous trading day) ===
+    if changes and not changes.get("error"):
+        changes_summary = changes.get("summary") or {}
+        held_changes = changes.get("held_changes") or []
+        new_in_top = changes.get("new_in_top") or []
+        dropped = changes.get("dropped_from_top") or []
+        if held_changes or new_in_top or dropped:
+            prev_d = changes.get("previous_date", "?")
+            lines.append(f"🔄 **What Changed** (since {prev_d})")
+            # Holdings with signal change OR rank delta >= 5
+            sig_changes = [c for c in held_changes if c.get("signal_changed")]
+            big_rank_moves = [c for c in held_changes if not c.get("signal_changed") and abs(c.get("rank_delta") or 0) >= 5]
+            for c in sig_changes:
+                lines.append(f"  ⚠️ `{c['ticker']}` signal {c['previous_signal']}→{c['current_signal']} ({_fmt_pct(c.get('score_delta'))}pts)")
+            for c in big_rank_moves[:3]:
+                rd = c.get("rank_delta") or 0
+                arrow = "📈" if rd > 0 else "📉"
+                lines.append(f"  {arrow} `{c['ticker']}` rank #{c['previous_rank']}→#{c['current_rank']} (Δ{rd:+d})")
+            if new_in_top:
+                tickers = ", ".join(s["ticker"] for s in new_in_top[:5])
+                more = f" +{len(new_in_top) - 5}" if len(new_in_top) > 5 else ""
+                lines.append(f"  ➕ New in top 20: {tickers}{more}")
+            if dropped:
+                tickers = ", ".join(s["ticker"] for s in dropped[:5])
+                more = f" +{len(dropped) - 5}" if len(dropped) > 5 else ""
+                lines.append(f"  ➖ Dropped from top 20: {tickers}{more}")
+            lines.append("")
 
     # === Realized P&L ===
     if closed and closed.get("count", 0) > 0:

@@ -30,6 +30,7 @@ from ..rebalance import (
 from ..risk_manager import get_portfolio_summary, check_ceasefire_signals
 from .. import closed_holdings as closed_holdings_svc
 from ..position_decay import check_position_decay, summarize as decay_summarize
+from ..scan_changes import compute_changes
 from ..validation import validate_predictions, format_validation_report
 from ..snapshot_verify import run_verification, format_verification_report
 from ..position_sizing import (
@@ -876,3 +877,11 @@ def position_decay_alerts(save_state: bool = Query(True)):
             pass
     alerts = check_position_decay(holdings, current, prev, save_state=save_state)
     return {"alerts": alerts, "summary": decay_summarize(alerts)}
+
+
+@router.get("/scan/changes")
+def scan_changes(days_back: int = Query(1, ge=1, le=30), top_n: int = Query(20, ge=5, le=50)):
+    """Day-over-day delta: held position changes, top movers, top-N entries/drops.
+    Uses daily_snapshots/ as source of truth (not scan_results.json which can be same-day stale)."""
+    holdings = load_holdings()
+    return compute_changes(holdings=holdings, days_back=days_back, top_n=top_n)

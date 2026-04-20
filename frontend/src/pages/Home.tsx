@@ -9,6 +9,7 @@ import ActionItems from "../components/home/ActionItems";
 import NewSignals from "../components/home/NewSignals";
 import MarketPulse from "../components/home/MarketPulse";
 import HoldingsStrip from "../components/home/HoldingsStrip";
+import DailyChangesCard from "../components/home/DailyChangesCard";
 import TickerModal from "../components/ticker/TickerModal";
 import { Skeleton, SkeletonCard } from "../components/common/Skeleton";
 import type { AlertsResponse, AccuracyResponse, RiskSummary, StopLossAlert, Stock } from "../lib/types";
@@ -134,6 +135,7 @@ export default function Home() {
         />
         <NewSignals stocks={scan.top} onTickerClick={handleTickerClick} />
         {scan.market_regime && <MarketPulse regime={scan.market_regime} />}
+        <DailyChangesCard onTickerClick={handleTickerClick} />
       </motion.div>
 
       {selectedStock && <TickerModal stock={selectedStock} onClose={() => setSelectedStock(null)} />}
