@@ -139,7 +139,9 @@ python3 -m pytest test_sell_signals.py -v
 - OpenBB was evaluated and rejected (no advantage over direct yfinance)
 - All changes must be committed and pushed to GitHub (private repo)
 
-## Roadmap (in order)
+## Roadmap
+
+### Shipped
 1. ~~Sell signals~~ ✅
 2. ~~Consecutive days tracking~~ ✅
 3. ~~Sentiment analysis~~ ✅ (built, then disabled — too naive/rate-limited)
@@ -152,14 +154,51 @@ python3 -m pytest test_sell_signals.py -v
 10. ~~Parallel smart money + async scan~~ ✅
 11. ~~API authentication~~ ✅
 12. ~~Better sentiment replacement (analyst consensus from yfinance)~~ ✅
-13. SEC EDGAR integration for fundamental data gaps
-14. Walk-forward optimization (auto-tune weights from accuracy data)
-15. SQLite migration (replace JSON files)
-16. Sector concentration cap (max N per sector in top 20)
-17. Portfolio tracking / watchlist (Robinhood, manual entry)
-18. ~~Correlation check (pairwise correlation on portfolio picks)~~ ✅ (correlation heatmap + diversification score + what-if simulator)
-19. Log rotation
-20. ~~React frontend redesign~~ ✅ (Home dashboard, enhanced scanner with radar charts, ticker modal, portfolio page with diversification tools)
+13. ~~Sector concentration cap (max 4 per sector in top 20)~~ ✅ (see `_select_top_n` in pipeline.py)
+14. ~~Correlation check~~ ✅ (correlation heatmap + diversification score + what-if simulator)
+15. ~~React frontend redesign~~ ✅ (Home dashboard, scanner radar charts, ticker modal, portfolio page)
+16. ~~Holdings management UI~~ ✅ (2026-04-19: add/edit/sell with archive, add-shares with weighted-avg, CLI)
+17. ~~Closed-holdings archive + backfill~~ ✅ (2026-04-19: sell modal, git-log reconstruction, Accuracy page section)
+18. ~~Position decay alerts~~ ✅ (2026-04-19: sell-signal/score-decay/near-stop warnings, UI + Discord)
+19. ~~Daily Changes delta card~~ ✅ (2026-04-19: rank/score/signal deltas on Home page, Discord briefing)
+20. ~~Entry-score auto-fill on adds + backfill script~~ ✅ (2026-04-19)
+21. ~~Native Discord briefing (replaces OpenClaw)~~ ✅ (2026-04-19: `scripts/post_briefing.py` + LaunchAgent)
+22. ~~Dynamic backtest engine~~ ✅ (2026-04-19: snapshot replay with sell/buy/rebalance logic)
+
+### Backtest findings (2026-04-19)
+Dynamic backtest across parameter sweeps proved:
+- Model at optimal settings (score≥85, 10 positions, 30d hold) has **-0.11% alpha vs SPY** — essentially tracks market.
+- User's real portfolio is **+11% vs SPY +4%** = **+7% manual-judgment alpha** over robot baseline.
+- Model's value is as a **menu** (filters 880→20), not as a return-generator. User's selection adds the alpha.
+
+### Next session — Strategic roadmap
+Ordered by ROI × confidence. Full reasoning in session memory.
+
+**Tier 1 — amplify user judgment (cheap, high ROI):**
+- **B3 — "Next 3 moves" decision page** (3-4 hrs) — opinionated surfacing of what to do today
+- **Raise BUY threshold from 50 → 80** (30 min) — backtest-proven quality cutoff
+- **Thesis tracking** — record WHY each buy, analyze 3mo later (2-3 hrs)
+- **Capital scenario tool** — "what if 2x capital deployed through same judgment" (2 hrs)
+
+**Tier 2 — add complementary alpha sources (real work, medium ROI):**
+- **Momentum factor** (1-2 days) — 15-20% weight for 6mo price momentum. Addresses quality-only style drag in momentum markets. Research-backed (+2-4% annual).
+- **Analyst revision momentum** (1 day) — upgrade existing `smart_money_signals` to track revision SPEED + DIRECTION.
+- **Universe expansion** (1 day) — NASDAQ-100 + sector ETFs (XLE, XLK, XLV, XBI).
+- **Retrain alpha158 ML** (2-3 days, uncertain) — current 44% accuracy is below 55% threshold and auto-disabled. Retrain with momentum features.
+
+**Tier 3 — structural (bigger bets):**
+- **Options overlay** (3-4 days) — covered calls on winners, protective puts near-stop
+- **Live Alpaca trading** (1-2 days) — wire already exists in `src/alpaca_trader.py` (dormant)
+- **Sector rotation engine** (1-2 weeks) — detect sector regime transitions
+- **Intraday bars** (1 week + data cost)
+
+### Smaller maintenance items
+- SEC EDGAR integration for fundamental data gaps
+- Walk-forward optimization (auto-tune weights from accuracy data)
+- SQLite migration (replace JSON files for holdings/archive)
+- Log rotation
+- v2 partial-sell tracking (see `~/.claude/projects/.../stock-picker-v2-partial-sells.md`)
+- Snapshot gap 2026-04-01 investigation
 
 ## Owner
 Zhuoran Tang (@ztang2) — using Robinhood. Current holdings: EQT, NFLX (30 shares), INCY, CTRA, PCTY, DUOL, JHG, FAF, AMD. See `data/holdings.json` for exact positions.
