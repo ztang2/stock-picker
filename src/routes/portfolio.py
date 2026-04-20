@@ -29,6 +29,7 @@ from ..rebalance import (
 )
 from ..risk_manager import get_portfolio_summary, check_ceasefire_signals
 from .. import closed_holdings as closed_holdings_svc
+from ..position_decay import check_position_decay, summarize as decay_summarize
 from ..validation import validate_predictions, format_validation_report
 from ..snapshot_verify import run_verification, format_verification_report
 from ..position_sizing import (
@@ -720,6 +721,21 @@ class HoldingUpdate(BaseModel):
     note: Optional[str] = None
 
 
+def _lookup_current_score(ticker: str) -> Optional[float]:
+    """Look up a ticker's composite_score from the latest scan. None if not found."""
+    try:
+        from ..scan_results_service import ScanResultsService
+        scan = ScanResultsService.get_latest() or {}
+        for s in (scan.get("all_scores") or []) + (scan.get("top") or []):
+            if s.get("ticker") == ticker:
+                score = s.get("composite_score")
+                if score is not None:
+                    return float(score)
+    except Exception:
+        pass
+    return None
+
+
 @router.post("/portfolio/holdings/{ticker}")
 def create_holding(ticker: str, body: HoldingCreate, _: None = Depends(verify_api_key)):
     ticker = ticker.upper()
@@ -728,8 +744,10 @@ def create_holding(ticker: str, body: HoldingCreate, _: None = Depends(verify_ap
         raise HTTPException(status_code=409, detail=f"{ticker} already exists; use PATCH to update")
     entry = {"shares": body.shares, "entry_price": body.entry_price}
     entry["entry_date"] = body.entry_date or datetime.now().date().isoformat()
-    if body.entry_score is not None:
-        entry["entry_score"] = body.entry_score
+    # entry_score: explicit override > current scan lookup
+    score = body.entry_score if body.entry_score is not None else _lookup_current_score(ticker)
+    if score is not None:
+        entry["entry_score"] = round(score, 2)
     if body.note:
         entry["note"] = body.note
     holdings[ticker] = entry
@@ -836,3 +854,25 @@ def list_closed_holdings():
 @router.get("/closed-holdings/stats")
 def closed_holdings_stats():
     return closed_holdings_svc.stats()
+
+
+@router.get("/alerts/decay")
+def position_decay_alerts(save_state: bool = Query(True)):
+    """Position-decay alerts on held positions: sell signals, signal degrades,
+    score decay vs entry, near-stop, earnings proximity. Distinct from /alerts
+    which monitors top-N changes universe-wide."""
+    from ..scan_results_service import ScanResultsService
+    holdings = load_holdings()
+    current = ScanResultsService.get_latest()
+    if not current:
+        return {"alerts": [], "summary": {"total": 0, "urgent": 0, "warning": 0, "info": 0},
+                "error": "no scan results available"}
+    prev_path = DATA_DIR / "prev_scan_results.json"
+    prev = None
+    if prev_path.exists():
+        try:
+            prev = json.loads(prev_path.read_text())
+        except Exception:
+            pass
+    alerts = check_position_decay(holdings, current, prev, save_state=save_state)
+    return {"alerts": alerts, "summary": decay_summarize(alerts)}

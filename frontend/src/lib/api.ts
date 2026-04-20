@@ -55,7 +55,33 @@ export const api = {
     get<{ closed: ClosedHolding[] }>("/closed-holdings"),
   closedStats: () =>
     get<ClosedStats>("/closed-holdings/stats"),
+  decayAlerts: () => get<DecayAlertsResponse>("/alerts/decay"),
 };
+
+export interface DecayAlert {
+  ticker: string;
+  alert_type: string;
+  severity: "urgent" | "warning" | "info";
+  message: string;
+  current_score: number;
+  previous_score: number;
+  score_delta: number;
+  entry_score: number | null;
+  current_signal: string;
+  previous_signal: string;
+  sell_signal: string;
+  current_price: number | null;
+  entry_price: number;
+  pnl_pct: number;
+  details: Record<string, unknown>;
+  first_detected: string;
+}
+
+export interface DecayAlertsResponse {
+  alerts: DecayAlert[];
+  summary: { total: number; urgent: number; warning: number; info: number };
+  error?: string;
+}
 
 export interface ClosedHolding {
   ticker: string;

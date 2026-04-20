@@ -16,18 +16,15 @@
       "ticker": "INCY",
       "shares": 15.39811,
       "entry_price": 94.42,
-      "entry_date": "2026-03-09"
+      "entry_date": "2026-03-09",
+      "entry_score": 79.53
     },
     "CTRA": {
       "ticker": "CTRA",
       "shares": 26,
       "entry_price": 31.68,
-      "entry_date": "2026-03-09"
-    },
-    "PCTY": {
-      "shares": 6.505614,
-      "entry_price": 113.75,
-      "entry_date": "2026-03-11"
+      "entry_date": "2026-03-09",
+      "entry_score": 80.3
     },
     "DAL": {
       "ticker": "DAL",
@@ -36,7 +33,8 @@
       "entry_date": "2026-04-08",
       "sector": "Industrials",
       "industry": "Airlines",
-      "note": "Ceasefire play. Bought with DUOL proceeds."
+      "note": "Ceasefire play. Bought with DUOL proceeds.",
+      "entry_score": 77.37
     },
     "JHG": {
       "shares": 9.867771,
@@ -46,20 +44,22 @@
     },
     "FAF": {
       "ticker": "FAF",
-      "shares": 19.522715,
-      "entry_price": 59.93,
+      "shares": 29.59511,
+      "entry_price": 61.16,
       "entry_date": "2026-03-26",
       "sector": "Financial Services",
       "industry": "Insurance - Specialty",
-      "note": "Added 8.2 shares @ $60.98 on 2026-04-07. Original: 11.32sh @ $59.17"
+      "note": "Added 10.072395sh @ $63.54 on 2026-04-09. Added 8.2 shares @ $60.98 on 2026-04-07. Original: 11.32sh @ $59.17",
+      "entry_score": 89.26
     },
     "AMD": {
       "ticker": "AMD",
       "shares": 5.016894,
       "entry_price": 215.27,
       "entry_date": "2026-04-02",
-      "signal": "BUY"
+      "signal": "BUY",
+      "entry_score": 71.0
     }
   },
-  "updated": "2026-04-06T20:00:00"
+  "updated": "2026-04-19T17:15:38.033926"
 }
