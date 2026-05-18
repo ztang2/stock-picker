@@ -29,6 +29,8 @@ from typing import Optional
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DECAY_STATE_FILE = DATA_DIR / "decay_alerts_state.json"
+SP500_FILE = DATA_DIR / "sp500_tickers.json"
+SP400_FILE = DATA_DIR / "sp400_tickers.json"
 
 # Signal ordering (higher index = weaker)
 _SIGNAL_RANK = {
@@ -74,6 +76,22 @@ def _record(state: dict, ticker: str, alert_type: str, payload: dict, now: datet
     }
 
 
+def _load_universe() -> set[str]:
+    """Load the S&P 500 + 400 ticker universe. Empty set if files missing."""
+    universe: set[str] = set()
+    for path in (SP500_FILE, SP400_FILE):
+        if path.exists():
+            try:
+                data = json.loads(path.read_text())
+                if isinstance(data, list):
+                    universe.update(data)
+                elif isinstance(data, dict):
+                    universe.update(data.get("tickers", data.get("symbols", [])))
+            except Exception:
+                pass
+    return universe
+
+
 def check_position_decay(
     holdings: dict[str, dict],
     current_results: dict,
@@ -109,6 +127,7 @@ def check_position_decay(
 
     cur_idx = _index(current_results)
     prev_idx = _index(previous_results) if previous_results else {}
+    universe = _load_universe()
 
     state = _load_state()
     alerts: list[dict] = []
@@ -116,8 +135,41 @@ def check_position_decay(
     for ticker, holding in holdings.items():
         ticker = ticker.upper()
         s = cur_idx.get(ticker)
+
+        # === Universe check first — catches M&A, delistings, bankruptcies ===
+        if universe and ticker not in universe:
+            alert_type = "ticker_delisted"
+            if not _is_deduped(state, ticker, alert_type, now):
+                entry_price = float(holding.get("entry_price") or 0)
+                shares = float(holding.get("shares") or 0)
+                alerts.append({
+                    "ticker": ticker,
+                    "alert_type": alert_type,
+                    "severity": "urgent",
+                    "message": f"{ticker} not in S&P 500/400 universe — likely merged, delisted, or acquired. Verify position with broker.",
+                    "current_score": 0,
+                    "previous_score": 0,
+                    "score_delta": 0,
+                    "entry_score": holding.get("entry_score"),
+                    "current_signal": "",
+                    "previous_signal": "",
+                    "sell_signal": "DELISTED",
+                    "current_price": None,
+                    "entry_price": round(entry_price, 2),
+                    "pnl_pct": 0,
+                    "details": {
+                        "shares": shares,
+                        "entry_date": holding.get("entry_date"),
+                        "note": holding.get("note", ""),
+                        "action": "Check broker for merger conversion (cash + acquirer stock). Close this position via Sell modal and add the acquirer ticker if applicable.",
+                    },
+                    "first_detected": now.isoformat(),
+                })
+                _record(state, ticker, alert_type, {}, now)
+            continue  # Skip all other checks — ticker has no current scan data
+
         if not s:
-            continue  # ticker not in scanner universe
+            continue  # ticker in universe but not in current scan (skipped/filtered)
 
         prev_s = prev_idx.get(ticker, {})
         cur_score = float(s.get("composite_score") or 0)

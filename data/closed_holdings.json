@@ -163,7 +163,45 @@
       "realized_pnl": -104.55,
       "realized_pnl_pct": -14.13,
       "hold_days": 29
+    },
+    {
+      "ticker": "JHG",
+      "shares": 9.867771,
+      "entry_price": 50.67,
+      "entry_date": "2026-03-19",
+      "exit_price": 51.54,
+      "exit_date": "2026-04-20",
+      "realized_pnl": 8.58,
+      "realized_pnl_pct": 1.72,
+      "hold_days": 32,
+      "entry_score": 88.8
+    },
+    {
+      "ticker": "BSX",
+      "shares": 8.096841,
+      "entry_price": 62.37,
+      "entry_date": "2026-04-20",
+      "exit_price": 58.3,
+      "exit_date": "2026-04-28",
+      "realized_pnl": -32.95,
+      "realized_pnl_pct": -6.53,
+      "hold_days": 8,
+      "entry_score": 65.19,
+      "entry_note": "Pre-Q1 earnings play (bought 2026-04-20). Earnings beat \u2192 position up ~4% immediately. Thesis: catalyst-driven, outside normal value/quality screen (entry_score only 65)."
+    },
+    {
+      "ticker": "CTRA",
+      "shares": 26.0,
+      "entry_price": 31.68,
+      "entry_date": "2026-03-09",
+      "exit_price": 31.68,
+      "exit_date": "2026-05-08",
+      "realized_pnl": 0.0,
+      "realized_pnl_pct": 0.0,
+      "hold_days": 60,
+      "entry_score": 80.3,
+      "close_note": "Merger into DVN @ 0.7 ratio. Received 18.2 DVN @ $45.25 cost basis. Original 26sh CTRA @ $31.68 = $823.68. All-stock swap, no cash, non-taxable cost basis transfer."
     }
   ],
-  "updated": "2026-04-16T23:59:34.136596"
+  "updated": "2026-05-17T21:33:58.363668"
 }

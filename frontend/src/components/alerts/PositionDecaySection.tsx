@@ -62,11 +62,27 @@ export default function PositionDecaySection() {
                       )}
                     </div>
                     <div className="text-sm text-text-secondary">{a.message}</div>
+                    {a.alert_type === "ticker_delisted" && (a.details as { action?: string })?.action && (
+                      <div className="mt-2 text-[12px] text-danger/90 italic">
+                        → {(a.details as { action?: string }).action}
+                      </div>
+                    )}
                     <div className="mt-2 grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-1 text-[11px] font-data">
-                      <KV label="Score" value={`${a.current_score.toFixed(1)}${a.score_delta ? ` (${a.score_delta >= 0 ? "+" : ""}${a.score_delta.toFixed(1)})` : ""}`} />
-                      <KV label="Price" value={a.current_price != null ? `$${a.current_price.toFixed(2)}` : "—"} />
-                      <KV label="P&L" value={`${a.pnl_pct >= 0 ? "+" : ""}${a.pnl_pct.toFixed(2)}%`} valueClass={pnlColor(a.pnl_pct)} />
-                      <KV label="Entry" value={`$${a.entry_price.toFixed(2)}${a.entry_score ? ` @ ${a.entry_score.toFixed(0)}` : ""}`} />
+                      {a.alert_type === "ticker_delisted" ? (
+                        <>
+                          <KV label="Status" value="DELISTED" valueClass="text-danger" />
+                          <KV label="Shares" value={`${(a.details as { shares?: number })?.shares?.toFixed(2) ?? "—"}`} />
+                          <KV label="Entry" value={`$${a.entry_price.toFixed(2)}`} />
+                          <KV label="Entry Date" value={(a.details as { entry_date?: string })?.entry_date ?? "—"} />
+                        </>
+                      ) : (
+                        <>
+                          <KV label="Score" value={`${a.current_score.toFixed(1)}${a.score_delta ? ` (${a.score_delta >= 0 ? "+" : ""}${a.score_delta.toFixed(1)})` : ""}`} />
+                          <KV label="Price" value={a.current_price != null ? `$${a.current_price.toFixed(2)}` : "—"} />
+                          <KV label="P&L" value={`${a.pnl_pct >= 0 ? "+" : ""}${a.pnl_pct.toFixed(2)}%`} valueClass={pnlColor(a.pnl_pct)} />
+                          <KV label="Entry" value={`$${a.entry_price.toFixed(2)}${a.entry_score ? ` @ ${a.entry_score.toFixed(0)}` : ""}`} />
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
