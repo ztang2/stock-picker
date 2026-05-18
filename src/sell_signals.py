@@ -169,34 +169,39 @@ def compute_sell_signals(
     
     # 1. RSI overbought (>70 = warning, >80 = strong sell)
     # Strong trends can sustain high RSI longer — adjust thresholds when ADX > 40
-    # Market regime also adjusts thresholds: bull +5, bear -5, sideways 0
+    # Market regime also adjusts thresholds: bull +10 (was +5), bear -5, sideways 0
+    #
+    # 2026-05 calibration: AMD went +97% on RSI >90 in bull regime; NVDA recovered
+    # from RSI 86 dip. Old thresholds (warning 75, strong 85 in bull) over-fired
+    # on quality momentum names during sustained bull runs. New: warning 80, strong 90
+    # in plain bull; warning 90, strong 95 in bull + strong-trend.
     rsi = _rsi(close)
     if rsi is not None:
         # Calculate MA50 for trend context
         ma50 = None
         if len(close) >= 50:
             ma50 = close.rolling(50).mean().iloc[-1]
-        
+
         # Determine if we're in a strong uptrend
         strong_trend = adx is not None and adx > 40
         above_ma50_pct = None
         if ma50 is not None and not pd.isna(ma50):
             above_ma50_pct = ((current_price - ma50) / ma50) * 100
-        
+
         # Base thresholds
         rsi_threshold_warning = 80 if strong_trend else 70
         rsi_threshold_strong = 85 if strong_trend else 80
-        
+
         # Adjust thresholds based on market regime
         regime_offset = 0
         if regime == "bull":
-            regime_offset = 5  # More lenient in bull markets
+            regime_offset = 10  # More lenient in bull markets (was +5)
         elif regime == "bear":
             regime_offset = -5  # More strict in bear markets
-        
+
         rsi_threshold_warning += regime_offset
         rsi_threshold_strong += regime_offset
-        
+
         rsi_sell_score = 0
         if rsi > rsi_threshold_strong:
             rsi_sell_score = 25
@@ -206,13 +211,19 @@ def compute_sell_signals(
             rsi_sell_score = 15
             reasons.append(f"RSI overbought ({rsi:.1f})")
             result["rsi_overbought"] = True
-        
-        # In strong uptrend (ADX > 40) with price >10% above MA50, discount RSI sell score by 50%
-        if strong_trend and above_ma50_pct is not None and above_ma50_pct > 10:
+
+        # Discount RSI sell score when in confirmed momentum:
+        #   - Bull regime + above MA50 by 10%+: discount 70% (nearly suppress — trend is real)
+        #   - ADX > 40 strong trend + above MA50 by 10%+: discount 50%
+        if regime == "bull" and above_ma50_pct is not None and above_ma50_pct > 10:
+            rsi_sell_score = rsi_sell_score * 0.30
+            if rsi_sell_score > 0:
+                reasons.append("(RSI discounted: bull regime + uptrend)")
+        elif strong_trend and above_ma50_pct is not None and above_ma50_pct > 10:
             rsi_sell_score = rsi_sell_score * 0.5
             if rsi_sell_score > 0:
                 reasons.append("(RSI discounted: strong uptrend)")
-        
+
         sell_score += rsi_sell_score
     
     # 2. Price at/near resistance

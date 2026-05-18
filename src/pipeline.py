@@ -422,6 +422,18 @@ def _build_ranked_details(ranked_df: pd.DataFrame, selected_tickers: List[str],
             "technicals_pct": round(float(row["tech_pct"]), 2) if pd.notna(row["tech_pct"]) else None,
             "risk_pct": round(float(row["risk_pct"]), 2) if pd.notna(row["risk_pct"]) else None,
             "growth_pct": round(float(row["growth_pct"]), 2) if pd.notna(row["growth_pct"]) else None,
+            # Raw category scores (0-100, NOT percentile) — needed so prev/current
+            # sell-signal comparison uses same scale (see note at prev_results_map)
+            "fund_score": round(float((detail.get("fundamentals") or {}).get("score", 0)), 2)
+                if (detail.get("fundamentals") or {}).get("score") is not None else None,
+            "val_score": round(float((detail.get("valuation") or {}).get("score", 0)), 2)
+                if (detail.get("valuation") or {}).get("score") is not None else None,
+            "tech_score": round(float((detail.get("technicals") or {}).get("score", 0)), 2)
+                if (detail.get("technicals") or {}).get("score") is not None else None,
+            "risk_score": round(float((detail.get("risk") or {}).get("score", 0)), 2)
+                if (detail.get("risk") or {}).get("score") is not None else None,
+            "growth_score": round(float((detail.get("growth") or {}).get("score", 0)), 2)
+                if (detail.get("growth") or {}).get("score") is not None else None,
             "sentiment": detail.get("sentiment"),
             "sentiment_score": (detail.get("sentiment") or {}).get("score"),
             "sentiment_pct": round(float(row["sent_pct"]), 2) if pd.notna(row["sent_pct"]) else None,
@@ -850,6 +862,13 @@ def _finalize_and_save(ranked: List[dict], ranked_df: pd.DataFrame, filtered: Li
             "technicals_pct": round(float(row.get("tech_pct", 0)), 2) if pd.notna(row.get("tech_pct")) else 0,
             "risk_pct": round(float(row.get("risk_pct", 0)), 2) if pd.notna(row.get("risk_pct")) else 0,
             "growth_pct": round(float(row.get("growth_pct", 0)), 2) if pd.notna(row.get("growth_pct")) else 0,
+            # Raw category scores (0-100) — needed for prev/current sell-signal comparison
+            # without mixing scales with the *_pct percentile-ranked values above
+            "fund_score": round(float(fund.get("score", 0)), 2) if fund.get("score") is not None else None,
+            "val_score": round(float(val.get("score", 0)), 2) if val.get("score") is not None else None,
+            "tech_score": round(float(technicals.get("score", 0)), 2) if technicals.get("score") is not None else None,
+            "risk_score": round(float(risk_d.get("score", 0)), 2) if risk_d.get("score") is not None else None,
+            "growth_score": round(float(growth_d.get("score", 0)), 2) if growth_d.get("score") is not None else None,
             "entry_signal": momentum.get("entry_signal", "HOLD"),
             "current_price": technicals.get("price") or detail.get("current_price"),
             "rsi": technicals.get("rsi"),
@@ -981,18 +1000,25 @@ def run_scan(
     if prev_results_file.exists():
         try:
             prev_scan = json.loads(prev_results_file.read_text())
+            # IMPORTANT: prev_fundamentals_score must use `fund_score` (raw 0-100),
+            # NOT `fundamentals_pct` (sector-rank percentile). Mixing the two scales
+            # caused spurious "Fundamentals deteriorated" sell signals — INCY on
+            # 2026-05-15 fired STRONG_SELL despite stable fundamentals because
+            # current raw (78.5) was compared against previous percentile (94.58).
+            # Fall back to fundamentals_pct only for backward-compat with old
+            # scan files that pre-date the fund_score column.
             for stock in prev_scan.get("top", prev_scan.get("stocks", [])):
                 ticker_sym = stock.get("ticker")
                 if ticker_sym:
                     prev_results_map[ticker_sym] = {
-                        "fundamentals": {"score": stock.get("fundamentals_pct")},
+                        "fundamentals": {"score": stock.get("fund_score") or stock.get("fundamentals_pct")},
                         "momentum": {"entry_signal": stock.get("entry_signal")},
                     }
             for stock in prev_scan.get("all_scores", []):
                 ticker_sym = stock.get("ticker")
                 if ticker_sym and ticker_sym not in prev_results_map:
                     prev_results_map[ticker_sym] = {
-                        "fundamentals": {"score": stock.get("fundamentals_pct") or stock.get("fund_score")},
+                        "fundamentals": {"score": stock.get("fund_score") or stock.get("fundamentals_pct")},
                         "momentum": {"entry_signal": stock.get("entry_signal") or stock.get("signal")},
                     }
         except Exception:
