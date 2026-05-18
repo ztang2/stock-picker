@@ -737,6 +737,21 @@ def _lookup_current_score(ticker: str) -> Optional[float]:
     return None
 
 
+def _is_in_universe(ticker: str) -> bool:
+    """Check if ticker is in the S&P 500 + S&P 400 universe."""
+    for fname in ("sp500_tickers.json", "sp400_tickers.json"):
+        path = DATA_DIR / fname
+        if path.exists():
+            try:
+                data = json.loads(path.read_text())
+                tickers = data if isinstance(data, list) else data.get("tickers", data.get("symbols", []))
+                if ticker in tickers:
+                    return True
+            except Exception:
+                pass
+    return False
+
+
 @router.post("/portfolio/holdings/{ticker}")
 def create_holding(ticker: str, body: HoldingCreate, _: None = Depends(verify_api_key)):
     ticker = ticker.upper()
@@ -749,8 +764,14 @@ def create_holding(ticker: str, body: HoldingCreate, _: None = Depends(verify_ap
     score = body.entry_score if body.entry_score is not None else _lookup_current_score(ticker)
     if score is not None:
         entry["entry_score"] = round(score, 2)
-    if body.note:
-        entry["note"] = body.note
+    # Auto-tag outside-universe tickers so the M&A/delisted alert doesn't
+    # false-fire on intentional thematic / micro-cap speculations.
+    note = body.note or ""
+    if not _is_in_universe(ticker) and "[outside-universe]" not in note.lower():
+        prefix = "[outside-universe] "
+        note = prefix + note if note else prefix.strip()
+    if note:
+        entry["note"] = note
     holdings[ticker] = entry
     save_holdings(holdings)
     return {"ticker": ticker, "holding": entry}
