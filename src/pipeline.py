@@ -1005,20 +1005,20 @@ def run_scan(
             # caused spurious "Fundamentals deteriorated" sell signals — INCY on
             # 2026-05-15 fired STRONG_SELL despite stable fundamentals because
             # current raw (78.5) was compared against previous percentile (94.58).
-            # Fall back to fundamentals_pct only for backward-compat with old
-            # scan files that pre-date the fund_score column.
+            # If fund_score missing in old prev file (pre-fix), use None — the
+            # sell-signal check will skip rather than fall back to wrong-scale data.
             for stock in prev_scan.get("top", prev_scan.get("stocks", [])):
                 ticker_sym = stock.get("ticker")
                 if ticker_sym:
                     prev_results_map[ticker_sym] = {
-                        "fundamentals": {"score": stock.get("fund_score") or stock.get("fundamentals_pct")},
+                        "fundamentals": {"score": stock.get("fund_score")},
                         "momentum": {"entry_signal": stock.get("entry_signal")},
                     }
             for stock in prev_scan.get("all_scores", []):
                 ticker_sym = stock.get("ticker")
                 if ticker_sym and ticker_sym not in prev_results_map:
                     prev_results_map[ticker_sym] = {
-                        "fundamentals": {"score": stock.get("fund_score") or stock.get("fundamentals_pct")},
+                        "fundamentals": {"score": stock.get("fund_score")},
                         "momentum": {"entry_signal": stock.get("entry_signal") or stock.get("signal")},
                     }
         except Exception:

@@ -19,16 +19,6 @@
       "entry_date": "2026-03-09",
       "entry_score": 79.53
     },
-    "DAL": {
-      "ticker": "DAL",
-      "shares": 9.371396,
-      "entry_price": 69.36,
-      "entry_date": "2026-04-08",
-      "sector": "Industrials",
-      "industry": "Airlines",
-      "note": "Ceasefire play. Bought with DUOL proceeds.",
-      "entry_score": 77.37
-    },
     "FAF": {
       "ticker": "FAF",
       "shares": 29.59511,
@@ -59,7 +49,13 @@
       "entry_date": "2026-05-08",
       "entry_score": 34.49,
       "note": "Merger conversion from 26sh CTRA @ $31.68 ($823.68 cost basis). All-stock at 0.7 DVN per CTRA, no cash component. Cost basis carried over."
+    },
+    "REA": {
+      "shares": 28.0,
+      "entry_price": 22.75,
+      "entry_date": "2026-05-14",
+      "note": "[outside-universe] Speculative rare earth play (rotation from DAL). Thesis: US strategic mineral demand + EV magnets. Target: 3-5x on theme catalyst. Stop: -25% from $22.75 = $17.06. Window: 6-12mo. Outside scanner \u2014 manage manually."
     }
   },
-  "updated": "2026-05-17T21:33:58.404288"
+  "updated": "2026-05-17T22:37:52.383262"
 }

@@ -137,7 +137,13 @@ def check_position_decay(
         s = cur_idx.get(ticker)
 
         # === Universe check first — catches M&A, delistings, bankruptcies ===
+        # Holdings can opt out by including "[outside-universe]" in the note
+        # (case-insensitive). Use this for intentional micro-cap / thematic
+        # plays outside the S&P 500+400 scope, where the alert is a false-positive.
         if universe and ticker not in universe:
+            note_lower = (holding.get("note") or "").lower()
+            if "[outside-universe]" in note_lower:
+                continue  # Intentionally outside universe — suppress alert
             alert_type = "ticker_delisted"
             if not _is_deduped(state, ticker, alert_type, now):
                 entry_price = float(holding.get("entry_price") or 0)
